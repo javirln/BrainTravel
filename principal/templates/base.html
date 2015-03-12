@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>BrainTravel</title>
+        <media charset='utf-8'/></media>
+        <!-- Latest compiled and minified CSS -->
+        {%load staticfiles%}
+        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/custom.css" %}">
+        <link rel="stylesheet" href="{% static "css/animate.css" %}">
+        <link rel="stylesheet" href="{% static "css/sweet-alert.css" %}">
+        <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-bt">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">BrainTravel</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-search"></span></a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li style="background-color: #26A65B;">
+                    <a id="sign_ind_nav" href="#">Sign In</a>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>        
+
+        <div class="container">
+            {%block content%}
+            {%endblock%}
+        </div>
+        <!-- Bootstrap -->
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        
+        <!-- Boostrap from static files -->
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+        <!-- Dependencies JS -->
+        <script src="{% static "js/sweet-alert.js" %}"></script>
+        <script src="{% static "js/custom.js" %}"></script>
+        <script src="{% static "js/countUp.min.js" %}"></script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+/* General */
+
+body {
+    background-color: #EEEEEE;
+}
+
+.navbar-bt {
+    background-color: #EEEEEE;
+    border-color: #EEEEEE;
+    border-radius: 0px;
+    border-bottom:1px solid #ABB7B7;
+}
+
+.login-container{
+    position: relative;
+    width: 300px;
+    margin: 80px auto;
+    padding: 20px 20px 20px;
+    text-align: center;
+    background: #ABB7B7;
+    border-radius: 5px;
+}
+
+.form-box-login input{
+    width: 100%;
+    padding: 10px;
+    height:40px;
+    border: 1px solid #ccc;;
+    background: #fafafa;
+    transition:0.2s ease-in-out;
+
+}
+
+.form-box-login input:focus{
+    outline: 0;
+    background: #eee;
+}
+
+.form-box-login input[type="text"]{
+    border-radius: 5px 5px 0 0;
+    text-transform: lowercase;
+}
+
+.form-box-login input[type="password"]{
+    border-radius: 0 0 5px 5px;
+    border-top: 0;
+}
+
+.form-box-login button.login{
+    margin-top: 15px;
+    padding: 10px 20px;
+}
