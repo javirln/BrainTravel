@@ -7,7 +7,6 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.db.models.fields.related import OneToOneField
 from django.utils import timezone
-from django_enumfield import enum
 
 
 # --------------------------- CUSTOMS VALIDATORS  ----------------------------------
@@ -43,8 +42,8 @@ class Scorable(models.Model):
     
 class Venue(Scorable):
     id_foursquare = models.CharField(max_length=20, unique=True)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    latitude = models.CharField(max_length=20)
+    longitude = models.CharField(max_length=20)
     photo = models.ImageField(upload_to='static/venue_folder/', null=True, blank=True)
     phone = models.CharField(max_length=50, null=True)
     
@@ -61,7 +60,7 @@ class Feedback(models.Model):
     duration = models.FloatField(validators=[MinValueValidator(1)])
     
     #---------- Derivate ---------------#
-    rating = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)])
+    usefulCount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     
     # ------------- Relationships --------------#
     traveller = models.ForeignKey('principal.Traveller')
@@ -72,6 +71,7 @@ class Feedback(models.Model):
     
 class City(models.Model):
     name = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
     description = models.TextField()
     
     def __unicode__(self):
@@ -184,7 +184,7 @@ class CoinHistory(models.Model):
     date = models.DateTimeField(validators=[PastValidator])
     concept = models.TextField()
     
-    # ------------- Relationships --------------#
+    # -------------     Relationships --------------#
     traveller = models.ForeignKey(Traveller)
     payment = models.OneToOneField(Payment, null=True, blank=True) 
     trip = models.OneToOneField(Trip, null=True, blank=True)
