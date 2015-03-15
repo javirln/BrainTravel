@@ -24,8 +24,8 @@ class Administrator(models.Model):
         db_table='administrator'
 
 class Category(models.Model):
-    id_foursquare = models.CharField(max_length=20, unique=True)
-    name = models.CharField(max_length=20)
+    id_foursquare = models.CharField(max_length=30, unique=True)
+    name = models.CharField(max_length=50)
     
     
     class Meta:
@@ -37,7 +37,7 @@ class Category(models.Model):
 
 #Conceptually it's abstract, but Django not implement in BD abstract classes
 class Scorable(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=256)
     description = models.TextField()
     
     #----------- Derivates -------------------------------#
@@ -47,9 +47,9 @@ class Scorable(models.Model):
         db_table='scorable'
     
 class Venue(Scorable):
-    id_foursquare = models.CharField(max_length=20, unique=True)
-    latitude = models.CharField(max_length=20)
-    longitude = models.CharField(max_length=20)
+    id_foursquare = models.CharField(max_length=30, unique=True)
+    latitude = models.CharField(max_length=50)
+    longitude = models.CharField(max_length=50)
     photo = models.ImageField(upload_to='static/venue_folder/', null=True, blank=True)
     phone = models.CharField(max_length=50, null=True)
     
@@ -96,7 +96,7 @@ class Trip(Scorable):
     publishedDescription = models.TextField(null=True)
     startDate = models.DateField(null=True)
     endDate = models.DateField(null=True)
-    planified = models.BooleanField()
+    planified = models.BooleanField(default=False)
     coins = models.IntegerField(validators=[MinValueValidator(0)])
     
     #------------- Derivates -----------------------------#
@@ -148,7 +148,7 @@ class Traveller(models.Model):
 
 
 class Likes(models.Model):
-    useful = models.BooleanField()
+    useful = models.BooleanField(default=False)
     comment = models.TextField(null=True)
     
     #-------------- Relationships -------------------
@@ -197,7 +197,7 @@ class Comment(models.Model):
         db_table='comment'
     
 class Judges(models.Model):
-    like = models.BooleanField()
+    like = models.BooleanField(default=False)
     
     # ------------- Relationships --------------#
     traveller = models.ForeignKey(Traveller)
