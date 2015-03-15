@@ -57,19 +57,14 @@ WSGI_APPLICATION = 'BrainTravel.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'braintravel',
-    #     'USER': 'braintravel',
-    #     'PASSWORD': 'bR@1nTr@veL',
-    #     'HOST': 'http://mysql.cvu77qxolqzd.us-west-2.rds.amazonaws.com/',
-    #     'PORT': '3306'
-    # }
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ATOMIC_REQUESTS': True,
-    }
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'braintravel',
+         'USER': 'braintravel',
+         'PASSWORD': 'bR@1nTr@veL',
+         'HOST': '127.0.0.1',
+         'PORT': '3306'
+     }
 }
 
 TEMPLATE_DIRS = (
