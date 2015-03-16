@@ -3,11 +3,13 @@ from django.contrib import admin
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'BrainTravel.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+    url(r'^$', 'principal.views.MainViews.home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^signin/$', 'principal.views.viewsModel1.metodo1'),
+    url(r'^signin/$', 'principal.views.UserViews.sign_in'),
     #Para indicar en las URLs un metodo que se encuentra dentro de un archivo .py
     # url(r'^<nombre_url>$', '<app>.<paquete>.<archivo>.<metodo>'),
     # url(r'^<nombre_url>$', 'principal.views.ViewsModel1.method1')
+    url(r'^register_traveller/$', 'principal.views.UserViews.create_traveller'),
+    
+    
 )

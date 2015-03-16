@@ -4,6 +4,10 @@ body {
     background-color: #EEEEEE;
 }
 
+.label {
+	color: #000;
+}
+
 .navbar-bt {
     background-color: #EEEEEE;
     border-color: #EEEEEE;

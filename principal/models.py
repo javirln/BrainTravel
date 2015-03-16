@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from django.db.models.fields.related import OneToOneField
 from django.utils import timezone
 
 
@@ -15,13 +14,21 @@ def PastValidator(value):
 
 
 # Create your models here.
-class Administrator(models.Model):
-    user = OneToOneField(User)
+
+
+class Actor(models.Model):
+    user_account = models.OneToOneField(User)
+    
+    class Meta:
+        abstract = True;
+
+
+class Administrator(Actor):
     class Meta:
         permissions = (
                        ('administrator', 'Administrator'),
                        )
-        db_table='administrator'
+        db_table = 'administrator'
 
 class Category(models.Model):
     id_foursquare = models.CharField(max_length=30, unique=True)
@@ -29,13 +36,13 @@ class Category(models.Model):
     
     
     class Meta:
-        db_table='category'
+        db_table = 'category'
     
     def __unicode__(self):
         return self.name 
 
 
-#Conceptually it's abstract, but Django not implement in BD abstract classes
+# Conceptually it's abstract, but Django not implement in BD abstract classes
 class Scorable(models.Model):
     name = models.CharField(max_length=256)
     description = models.TextField()
@@ -44,7 +51,7 @@ class Scorable(models.Model):
     rating = models.FloatField(null=True, validators=[MinValueValidator(0), MaxValueValidator(100)])
     
     class Meta:
-        db_table='scorable'
+        db_table = 'scorable'
     
 class Venue(Scorable):
     id_foursquare = models.CharField(max_length=30, unique=True)
@@ -57,7 +64,7 @@ class Venue(Scorable):
     categories = models.ManyToManyField(Category)
     
     class Meta:
-        db_table='venue'
+        db_table = 'venue'
         
     def __unicode__(self):
         return self.name
@@ -76,7 +83,7 @@ class Feedback(models.Model):
     venues = models.ForeignKey(Venue)
     
     class Meta:
-        db_table='feedback'
+        db_table = 'feedback'
     
     def __unicode__(self):
         return self.description
@@ -87,7 +94,7 @@ class City(models.Model):
     description = models.TextField()
     
     class Meta:
-        db_table='city'
+        db_table = 'city'
     
     def __unicode__(self):
         return self.name
@@ -108,12 +115,12 @@ class Trip(Scorable):
     city = models.ForeignKey(City)
     
     class Meta:
-        db_table='trip'
+        db_table = 'trip'
     
     def __unicode__(self):
         return 'Ini: ' + self.startDate + 'End: ' + self.endDate
 
-class Traveller(models.Model):
+class Traveller(Actor):
     
     Genre = (
              ('MA', 'MALE'),
@@ -138,13 +145,13 @@ class Traveller(models.Model):
     assessedScorables = models.ManyToManyField(Scorable, through='Assessment')
     
     class Meta:
-        db_table='traveller'
+        db_table = 'traveller'
         permissions = (
                        ('traveller', 'Traveller'),
                        )
     
     def __unicode__(self):
-        return self.firstName + ' '+ self.lastName
+        return self.firstName + ' ' + self.lastName
 
 
 class Likes(models.Model):
@@ -156,7 +163,7 @@ class Likes(models.Model):
     feedback = models.ForeignKey(Feedback)
     
     class Meta:
-        db_table='likes'
+        db_table = 'likes'
     
     
 class Day(models.Model):
@@ -169,7 +176,7 @@ class Day(models.Model):
     venues = models.ManyToManyField(Venue, through='VenueDay')
     
     class Meta:
-        db_table='day'
+        db_table = 'day'
     
     def clean(self):
         if self in self.trip.day_set:
@@ -194,7 +201,7 @@ class Comment(models.Model):
     traveller = models.ForeignKey(Traveller)
     trip = models.ForeignKey(Trip)
     class Meta:
-        db_table='comment'
+        db_table = 'comment'
     
 class Judges(models.Model):
     like = models.BooleanField(default=False)
@@ -204,7 +211,7 @@ class Judges(models.Model):
     trip = models.ForeignKey(Trip, related_name='judgedTrip')
     
     class Meta:
-        db_table='judges'
+        db_table = 'judges'
 
 
 class Payment(models.Model):
@@ -215,7 +222,7 @@ class Payment(models.Model):
     traveller = models.ForeignKey(Traveller)
     
     class Meta:
-        db_table='payment'
+        db_table = 'payment'
 
 class CoinHistory(models.Model):
     amount = models.IntegerField()
@@ -228,7 +235,7 @@ class CoinHistory(models.Model):
     trip = models.OneToOneField(Trip, null=True, blank=True)
     
     class Meta:
-        db_table='coin_history'
+        db_table = 'coin_history'
     
     def __unicode__(self):
         return str(self.amount)
@@ -244,7 +251,7 @@ class Schedule(models.Model):
     venue = models.ForeignKey(Venue)
     
     class Meta:
-        db_table='schedule'
+        db_table = 'schedule'
             
 class Assessment(models.Model):
     score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1)])
@@ -255,4 +262,4 @@ class Assessment(models.Model):
     scorable = models.ForeignKey(Scorable)
     
     class Meta:
-        db_table='assessment'
+        db_table = 'assessment'

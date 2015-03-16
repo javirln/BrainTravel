@@ -5,7 +5,7 @@ import datetime
 from principal.models import Administrator, Category, Scorable, Venue, Feedback, City, Trip, Traveller, \
     Likes, Day, VenueDay, Comment, Judges, Payment, CoinHistory, Schedule, Assessment
 
-#Los archivos que se encuentren en el paquete commands, se podrán llamar
+#Los archivos que se encuentren en el paquete commands, se podrï¿½n llamar
 #desde manage.py, de forma que para popular la base de datos debemos hacer
 # 'manage.py populate_db'
 
@@ -41,7 +41,7 @@ class Command(BaseCommand):
         print('Dropping tables...OK')
         print('Populating database...')
 
-        # Aqui la creación de los objetos que populan la base de datos
+        # Aqui la creaciï¿½n de los objetos que populan la base de datos
         #Example: Objeto1.save()
 
         #Administrator initializer
@@ -64,27 +64,27 @@ class Command(BaseCommand):
         user_admin.save()
 
         admin_admin = Administrator(
-            user=user_admin)
+            user_account=user_admin)
         admin_admin.save()
 
         admin_carlos = Administrator(
-            user=user_carlos)
+            user_account=user_carlos)
         admin_carlos.save()
 
         admin_delgado = Administrator(
-            user=user_delgado)
+            user_account=user_delgado)
         admin_delgado.save()
 
         admin_david = Administrator(
-            user=user_david)
+            user_account=user_david)
         admin_david.save()
 
         admin_juane = Administrator(
-            user=user_juane)
+            user_account=user_juane)
         admin_juane.save()
 
         admin_javi = Administrator(
-            user=user_javi)
+            user_account=user_javi)
         admin_javi.save()
 
         print('Admins created...Ok')
@@ -427,8 +427,15 @@ class Command(BaseCommand):
         paris.save()
 
         print('Cities...Ok')
+        
+        annie_user_account = User.objects.create_user('annie', 'annie@gmail.com', 'annie')
+        annie_user_account.save()
+        
+        allen_user_account = User.objects.create_user('allen', 'allen@gmail.com', 'allen')
+        allen_user_account.save()
 
         traveller_annie = Traveller(
+            user_account = annie_user_account,
             firstName='Annie',
             lastName='Stone',
             genre='FE',
@@ -445,6 +452,7 @@ class Command(BaseCommand):
         sch_annie.save()
 
         traveller_allen = Traveller(
+            user_account = allen_user_account,
             firstName='Allen',
             lastName='Sutton',
             genre='MA',
