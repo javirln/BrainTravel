@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'principal',
+    'dajaxice',
+    'dajax'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -63,7 +65,8 @@ DATABASES = {
          'USER': 'braintravel',
          'PASSWORD': 'bR@1nTr@veL',
          'HOST': '127.0.0.1',
-         'PORT': '3306'
+         'PORT': '3306',
+         'ATOMIC_REQUESTS': 'True'
      }
 }
 
@@ -96,5 +99,4 @@ STATICFILES_DIRS = (
 LOGIN_URL = '/signin/'
 LOGIN_REDIRECT_URL = '/signin/'
 
-#--- For transactions -----
-ATOMIC_REQUESTS = True
+
