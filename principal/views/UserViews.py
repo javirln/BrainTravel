@@ -5,17 +5,19 @@
 import json
 
 from django.contrib.auth import authenticate, login
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render_to_response, render
 from django.template.context import RequestContext
 from django.views.generic.edit import CreateView
+from django_ajax.decorators import ajax
 
-from principal.forms import LoginForm
+from principal.forms import LoginForm, TravellerRegistrationForm
 from principal.models import Traveller
 from principal.services import TravellerService
 
 
 def sign_in(request):
+	registerForm = TravellerRegistrationForm()
 	if request.method == "POST":
 		form = LoginForm(request.POST)
 		if form.is_valid():
@@ -28,34 +30,29 @@ def sign_in(request):
 					return redirect("/")
 				else:
 					message = 'Your account is desactivated' 
-					result = render(request, 'signin.html', {'message': message})
+					result = render_to_response('signin.html', {'message': message, 'registerForm': registerForm}, context_instance=RequestContext(request))
 			else:
 				message = 'Wrong user or password' 
-				result = render(request, 'signin.html', {'message': message})
+				result = render_to_response('signin.html', {'message': message, 'registerForm': registerForm}, context_instance=RequestContext(request))
 
 		else:
-			result = render(request, 'signin.html', {'form': form})
+			result = render_to_response('signin.html', {'form': form, 'registerForm': registerForm}, context_instance=RequestContext(request))
 	else:
 		next = request.GET.get('next', '/')
-		result = render(request, 'signin.html', {'next': next})
+		result = render_to_response('signin.html', {'next': next, 'registerForm': registerForm}, context_instance=RequestContext(request))
 	
 	return result
 	
 	
-
 def create_traveller(request):
-	data = json.loads(request.body)
-	return HttpResponse(data)
+	data = request.POST
+	form = TravellerRegistrationForm(data)
+	response = {'success' : form.is_valid()}
+	
+	if form.is_valid():
+		traveller = TravellerService.create(form)
+		TravellerService.save(traveller)
+	
+	return HttpResponse(json.dumps(response))
 	
 	
-	
-'''def register_traveller(request):
-	res = None
-	if request.method == "POST":
-		form = TravellerRegistrationForm(request.POST)
-		if form.is_valid():
-			try:
-				traveller = TravellerService.create()
-				TravellerService.save(traveller)
-			except Exception as e:
-				return HttpResponse("ESO NO SE PUEDE! POR DIOS!")'''

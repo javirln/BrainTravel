@@ -51,7 +51,6 @@ $.ajaxSetup({
 
 $('#traveller-registration').on('submit', function(event){
     event.preventDefault();
-    console.log("form submitted!")  // sanity check
     register_traveller();
 });
 
@@ -60,12 +59,13 @@ function register_traveller() {
         url : "/register_traveller/", // the endpoint
         type : "POST", // http method
         data : $('#traveller-registration').serialize(),
-
+		dataType : "json",
         // handle a successful response
         success : function(json) {
-            console.log(json); // log the returned json to the console
-            console.log("success"); // another sanity check
-        },
+            alert(json.success); // log the returned json to the console
+			
+			$('#traveller-registration')[0].reset();
+		},
 
         // handle a non-successful response
         error : function(xhr,errmsg,err) {
