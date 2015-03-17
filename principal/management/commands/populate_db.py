@@ -58,7 +58,7 @@ class Command(BaseCommand):
 
         arts_entertaiment = Category(
             id_foursquare='4d4b7104d754a06370d81259',
-            name='Arts&Entertaiment')
+            name='Arts&Entertaiment') 
         arts_entertaiment.save()
 
         musemum = Category(
