@@ -4,12 +4,12 @@
 
 import json
 
-from django.contrib.auth import authenticate, login
-from django.http.response import HttpResponse, JsonResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render_to_response, render
 from django.template.context import RequestContext
 from django.views.generic.edit import CreateView
-from django_ajax.decorators import ajax
 
 from principal.forms import LoginForm, TravellerRegistrationForm
 from principal.models import Traveller
@@ -42,8 +42,12 @@ def sign_in(request):
 		result = render_to_response('signin.html', {'next': next, 'registerForm': registerForm}, context_instance=RequestContext(request))
 	
 	return result
-	
-	
+
+@login_required()
+def systemLogout(request):
+    logout(request)
+    return HttpResponseRedirect("/")
+
 def create_traveller(request):
 	data = request.POST
 	form = TravellerRegistrationForm(data)

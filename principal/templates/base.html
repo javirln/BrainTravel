@@ -4,7 +4,7 @@
         <media charset='utf-8'/></media>
         <!-- Latest compiled and minified CSS -->
         {%load staticfiles%}
-        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
         <link rel="stylesheet" href="{% static "css/custom.css" %}">
         <link rel="stylesheet" href="{% static "css/animate.css" %}">
         <link rel="stylesheet" href="{% static "css/sweet-alert.css" %}">
@@ -32,9 +32,15 @@
                 <li>
                     <a href="#">Link</a>
                 </li>
-                <li style="background-color: #26A65B;">
-                    <a id="sign_ind_nav" href="#">Sign In</a>
-                </li>
+                {% if user.is_anonymous %}
+                    <li style="background-color: #26A65B;">
+                        <a id="sign_ind_nav" href="/signin">Sign In</a>
+                    </li>
+                {% else %}
+                    <li style="background-color: #26A65B;">
+                        <a id="sign_ind_nav" href="/logout">Logout</a>
+                    </li>
+                {% endif %}
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->

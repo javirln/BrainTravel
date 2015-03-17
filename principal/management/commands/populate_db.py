@@ -63,6 +63,12 @@ class Command(BaseCommand):
         user_admin = User.objects.create_superuser('admin', 'admin@admin.com', 'admin12')
         user_admin.save()
 
+        annie_user_account = User.objects.create_user('annie', 'annie@gmail.com', 'annie')
+        annie_user_account.save()
+        
+        allen_user_account = User.objects.create_user('allen', 'allen@gmail.com', 'allen')
+        allen_user_account.save()
+        
         admin_admin = Administrator(
             user_account=user_admin)
         admin_admin.save()
@@ -427,12 +433,6 @@ class Command(BaseCommand):
         paris.save()
 
         print('Cities...Ok')
-        
-        annie_user_account = User.objects.create_user('annie', 'annie@gmail.com', 'annie')
-        annie_user_account.save()
-        
-        allen_user_account = User.objects.create_user('allen', 'allen@gmail.com', 'allen')
-        allen_user_account.save()
 
         traveller_annie = Traveller(
             user_account = annie_user_account,
