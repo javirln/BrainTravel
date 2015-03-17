@@ -36,8 +36,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'principal',
-    'dajaxice',
-    'dajax'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -72,6 +70,7 @@ DATABASES = {
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "/principal/templates"),
+    os.path.join(BASE_DIR, "/principal/emailTemplates"),
 )
 
 # Internationalization
@@ -99,4 +98,10 @@ STATICFILES_DIRS = (
 LOGIN_URL = '/signin/'
 LOGIN_REDIRECT_URL = '/signin/'
 
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'notificaciones.braintravel@gmail.com'
+EMAIL_HOST_PASSWORD = 'braintravelredmine'
 

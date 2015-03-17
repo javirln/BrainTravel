@@ -14,16 +14,7 @@ def PastValidator(value):
 
 
 # Create your models here.
-
-
-class Actor(models.Model):
-    user_account = models.OneToOneField(User)
-    
-    class Meta:
-        abstract = True;
-
-
-class Administrator(Actor):
+class Administrator(User):
     class Meta:
         permissions = (
                        ('administrator', 'Administrator'),
@@ -48,7 +39,7 @@ class Scorable(models.Model):
     description = models.TextField()
     
     #----------- Derivates -------------------------------#
-    rating = models.FloatField(null=True, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    rating = models.FloatField(null=True, validators=[MinValueValidator(0), MaxValueValidator(10)])
     
     class Meta:
         db_table = 'scorable'
@@ -72,8 +63,8 @@ class Venue(Scorable):
 
 class Feedback(models.Model):
     description = models.TextField(null=True)
-    leadTime = models.FloatField(validators=[MinValueValidator(1)])
-    duration = models.FloatField(validators=[MinValueValidator(1)])
+    leadTime = models.IntegerField(validators=[MinValueValidator(1)])
+    duration = models.IntegerField(validators=[MinValueValidator(1)])
     
     #---------- Derivate ---------------#
     usefulCount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
@@ -105,10 +96,11 @@ class Trip(Scorable):
     endDate = models.DateField(null=True)
     planified = models.BooleanField(default=False)
     coins = models.IntegerField(validators=[MinValueValidator(0)])
+    approved = models.BooleanField(default=False)
     
     #------------- Derivates -----------------------------#
-    likes = models.IntegerField(validators=[MinValueValidator(0)])
-    dislikes = models.IntegerField(validators=[MinValueValidator(0)])
+    likes = models.IntegerField(validators=[MinValueValidator(0)], default=0)
+    dislikes = models.IntegerField(validators=[MinValueValidator(0)], default=0)
     
     # ------------- Relationships --------------#
     traveller = models.ForeignKey('principal.Traveller')
@@ -119,16 +111,15 @@ class Trip(Scorable):
     
     def __unicode__(self):
         return 'Ini: ' + self.startDate + 'End: ' + self.endDate
+    
 
-class Traveller(Actor):
+class Traveller(User):
     
     Genre = (
              ('MA', 'MALE'),
              ('FE', 'FEMALE')
              )
     
-    firstName = models.CharField(max_length=50)
-    lastName = models.CharField(max_length=50)
     genre = models.CharField(max_length=2, choices=Genre)
     photo = models.ImageField(upload_to='static/user_folder/', null=True, blank=True)
     
@@ -136,7 +127,7 @@ class Traveller(Actor):
     reputation = models.FloatField(null=True, blank=True,
             validators=[MinValueValidator(0), MaxValueValidator(10)])
     coins = models.IntegerField(validators=[MinValueValidator(0)])
-    recommendations = models.IntegerField(validators=[MinValueValidator(0)])
+    recommendations = models.IntegerField(validators=[MinValueValidator(0)], default=0)
     
     # ------------- Relationships --------------#
     likedFeedback = models.ManyToManyField(Feedback, through='Likes', related_name='traveller_likes')
@@ -152,6 +143,18 @@ class Traveller(Actor):
     
     def __unicode__(self):
         return self.firstName + ' ' + self.lastName
+
+
+
+
+class Notification(models.Model):
+    text = models.TextField()
+    viewed = models.BooleanField(default=False)
+    # ------------- Relationships --------------#
+    user = models.ForeignKey(Traveller)
+    
+    class Meta:
+        db_table = 'notification'
 
 
 class Likes(models.Model):
@@ -254,7 +257,7 @@ class Schedule(models.Model):
         db_table = 'schedule'
             
 class Assessment(models.Model):
-    score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1)])
+    score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     comment = models.TextField()
     
     # ------------- Relationships --------------#
