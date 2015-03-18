@@ -51,6 +51,7 @@ $.ajaxSetup({
 
 $('#traveller-registration').on('submit', function(event){
     event.preventDefault();
+	$('#singUp-button').hide()
     register_traveller();
 });
 
@@ -62,6 +63,7 @@ function register_traveller() {
 		dataType : "json",
         // handle a successful response
         success : function(json) {
+			$('#singUp-button').show()
             if(json.success == true){
                 sweetAlert("Well done!",json.success, "success"); // log the returned json to the console    
             }else{
@@ -72,7 +74,7 @@ function register_traveller() {
 
         // handle a non-successful response
         error : function(xhr,errmsg,err) {
-     
+			$('#singUp-button').show()
         }
     });
 };

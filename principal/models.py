@@ -119,13 +119,13 @@ class Traveller(User):
              ('FE', 'FEMALE')
              )
     
-    genre = models.CharField(max_length=2, choices=Genre)
+    genre = models.CharField(max_length=2, choices=Genre, null=True)
     photo = models.ImageField(upload_to='static/user_folder/', null=True, blank=True)
     
     # ----------- Derivates -------------------#
     reputation = models.FloatField(null=True, blank=True,
-            validators=[MinValueValidator(0), MaxValueValidator(10)])
-    coins = models.IntegerField(validators=[MinValueValidator(0)])
+            validators=[MinValueValidator(0), MaxValueValidator(10)], default=0)
+    coins = models.IntegerField(validators=[MinValueValidator(0)], default=0)
     recommendations = models.IntegerField(validators=[MinValueValidator(0)], default=0)
     
     # ------------- Relationships --------------#
@@ -141,7 +141,7 @@ class Traveller(User):
                        )
     
     def __unicode__(self):
-        return self.firstName + ' ' + self.lastName
+        return self.first_name + ' ' + self.last_name
 
 
 

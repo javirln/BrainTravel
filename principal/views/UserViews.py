@@ -1,5 +1,6 @@
 # -*- coding: latin-1 -*-
 """Aquí se colocan las vistas relacionadas con el Modelo 1"""
+from principal.utils import BrainTravelUtils
 '''@author dcjosej'''
 
 import hashlib
@@ -58,8 +59,12 @@ def create_traveller(request):
 	response = {'success' : form.is_valid()}
 	
 	if form.is_valid():
-		user_account = UserService.create(form)
-		EmailViews.send_email_confirmation(user_account)
+		traveller = TravellerService.create(form)
+		rand_password = BrainTravelUtils.id_generator()
+		traveller.set_password(rand_password)
+		traveller.save()
+		
+		EmailViews.send_email_confirmation(traveller, rand_password)
 		# traveller = TravellerService.create(form)
 		# TravellerService.save(traveller)
 	
@@ -73,5 +78,12 @@ def confirm_account(request):
 		user = User.objects.get(username=username)
 		user.is_active = True;
 		user.save()
+		
+		password = request.GET['rand_password']
+		user_logged = authenticate(username=user.username, password=password)
+		login(request, user_logged)
+		return HttpResponseRedirect("/")
+	else:
+		return HttpResponse("Hash not math!! :(")
 	
 	
