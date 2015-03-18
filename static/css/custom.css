@@ -4,12 +4,14 @@ body {
     background-color: #EEEEEE;
 }
 
+hr{
+    color: #ABB7B7;
+}
 .label {
 	color: #000;
 }
 
 .navbar-bt {
-    color: #FFFFFF;
     background-color: #ABB7B7;
     border-color: #ABB7B7;
     border-radius: 0px;
@@ -32,8 +34,10 @@ body {
     height:40px;
     border: 1px solid #ccc;;
     background: #fafafa;
-    transition:0.2s ease-in-out;
-
+    transition: 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
 }
 
 .form-box-login input:focus{
@@ -56,10 +60,16 @@ body {
     padding: 10px 20px;
 }
 
-.input-search {
-    font-size: 50px;
+#input-search {
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    font-size: 40px;
     border-width: 0px;
     background: #EEEEEE;
+}
+
+#input-search:focus{
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+    outline-width: 0;
 }
 
 .error-message-search {

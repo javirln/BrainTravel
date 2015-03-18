@@ -98,7 +98,7 @@ class Command(BaseCommand):
 
         cafe = Category(
             id_foursquare='4bf58dd8d48988d16d941735',
-            name='Cafe')
+            name='Café')
         cafe.save()
 
         chinese_restaurant = Category(
@@ -433,6 +433,7 @@ class Command(BaseCommand):
         print('Travellers...Ok')
 
         trip_london = Trip(
+            name='3 days in London',
             publishedDescription='Once you arrive in London, start your first day at the true heart of the city - Trafalgar Square. '
                                  'The most famous tourist attractions follow on your itinerary: London Eye, Big Ben and Buckingham Palace. You can finish your '
                                  'day in one of the great museums. Take a little rest from the lively city on the second day, head to the Windsor Castle and take a'                                 
@@ -448,6 +449,7 @@ class Command(BaseCommand):
         trip_london.save()
 
         trip_paris = Trip(
+            name='The city of light, 5 days',
             publishedDescription='Most of my friends and family come by for three-day visits and whether its their first time in Paris or their 20th' 
                                  'time, this itinerary always make them happy to be in the city. Although its impossible to discover all of Paris within three days, this guide will give you a good impression of the citys treasures.',
             startDate=datetime.date(2014, 8, 13),

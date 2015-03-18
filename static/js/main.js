@@ -63,8 +63,12 @@ function register_traveller() {
 		dataType : "json",
         // handle a successful response
         success : function(json) {
-            alert(json.success); // log the returned json to the console
 			$('#singUp-button').show()
+            if(json.success == true){
+                sweetAlert("Well done!",json.success, "success"); // log the returned json to the console    
+            }else{
+                sweetAlert("Oops...", "Something went wrong!", "error");
+			}
 			$('#traveller-registration')[0].reset();
 		},
 
