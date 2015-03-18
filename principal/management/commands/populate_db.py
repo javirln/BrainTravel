@@ -74,7 +74,7 @@ class Command(BaseCommand):
         outdoor_sculpture = Category(
             id_foursquare='52e81612bcbc57f1066b79ed',
             name='Outdoor Sculpture')
-        outdoor_sculpture.save()
+        outdoor_sculpture.save() 
 
         public_art = Category(
             id_foursquare='507c8c4091d498d9fc8c67a9',
