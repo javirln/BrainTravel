@@ -9,8 +9,9 @@ body {
 }
 
 .navbar-bt {
-    background-color: #EEEEEE;
-    border-color: #EEEEEE;
+    color: #FFFFFF;
+    background-color: #ABB7B7;
+    border-color: #ABB7B7;
     border-radius: 0px;
     border-bottom:1px solid #ABB7B7;
 }
@@ -53,4 +54,14 @@ body {
 .form-box-login button.login{
     margin-top: 15px;
     padding: 10px 20px;
+}
+
+.input-search {
+    font-size: 50px;
+    border-width: 0px;
+    background: #EEEEEE;
+}
+
+.error-message-search {
+    text-align: center;
 }

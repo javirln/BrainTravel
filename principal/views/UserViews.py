@@ -4,15 +4,15 @@
 
 import hashlib
 import json
-import token
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http.response import HttpResponse, JsonResponse
+from django.http.response import HttpResponse, JsonResponse, \
+	HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response, render
 from django.template.context import RequestContext
 from django.views.generic.edit import CreateView
-
 
 from principal.forms import LoginForm, TravellerRegistrationForm
 from principal.models import Traveller
@@ -49,8 +49,8 @@ def sign_in(request):
 
 @login_required()
 def systemLogout(request):
-    logout(request)
-    return HttpResponseRedirect("/")
+	logout(request)
+	return HttpResponseRedirect("/")
 
 def create_traveller(request):
 	data = request.POST
@@ -60,8 +60,8 @@ def create_traveller(request):
 	if form.is_valid():
 		user_account = UserService.create(form)
 		EmailViews.send_email_confirmation(user_account)
-		#traveller = TravellerService.create(form)
-		#TravellerService.save(traveller)
+		# traveller = TravellerService.create(form)
+		# TravellerService.save(traveller)
 	
 	return HttpResponse(json.dumps(response))
 
@@ -71,7 +71,7 @@ def confirm_account(request):
 	hash2 = request.GET['hash']
 	if hash1 == hash2:
 		user = User.objects.get(username=username)
-		user.is_active=True;
+		user.is_active = True;
 		user.save()
 	
 	
