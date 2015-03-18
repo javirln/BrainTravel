@@ -23,3 +23,6 @@ class TravellerRegistrationForm(forms.Form):
             raise forms.ValidationError("Passwords don't match")
     
         return self.cleaned_data
+
+class SearchForm(forms.Form):
+    search = forms.CharField()

@@ -21,19 +21,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">BrainTravel</a>
+              <a class="navbar-brand" href="/">BrainTravel</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="/search"><span class="glyphicon glyphicon-search"></span></a>
                 </li>
                 <li>
                     <a href="#">Link</a>
                 </li>
                 {% if user.is_anonymous %}
-                    <li style="background-color: #26A65B;">
+                    <li style="background-color: #26A65B; color: #FFFFFF;">
                         <a id="sign_ind_nav" href="/signin">Sign In</a>
                     </li>
                 {% else %}

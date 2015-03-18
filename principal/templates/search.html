@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} Search {% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-lg-12">
+		<form action="/search_trip/" method="get">
+        	{% csrf_token %}
+            <input id="input-search" type="text" name="city" placeholder="Type to search" autofocus>
+		</form>
+	</div>
+</div>
+<br/>
+<hr/>
+{% for trip in trip_result %}
+  <div class="well">
+      <div class="media">
+      	<a class="pull-left" href="#">
+    		<img class="img-rounded" src="/static/user_folder/{{trip.traveller.photo}}">
+  		</a>
+  		<div class="media-body">
+    		<h3 class="media-heading">{{trip.name}}</h3>
+          <p class="text-right">By {{trip.traveller}}</p>
+          <p>{{trip.publishedDescription}}</p>
+          <ul class="list-inline list-unstyled">
+  			<li><span><i class="glyphicon glyphicon-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
+            <li>|</li>
+            <span><i class="glyphicon glyphicon-comment"></i> {{trip.comment_set.size}}</span>
+            <li>|</li>
+            <span><i class="glyphicon glyphicon-thumbs-up"></i> {{trip.likes}}</span>
+            <li>|</li>
+            <span><i class="glyphicon glyphicon-thumbs-down"></i> {{trip.dislikes}}</span>
+            <li>|</li>
+			</ul>
+       </div>
+    </div>
+  </div>
+ {% endfor %}
+{%endblock%}
