@@ -392,11 +392,6 @@ class Command(BaseCommand):
         paris.save()
 
         print('Cities...Ok')
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> bf04a159ce20374c5e61c39c1d91113f0c0c3e6d
         traveller_annie = Traveller(
             username='annie',
             email='annie@mail.com',
