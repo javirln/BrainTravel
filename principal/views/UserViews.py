@@ -2,18 +2,22 @@
 """Aquí se colocan las vistas relacionadas con el Modelo 1"""
 '''@author dcjosej'''
 
+import hashlib
 import json
+import token
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render_to_response, render
 from django.template.context import RequestContext
 from django.views.generic.edit import CreateView
-from django_ajax.decorators import ajax
+
 
 from principal.forms import LoginForm, TravellerRegistrationForm
 from principal.models import Traveller
-from principal.services import TravellerService
+from principal.services import TravellerService, UserService
+from principal.views import EmailViews
 
 
 def sign_in(request):
@@ -42,17 +46,32 @@ def sign_in(request):
 		result = render_to_response('signin.html', {'next': next, 'registerForm': registerForm}, context_instance=RequestContext(request))
 	
 	return result
-	
-	
+
+@login_required()
+def systemLogout(request):
+    logout(request)
+    return HttpResponseRedirect("/")
+
 def create_traveller(request):
 	data = request.POST
 	form = TravellerRegistrationForm(data)
 	response = {'success' : form.is_valid()}
 	
 	if form.is_valid():
-		traveller = TravellerService.create(form)
-		TravellerService.save(traveller)
+		user_account = UserService.create(form)
+		EmailViews.send_email_confirmation(user_account)
+		#traveller = TravellerService.create(form)
+		#TravellerService.save(traveller)
 	
 	return HttpResponse(json.dumps(response))
+
+def confirm_account(request):
+	username = request.GET['username']
+	hash1 = hashlib.sha256(username).hexdigest()
+	hash2 = request.GET['hash']
+	if hash1 == hash2:
+		user = User.objects.get(username=username)
+		user.is_active=True;
+		user.save()
 	
 	
