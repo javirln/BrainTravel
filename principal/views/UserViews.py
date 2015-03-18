@@ -1,6 +1,5 @@
 # -*- coding: latin-1 -*-
 """Aquí se colocan las vistas relacionadas con el Modelo 1"""
-from principal.utils import BrainTravelUtils
 '''@author dcjosej'''
 
 import hashlib
@@ -19,7 +18,7 @@ from principal.forms import LoginForm, TravellerRegistrationForm
 from principal.models import Traveller
 from principal.services import TravellerService, UserService
 from principal.views import EmailViews
-
+from principal.utils import BrainTravelUtils
 
 def sign_in(request):
 	registerForm = TravellerRegistrationForm()

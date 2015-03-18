@@ -4,8 +4,6 @@
 from django.contrib.auth.models import User
 
 from principal.models import Traveller
-from principal.utils import BrainTravelUtils
-
 
 def create(form):
     

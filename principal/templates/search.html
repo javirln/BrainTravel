@@ -5,14 +5,18 @@
 	<div class="col-lg-12">
 		<form action="/search_trip/" method="get">
         	{% csrf_token %}
-            <input id="input-search" type="text" name="city" placeholder="Type to search" autofocus>
+          <input id="input-search" type="text" name="title" placeholder="Type to search" autofocus>
 		</form>
 	</div>
 </div>
 <br/>
 <hr/>
+{% if not trip_result %}
+<p>We couldn't find anything...</p>
+{% endif %}
+
 {% for trip in trip_result %}
-  <div class="well">
+  <div class="well animated fadeInUp">
       <div class="media">
       	<a class="pull-left" href="#">
     		<img class="img-rounded" src="/static/user_folder/{{trip.traveller.photo}}">
@@ -20,19 +24,21 @@
   		<div class="media-body">
     		<h3 class="media-heading">{{trip.name}}</h3>
           <p class="text-right">By {{trip.traveller}}</p>
-          <p>{{trip.publishedDescription}}</p>
+          <p>{{trip.publishedDescription|safe}}</p>
           <ul class="list-inline list-unstyled">
-  			<li><span><i class="glyphicon glyphicon-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
+  			    <li><span><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
             <li>|</li>
-            <span><i class="glyphicon glyphicon-comment"></i> {{trip.comment_set.size}}</span>
+            <span> {{trip.comment_set.all.count}} <i class="fa fa-comments"></i></span>
             <li>|</li>
-            <span><i class="glyphicon glyphicon-thumbs-up"></i> {{trip.likes}}</span>
+            <span><i class="fa fa-thumbs-o-up"></i> {{trip.likes}}</span>
             <li>|</li>
-            <span><i class="glyphicon glyphicon-thumbs-down"></i> {{trip.dislikes}}</span>
+            <span><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</span>
             <li>|</li>
+            <a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a>
 			</ul>
        </div>
     </div>
   </div>
+  <br>
  {% endfor %}
 {%endblock%}
