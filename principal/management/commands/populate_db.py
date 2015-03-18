@@ -45,61 +45,20 @@ class Command(BaseCommand):
         #Example: Objeto1.save()
 
         #Administrator initializer
-        user_carlos = User.objects.create_user('carlos', 'carlos@gmail.com', 'carlos12')
-        user_carlos.save()
-
-        user_delgado = User.objects.create_user('delgado', 'delgado@gmail.com', 'delgado12')
-        user_delgado.save()
-
-        user_david = User.objects.create_user('david', 'david@gmail.com', 'david12')
-        user_david.save()
-
-        user_juane = User.objects.create_user('juane', 'juane@gmail.com', 'juane12')
-        user_juane.save()
-
-        user_javi = User.objects.create_user('javi', 'javi@gmail.com', 'javi12')
-        user_javi.save()
-
-        user_admin = User.objects.create_superuser('admin', 'admin@admin.com', 'admin12')
-        user_admin.save()
-
-        annie_user_account = User.objects.create_user('annie', 'annie@gmail.com', 'annie')
-        annie_user_account.save()
-        
-        allen_user_account = User.objects.create_user('allen', 'allen@gmail.com', 'allen')
-        allen_user_account.save()
-        
         admin_admin = Administrator(
-            user_account=user_admin)
+            username='admin',
+            email = 'admin@admin.com')
+        admin_admin.set_password('admin12')
+        admin_admin.is_staff = True
+        admin_admin.is_superuser = True
         admin_admin.save()
-
-        admin_carlos = Administrator(
-            user_account=user_carlos)
-        admin_carlos.save()
-
-        admin_delgado = Administrator(
-            user_account=user_delgado)
-        admin_delgado.save()
-
-        admin_david = Administrator(
-            user_account=user_david)
-        admin_david.save()
-
-        admin_juane = Administrator(
-            user_account=user_juane)
-        admin_juane.save()
-
-        admin_javi = Administrator(
-            user_account=user_javi)
-        admin_javi.save()
-
         print('Admins created...Ok')
 
         # Categories
 
         arts_entertaiment = Category(
             id_foursquare='4d4b7104d754a06370d81259',
-            name='Arts&Entertaiment')
+            name='Arts&Entertaiment') 
         arts_entertaiment.save()
 
         musemum = Category(
@@ -115,7 +74,7 @@ class Command(BaseCommand):
         outdoor_sculpture = Category(
             id_foursquare='52e81612bcbc57f1066b79ed',
             name='Outdoor Sculpture')
-        outdoor_sculpture.save()
+        outdoor_sculpture.save() 
 
         public_art = Category(
             id_foursquare='507c8c4091d498d9fc8c67a9',
@@ -433,16 +392,17 @@ class Command(BaseCommand):
         paris.save()
 
         print('Cities...Ok')
-
         traveller_annie = Traveller(
-            user_account = annie_user_account,
-            firstName='Annie',
-            lastName='Stone',
+            username='annie',
+            email='annie@mail.com',
+            first_name='Annie',
+            last_name='Stone',
             genre='FE',
             photo='annie_stone.jpg',
             reputation=7.5,
             coins=30,
             recommendations=5)
+        traveller_annie.set_password('annie')
         traveller_annie.save()
 
         sch_annie = Scorable(
@@ -452,14 +412,16 @@ class Command(BaseCommand):
         sch_annie.save()
 
         traveller_allen = Traveller(
-            user_account = allen_user_account,
-            firstName='Allen',
-            lastName='Sutton',
+            username='allen',
+            email = 'allen@mail.com',               
+            first_name='Allen',
+            last_name='Sutton',
             genre='MA',
             photo='allen_sutton.jpg',
             reputation=8.2,
             coins=23,
             recommendations=13)
+        traveller_allen.set_password('allen')
         traveller_allen.save()
 
         sch_allen = Scorable(
