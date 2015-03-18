@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     # url(r'^<nombre_url>$', '<app>.<paquete>.<archivo>.<metodo>'),
     # url(r'^<nombre_url>$', 'principal.views.ViewsModel1.method1')
     url(r'^register_traveller/$', 'principal.views.UserViews.create_traveller'),
+    url(r'^confirm_account/$', 'principal.views.UserViews.confirm_account'),
     
     
 )
