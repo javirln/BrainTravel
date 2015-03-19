@@ -21,10 +21,10 @@ def search_trip(request):
 
 
 def public_trip_details(request, trip_id):
-	trip = Trip.objects.get(id=trip_id)
+    trip = Trip.objects.get(id=trip_id)
     comments = Comment.objects.filter(trip=trip_id)
-    return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments}, context_instance=RequestContext(request))
-
+    return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments},
+                              context_instance=RequestContext(request))
 
 @login_required()
 def trip_list_all(request):
