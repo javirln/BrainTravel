@@ -15,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^confirm_account/$', 'principal.views.UserViews.confirm_account'),
     url(r'^public_trip_details/(?P<trip_id>[0-9]+)$$', 'principal.views.TripViews.public_trip_details'),
     url(r'^administrator/trip/$', 'principal.views.TripViews.trip_list_all'),
+    url(r'^list_history_coin/$', 'principal.views.Coinviews.list_coin_traveller'),
 )
