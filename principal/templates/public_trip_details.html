@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %} Search {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-9 animated fadeInUp">
+        <h1>{{trip.name}}</h1>
+        <div class="media well">
+          <div class="pull-left user-info" href="#">
+            <img class="avatar img-circle img-thumbnail" src="/static/user_folder/{{trip.traveller.photo}}"
+              width="64" alt="Generic placeholder image">
+            <strong><a href="user.html">{{trip.traveller}}</a></strong>
+            <br>
+          </div>
+          <div class="media-body">
+            <i class="fa fa-quote-left fa-3x pull-left"></i>
+            <p>{{trip.publishedDescription|safe}}</p>
+          </div>
+        </div>
+        <div class="timeline-centered">
+        <article class="timeline-entry entry">
+            <div class="timeline-entry-inner">
+                <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+                    <i class="entypo-flight" style="text-decoration: None"></i> +
+                </div>
+                <div class="timeline-label">
+                    <form class="form">
+                        <div class="form-group">
+                            <textarea class="form-control input-block-level" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </article>
+        {% for comment in comments %}
+        <article class="timeline-entry">
+            <div class="timeline-entry-inner">
+                <div class="timeline-icon bg-success">
+                    <i class="entypo-suitcase"></i>
+                    <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
+                </div>
+                <div class="timeline-label">
+                    <h2><a href="#">{{comment.traveller}} says:</a></h2>
+                    <br>
+                    <i class="fa fa-quote-left fa-1x pull-left"></i>
+                    <p style="font-style: italic;">{{comment.description|safe}}</p>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="col-lg-3">
+    <div class="row">
+        <div class="well">
+            <i class="fa fa-thumbs-o-up fa-5x"> {{trip.likes}}</i>
+            <br>
+            <i class="fa fa-thumbs-o-down fa-5x"> {{trip.dislikes}}</i>
+        </div>
+        <div class="well">
+            <i class="fa fa-calendar fa-2x"> {{ trip.startDate }}</i>
+            <br>
+            <br>
+            <i class="fa fa-calendar-o fa-2x"> {{ trip.endDate }}</i>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
