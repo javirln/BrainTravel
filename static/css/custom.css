@@ -290,7 +290,6 @@ img {
     width: 40px;
     height: 40px;
     -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
     background-clip: padding-box;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -340,7 +339,6 @@ img {
     padding: 1em;
     margin-left: 60px;
     -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
     background-clip: padding-box;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;

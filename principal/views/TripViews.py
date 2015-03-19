@@ -6,7 +6,7 @@ from django.template.context import RequestContext
 
 from principal.models import Trip, Comment
 from principal.services import TripService
-
+from django.utils.translation import ugettext as _
 
 def search_trip(request):
     if request.method == 'GET':

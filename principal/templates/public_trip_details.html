@@ -2,21 +2,33 @@
 {% block title %} Search {% endblock %}
 {% block content %}
 <div class="row">
-    <div class="col-lg-9 animated fadeInUp">
+
+    <div class="col-xs-12">
         <h1>{{trip.name}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-9 animated fadeInUp">
         <div class="media well">
-          <div class="pull-left user-info" href="#">
-            <img class="avatar img-circle img-thumbnail" src="/static/user_folder/{{trip.traveller.photo}}"
-              width="64" alt="Generic placeholder image">
-            <strong><a href="user.html">{{trip.traveller}}</a></strong>
-            <br>
-          </div>
-          <div class="media-body">
-            <i class="fa fa-quote-left fa-3x pull-left"></i>
-            <p>{{trip.publishedDescription|safe}}</p>
-          </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-2 col-sm-2 col-lg-2 text-center">
+                    <div>
+                        <img class="avatar img-circle img-thumbnail" src="/static/user_folder/{{trip.traveller.photo}}" width="64" alt="Generic placeholder image">
+                        <strong>
+                        <br>
+                            <a href="user.html">{{trip.traveller}}</a></strong><br>
+                        <i class="fa fa-star"></i> {{ trip.traveller.reputation }} / 10<br>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-10 col-lg-10 col-md-10">
+                    <div class="media-body">
+                        <blockquote>{{trip.publishedDescription|safe}}</blockquote>
+                    </div>
+                </div>
         </div>
-        <div class="timeline-centered">
+    </div>
+
+    <div class="timeline-centered">
         <article class="timeline-entry entry">
             <div class="timeline-entry-inner">
                 <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
@@ -25,9 +37,9 @@
                 <div class="timeline-label">
                     <form class="form">
                         <div class="form-group">
-                            <textarea class="form-control input-block-level" rows="3"></textarea>
+                            <textarea class="form-control input-block-level" rows="3" style="resize: none;"></textarea>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group text-right">
                             <button type="submit" class="btn btn-success">Send</button>
                         </div>
                     </form>
@@ -45,27 +57,39 @@
                     <h2><a href="#">{{comment.traveller}} says:</a></h2>
                     <br>
                     <i class="fa fa-quote-left fa-1x pull-left"></i>
-                    <p style="font-style: italic;">{{comment.description|safe}}</p>
+                    {{comment.description|safe}}
                 </div>
             </div>
         </article>
         {% endfor %}
         </div>
     </div>
+
     <div class="col-lg-3">
-    <div class="row">
-        <div class="well">
-            <i class="fa fa-thumbs-o-up fa-5x"> {{trip.likes}}</i>
-            <br>
-            <i class="fa fa-thumbs-o-down fa-5x"> {{trip.dislikes}}</i>
+        <div class="row">
+            <div class="well">
+                <i class="fa fa-globe fa-2x"> Seville, Spain</i>
+                <br>
+                <br>
+                <i class="fa fa-calendar fa-2x"> {{ trip.startDate }}</i>
+                <br>
+                <br>
+                <i class="fa fa-calendar-o fa-2x"> {{ trip.endDate }}</i>
+            </div>
+            <div class="well">
+                <i class="fa fa-star fa-2x text-left"> <small>{% firstof trip.rating '-' %}</small> / <strong>10</strong></i>
+                <br>
+                <br>
+                <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>
+                <br>
+                <br>
+                <i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
+            </div>
+            <div class="well">
+                <button type="button" class="btn btn-success btn-lg btn-block">Accept</button>
+                <button type="button" class="btn btn-danger btn-lg btn-block">Reject</button>
+            </div>
         </div>
-        <div class="well">
-            <i class="fa fa-calendar fa-2x"> {{ trip.startDate }}</i>
-            <br>
-            <br>
-            <i class="fa fa-calendar-o fa-2x"> {{ trip.endDate }}</i>
-        </div>
-    </div>
     </div>
 </div>
 {% endblock %}
