@@ -23,6 +23,10 @@
                 <div class="col-xs-12 col-sm-10 col-lg-10 col-md-10">
                     <div class="media-body">
                         <blockquote>{{trip.publishedDescription|safe}}</blockquote>
+                        {% if traveller_edit %}
+                            <a href="/trip_edit/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> Edit</a>
+                        {% endif %}
+
                     </div>
                 </div>
         </div>

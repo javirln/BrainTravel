@@ -13,3 +13,9 @@ def searchTrip(title):
 def list_trip_all():
     trips = Trip.objects.order_by('approved')
     return trips
+
+
+# david
+def list_my_trip(id_traveller):
+    trips = Trip.objects.all().filter(traveller=id_traveller)
+    return trips
