@@ -51,24 +51,39 @@
             </div>
         </article>
         {% for comment in comments %}
-        <article class="timeline-entry">
-            <div class="timeline-entry-inner">
-                <div class="timeline-icon bg-success">
-                    <i class="entypo-suitcase"></i>
-                    <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
+            {% if comments.last %}
+                <article class="timeline-entry begin">
+                    <div class="timeline-entry-inner">
+                        <div class="timeline-icon">
+                            <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
+                        </div>
+                        <div class="timeline-label">
+                            <h2><a href="#">{{comment.traveller}} says:</a></h2>
+                            <br>
+                            <i class="fa fa-quote-left fa-1x pull-left"></i>
+                            {{comment.description|safe}}
+                        </div>
+                    </div>
+                </article>
+            {% else %}
+            <article class="timeline-entry">
+                <div class="timeline-entry-inner">
+                    <div class="timeline-icon bg-success">
+                        <i class="entypo-suitcase"></i>
+                        <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
+                    </div>
+                    <div class="timeline-label">
+                        <h2><a href="#">{{comment.traveller}} says:</a></h2>
+                        <br>
+                        <i class="fa fa-quote-left fa-1x pull-left"></i>
+                        {{comment.description|safe}}
+                    </div>
                 </div>
-                <div class="timeline-label">
-                    <h2><a href="#">{{comment.traveller}} says:</a></h2>
-                    <br>
-                    <i class="fa fa-quote-left fa-1x pull-left"></i>
-                    {{comment.description|safe}}
-                </div>
-            </div>
-        </article>
+            </article>
+            {% endif %}
         {% endfor %}
         </div>
     </div>
-
     <div class="col-lg-3">
         <div class="row">
             <div class="well">
