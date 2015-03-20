@@ -4,9 +4,9 @@ from principal.models import Trip
 
 
 def searchTrip(title):
-    if not title or " " in title:
-        title = "null"
-    trip_list = Trip.objects.filter(name__icontains=title).order_by('likes')
+    trip_list = []
+    if title and title != " ":
+        trip_list = Trip.objects.filter(name__icontains=title).order_by('likes')
     return trip_list
 
 
@@ -31,3 +31,10 @@ def update_state(user, form):
 
 def save(trip):
     trip.save()
+
+
+# david
+def list_my_trip(id_traveller):
+    trips = Trip.objects.all().filter(traveller=id_traveller)
+    return trips
+

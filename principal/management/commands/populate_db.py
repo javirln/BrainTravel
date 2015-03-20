@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
+import datetime
+
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-import datetime
+
 from principal.models import Administrator, Category, Scorable, Venue, Feedback, City, Trip, Traveller, \
     Likes, Day, VenueDay, Comment, Judges, Payment, CoinHistory, Schedule, Assessment
 
-#Los archivos que se encuentren en el paquete commands, se podr�n llamar
-#desde manage.py, de forma que para popular la base de datos debemos hacer
+
+# Los archivos que se encuentren en el paquete commands, se podr�n llamar
+# desde manage.py, de forma que para popular la base de datos debemos hacer
 # 'manage.py populate_db'
 
 class Command(BaseCommand):
@@ -16,9 +19,9 @@ class Command(BaseCommand):
     def _migrate(self):
         # Drop all tables
         print('Dropping tables...')
-        
-        #Aqui el borrado de todas las tablas
-        #Example: User.objects.all().delete()
+
+        # Aqui el borrado de todas las tablas
+        # Example: User.objects.all().delete()
         Administrator.objects.all().delete()
         User.objects.all().delete()
         Category.objects.all().delete()
@@ -42,12 +45,12 @@ class Command(BaseCommand):
         print('Populating database...')
 
         # Aqui la creaci�n de los objetos que populan la base de datos
-        #Example: Objeto1.save()
+        # Example: Objeto1.save()
 
-        #Administrator initializer
+        # Administrator initializer
         admin_admin = Administrator(
             username='admin',
-            email = 'admin@admin.com')
+            email='admin@admin.com')
         admin_admin.set_password('admin12')
         admin_admin.is_staff = True
         admin_admin.is_superuser = True
@@ -58,7 +61,7 @@ class Command(BaseCommand):
 
         arts_entertaiment = Category(
             id_foursquare='4d4b7104d754a06370d81259',
-            name='Arts&Entertaiment') 
+            name='Arts&Entertaiment')
         arts_entertaiment.save()
 
         musemum = Category(
@@ -74,7 +77,7 @@ class Command(BaseCommand):
         outdoor_sculpture = Category(
             id_foursquare='52e81612bcbc57f1066b79ed',
             name='Outdoor Sculpture')
-        outdoor_sculpture.save() 
+        outdoor_sculpture.save()
 
         public_art = Category(
             id_foursquare='507c8c4091d498d9fc8c67a9',
@@ -195,7 +198,7 @@ class Command(BaseCommand):
 
         vsc_tower_london = Scorable(
             name='Score Tower of London',
-            description='The best place to visit if you want to learn more about' 
+            description='The best place to visit if you want to learn more about'
                         'Londons history. And of course it houses the Crown Jewels, the most '
                         'famous jewellery collection in the world',
             rating=9.1)
@@ -205,7 +208,7 @@ class Command(BaseCommand):
             name='Score Big Ben',
             description='Big Ben refers to the 13 ton bell in the clock tower of Westminster Palace.'
                         'Opinion is divided as to whether it was named after the then Commissioner of Works, or a famous prize-fighter of the time.',
-             rating=9.5)
+            rating=9.5)
         vsc_big_ben.save()
 
         vsc_buckingham = Scorable(
@@ -351,7 +354,7 @@ class Command(BaseCommand):
             openingTime='0900',
             closingTime='1530',
             venue=v_tower_london
-            )
+        )
         sch_tower_london.save()
 
         sch_tower_london_1 = Schedule(
@@ -380,7 +383,7 @@ class Command(BaseCommand):
         london = City(
             name='London',
             country='United Kingdom',
-            description='London is by far the largest city in England and the United Kingdom.' 
+            description='London is by far the largest city in England and the United Kingdom.'
                         '8.6 million people live in London, which is on the River Thames. It is the capital of the United Kingdom.')
         london.save()
 
@@ -390,6 +393,12 @@ class Command(BaseCommand):
             description='Paris is the capital city of France, and the largest city in that country.'
                         'The area is 105 square km, and around 2.15 million people live there. If suburbs are counted, the population of the Paris area rises to 12 million people.')
         paris.save()
+
+        seville = City(
+            name='Seville',
+            country='Spain',
+            description='Seville is the capital city of Spain, and the largest city in that country.')
+        seville.save()
 
         print('Cities...Ok')
         traveller_annie = Traveller(
@@ -413,7 +422,7 @@ class Command(BaseCommand):
 
         traveller_allen = Traveller(
             username='allen',
-            email = 'allen@mail.com',               
+            email='allen@mail.com',
             first_name='Allen',
             last_name='Sutton',
             genre='MA',
@@ -429,14 +438,14 @@ class Command(BaseCommand):
             description='Amazing boy',
             rating=86.0)
         sch_allen.save()
-        
+
         print('Travellers...Ok')
 
         trip_london = Trip(
             name='3 days in London',
             publishedDescription='Once you arrive in London, start your first day at the true heart of the city - Trafalgar Square. '
                                  'The most famous tourist attractions follow on your itinerary: London Eye, Big Ben and Buckingham Palace. You can finish your '
-                                 'day in one of the great museums. Take a little rest from the lively city on the second day, head to the Windsor Castle and take a'                                 
+                                 'day in one of the great museums. Take a little rest from the lively city on the second day, head to the Windsor Castle and take a'
                                  'walk in the Greewich Park afterwards. On the third day, your London itinerary takes you to the landmarks in the center again: the Tower with Tower Bridge next to it and St. Pauls Cathedral.',
             startDate=datetime.date(2014, 12, 25),
             endDate=datetime.date(2014, 12, 28),
@@ -445,12 +454,25 @@ class Command(BaseCommand):
             likes=125,
             dislikes=30,
             traveller=traveller_allen,
-            city=london)                            
+            city=london)
         trip_london.save()
+
+        trip_Seville = Trip(
+            name='3 days in Seville',
+            publishedDescription="He estado tres dias en sevilla es preciosa",
+            startDate=datetime.date(2013, 12, 25),
+            endDate=datetime.date(2013, 12, 28),
+            planified=True,
+            coins=34,
+            likes=125,
+            dislikes=1,
+            traveller=traveller_allen,
+            city=seville)
+        trip_Seville.save()
 
         trip_paris = Trip(
             name='The city of light, 5 days',
-            publishedDescription='Most of my friends and family come by for three-day visits and whether its their first time in Paris or their 20th' 
+            publishedDescription='Most of my friends and family come by for three-day visits and whether its their first time in Paris or their 20th'
                                  'time, this itinerary always make them happy to be in the city. Although its impossible to discover all of Paris within three days, this guide will give you a good impression of the citys treasures.',
             startDate=datetime.date(2014, 8, 13),
             endDate=datetime.date(2014, 8, 18),
@@ -672,6 +694,12 @@ class Command(BaseCommand):
             traveller=traveller_allen)
         payment_allen.save()
 
+        payment_allen2 = Payment(
+            amount=2.5,
+            date=datetime.date(2013, 12, 20),
+            traveller=traveller_allen)
+        payment_allen2.save()
+
         print('Payment...Ok')
 
         coin_history_annie = CoinHistory(
@@ -690,6 +718,15 @@ class Command(BaseCommand):
             traveller=traveller_allen,
             payment=payment_allen,
             trip=trip_london)
+        coin_history_allen.save()
+
+        coin_history_allen = CoinHistory(
+            amount=3.5,
+            date=datetime.date(2013, 12, 20),
+            concept='Trip to Seville',
+            traveller=traveller_allen,
+            payment=payment_allen2,
+            trip=trip_Seville)
         coin_history_allen.save()
 
         print('CoinHistory...Ok')

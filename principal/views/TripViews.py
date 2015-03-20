@@ -26,7 +26,11 @@ def search_trip(request):
 def public_trip_details(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     comments = Comment.objects.filter(trip=trip_id)
-    return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments},
+    is_edit = False
+    if trip.traveller.id == request.user.id:
+        is_edit = True
+    return render_to_response('public_trip_details.html',
+                              {'trip': trip, 'comments': comments, 'traveller_edit': is_edit},
                               context_instance=RequestContext(request))
 
 
@@ -61,3 +65,12 @@ def update_state(request):
                 msg_errors = ["You must login!"]
                 return render_to_response('signin.html', {'msg_errors': msg_errors})
     return redirect(list_all_by_state)
+
+# david
+@login_required()
+def list_all_by_traveller(request):
+    if request.user.is_authenticated():
+        trips = TripService.list_my_trip(request.user.id)
+        return render_to_response('list_my_trip.html', {'trips': trips}, content_type=RequestContext(request))
+    else:
+        return render_to_response('index.html')
