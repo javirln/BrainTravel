@@ -40,8 +40,7 @@ class Category(models.Model):
 
 
 class Scorable(models.Model):
-    name = models.CharField(max_length=256)
-    description = models.TextField()
+    name = models.CharField(max_length=255)
 
     # ----------- Derivates -------------------------------#
     rating = models.FloatField(null=True, validators=[MinValueValidator(0), MaxValueValidator(10)])
@@ -68,7 +67,7 @@ class Venue(Scorable):
 
 
 class Feedback(models.Model):
-    description = models.TextField(null=True)
+    description = models.CharField(max_length=255, null=True)
     leadTime = models.IntegerField(validators=[MinValueValidator(1)])
     duration = models.IntegerField(validators=[MinValueValidator(1)])
 
@@ -82,20 +81,17 @@ class Feedback(models.Model):
     class Meta:
         db_table = 'feedback'
 
-    def __unicode__(self):
-        return self.description
 
-
-class City(models.Model):
-    name = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
-    description = models.TextField()
-
-    class Meta:
-        db_table = 'city'
-
-    def __unicode__(self):
-        return self.name
+# class City(models.Model):
+#     name = models.CharField(max_length=50)
+#     country = models.CharField(max_length=50)
+#     description = models.TextField()
+# 
+#     class Meta:
+#         db_table = 'city'
+# 
+#     def __unicode__(self):
+#         return self.name
 
 
 class Trip(Scorable):
@@ -112,13 +108,15 @@ class Trip(Scorable):
 
     # ------------- Relationships --------------#
     traveller = models.ForeignKey('principal.Traveller')
-    city = models.ForeignKey(City)
-
+    #city = models.ForeignKey(City)
+    city = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
+    
     class Meta:
         db_table = 'trip'
 
     def __unicode__(self):
-        return 'Ini: ' + str(self.startDate) + ' End: ' + str(self.endDate)
+        return str(self.city) + ', ' + str(self.country)
 
 
 class Traveller(User):
@@ -153,7 +151,7 @@ class Traveller(User):
 
 
 class Notification(models.Model):
-    text = models.TextField()
+    text = models.CharField(max_length=255)
     viewed = models.BooleanField(default=False)
     # ------------- Relationships --------------#
     user = models.ForeignKey(Traveller)
@@ -164,7 +162,7 @@ class Notification(models.Model):
 
 class Likes(models.Model):
     useful = models.BooleanField(default=False)
-    comment = models.TextField(null=True)
+    comment = models.CharField(max_length=255, null=True)
 
     # -------------- Relationships -------------------
     traveller = models.ForeignKey(Traveller)
@@ -177,8 +175,7 @@ class Likes(models.Model):
 class Day(models.Model):
     numberDay = models.IntegerField(validators=[MinValueValidator(1)])
     date = models.DateField(null=True)
-    description = models.TextField(null=True)
-
+    
     # ------------- Relationships --------------#
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
     venues = models.ManyToManyField(Venue, through='VenueDay')
@@ -204,7 +201,7 @@ class VenueDay(models.Model):
 
 
 class Comment(models.Model):
-    description = models.TextField()
+    description = models.CharField(max_length=255, null=True)
 
     # ------------- Relationships --------------#
     traveller = models.ForeignKey(Traveller)
@@ -239,7 +236,7 @@ class Payment(models.Model):
 class CoinHistory(models.Model):
     amount = models.IntegerField()
     date = models.DateTimeField(validators=[PastValidator])
-    concept = models.TextField()
+    concept = models.CharField(max_length=255)
 
     # -------------     Relationships --------------#
     traveller = models.ForeignKey(Traveller)
@@ -267,7 +264,7 @@ class Schedule(models.Model):
 
 class Assessment(models.Model):
     score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
-    comment = models.TextField()
+    comment = models.CharField(max_length=255)
 
     # ------------- Relationships --------------#
     traveller = models.ForeignKey(Traveller)
