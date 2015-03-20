@@ -10,6 +10,19 @@
         <link rel="stylesheet" href="{% static "css/animate.css" %}">
         <link rel="stylesheet" href="{% static "css/sweet-alert.css" %}">
         <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+
+        <!-- Bootstrap -->
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+        <!-- Boostrap from static files -->
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+        <!-- Dependencies JS -->
+        <script src="{% static "js/sweet-alert.js" %}"></script>
+        <script src="{% static "js/custom.js" %}"></script>
+        <script src="{% static "js/countUp.min.js" %}"></script>
+        <script src="{% static "js/main.js" %}"></script>
+        <!--<script>{% static "/static/dajax/jquery.dajax.core.js" %}</script>-->
     </head>
     <body>
         <nav class="navbar navbar-default navbar-bt">
@@ -51,17 +64,6 @@
             {%block content%}
             {%endblock%}
         </div>
-        <!-- Bootstrap -->
-        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-        
-        <!-- Boostrap from static files -->
-        <script src="{% static "js/bootstrap.min.js" %}"></script>
 
-        <!-- Dependencies JS -->
-        <script src="{% static "js/sweet-alert.js" %}"></script>
-        <script src="{% static "js/custom.js" %}"></script>
-        <script src="{% static "js/countUp.min.js" %}"></script>
-        <script src="{% static "js/main.js" %}"></script>
-        <script>{% static "/static/dajax/jquery.dajax.core.js" %}</script>
     </body>
 </html>

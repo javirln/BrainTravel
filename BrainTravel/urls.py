@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     # url(r'^<nombre_url>$', 'principal.views.ViewsModel1.method1')
     url(r'^register_traveller/$', 'principal.views.UserViews.create_traveller'),
     url(r'^confirm_account/$', 'principal.views.UserViews.confirm_account'),
-    url(r'^public_trip_details/(?P<trip_id>[0-9]+)$$', 'principal.views.TripViews.public_trip_details'),
-    url(r'^administrator/trip/$', 'principal.views.TripViews.trip_list_all'),
+    url(r'^public_trip_details/(?P<trip_id>[0-9]+)$', 'principal.views.TripViews.public_trip_details'),
+    url(r'^administrator/trip/list/$', 'principal.views.TripViews.list_all_by_state'),
+    url(r'^administrator/trip/update/$', 'principal.views.TripViews.update_state'),
 )
