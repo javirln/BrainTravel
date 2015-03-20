@@ -2,12 +2,15 @@
 {% block title %} Edit Trip! {% endblock %}
 {% block content %}
 
-<h2>Edit Trip!</h2>
-
-<form action="/trip_edit/{{ trip.id }}" method="post">{% csrf_token %}
+    <h2>Edit Trip!</h2>
+    {% if create %}
+        <form action="/trip_create/" method="post">{% csrf_token %}
+    {% else %}
+        <form action="/trip_edit/{{ trip.id }}" method="post">{% csrf_token %}
+    {% endif %}
 <ul>
 
-{{ form.as_ul }}
+    {{ form.as_p }}
 
 </ul>
 
@@ -15,4 +18,4 @@
 </form>
 
 
-{%endblock%}
+{% endblock %}

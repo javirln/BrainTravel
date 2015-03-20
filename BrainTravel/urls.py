@@ -18,5 +18,8 @@ urlpatterns = patterns('',
     url(r'^list_history_coin/$', 'principal.views.Coinviews.list_coin_traveller'),
     url(r'^list_my_trips/$', 'principal.views.TripViews.list_all_by_traveller'),
     url(r'^trip_edit/(?P<trip_id>[0-9]+)$$', 'principal.views.TripViews.trip_edit'),
+    url(r'^summernote/', include('django_summernote.urls')),
+    url(r'^trip_create/$', 'principal.views.TripViews.trip_create'),
+
 
 )
