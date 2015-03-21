@@ -110,3 +110,6 @@ target/
 
 #Migrations
 principal/migrations/
+
+#VirtualEnv
+myvenv
