@@ -1,17 +1,34 @@
+<head>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+</head>
+
 {% extends 'base.html' %}
+
+
 {% block title %} Edit Trip! {% endblock %}
+
 {% block content %}
 
-    <h2>Edit Trip!</h2>
+    {% if create %}
+        <h2>Create Trip!</h2>
+    {% else %}
+        <h2>Edit Trip!</h2>
+    {% endif %}
+
     {% if create %}
         <form action="/trip_create/" method="post">{% csrf_token %}
     {% else %}
         <form action="/trip_edit/{{ trip.id }}" method="post">{% csrf_token %}
     {% endif %}
+
+
+
 <ul>
-
     {{ form.as_p }}
-
 </ul>
 
 <input type="submit" name="submit" value="Save Trip">

@@ -42,6 +42,7 @@ def list_my_trip(id_traveller):
     return trips
 
 
+# david
 def create(form, user_id):
     traveller = Traveller.objects.get(id=user_id)
     trip = Trip()

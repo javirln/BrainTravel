@@ -1,4 +1,5 @@
 # -*- coding: latin-1 -*-
+from bootstrap3_datetime.widgets import DateTimePicker
 from django import forms
 from django_summernote.widgets import SummernoteWidget
 
@@ -23,16 +24,13 @@ class TripUpdateStateForm(forms.Form):
     ))
 
 
-class TripEditorForm(forms.Form):
-    # id = forms.CharField(widget=forms.HiddenInput)
-    publishedDescription = forms.CharField(label='Published Description', widget=SummernoteWidget())
-    startDate = forms.DateTimeField(label='Start Date', widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-    endDate = forms.DateTimeField(label='End Date', widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-
-
-class TripCreateForm(forms.Form):
+# david
+class TripEditForm(forms.Form):
     city = forms.CharField(label='City', widget=forms.TextInput())
     country = forms.CharField(label='Country', widget=forms.TextInput())
-    startDate = forms.DateTimeField(label='Start Date', widget=forms.TextInput())
-    endDate = forms.DateTimeField(label='End Date', widget=forms.TextInput())
+    startDate = forms.DateTimeField(label='Start Date', widget=forms.DateInput())
+    endDate = forms.DateTimeField(label='End Date', widget=forms.DateInput)
+    # prueba2 = forms.DateField(
+    #     widget=DateTimePicker(options={"format": "YYYY-MM-DD",
+    #                                    "pickTime": False}))
     publishedDescription = forms.CharField(label='Published Description', widget=SummernoteWidget())

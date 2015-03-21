@@ -36,7 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'principal',
-    'django_summernote'
+    'django_summernote',
+    # 'bootstrap3_datetime',
 )
 
 MIDDLEWARE_CLASSES = (
