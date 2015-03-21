@@ -56,3 +56,11 @@ def create(form, user_id):
     trip.city = form.cleaned_data['city']
     trip.country = form.cleaned_data['country']
     return trip
+
+
+# david
+def save_secure(trip):
+    if trip.startDate > trip.endDate:
+        pass
+    else:
+        trip.save()
