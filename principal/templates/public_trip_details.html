@@ -105,10 +105,41 @@
                 <i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
             </div>
             <div class="well">
-                <button type="button" class="btn btn-success btn-lg btn-block">Accept</button>
-                <button type="button" class="btn btn-danger btn-lg btn-block">Reject</button>
+                <form id="stateSelectForm" class="form-horizontal" action="/administrator/trip/update/" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{trip.scorable_ptr_id}}"/>
+                    <div class="col-xs-5 selectContainer">
+                        <select name="state" id="state" class="form-control">
+                            {% if trip.state == "ap" %}
+                                <option value="ap" selected="selected">APPROVED</option>
+                            {% else %}
+                                <option value="ap" >APPROVED</option>
+                            {% endif %}
+
+                             {% if trip.state == "re" %}
+                                <option value="re" selected="selected">REJECTED</option>
+                            {% else %}
+                                <option value="re" >REJECTED</option>
+                            {% endif %}
+
+                            {% if trip.state == "pe" %}
+                                <option value="pe" selected="selected">PENDING</option>
+                            {% else %}
+                                <option value="pe" >PENDING</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <input type="submit" name="save" value="save" />
+                </form>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#stateSelectForm").submit(function () {
+            return confirm('Are you sure?');
+        });
+    });
+</script>
 {% endblock %}

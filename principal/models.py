@@ -95,12 +95,17 @@ class Feedback(models.Model):
 
 
 class Trip(Scorable):
+    State = (
+        ('ap', 'APPROVED'),
+        ('re', 'REJECTED'),
+        ('pe', 'PENDING')
+    )
     publishedDescription = models.TextField(null=True)
     startDate = models.DateField(null=True)
     endDate = models.DateField(null=True)
     planified = models.BooleanField(default=False)
     coins = models.IntegerField(validators=[MinValueValidator(0)])
-    approved = models.BooleanField(default=False)
+    state = models.CharField(max_length=2, choices=State, default='pe')
 
     # ------------- Derivates -----------------------------#
     likes = models.IntegerField(validators=[MinValueValidator(0)], default=0)

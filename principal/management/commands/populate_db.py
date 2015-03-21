@@ -534,7 +534,6 @@ class Command(BaseCommand):
         day_3_london = Day(
             numberDay=3,
             date=datetime.date(2014, 12, 26),
-            description='',
             trip=trip_london)
         day_3_london.save()
 

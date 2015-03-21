@@ -81,7 +81,7 @@ def confirm_account(request):
     hash2 = request.GET['hash']
     if hash1 == hash2:
         user = User.objects.get(username=username)
-        user.is_active = True;
+        user.is_active = True
         user.save()
 
         password = request.GET['rand_password']
