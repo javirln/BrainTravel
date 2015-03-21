@@ -2,11 +2,11 @@
 
 from principal.models import Trip, Traveller
 
-
+# author: Javi
 def searchTrip(title):
     trip_list = []
     if title and title != " ":
-        trip_list = Trip.objects.filter(name__icontains=title).order_by('likes')
+        trip_list = Trip.objects.filter(name__icontains=title, state='pe').order_by('likes')
     return trip_list
 
 

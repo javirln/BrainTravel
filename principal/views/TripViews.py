@@ -10,8 +10,9 @@ from principal.forms import TripEditorForm, TripCreateForm
 from principal.models import Trip, Comment
 from principal.services import TripService
 from principal.forms import TripUpdateStateForm
+from principal.utils import BrainTravelUtils
 
-
+# author: Javi
 def search_trip(request):
     if request.method == 'GET':
         title = request.GET.get('title', False)
@@ -23,16 +24,21 @@ def search_trip(request):
         except Exception as e:
             return HttpResponse(e)
 
-
+# author: Javi
 def public_trip_details(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     comments = Comment.objects.filter(trip=trip_id)
     is_edit = False
-    if trip.traveller.id == request.user.id:
+    if trip.traveller.id == request.user.id and trip.state == 'ap':
         is_edit = True
-    return render_to_response('public_trip_details.html',
-                              {'trip': trip, 'comments': comments, 'traveller_edit': is_edit},
-                              context_instance=RequestContext(request))
+        return render_to_response('public_trip_details.html',
+                                  {'trip': trip, 'comments': comments, 'traveller_edit': is_edit},
+                                  context_instance=RequestContext(request))
+    else:
+        BrainTravelUtils.save_error(request)
+        return render_to_response('search.html',
+                                  {},
+                                  context_instance=RequestContext(request))
 
 
 # author: Juane
