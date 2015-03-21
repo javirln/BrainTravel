@@ -1,6 +1,6 @@
 Django==1.7.6
 django-summernote==0.6.3
-foursquare==1!2015.2.1
+foursquare==2015.2.1
 MySQL-python==1.2.5
 Pillow==2.7.0
 requests==2.6.0
