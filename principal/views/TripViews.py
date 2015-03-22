@@ -11,7 +11,8 @@ from principal.models import Trip, Comment
 from principal.services import TripService
 from principal.forms import TripUpdateStateForm
 from principal.utils import BrainTravelUtils
-from principal.utils import BrainTravelUtils as btutils
+
+
 
 
 
@@ -124,10 +125,11 @@ def trip_edit(request, trip_id):
             trip.endDate = form.cleaned_data['endDate']
             trip.country = form.cleaned_data['country']
             trip.state = "pe"
-            btutils.save_info(request, "State modified")
+            # btutils.save_info(request, "State modified")
             # TODO no funciona el mostrar el aviso xk no se le pasa el context
+            # messages.add_message(request, messages.INFO, 'Hello world.')
             TripService.save_secure(trip)
-            return HttpResponseRedirect('/list_my_trips/',)
+            return HttpResponseRedirect('/list_my_trips/')
     else:
         data = {'city': trip.city, 'country': trip.country, 'startDate': trip.startDate, 'endDate': trip.endDate}
         form = TripEditForm(initial=data)
