@@ -6,7 +6,7 @@ from principal.models import Trip, Traveller
 def searchTrip(title):
     trip_list = []
     if title and title != " ":
-        trip_list = Trip.objects.filter(name__icontains=title, state='pe').order_by('likes')
+        trip_list = Trip.objects.filter(name__icontains=title, state='ap').order_by('likes')
     return trip_list
 
 
@@ -54,4 +54,32 @@ def create(form, user_id):
     trip.traveller = traveller
     trip.city = form.cleaned_data['city']
     trip.country = form.cleaned_data['country']
+    return trip
+
+
+# author: Juane
+def increase_like(trip):
+    likes = trip.likes
+    trip.likes = likes+1
+    return trip
+
+
+# author: Juane
+def increase_dislike(trip):
+    dislikes = trip.dislikes
+    trip.dislikes = dislikes+1
+    return trip
+
+
+# author: Juane
+def decrement_like(trip):
+    likes = trip.likes
+    trip.likes = likes-1
+    return
+
+
+# author: Juane
+def decrement_dislike(trip):
+    dislikes = trip.dislikes
+    trip.dislikes = dislikes-1
     return trip

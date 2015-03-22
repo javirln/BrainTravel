@@ -21,4 +21,5 @@ urlpatterns = patterns('',
     url(r'^trip_edit/(?P<trip_id>[0-9]+)$$', 'principal.views.TripViews.trip_edit'),
     url(r'^summernote/', include('django_summernote.urls')),
     url(r'^trip_create/$', 'principal.views.TripViews.trip_create'),
+    url(r'^judge/(?P<trip_id>[0-9]+)/(?P<like>[0-1])', 'principal.views.JudgeViews.judge'),
 )

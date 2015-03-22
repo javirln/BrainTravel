@@ -2,7 +2,6 @@
 {% block title %} Search {% endblock %}
 {% block content %}
 <div class="row">
-
     <div class="col-xs-12">
         <h1>{{trip.name}}</h1>
     </div>
@@ -99,11 +98,45 @@
                 <i class="fa fa-star fa-2x text-left"> <small>{% firstof trip.rating '-' %}</small> / <strong>10</strong></i>
                 <br>
                 <br>
-                <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>
-                <br>
-                <br>
-                <i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
-            </div>
+                {% if user.is_anonymous %}
+                    <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>
+                    <br>
+                    <br>
+                    <i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    {% if judge == None %}
+                        <a href="/judge/{{trip.scorable_ptr_id}}/1">
+                            <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>
+                        </a>
+                        <br>
+                        <br>
+                        <a href="/judge/{{trip.scorable_ptr_id}}/0">
+                            <i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
+                        </a>
+                    {% elif judge.like == True %}
+                        <a href="/judge/{{trip.scorable_ptr_id}}/1">
+                            <i class="fa fa-thumbs-up fa-2x text-left"> {{trip.likes}} likes</i>
+                        </a>
+                        <br>
+                        <br>
+                        <a href="/judge/{{trip.scorable_ptr_id}}/0">
+                            <i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
+                        </a>
+                    {% else %}
+                        <a href="/judge/{{trip.scorable_ptr_id}}/1">
+                            <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>
+                        </a>
+                        <br>
+                        <br>
+                        <a href="/judge/{{trip.scorable_ptr_id}}/0">
+                            <i class="fa fa-thumbs-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
+                        </a>
+                    {% endif %}
+                {% endif %}
+
+                </div>
             <div class="well">
                 <form id="stateSelectForm" class="form-horizontal" action="/administrator/trip/update/" method="post">
                     {% csrf_token %}
