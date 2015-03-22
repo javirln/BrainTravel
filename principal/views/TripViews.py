@@ -6,8 +6,9 @@ from django.template.context import RequestContext
 from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from principal.forms import TripEditorForm, TripCreateForm
-from principal.models import Trip, Comment, Judges
+from principal.models import Judges
+from principal.forms import TripEditForm
+from principal.models import Trip, Comment
 from principal.services import TripService
 from principal.forms import TripUpdateStateForm
 from principal.utils import BrainTravelUtils
@@ -44,7 +45,7 @@ def public_trip_details(request, trip_id):
     else:
         BrainTravelUtils.save_error(request)
         return render_to_response('search.html',
-                                  {},
+            {},
                                   context_instance=RequestContext(request))
 
 
@@ -98,16 +99,18 @@ def list_all_by_traveller(request):
 def trip_create(request):
     user_id = request.user.id
     if request.POST:
-        form = TripCreateForm(request.POST)
+        form = TripEditForm(request.POST)
         if form.is_valid():
             trip_new = TripService.create(form, user_id)
             trip_new.save()
             return HttpResponseRedirect('/list_my_trips/')
     else:
-        form = TripCreateForm()
+        data = {'startDate': 'yyyy/mm/dd', 'endDate': 'yyyy/mm/dd'}
+        form = TripEditForm(initial=data)
 
     return render_to_response('trip_edit.html', {"form": form, "create": True},
                               context_instance=RequestContext(request))
+
 
 # david
 @login_required()
@@ -117,14 +120,22 @@ def trip_edit(request, trip_id):
         return render_to_response('index.html', context_instance=RequestContext(request))
 
     if request.POST:
-        form = TripEditorForm(request.POST)
+        form = TripEditForm(request.POST)
         if form.is_valid():
             trip.publishedDescription = form.cleaned_data['publishedDescription']
-            trip.save()
+            trip.city = form.cleaned_data['city']
+            trip.startDate = form.cleaned_data['startDate']
+            trip.endDate = form.cleaned_data['endDate']
+            trip.country = form.cleaned_data['country']
+            trip.state = "pe"
+            # btutils.save_info(request, "State modified")
+            # TODO no funciona el mostrar el aviso xk no se le pasa el context
+            # messages.add_message(request, messages.INFO, 'Hello world.')
+            TripService.save_secure(trip)
             return HttpResponseRedirect('/list_my_trips/')
     else:
-        data = {'startDate': trip.startDate, 'endDate': trip.endDate}
-        form = TripEditorForm(initial=data)
+        data = {'city': trip.city, 'country': trip.country, 'startDate': trip.startDate, 'endDate': trip.endDate}
+        form = TripEditForm(initial=data)
 
     return render_to_response('trip_edit.html', {"form": form, "trip": trip, "create": False},
                               context_instance=RequestContext(request))

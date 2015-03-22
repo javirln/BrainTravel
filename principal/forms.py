@@ -1,6 +1,7 @@
 # -*- coding: latin-1 -*-
 from django import forms
 from django_summernote.widgets import SummernoteWidget
+from bootstrap3_datetime.widgets import DateTimePicker
 
 
 class LoginForm(forms.Form):
@@ -23,16 +24,21 @@ class TripUpdateStateForm(forms.Form):
     ))
 
 
-class TripEditorForm(forms.Form):
-    # id = forms.CharField(widget=forms.HiddenInput)
-    publishedDescription = forms.CharField(label='Published Description', widget=SummernoteWidget())
-    startDate = forms.DateTimeField(label='Start Date', widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-    endDate = forms.DateTimeField(label='End Date', widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+# david
+class TripEditForm(forms.Form):
+    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    # startDate = forms.DateTimeField(label='Start Date', widget=forms.DateInput(attrs={'class':'form-control'})) #para usar el otro que yo te mande le pones attrs={'class':'datepicker'} y ya podrias usarlo sin instalar por pip
+    # endDate = forms.DateTimeField(label='End Date', widget=forms.DateInput(attrs={'class': 'form-control'}))
+    # prueba2 = forms.DateField(
+    # widget=DateTimePicker(options={"format": "YYYY-MM-DD",
+    # "pickTime": False}))
+    startDate = forms.DateField(label="Start date",
+                                widget=DateTimePicker(options={"format": "YYYY-MM-DD",
+                                                               "pickTime": False}))
 
+    endDate = forms.DateField(label="End date",
+                              widget=DateTimePicker(options={"format": "YYYY-MM-DD",
+                                                             "pickTime": False}))
 
-class TripCreateForm(forms.Form):
-    city = forms.CharField(label='City', widget=forms.TextInput())
-    country = forms.CharField(label='Country', widget=forms.TextInput())
-    startDate = forms.DateTimeField(label='Start Date', widget=forms.TextInput())
-    endDate = forms.DateTimeField(label='End Date', widget=forms.TextInput())
     publishedDescription = forms.CharField(label='Published Description', widget=SummernoteWidget())

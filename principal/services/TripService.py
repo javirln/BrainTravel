@@ -42,6 +42,7 @@ def list_my_trip(id_traveller):
     return trips
 
 
+# david
 def create(form, user_id):
     traveller = Traveller.objects.get(id=user_id)
     trip = Trip()
@@ -83,3 +84,11 @@ def decrement_dislike(trip):
     dislikes = trip.dislikes
     trip.dislikes = dislikes-1
     return trip
+
+
+# david
+def save_secure(trip):
+    if trip.startDate > trip.endDate:
+        pass
+    else:
+        trip.save()
