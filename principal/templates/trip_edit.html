@@ -1,38 +1,45 @@
-<head>
-    <script>
-        $(function () {
-            $("#datepicker").datepicker();
-        });
-    </script>
-</head>
-
 {% extends 'base.html' %}
-
-
-{% block title %} Edit Trip! {% endblock %}
+{% block extrahead %}
+  {{ form.media }}
+{% endblock %}
 
 {% block content %}
-
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
     {% if create %}
-        <h2>Create Trip!</h2>
+        <h2>"Create Trip"</h2>
     {% else %}
-        <h2>Edit Trip!</h2>
+        <h2> "Edit Trip"</h2>
     {% endif %}
 
     {% if create %}
         <form action="/trip_create/" method="post">{% csrf_token %}
     {% else %}
-        <form action="/trip_edit/{{ trip.id }}" method="post">{% csrf_token %}
+        <form action="/trip_edit/{{ trip.id }}" method="post" role="form">
     {% endif %}
 
+        {% for field in form.visible_fields %}
 
-
-<ul>
-    {{ form.as_p }}
-</ul>
-
-<input type="submit" name="submit" value="Save Trip">
-</form>
-
+            <div id="div_{{ field.html_name }}" class="col-xs-12  {% if type(field.field.widget) == 'SummernoteWidget' %} col-xs-12  {% else %}  col-md-6  {% endif %} form-group{% if field.errors %} has-error{% endif %}">
+                {{ field.label_tag }}
+                {{ field }}
+                <div class="text-muted pull-right">
+                    <small>{{ field.help_text }}</small>
+                </div>
+                <div class="help-block">
+                    {{ field.errors }}
+                </div>
+            </div>
+        {% endfor %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="submit" value="Save Trip" class="btn btn-primary"/>
+        </div>
+    </form>
+</div>
+</div>
 
 {% endblock %}
