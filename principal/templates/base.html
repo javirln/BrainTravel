@@ -43,9 +43,18 @@
                             <a id="sign_ind_nav" href="/signin">Sign In</a>
                         </li>
                     {% else %}
+                        <li style="text-decoration: None">
+                            <a id="sign_ind_nav" href="/list_my_trips">List my trips</a>
+                        </li>
+                        <li style="text-decoration: None">
+                            <a id="sign_ind_nav" href="/list_history_coin">List history coins</a>
+                        </li>
+
+
                         <li style="background-color: #26A65B;">
                             <a id="sign_ind_nav" href="/logout">Logout</a>
                         </li>
+
                     {% endif %}
                 </ul>
             </div>
