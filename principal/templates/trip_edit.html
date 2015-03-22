@@ -20,9 +20,9 @@
 
         {% for field in form.visible_fields %}
 
-            <div id="div_{{ field.html_name }}" class="col-xs-12  {% if type(field.field.widget) == 'SummernoteWidget' %} col-xs-12  {% else %}  col-md-6  {% endif %} form-group{% if field.errors %} has-error{% endif %}">
-                {{ field.label_tag }}
-                {{ field }}
+            <div id="div_{{ field.html_name }}" class="col-xs-6col-md-6 form-group{% if field.errors %} has-error{% endif %}">
+                {{ field.label_tag|safe }}
+                {{ field|safe }}
                 <div class="text-muted pull-right">
                     <small>{{ field.help_text }}</small>
                 </div>
