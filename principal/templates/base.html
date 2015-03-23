@@ -1,66 +1,88 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>BrainTravel</title>
-        <media charset='utf-8'/></media>
-        <!-- Latest compiled and minified CSS -->
-        {%load staticfiles%}
-        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-        <link rel="stylesheet" href="{% static "css/custom.css" %}">
-        <link rel="stylesheet" href="{% static "css/animate.css" %}">
-        <link rel="stylesheet" href="{% static "css/sweet-alert.css" %}">
-        <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
-    </head>
+<head>
+    <title>BrainTravel</title>
+    <meta charset="ISO-8859-1">
+    {% load staticfiles %}
+    {% load i18n %}
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+    <link rel="stylesheet" href="{% static "css/animate.css" %}">
+    <link rel="stylesheet" href="{% static "css/sweet-alert.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <!-- Jquery -->
+    <script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
+    <!-- Boostrap -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <!-- Dependencies JS -->
+    <script src="{% static "js/sweet-alert.min.js" %}"></script>
+    <script src="{% static "js/countUp.min.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
+    {% block extrahead %} {% endblock %}
+</head>
+{% autoescape on %}
     <body>
-        <nav class="navbar navbar-default navbar-bt">
-          <div class="container-fluid">
+    <nav class="navbar navbar-default navbar-bt">
+        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/">BrainTravel</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">BrainTravel</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="/search"><span class="glyphicon glyphicon-search"></span></a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                {% if user.is_anonymous %}
-                    <li style="background-color: #26A65B; color: #FFFFFF;">
-                        <a id="sign_ind_nav" href="/signin">Sign In</a>
+            <div class="collapse navbar-collapse" id="menu-navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/search"><span class="fa fa-search"></span></a></li>
+                    <li style="text-decoration: None">
+                        <a id="sign_ind_nav" href="/auth_request">Login FS</a>
                     </li>
-                {% else %}
-                    <li style="background-color: #26A65B;">
-                        <a id="sign_ind_nav" href="/logout">Logout</a>
-                    </li>
-                {% endif %}
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>        
+                    {% if user.is_anonymous %}
+                        <li style="background-color: #26A65B; color: #FFFFFF;">
+                            <a id="sign_ind_nav" href="/signin">Sign In</a>
+                        </li>
+                    {% else %}
+                        <li style="text-decoration: None">
+                            <a id="sign_ind_nav" href="/list_my_trips">List my trips</a>
+                        </li>
+                        <li style="text-decoration: None">
+                            <a id="sign_ind_nav" href="/list_history_coin">List history coins</a>
+                        </li>
 
-        <div class="container">
-            {%block content%}
-            {%endblock%}
+
+                        <li style="background-color: #26A65B;">
+                            <a id="sign_ind_nav" href="/logout">Logout</a>
+                        </li>
+
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- Bootstrap -->
-        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-        
-        <!-- Boostrap from static files -->
-        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <!-- /.container-fluid -->
+    </nav>
 
-        <!-- Dependencies JS -->
-        <script src="{% static "js/sweet-alert.js" %}"></script>
-        <script src="{% static "js/custom.js" %}"></script>
-        <script src="{% static "js/countUp.min.js" %}"></script>
-        <script src="{% static "js/main.js" %}"></script>
-        <script>{% static "/static/dajax/jquery.dajax.core.js" %}</script>
+    <div class="container">{% block content %} {% endblock %}</div>
+
+    {% if messages %}
+        {% trans "Accept" as confirm_button %}
+        {% for message in messages %}
+            <script type="text/javascript">
+                $(function () {
+                    swal({
+                        title: '{{ message.tags }}',
+                        text: '{{ message }}',
+                        type: '{{ message.tags }}',
+                        confirmButtonText: '{{confirm_button}}'
+                    });
+                });
+            </script>
+        {% endfor %}
+    {% endif %}
     </body>
+{% endautoescape %}
 </html>

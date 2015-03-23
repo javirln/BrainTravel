@@ -1,28 +1,44 @@
 # -*- coding: latin-1 -*-
 from django import forms
-from django.core.exceptions import ValidationError
+from django_summernote.widgets import SummernoteWidget
+from bootstrap3_datetime.widgets import DateTimePicker
 
 
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
-    
-class TravellerRegistrationForm(forms.Form):
-    first_name = forms.CharField(label=u"First Name", max_length=50, widget=forms.TextInput(attrs={'name': 'first_name'}))
-    last_name = forms.CharField(label=u"Last Name", max_length=50, widget=forms.TextInput(attrs={'name': 'last_name'}))
-    genre = forms.ChoiceField(choices=[('MA', 'MALE'), ('FE', 'FEMALE')], widget=forms.Select(attrs={'name': 'genre'}))
-    email = forms.EmailField(widget=forms.TextInput(attrs={'name': 'email'}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'name': 'password1'}), label="Password")
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'name': 'password2'}), label="Repeat password")
-    
-    def clean(self):
-        password1 = self.cleaned_data.get('password1')
-        password2 = self.cleaned_data.get('password2')
-    
-        if password1 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
-    
-        return self.cleaned_data
 
-class SearchForm(forms.Form):
-    search = forms.CharField()
+
+class TravellerRegistrationForm(forms.Form):
+    first_name = forms.CharField()
+    email = forms.EmailField()
+
+
+# author: Juane
+class TripUpdateStateForm(forms.Form):
+    id = forms.IntegerField()
+    state = forms.ChoiceField(choices=(
+        ('ap', 'APPROVED'),
+        ('re', 'REJECTED'),
+        ('pe', 'PENDING')
+    ))
+
+
+# david
+class TripEditForm(forms.Form):
+    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    # startDate = forms.DateTimeField(label='Start Date', widget=forms.DateInput(attrs={'class':'form-control'})) #para usar el otro que yo te mande le pones attrs={'class':'datepicker'} y ya podrias usarlo sin instalar por pip
+    # endDate = forms.DateTimeField(label='End Date', widget=forms.DateInput(attrs={'class': 'form-control'}))
+    # prueba2 = forms.DateField(
+    # widget=DateTimePicker(options={"format": "YYYY-MM-DD",
+    # "pickTime": False}))
+    startDate = forms.DateField(label="Start date",
+                                widget=DateTimePicker(options={"format": "YYYY-MM-DD",
+                                                               "pickTime": False}))
+
+    endDate = forms.DateField(label="End date",
+                              widget=DateTimePicker(options={"format": "YYYY-MM-DD",
+                                                             "pickTime": False}))
+
+    publishedDescription = forms.CharField(label='Published Description', widget=SummernoteWidget())

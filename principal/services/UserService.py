@@ -1,5 +1,4 @@
 # -*- coding: latin-1 -*-
-
 """Aquí se colocan los servicios relacionados con el Model1"""
 from django.contrib.auth.models import User
 

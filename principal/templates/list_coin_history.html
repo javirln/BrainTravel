@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} History coin {% endblock %}
+{% block content %}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Concept</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for coin_history in list_coin_history %}
+            <tr>
+                <td>{{ coin_history.amount }}</td>
+                <td>{{ coin_history.date }}</td>
+                <td>{{ coin_history.concept }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

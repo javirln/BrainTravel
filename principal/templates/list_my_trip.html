@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} My trips {% endblock %}
+{% block content %}
+
+   {% for trip in trips %}
+  <div class="well animated fadeInUp">
+      <div class="media">
+      	<a class="pull-left" href="#">
+    		<img class="img-rounded" src="/static/user_folder/{{trip.traveller.photo}}">
+  		</a>
+  		<div class="media-body">
+    		<h3 class="media-heading">{{trip.name}}</h3>
+          <p class="text-right">By {{trip.traveller}}</p>
+          <p>{{trip.publishedDescription|safe}}</p>
+          <ul class="list-inline list-unstyled">
+  			    <li><span><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
+            <li>|</li>
+            <span> {{trip.comment_set.all.count}} <i class="fa fa-comments"></i></span>
+            <li>|</li>
+            <span><i class="fa fa-thumbs-o-up"></i> {{trip.likes}}</span>
+            <li>|</li>
+            <span><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</span>
+            <li>|</li>
+            <a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a>
+			</ul>
+       </div>
+    </div>
+  </div>
+  <br>
+ {% endfor %}
+
+
+{% endblock %}
