@@ -14,6 +14,7 @@ from principal.forms import TripUpdateStateForm
 from principal.utils import BrainTravelUtils
 
 
+
 # author: Javi
 def search_trip(request):
     if request.method == 'GET':
@@ -31,22 +32,20 @@ def search_trip(request):
 def public_trip_details(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     comments = Comment.objects.filter(trip=trip_id)
-    is_edit = False
-    if trip.traveller.id == request.user.id and trip.state == 'ap':
+    # is_edit = False
+    if trip.traveller.id == request.user.id or trip.state == 'ap':
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
         if len(judges) == 0:
             judge = None
         else:
             judge = list(judges)[0]
-        is_edit = True
+        # is_edit = True
         return render_to_response('public_trip_details.html',
-                                  {'trip': trip, 'comments': comments, 'traveller_edit': is_edit, 'judge': judge},
+                                  {'trip': trip, 'comments': comments, 'traveller_edit': True, 'judge': judge},
                                   context_instance=RequestContext(request))
     else:
         BrainTravelUtils.save_error(request)
-        return render_to_response('search.html',
-            {},
-                                  context_instance=RequestContext(request))
+        return render_to_response('search.html', {}, context_instance=RequestContext(request))
 
 
 # author: Juane
@@ -89,9 +88,39 @@ def update_state(request):
 def list_all_by_traveller(request):
     if request.user.is_authenticated():
         trips = TripService.list_my_trip(request.user.id)
-        return render_to_response('list_my_trip.html', {'trips': trips}, content_type=RequestContext(request))
-    else:
-        return render_to_response('index.html')
+        if trips is not False:
+            paginator = Paginator(trips, 1)
+            page = request.GET.get('page')
+            try:
+                trips = paginator.page(page)
+            except PageNotAnInteger:
+                trips = paginator.page(1)
+            except EmptyPage:
+                trips = paginator.page(paginator.num_pages)
+            return render_to_response('list_my_trip.html', {'trips': trips}, content_type=RequestContext(request))
+        else:
+            msg_errors = ["You must login!"]
+            return render_to_response('signin.html', {'msg_errors': msg_errors})
+
+
+# david
+@login_required()
+def list_all_by_traveller_draft(request):
+    if request.user.is_authenticated():
+        trips = TripService.list_my_trip_draft(request.user.id)
+        if trips is not False:
+            paginator = Paginator(trips, 1)
+            page = request.GET.get('page')
+            try:
+                trips = paginator.page(page)
+            except PageNotAnInteger:
+                trips = paginator.page(1)
+            except EmptyPage:
+                trips = paginator.page(paginator.num_pages)
+            return render_to_response('list_my_trip.html', {'trips': trips}, content_type=RequestContext(request))
+        else:
+            msg_errors = ["You must login!"]
+            return render_to_response('signin.html', {'msg_errors': msg_errors})
 
 
 # david
@@ -102,8 +131,8 @@ def trip_create(request):
         form = TripEditForm(request.POST)
         if form.is_valid():
             trip_new = TripService.create(form, user_id)
-            trip_new.save()
-            return HttpResponseRedirect('/list_my_trips/')
+            TripService.save_secure(trip_new)
+            return HttpResponseRedirect('/Trip/list')
     else:
         data = {'startDate': 'yyyy/mm/dd', 'endDate': 'yyyy/mm/dd'}
         form = TripEditForm(initial=data)
@@ -127,12 +156,15 @@ def trip_edit(request, trip_id):
             trip.startDate = form.cleaned_data['startDate']
             trip.endDate = form.cleaned_data['endDate']
             trip.country = form.cleaned_data['country']
-            trip.state = "pe"
+            if request.POST['save'] == "Save draft":
+                trip.state = "df"
+            else:
+                trip.state = "pe"
             # btutils.save_info(request, "State modified")
             # TODO no funciona el mostrar el aviso xk no se le pasa el context
             # messages.add_message(request, messages.INFO, 'Hello world.')
             TripService.save_secure(trip)
-            return HttpResponseRedirect('/list_my_trips/')
+            return HttpResponseRedirect('/Trip/list')
     else:
         data = {'city': trip.city, 'country': trip.country, 'startDate': trip.startDate, 'endDate': trip.endDate}
         form = TripEditForm(initial=data)

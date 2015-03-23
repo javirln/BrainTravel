@@ -1,6 +1,9 @@
 # -*- coding: latin-1 -*-
 
+from django.db.models import Q
+
 from principal.models import Trip, Traveller
+
 
 # author: Javi
 def searchTrip(title):
@@ -38,7 +41,13 @@ def save(trip):
 
 # david
 def list_my_trip(id_traveller):
-    trips = Trip.objects.all().filter(traveller=id_traveller)
+    trips = Trip.objects.all().filter(traveller=id_traveller).filter(~Q(state='df'))
+    return trips
+
+
+# david
+def list_my_trip_draft(id_traveller):
+    trips = Trip.objects.all().filter(traveller=id_traveller, state='df')
     return trips
 
 
@@ -61,28 +70,28 @@ def create(form, user_id):
 # author: Juane
 def increase_like(trip):
     likes = trip.likes
-    trip.likes = likes+1
+    trip.likes = likes + 1
     return trip
 
 
 # author: Juane
 def increase_dislike(trip):
     dislikes = trip.dislikes
-    trip.dislikes = dislikes+1
+    trip.dislikes = dislikes + 1
     return trip
 
 
 # author: Juane
 def decrement_like(trip):
     likes = trip.likes
-    trip.likes = likes-1
+    trip.likes = likes - 1
     return
 
 
 # author: Juane
 def decrement_dislike(trip):
     dislikes = trip.dislikes
-    trip.dislikes = dislikes-1
+    trip.dislikes = dislikes - 1
     return trip
 
 

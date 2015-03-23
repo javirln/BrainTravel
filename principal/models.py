@@ -36,7 +36,7 @@ class Category(models.Model):
         return self.name
 
 
-    # Conceptually it's abstract, but Django not implement in BD abstract classes
+        # Conceptually it's abstract, but Django not implement in BD abstract classes
 
 
 class Scorable(models.Model):
@@ -83,7 +83,7 @@ class Feedback(models.Model):
 
 
 # class City(models.Model):
-#     name = models.CharField(max_length=50)
+# name = models.CharField(max_length=50)
 #     country = models.CharField(max_length=50)
 #     description = models.TextField()
 # 
@@ -98,7 +98,8 @@ class Trip(Scorable):
     State = (
         ('ap', 'APPROVED'),
         ('re', 'REJECTED'),
-        ('pe', 'PENDING')
+        ('pe', 'PENDING'),
+        ('df', 'DRAFT')
     )
     publishedDescription = models.TextField(null=True)
     startDate = models.DateField(null=True)
@@ -116,13 +117,14 @@ class Trip(Scorable):
     #city = models.ForeignKey(City)
     city = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
-    
+
     class Meta:
         db_table = 'trip'
 
     def __unicode__(self):
         return 'Ini: ' + self.startDate + 'End: ' + self.endDate
-    
+
+
 class Traveller(User):
     Genre = (
         ('MA', 'MALE'),
@@ -179,7 +181,7 @@ class Likes(models.Model):
 class Day(models.Model):
     numberDay = models.IntegerField(validators=[MinValueValidator(1)])
     date = models.DateField(null=True)
-    
+
     # ------------- Relationships --------------#
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
     venues = models.ManyToManyField(Venue, through='VenueDay')
