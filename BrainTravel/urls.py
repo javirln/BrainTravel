@@ -16,12 +16,14 @@ urlpatterns = patterns('',
     url(r'^public_trip_details/(?P<trip_id>[0-9]+)$', 'principal.views.TripViews.public_trip_details'),
     url(r'^administrator/trip/list/$', 'principal.views.TripViews.list_all_by_state'),
     url(r'^administrator/trip/update/$', 'principal.views.TripViews.update_state'),
-    url(r'^list_history_coin/$', 'principal.views.Coinviews.list_coin_traveller'),
-    url(r'^list_my_trips/$', 'principal.views.TripViews.list_all_by_traveller'),
-    url(r'^trip_edit/(?P<trip_id>[0-9]+)$$', 'principal.views.TripViews.trip_edit'),
+    url(r'^Coin/list/$', 'principal.views.Coinviews.list_coin_traveller'),
+    url(r'^Trip/list/$', 'principal.views.TripViews.list_all_by_traveller'),
+    url(r'^Trip/edit/(?P<trip_id>[0-9]+)$$', 'principal.views.TripViews.trip_edit'),
     url(r'^summernote/', include('django_summernote.urls')),
-    url(r'^trip_create/$', 'principal.views.TripViews.trip_create'),
+    url(r'^Trip/create/$', 'principal.views.TripViews.trip_create'),
     url(r'^judge/(?P<trip_id>[0-9]+)/(?P<like>[0-1])', 'principal.views.JudgeViews.judge'),
+    url(r'^Trip/draft/$', 'principal.views.TripViews.list_all_by_traveller_draft'),
+
 
     url(r'^auth_request/$', 'principal.views.FoursquareViews.foursquare_request'),
     # lo que hacemos es coger toda la url y la vista obtener los parametros concretos
