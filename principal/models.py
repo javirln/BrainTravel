@@ -121,9 +121,8 @@ class Trip(Scorable):
         db_table = 'trip'
 
     def __unicode__(self):
-        return str(self.city) + ', ' + str(self.country)
-
-
+        return 'Ini: ' + self.startDate + 'End: ' + self.endDate
+    
 class Traveller(User):
     Genre = (
         ('MA', 'MALE'),
