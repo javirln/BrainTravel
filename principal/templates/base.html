@@ -38,6 +38,9 @@
             <div class="collapse navbar-collapse" id="menu-navbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/search"><span class="fa fa-search"></span></a></li>
+                    <li style="text-decoration: None">
+                        <a id="sign_ind_nav" href="/auth_request">Login FS</a>
+                    </li>
                     {% if user.is_anonymous %}
                         <li style="background-color: #26A65B; color: #FFFFFF;">
                             <a id="sign_ind_nav" href="/signin">Sign In</a>

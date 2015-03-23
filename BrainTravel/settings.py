@@ -92,15 +92,15 @@ SUMMERNOTE_CONFIG = {
     'height': '480',
 
     # Customize toolbar buttons
-    'toolbar': [
-        ['style', ['style']],
-        ['style', ['bold', 'italic', 'underline', 'clear', 'remove Font Style']],
-        ['fontname', ['fontname']],
-        ['fontsize', ['fontsize']],
-        ['para', ['ul', 'ol', 'height']],
-        ['insert', ['link']],
-        ['color', ['color']],
-    ],
+    # 'toolbar': [
+    #     ['style', ['style']],
+    #     ['style', ['bold', 'italic', 'underline', 'clear', 'remove Font Style']],
+    #     ['fontname', ['fontname']],
+    #     ['fontsize', ['fontsize']],
+    #     ['para', ['ul', 'ol', 'height']],
+    #     ['insert', ['link']],
+    #     ['color', ['color']],
+    # ],
 
     # Use proper language setting automatically (default)
     # 'lang': None

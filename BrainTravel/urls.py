@@ -22,4 +22,8 @@ urlpatterns = patterns('',
     url(r'^summernote/', include('django_summernote.urls')),
     url(r'^trip_create/$', 'principal.views.TripViews.trip_create'),
     url(r'^judge/(?P<trip_id>[0-9]+)/(?P<like>[0-1])', 'principal.views.JudgeViews.judge'),
+
+    url(r'^auth_request/$', 'principal.views.FoursquareViews.foursquare_request'),
+    # lo que hacemos es coger toda la url y la vista obtener los parametros concretos
+    url(r'^auth_fs$', 'principal.views.FoursquareViews.foursquare_code'),
 )
