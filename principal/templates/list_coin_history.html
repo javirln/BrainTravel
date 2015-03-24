@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block title %} History coin {% endblock %}
 {% block content %}
+    {% load i18n %}
+
+    <p>{% trans "List of my coin history" %}</p>
+
+    {% if not list_coin_history %}
+        <p>{% trans "We couldn't find anything..." %}</p>
+    {% endif %}
 
     <table class="table table-striped">
         <thead>
@@ -13,9 +20,9 @@
         <tbody>
         {% for coin_history in list_coin_history %}
             <tr>
-                <td>{{ coin_history.amount }}</td>
-                <td>{{ coin_history.date }}</td>
-                <td>{{ coin_history.concept }}</td>
+                <td>{{ coin_history.amount|safe }}</td>
+                <td>{{ coin_history.date|safe }}</td>
+                <td>{{ coin_history.concept|safe }}</td>
             </tr>
         {% endfor %}
         </tbody>

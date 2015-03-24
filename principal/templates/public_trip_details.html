@@ -23,9 +23,8 @@
                     <div class="media-body">
                         <blockquote>{{trip.publishedDescription|safe}}</blockquote>
                         {% if traveller_edit %}
-                            <a href="/trip_edit/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> Edit</a>
+                            <a href="/Trip/edit/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> Edit</a>
                         {% endif %}
-
                     </div>
                 </div>
         </div>
@@ -38,12 +37,15 @@
                     <i class="entypo-flight" style="text-decoration: None"></i> +
                 </div>
                 <div class="timeline-label">
-                    <form class="form">
+                    <form class="form" method="post" action="comment/" id="form-comment-id">
+                        {% csrf_token %}
                         <div class="form-group">
-                            <textarea class="form-control input-block-level" rows="3" style="resize: none;"></textarea>
+                            <textarea id="text-comment" class="form-control input-block-level" name="text-comment" rows="3" style="resize: none;"></textarea>
                         </div>
                         <div class="form-group text-right">
-                            <button type="submit" class="btn btn-success">Send</button>
+                            <button id="submit-comment" type="submit" class="btn btn-success">Send</button>
+                            <input type="hidden" name="trip-id" value="{{trip.id}}"/>
+                            <input type="hidden" name="last-path" value="{{ request.path }}"/>
                         </div>
                     </form>
                 </div>
