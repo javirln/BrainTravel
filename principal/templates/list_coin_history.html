@@ -3,25 +3,25 @@
 {% block content %}
     {% load i18n %}
 
-    <p>{% trans "List of my coin history" %}</p>
+    <h2>{% trans "List of my coin history" %}</h2>
 
     {% if not list_coin_history %}
-        <p>{% trans "We couldn't find anything..." %}</p>
+        <h4>{% trans "We couldn't find anything..." %}</h4>
     {% endif %}
 
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Amount</th>
-            <th>Date</th>
-            <th>Concept</th>
+            <th>{% trans "Amount" %}</th>
+            <th>{% trans "Date" %}</th>
+            <th>{% trans "Concept" %}</th>
         </tr>
         </thead>
         <tbody>
         {% for coin_history in list_coin_history %}
             <tr>
                 <td>{{ coin_history.amount|safe }}</td>
-                <td>{{ coin_history.date|safe }}</td>
+                <td>{{ coin_history.date|date:"D d M Y"|safe }}</td>
                 <td>{{ coin_history.concept|safe }}</td>
             </tr>
         {% endfor %}
