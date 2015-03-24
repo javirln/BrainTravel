@@ -2,7 +2,7 @@
 
 from django.db.models import Q
 
-from principal.models import Trip, Traveller
+from principal.models import Trip, Traveller, Comment
 
 
 # author: Javi
@@ -101,6 +101,20 @@ def save_secure(trip):
         pass
     else:
         trip.save()
+
+
+# author: Javi Rodriguez
+def submit_comment(user_id, comment_text, trip_id):
+    traveller = Traveller.objects.get(id=user_id)
+    trip = Trip.objects.get(id=trip_id)
+    if trip.state == 'ap':
+        comment = Comment(
+            description=comment_text,
+            trip=trip,
+            traveller=traveller,
+        )
+        comment.save()
+        
 
 # david
 # comprobar algo?

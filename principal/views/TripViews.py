@@ -1,10 +1,11 @@
 # -*- coding: latin-1 -*-
 from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import json
 
 from principal.models import Judges
 from principal.forms import TripEditForm
@@ -187,3 +188,17 @@ def trip_edit(request, trip_id):
 
     return render_to_response('trip_edit.html', {"form": form, "trip": trip, "create": False},
                               context_instance=RequestContext(request))
+
+# author: Javi Rodriguez
+@login_required()
+def comment_trip(request):
+    try:
+        comment = request.POST['text-comment']
+        user_id = request.user.id
+        trip_id = request.POST['trip-id']
+        url = request.path.split("/")
+        TripService.submit_comment(user_id, comment, trip_id)
+        return HttpResponseRedirect("/"+url[1]+"/"+trip_id)
+    except:
+        msg_errors = ["Something went wrong..."]
+        return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
