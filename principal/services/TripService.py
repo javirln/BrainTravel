@@ -148,5 +148,6 @@ def send_assessment(user_id, rate_value, trip_id, rate_text):
         )
         comment.save()
         scorable_instance.rating = scorable_math[0].rating_sum + rate_value / scorable_math[0].rating_number + 1
+        scorable_instance.save()
         return True
     return False
