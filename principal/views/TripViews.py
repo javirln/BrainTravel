@@ -116,7 +116,6 @@ def list_all_by_traveller(request, optional=0):
 @login_required()
 def list_all_by_traveller_draft(request):
     trips = TripService.list_my_trip_draft(request.user.id)
-    ss = len(trips)
     if trips is not False:
         paginator = Paginator(trips, 5)
         page = request.GET.get('page')
