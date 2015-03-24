@@ -200,7 +200,33 @@ def comment_trip(request):
         user_id = request.user.id
         trip_id = request.POST['trip-id']
         url = request.path.split("/")
-        TripService.submit_comment(user_id, comment, trip_id)
+        res = TripService.submit_comment(user_id, comment, trip_id)
+        if res['state'] == False:
+            BrainTravelUtils.save_warning(request, 'This trip is pending of the approval by an administrator.')
+            return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
+        elif res['ownership'] == False:
+            BrainTravelUtils.save_warning(request, 'You cannot comment your own trip!')
+        elif res['state'] == True and res['ownership'] == True:
+            BrainTravelUtils.save_success(request, 'Your comment has been saved!')
+        return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
+    except:
+        msg_errors = ["Something went wrong..."]
+        return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
+
+# author: Javi Rodriguez
+@login_required()
+def send_assessment(request):
+    try:
+        user_id = request.user.id
+        rate_text = request.POST['text-rate-description']
+        trip_id = request.POST['trip-id']
+        rate_value = request.POST['rate-value']
+        url = request.path.split("/")
+        res = TripService.send_assessment(user_id, rate_value, trip_id, rate_text)
+        if res == False:
+            BrainTravelUtils.save_warning(request, 'You already voted this trip!')
+        else:
+            BrainTravelUtils.save_success(request, 'Your vote has been saved!')
         return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
     except:
         msg_errors = ["Something went wrong..."]

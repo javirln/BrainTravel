@@ -1,8 +1,8 @@
 # -*- coding: latin-1 -*-
 
-from django.db.models import Q
+from django.db.models import Q, Count, Sum
 
-from principal.models import Trip, Traveller, Comment
+from principal.models import Trip, Traveller, Comment, Assessment, Scorable
 
 
 # author: Javi
@@ -107,16 +107,46 @@ def save_secure(trip):
 def submit_comment(user_id, comment_text, trip_id):
     traveller = Traveller.objects.get(id=user_id)
     trip = Trip.objects.get(id=trip_id)
+    results = {'state': True, 'ownership': True}
     if trip.state == 'ap':
-        comment = Comment(
-            description=comment_text,
-            trip=trip,
-            traveller=traveller,
-        )
-        comment.save()
+        if traveller.id != trip.traveller.id:
+            comment = Comment(
+                description=comment_text,
+                trip=trip,
+                traveller=traveller,
+            )
+            comment.save()
+            return results
+        else:
+            results['ownership'] = False
+            return results
+    else:
+        results['state'] = False
+        return results
 
 
 # david
 def delete(request, trip):
     assert request.user.id == trip.traveller.id
     trip.delete()
+
+
+# author: Javi Rodriguez
+def send_assessment(user_id, rate_value, trip_id, rate_text):
+    user = Traveller.objects.get(id=user_id)
+    score_trip = Scorable.objects.get(id=trip_id)
+    occurrences_same_traveller = Assessment.objects.all().filter(traveller=user_id, scorable_id=trip_id).count()
+    scorable_instance = Scorable.objects.get(id=trip_id)
+    scorable_math = Scorable.objects.filter(id=trip_id).annotate(rating_number=Count('rating'),
+                                                                 rating_sum=Sum('rating'))
+    if 0 == occurrences_same_traveller:
+        comment = Assessment(
+            score=rate_value,
+            comment=rate_text,
+            traveller=user,
+            scorable=score_trip
+        )
+        comment.save()
+        scorable_instance.rating = scorable_math[0].rating_sum + rate_value / scorable_math[0].rating_number + 1
+        return True
+    return False

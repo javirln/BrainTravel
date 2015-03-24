@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^judge/(?P<trip_id>[0-9]+)/(?P<like>[0-1])', 'principal.views.JudgeViews.judge'),
     url(r'^Trip/draft/$', 'principal.views.TripViews.list_all_by_traveller_draft'),
     url(r'^public_trip_details/comment/', 'principal.views.TripViews.comment_trip'),
+    url(r'^public_trip_details/rate/', 'principal.views.TripViews.send_assessment'),
 
     url(r'^auth_request/$', 'principal.views.FoursquareViews.foursquare_request'),
     # lo que hacemos es coger toda la url y la vista obtener los parametros concretos
