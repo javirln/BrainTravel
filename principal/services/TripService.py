@@ -2,7 +2,7 @@
 
 from django.db.models import Q
 
-from principal.models import Trip, Traveller, Comment
+from principal.models import Trip, Traveller, Comment, Assessment, Scorable
 
 
 # author: Javi
@@ -107,16 +107,40 @@ def save_secure(trip):
 def submit_comment(user_id, comment_text, trip_id):
     traveller = Traveller.objects.get(id=user_id)
     trip = Trip.objects.get(id=trip_id)
+    results = {'state': True, 'ownership': True }
     if trip.state == 'ap':
-        comment = Comment(
-            description=comment_text,
-            trip=trip,
-            traveller=traveller,
-        )
-        comment.save()
-
-
+        if traveller.id != trip.traveller.id:
+            comment = Comment(
+                description=comment_text,
+                trip=trip,
+                traveller=traveller,
+            )
+            comment.save()
+            return results
+        else:
+            results['ownership'] = False
+            return results
+    else:
+        results['state'] = False
+        return results
 # david
 def delete(request, trip):
     assert request.user.id == trip.traveller.id
     trip.delete()
+
+
+# author: Javi Rodriguez
+def send_assessment(user_id, rate_value, trip_id, rate_text):
+    user = Traveller.objects.get(id=user_id)
+    score_trip = Scorable.objects.get(id=trip_id)
+    ocurrences = Assessment.objects.all().filter(traveller=user_id, scorable_id=trip_id).count()
+    if 0 == ocurrences:
+        comment = Assessment(
+            score=rate_value,
+            comment=rate_text,
+            traveller=user,
+            scorable=score_trip
+        )
+        comment.save()
+        return True
+    return False

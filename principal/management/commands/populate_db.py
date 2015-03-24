@@ -722,3 +722,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self._migrate()
+
+        if res['state'] == False:
+            BrainTravelUtils.save_warning(request, 'This trip is pending of the approval by an administrator.')
+            return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
+        elif res['ownership'] == False:
+            BrainTravelUtils.save_warning(request, 'You cannot comment your own trip!')
