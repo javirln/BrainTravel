@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'principal',
     'django_summernote',
     'bootstrap3_datetime',
+    'paypal.standard.ipn',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -137,4 +138,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'notificaciones.braintravel@gmail.com'
 EMAIL_HOST_PASSWORD = 'braintravelredmine'
+
+#PAYPAL CONFIGURATION
+PAYPAL_RECEIVER_EMAIL = "notificaciones.braintravel-facilitator@gmail.com"
+PAYPAL_TEST = True
+
 
