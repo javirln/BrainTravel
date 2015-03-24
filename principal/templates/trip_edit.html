@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 {% block extrahead %}
     {{ form.media }}
+
+    <script>
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this Trip!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        }, function () {
+            swal("Deleted!", "Your Trip file has been deleted.", "success");
+        });
+    </script>
+
 {% endblock %}
 {% load i18n %}
 
@@ -14,9 +29,9 @@
             {% endif %}
 
             {% if create %}
-                <form action="/Trip/create/" method="post">{% csrf_token %}
+                <form id="create" action="/Trip/create/" method="post">{% csrf_token %}
             {% else %}
-                <form action="/Trip/edit/{{ trip.id }}" method="post" role="form">
+                <form id="update" action="/Trip/edit/{{ trip.id }}" method="post" role="form">
             {% endif %}
 
 
@@ -41,12 +56,11 @@
             <div class="form-group">
                 <input type="submit" name="save" value="Publish Trip" class="btn btn-primary"/>
                 <input type="submit" name="save" value="Save draft" class="btn btn-primary"/>
-                {% if not create %}
+                {% if not create and can_delete %}
                     <input type="submit" name="delete" value="Delete Trip" class="btn btn-primary"/>
                 {% endif %}
             </div>
             </form>
         </div>
     </div>
-
 {% endblock %}

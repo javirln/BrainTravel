@@ -1,11 +1,10 @@
 # -*- coding: latin-1 -*-
 from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import json
 
 from principal.models import Judges
 from principal.forms import TripEditForm
@@ -13,7 +12,6 @@ from principal.models import Trip, Comment
 from principal.services import TripService
 from principal.forms import TripUpdateStateForm
 from principal.utils import BrainTravelUtils
-
 
 
 # author: Javi
@@ -36,14 +34,17 @@ def public_trip_details(request, trip_id):
     # is_edit = False
     if trip.traveller.id == request.user.id or trip.state == 'ap':
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
+        can_delete = False
+        if trip.traveller.id == request.user.id:
+            can_delete = True
         if len(judges) == 0:
             judge = None
         else:
             judge = list(judges)[0]
         # is_edit = True
         return render_to_response('public_trip_details.html',
-                                  {'trip': trip, 'comments': comments, 'traveller_edit': True, 'judge': judge},
-                                  context_instance=RequestContext(request))
+                                  {'trip': trip, 'comments': comments, 'traveller_edit': True, 'can_delete': can_delete,
+                                   'judge': judge}, context_instance=RequestContext(request))
     else:
         BrainTravelUtils.save_error(request)
         return render_to_response('search.html', {}, context_instance=RequestContext(request))
@@ -138,16 +139,16 @@ def trip_create(request):
             if "save" in request.POST and request.POST['save'] == "Save draft":
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
-                return redirect('/Trip/list/1')
+                return redirect('/Trip/MyList/1')
             elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)
-                return redirect('/Trip/list/2')
+                return redirect('/Trip/MyList/2')
 
-            return redirect('/Trip/list/0')
+            return redirect('/Trip/MyList/0')
 
     else:
-        data = {'startDate': 'yyyy/mm/dd', 'endDate': 'yyyy/mm/dd'}
+        data = {}
         form = TripEditForm(initial=data)
 
     return render_to_response('trip_edit.html', {"form": form, "create": True},
@@ -172,22 +173,24 @@ def trip_edit(request, trip_id):
             if "save" in request.POST and request.POST['save'] == "Save draft":
                 trip.state = "df"
                 TripService.save_secure(trip)
-                return redirect('/Trip/list/1')
+                return redirect('/Trip/MyList/1')
             elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip.state = "pe"
                 TripService.save_secure(trip)
-                return redirect('/Trip/list/2')
+                return redirect('/Trip/MyList/2')
             elif request.POST['delete'] == "Delete Trip":
-                TripService.delete(trip)
-                return redirect('/Trip/list/3')
+                TripService.delete(request, trip)
+                return redirect('/Trip/MyList/3')
 
-            return redirect('/Trip/list/')
+            return redirect('/Trip/MyList/')
     else:
-        data = {'city': trip.city, 'country': trip.country, 'startDate': trip.startDate, 'endDate': trip.endDate}
+        data = {'city': trip.city, 'publishedDescription': trip.publishedDescription, 'country': trip.country,
+                'startDate': trip.startDate, 'endDate': trip.endDate}
         form = TripEditForm(initial=data)
 
     return render_to_response('trip_edit.html', {"form": form, "trip": trip, "create": False},
                               context_instance=RequestContext(request))
+
 
 # author: Javi Rodriguez
 @login_required()
@@ -198,7 +201,7 @@ def comment_trip(request):
         trip_id = request.POST['trip-id']
         url = request.path.split("/")
         TripService.submit_comment(user_id, comment, trip_id)
-        return HttpResponseRedirect("/"+url[1]+"/"+trip_id)
+        return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
     except:
         msg_errors = ["Something went wrong..."]
         return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})

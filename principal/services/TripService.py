@@ -114,11 +114,9 @@ def submit_comment(user_id, comment_text, trip_id):
             traveller=traveller,
         )
         comment.save()
-        
+
 
 # david
-# comprobar algo?
-# se borra en cascada
-# TODO
-def delete(trip):
+def delete(request, trip):
+    assert request.user.id == trip.traveller.id
     trip.delete()
