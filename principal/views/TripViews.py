@@ -6,7 +6,7 @@ from django.template.context import RequestContext
 from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from principal.models import Judges
+from principal.models import Judges, Administrator
 from principal.forms import TripEditForm
 from principal.models import Trip, Comment
 from principal.services import TripService
@@ -32,7 +32,7 @@ def public_trip_details(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     comments = Comment.objects.filter(trip=trip_id)
     # is_edit = False
-    if trip.traveller.id == request.user.id or trip.state == 'ap':
+    if trip.traveller.id == request.user.id or trip.state == 'ap' or isinstance(request.user, Administrator): #Si es admin puede entrar sin importar el estado.
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
         can_delete = False
         if trip.traveller.id == request.user.id:
@@ -78,6 +78,7 @@ def update_state(request):
             trip = TripService.update_state(request.user, trip_form)
             if trip is not False:
                 TripService.save(trip)
+                BrainTravelUtils.save_success(request, 'Trip successfully updated')
                 return redirect(list_all_by_state)
             else:
                 msg_errors = ["You must login!"]

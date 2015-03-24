@@ -29,66 +29,70 @@
                 </div>
         </div>
     </div>
-
+    
     <div class="timeline-centered">
-        <article class="timeline-entry entry">
-            <div class="timeline-entry-inner">
-                <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
-                    <i class="entypo-flight" style="text-decoration: None"></i> +
-                </div>
-                <div class="timeline-label">
-                    <form class="form" method="post" action="comment/" id="form-comment-id">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <textarea id="text-comment" class="form-control input-block-level" name="text-comment" rows="3" style="resize: none;"></textarea>
-                        </div>
-                        <div class="form-group text-right">
-                            <button id="submit-comment" type="submit" class="btn btn-success">Send</button>
-                            <input type="hidden" name="trip-id" value="{{trip.id}}"/>
-                            <input type="hidden" name="last-path" value="{{ request.path }}"/>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </article>
-        {% for comment in comments %}
-            {% if comments.last %}
-                <article class="timeline-entry begin">
-                    <div class="timeline-entry-inner">
-                        <div class="timeline-icon">
-                            <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
-                        </div>
-                        <div class="timeline-label">
-                            <h2><a href="#">{{comment.traveller}} says:</a></h2>
-                            <br>
-                            <i class="fa fa-quote-left fa-1x pull-left"></i>
-                            {{comment.description|safe}}
-                        </div>
-                    </div>
-                </article>
-            {% else %}
-            <article class="timeline-entry">
-                <div class="timeline-entry-inner">
-                    <div class="timeline-icon bg-success">
-                        <i class="entypo-suitcase"></i>
-                        <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
-                    </div>
-                    <div class="timeline-label">
-                        <h2><a href="#">{{comment.traveller}} says:</a></h2>
-                        <br>
-                        <i class="fa fa-quote-left fa-1x pull-left"></i>
-                        {{comment.description|safe}}
-                    </div>
-                </div>
-            </article>
-            {% endif %}
-        {% endfor %}
+	    {% if not perms.administrator and not user.is_anonymous %}
+	        <article class="timeline-entry entry">
+	            <div class="timeline-entry-inner">
+	                <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+	                    <i class="entypo-flight" style="text-decoration: None"></i> +
+	                </div>
+	                <div class="timeline-label">
+	                    <form class="form" method="post" action="comment/" id="form-comment-id">
+	                        {% csrf_token %}
+	                        <div class="form-group">
+	                            <textarea id="text-comment" class="form-control input-block-level" name="text-comment" rows="3" style="resize: none;"></textarea>
+	                        </div>
+	                        <div class="form-group text-right">
+	                            <button id="submit-comment" type="submit" class="btn btn-success">Send</button>
+	                            <input type="hidden" name="trip-id" value="{{trip.id}}"/>
+	                            <input type="hidden" name="last-path" value="{{ request.path }}"/>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	        </article>
+	        {% endif %}
+	        
+	        {% for comment in comments %}
+	            {% if comments.last %}
+	                <article class="timeline-entry begin">
+	                    <div class="timeline-entry-inner">
+	                        <div class="timeline-icon">
+	                            <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
+	                        </div>
+	                        <div class="timeline-label">
+	                            <h2><a href="#">{{comment.traveller}} says:</a></h2>
+	                            <br>
+	                            <i class="fa fa-quote-left fa-1x pull-left"></i>
+	                            {{comment.description|safe}}
+	                        </div>
+	                    </div>
+	                </article>
+	            {% else %}
+		            <article class="timeline-entry">
+		                <div class="timeline-entry-inner">
+		                    <div class="timeline-icon bg-success">
+		                        <i class="entypo-suitcase"></i>
+		                        <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
+		                    </div>
+		                    <div class="timeline-label">
+		                        <h2><a href="#">{{comment.traveller}} says:</a></h2>
+		                        <br>
+		                        <i class="fa fa-quote-left fa-1x pull-left"></i>
+		                        {{comment.description|safe}}
+		                    </div>
+		                </div>
+		            </article>
+	            {% endif %}
+	        {% endfor %}
+	    
         </div>
     </div>
     <div class="col-lg-3">
         <div class="row">
             <div class="well">
-                <i class="fa fa-globe fa-2x"> Seville, Spain</i>
+                <i class="fa fa-globe fa-2x"> {{ trip.city }}, {{ trip.contry }}</i>
                 <br>
                 <br>
                 <i class="fa fa-calendar fa-2x"> {{ trip.startDate }}</i>
@@ -100,14 +104,14 @@
                 <i class="fa fa-star fa-2x text-left"> <small>{% firstof trip.rating '-' %}</small> / <strong>10</strong></i>
                 <br>
                 <br>
-                {% if user.is_anonymous %}
+                {% if user.is_anonymous or perm.administrator %}
                     <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>
                     <br>
                     <br>
                     <i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
                 {% endif %}
 
-                {% if user.is_authenticated %}
+                {% if perms.traveller %}
                     {% if judge == None %}
                         <a href="/judge/{{trip.scorable_ptr_id}}/1">
                             <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>
@@ -137,44 +141,26 @@
                         </a>
                     {% endif %}
                 {% endif %}
-
-                </div>
-            <div class="well">
-                <form id="stateSelectForm" class="form-horizontal" action="/administrator/trip/update/" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="id" value="{{trip.scorable_ptr_id}}"/>
-                    <div class="col-xs-5 selectContainer">
-                        <select name="state" id="state" class="form-control">
-                            {% if trip.state == "ap" %}
-                                <option value="ap" selected="selected">APPROVED</option>
-                            {% else %}
-                                <option value="ap" >APPROVED</option>
-                            {% endif %}
-
-                             {% if trip.state == "re" %}
-                                <option value="re" selected="selected">REJECTED</option>
-                            {% else %}
-                                <option value="re" >REJECTED</option>
-                            {% endif %}
-
-                            {% if trip.state == "pe" %}
-                                <option value="pe" selected="selected">PENDING</option>
-                            {% else %}
-                                <option value="pe" >PENDING</option>
-                            {% endif %}
-                        </select>
-                    </div>
-                    <input type="submit" name="save" value="save" />
-                </form>
             </div>
+                
+            {% if perms.administrator %}
+                <form id="stateSelectForm" action="/administrator/trip/update/" method="post" class="well">
+                    {% csrf_token %}
+		            <h3>Trip moderation</h3>
+                    <p>Select an option and click save to change the trip status.</p>
+                    
+                    <input type="hidden" name="id" value="{{trip.scorable_ptr_id}}"/>
+                        <select name="state" id="state" class="form-control">
+                            <option value="ap" {% if trip.state == "ap" %} selected="selected" {% endif %} >APPROVED</option>
+		                    <option value="re"  {% if trip.state == "re" %} selected="selected" {% endif %}>REJECTED</option>
+		                    <option value="pe" {% if trip.state == "pe" %}selected="selected" {% endif %}>PENDING</option>
+		                </select>
+		                <br>
+		                <button type="submit" name="save" value="save" onclick="return confirm('Are you sure?')" class="btn btn-block btn-danger">Save</button>
+		                </form>
+	                </div>
+	            
+            {% endif %}
         </div>
     </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#stateSelectForm").submit(function () {
-            return confirm('Are you sure?');
-        });
-    });
-</script>
 {% endblock %}
