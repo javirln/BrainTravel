@@ -22,4 +22,7 @@ urlpatterns = patterns('',
     url(r'^summernote/', include('django_summernote.urls')),
     url(r'^trip_create/$', 'principal.views.TripViews.trip_create'),
     url(r'^judge/(?P<trip_id>[0-9]+)/(?P<like>[0-1])', 'principal.views.JudgeViews.judge'),
+    url(r'^profile/$', 'principal.views.TravellerViews.profile_details'),
+    url(r'^profile/edit/$', 'principal.views.TravellerViews.profile_edit'),
+    url(r'^profile/edit/password/$', 'principal.views.TravellerViews.profile_edit_password'),
 )

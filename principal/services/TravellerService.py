@@ -16,3 +16,7 @@ def create(form):
 
 def save(traveller):
     traveller.save()
+
+
+def find_one(traveller_id):
+    return Traveller.objects.get(id=traveller_id)

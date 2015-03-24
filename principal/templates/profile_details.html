@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %} Profile {% endblock %}
+{% block content %}
+<br><br>
+<div class="container-fluid well span6">
+	<div class="row-fluid">
+        <div class="span2" >
+		    <img src="/static/user_folder/{{traveller.photo}}" class="img-circle">
+        </div>
+        
+        <div class="span8">
+            <h3>{{traveller.first_name}} {{traveller.last_name}}</h3>
+            <h5>{{traveller.email}}</h5>
+            <h5>{{traveller.get_genre_display}}</h5>
+            <h5>Coins: {{traveller.coins}}</h5>
+            <h5>Reputation: {{traveller.reputation}}</h5>
+        </div>
+        
+        <div class="span2">
+            <div class="btn-group">
+                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                    Action 
+                    <span class="icon-cog icon-white"></span><span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/profile/edit/"><span class="icon-wrench"></span> Modify profile</a></li>
+                    <li><a href="/profile/edit/password/"><span class="icon-trash"></span> Change password</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-xs-10">
+            <div class="well panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 text-center">
+                            <img src="/static/user_folder/{{traveller.photo}}" alt="" class="center-block img-circle img-thumbnail img-responsive">
+                            <ul class="list-inline ratings text-center" title="Ratings">
+                                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
+                                <li><a href="#"><span class="fa fa-star-half fa-lg"></span></a></li>
+                            </ul>
+                        </div>
+                        <!--/col-->
+                        <div class="col-xs-12 col-sm-8">
+                            <div class="span2 text-right">
+                                <div class="btn-group">
+                                    <a class="btn btn-primary btn-block" data-toggle="dropdown" href="#">
+                                        <span class="fa fa-gear"></span> Options
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/profile/edit/"><span class="icon-wrench"></span> Modify profile</a></li>
+                                        <li><a href="/profile/edit/password/"><span class="icon-trash"></span> Change password</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h2>{{traveller.first_name}} {{traveller.last_name}}</h2>
+                            <p><strong>{{traveller.email}}</strong></p>
+                        </div>
+                        <!--/col-->
+                        <div class="clearfix"></div>
+                        <div class="col-xs-12 col-sm-4">
+                            <h2><strong> 20,7K </strong></h2>
+                            <p><small>Followers</small></p>
+                            <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
+                        </div>
+                        <!--/col-->
+                        <div class="col-xs-12 col-sm-4">
+                            <h2><strong>245</strong></h2>
+                            <p><small>Following</small></p>
+                            <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>
+                        </div>
+                        <!--/col-->
+                        <div class="col-xs-12 col-sm-4">
+                            <h2><strong>43</strong></h2>
+                            <p><small>Snippets</small></p>
+                            <button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Options </button>
+                        </div>
+                        <!--/col-->
+                    </div>
+                    <!--/row-->
+                </div>
+                <!--/panel-body-->
+            </div>
+            <!--/panel-->
+        </div>
+        <!--/col-->
+    </div>
+    <!--/row-->
+</div>
+<!--/container-->
+{%endblock%}
