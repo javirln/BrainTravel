@@ -1,50 +1,23 @@
 {% extends 'base.html' %}
 {% block title %} Profile {% endblock %}
 {% block content %}
-<br><br>
-<div class="container-fluid well span6">
-	<div class="row-fluid">
-        <div class="span2" >
-		    <img src="/static/user_folder/{{traveller.photo}}" class="img-circle">
-        </div>
-        
-        <div class="span8">
-            <h3>{{traveller.first_name}} {{traveller.last_name}}</h3>
-            <h5>{{traveller.email}}</h5>
-            <h5>{{traveller.get_genre_display}}</h5>
-            <h5>Coins: {{traveller.coins}}</h5>
-            <h5>Reputation: {{traveller.reputation}}</h5>
-        </div>
-        
-        <div class="span2">
-            <div class="btn-group">
-                <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
-                    Action 
-                    <span class="icon-cog icon-white"></span><span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="/profile/edit/"><span class="icon-wrench"></span> Modify profile</a></li>
-                    <li><a href="/profile/edit/password/"><span class="icon-trash"></span> Change password</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-xs-10">
             <div class="well panel panel-default">
-                <div class="panel-body">
+                <h1 class="page-header">Profile</h1>
+                    <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 text-center">
-                            <img src="/static/user_folder/{{traveller.photo}}" alt="" class="center-block img-circle img-thumbnail img-responsive">
+                            {% if traveller.photo == None %}
+                                <img src="/static/user_folder/default.jpg" alt="" class="center-block img-circle img-thumbnail img-responsive">
+                            {% else %}
+                                <img src="/static/user_folder/{{traveller.photo}}" alt="" class="center-block img-circle img-thumbnail img-responsive">
+                            {% endif %}
                             <ul class="list-inline ratings text-center" title="Ratings">
-                                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                <li><a href="#"><span class="fa fa-star fa-lg"></span></a></li>
-                                <li><a href="#"><span class="fa fa-star-half fa-lg"></span></a></li>
+                                {% if traveller.reputation != None %}
+                                    <li><a href="#"><span class="fa fa-star fa-lg"> {{ traveller.reputation }}/10</span></a></li>
+                                {% endif %}
                             </ul>
                         </div>
                         <!--/col-->
@@ -66,23 +39,24 @@
                         </div>
                         <!--/col-->
                         <div class="clearfix"></div>
+                        <div class="col-xs-12 col-sm-4"></div>
                         <div class="col-xs-12 col-sm-4">
-                            <h2><strong> 20,7K </strong></h2>
-                            <p><small>Followers</small></p>
-                            <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
+                            <h2><strong> <i class="fa fa-money"></i> {{traveller.coins}} </strong></h2>
+                            <p><small>Coins</small></p>
+                            <a href="/Coin/list/" class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> History coins </a>
                         </div>
                         <!--/col-->
                         <div class="col-xs-12 col-sm-4">
-                            <h2><strong>245</strong></h2>
-                            <p><small>Following</small></p>
-                            <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>
+                            <h2><strong><i class="fa fa-globe"></i> {{ traveller.trip_set.all.count }}</strong></h2>
+                            <p><small>Trips</small></p>
+                            <a href="/Trip/MyList/" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> My Trips </a>
                         </div>
                         <!--/col-->
-                        <div class="col-xs-12 col-sm-4">
-                            <h2><strong>43</strong></h2>
-                            <p><small>Snippets</small></p>
-                            <button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Options </button>
-                        </div>
+{#                        <div class="col-xs-12 col-sm-4">#}
+{#                            <h2><strong>43</strong></h2>#}
+{#                            <p><small>Snippets</small></p>#}
+{#                            <button type="button" class="btn btn-primary btn-block"><span class="fa fa-gear"></span> Options </button>#}
+{#                        </div>#}
                         <!--/col-->
                     </div>
                     <!--/row-->
