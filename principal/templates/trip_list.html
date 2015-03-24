@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Trip list {% endblock %}
 {% block content %}
+    {% load i18n %}
 
 {% if msg_errors %}
 <div class="alert alert-danger" role="alert">
@@ -14,9 +15,8 @@
 {% endif %}
 
 {% if not trips %}
-    <p>We couldn't find anything...</p>
+    <p>{% trans "We couldn't find anything..." %}</p>
 {% endif %}
-
 
 {% for trip in trips %}
 <div class="well animated fadeInUp">
