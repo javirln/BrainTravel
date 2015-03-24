@@ -101,3 +101,10 @@ def save_secure(trip):
         pass
     else:
         trip.save()
+
+# david
+# comprobar algo?
+# se borra en cascada
+# TODO
+def delete(trip):
+    trip.delete()

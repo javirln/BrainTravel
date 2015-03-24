@@ -85,42 +85,45 @@ def update_state(request):
 
 # david
 @login_required()
-def list_all_by_traveller(request):
-    if request.user.is_authenticated():
-        trips = TripService.list_my_trip(request.user.id)
-        if trips is not False:
-            paginator = Paginator(trips, 1)
-            page = request.GET.get('page')
-            try:
-                trips = paginator.page(page)
-            except PageNotAnInteger:
-                trips = paginator.page(1)
-            except EmptyPage:
-                trips = paginator.page(paginator.num_pages)
-            return render_to_response('list_my_trip.html', {'trips': trips}, content_type=RequestContext(request))
-        else:
-            msg_errors = ["You must login!"]
-            return render_to_response('signin.html', {'msg_errors': msg_errors})
+def list_all_by_traveller(request, optional=0):
+    if optional == "0":
+        BrainTravelUtils.save_error(request)
+    if optional == "1":
+        BrainTravelUtils.save_success(request, "Successfully complete action")
+    if optional == "2":
+        BrainTravelUtils.save_success(request, "Your trip must be accept by a admin")
+    if optional == "3":
+        BrainTravelUtils.save_success(request, "Delete trip")
+
+    trips = TripService.list_my_trip(request.user.id)
+    if trips is not False:
+        paginator = Paginator(trips, 5)
+        page = request.GET.get('page')
+        try:
+            trips = paginator.page(page)
+        except PageNotAnInteger:
+            trips = paginator.page(1)
+        except EmptyPage:
+            trips = paginator.page(paginator.num_pages)
+        return render_to_response('list_my_trip.html', {'trips': trips},
+                                  context_instance=RequestContext(request))
 
 
 # david
 @login_required()
 def list_all_by_traveller_draft(request):
-    if request.user.is_authenticated():
-        trips = TripService.list_my_trip_draft(request.user.id)
-        if trips is not False:
-            paginator = Paginator(trips, 1)
-            page = request.GET.get('page')
-            try:
-                trips = paginator.page(page)
-            except PageNotAnInteger:
-                trips = paginator.page(1)
-            except EmptyPage:
-                trips = paginator.page(paginator.num_pages)
-            return render_to_response('list_my_trip.html', {'trips': trips}, content_type=RequestContext(request))
-        else:
-            msg_errors = ["You must login!"]
-            return render_to_response('signin.html', {'msg_errors': msg_errors})
+    trips = TripService.list_my_trip_draft(request.user.id)
+    ss = len(trips)
+    if trips is not False:
+        paginator = Paginator(trips, 5)
+        page = request.GET.get('page')
+        try:
+            trips = paginator.page(page)
+        except PageNotAnInteger:
+            trips = paginator.page(1)
+        except EmptyPage:
+            trips = paginator.page(paginator.num_pages)
+        return render_to_response('list_my_trip.html', {'trips': trips}, content_type=RequestContext(request))
 
 
 # david
@@ -131,8 +134,17 @@ def trip_create(request):
         form = TripEditForm(request.POST)
         if form.is_valid():
             trip_new = TripService.create(form, user_id)
-            TripService.save_secure(trip_new)
-            return HttpResponseRedirect('/Trip/list')
+            if "save" in request.POST and request.POST['save'] == "Save draft":
+                trip_new.state = "df"
+                TripService.save_secure(trip_new)
+                return redirect('/Trip/list/1')
+            elif "save" in request.POST and request.POST['save'] == "Publish Trip":
+                trip_new.state = "pe"
+                TripService.save_secure(trip_new)
+                return redirect('/Trip/list/2')
+
+            return redirect('/Trip/list/0')
+
     else:
         data = {'startDate': 'yyyy/mm/dd', 'endDate': 'yyyy/mm/dd'}
         form = TripEditForm(initial=data)
@@ -156,15 +168,19 @@ def trip_edit(request, trip_id):
             trip.startDate = form.cleaned_data['startDate']
             trip.endDate = form.cleaned_data['endDate']
             trip.country = form.cleaned_data['country']
-            if request.POST['save'] == "Save draft":
+            if "save" in request.POST and request.POST['save'] == "Save draft":
                 trip.state = "df"
-            else:
+                TripService.save_secure(trip)
+                return redirect('/Trip/list/1')
+            elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip.state = "pe"
-            # btutils.save_info(request, "State modified")
-            # TODO no funciona el mostrar el aviso xk no se le pasa el context
-            # messages.add_message(request, messages.INFO, 'Hello world.')
-            TripService.save_secure(trip)
-            return HttpResponseRedirect('/Trip/list')
+                TripService.save_secure(trip)
+                return redirect('/Trip/list/2')
+            elif request.POST['delete'] == "Delete Trip":
+                TripService.delete(trip)
+                return redirect('/Trip/list/3')
+
+            return redirect('/Trip/list/')
     else:
         data = {'city': trip.city, 'country': trip.country, 'startDate': trip.startDate, 'endDate': trip.endDate}
         form = TripEditForm(initial=data)
