@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
+
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'principal.views.MainViews.home'),
@@ -29,4 +30,10 @@ urlpatterns = patterns('',
     url(r'^auth_request/$', 'principal.views.FoursquareViews.foursquare_request'),
     # lo que hacemos es coger toda la url y la vista obtener los parametros concretos
     url(r'^auth_fs$', 'principal.views.FoursquareViews.foursquare_code'),
+    
+    #paypal urls
+    url(r'^test_paypal/$', 'principal.views.PayPalViews.test_paypal_view'),
+    (r'^something/paypal/', include('paypal.standard.ipn.urls')),
 )
+
+
