@@ -111,7 +111,7 @@
                     <i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
                 {% endif %}
 
-                {% if perms.traveller %}
+                {% if perms.principal.Traveller %}
                     {% if judge == None %}
                         <a href="/judge/{{trip.scorable_ptr_id}}/1">
                             <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>

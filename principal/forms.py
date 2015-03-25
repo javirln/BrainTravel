@@ -51,10 +51,10 @@ class TravellerEditProfileForm(forms.Form):
         ('MA', 'MALE'),
         ('FE', 'FEMALE')
     )
-    first_name = forms.CharField(label='first name', widget=forms.TextInput)
-    last_name = forms.CharField(label='last name', widget=forms.TextInput)
-    genre = forms.ChoiceField(label='genre', choices=Genre, widget=forms.Select)
-    # photo = forms.ImageField(label='photo')
+    first_name = forms.CharField(label='first name', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(label='last name', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    genre = forms.ChoiceField(label='genre', choices=Genre, widget=forms.Select(attrs={'class': 'form-control'}))
+    photo = forms.ImageField(label='photo')
 
 
 # author: Juane
