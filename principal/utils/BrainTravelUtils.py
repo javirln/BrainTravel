@@ -18,3 +18,4 @@ def save_warning(request, message_code):
     
 def save_error(request, message_code='An unexpected error has occurred'):
     messages.add_message(request, messages.ERROR, _(message_code))
+    

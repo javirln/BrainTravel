@@ -32,8 +32,10 @@ urlpatterns = patterns('',
     url(r'^auth_fs$', 'principal.views.FoursquareViews.foursquare_code'),
     
     #paypal urls
+    url(r'^buy_coins/$', 'principal.views.Coinviews.buy_coins'),
     url(r'^test_paypal/$', 'principal.views.PayPalViews.test_paypal_view'),
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),
+    
 )
 
 
