@@ -27,6 +27,4 @@ urlpatterns = patterns('',
     url(r'^public_trip_details/rate/', 'principal.views.TripViews.send_assessment'),
 
     url(r'^auth_request/$', 'principal.views.FoursquareViews.foursquare_request'),
-    # lo que hacemos es coger toda la url y la vista obtener los parametros concretos
-    url(r'^auth_fs$', 'principal.views.FoursquareViews.foursquare_code'),
 )
