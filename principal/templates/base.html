@@ -48,7 +48,7 @@
                         </li>
                     {% else %}
                         <li style="text-decoration: None">
-                            <a id="sign_ind_nav" href="/Trip/list">List my trips</a>
+                            <a id="sign_ind_nav" href="/Trip/MyList">List my trips</a>
                         </li>
 
                         <li style="text-decoration: None">
@@ -81,7 +81,7 @@
                 $(function () {
                     swal({
                         title: '{{ message.tags }}',
-                        text: '{{ message }}',
+                        text: '{{ message}}',
                         type: '{{ message.tags }}',
                         confirmButtonText: '{{confirm_button}}'
                     });

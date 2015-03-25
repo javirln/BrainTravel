@@ -27,12 +27,6 @@
                     <span>Don't have an account? <a href="#" data-toggle="modal" data-target="#registerModal">Create one now</a></span>
                 </form>
             </div>
-            
-            <div>
-            	{%for error in form.error%}
-            		<li>{{error}}</li>
-            	{%endfor%}
-            </div>
         </div>
     </div>
     
@@ -69,6 +63,5 @@
             </div>
         </div>
     </div>
-    
 </div>
 {%endblock%}

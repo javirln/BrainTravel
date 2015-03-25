@@ -15,8 +15,8 @@ from django.template.context import RequestContext
 
 from principal.forms import LoginForm, TravellerRegistrationForm
 from principal.services import TravellerService, UserService
-from principal.views import EmailViews
 from principal.utils import BrainTravelUtils
+from principal.views import EmailViews
 
 
 def sign_in(request):
@@ -33,14 +33,18 @@ def sign_in(request):
                     return redirect("/")
                 else:
                     message = 'Your account is desactivated'
-                    result = render_to_response('signin.html', {'message': message, 'registerForm': registerForm},
+                    BrainTravelUtils.save_error(request, message)
+                    result = render_to_response('signin.html', {'registerForm': registerForm},
                                                 context_instance=RequestContext(request))
             else:
                 message = 'Wrong user or password'
+                BrainTravelUtils.save_error(request, message)
                 result = render_to_response('signin.html', {'message': message, 'registerForm': registerForm},
                                             context_instance=RequestContext(request))
 
         else:
+            message = "Wrong email!"
+            BrainTravelUtils.save_error(request, message)
             result = render_to_response('signin.html', {'form': form, 'registerForm': registerForm},
                                         context_instance=RequestContext(request))
     else:
@@ -60,19 +64,27 @@ def system_logout(request):
 def create_traveller(request):
     data = request.POST
     form = TravellerRegistrationForm(data)
-    response = {'success': form.is_valid()}
+    response = {}
 
     if form.is_valid():
+        response['success']= True
         traveller = TravellerService.create(form)
         rand_password = BrainTravelUtils.id_generator()
         traveller.set_password(rand_password)
         traveller.save()
 
         EmailViews.send_email_confirmation(traveller, rand_password)
-    # traveller = TravellerService.create(form)
-    # TravellerService.save(traveller)
-
-    return HttpResponse(json.dumps(response))
+    else:
+        message = ""
+        for field, errors in form.errors:
+            for error in errors:
+                message += error
+        
+        #response['errors'] = _(message) 
+        BrainTravelUtils.save_error(request, message)
+        #HttpResponse(json.dumps(response))
+    
+    return JsonResponse(response)
 
 
 def confirm_account(request):

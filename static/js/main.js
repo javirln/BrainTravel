@@ -49,10 +49,12 @@ $.ajaxSetup({
     }
 });
 
-$('#traveller-registration').on('submit', function(event){
-    event.preventDefault();
-	$('#singUp-button').hide()
-    register_traveller();
+$(document).ready(function(){
+	$('#traveller-registration').on('submit', function(event){
+	    event.preventDefault();
+		$('#singUp-button').hide()
+	    register_traveller();
+	});
 });
 
 function register_traveller() {
