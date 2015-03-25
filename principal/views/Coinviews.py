@@ -11,8 +11,21 @@ from principal.services import CoinService
 def list_coin_traveller(request):
     if request.method == 'GET':
         try:
+            # is_traveller = True
+            # try:
+            #     admin = request.user.administrator
+            #     is_traveller = False
+            #
+            # except Exception:
+            #     is_traveller = True
+
             list_coin_history = CoinService.list_coin_history_traveller(request.user.id)
-            return render_to_response('list_coin_history.html', {'list_coin_history': list_coin_history},
+            return render_to_response('list_coin_history.html',
+                                      {'list_coin_history': list_coin_history},
                                       context_instance=RequestContext(request))
+
+            # return render_to_response('list_coin_history.html',
+            #                           {'list_coin_history': list_coin_history, 'is_traveller': is_traveller},
+            #                           context_instance=RequestContext(request))
         except Exception as e:
             return HttpResponse(e)

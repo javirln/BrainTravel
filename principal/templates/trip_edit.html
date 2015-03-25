@@ -1,47 +1,66 @@
 {% extends 'base.html' %}
 {% block extrahead %}
-  {{ form.media }}
+    {{ form.media }}
+
+    <script>
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this Trip!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        }, function () {
+            swal("Deleted!", "Your Trip file has been deleted.", "success");
+        });
+    </script>
+
 {% endblock %}
+{% load i18n %}
 
 {% block content %}
-<div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-    {% if create %}
-        <h2>Create Trip</h2>
-    {% else %}
-        <h2> Edit Trip</h2>
-    {% endif %}
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            {% if create %}
+                <h2>{% trans "Create Trip" %}</h2>
+            {% else %}
+                <h2>{% trans "Edit Trip" %}</h2>
+            {% endif %}
 
-    {% if create %}
-        <form action="/Trip/create/" method="post">{% csrf_token %}
-    {% else %}
-        <form action="/Trip/edit/{{ trip.id }}" method="post" role="form">
-    {% endif %}
+            {% if create %}
+                <form id="create" action="/Trip/create/" method="post">{% csrf_token %}
+            {% else %}
+                <form id="update" action="/Trip/edit/{{ trip.id }}" method="post" role="form">
+            {% endif %}
 
 
-        {% for field in form.visible_fields %}
+            {% for field in form.visible_fields %}
 
-            <div id="div_{{ field.html_name }}" class="col-xs-6col-md-6 form-group{% if field.errors %} has-error{% endif %}">
-                {{ field.label_tag }}
-                {{ field }}
-                <div class="text-muted pull-right">
-                    <small>{{ field.help_text }}</small>
+                <div id="div_{{ field.html_name }}"
+                     class="col-xs-6col-md-6 form-group{% if field.errors %} has-error{% endif %}">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    <div class="text-muted pull-right">
+                        <small>{{ field.help_text }}</small>
+                    </div>
+                    <div class="help-block">
+                        {{ field.errors }}
+                    </div>
                 </div>
-                <div class="help-block">
-                    {{ field.errors }}
-                </div>
+            {% endfor %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="submit" name="save" value="Publish Trip" class="btn btn-primary"/>
+                <input type="submit" name="save" value="Save draft" class="btn btn-primary"/>
+                {% if not create and can_delete %}
+                    <input type="submit" name="delete" value="Delete Trip" class="btn btn-primary"/>
+                {% endif %}
             </div>
-        {% endfor %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-        {% csrf_token %}
-        <div class="form-group">
-            <input type="submit" name="save" value="Publish Trip" class="btn btn-primary"/>
-            <input type="submit" name="save" value="Save draft" class="btn btn-primary"/>
+            </form>
         </div>
-    </form>
-</div>
-</div>
-
+    </div>
 {% endblock %}
