@@ -2,11 +2,13 @@
 from bootstrap3_datetime.widgets import DateTimePicker
 from django import forms
 from django.contrib.auth.models import User
-from django_summernote.widgets import SummernoteWidget
-
-from principal.models import Traveller
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
+from django_summernote.widgets import SummernoteWidget
+from paypal.standard.forms import PayPalPaymentsForm
+
+from principal.models import Traveller
+
 
 def user_exist_validator(value):
     if User.objects.exists(username=value):
@@ -47,3 +49,8 @@ class TripEditForm(forms.Form):
                                                              "pickTime": False}))
 
     publishedDescription = forms.CharField(label='Published Description', widget=SummernoteWidget())
+    
+    
+class FormPaypalOwn(PayPalPaymentsForm):
+    def get_image(self):
+        return "https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png";
