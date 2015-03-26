@@ -48,7 +48,7 @@
                             {% if traveller.id == user.traveller.id %}
                             <h2><strong> <i class="fa fa-money"></i> {{traveller.coins}} </strong></h2>
                             <p><small>Coins</small></p>
-                            <a href="/Coin/list/" class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> History coins </a>
+                            <a href="/coin/list/" class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> History coins </a>
                             {% endif %}
                         </div>
                         <!--/col-->
@@ -56,7 +56,7 @@
                             <h2><strong><i class="fa fa-globe"></i> {{ traveller.trip_set.all.count }}</strong></h2>
                             <p><small>Trips</small></p>
                             {% if traveller.id == user.traveller.id %}
-                                <a href="/Trip/MyList/" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> My Trips </a>
+                                <a href="/trip/mylist/" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> My Trips </a>
                             {% else %}
                                 <a href="/trip/list/{{ traveller.id }}" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> Your Trips </a>
                             {% endif %}
