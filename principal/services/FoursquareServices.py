@@ -1,45 +1,19 @@
 # -*- coding: latin-1 -*-
 
 import foursquare
+
 from principal.models import Category
+
 
 _client_id = "TWYKUP301GVPHIAHBPYFQQT0PJGZ0O2B24HQ3RUGLUFSLP1E"
 _client_secret = "TDNQ441CNLDJZKC3UJYDERT2MNDWN1E2CX1550CW1OXPEST2"
 client = None
 
 
-def auth_request():
+def init_fs():
     # Construct the client object
     global client
-    client = foursquare.Foursquare(client_id=_client_id, client_secret=_client_secret,
-                                   redirect_uri='http://127.0.0.1:8000/auth_fs')
-
-    # Build the authorization url for your app
-    auth_uri = client.oauth.auth_url()
-    print(auth_uri)
-    return auth_uri
-
-
-def auth_catch(auth_code):
-    global client
-    # Construct the client object
-    clients = foursquare.Foursquare(client_id=_client_id, client_secret=_client_secret,
-                                    redirect_uri='http://127.0.0.1:8000/auth_fs', lang='en')
-
-    # Interrogate foursquare's servers to get the user's access_token
-    access_token = clients.oauth.get_token(auth_code)
-
-    # Apply the returned access token to the client
-    clients.set_access_token(access_token)
-
-    # Get the user's data
-    # user = client.users()
-    print(access_token)
-    client = foursquare.Foursquare(access_token=access_token, version='20120609', lang='en')
-    print(client)
-    respuesta = client.Tips('4b5e662a70c603bba7d790b4')
-    print(respuesta)
-    #categories_initializer()
+    client = foursquare.Foursquare(client_id=_client_id, client_secret=_client_secret)
 
 
 def categories_initializer():
@@ -65,3 +39,20 @@ def categories_initializer():
                     name=grand_child['pluralName']
                 )
                 cat2.save()
+
+
+# devuelve: un dict,con una lista llamada groups, que contiene un dict, qe contiene lista llamada items ordenada x rating
+def search_by_category(city, category):
+    # A term to be searched against a venue's tips, category, etc.
+    response = client.venues.explore(params={'near': city, 'query': category})
+    print(response)
+
+
+# devuelve lista ordenada por rating (hay que asegurarse mas)
+def search_by_section(city, section):
+    # section = One of food, drinks, coffee, shops, arts, outdoors, sights, trending or specials, nextVenues
+    # (venues frequently visited after a given venue)
+    # or topPicks (a mix of recommendations generated without a query from the user).
+    response = client.venues.explore(params={'near': city, 'section': section})
+    print(response)
+

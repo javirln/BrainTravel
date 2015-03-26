@@ -5,8 +5,9 @@ from django.contrib.auth.models import User
 from django_summernote.widgets import SummernoteWidget
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
-
+from paypal.standard.forms import PayPalPaymentsForm
 from django import forms
+
 from principal.models import Traveller
 
 
@@ -83,3 +84,8 @@ class TravellerEditPasswordForm(forms.Form):
         if self.cleaned_data.get('password') != self.cleaned_data.get('password_repeat'):
             self.add_error('password_repeat', "Password do not match")
         return self.cleaned_data
+
+    
+class FormPaypalOwn(PayPalPaymentsForm):
+    def get_image(self):
+        return "https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png";
