@@ -1,7 +1,9 @@
 # -*- coding: latin-1 -*-
 
 import foursquare
+
 from principal.models import Category
+
 
 _client_id = "TWYKUP301GVPHIAHBPYFQQT0PJGZ0O2B24HQ3RUGLUFSLP1E"
 _client_secret = "TDNQ441CNLDJZKC3UJYDERT2MNDWN1E2CX1550CW1OXPEST2"
@@ -37,3 +39,20 @@ def categories_initializer():
                     name=grand_child['pluralName']
                 )
                 cat2.save()
+
+
+# devuelve: un dict,con una lista llamada groups, que contiene un dict, qe contiene lista llamada items ordenada x rating
+def search_by_category(city, category):
+    # A term to be searched against a venue's tips, category, etc.
+    response = client.venues.explore(params={'near': city, 'query': category})
+    print(response)
+
+
+# devuelve lista ordenada por rating (hay que asegurarse mas)
+def search_by_section(city, section):
+    # section = One of food, drinks, coffee, shops, arts, outdoors, sights, trending or specials, nextVenues
+    # (venues frequently visited after a given venue)
+    # or topPicks (a mix of recommendations generated without a query from the user).
+    response = client.venues.explore(params={'near': city, 'section': section})
+    print(response)
+
