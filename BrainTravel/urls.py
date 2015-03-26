@@ -27,4 +27,10 @@ urlpatterns = patterns('',
     url(r'^public_trip_details/rate/', 'principal.views.TripViews.send_assessment'),
 
     url(r'^auth_request/$', 'principal.views.FoursquareViews.foursquare_request'),
+    
+    #paypal urls
+    url(r'^buy_coins/$', 'principal.views.Coinviews.buy_coins'),
+    url(r'^test_paypal/$', 'principal.views.PayPalViews.test_paypal_view'),
+    (r'^something/paypal/', include('paypal.standard.ipn.urls')),
+    
 )

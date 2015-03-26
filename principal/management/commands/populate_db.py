@@ -2,7 +2,7 @@
 import datetime
 
 from django.core.management.base import BaseCommand
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 
 from principal.models import Administrator, Category, Scorable, Venue, Feedback, Trip, Traveller, \
     Likes, Day, VenueDay, Comment, Judges, Payment, CoinHistory, Schedule, Assessment
@@ -55,6 +55,17 @@ class Command(BaseCommand):
         admin_admin.is_staff = True
         admin_admin.is_superuser = True
         admin_admin.save()
+
+        
+        
+        admin_admin = Administrator(
+        username='admin1@admin.com',
+        email='admin1@admin.com')
+        admin_admin.set_password('admin1')
+        admin_admin.is_staff = False
+        admin_admin.is_superuser = False
+        admin_admin.save()
+
         print('Admins created...Ok')
 
         # Categories
@@ -383,7 +394,7 @@ class Command(BaseCommand):
 
         print('Cities...Ok')
         traveller_annie = Traveller(
-            username='annie',
+            username='annie@mail.com',
             email='annie@mail.com',
             first_name='Annie',
             last_name='Stone',
@@ -394,6 +405,10 @@ class Command(BaseCommand):
             recommendations=5)
         traveller_annie.set_password('annie')
         traveller_annie.save()
+        traveller_annie.user_permissions.add(Permission.objects.get(codename="traveller"))
+        traveller_annie.save()
+        
+        
 
         sch_annie = Scorable(
             name='Traveller score',
@@ -401,7 +416,7 @@ class Command(BaseCommand):
         sch_annie.save()
 
         traveller_allen = Traveller(
-            username='allen',
+            username='allen@mail.com',
             email='allen@mail.com',
             first_name='Allen',
             last_name='Sutton',
@@ -412,6 +427,7 @@ class Command(BaseCommand):
             recommendations=13)
         traveller_allen.set_password('allen')
         traveller_allen.save()
+        traveller_allen.user_permissions.add(Permission.objects.get(codename="traveller"))
 
         sch_allen = Scorable(
             name='Traveller score',
@@ -445,7 +461,7 @@ class Command(BaseCommand):
             coins=34,
             likes=125,
             dislikes=1,
-            traveller=traveller_allen,
+            traveller=traveller_allen,  
             city="seville")
         trip_Seville.save()
 
@@ -722,9 +738,3 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self._migrate()
-
-        if res['state'] == False:
-            BrainTravelUtils.save_warning(request, 'This trip is pending of the approval by an administrator.')
-            return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
-        elif res['ownership'] == False:
-            BrainTravelUtils.save_warning(request, 'You cannot comment your own trip!')
