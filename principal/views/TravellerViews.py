@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render_to_response, HttpResponseRedirect
+from django.shortcuts import render_to_response, HttpResponseRedirect, redirect
 from django.template.context import RequestContext
 
 from principal.services import TravellerService
@@ -17,7 +17,8 @@ def profile_details(request, traveller_id):
 # author: Juane
 @login_required()
 def profile_edit(request):
-    if request.user.is_authenticated():
+    try:
+        assert request.user.has_perm('principal.traveller')
         if request.POST:
             form = TravellerEditProfileForm(request.POST, request.FILES)
             if form.is_valid():
@@ -27,32 +28,33 @@ def profile_edit(request):
                 traveller.genre = form.cleaned_data['genre']
                 traveller.photo = form.cleaned_data['photo']
                 TravellerService.save(traveller)
-                return HttpResponseRedirect('/profile/'+traveller.id)
+                return redirect(profile_details(request, traveller.id))
         else:
             traveller = Traveller.objects.get(id=request.user.id)
             data = {'first_name': traveller.first_name, 'last_name': traveller.last_name, 'genre': traveller.genre,
                     'id': traveller.id, 'photo': traveller.photo}
             form = TravellerEditProfileForm(initial=data)
         return render_to_response('profile_edit.html', {"form": form}, context_instance=RequestContext(request))
-    else:
-        return render_to_response('index.html', context_instance=RequestContext(request))
+    except AssertionError:
+        return render_to_response('error.html')
 
 
 # author: Juane
 @login_required()
 def profile_edit_password(request):
-    if request.user.is_authenticated():
+    try:
+        assert request.user.has_perm('principal.traveller')
         if request.POST:
             form = TravellerEditPasswordForm(request.POST)
             if form.is_valid():
                 traveller = Traveller.objects.get(id=form.cleaned_data['id'])
                 traveller.set_password(form.cleaned_data['password'])
                 TravellerService.save(traveller)
-                return HttpResponseRedirect('/profile/'+traveller.id)
+                return redirect(profile_details(request, traveller.id))
         else:
             traveller = Traveller.objects.get(id=request.user.id)
             data = {'id': traveller.id}
             form = TravellerEditPasswordForm(initial=data)
         return render_to_response('profile_edit_password.html', {"form": form}, context_instance=RequestContext(request))
-    else:
-        return render_to_response('index.html', context_instance=RequestContext(request))
+    except AssertionError:
+        return render_to_response('error.html')

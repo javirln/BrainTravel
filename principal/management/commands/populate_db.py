@@ -55,6 +55,8 @@ class Command(BaseCommand):
         admin_admin.is_staff = True
         admin_admin.is_superuser = True
         admin_admin.save()
+        admin_admin.user_permissions.add(Permission.objects.get(codename="administrator"))
+        admin_admin.save()
 
         
         
@@ -64,6 +66,8 @@ class Command(BaseCommand):
         admin_admin.set_password('admin1')
         admin_admin.is_staff = False
         admin_admin.is_superuser = False
+        admin_admin.save()
+        admin_admin.user_permissions.add(Permission.objects.get(codename="administrator"))
         admin_admin.save()
 
         print('Admins created...Ok')

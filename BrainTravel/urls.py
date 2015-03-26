@@ -15,8 +15,8 @@ urlpatterns = patterns('',
     url(r'^register_traveller/$', 'principal.views.UserViews.create_traveller'),
     url(r'^confirm_account/$', 'principal.views.UserViews.confirm_account'),
     url(r'^public_trip_details/(?P<trip_id>[0-9]+)$', 'principal.views.TripViews.public_trip_details'),
-    url(r'^administrator/trip/list/$', 'principal.views.TripViews.list_all_by_state'),
-    url(r'^administrator/trip/update/$', 'principal.views.TripViews.update_state'),
+    url(r'^administrator/trip/list/$', 'principal.views.TripViews.list_trip_administrator'),
+    url(r'^administrator/trip/update/(?P<trip_id>[0-9]+)$', 'principal.views.TripViews.update_state'),
     url(r'^Coin/list/$', 'principal.views.Coinviews.list_coin_traveller'),
     url(r'^Trip/MyList/(?P<optional>.*)$', 'principal.views.TripViews.list_all_by_traveller'),
     url(r'^Trip/edit/(?P<trip_id>[0-9]+)$$', 'principal.views.TripViews.trip_edit'),
@@ -33,9 +33,10 @@ urlpatterns = patterns('',
     # lo que hacemos es coger toda la url y la vista obtener los parametros concretos
     url(r'^auth_fs$', 'principal.views.FoursquareViews.foursquare_code'),
     #paypal urls
-    url(r'^buy_coins/$', 'principal.views.Coinviews.buy_coins'),
+    # url(r'^buy_coins/$', 'principal.views.Coinviews.buy_coins'),
     url(r'^test_paypal/$', 'principal.views.PayPalViews.test_paypal_view'),
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),
+    url(r'^trip/list/(?P<profile_id>[0-9]+)$$', 'principal.views.TripViews.list_trip_approved_by_profile'),
 )
 
 

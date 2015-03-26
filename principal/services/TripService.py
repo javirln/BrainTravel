@@ -14,23 +14,17 @@ def searchTrip(title):
 
 
 # author: Juane
-def list_all_by_state(user):
-    # List of all trips ordered by their status
-    if user.has_perm('administrator'):
-        result = Trip.objects.order_by('state')
-    else:
-        result = False
+def list_trip_administrator(user):
+    assert user.has_perm('principal.administrator')
+    result = Trip.objects.all().filter(~Q(state='df')).order_by('-state')
     return result
 
 
 # author: Juane
 def update_state(user, form):
-    # Update the status of a trip
-    if user.has_perm('administrator'):
-        result = Trip.objects.get(id=form.cleaned_data['id'])
-        result.state = form.cleaned_data['state']
-    else:
-        result = False
+    assert user.has_perm('principal.administrator')
+    result = Trip.objects.get(id=form.cleaned_data['id'])
+    result.state = form.cleaned_data['state']
     return result
 
 
@@ -85,7 +79,7 @@ def increase_dislike(trip):
 def decrement_like(trip):
     likes = trip.likes
     trip.likes = likes - 1
-    return
+    return trip
 
 
 # author: Juane
@@ -151,3 +145,18 @@ def send_assessment(user_id, rate_value, trip_id, rate_text):
         scorable_instance.save()
         return True
     return False
+
+
+# author: Juane
+def find_one(trip_id):
+    try:
+        trip = Trip.objects.get(id=trip_id)
+    except Trip.DoesNotExist:
+        assert False
+    return trip
+
+
+# author: Juane
+def list_my_trip_approved(id_traveller):
+    trips = Trip.objects.all().filter(traveller=id_traveller, state='ap')
+    return trips

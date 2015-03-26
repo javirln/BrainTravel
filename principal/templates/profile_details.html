@@ -21,35 +21,45 @@
                             </ul>
                         </div>
                         <!--/col-->
+
                         <div class="col-xs-12 col-sm-8">
-                            <div class="span2 text-right">
-                                <div class="btn-group">
-                                    <a class="btn btn-primary btn-block" data-toggle="dropdown" href="#">
-                                        <span class="fa fa-gear"></span> Options
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="/profile/edit/"><span class="icon-wrench"></span> Modify profile</a></li>
-                                        <li><a href="/profile/edit/password/"><span class="icon-trash"></span> Change password</a></li>
-                                    </ul>
+                            {% if traveller.id == user.traveller.id %}
+                                <div class="span2 text-right">
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary btn-block" data-toggle="dropdown" href="#">
+                                            <span class="fa fa-gear"></span> Options
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/profile/edit/"><span class="icon-wrench"></span> Modify profile</a></li>
+                                            <li><a href="/profile/edit/password/"><span class="icon-trash"></span> Change password</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            {% endif %}
 
                             <h2>{{traveller.first_name}} {{traveller.last_name}}</h2>
                             <p><strong>{{traveller.email}}</strong></p>
                         </div>
+
                         <!--/col-->
                         <div class="clearfix"></div>
                         <div class="col-xs-12 col-sm-4"></div>
                         <div class="col-xs-12 col-sm-4">
+                            {% if traveller.id == user.traveller.id %}
                             <h2><strong> <i class="fa fa-money"></i> {{traveller.coins}} </strong></h2>
                             <p><small>Coins</small></p>
                             <a href="/Coin/list/" class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> History coins </a>
+                            {% endif %}
                         </div>
                         <!--/col-->
                         <div class="col-xs-12 col-sm-4">
                             <h2><strong><i class="fa fa-globe"></i> {{ traveller.trip_set.all.count }}</strong></h2>
                             <p><small>Trips</small></p>
-                            <a href="/Trip/MyList/" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> My Trips </a>
+                            {% if traveller.id == user.traveller.id %}
+                                <a href="/Trip/MyList/" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> My Trips </a>
+                            {% else %}
+                                <a href="/trip/list/{{ traveller.id }}" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> Your Trips </a>
+                            {% endif %}
                         </div>
                         <!--/col-->
                     </div>

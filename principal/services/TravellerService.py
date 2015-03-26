@@ -19,5 +19,11 @@ def save(traveller):
     traveller.save()
 
 
+# author: Juane
 def find_one(traveller_id):
-    return Traveller.objects.get(id=traveller_id)
+    try:
+        traveller = Traveller.objects.get(id=traveller_id)
+    except Traveller.DoesNotExist:
+        assert False
+
+    return traveller

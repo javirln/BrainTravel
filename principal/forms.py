@@ -27,13 +27,14 @@ class TravellerRegistrationForm(forms.Form):
 
 # author: Juane
 class TripUpdateStateForm(forms.Form):
-    id = forms.IntegerField()
-    state = forms.ChoiceField(choices=(
+    State = (
         ('ap', 'APPROVED'),
         ('re', 'REJECTED'),
         ('pe', 'PENDING'),
         ('df', 'DRAFT')
-    ))
+    )
+    id = forms.IntegerField(widget=forms.HiddenInput)
+    state = forms.ChoiceField(label='state', choices=State, widget=forms.Select(attrs={'class': 'form-control'}))
 
 
 # david

@@ -47,18 +47,32 @@
                             <a id="sign_ind_nav" href="/signin">Sign In</a>
                         </li>
                     {% else %}
-                        <li style="text-decoration: None">
-                            <a id="sign_ind_nav" href="/Trip/MyList">List my trips</a>
-                        </li>
 
-                        <li style="text-decoration: None">
-                            <a id="sign_ind_nav" href="/Trip/draft">List my trips draft</a>
-                        </li>
+                        {% if perms.principal.traveller %}
+                            <li style="text-decoration: None">
+                                <a id="sign_ind_nav" href="/Trip/MyList">List my trips</a>
+                            </li>
+                            <li style="text-decoration: None">
+                                <a id="sign_ind_nav" href="/Trip/draft">List my trips draft</a>
+                            </li>
+{#                            <li style="text-decoration: None">#}
+{#                                <a id="sign_ind_nav" href="/Coin/list">List history coins</a>#}
+{#                            </li>#}
+                            <li style="text-decoration: None; margin-right: 5px">
+                                <a id="sign_ind_nav" href="/profile/{{ user.traveller.id }}">
+                                    {% if user.traveller.photo == None %}
+                                        <img class="avatar img-circle img-thumbnail" src="/static/user_folder/default.jpg" width="45" alt="">
+                                    {% else %}
+                                        <img class="avatar img-circle img-thumbnail" src="/static/user_folder/{{ user.traveller.photo }}" width="45" alt="">
+                                    {% endif %}
+                                </a>
+                            </li>
 
-                        <li style="text-decoration: None">
-
-                            <a id="sign_ind_nav" href="/Coin/list">List history coins</a>
-                        </li>
+                        {% else %}
+                            <li style="text-decoration: None">
+                                <a id="sign_ind_nav" href="/administrator/trip/list/">Trip list</a>
+                            </li>
+                        {% endif %}
 
                         <li style="background-color: #26A65B;">
                             <a id="sign_ind_nav" href="/logout">Logout</a>

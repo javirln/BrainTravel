@@ -2,94 +2,51 @@
 {% block title %} Trip list {% endblock %}
 {% block content %}
     {% load i18n %}
-
-{% if msg_errors %}
-<div class="alert alert-danger" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    {% for msg_error in msg_errors %}
-        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        <span class="sr-only">Error:</span>
-        {{ msg_error }}
-    {% endfor %}
-</div>
-{% endif %}
-
-{% if not trips %}
-    <p>{% trans "We couldn't find anything..." %}</p>
-{% endif %}
-
-{% for trip in trips %}
-<div class="well animated fadeInUp">
-    <div class="media">
-    <a class="pull-left" href="#">
-        <img class="img-rounded" src="/static/user_folder/{{trip.traveller.photo}}">
-    </a>
-    <div class="media-body">
-        <h3 class="media-heading">{{trip.name}}</h3>
-        <p class="text-right">By {{trip.traveller}}</p>
-        <p>{{trip.publishedDescription|safe}}</p>
-        <ul class="list-inline list-unstyled">
-            <li><span><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
-            <li>|</li>
-            <span> {{trip.comment_set.all.count}} <i class="fa fa-comments"></i></span>
-            <li>|</li>
-            <span><i class="fa fa-thumbs-o-up"></i> {{trip.likes}}</span>
-            <li>|</li>
-            <span><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</span>
-            <li>|</li>
-            <a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a>
-        </ul>
-        <form id="stateSelectForm" class="form-horizontal" action="/administrator/trip/update/" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="id" value="{{trip.scorable_ptr_id}}"/>
-            <label class="col-xs-3 control-label">State</label>
-            <div class="col-xs-5 selectContainer">
-                <select name="state" id="state" class="form-control">
-                    {% if trip.state == "ap" %}
-                        <option value="ap" selected="selected">APPROVED</option>
-                    {% else %}
-                        <option value="ap" >APPROVED</option>
-                    {% endif %}
-
-                     {% if trip.state == "re" %}
-                        <option value="re" selected="selected">REJECTED</option>
-                    {% else %}
-                        <option value="re" >REJECTED</option>
-                    {% endif %}
-
-                    {% if trip.state == "pe" %}
-                        <option value="pe" selected="selected">PENDING</option>
-                    {% else %}
-                        <option value="pe" >PENDING</option>
-                    {% endif %}
-                </select>
+    {% if not trips %}
+        <p>{% trans "We couldn't find anything..." %}</p>
+    {% endif %}
+    {% for trip in trips %}
+        <div class="well animated fadeInUp">
+            <div class="media">
+            <a class="pull-left" href="/profile/{{ trip.traveller.id }}">
+                {% if  trip.traveller.photo != None %}
+                    <img class="img-rounded" src="/static/user_folder/{{trip.traveller.photo}}">
+                {% else %}
+                    <img class="img-rounded" src="/static/user_folder/default.jpg">
+                {% endif %}
+            </a>
+            <div class="media-body">
+                <h3 class="media-heading">{{trip.name}} {% if perms.principal.administrator %}({{ trip.get_state_display }}){% endif %}</h3>
+                <p class="text-right">By {{trip.traveller}}</p>
+                <p>{{trip.publishedDescription|safe}}</p>
+                <ul class="list-inline list-unstyled">
+                    <li><span><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
+                    <li>|</li>
+                    <span> {{trip.comment_set.all.count}} <i class="fa fa-comments"></i></span>
+                    <li>|</li>
+                    <span><i class="fa fa-thumbs-o-up"></i> {{trip.likes}}</span>
+                    <li>|</li>
+                    <span><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</span>
+                    <li>|</li>
+                    <a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a>
+                </ul>
             </div>
-            <input type="submit" name="save" value="save" />
-        </form>
-    </div>
-    </div>
-</div>
-{% endfor %}
-<div class="pagination">
-    <span class="step-links">
-        {% if trips.has_previous %}
-            <a href="?page={{ trips.previous_page_number }}">previous</a>
-        {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if trips.has_previous %}
+                <a href="?page={{ trips.previous_page_number }}">previous</a>
+            {% endif %}
 
-        <span class="current">
-            Page {{ trips.number }} of {{ trips.paginator.num_pages }}.
+            <span class="current">
+                Page {{ trips.number }} of {{ trips.paginator.num_pages }}.
+            </span>
+
+            {% if trips.has_next %}
+                <a href="?page={{ trips.next_page_number }}">next</a>
+            {% endif %}
         </span>
-
-        {% if trips.has_next %}
-            <a href="?page={{ trips.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>
-<script type="text/javascript">
-$(document).ready(function() {
-    $("#stateSelectForm").submit(function () {
-        return confirm('Are you sure?');
-    });
-});
-</script>
+    </div>
 {%endblock%}

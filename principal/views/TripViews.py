@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from principal.models import Judges, Administrator
 from principal.forms import TripEditForm
 from principal.models import Trip, Comment
-from principal.services import TripService
+from principal.services import TripService, TravellerService
 from principal.forms import TripUpdateStateForm
 from principal.utils import BrainTravelUtils
 
@@ -32,7 +32,7 @@ def public_trip_details(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     comments = Comment.objects.filter(trip=trip_id)
     # is_edit = False
-    if trip.traveller.id == request.user.id or trip.state == 'ap' or isinstance(request.user, Administrator): #Si es admin puede entrar sin importar el estado.
+    if trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator'):
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
         can_delete = False
         if trip.traveller.id == request.user.id:
@@ -42,9 +42,11 @@ def public_trip_details(request, trip_id):
         else:
             judge = list(judges)[0]
         # is_edit = True
+        data = {'id': trip.id, 'state': trip.state}
+        form = TripUpdateStateForm(initial=data)
         return render_to_response('public_trip_details.html',
                                   {'trip': trip, 'comments': comments, 'traveller_edit': True, 'can_delete': can_delete,
-                                   'judge': judge}, context_instance=RequestContext(request))
+                                   'judge': judge, 'form': form}, context_instance=RequestContext(request))
     else:
         BrainTravelUtils.save_error(request)
         return render_to_response('search.html', {}, context_instance=RequestContext(request))
@@ -52,41 +54,41 @@ def public_trip_details(request, trip_id):
 
 # author: Juane
 @login_required()
-def list_all_by_state(request):
-    trips = TripService.list_all_by_state(request.user)
-    if trips is not False:
-        paginator = Paginator(trips, 1)
-        page = request.GET.get('page')
-        try:
-            trips = paginator.page(page)
-        except PageNotAnInteger:
-            trips = paginator.page(1)
-        except EmptyPage:
-            trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
-    else:
-        msg_errors = ["You must login!"]
-        return render_to_response('signin.html', {'msg_errors': msg_errors})
+def list_trip_administrator(request):
+    try:
+        trips = TripService.list_trip_administrator(request.user)
+    except AssertionError:
+        return render_to_response('error.html')
+    paginator = Paginator(trips, 2)
+    page = request.GET.get('page')
+    try:
+        trips = paginator.page(page)
+    except PageNotAnInteger:
+        trips = paginator.page(1)
+    except EmptyPage:
+        trips = paginator.page(paginator.num_pages)
+    return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
 
 
 # author: Juane
 @login_required()
-def update_state(request):
-    if request.POST:
-        trip_form = TripUpdateStateForm(request.POST)
-        if trip_form.is_valid():
-            trip = TripService.update_state(request.user, trip_form)
-            if trip is not False:
+def update_state(request, trip_id):
+    try:
+        assert request.user.has_perm('principal.administrator')
+        if request.POST:
+            trip_form = TripUpdateStateForm(request.POST)
+            if trip_form.is_valid():
+                trip = TripService.update_state(request.user, trip_form)
+                assert str(trip.scorable_ptr_id) == trip_id
                 TripService.save(trip)
                 BrainTravelUtils.save_success(request, 'Trip successfully updated')
-                return redirect(list_all_by_state)
-            else:
-                msg_errors = ["You must login!"]
-                return render_to_response('signin.html', {'msg_errors': msg_errors})
-    return redirect(list_all_by_state)
+                return redirect(list_trip_administrator)
+        else:
+            return redirect(public_trip_details(request, trip_id))
+    except AssertionError:
+        return render_to_response('error.html')
 
 
-# david
 @login_required()
 def list_all_by_traveller(request, optional=0):
     if optional == "0":
@@ -231,3 +233,15 @@ def send_assessment(request):
     except:
         msg_errors = ["Something went wrong..."]
         return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
+
+
+# author: Juane
+@login_required()
+def list_trip_approved_by_profile(request, profile_id):
+    try:
+        assert request.user.has_perm('principal.traveller')
+        traveller = TravellerService.find_one(profile_id)
+        trips = TripService.list_my_trip_approved(traveller.id)
+        return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
+    except AssertionError:
+        return render_to_response('error.html')

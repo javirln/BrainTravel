@@ -96,10 +96,10 @@ class Feedback(models.Model):
 
 class Trip(Scorable):
     State = (
-        ('ap', 'APPROVED'),
-        ('re', 'REJECTED'),
-        ('pe', 'PENDING'),
-        ('df', 'DRAFT')
+        ('ap', 'Approved'),
+        ('re', 'Rejected'),
+        ('pe', 'Pending'),
+        ('df', 'Draft')
     )
     publishedDescription = models.TextField(null=True)
     startDate = models.DateField(null=True)
