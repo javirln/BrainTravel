@@ -103,14 +103,14 @@
                 <a class="fa fa-star fa-2x text-left" data-toggle="modal" style="text-decoration: None" data-target="#myModal"> <small>{% firstof trip.rating '-' %}</small> / <strong>10</strong></a>
                 <br>
                 <br>
-                {% if user.is_anonymous or perms.principal.administrator %}
+                {% if user.is_anonymous or perms.principal.administrator or trip.state != 'ap' %}
                     <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>
                     <br>
                     <br>
                     <i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>
                 {% endif %}
 
-                {% if perms.principal.traveller %}
+                {% if perms.principal.traveller and trip.state == 'ap'%}
                     {% if judge == None %}
                         <a href="/judge/{{trip.scorable_ptr_id}}/1">
                             <i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>
