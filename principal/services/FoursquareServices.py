@@ -3,7 +3,7 @@ import threading
 
 import foursquare
 
-from principal.models import Category
+from principal.models import Category, Venue
 
 
 _client_id = "TWYKUP301GVPHIAHBPYFQQT0PJGZ0O2B24HQ3RUGLUFSLP1E"
@@ -92,8 +92,25 @@ class Planificador():
         self.lock.release()
         print(self.lista)
 
+    def apply_weighting(self, category, weighting):
+        category_fs = Category.objects.filter(name=category)
+        all_venue_category = Venue.objects.filter(id_foursquare=category_fs.id_foursquare)
+        # todo asegurarse de los valores
+        if weighting == "a lot of":
+            for categoria in all_venue_category:
+                categoria.scorable.rating *= 1.6
+
+        if weighting == "many of":
+            for categoria in all_venue_category:
+                categoria.scorable.rating *= 1.4
+
+        if weighting == "never":
+            for categoria in all_venue_category:
+                categoria.scorable.rating *= 0.01
+
+
     # 1º parametro = dict categorias:puntuacion del usuario
-    def apply_weighting(self, dict_category_weighting):
+    def ejecute(self, dict_category_weighting):
         list_categories_and_options = []
         for categoria in dict_category_weighting:
             # sacamos la ponderacion de dicha categoria
