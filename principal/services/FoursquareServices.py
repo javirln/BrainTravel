@@ -1,4 +1,5 @@
 # -*- coding: latin-1 -*-
+import threading
 
 import foursquare
 
@@ -55,4 +56,86 @@ def search_by_section(city, section):
     # or topPicks (a mix of recommendations generated without a query from the user).
     response = client.venues.explore(params={'near': city, 'section': section})
     print(response)
+
+
+def apply_weighting(category, weighting):
+    # devolvera los sitios que tienen esa categoria aplicandole previamente el peso al rating de los sitios
+    pass
+
+
+# 1º parametro = categorias que ha puntuado el usuario
+def planificador(dict_category_weighting, number_days, another_category=""):
+    list_categories_and_options = []
+    for categoria in dict_category_weighting:
+        # sacamos la ponderacion de dicha categoria
+        weighting = dict_category_weighting[categoria]
+        print(weighting)
+        list_categories_and_options.append(apply_weighting(categoria, weighting))
+
+    com = Planificador()
+    com.run_all(list_categories_and_options)
+
+
+class Planificador():
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.lista = []
+
+    @staticmethod
+    def worker(count):
+        # sleep(random() * 5)
+        print "Este es el %s trabajo que hago hoy para Genbeta Dev" % count
+
+    def anyadir(self, obj):
+        self.lock.acquire()
+        self.lista.append(obj)
+        self.lock.release()
+        print(self.lista)
+
+    # 1º parametro = dict categorias:puntuacion del usuario
+    def apply_weighting(self, dict_category_weighting):
+        list_categories_and_options = []
+        for categoria in dict_category_weighting:
+            # sacamos la ponderacion de dicha categoria
+            weighting = dict_category_weighting[categoria]
+            print(weighting)
+            list_categories_and_options.append(apply_weighting(categoria, weighting))
+
+    def obtener(self, ):
+        self.lock.acquire()
+        obj = self.lista.pop()
+        self.lock.release()
+        print(obj + "asda")
+        return obj
+
+    def run_all(self, list_categories):
+        th1 = threading.Thread(target=self.anyadir, args=("1",))
+        th2 = threading.Thread(target=self.anyadir, args=("2",))
+        th3 = threading.Thread(target=self.obtener)
+        th1.start()
+        th2.start()
+        th3.start()
+        # for i in range(3):
+        # t = threading.Thread(target=worker, args=(i,))
+        # threads.append(t)
+        # t.start()
+
+
+def test_hilos():
+    list_categories_and_options = []
+    com = Planificador()
+    com.run_all(list_categories_and_options)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
