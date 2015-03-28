@@ -28,14 +28,17 @@
                     <li>|</li>
                     <span><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</span>
                     <li>|</li>
-                    <a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a>
+                    <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a></li>
                 </ul>
             </div>
             </div>
         </div>
     {% endfor %}
-
-    <a class="pull-left" href="/trip/create/"> {% trans "Create Trip" %}</a>
+    
+    <div class="col-xs-12 col-sm-2">
+        <a class="btn btn-default btn-block btn-lg" href="/trip/create/"> {% trans "Create Trip" %}</a>
+    </div>
+    
 
     <div class="pagination">
         <span class="step-links">

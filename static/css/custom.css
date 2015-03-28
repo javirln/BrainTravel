@@ -11,13 +11,6 @@ hr{
 	color: #000;
 }
 
-.navbar-bt {
-    background-color: #ABB7B7;
-    border-color: #ABB7B7;
-    border-radius: 0px;
-    border-bottom:1px solid #ABB7B7;
-}
-
 .login-container{
     position: relative;
     width: 300px;
@@ -473,3 +466,21 @@ img {
 .price-option--low .price-option__purchase:before  { border-color: transparent transparent #a7d155; }
 .price-option--mid .price-option__purchase:before  { border-color: transparent transparent #eada42; }
 .price-option--high .price-option__purchase:before { border-color: transparent transparent #e54e4b; }
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
