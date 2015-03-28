@@ -4,7 +4,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 
-from principal.services.FoursquareServices import init_fs, search_by_category, test_hilos
+from principal.services.FoursquareServices import init_fs, test_plan
 
 
 client = init_fs()
@@ -15,7 +15,7 @@ def foursquare_request(request):
         try:
             # categories_initializer()
             # search_by_category("sevilla", "coffee")
-            test_hilos()
+            test_plan()
         except Exception as e:
             return HttpResponse(e)
     else:
