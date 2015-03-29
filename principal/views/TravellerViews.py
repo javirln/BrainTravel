@@ -28,7 +28,7 @@ def profile_edit(request):
                 traveller.genre = form.cleaned_data['genre']
                 traveller.photo = form.cleaned_data['photo']
                 TravellerService.save(traveller)
-                return redirect(profile_details(request, traveller.id))
+                return HttpResponseRedirect('/profile/'+str(traveller.id))
         else:
             traveller = Traveller.objects.get(id=request.user.id)
             data = {'first_name': traveller.first_name, 'last_name': traveller.last_name, 'genre': traveller.genre,
@@ -50,7 +50,7 @@ def profile_edit_password(request):
                 traveller = Traveller.objects.get(id=form.cleaned_data['id'])
                 traveller.set_password(form.cleaned_data['password'])
                 TravellerService.save(traveller)
-                return redirect(profile_details(request, traveller.id))
+                return HttpResponseRedirect('/profile/'+str(traveller.id))
         else:
             traveller = Traveller.objects.get(id=request.user.id)
             data = {'id': traveller.id}

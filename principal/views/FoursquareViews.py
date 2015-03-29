@@ -9,6 +9,7 @@ from django.template.context import RequestContext
 
 from principal.services import FoursquareServices
 from principal.services.FoursquareServices import init_fs, categories_initializer, search_by_category
+from principal.services.FoursquareServices import init_fs, test_plan
 
 
 client = init_fs()
@@ -18,7 +19,8 @@ def foursquare_request(request):
     if request.method == 'GET':
         try:
             # categories_initializer()
-            search_by_category("sevilla", "coffee")
+            # search_by_category("sevilla", "coffee")
+            test_plan()
         except Exception as e:
             return HttpResponse(e)
     else:

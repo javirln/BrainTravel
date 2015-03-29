@@ -44,14 +44,15 @@ class TripEditForm(forms.Form):
     country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     startDate = forms.DateField(label="Start date",
-                                widget=DateTimePicker(options={"format": "YYYY-MM-DD",
-                                                               "pickTime": False}))
+                                widget=DateTimePicker(attrs={'class': 'form-control'}, options={"format": "YYYY-MM-DD",
+                                                                                                "pickTime": False}))
 
     endDate = forms.DateField(label="End date",
-                              widget=DateTimePicker(options={"format": "YYYY-MM-DD",
-                                                             "pickTime": False}))
+                              widget=DateTimePicker(attrs={'class': 'form-control'}, options={"format": "YYYY-MM-DD",
+                                                                                              "pickTime": False}))
 
-    publishedDescription = forms.CharField(label='Published Description', widget=SummernoteWidget())
+    publishedDescription = forms.CharField(label='Published Description',
+                                           widget=SummernoteWidget(attrs={'class': 'form-control'}))
 
 
 # author: Juane
@@ -85,7 +86,7 @@ class TravellerEditPasswordForm(forms.Form):
             self.add_error('password_repeat', "Password do not match")
         return self.cleaned_data
 
-    
+
 class FormPaypalOwn(PayPalPaymentsForm):
     def get_image(self):
         return "https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png";

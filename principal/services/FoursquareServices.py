@@ -1,4 +1,7 @@
 # -*- coding: latin-1 -*-
+import pprint
+import threading
+import traceback
 
 import pprint
 
@@ -115,4 +118,95 @@ def save_photo(venues_selected):
     
     
     
+
+
+# 1º parametro = categorias que ha puntuado el usuario
+def planificador(dict_category_weighting, number_days):
+    com = Planificador(dict_category_weighting)
+    com.ejecute()
+
+
+class Planificador(threading.Thread):
+    def __init__(self, dict_category_weighting):
+        # self.lock = threading.Lock()
+        threading.Thread.__init__(self)
+        self.lista = []
+        self.dict_category_weighting = dict_category_weighting
+
+    # def anyadir(self, obj):
+    # self.lock.acquire()
+    # self.lista.append(obj)
+    # self.lock.release()
+    # print(self.lista)
+    # def obtener(self, ):
+    #     self.lock.acquire()
+    #     obj = self.lista.pop()
+    #     self.lock.release()
+    #     print(obj + "asda")
+    #     return obj
+    def apply_weighting(self, category, weighting):
+        # category_bd = Category.objects.filter(name=category)
+        all_venue_category = Venue.objects.filter(categories__name=category)
+
+        # todo asegurarse de los valores
+        if weighting == "a lot of":
+            for categoria in all_venue_category:
+                categoria.scorable_ptr.rating *= 1.6
+
+        if weighting == "many of":
+            for categoria in all_venue_category:
+                categoria.scorable_ptr.rating *= 1.4
+
+        if weighting == "never":
+            for categoria in all_venue_category:
+                categoria.scorable_ptr.rating *= 0.01
+
+        # finalmente escribimos los resultados
+        self.lista.extend(all_venue_category)
+
+    # dict categorias:puntuacion del usuario
+    def ejecute(self):
+        actual = threading.active_count()
+        for categoria in self.dict_category_weighting:
+            print(threading.active_count())
+            # sacamos la ponderacion de dicha categoria
+            weighting = self.dict_category_weighting[categoria]
+            th = threading.Thread(target=self.apply_weighting, args=(categoria, weighting,))
+            # print(categoria)
+            # print(weighting)
+            th.start()
+            print("+1")
+        #     lo uso para sincronizar los hilos
+        while actual != threading.active_count():
+            # print(threading.active_count())
+            pass
+        # imprime dos veces la lista y no se porqe
+        pprint.pprint(self.lista)
+
+
+        # def run_all(self, list_categories):
+        # th1 = threading.Thread(target=self.anyadir, args=("1",))
+        # th2 = threading.Thread(target=self.anyadir, args=("2",))
+        # th3 = threading.Thread(target=self.obtener)
+        # th1.start()
+        # th2.start()
+        # th3.start()
+        # for i in range(3):
+        # t = threading.Thread(target=worker, args=(i,))
+        # threads.append(t)
+        # t.start()
+
+
+def test_plan():
+    try:
+        dict_categories_and_options = {'Castle': "a lot of", 'Stadium': "many of"}
+        com = Planificador(dict_categories_and_options)
+        com.ejecute()
+        # while True:
+        # if len(com.lista) != 0:
+    except:
+        traceback.print_exc()
+
+
+
 
