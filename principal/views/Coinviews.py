@@ -71,7 +71,7 @@ def buy_coins(request):
     
     
     # Paquete 3
-    track_data3 = {'user_id':request.user.id, 'package_number':'3    '}
+    track_data3 = {'user_id':request.user.id, 'package_number':'3'}
     paypal_dict_3 = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
         "amount": "10.00",
