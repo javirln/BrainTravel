@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
 from paypal.standard.forms import PayPalPaymentsForm
 from django import forms
+from validators import password_validator
 
 from principal.models import Traveller
 
@@ -61,26 +62,71 @@ class TravellerEditProfileForm(forms.Form):
         ('MA', 'MALE'),
         ('FE', 'FEMALE')
     )
-    first_name = forms.CharField(label='first name', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    last_name = forms.CharField(label='last name', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(label='first name', max_length=30, widget=forms.TextInput())
+    last_name = forms.CharField(label='last name', max_length=30, widget=forms.TextInput())
     genre = forms.ChoiceField(label='genre', choices=Genre, widget=forms.Select(attrs={'class': 'form-control'}))
-    photo = forms.ImageField(label='photo')
+    photo = forms.ImageField(label='photo', required=False)
 
 
 # author: Juane
 class TravellerEditPasswordForm(forms.Form):
     id = forms.IntegerField(widget=forms.HiddenInput)
-    old_password = forms.CharField(label='Old password', max_length=30, widget=forms.PasswordInput)
-    password = forms.CharField(label='New password', max_length=30, widget=forms.PasswordInput)
-    password_repeat = forms.CharField(label='New password repeat', max_length=30, widget=forms.PasswordInput)
+    old_password = forms.CharField(
+        label='Old password',
+        required=True,
+        # min_length=8,
+        # max_length=32,
+        # validators=[password_validator],
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                # 'maxlength': '32',
+                # 'minlength': '8',
+                # 'pattern': '^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$'
+            }
+        )
+    )
+    password = forms.CharField(
+        label='New password',
+        required=True,
+        min_length=8,
+        max_length=32,
+        validators=[password_validator],
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                'maxlength': '32',
+                'minlength': '8',
+                'pattern': '^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$'
+            }
+        )
+    )
+    password_repeat = forms.CharField(
+        label='New password repeat',
+        required=True,
+        min_length=8,
+        max_length=32,
+        validators=[password_validator],
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                'maxlength': '32',
+                'minlength': '8',
+                'pattern': '^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$',
+                'data-match': '#id_password',
+                'data-match-error': "Whoops, these don't match"
+            }
+        )
+    )
 
     def clean(self):
         traveller = Traveller.objects.get(id=self.cleaned_data.get('id'))
         old_password = self.cleaned_data.get('old_password')
-
         if not check_password(old_password, traveller.password):
             self.add_error('old_password', "Wrong password")
-
         if self.cleaned_data.get('password') != self.cleaned_data.get('password_repeat'):
             self.add_error('password_repeat', "Password do not match")
         return self.cleaned_data

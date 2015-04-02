@@ -11,19 +11,18 @@
                         <form class="form-horizontal" role="form" action="/profile/edit/" method="post" data-toggle="validator"  enctype="multipart/form-data">
                             {% csrf_token %}
                             <!-- left column -->
-                            <div class="col-md-4 col-sm-6 col-xs-8">
+                            <div class="col-md-4 col-sm-6 col-xs-8" style="margin-right: 20px">
                                 <div class="form-group {% if form.visible_fields.3.errors %} has-error {% endif %} ">
                                     <div class="text-center ">
-                                        {% if traveller.photo == None %}
-                                            <img src="/static/user_folder/default.jpg" alt="" class="center-block img-circle img-thumbnail img-responsive" width="200">
-                                        {% else %}
-                                            <img src="/static/user_folder/{{traveller.photo}}" alt="" class="center-block img-circle img-thumbnail img-responsive" width="200">
-                                        {% endif %}
-                                        <h6>Upload a different photo...</h6>
+                                        <img src="/{{ form.initial.photo.name }}" alt="" class="center-block img-circle img-thumbnail img-responsive" width="200">
                                     </div>
                                     <label for="id_{{ form.visible_fields.3.html_name }}" class="control-label"></label>
                                     <div>
-                                        {{ form.visible_fields.3 }}
+                                        {% if form.initial.photo != 'static/user_folder/default.jpg' %}
+                                            <input id="photo-clear_id" name="photo-clear" type="checkbox" /> <label for="photo-clear_id">Default image</label><br />
+                                        {% endif %}
+                                        <label for="id_{{ form.visible_fields.3.html_name }}" class="control-label">Photo:</label>
+                                        <input id="id_photo" name="photo" type="file" class="form-control" data-fv-file-maxfiles="1" data-fv-file-type="image/jpeg,image/png" />
                                     </div>
                                     <div class="help-block with-errors">
                                         {{ form.visible_fields.3.errors }}

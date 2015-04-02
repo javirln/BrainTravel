@@ -9,11 +9,7 @@
                     <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 text-center">
-                            {% if traveller.photo == None %}
-                                <img src="/static/user_folder/default.jpg" alt="" class="center-block img-circle img-thumbnail img-responsive">
-                            {% else %}
-                                <img src="/static/user_folder/{{traveller.photo}}" alt="" class="center-block img-circle img-thumbnail img-responsive">
-                            {% endif %}
+                            <img src="/{{traveller.photo}}" alt="" class="center-block img-circle img-thumbnail img-responsive" width="200">
                             <ul class="list-inline ratings text-center" title="Ratings">
                                 {% if traveller.reputation != None %}
                                     <li><a href="#"><span class="fa fa-star fa-lg"> {{ traveller.reputation }}/10</span></a></li>

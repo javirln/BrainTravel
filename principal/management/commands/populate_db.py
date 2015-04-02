@@ -403,7 +403,7 @@ class Command(BaseCommand):
             first_name='Annie',
             last_name='Stone',
             genre='FE',
-            photo='annie_stone.jpg',
+            photo='static/user_folder/annie_stone.jpg',
             reputation=7.5,
             coins=30,
             recommendations=5)
@@ -425,7 +425,7 @@ class Command(BaseCommand):
             first_name='Allen',
             last_name='Sutton',
             genre='MA',
-            photo='allen_sutton.jpg',
+            photo='static/user_folder/allen_sutton.jpg',
             reputation=8.2,
             coins=23,
             recommendations=13)

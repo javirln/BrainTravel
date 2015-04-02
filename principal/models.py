@@ -84,7 +84,7 @@ class Feedback(models.Model):
 
 # class City(models.Model):
 # name = models.CharField(max_length=50)
-#     country = models.CharField(max_length=50)
+# country = models.CharField(max_length=50)
 #     description = models.TextField()
 # 
 #     class Meta:
@@ -132,7 +132,8 @@ class Traveller(User):
     )
 
     genre = models.CharField(max_length=2, choices=Genre, null=True)
-    photo = models.ImageField(upload_to='static/user_folder/', null=True, blank=True)
+    photo = models.ImageField(upload_to='static/user_folder/', null=True)
+
 
     # ----------- Derivates -------------------#
     reputation = models.FloatField(null=True, blank=True,
@@ -154,6 +155,17 @@ class Traveller(User):
 
     def __unicode__(self):
         return self.first_name
+
+    def save(self, *args, **kwargs):
+        # delete old file when replacing by updating the file
+        try:
+            this = Traveller.objects.get(id=self.id)
+            if this.photo != self.photo and this.photo.name != 'static/user_folder/default.jpg':
+                this.photo.delete(save=False)
+        except:
+            # when new photo then we do nothing, normal case
+            pass
+        super(Traveller, self).save(*args, **kwargs)
 
 
 class Notification(models.Model):
