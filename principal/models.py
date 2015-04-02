@@ -53,8 +53,7 @@ class Venue(Scorable):
     id_foursquare = models.CharField(max_length=30, unique=True)
     latitude = models.CharField(max_length=50)
     longitude = models.CharField(max_length=50)
-    photo = models.ImageField(upload_to='static/venue_folder/', null=True, blank=True)
-    phone = models.CharField(max_length=50, null=True)
+    photo = models.CharField(max_length=256, null=True, blank=True)
 
     # ------------- Relationships --------------#
     categories = models.ManyToManyField(Category)
@@ -114,7 +113,7 @@ class Trip(Scorable):
 
     # ------------- Relationships --------------#
     traveller = models.ForeignKey('principal.Traveller')
-    #city = models.ForeignKey(City)
+    # city = models.ForeignKey(City)
     city = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
 

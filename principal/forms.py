@@ -2,6 +2,7 @@
 from bootstrap3_datetime.widgets import DateTimePicker
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django_summernote.widgets import SummernoteWidget
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
@@ -45,15 +46,25 @@ class TripEditForm(forms.Form):
     country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     startDate = forms.DateField(label="Start date",
-                                widget=DateTimePicker(options={"format": "YYYY-MM-DD",
-                                                               "pickTime": False}))
+                                widget=DateTimePicker(attrs={'class': 'form-control'}, options={"format": "YYYY-MM-DD",
+                                                                                                "pickTime": False}))
 
     endDate = forms.DateField(label="End date",
-                              widget=DateTimePicker(options={"format": "YYYY-MM-DD",
-                                                             "pickTime": False}))
+                              widget=DateTimePicker(attrs={'class': 'form-control'}, options={"format": "YYYY-MM-DD",
+                                                                                              "pickTime": False}))
 
-    publishedDescription = forms.CharField(label='Published Description', widget=SummernoteWidget())
+    publishedDescription = forms.CharField(label='Published Description',
+                                           widget=SummernoteWidget(attrs={'class': 'form-control'}))
 
+# david
+class PlanForm(forms.Form):
+    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+    startDate = forms.DateField(label="Start date",
+                                widget=DateTimePicker(attrs={'class': 'form-control'}, options={"format": "YYYY-MM-DD",
+                                                                                                "pickTime": False}))
+    days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min':0, 'max':7, 'class': 'form-control'}))
 
 # author: Juane
 class TravellerEditProfileForm(forms.Form):
@@ -131,7 +142,7 @@ class TravellerEditPasswordForm(forms.Form):
             self.add_error('password_repeat', "Password do not match")
         return self.cleaned_data
 
-    
+
 class FormPaypalOwn(PayPalPaymentsForm):
     def get_image(self):
         return "https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png";

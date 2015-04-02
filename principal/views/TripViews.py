@@ -1,4 +1,6 @@
 # -*- coding: latin-1 -*-
+import traceback
+
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -6,12 +8,14 @@ from django.template.context import RequestContext
 from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from principal.models import Judges, Administrator
+from principal.models import Judges
 from principal.forms import TripEditForm
 from principal.models import Trip, Comment
 from principal.services import TripService, TravellerService
 from principal.forms import TripUpdateStateForm
 from principal.utils import BrainTravelUtils
+
+
 
 
 # author: Javi
@@ -34,9 +38,6 @@ def public_trip_details(request, trip_id):
     # is_edit = False
     if trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator'):
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
-        can_delete = False
-        if trip.traveller.id == request.user.id:
-            can_delete = True
         if len(judges) == 0:
             judge = None
         else:
@@ -45,7 +46,7 @@ def public_trip_details(request, trip_id):
         data = {'id': trip.id, 'state': trip.state}
         form = TripUpdateStateForm(initial=data)
         return render_to_response('public_trip_details.html',
-                                  {'trip': trip, 'comments': comments, 'traveller_edit': True, 'can_delete': can_delete,
+                                  {'trip': trip, 'comments': comments, 'traveller_edit': True,
                                    'judge': judge, 'form': form}, context_instance=RequestContext(request))
     else:
         BrainTravelUtils.save_error(request)
@@ -110,7 +111,7 @@ def list_all_by_traveller(request, optional=0):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('list_my_trip.html', {'trips': trips},
+        return render_to_response('trip_list.html', {'trips': trips},
                                   context_instance=RequestContext(request))
 
 
@@ -127,7 +128,7 @@ def list_all_by_traveller_draft(request):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('list_my_trip.html', {'trips': trips}, content_type=RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
 
 
 # david
@@ -141,13 +142,13 @@ def trip_create(request):
             if "save" in request.POST and request.POST['save'] == "Save draft":
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
-                return redirect('/Trip/MyList/1')
+                return redirect('/trip/mylist/1')
             elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)
-                return redirect('/Trip/MyList/2')
+                return redirect('/trip/mylist/2')
 
-            return redirect('/Trip/MyList/0')
+            return redirect('/trip/mylist/0')
 
     else:
         data = {}
@@ -160,38 +161,41 @@ def trip_create(request):
 # david
 @login_required()
 def trip_edit(request, trip_id):
-    trip = Trip.objects.get(id=trip_id)
-    if trip.traveller.id != request.user.id:
-        return render_to_response('index.html', context_instance=RequestContext(request))
-
-    if request.POST:
-        form = TripEditForm(request.POST)
-        if form.is_valid():
-            trip.publishedDescription = form.cleaned_data['publishedDescription']
-            trip.city = form.cleaned_data['city']
-            trip.startDate = form.cleaned_data['startDate']
-            trip.endDate = form.cleaned_data['endDate']
-            trip.country = form.cleaned_data['country']
-            if "save" in request.POST and request.POST['save'] == "Save draft":
-                trip.state = "df"
-                TripService.save_secure(trip)
-                return redirect('/Trip/MyList/1')
-            elif "save" in request.POST and request.POST['save'] == "Publish Trip":
-                trip.state = "pe"
-                TripService.save_secure(trip)
-                return redirect('/Trip/MyList/2')
-            elif request.POST['delete'] == "Delete Trip":
+    try:
+        assert request.user.has_perm('principal.traveller')
+        trip = Trip.objects.get(id=trip_id)
+        assert trip.traveller.id == request.user.id
+        if request.POST:
+            form = TripEditForm(request.POST)
+            if form.is_valid():
+                trip.publishedDescription = form.cleaned_data['publishedDescription']
+                trip.city = form.cleaned_data['city']
+                trip.startDate = form.cleaned_data['startDate']
+                trip.endDate = form.cleaned_data['endDate']
+                trip.country = form.cleaned_data['country']
+                if "save" in request.POST and request.POST['save'] == "Save draft":
+                    trip.state = "df"
+                    TripService.save_secure(trip)
+                    return redirect('/trip/mylist/1')
+                elif "save" in request.POST and request.POST['save'] == "Publish Trip":
+                    trip.state = "pe"
+                    TripService.save_secure(trip)
+                    return redirect('/trip/mylist/2')
+            if request.POST['delete'] == "Delete Trip":
                 TripService.delete(request, trip)
-                return redirect('/Trip/MyList/3')
+                return redirect('/trip/mylist/3')
+            raise AssertionError
+        else:
+            data = {'city': trip.city, 'publishedDescription': trip.publishedDescription, 'country': trip.country,
+                    'startDate': trip.startDate, 'endDate': trip.endDate}
+            form = TripEditForm(initial=data)
 
-            return redirect('/Trip/MyList/')
-    else:
-        data = {'city': trip.city, 'publishedDescription': trip.publishedDescription, 'country': trip.country,
-                'startDate': trip.startDate, 'endDate': trip.endDate}
-        form = TripEditForm(initial=data)
-
-    return render_to_response('trip_edit.html', {"form": form, "trip": trip, "create": False},
-                              context_instance=RequestContext(request))
+        return render_to_response('trip_edit.html',
+                                  {"form": form, "trip": trip, "can_delete": True, "create": False},
+                                  context_instance=RequestContext(request))
+    except AssertionError:
+        print(traceback.format_exc())
+        return render_to_response('error.html')
 
 
 # author: Javi Rodriguez
@@ -214,6 +218,7 @@ def comment_trip(request):
     except:
         msg_errors = ["Something went wrong..."]
         return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
+
 
 # author: Javi Rodriguez
 @login_required()

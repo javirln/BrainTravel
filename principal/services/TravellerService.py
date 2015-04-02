@@ -12,7 +12,7 @@ def create(form):
                     email=form.cleaned_data['email'],
                     username=form.cleaned_data['email'])
     res.user_permissions.add('traveller.traveller')
-    res.is_active = False;
+    res.is_active = False
     return res
 
 

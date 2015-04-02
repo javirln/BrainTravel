@@ -50,7 +50,7 @@ def buy_coins(request):
         "amount": "4.50",
         "item_name": "40 Coins",
         "notify_url": "http://564027ec.ngrok.com" + reverse('paypal-ipn'),
-        "return_url": "http://www.braintravel.com/Coin/list/",
+        "return_url": "http://www.braintravel.com/coin/list/",
         "cancel_return": "http://www.braintravel.com/payment_cancel",
         "currency_code":"EUR",
         "custom":track_data1,
@@ -62,7 +62,7 @@ def buy_coins(request):
         "amount": "7.00",
         "item_name": "60 Coins",
         "notify_url": "http://564027ec.ngrok.com" + reverse('paypal-ipn'),
-        "return_url": "http://www.braintravel.com/Coin/list/",
+        "return_url": "http://www.braintravel.com/coin/list/",
         "cancel_return": "http://www.braintravel.com/payment_cancel",
         "currency_code":"EUR",
         "custom": track_data2,
@@ -71,13 +71,13 @@ def buy_coins(request):
     
     
     # Paquete 3
-    track_data3 = {'user_id':request.user.id, 'package_number':'3    '}
+    track_data3 = {'user_id':request.user.id, 'package_number':'3'}
     paypal_dict_3 = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
         "amount": "10.00",
         "item_name": "100 Coins",
         "notify_url": "http://564027ec.ngrok.com" + reverse('paypal-ipn'),
-        "return_url": "http://www.braintravel.com/Coin/list/",
+        "return_url": "http://www.braintravel.com/coin/list/",
         "cancel_return": "http://www.braintravel.com/payment_cancel",
         "currency_code":"EUR",
         "custom":track_data3,

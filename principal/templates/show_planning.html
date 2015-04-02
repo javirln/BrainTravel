@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} My trips {% endblock %}
+{% block content %}
+    {% load i18n %}
+	
+	<h2>Sitios que ver</h2>
+	<div>
+	{%for v in venues%}
+		<li>{{v.name}}</li>
+	{%endfor%}
+	</div>
+	
+	
+	<h2>Sitios donde comer</h2>
+	<div>
+	{%for f in food%}
+		<li>{{f.name}}</li>
+	{%endfor%}
+	</div>
+	
+{% endblock %}
