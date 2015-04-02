@@ -28,7 +28,7 @@
 			<div class="navbar-login">
 				<div class="row">
 					<div class="col-lg-4 text-center">
-						<img class="avatar img-circle img-thumbnail" src="/static/user_folder/{{ user.traveller.photo }}" onerror="this.src='/static/user_folder/default.jpg'" alt="{{ user.traveller.first_name }}">
+						<img class="avatar img-circle img-thumbnail" src="/{{ user.traveller.photo }}" alt="{{ user.traveller.first_name }}">
 					</div>
 					<div class="col-lg-8">
 						<p class="text-left">
@@ -36,7 +36,7 @@
 						</p>
 						<p class="text-left small">{{ user.traveller.email }}</p>
 						<p class="text-left">
-							<a href="/#" class="btn btn-primary btn-block btn-sm">View profile</a>
+							<a href="/profile/{{ user.traveller.id }}" class="btn btn-primary btn-block btn-sm">View profile</a>
 						</p>
 					</div>
 				</div>
