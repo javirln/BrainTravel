@@ -128,7 +128,7 @@ def list_all_by_traveller_draft(request):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips}, content_type=RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
 
 
 # david
@@ -181,10 +181,10 @@ def trip_edit(request, trip_id):
                     trip.state = "pe"
                     TripService.save_secure(trip)
                     return redirect('/trip/mylist/2')
-                elif request.POST['delete'] == "Delete Trip":
-                    TripService.delete(request, trip)
-                    return redirect('/trip/mylist/3')
-                raise AssertionError
+            if request.POST['delete'] == "Delete Trip":
+                TripService.delete(request, trip)
+                return redirect('/trip/mylist/3')
+            raise AssertionError
         else:
             data = {'city': trip.city, 'publishedDescription': trip.publishedDescription, 'country': trip.country,
                     'startDate': trip.startDate, 'endDate': trip.endDate}

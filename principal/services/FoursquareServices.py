@@ -4,10 +4,12 @@ import threading
 import traceback
 
 import pprint
+import datetime
 
 import foursquare
 
-from principal.models import Category, Venue
+from principal.models import Category, Venue, Trip, Day, VenueDay, Scorable
+from principal.services import TravellerService
 
 
 _client_id = "TWYKUP301GVPHIAHBPYFQQT0PJGZ0O2B24HQ3RUGLUFSLP1E"
@@ -51,18 +53,17 @@ def search_by_category(city, category):
     # A term to be searched against a venue's tips, category, etc.
     response = client.venues.explore(params={'near': city, 'query': category})
     print(response)
-    
+
 
 # devuelve lista ordenada por rating (hay que asegurarse mas)
 def search_by_section(city, section, limit=40):
     # section = One of food, drinks, coffee, shops, arts, outdoors, sights, trending or specials, nextVenues
     # (venues frequently visited after a given venue)
     # or topPicks (a mix of recommendations generated without a query from the user).
-    response = client.venues.explore(params={'near': city, 'section': section, 'limit':limit})
-    #pp = pprint.PrettyPrinter()
-    #pp.pprint(response)
+    response = client.venues.explore(params={'near': city, 'section': section, 'limit': limit})
+    # pp = pprint.PrettyPrinter()
+    # pp.pprint(response)
     return response
-
 
 
 def get_categories(fs_categories):
@@ -73,23 +74,23 @@ def get_categories(fs_categories):
 
 
 def filter_and_save(items, days, food=False):
-    #Days contiene la longitud del viaje en dias
+    # Days contiene la longitud del viaje en dias
     all_venues = []
     id_list = []
     amount_sites = 8
     counter = 0
     if food:
-        amount_sites = 3 #En el caso que estemos seleccionando sitios para comer, solo elegimos 3 por dia
+        amount_sites = 3  # En el caso que estemos seleccionando sitios para comer, solo elegimos 3 por dia
     for item in items:
-        venue = item['venue'] 
+        venue = item['venue']
         id = venue['id']
         if id not in id_list:
             id_list.append(id)
-            if not Venue.objects.filter(id_foursquare = id).exists():
+            if not Venue.objects.filter(id_foursquare=id).exists():
                 categories = get_categories(venue['categories'])
-                venue = Venue(name=venue['name'], 
-                              id_foursquare=id, 
-                              latitude=venue['location']['lat'], 
+                venue = Venue(name=venue['name'],
+                              id_foursquare=id,
+                              latitude=venue['location']['lat'],
                               longitude=venue['location']['lng'])
                 venue.save()
                 venue.categories.add(*categories)
@@ -97,27 +98,25 @@ def filter_and_save(items, days, food=False):
             else:
                 venue = Venue.objects.get(id_foursquare=id)
                 all_venues.append(venue)
-            
-    #Devolvemos 8 viajes por dias
-    return all_venues[0:(amount_sites*days)]
+        else:
+            # print("ID repetido: " + id)
+            # print("Venue repetido: " + venue['name'])
+            counter =counter + 1
+    # Devolvemos 8 viajes por dias
+    print ("Hay " + str((counter+1)) + " sitios repetidos")
+    return all_venues[0:(amount_sites * days)]
+
 
 def save_photo(venues_selected):
     venues_selected_with_photos = []
     for v in venues_selected:
-        venue= client.venues(v.id_foursquare)
+        venue = client.venues(v.id_foursquare)
         photo = venue['venue']['photos']['groups'][0]['items'][0]
-        photo_url = photo['prefix'] + str(photo['width']) + "x" + str(photo['height']) +photo['suffix']
+        photo_url = photo['prefix'] + str(photo['width']) + "x" + str(photo['height']) + photo['suffix']
         v.photo = photo_url
         v.save()
         venues_selected_with_photos.append(v)
     return venues_selected_with_photos
-            
-        
-    
-    
-    
-    
-    
 
 
 # 1º parametro = categorias que ha puntuado el usuario
@@ -139,11 +138,11 @@ class Planificador(threading.Thread):
     # self.lock.release()
     # print(self.lista)
     # def obtener(self, ):
-    #     self.lock.acquire()
-    #     obj = self.lista.pop()
-    #     self.lock.release()
-    #     print(obj + "asda")
-    #     return obj
+    # self.lock.acquire()
+    # obj = self.lista.pop()
+    # self.lock.release()
+    # print(obj + "asda")
+    # return obj
     def apply_weighting(self, category, weighting):
         # category_bd = Category.objects.filter(name=category)
         all_venue_category = Venue.objects.filter(categories__name=category)
@@ -176,7 +175,7 @@ class Planificador(threading.Thread):
             # print(weighting)
             th.start()
             print("+1")
-        #     lo uso para sincronizar los hilos
+        # lo uso para sincronizar los hilos
         while actual != threading.active_count():
             # print(threading.active_count())
             pass
@@ -208,5 +207,41 @@ def test_plan():
         traceback.print_exc()
 
 
+def create_trip(request, selected_venues_with_photos, selected_food_with_photos):
+    start_date = request.GET['startDate']
+    country = request.GET['country']
+    days = int(request.GET['days'])
+    city = request.GET['city']
+    date_parse = datetime.datetime.strptime(start_date, "%Y-%m-%d")
+    end_date = date_parse + datetime.timedelta(days=days)
+    end_date = end_date.date()
+
+    trip = Trip(name=str(days) + " days in " + city, publishedDescription="", state='ap',
+                startDate=start_date, endDate=end_date, planified=True, coins=0,
+                traveller=TravellerService.find_one(request.user.id),
+                city=city, country=country)
 
 
+
+    # ------------- Relationships --------------#
+    trip.save()
+    for num_day in range(1, days + 1):
+        # si no es la primera iteracion sumamos "days" a la fecha
+        if num_day == 1:
+            date=start_date
+        else:
+            date_parse = datetime.datetime.strptime(start_date, "%Y-%m-%d")
+            date = date_parse + datetime.timedelta(days=num_day-1)
+            date = date.date()
+
+        day = Day(numberDay=num_day, trip=trip, date=date)
+        day.save()
+        for numero in range(1, 9):
+            venue_day = VenueDay(order=numero, day=day, venue=selected_venues_with_photos.pop(0))
+            venue_day.save()
+
+        for numero_comida in range(1, 4):
+            venue_day = VenueDay(order=numero_comida, day=day, venue=selected_food_with_photos.pop(0))
+            venue_day.save()
+
+    return trip
