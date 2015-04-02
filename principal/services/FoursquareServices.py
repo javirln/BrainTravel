@@ -207,14 +207,12 @@ def test_plan():
         traceback.print_exc()
 
 
-def create_trip(request, selected_venues_with_photos, selected_food_with_photos):
-    start_date = request.GET['startDate']
-    country = request.GET['country']
-    days = int(request.GET['days'])
-    city = request.GET['city']
-    date_parse = datetime.datetime.strptime(start_date, "%Y-%m-%d")
-    end_date = date_parse + datetime.timedelta(days=days)
-    end_date = end_date.date()
+def create_trip(tripForm, request, selected_venues_with_photos, selected_food_with_photos):
+    start_date = tripForm.cleaned_data['startDate']
+    days = int(tripForm.cleaned_data['days'])
+    country = tripForm.cleaned_data['country']
+    city = tripForm.cleaned_data['city']
+    end_date = start_date + datetime.timedelta(days=days)
 
     trip = Trip(name=str(days) + " days in " + city, publishedDescription="", state='ap',
                 startDate=start_date, endDate=end_date, planified=True, coins=0,
@@ -230,9 +228,7 @@ def create_trip(request, selected_venues_with_photos, selected_food_with_photos)
         if num_day == 1:
             date=start_date
         else:
-            date_parse = datetime.datetime.strptime(start_date, "%Y-%m-%d")
-            date = date_parse + datetime.timedelta(days=num_day-1)
-            date = date.date()
+            date = start_date + datetime.timedelta(days=num_day-1)
 
         day = Day(numberDay=num_day, trip=trip, date=date)
         day.save()

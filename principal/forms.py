@@ -2,6 +2,7 @@
 from bootstrap3_datetime.widgets import DateTimePicker
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django_summernote.widgets import SummernoteWidget
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
@@ -54,6 +55,15 @@ class TripEditForm(forms.Form):
     publishedDescription = forms.CharField(label='Published Description',
                                            widget=SummernoteWidget(attrs={'class': 'form-control'}))
 
+# david
+class PlanForm(forms.Form):
+    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+    startDate = forms.DateField(label="Start date",
+                                widget=DateTimePicker(attrs={'class': 'form-control'}, options={"format": "YYYY-MM-DD",
+                                                                                                "pickTime": False}))
+    days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min':0, 'max':7, 'class': 'form-control'}))
 
 # author: Juane
 class TravellerEditProfileForm(forms.Form):
