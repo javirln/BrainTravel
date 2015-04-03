@@ -9,11 +9,7 @@
         <div class="well animated fadeInUp">
             <div class="media">
             <a class="pull-left" href="/profile/{{ trip.traveller.id }}">
-                {% if  trip.traveller.photo != None %}
-                    <img class="img-rounded" src="/static/user_folder/{{trip.traveller.photo}}">
-                {% else %}
-                    <img class="img-rounded" src="/static/user_folder/default.jpg">
-                {% endif %}
+                <img class="img-rounded" src="/{{trip.traveller.photo}}">
             </a>
             <div class="media-body">
                 <h3 class="media-heading">{{trip.name}} {% if perms.principal.administrator %}({{ trip.get_state_display }}){% endif %}</h3>

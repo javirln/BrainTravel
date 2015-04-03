@@ -23,6 +23,7 @@ def profile_details(request, traveller_id):
 @permission_required('principal.traveller')
 def profile_edit(request):
     try:
+        traveller = Traveller.objects.get(id=request.user.id)
         if request.POST:
             form = TravellerEditProfileForm(request.POST, request.FILES)
             if form.is_valid():
@@ -30,11 +31,10 @@ def profile_edit(request):
                 TravellerService.save(traveller)
                 return HttpResponseRedirect('/profile/'+str(traveller.id))
         else:
-            traveller = Traveller.objects.get(id=request.user.id)
             data = {'first_name': traveller.first_name, 'last_name': traveller.last_name, 'genre': traveller.genre,
                     'id': traveller.id, 'photo': traveller.photo}
             form = TravellerEditProfileForm(initial=data)
-        return render_to_response('profile_edit.html', {"form": form}, context_instance=RequestContext(request))
+        return render_to_response('profile_edit.html', {"form": form, "photo_profile": traveller.photo}, context_instance=RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')
 

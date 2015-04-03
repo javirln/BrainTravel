@@ -11,18 +11,15 @@
                         <form class="form-horizontal" role="form" action="/profile/edit/" method="post" data-toggle="validator"  enctype="multipart/form-data">
                             {% csrf_token %}
                             <!-- left column -->
-                            <div class="col-md-4 col-sm-6 col-xs-8" style="margin-right: 20px">
+                            <div class="col-md-4 col-sm-6 col-xs-8" style="margin-right: 50px">
                                 <div class="form-group {% if form.visible_fields.3.errors %} has-error {% endif %} ">
                                     <div class="text-center ">
-                                        <img src="/{{ form.initial.photo.name }}" alt="" class="center-block img-circle img-thumbnail img-responsive" width="200">
+                                        <img src="/{{ photo_profile }}" alt="" class="center-block img-circle img-thumbnail img-responsive" width="211">
                                     </div>
                                     <label for="id_{{ form.visible_fields.3.html_name }}" class="control-label"></label>
                                     <div>
-                                        {% if form.initial.photo != 'static/user_folder/default.jpg' %}
-                                            <input id="photo-clear_id" name="photo-clear" type="checkbox" /> <label for="photo-clear_id">Default image</label><br />
-                                        {% endif %}
-                                        <label for="id_{{ form.visible_fields.3.html_name }}" class="control-label">Photo:</label>
-                                        <input id="id_photo" name="photo" type="file" class="form-control" data-fv-file-maxfiles="1" data-fv-file-type="image/jpeg,image/png" />
+                                        {{ form.visible_fields.4 }} <label for="id_photo_clear">Default image</label>
+                                        {{ form.visible_fields.3 }}
                                     </div>
                                     <div class="help-block with-errors">
                                         {{ form.visible_fields.3.errors }}
@@ -33,14 +30,14 @@
                             <div class="col-md-5 col-sm-6 col-xs-8 personal-info">
                                     <div class="form-group {% if form.visible_fields.0.errors %} has-error {% endif %} ">
                                         <label for="id_{{ form.visible_fields.0.html_name }}" class="control-label">First name:</label>
-                                        <input class="form-control" id="id_first_name" name="first_name" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.first_name }}{% else %}{{ form.data.first_name }}{% endif %}" required/>
+                                        {{ form.visible_fields.0 }}
                                         <div class="help-block with-errors">
                                             {{ form.visible_fields.0.errors }}
                                         </div>
                                     </div>
                                     <div class="form-group {% if form.visible_fields.1.errors %} has-error {% endif %} ">
                                         <label for="id_{{ form.visible_fields.1.html_name }}" class="control-label">Last name:</label>
-                                        <input class="form-control" id="id_last_name" name="last_name" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.last_name }}{% else %}{{ form.data.last_name }}{% endif %}" required/>
+                                        {{ form.visible_fields.1 }}
                                         <div class="help-block with-errors">
                                             {{ form.visible_fields.1.errors }}
                                         </div>
@@ -58,7 +55,7 @@
                                     <div class="form-group">
                                         <input class="btn btn-primary" value="Save Changes" type="submit">
                                         <span></span>
-                                        <a href="/profile/{% if form.initial|length != 0 %}{{ form.initial.id }}{% else %}{{ form.data.id }}{% endif %}" class="btn btn-default">CANCEL</a>
+                                        <a href="/profile/{% if form.initial|length != 0 %}{{ form.initial.id }}{% else %}{{ form.data.id }}{% endif %}" class="btn btn-default">Cancel</a>
                                     </div>
                             </div>
                         </form>

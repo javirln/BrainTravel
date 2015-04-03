@@ -2,7 +2,6 @@
 from bootstrap3_datetime.widgets import DateTimePicker
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django_summernote.widgets import SummernoteWidget
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
@@ -66,22 +65,84 @@ class PlanForm(forms.Form):
                                                                                                 "pickTime": False}))
     days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min':0, 'max':7, 'class': 'form-control'}))
 
+
 # author: Juane
 class TravellerEditProfileForm(forms.Form):
-    id = forms.IntegerField(widget=forms.HiddenInput)
     Genre = (
         ('MA', 'MALE'),
         ('FE', 'FEMALE')
     )
-    first_name = forms.CharField(label='first name', max_length=30, widget=forms.TextInput())
-    last_name = forms.CharField(label='last name', max_length=30, widget=forms.TextInput())
-    genre = forms.ChoiceField(label='genre', choices=Genre, widget=forms.Select(attrs={'class': 'form-control'}))
-    photo = forms.ImageField(label='photo', required=False)
+    id = forms.IntegerField(
+        required=True,
+        widget=forms.HiddenInput,
+    )
+    first_name = forms.CharField(
+        label='first name',
+        required=True,
+        max_length=254,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                'maxlength': '254',
+            }
+        )
+    )
+    last_name = forms.CharField(
+        label='last name',
+        required=True,
+        max_length=254,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                'maxlength': '254',
+            }
+        )
+    )
+    genre = forms.ChoiceField(
+        label='genre',
+        choices=Genre,
+        required=True,
+        widget=forms.Select(
+            attrs={
+                'class': 'form-control'
+            }
+        )
+    )
+    photo = forms.ImageField(
+        label='photo',
+        required=False,
+        widget=forms.FileInput(
+            attrs={
+                'class': 'form-control',
+                'accept': 'image/png, image/jpeg, image/jpg',
+            }
+        ),
+    )
+    photo_clear = forms.BooleanField(
+        label='photo_clear',
+        required=False,
+    )
+
+    def clean(self):
+        if self.cleaned_data.get('photo') and self.cleaned_data.get('photo_clear'):
+            self.add_error('photo', "Please either submit a file or check the default image checkbox, not both")
+        elif self.cleaned_data.get('photo'):
+            content_types = ['image/png', 'image/jpg', 'image/jpeg']
+            if self.cleaned_data.get('photo').content_type in content_types:
+                if self.cleaned_data.get('photo').size > 2*1024*1024:
+                    self.add_error('photo', "Image file too large ( > 2mb )")
+            else:
+                self.add_error('photo', "Not valid file type. Only PNG and JPG are supported")
+        return self.cleaned_data
 
 
 # author: Juane
 class TravellerEditPasswordForm(forms.Form):
-    id = forms.IntegerField(widget=forms.HiddenInput)
+    id = forms.IntegerField(
+        widget=forms.HiddenInput
+    )
     old_password = forms.CharField(
         label='Old password',
         required=True,

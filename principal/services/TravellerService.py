@@ -1,8 +1,4 @@
 # -*- coding: latin-1 -*-
-
-"""Aquí se colocan los servicios relacionados con el Model1"""
-from django.contrib.auth.models import User
-import os, errno
 from principal.models import Traveller
 
 
@@ -47,10 +43,8 @@ def construct_profile(traveller_id, form):
     traveller.first_name = form.cleaned_data['first_name']
     traveller.last_name = form.cleaned_data['last_name']
     traveller.genre = form.cleaned_data['genre']
-    if form.cleaned_data['photo'] is False:
+    if form.cleaned_data['photo_clear']:
         traveller.photo = "static/user_folder/default.jpg"
-    elif form.cleaned_data['photo'] is None:
-        traveller.photo = traveller.photo
-    else:
+    elif form.cleaned_data['photo']:
         traveller.photo = form.cleaned_data['photo']
     return traveller
