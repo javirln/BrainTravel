@@ -37,11 +37,7 @@
                                     <label for="id_{{ form.visible_fields.1.html_name }}"
                                            class="control-label">{% trans "Country" %}</label>
                                     <input class="form-control" id="id_country" name="country" type="text"
-                                           value="
-
-
-
-                                                   {% if form.initial|length != 0 %}{{ form.initial.country }}{% else %}{{ form.data.country }}{% endif %}"
+                                           value="{% if form.initial|length != 0 %}{{ form.initial.country }}{% else %}{{ form.data.country }}{% endif %}"
                                            required/>
 
                                     <div class="help-block with-errors">

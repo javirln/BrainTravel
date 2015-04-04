@@ -258,8 +258,7 @@ class Command(BaseCommand):
             name='Tower of London',
             latitude='51.50802127486276',
             longitude='-0.07626056671142578',
-            photo='tower_of_london.jpg',
-            phone='+44 844 482 7777')
+            photo='tower_of_london.jpg')
         v_tower_london.save()
         v_tower_london.categories.add(castle)
 
@@ -269,7 +268,7 @@ class Command(BaseCommand):
             latitude='51.50064517819402',
             longitude='-0.1245725154876709',
             photo='big_ben.jpg',
-            phone='')
+            )
         v_big_ben.save()
         v_big_ben.categories.add(monument_landmark, historic_site)
 
@@ -279,7 +278,7 @@ class Command(BaseCommand):
             latitude='51.50130303159478',
             longitude='-0.1421034336090088',
             photo='buckingham_palace.jpg',
-            phone='')
+            )
         v_buckingham.save()
         v_buckingham.categories.add(palace)
 
@@ -288,8 +287,7 @@ class Command(BaseCommand):
             name='Honest Burgers',
             latitude='51.462316',
             longitude='-0.111953',
-            photo='burger.jpg',
-            phone='+442077337963')
+            photo='burger.jpg')
         v_burger.save()
         v_burger.categories.add(burger)
 
@@ -298,8 +296,7 @@ class Command(BaseCommand):
             name='Tour Eiffel',
             latitude='48.85816464940564',
             longitude='2.2944259643554683',
-            photo='tour_eiffel.jpg',
-            phone='+33892701239')
+            photo='tour_eiffel.jpg')
         v_tour_eiffel.save()
         v_tour_eiffel.categories.add(monument_landmark)
 
@@ -308,8 +305,7 @@ class Command(BaseCommand):
             name='La Fabbrica',
             latitude='48.87746235398098',
             longitude='2.2950826269836853',
-            photo='italian_restaurant.jpg',
-            phone='+33155379000')
+            photo='italian_restaurant.jpg')
         v_italian_restaurant.save()
         v_italian_restaurant.categories.add(italian_restaurant)
 
@@ -319,7 +315,7 @@ class Command(BaseCommand):
             latitude='48.85544',
             longitude='2.298975',
             photo='parc_du_champs_de_mars.jpg',
-            phone='')
+            )
         v_parc_du_champs_de_mars.save()
         v_parc_du_champs_de_mars.categories.add(park)
 
@@ -328,8 +324,7 @@ class Command(BaseCommand):
             name='Shakespeare & Company',
             latitude='48.85258084884126',
             longitude='2.3471474647521973',
-            photo='shakespeare.jpg',
-            phone='+33143714722')
+            photo='shakespeare.jpg')
         v_shakespeare.save()
         v_shakespeare.categories.add(bookstore)
 
@@ -338,8 +333,7 @@ class Command(BaseCommand):
             name='Louvre',
             latitude='48.860649275706926',
             longitude='2.3370838165283203',
-            photo='louvre_museum.jpg',
-            phone='+33140205050')
+            photo='louvre_museum.jpg')
         v_museum.save()
         v_museum.categories.add(musemum)
 
@@ -403,7 +397,7 @@ class Command(BaseCommand):
             first_name='Annie',
             last_name='Stone',
             genre='FE',
-            photo='annie_stone.jpg',
+            photo='static/user_folder/annie_stone.jpg',
             reputation=7.5,
             coins=30,
             recommendations=5)
@@ -425,7 +419,7 @@ class Command(BaseCommand):
             first_name='Allen',
             last_name='Sutton',
             genre='MA',
-            photo='allen_sutton.jpg',
+            photo='static/user_folder/allen_sutton.jpg',
             reputation=8.2,
             coins=23,
             recommendations=13)

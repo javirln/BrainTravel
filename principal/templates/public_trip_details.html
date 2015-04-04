@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-xs-12 col-md-2 col-sm-2 col-lg-2 text-center">
                     <div>
-                        <img class="avatar img-circle img-thumbnail" src="/static/user_folder/{{trip.traveller.photo}}" width="64" alt="Generic placeholder image">
+                        <img class="avatar img-circle img-thumbnail" src="/{{trip.traveller.photo}}" width="64" alt="Generic placeholder image">
                         <strong>
                         <br>
                             <a href="user.html">{{trip.traveller}}</a></strong><br>
@@ -59,7 +59,7 @@
 	                <article class="timeline-entry begin">
 	                    <div class="timeline-entry-inner">
 	                        <div class="timeline-icon">
-	                            <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
+	                            <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">
 	                        </div>
 	                        <div class="timeline-label">
 	                            <h2><a href="#">{{comment.traveller}} says:</a></h2>
@@ -74,7 +74,7 @@
 		                <div class="timeline-entry-inner">
 		                    <div class="timeline-icon bg-success">
 		                        <i class="entypo-suitcase"></i>
-		                        <img class="img-circle" style="width: 40px; height: 40px;" src="/static/user_folder/{{ comment.traveller.photo }}">
+		                        <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">
 		                    </div>
 		                    <div class="timeline-label">
 		                        <h2><a href="#">{{comment.traveller}} says:</a></h2>
