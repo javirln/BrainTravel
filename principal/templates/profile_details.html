@@ -12,12 +12,12 @@
                             <img src="/{{traveller.photo}}" alt="" class="center-block img-circle img-thumbnail img-responsive" width="200">
                             <ul class="list-inline ratings text-center" title="Ratings">
                                 {% if traveller.reputation != None %}
-                                    <li><a href="#"><span class="fa fa-star fa-lg"> {{ traveller.reputation }}/10</span></a></li>
+                                    <br/>
+                                    <li><span class="fa fa-star fa-lg"> {{ traveller.reputation }}/10</span></li>
                                 {% endif %}
                             </ul>
                         </div>
                         <!--/col-->
-
                         <div class="col-xs-12 col-sm-8">
                             {% if traveller.id == user.traveller.id %}
                                 <div class="span2 text-right">
@@ -32,11 +32,9 @@
                                     </div>
                                 </div>
                             {% endif %}
-
                             <h2>{{traveller.first_name}} {{traveller.last_name}}</h2>
                             <p><strong>{{traveller.email}}</strong></p>
                         </div>
-
                         <!--/col-->
                         <div class="clearfix"></div>
                         <div class="col-xs-12 col-sm-4"></div>
