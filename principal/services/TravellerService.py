@@ -1,4 +1,6 @@
 # -*- coding: latin-1 -*-
+from django.contrib.auth.models import Permission
+
 from principal.models import Traveller
 
 
@@ -7,13 +9,14 @@ def create(form):
     res = Traveller(first_name=form.cleaned_data['first_name'],
                     email=form.cleaned_data['email'],
                     username=form.cleaned_data['email'])
-    res.user_permissions.add('traveller.traveller')
     res.is_active = False
     return res
 
 
 def save(traveller):
     traveller.save()
+    #Es necesario guardar primero el traveller para poder asignar los permisos
+    traveller.user_permissions.add(Permission.objects.get(codename="traveller"))
 
 
 # author: Juane

@@ -25,7 +25,13 @@ class LoginForm(forms.Form):
 
 class TravellerRegistrationForm(forms.Form):
     first_name = forms.CharField()
-    email = forms.EmailField(validators=[user_exist_validator])
+    email = forms.EmailField()
+    
+    def clean_email(self):
+        cleaned_email = self.cleaned_data['email']
+        if User.objects.exists(username=cleaned_email):
+            raise ValidationError(_('Already exists a user with that email!'))
+        return cleaned_email
 
 
 # author: Juane

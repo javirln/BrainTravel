@@ -65,13 +65,14 @@ def create_traveller(request):
     data = request.POST
     form = TravellerRegistrationForm(data)
     response = {}
-
+    print ("HOLA MUNDO")
     if form.is_valid():
+        print ("dawdasd awHOLA MUNDO")
         response['success']= True
         traveller = TravellerService.create(form)
         rand_password = BrainTravelUtils.id_generator()
         traveller.set_password(rand_password)
-        traveller.save()
+        TravellerService.save(traveller) #Aqui se asignan los permisos
 
         EmailViews.send_email_confirmation(traveller, rand_password)
     else:
