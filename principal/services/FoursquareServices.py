@@ -8,6 +8,7 @@ import pprint
 import foursquare
 
 from principal.models import Category, Venue
+from django.db.models.fields import Empty
 
 
 _client_id = "TWYKUP301GVPHIAHBPYFQQT0PJGZ0O2B24HQ3RUGLUFSLP1E"
@@ -105,6 +106,7 @@ def save_photo(venues_selected):
     venues_selected_with_photos = []
     for v in venues_selected:
         venue= client.venues(v.id_foursquare)
+        photo = ""
         photo = venue['venue']['photos']['groups'][0]['items'][0]
         photo_url = photo['prefix'] + str(photo['width']) + "x" + str(photo['height']) +photo['suffix']
         v.photo = photo_url
