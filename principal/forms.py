@@ -66,6 +66,8 @@ class TripEditForm(forms.Form):
         if start_date > end_date:
             self.add_error('startDate', "Incorrect date")
             self.add_error('endDate', "Incorrect date")
+        if end_date > datetime.now().date():
+            self.add_error('endDate', "End date must be in past")
 
         return self.cleaned_data
 
