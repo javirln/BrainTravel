@@ -173,18 +173,19 @@ def trip_edit(request, trip_id):
                 trip.startDate = form.cleaned_data['startDate']
                 trip.endDate = form.cleaned_data['endDate']
                 trip.country = form.cleaned_data['country']
-                if "save" in request.POST and request.POST['save'] == "Save draft":
+                if 'save' in request.POST and request.POST['save'] == "Save draft":
                     trip.state = "df"
                     TripService.save_secure(trip)
                     return redirect('/trip/mylist/1')
-                elif "save" in request.POST and request.POST['save'] == "Publish Trip":
+                elif 'save' in request.POST and request.POST['save'] == "Publish Trip":
                     trip.state = "pe"
                     TripService.save_secure(trip)
                     return redirect('/trip/mylist/2')
-            if request.POST['delete'] == "Delete Trip":
+
+            if 'delete' in request.POST:
                 TripService.delete(request, trip)
                 return redirect('/trip/mylist/3')
-            raise AssertionError
+
         else:
             data = {'city': trip.city, 'publishedDescription': trip.publishedDescription, 'country': trip.country,
                     'startDate': trip.startDate, 'endDate': trip.endDate}

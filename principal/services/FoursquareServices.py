@@ -8,7 +8,7 @@ import datetime
 
 import foursquare
 
-from principal.models import Category, Venue, Trip, Day, VenueDay, Scorable
+from principal.models import Category, Venue, Trip, Day, VenueDay
 from principal.services import TravellerService
 from django.db.models.fields import Empty
 
@@ -141,10 +141,10 @@ class Planificador(threading.Thread):
     # print(self.lista)
     # def obtener(self, ):
     # self.lock.acquire()
-    # obj = self.lista.pop()
-    # self.lock.release()
-    # print(obj + "asda")
-    # return obj
+    #     obj = self.lista.pop()
+    #     self.lock.release()
+    #     print(obj + "asda")
+    #     return obj
     def apply_weighting(self, category, weighting):
         # category_bd = Category.objects.filter(name=category)
         all_venue_category = Venue.objects.filter(categories__name=category)
@@ -176,26 +176,24 @@ class Planificador(threading.Thread):
             # print(categoria)
             # print(weighting)
             th.start()
-            print("+1")
-        # lo uso para sincronizar los hilos
+            # print("+1")
+        #     lo uso para sincronizar los hilos
         while actual != threading.active_count():
-            # print(threading.active_count())
+            # esperamos a que todos los hilos terminen
             pass
-        # imprime dos veces la lista y no se porqe
+        # Ordenados de mayor a menor rating
+        self.lista.sort(cmpRating, reverse=True)
         pprint.pprint(self.lista)
 
+        # for i in self.lista:
+        #     print(i.scorable_ptr.name)
+        #     print(i.scorable_ptr.rating)
 
-        # def run_all(self, list_categories):
-        # th1 = threading.Thread(target=self.anyadir, args=("1",))
-        # th2 = threading.Thread(target=self.anyadir, args=("2",))
-        # th3 = threading.Thread(target=self.obtener)
-        # th1.start()
-        # th2.start()
-        # th3.start()
-        # for i in range(3):
-        # t = threading.Thread(target=worker, args=(i,))
-        # threads.append(t)
-        # t.start()
+
+# comparamos venue segun su rating
+def cmpRating(venue1, venue2):
+    """ Compara dos hoteles por su precio. """
+    return cmp(venue1.scorable_ptr.rating, venue2.scorable_ptr.rating)
 
 
 def test_plan():
