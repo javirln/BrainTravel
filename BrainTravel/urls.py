@@ -35,6 +35,6 @@ urlpatterns = patterns('',
     url(r'^test_paypal/$', 'principal.views.PayPalViews.test_paypal_view'),
     
     #planner URLs
-    url(r'planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
+    url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),
 )
