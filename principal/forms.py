@@ -29,7 +29,7 @@ class TravellerRegistrationForm(forms.Form):
     
     def clean_email(self):
         cleaned_email = self.cleaned_data['email']
-        if User.objects.exists(username=cleaned_email):
+        if User.objects.filter(username=cleaned_email).exists():
             raise ValidationError(_('Already exists a user with that email!'))
         return cleaned_email
 

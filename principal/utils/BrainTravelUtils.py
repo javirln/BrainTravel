@@ -16,6 +16,8 @@ def save_success(request, message_code):
 def save_warning(request, message_code):
     messages.add_message(request, messages.WARNING, _(message_code))
     
-def save_error(request, message_code='An unexpected error has occurred'):
+def save_error(request, message_code=None):
+    if message_code is None:
+        message_code = 'An unexpected error has occurred'
     messages.add_message(request, messages.ERROR, _(message_code))
     

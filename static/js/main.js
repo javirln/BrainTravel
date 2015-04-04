@@ -69,7 +69,7 @@ function register_traveller() {
             if(json.success == true){
                 sweetAlert("Well done!",json.success, "success"); // log the returned json to the console    
             }else{
-                sweetAlert("Oops...", "Something went wrong!", "error");
+                sweetAlert(json.error, "","error");
 			}
 			$('#traveller-registration')[0].reset();
 		},

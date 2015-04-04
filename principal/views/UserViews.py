@@ -1,6 +1,4 @@
-# -*- coding: latin-1 -*-
-"""Aquí se colocan las vistas relacionadas con el Modelo 1"""
-'''@author dcjosej'''
+from django.core.exceptions import ValidationError
 
 import hashlib
 import json
@@ -17,6 +15,7 @@ from principal.forms import LoginForm, TravellerRegistrationForm
 from principal.services import TravellerService, UserService
 from principal.utils import BrainTravelUtils
 from principal.views import EmailViews
+from django.utils.translation import ugettext as _
 
 
 def sign_in(request):
@@ -65,24 +64,22 @@ def create_traveller(request):
     data = request.POST
     form = TravellerRegistrationForm(data)
     response = {}
-    print ("HOLA MUNDO")
     if form.is_valid():
-        print ("dawdasd awHOLA MUNDO")
-        response['success']= True
-        traveller = TravellerService.create(form)
-        rand_password = BrainTravelUtils.id_generator()
-        traveller.set_password(rand_password)
-        TravellerService.save(traveller) #Aqui se asignan los permisos
-
-        EmailViews.send_email_confirmation(traveller, rand_password)
+            response['success']= True
+            traveller = TravellerService.create(form)
+            rand_password = BrainTravelUtils.id_generator()
+            traveller.set_password(rand_password)
+            TravellerService.save(traveller) #Aqui se asignan los permisos
+            EmailViews.send_email_confirmation(traveller, rand_password)
     else:
         message = ""
-        for field, errors in form.errors:
+        for field, errors in form.errors.items():
             for error in errors:
                 message += error
         
         #response['errors'] = _(message) 
-        BrainTravelUtils.save_error(request, message)
+        response['success']= False
+        response['error'] = _(message)
         #HttpResponse(json.dumps(response))
     
     return JsonResponse(response)
