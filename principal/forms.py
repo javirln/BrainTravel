@@ -46,15 +46,31 @@ class TripEditForm(forms.Form):
     country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     startDate = forms.DateField(label="Start date",
-                                widget=DateTimePicker(attrs={'class': 'form-control'}, options={"format": "YYYY-MM-DD",
-                                                                                                "pickTime": False}))
+                                widget=DateTimePicker(attrs={'required': True, 'class': 'form-control'},
+                                                      options={"format": "YYYY-MM-DD",
+                                                               "pickTime": False}))
 
     endDate = forms.DateField(label="End date",
-                              widget=DateTimePicker(attrs={'class': 'form-control'}, options={"format": "YYYY-MM-DD",
-                                                                                              "pickTime": False}))
+                              widget=DateTimePicker(attrs={'required': True, 'class': 'form-control'},
+                                                    options={"format": "YYYY-MM-DD",
+                                                             "pickTime": False}))
 
     publishedDescription = forms.CharField(label='Published Description',
                                            widget=SummernoteWidget(attrs={'class': 'form-control'}))
+
+    def clean(self):
+        start_date = self.cleaned_data['startDate']
+        end_date = self.cleaned_data['endDate']
+        if start_date > datetime.now().date():
+            self.add_error('startDate', "Start date must be in past")
+        if start_date > end_date:
+            self.add_error('startDate', "Incorrect date")
+            self.add_error('endDate', "Incorrect date")
+        if end_date > datetime.now().date():
+            self.add_error('endDate', "End date must be in past")
+
+        return self.cleaned_data
+
 
 # david
 class PlanForm(forms.Form):
@@ -62,9 +78,10 @@ class PlanForm(forms.Form):
     country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     startDate = forms.DateField(label="Start date",
-                                widget=DateTimePicker(attrs={'class': 'form-control','required':True}, options={"format": "YYYY-MM-DD",
-                                                                                                "pickTime": False}))
-    days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min':0, 'max':7, 'class': 'form-control'}))
+                                widget=DateTimePicker(attrs={'class': 'form-control', 'required': True},
+                                                      options={"format": "YYYY-MM-DD",
+                                                               "pickTime": False}))
+    days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min': 0, 'max': 7, 'class': 'form-control'}))
 
     def clean(self):
         start_date = self.cleaned_data['startDate']
