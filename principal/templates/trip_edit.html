@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
-{% block title %} Edit Profile {% endblock %}
 {% block content %}
     {% load i18n %}
     <div class="container">
         <div class="row">
             <div class="col-xs-12 .col-sm-6 .col-md-8">
                 <div class="well panel panel-default">
+                    {% if create %}
+                    <h1 class="page-header">{% trans "Create Trip" %}</h1>
+                    {% endif %}
+                    {% if not create %}
                     <h1 class="page-header">{% trans "Edit Trip" %}</h1>
+                    {% endif %}
+
 
                     <div class="panel-body">
                         <div class="row">
