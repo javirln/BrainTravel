@@ -14,7 +14,7 @@
             <div class="media-body">
                 <h3 class="media-heading">{{trip.name}} {% if perms.principal.administrator %}({{ trip.get_state_display }}){% endif %}</h3>
                 <p class="text-right">By {{trip.traveller}}</p>
-                <p>{{trip.publishedDescription|safe}}</p>
+                <p>{{trip.publishedDescription|safe|slice:":250" }}</p>
                 <ul class="list-inline list-unstyled">
                     <li><span><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
                     <li>|</li>
