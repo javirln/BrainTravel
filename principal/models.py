@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils import timezone
+from django.template.defaultfilters import default
 
 
 # --------------------------- CUSTOMS VALIDATORS  ----------------------------------
@@ -54,6 +55,7 @@ class Venue(Scorable):
     latitude = models.CharField(max_length=50)
     longitude = models.CharField(max_length=50)
     photo = models.CharField(max_length=256, null=True, blank=True)
+    is_food = models.BooleanField(default=False)
 
     # ------------- Relationships --------------#
     categories = models.ManyToManyField(Category)
