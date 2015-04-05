@@ -92,7 +92,8 @@ def filter_and_save(items, days, food=False):
                 venue = Venue(name=venue['name'],
                               id_foursquare=id,
                               latitude=venue['location']['lat'],
-                              longitude=venue['location']['lng'])
+                              longitude=venue['location']['lng'],
+                              is_food=food)
                 venue.save()
                 venue.categories.add(*categories)
                 all_venues.append(venue)
