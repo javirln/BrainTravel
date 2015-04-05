@@ -121,7 +121,7 @@ class Trip(Scorable):
         db_table = 'trip'
 
     def __unicode__(self):
-        return 'Ini: ' + self.startDate + 'End: ' + self.endDate
+        return 'Ini: ' + str(self.startDate) + 'End: ' + str(self.endDate)
 
 
 class Traveller(User):
@@ -204,6 +204,8 @@ class Day(models.Model):
         if self in self.trip.day_set:
             raise ValidationError('The trip already contains this day!')
 
+    def __unicode__(self):
+        return 'Day: ' + str(self.numberDay)
 
 class VenueDay(models.Model):
     order = models.IntegerField(validators=[MinValueValidator(1)])

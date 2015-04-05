@@ -18,7 +18,10 @@ from principal.services.FoursquareServices import init_fs, test_plan
 
 client = init_fs()
 
-
+def test_carlos(request):
+    trip = Trip.objects.get(pk=144)
+    return render_to_response('show_planning.html', {'trip': trip})
+    
 def foursquare_request(request):
     if request.method == 'GET':
         try:

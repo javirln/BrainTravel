@@ -2,20 +2,74 @@
 {% block title %} My trips {% endblock %}
 {% block content %}
     {% load i18n %}
-	
-	<h2>Sitios que ver</h2>
-	<div>
-	{%for v in venues%}
-		<li>{{v.name}}</li>
-	{%endfor%}
-	</div>
-	
-	
-	<h2>Sitios donde comer</h2>
-	<div>
-	{%for f in food%}
-		<li>{{f.name}}</li>
-	{%endfor%}
-	</div>
-	
+    
+    <!-- <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="carousel slide" id="carousel-374942">
+                <ol class="carousel-indicators">
+                    <li data-slide-to="0" data-target="#carousel-374942">
+                    </li>
+                    <li data-slide-to="1" data-target="#carousel-374942" class="active">
+                    </li>
+                    <li data-slide-to="2" data-target="#carousel-374942">
+                    </li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item">
+                        <img alt="" src="http://lorempixel.com/1600/500/sports/1" />
+                        <div class="carousel-caption">
+                            <h4>
+                                First Thumbnail label
+                            </h4>
+                            <p>
+                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item active">
+                        <img alt="" src="http://lorempixel.com/1600/500/sports/2" />
+                        <div class="carousel-caption">
+                            <h4>
+                                Second Thumbnail label
+                            </h4>
+                            <p>
+                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="" src="http://lorempixel.com/1600/500/sports/3" />
+                        <div class="carousel-caption">
+                            <h4>
+                                Third Thumbnail label
+                            </h4>
+                            <p>
+                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                            </p>
+                        </div>
+                    </div>
+                </div> <a class="left carousel-control" href="#carousel-374942" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-374942" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+    </div> -->
+    
+	    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	       {% for day in trip.day_set.all %}
+	           <div class="panel panel-default">
+	               <div class="panel-heading" role="tab" id="heading{{day.numberDay}}">
+	                   <h3 class="panel-title">
+	                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{day.numberDay}}" aria-expanded="true" aria-controls="collapse{{day.numberDay}}">Day {{day.numberDay}}</a>
+	                   </h3>
+	                </div>
+				    <div id="collapse{{day.numberDay}}" class="panel-collapse collapse {% if forloop.first %}in{% endif %}" role="tabpanel" aria-labelledby="headin{{day.numberDay}}">
+				        <div class="panel-body">
+				            <h4><i class="fa fa-map-marker"></i> Those are the venues that we suggest to visit on day {{day.numberDay}}</h4>
+				            <hr>
+				            <h4><i class="fa fa-cutlery"></i> Those are the places where we suggest you to eat on day {{day.numberDay}}</h4>
+			            </div>
+				    </div>
+			  </div>
+			{% endfor %}
+		</div>
+	      
 {% endblock %}
