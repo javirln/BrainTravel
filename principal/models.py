@@ -133,7 +133,7 @@ class Traveller(User):
     )
 
     genre = models.CharField(max_length=2, choices=Genre, null=True)
-    photo = models.ImageField(upload_to='static/user_folder/', null=True, default='static/user_folder/.')
+    photo = models.ImageField(upload_to='static/user_folder/', null=True, default='static/user_folder/default.jpg')
 
 
     # ----------- Derivates -------------------#
