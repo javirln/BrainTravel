@@ -15,7 +15,7 @@
                         <img class="avatar img-circle img-thumbnail" src="/{{trip.traveller.photo}}" width="64" alt="Generic placeholder image">
                         <strong>
                         <br>
-                            <a href="user.html">{{trip.traveller}}</a></strong><br>
+                            <a href="/profile/{{trip.traveller.id}}">{{trip.traveller}}</a></strong><br>
                         <i class="fa fa-star"></i> {{ trip.traveller.reputation }} / 10<br>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                 <i class="fa fa-calendar-o fa-2x"> {{ trip.endDate }}</i>
             </div>
             <div class="well">
-                <a class="fa fa-star fa-2x text-left" data-toggle="modal" style="text-decoration: None" data-target="#myModal"> <small>{% firstof trip.rating '-' %}</small> / <strong>10</strong></a>
+                <p class="fa fa-star fa-2x text-left"  style="text-decoration: None"> <small>{% firstof trip.rating '-' %}</small> / <strong>10</strong></p>
                 <br>
                 <br>
                 {% if user.is_anonymous or perms.principal.administrator or trip.state != 'ap' %}
@@ -143,7 +143,22 @@
                     {% endif %}
                 {% endif %}
             </div>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            
+			{% if trip.traveller.id != user.id%}
+				<div class="col-md-12 center-block">
+					<button style="width: 100%;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Rate this trip!</button>
+				</div>
+			{% endif %}
+			
+			{% if trip.planified %}
+				<div class="col-md-12 center-block">
+					<a style="width: 100%;" type="button" class="btn btn-primary btn-lg" href="/show_planning/{{trip.id}}">Show plan!</a>
+				</div>
+			{% endif %}
+			
+			
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">

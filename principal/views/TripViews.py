@@ -1,21 +1,19 @@
 # -*- coding: latin-1 -*-
 import traceback
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http.response import HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
-from django.shortcuts import redirect
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from principal.models import Judges
 from principal.forms import TripEditForm
+from principal.forms import TripUpdateStateForm
+from principal.models import Judges
 from principal.models import Trip, Comment
 from principal.services import TripService, TravellerService
-from principal.forms import TripUpdateStateForm
 from principal.utils import BrainTravelUtils
-
-
 
 
 # author: Javi
@@ -70,6 +68,26 @@ def list_trip_administrator(request):
         trips = paginator.page(paginator.num_pages)
     return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
 
+
+@permission_required('principal.traveller')
+def planned_trips(request):
+    trips = TripService.find_planed_trips_by_traveller(request.user.id)
+    
+    if trips is not False:
+        paginator = Paginator(trips, 5)
+        page = request.GET.get('page')
+        try:
+            trips = paginator.page(page)
+        except PageNotAnInteger:
+            trips = paginator.page(1)
+        except EmptyPage:
+            trips = paginator.page(paginator.num_pages)
+    
+    
+    return render_to_response('trip_list.html', {'trips': trips},
+                                  context_instance=RequestContext(request))
+    
+    
 
 # author: Juane
 @login_required()

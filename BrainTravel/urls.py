@@ -29,11 +29,12 @@ urlpatterns = patterns('',
     url(r'^public_trip_details/comment/', 'principal.views.TripViews.comment_trip'),
     url(r'^public_trip_details/rate/', 'principal.views.TripViews.send_assessment'),
     url(r'^auth_request/$', 'principal.views.FoursquareViews.foursquare_request'),
-    url(r'^trip/list/(?P<profile_id>[0-9]+)$$', 'principal.views.TripViews.list_trip_approved_by_profile'),
+    url(r'^trip/list/(?P<profile_id>[0-9]+)$', 'principal.views.TripViews.list_trip_approved_by_profile'),
+    url(r'^trip/planned_trips$', 'principal.views.TripViews.planned_trips'),
     #paypal urls
     url(r'^buy_coins/$', 'principal.views.Coinviews.buy_coins'),
     url(r'^test_paypal/$', 'principal.views.PayPalViews.test_paypal_view'),
-    url(r'^prueba/$', 'principal.views.FoursquareViews.test_carlos'),
+    url(r'^show_planning/(?P<trip_id>[0-9]+)/$', 'principal.views.FoursquareViews.show_planning'),
     
     #planner URLs
     url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
