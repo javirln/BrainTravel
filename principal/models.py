@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils import timezone
+from django.template.defaultfilters import default
 
 
 # --------------------------- CUSTOMS VALIDATORS  ----------------------------------
@@ -54,6 +55,7 @@ class Venue(Scorable):
     latitude = models.CharField(max_length=50)
     longitude = models.CharField(max_length=50)
     photo = models.CharField(max_length=256, null=True, blank=True)
+    is_food = models.BooleanField(default=False)
 
     # ------------- Relationships --------------#
     categories = models.ManyToManyField(Category)
@@ -121,7 +123,7 @@ class Trip(Scorable):
         db_table = 'trip'
 
     def __unicode__(self):
-        return 'Ini: ' + self.startDate + 'End: ' + self.endDate
+        return 'Ini: ' + str(self.startDate) + 'End: ' + str(self.endDate)
 
 
 class Traveller(User):
@@ -204,6 +206,8 @@ class Day(models.Model):
         if self in self.trip.day_set:
             raise ValidationError('The trip already contains this day!')
 
+    def __unicode__(self):
+        return 'Day: ' + str(self.numberDay)
 
 class VenueDay(models.Model):
     order = models.IntegerField(validators=[MinValueValidator(1)])

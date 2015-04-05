@@ -18,7 +18,10 @@ from principal.services.FoursquareServices import init_fs, test_plan
 
 client = init_fs()
 
-
+def test_carlos(request):
+    trip = Trip.objects.get(pk=244)
+    return render_to_response('show_planning.html', {'trip': trip})
+    
 def foursquare_request(request):
     if request.method == 'GET':
         try:
@@ -34,6 +37,7 @@ def foursquare_request(request):
 def foursquare_list_venues(request):
     try:
         assert request.user.has_perm('principal.traveller')
+        traveller = TravellerService.find_one(request.user.id)
         if request.POST:
             form = PlanForm(request.POST)
             if form.is_valid():
@@ -78,10 +82,10 @@ def foursquare_list_venues(request):
                                           {'venues': selected_venues_with_photos, 'food': selected_food_with_photos},
                                           context_instance=RequestContext(request))
             # si no es valido el form devolvemos a editar
-            return render_to_response('plan_creation.html', {'form': form}, context_instance=RequestContext(request))
+            return render_to_response('plan_creation.html', {'form': form, 'traveller':traveller}, context_instance=RequestContext(request))
         else:
             form = PlanForm()
-            return render_to_response('plan_creation.html', {'form': form}, context_instance=RequestContext(request))
+            return render_to_response('plan_creation.html', {'form': form, 'traveller':traveller}, context_instance=RequestContext(request))
     except:
         print traceback.format_exc()
         return render_to_response('error.html', context_instance=RequestContext(request))

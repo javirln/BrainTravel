@@ -484,3 +484,11 @@ img {
 {
     font-size: 87px;
 }
+.img-venue{
+	height: 200px !important;
+	width: auto;
+}
+.img-venue-carousel{
+	width: 100%;
+	height: auto;
+}

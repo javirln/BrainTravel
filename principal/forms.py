@@ -84,7 +84,7 @@ class PlanForm(forms.Form):
 
     startDate = forms.DateField(label="Start date",
                                 widget=DateTimePicker(attrs={'class': 'form-control', 'required': True},
-                                                      options={"format": "YYYY-MM-DD",
+                                                      options={"format": "DD/MM/YYYY",
                                                                "pickTime": False}))
     days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min': 0, 'max': 7, 'class': 'form-control'}))
 
