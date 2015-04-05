@@ -5,6 +5,7 @@ from django.template.context import RequestContext
 from principal.services import TravellerService
 from principal.models import Traveller
 from principal.forms import TravellerEditProfileForm, TravellerEditPasswordForm
+from principal.utils import BrainTravelUtils
 
 
 # author: Juane
@@ -30,6 +31,12 @@ def profile_edit(request):
                 traveller = TravellerService.construct_profile(request.user.id, form)
                 TravellerService.save(traveller)
                 return HttpResponseRedirect('/profile/'+str(traveller.id))
+            else:
+                message = ""
+                for error in form.errors:
+                    for me in form.errors[error]:
+                        message = message + me
+                BrainTravelUtils.save_error(request, message)
         else:
             data = {'first_name': traveller.first_name, 'last_name': traveller.last_name, 'genre': traveller.genre,
                     'id': traveller.id, 'photo': traveller.photo}
@@ -50,6 +57,12 @@ def profile_edit_password(request):
                 traveller = TravellerService.construct_password(request.user.id, form)
                 TravellerService.save(traveller)
                 return HttpResponseRedirect('/profile/'+str(traveller.id))
+            else:
+                message = ""
+                for error in form.errors:
+                    for me in form.errors[error]:
+                        message = message + me
+                BrainTravelUtils.save_error(request, message)
         else:
             traveller = TravellerService.find_one(request.user.id)
             data = {'id': traveller.id}

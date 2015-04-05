@@ -20,7 +20,7 @@ def find_planed_trips_by_traveller(traveller_id):
 # author: Juane
 def list_trip_administrator(user):
     assert user.has_perm('principal.administrator')
-    result = Trip.objects.all().filter(~Q(state='df')).order_by('-state')
+    result = Trip.objects.all().filter(~Q(planified=True) & ~Q(state='df')).order_by('-state')
     return result
 
 

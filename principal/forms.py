@@ -39,8 +39,7 @@ class TripUpdateStateForm(forms.Form):
     State = (
         ('ap', 'APPROVED'),
         ('re', 'REJECTED'),
-        ('pe', 'PENDING'),
-        ('df', 'DRAFT')
+        ('pe', 'PENDING')
     )
     id = forms.IntegerField(widget=forms.HiddenInput)
     state = forms.ChoiceField(label='state', choices=State, widget=forms.Select(attrs={'class': 'form-control'}))
@@ -201,7 +200,7 @@ class TravellerEditPasswordForm(forms.Form):
                 'required': 'required',
                 'maxlength': '32',
                 'minlength': '8',
-                'pattern': '^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$'
+                'pattern': '^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$',
             }
         )
     )
