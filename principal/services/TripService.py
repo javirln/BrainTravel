@@ -13,6 +13,10 @@ def searchTrip(title):
     return trip_list
 
 
+def find_planed_trips_by_traveller(traveller_id):
+    res = Trip.objects.filter(Q(traveller=traveller_id) & Q(planified = True))
+    return res
+
 # author: Juane
 def list_trip_administrator(user):
     assert user.has_perm('principal.administrator')

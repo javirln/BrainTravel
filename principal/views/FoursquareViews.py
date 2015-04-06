@@ -18,9 +18,9 @@ from principal.services.FoursquareServices import init_fs, test_plan
 
 client = init_fs()
 
-def test_carlos(request):
-    trip = Trip.objects.get(pk=244)
-    return render_to_response('show_planning.html', {'trip': trip})
+def show_planning(request, trip_id):
+    trip = Trip.objects.get(pk=trip_id)
+    return render_to_response('show_planning.html', {'trip': trip}, context_instance=RequestContext(request))
     
 def foursquare_request(request):
     if request.method == 'GET':
@@ -78,14 +78,14 @@ def foursquare_list_venues(request):
                 # Descomentar vista de prueba para ver los resultados
                 # return [selected_food_with_photos, selected_food_with_photos]
                 trip = FoursquareServices.create_trip(form, request, selected_venues_with_photos, selected_food_with_photos)
-                return render_to_response('show_planning.html',
-                                          {'venues': selected_venues_with_photos, 'food': selected_food_with_photos},
-                                          context_instance=RequestContext(request))
+                return show_planning(request, trip.id)
             # si no es valido el form devolvemos a editar
-            return render_to_response('plan_creation.html', {'form': form, 'traveller':traveller}, context_instance=RequestContext(request))
+            return render_to_response('plan_creation.html', {'form': form, 'traveller':traveller},
+                                      context_instance=RequestContext(request))
         else:
             form = PlanForm()
-            return render_to_response('plan_creation.html', {'form': form, 'traveller':traveller}, context_instance=RequestContext(request))
+            return render_to_response('plan_creation.html', {'form': form, 'traveller':traveller},
+                                      context_instance=RequestContext(request))
     except:
         print traceback.format_exc()
         return render_to_response('error.html', context_instance=RequestContext(request))
