@@ -33,15 +33,21 @@ def save(trip):
     trip.save()
 
 
-# david
+# author: David
 def list_my_trip(id_traveller):
-    trips = Trip.objects.all().filter(traveller=id_traveller).filter(~Q(state='df'))
+    trips = Trip.objects.all().filter(traveller=id_traveller, planified=False).filter(~Q(state='df'))
     return trips
 
 
-# david
-def list_my_trip_draft(id_traveller):
-    trips = Trip.objects.all().filter(traveller=id_traveller, state='df')
+# author: David
+def list_trip_draft(id_traveller):
+    trips = Trip.objects.all().filter(traveller=id_traveller,  planified=False, state='df')
+    return trips
+
+
+# author: Juane
+def list_trip_approved(id_traveller):
+    trips = Trip.objects.all().filter(traveller=id_traveller, planified=False, state='ap')
     return trips
 
 
@@ -154,9 +160,3 @@ def find_one(trip_id):
     except Trip.DoesNotExist:
         assert False
     return trip
-
-
-# author: Juane
-def list_my_trip_approved(id_traveller):
-    trips = Trip.objects.all().filter(traveller=id_traveller, state='ap')
-    return trips

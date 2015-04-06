@@ -1,7 +1,7 @@
 # -*- coding: latin-1 -*-
 import traceback
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
@@ -14,8 +14,6 @@ from principal.models import Trip, Comment
 from principal.services import TripService, TravellerService
 from principal.forms import TripUpdateStateForm
 from principal.utils import BrainTravelUtils
-
-
 
 
 # author: Javi
@@ -73,9 +71,9 @@ def list_trip_administrator(request):
 
 # author: Juane
 @login_required()
+@permission_required('principal.administrator')
 def update_state(request, trip_id):
     try:
-        assert request.user.has_perm('principal.administrator')
         if request.POST:
             trip_form = TripUpdateStateForm(request.POST)
             if trip_form.is_valid():
@@ -118,7 +116,7 @@ def list_all_by_traveller(request, optional=0):
 # david
 @login_required()
 def list_all_by_traveller_draft(request):
-    trips = TripService.list_my_trip_draft(request.user.id)
+    trips = TripService.list_trip_draft(request.user.id)
     if trips is not False:
         paginator = Paginator(trips, 5)
         page = request.GET.get('page')
@@ -243,11 +241,11 @@ def send_assessment(request):
 
 # author: Juane
 @login_required()
+@permission_required('principal.traveller')
 def list_trip_approved_by_profile(request, profile_id):
     try:
-        assert request.user.has_perm('principal.traveller')
         traveller = TravellerService.find_one(profile_id)
-        trips = TripService.list_my_trip_approved(traveller.id)
+        trips = TripService.list_trip_approved(traveller.id)
         return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')

@@ -2,40 +2,33 @@
 {% block title %} Trip list {% endblock %}
 {% block content %}
     {% load i18n %}
-    {% if not trips %}
-        <p>{% trans "We couldn't find anything..." %}</p>
-    {% endif %}
+    <a class="btn btn-default btn-lg" href="/trip/create/"> {% trans "Create Trip" %}</a>
+    {% if not trips %}<p>{% trans "We couldn't find anything..." %}</p>{% endif %}
     {% for trip in trips %}
         <div class="well animated fadeInUp">
             <div class="media">
-            <a class="pull-left" href="/profile/{{ trip.traveller.id }}">
-                <img class="img-rounded" src="/{{trip.traveller.photo}}">
-            </a>
-            <div class="media-body">
-                <h3 class="media-heading">{{trip.name}} {% if perms.principal.administrator %}({{ trip.get_state_display }}){% endif %}</h3>
-                <p class="text-right">By {{trip.traveller}}</p>
-                <p>{{trip.publishedDescription|safe|slice:":250" }}</p>
-                <ul class="list-inline list-unstyled">
-                    <li><span><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
-                    <li>|</li>
-                    <span> {{trip.comment_set.all.count}} <i class="fa fa-comments"></i></span>
-                    <li>|</li>
-                    <span><i class="fa fa-thumbs-o-up"></i> {{trip.likes}}</span>
-                    <li>|</li>
-                    <span><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</span>
-                    <li>|</li>
-                    <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a></li>
-                </ul>
-            </div>
+                <a class="pull-left" href="/profile/{{ trip.traveller.id }}">
+                    <img class="img-rounded" src="/{{trip.traveller.photo}}">
+                </a>
+                <div class="media-body">
+                    <h3 class="media-heading">{{trip.name}} ({{ trip.get_state_display }})</h3>
+                    <p class="text-right">By {{trip.traveller}}</p>
+                    <p>{{trip.publishedDescription|safe|slice:":250" }}</p>
+                    <ul class="list-inline list-unstyled">
+                        <li><span><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
+                        <li>|</li>
+                        <span> {{trip.comment_set.all.count}} <i class="fa fa-comments"></i></span>
+                        <li>|</li>
+                        <span><i class="fa fa-thumbs-o-up"></i> {{trip.likes}}</span>
+                        <li>|</li>
+                        <span><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</span>
+                        <li>|</li>
+                        <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     {% endfor %}
-    
-    <div class="col-xs-12 col-sm-2">
-        <a class="btn btn-default btn-block btn-lg" href="/trip/create/"> {% trans "Create Trip" %}</a>
-    </div>
-    
-
     <div class="pagination">
         <span class="step-links">
             {% if trips.has_previous %}

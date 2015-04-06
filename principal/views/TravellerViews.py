@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render_to_response, HttpResponseRedirect
 from django.template.context import RequestContext
 
-from principal.services import TravellerService
+from principal.services import TravellerService, TripService
 from principal.models import Traveller
 from principal.forms import TravellerEditProfileForm, TravellerEditPasswordForm
 from principal.utils import BrainTravelUtils
@@ -14,7 +14,11 @@ from principal.utils import BrainTravelUtils
 def profile_details(request, traveller_id):
     try:
         traveller = TravellerService.find_one(traveller_id)
-        return render_to_response('profile_details.html', {'traveller': traveller}, context_instance=RequestContext(request))
+        if traveller.id == request.user.id:
+            trips = TripService.list_my_trip(traveller.id)
+        else:
+            trips = TripService.list_trip_approved(traveller.id)
+        return render_to_response('profile_details.html', {'traveller': traveller, 'trips': trips}, context_instance=RequestContext(request))
     except AssertionError:
         render_to_response('error.html')
 
@@ -30,6 +34,7 @@ def profile_edit(request):
             if form.is_valid():
                 traveller = TravellerService.construct_profile(request.user.id, form)
                 TravellerService.save(traveller)
+                BrainTravelUtils.save_success(request, "Profile successfully updated")
                 return HttpResponseRedirect('/profile/'+str(traveller.id))
             else:
                 message = ""
@@ -56,6 +61,7 @@ def profile_edit_password(request):
             if form.is_valid():
                 traveller = TravellerService.construct_password(request.user.id, form)
                 TravellerService.save(traveller)
+                BrainTravelUtils.save_success(request, "Password successfully updated")
                 return HttpResponseRedirect('/profile/'+str(traveller.id))
             else:
                 message = ""

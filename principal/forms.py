@@ -9,6 +9,7 @@ from django.utils.translation import ugettext as _
 from paypal.standard.forms import PayPalPaymentsForm
 from django import forms
 from validators import password_validator
+from django.db.models.fields import BLANK_CHOICE_DASH
 
 from principal.models import Traveller
 
@@ -119,20 +120,19 @@ class TravellerEditProfileForm(forms.Form):
     )
     last_name = forms.CharField(
         label='last name',
-        required=True,
+        required=False,
         max_length=254,
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'required': 'required',
                 'maxlength': '254',
             }
         )
     )
     genre = forms.ChoiceField(
         label='genre',
-        choices=Genre,
-        required=True,
+        choices=BLANK_CHOICE_DASH + list(Genre),
+        required=False,
         widget=forms.Select(
             attrs={
                 'class': 'form-control'
