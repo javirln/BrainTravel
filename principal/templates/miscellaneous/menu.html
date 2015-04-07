@@ -1,47 +1,29 @@
-    <nav class="navbar navbar-default navbar-bt">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">BrainTravel</a>
-            </div>
-            
-            <div class="collapse navbar-collapse" id="menu-navbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/search" class="animate"><span class="fa fa-search"></span></a>
-                    </li>
-                   <!--  <li style="text-decoration: None">
-                        <a id="sign_ind_nav" href="/auth_request">Login FS</a>
-                    </li> -->
-                    {% if user.is_anonymous %}
-                        {% include "miscellaneous/anonymous-menu.html" %}
-                    
-                    {% else %}
-                        {% if perms.principal.traveller %}
-                            <li>
-                                <a id="sign_ind_nav" href="/planner/list_venues/">Planner</a>
-                            </li>
-                            <li>
-                                <a id="sign_ind_nav" href="/Coin/list">List history coins</a>
-                            </li>
-
-                            {% include "miscellaneous/traveller-menu.html" %}
-                        {% else %}
-                            {% include "miscellaneous/admin-menu.html" %}
-                        {% endif %}
-
-                    {% endif %}
-                    
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<div class="navbar navbar-default navbar-static-top navbar-mfx-gen navbar-fixed-top" role="navigation">
+    <div class="container bg-menu-collapse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">BrainTravel</a>
         </div>
-        <!-- /.container-fluid -->  
-        
-              
-    </nav>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/search" class="animate"><span class="fa fa-search"></span></a>
+                </li>
+                {% if user.is_anonymous %}
+                    {% include "miscellaneous/anonymous-menu.html" %}
+                {% else %}
+                    {% if perms.principal.traveller %}
+                        {% include "miscellaneous/traveller-menu.html" %}
+                    {% elif  perms.principal.administrator %}
+                        {% include "miscellaneous/admin-menu.html" %}
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

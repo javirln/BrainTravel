@@ -381,7 +381,6 @@ img {
     filter: alpha(opacity=60);
 }
 
-//CSS DE BUY_COINS
 .pricing {
   @include translate(-49%, -49.1%);
   position: absolute;
@@ -493,7 +492,6 @@ img {
 	height: auto;
 }
 footer{
-	position: absolute;
 	bottom: 0px;
 	width: 100%;
 	background-color: #F5F5F5;
