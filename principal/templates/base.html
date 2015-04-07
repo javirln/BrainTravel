@@ -35,6 +35,8 @@
 
     {% block content %} {% endblock %}
 
+{#    {% include "miscellaneous/footer.html" %}#}
+    
     {% if messages %}
         {% trans "Accept" as confirm_button %}
         {% for message in messages %}
