@@ -447,7 +447,8 @@ class Command(BaseCommand):
             likes=125,
             dislikes=30,
             traveller=traveller_allen,
-            city="london")
+            city="london",
+            country="United Kingdom")
         trip_london.save()
 
         trip_Seville = Trip(
@@ -460,7 +461,8 @@ class Command(BaseCommand):
             likes=125,
             dislikes=1,
             traveller=traveller_allen,  
-            city="seville")
+            city="seville",
+            country="Spain")
         trip_Seville.save()
 
         trip_paris = Trip(
@@ -474,7 +476,8 @@ class Command(BaseCommand):
             likes=89,
             dislikes=22,
             traveller=traveller_annie,
-            city="paris")
+            city="paris",
+            country="France")
         trip_paris.save()
 
         print('Trips...Ok')
