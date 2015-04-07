@@ -10,7 +10,7 @@
 <title>BrainTravel</title> {% load staticfiles %} {% load i18n %}
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-<link rel="stylesheet" href="{% static "css/custom.css" %}">
+<!-- <link rel="stylesheet" href="{% static "css/custom.css" %}"> -->
 <link rel="stylesheet" href="{% static "css/home/stylish-portfolio.css" %}">
 <link rel="stylesheet" href="{% static "css/home/morphext.css" %}">
 <link rel="stylesheet" href="{% static "css/home/stylish-portfolio.css" %}">
@@ -154,7 +154,8 @@
 		</small>
 	</section>
     
-
+     {% include "miscellaneous/footer.html" %}
+     
 	<!-- Jquery -->
 	<script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
 	<!-- Boostrap -->
