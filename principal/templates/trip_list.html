@@ -23,7 +23,12 @@
                         <li>|</li>
                         <span><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</span>
                         <li>|</li>
-                        <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a></li>
+                        {% if trip.planified %}
+                            <li><a href="/show_planning/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a></li>
+                        {% else %}
+                            <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a></li>
+                        {% endif %}
+
                     </ul>
                 </div>
             </div>
