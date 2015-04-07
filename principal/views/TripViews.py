@@ -254,6 +254,7 @@ def send_assessment(request):
         return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
     except:
         msg_errors = ["Something went wrong..."]
+        print traceback.format_exc()
         return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
 
 
