@@ -1,7 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <!-- Header -->
+<<<<<<< HEAD
+<head>
+
+<meta charset="ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>BrainTravel</title> {% load staticfiles %} {% load i18n %}
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+<!-- <link rel="stylesheet" href="{% static "css/custom.css" %}"> -->
+<link rel="stylesheet" href="{% static "css/home/stylish-portfolio.css" %}">
+<link rel="stylesheet" href="{% static "css/home/morphext.css" %}">
+<link rel="stylesheet" href="{% static "css/home/stylish-portfolio.css" %}">
+<link rel="stylesheet" href="{% static "css/animate.css" %}">
+
+
+<!-- Custom Fonts -->
+<link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	{% include "miscellaneous/menu.html" %}
+
 	<header id="top" class="header">
 		<div class="text-vertical-center">
 			<h1>BrainTravel</h1>
@@ -128,6 +154,15 @@
 		</small>
 	</section>
 
+    
+     {% include "miscellaneous/footer.html" %}
+     
+	<!-- Jquery -->
+	<script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
+	<!-- Boostrap -->
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+	<!-- Custom Javascript -->
+	<script src="{% static "js/home/morphext.min.js" %}"></script>
 
     <!-- Custom Theme JavaScript -->
 	<script>
