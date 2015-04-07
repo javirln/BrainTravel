@@ -2,10 +2,11 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render_to_response, HttpResponseRedirect
 from django.template.context import RequestContext
 
-from principal.services import TravellerService, TripService
+from principal.services import TravellerService, TripService, PaymentsService, CoinService
 from principal.models import Traveller
 from principal.forms import TravellerEditProfileForm, TravellerEditPasswordForm
 from principal.utils import BrainTravelUtils
+from django.http import HttpResponse
 
 
 # author: Juane
@@ -76,3 +77,15 @@ def profile_edit_password(request):
         return render_to_response('profile_edit_password.html', {"form": form}, context_instance=RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')
+
+@login_required()
+@permission_required('principal.traveller')
+def all_payments(request):
+    if request.method == 'GET' or request.method == 'POST':
+        try:
+            list_payments = PaymentsService.all_payments(request.user.id)
+            return render_to_response('my_payments.html',
+                                      {'list_payments': list_payments},
+                                      context_instance=RequestContext(request))
+        except Exception as e:
+            return HttpResponse(e)
