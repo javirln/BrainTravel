@@ -511,16 +511,27 @@ body {
   background-color: #f5f5f5;
 }
 
+/* Navbar
+------------------------------------------------------------ */
+
 .navbar-bt-gen{
     background: #fff;
     border-bottom: #fece08 5px solid;
     margin-bottom: 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
   background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #337ab7;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: #337ab7;
 }
