@@ -79,6 +79,8 @@
 					<div class="clearfix visible-xs-block"></div>
 					{% elif forloop.counter|divisibleby:3 %}
 					<div class="clearfix visible-sm-block"></div>
+					{% elif forloop.counter|divisibleby:4 %}
+					<div class="clearfix visible-md-block"></div>
 					{% endif %} {% endif %} {% endfor %}
 				</div>
 			</div>

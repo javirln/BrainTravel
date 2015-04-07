@@ -492,3 +492,9 @@ img {
 	width: 100%;
 	height: auto;
 }
+footer{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	background-color: #F5F5F5;
+}

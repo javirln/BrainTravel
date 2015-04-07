@@ -1,11 +1,212 @@
-{% extends 'base.html' %}
-{% block title %} Welcome {% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-<h2>Welcome!</h2>
-{%if user%}
-<h1>Hi! {{user.email}}</h1>
-{%endif%}
+<head>
+
+<meta charset="ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>BrainTravel</title> {% load staticfiles %} {% load i18n %}
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+<link rel="stylesheet" href="{% static "css/home/stylish-portfolio.css" %}">
+<link rel="stylesheet" href="{% static "css/home/morphext.css" %}">
+<link rel="stylesheet" href="{% static "css/home/stylish-portfolio.css" %}">
+<link rel="stylesheet" href="{% static "css/animate.css" %}">
+
+<!-- Custom Fonts -->
+<link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	{% include "miscellaneous/menu.html" %}
+
+	<!-- Header -->
+	<header id="top" class="header">
+		<div class="text-vertical-center">
+			<h1>BrainTravel</h1>
+			<h3>Automate the way you travel</h3>
+			<br> <a href="#about" class="btn btn-dark btn-lg">Find Out
+				More</a>
+		</div>
+	</header>
+
+	<!-- About -->
+	<section id="about" class="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2>What is this?</h2>
+					<p class="lead">BrainTravel is the perfect tool for all
+						travellers. It automatically creates a trip planning for you,
+						offering a daily schedule with the highest rated sites in the
+						area. It also has an internal network in which users can interact
+						between them regarding trips they made, commenting and sharing
+						experiences.</p>
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+
+	<!-- Services -->
+	<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+	<section id="services" class="services bg-primary">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-lg-10 col-lg-offset-1">
+					<h2>Features</h2>
+					<hr class="small">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<div class="service-item">
+								<span class="fa-stack fa-4x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-calendar fa-stack-1x text-primary"></i>
+								</span>
+								<h4>
+									<strong>Automatic plans</strong>
+								</h4>
+								<p>Day by day plan for your trip with a few clicks based on
+									others travellers recommendations.</p>
+								<!--<a href="#" class="btn btn-light">Learn More</a>-->
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="service-item">
+								<span class="fa-stack fa-4x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-compass fa-stack-1x text-primary"></i>
+								</span>
+								<h4>
+									<strong>Constraints</strong>
+								</h4>
+								<p>Give us restrictions for your trip and we'll do the rest
+									for you.</p>
+								<!--<a href="#" class="btn btn-light">Learn More</a>-->
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="service-item">
+								<span class="fa-stack fa-4x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-pie-chart fa-stack-1x text-primary"></i>
+								</span>
+								<h4>
+									<strong>Satistics</strong>
+								</h4>
+								<p>Travel stats for your own orientation.</p>
+								<!--<a href="#" class="btn btn-light">Learn More</a>-->
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="service-item">
+								<span class="fa-stack fa-4x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-connectdevelop fa-stack-1x text-primary"></i>
+								</span>
+								<h4>
+									<strong>Social trips</strong>
+								</h4>
+								<p>Share experiences with other users.</p>
+								<!--<a href="#" class="btn btn-light">Learn More</a>-->
+							</div>
+						</div>
+					</div>
+					<!-- /.row (nested) -->
+				</div>
+				<!-- /.col-lg-10 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+
+	<!-- Callout -->
+	<aside class="callout">
+		<div class="text-vertical-center">
+			<h2>A customer says...</h2>
+			<h1>
+				<span id="js-rotating">I really like this idea of the
+					project;I love to travel and see the city from a point of view
+					"quotidian", not touristy.; If you can recommend activities outside
+					the typical, to better understand the place, would be happy to use
+					the tool.;There's history, places and landscapes that only
+					residents of the area known.;That's what I ever wanted...</span>
+			</h1>
+		</div>
+	</aside>
+
+	<!-- Map -->
+	<section id="contact" class="map">
+		<iframe width="100%" height="100%" frameborder="0" marginheight="0"
+			marginwidth="0"
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3171.3294842982477!2d-5.9880225999999865!3d37.35838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126dd495901fd9%3A0x29b0826b33040abb!2sEscuela+T%C3%A9cnica+Superior+de+Ingenier%C3%ADa+Inform%C3%A1tica%2C+Universidad+de+Sevilla%2C+US+-+Campus+R.+Mercedes%2C+41012+Sevilla!5e0!3m2!1ses!2ses!4v1425665499040"></iframe>
+		<br /> <small> <a
+			href="https://www.google.es/maps/place/Escuela+T%C3%A9cnica+Superior+de+Ingenier%C3%ADa+Inform%C3%A1tica,+Universidad+de+Sevilla,+US+-+Campus+R.+Mercedes,+41012+Sevilla/@37.35838,-5.9880226,17z/data=!4m2!3m1!1s0xd126dd495901fd9:0x29b0826b33040abb?hl=es"></a>
+		</small>
+	</section>
 
 
-{%endblock%}
+    {% include "miscellaneous/footer.html" %}
+    
+
+	<!-- Jquery -->
+	<script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
+	<!-- Boostrap -->
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+	<!-- Custom Javascript -->
+	<script src="{% static "js/home/morphext.min.js" %}"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script>
+		$("#js-rotating").Morphext({
+			animation : "fadeIn",
+			separator : ";",
+			speed : 6000
+		});
+
+		// Closes the sidebar menu
+		$("#menu-close").click(function(e) {
+			e.preventDefault();
+			$("#sidebar-wrapper").toggleClass("active");
+		});
+
+		// Opens the sidebar menu
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#sidebar-wrapper").toggleClass("active");
+		});
+
+		// Scrolls to the selected menu item on the page
+		$(function() {
+			$('a[href*=#]:not([href=#])')
+					.click(
+							function() {
+								if (location.pathname.replace(/^\//, '') == this.pathname
+										.replace(/^\//, '')
+										|| location.hostname == this.hostname) {
+
+									var target = $(this.hash);
+									target = target.length ? target
+											: $('[name=' + this.hash.slice(1)
+													+ ']');
+									if (target.length) {
+										$('html,body').animate({
+											scrollTop : target.offset().top
+										}, 1000);
+										return false;
+									}
+								}
+							});
+		});
+	</script>
+
+</body>
+
+</html>
