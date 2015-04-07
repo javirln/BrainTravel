@@ -1,43 +1,39 @@
-{% extends 'base.html' %}
-
-{% block title %} Trip list {% endblock %}
+{% extends 'base.html' %} 
+{% block title %} Trip list {% endblock %} 
 {% block content %}
 
 <h1>Paquetes de monedas</h1>
 
-<p>Con nuestras monedas virtuales podras organizar tus viajes Aprovecha nuestros packs y ahorra tiempo y dinero!</p>
+<p>Con nuestras monedas virtuales podras organizar tus viajes
+	Aprovecha nuestros packs y ahorra tiempo y dinero!</p>
 
 <div class="pricing">
-<div class="row" style="margin-top: 10%">
-  <div class="[ price-option price-option--low ] col-xs-12 col-sm-3">
-    <div class="price-option__detail">
-      <span class="price-option__cost">4.50$</span>
-      <span class="price-option__type">40 coins</span>
-    </div>
-       <div class="price-option__purchase">
-	    {{form1.render}}
-    </div>
-  </div>
-<div class="row-fluid">
-  <div class="[ price-option price-option--mid ] col-xs-12 col-sm-3">
-    <div class="price-option__detail">
-      <span class="price-option__cost">7$</span>
-      <span class="price-option__type">60 coins</span>
-    </div>
-       <div class="price-option__purchase">
-	    {{form2.render}}
-    </div>
-  </div>
+	<div class="row" style="margin-top: 10%">
+		<div class="[ price-option price-option--low ] col-xs-12 col-sm-3">
+			<div class="price-option__detail">
+				<span class="price-option__cost">4.50$</span> <span
+					class="price-option__type">40 coins</span>
+			</div>
+			<div class="price-option__purchase">{{form1.render}}</div>
+		</div>
+		<div class="row-fluid">
+			<div class="[ price-option price-option--mid ] col-xs-12 col-sm-3">
+				<div class="price-option__detail">
+					<span class="price-option__cost">7$</span> <span
+						class="price-option__type">60 coins</span>
+				</div>
+				<div class="price-option__purchase">{{form2.render}}</div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="[ price-option price-option--high ] col-xs-12 col-sm-3">
+				<div class="price-option__detail">
+					<span class="price-option__cost">10$</span> <span
+						class="price-option__type">100 coins</span>
+				</div>
+				<div class="price-option__purchase">{{form3.render}}</div>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="row-fluid">
-  <div class="[ price-option price-option--high ] col-xs-12 col-sm-3">
-    <div class="price-option__detail">
-      <span class="price-option__cost">10$</span>
-      <span class="price-option__type">100 coins</span>
-    </div>
-   <div class="price-option__purchase">
-	    {{form3.render}}
-    </div>
-  </div>
- </div>
 {%endblock%}
