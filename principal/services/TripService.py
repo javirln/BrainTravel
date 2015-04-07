@@ -141,8 +141,7 @@ def send_assessment(user_id, rate_value, trip_id, rate_text):
     score_trip = Scorable.objects.get(id=trip_id)
     occurrences_same_traveller = Assessment.objects.all().filter(traveller=user_id, scorable_id=trip_id).count()
     scorable_instance = Scorable.objects.get(id=trip_id)
-    scorable_math = Scorable.objects.filter(id=trip_id).annotate(rating_number=Count('rating'),
-                                                                 rating_sum=Sum('rating'))
+    scorable_math = Scorable.objects.filter(id=trip_id).annotate(rating_number=Count('rating'), rating_sum=Sum('rating'))
     if 0 == occurrences_same_traveller:
         comment = Assessment(
             score=rate_value,
@@ -151,7 +150,11 @@ def send_assessment(user_id, rate_value, trip_id, rate_text):
             scorable=score_trip
         )
         comment.save()
-        scorable_instance.rating = scorable_math[0].rating_sum + rate_value / scorable_math[0].rating_number + 1
+        num = scorable_math[0].rating_sum
+        if num is None:
+            num = 0
+        number = scorable_math[0].rating_number
+        scorable_instance.rating = int(num) + int(rate_value) / (int(number) + 1)
         scorable_instance.save()
         return True
     return False
