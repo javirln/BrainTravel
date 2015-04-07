@@ -68,12 +68,12 @@ class TripEditForm(forms.Form):
         start_date = self.cleaned_data['startDate']
         end_date = self.cleaned_data['endDate']
         if start_date > datetime.now().date():
-            self.add_error('startDate', "Start date must be in past")
+            self.add_error('startDate', "Must be a date in the past")
         if start_date > end_date:
             self.add_error('startDate', "Incorrect date")
             self.add_error('endDate', "Incorrect date")
         if end_date > datetime.now().date():
-            self.add_error('endDate', "End date must be in past")
+            self.add_error('endDate', "Must be a date in the past")
 
         return self.cleaned_data
 
@@ -85,14 +85,15 @@ class PlanForm(forms.Form):
 
     startDate = forms.DateField(label="Start date",
                                 widget=DateTimePicker(attrs={'class': 'form-control', 'required': True},
-                                                      options={"format": "DD/MM/YYYY",
+                                                      options={"format": "YYYY-MM-DD",
                                                                "pickTime": False}))
     days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min': 0, 'max': 7, 'class': 'form-control'}))
 
     def clean(self):
         start_date = self.cleaned_data['startDate']
+
         if start_date < datetime.now().date():
-            self.add_error('startDate', "Start date must be in future")
+            self.add_error('startDate', "Must be a date in the future")
         return self.cleaned_data
 
 
