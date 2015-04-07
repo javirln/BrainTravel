@@ -54,7 +54,7 @@
 											<label for="id_{{ form.visible_fields.1.html_name }}"
 												   class="control-label">{% trans "Days" %}</label>
 											<input class="form-control" id="id_days" name="days" type="number" min="1" max="7"
-												   value="{% if form.initial|length != 0 %}{{ form.initial.country }}{% else %}{{ form.data.country }}{% endif %}"
+												   value="{% if form.initial|length != 0 %}{{ form.initial.days }}{% else %}{{ form.data.days }}{% endif %}"
 												   required onchange="calculatePlanPrice(this.value);"/>
 											<div class="help-block with-errors">
 												{{ form.visible_fields.1.errors }}
