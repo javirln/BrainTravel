@@ -116,8 +116,8 @@ class Trip(Scorable):
     # ------------- Relationships --------------#
     traveller = models.ForeignKey('principal.Traveller')
     # city = models.ForeignKey(City)
-    city = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
+    city = models.CharField(max_length=50, null=False)
+    country = models.CharField(max_length=50, null=False)
 
     class Meta:
         db_table = 'trip'
