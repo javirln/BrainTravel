@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BrainTravel</title>
+{#    {% block title %} {% endblock %}#}
+    <title>{% block title %} {% endblock %} | BrainTravel</title>
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load staticfiles %}
@@ -11,7 +12,6 @@
     <link rel="stylesheet" href="{% static "css/animate.css" %}">
     <link rel="stylesheet" href="{% static "css/sweet-alert.css" %}">
     <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
-    <link rel="stylesheet" href="{% static "css/home/stylish-portfolio.css" %}">
     <link rel="stylesheet" href="{% static "css/home/morphext.css" %}">
     <link rel="stylesheet" href="{% static "css/home/stylish-portfolio.css" %}">
     <!-- Jquery -->
@@ -35,8 +35,8 @@
 
     {% block content %} {% endblock %}
 
-{#    {% include "miscellaneous/footer.html" %}#}
-    
+    {% include "miscellaneous/footer.html" %}
+
     {% if messages %}
         {% trans "Accept" as confirm_button %}
         {% for message in messages %}

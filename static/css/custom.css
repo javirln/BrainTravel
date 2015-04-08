@@ -508,7 +508,7 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 150px;
-  background-color: #f5f5f5;
+  /*background-color: #f5f5f5;*/
 }
 
 /* Navbar
@@ -518,8 +518,6 @@ body {
     background: #fff;
     border-bottom: #fece08 5px solid;
     margin-bottom: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
 }
 
 .nav > li > a:hover,
