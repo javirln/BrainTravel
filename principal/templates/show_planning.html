@@ -93,42 +93,29 @@
     </div>
 </div>
     <script>
-        L.mapbox.accessToken = 'pk.eyJ1IjoiYnJhaW50cmF2ZWwiLCJhIjoidE02QTEyTSJ9.rcnQJbgYd6phnLHY7dhWcA';
-        var geojson = [
-        {% for day in trip.day_set.all %}
-            {% for venue in day.venues.all %}
-                  {
-                    "type": "Feature",
-                    "geometry": {
-                      "type": "Point",
-                      "coordinates": [{{ venue.longitude }},{{ venue.latitude }}]
-                    },
-                      "properties": {
-                      "title": "{{ venue.name }}",
-                      "marker-color": "#3bb2d0",
-                      "marker-size": "large",
-                      "marker-symbol": {% if venue.is_food == True %} "fast-food" {% else %} "marker" {% endif %}
-                    }
-                  }
-                {% if forloop.last != True %}
-                    ,
-                {% endif %}
-            {% endfor %}
-            {% if forloop.last != True %}
-                ,
-            {% endif %}
-        {% endfor %}
-        ];
-        $.get("http://nominatim.openstreetmap.org/search?q="+"{{ trip.city }},{{ trip.country }}"+"&format=json", function(data){
-            for (i = 0; i < data.length; i++) {
-                if (data[i].type == "city") {
-                    cityLong = data[i].lon;
-                    cityLat = data[i].lat;
-                }
+    function initialize() {
+        var address = "{{ trip.city }}" + ", " + "{{ trip.country }}";
+        geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': address}, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var mapOptions = {
+                    zoom: 15,
+                    center: results[0].geometry.location
+                };
+                var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                {% for day in trip.day_set.all %}
+                    {% for venue in day.venues.all %}
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: new google.maps.LatLng({{ venue.latitude }}, {{ venue.longitude }})
+                        });
+                    {% endfor %}
+                {% endfor %}
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
             }
-        }).done(function(){
-            var map = L.mapbox.map('map', 'braintravel.lmbk3nld').setView([cityLat,cityLong], 15);
-            var myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(map);
         });
+    }
+        google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 {% endblock %}
