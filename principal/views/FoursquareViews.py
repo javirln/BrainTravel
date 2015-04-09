@@ -1,6 +1,5 @@
 # -*- coding: latin-1 -*-
 
-# david
 import pprint
 from datetime import date, datetime
 import traceback
@@ -21,7 +20,7 @@ client = init_fs()
 def show_planning(request, trip_id):
     trip = Trip.objects.get(pk=trip_id)
     return render_to_response('show_planning.html', {'trip': trip}, context_instance=RequestContext(request))
-    
+
 def foursquare_request(request):
     if request.method == 'GET':
         try:
@@ -71,12 +70,9 @@ def foursquare_list_venues(request):
                 selected_venues = FoursquareServices.filter_and_save(items_venues, days=days)
                 selected_food = FoursquareServices.filter_and_save(items_food, days=days, food=True)
 
-                selected_venues_with_photos = FoursquareServices.save_photo(selected_venues)
-                selected_food_with_photos = FoursquareServices.save_photo(selected_food)
+                selected_venues_with_photos = FoursquareServices.save_data(selected_venues)
+                selected_food_with_photos = FoursquareServices.save_data(selected_food)
 
-
-                # Descomentar vista de prueba para ver los resultados
-                # return [selected_food_with_photos, selected_food_with_photos]
                 trip = FoursquareServices.create_trip(form, request, selected_venues_with_photos, selected_food_with_photos)
                 return show_planning(request, trip.id)
             # si no es valido el form devolvemos a editar

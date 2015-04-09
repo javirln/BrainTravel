@@ -5,6 +5,7 @@ import traceback
 
 import pprint
 import datetime
+from django.db.models import Avg
 
 import foursquare
 
@@ -103,20 +104,36 @@ def filter_and_save(items, days, food=False):
         else:
             # print("ID repetido: " + id)
             # print("Venue repetido: " + venue['name'])
-            counter =counter + 1
+            counter = counter + 1
     # Devolvemos 8 viajes por dias
-    print ("Hay " + str((counter+1)) + " sitios repetidos")
+    print ("Hay " + str((counter + 1)) + " sitios repetidos")
     return all_venues[0:(amount_sites * days)]
 
 
-def save_photo(venues_selected):
+# autor david.
+# Si tiene el venue hours lo guarda
+# def save_hours(venue_time):
+#     timeframe = venue_time['timeframes']
+#     for time in timeframe:
+#         day = time['days']
+#
+#     pass
+
+
+def save_data(venues_selected):
     venues_selected_with_photos = []
     for v in venues_selected:
         venue = client.venues(v.id_foursquare)
         photo = ""
-        photo = venue['venue']['photos']['groups'][0]['items'][0]
-        photo_url = photo['prefix'] + str(photo['width']) + "x" + str(photo['height']) + photo['suffix']
-        v.photo = photo_url
+        # if 'hours' in venue['venue']:
+        #     save_hours(venue['venue']['hours'])
+        # elif 'popular' in venue['venue'] and not 'hours' in venue['venue']:
+        #     save_hours(venue['venue']['popular'])
+
+        if len(venue['venue']['photos']['groups']) != 0:
+            photo = venue['venue']['photos']['groups'][0]['items'][0]
+            photo_url = photo['prefix'] + str(photo['width']) + "x" + str(photo['height']) + photo['suffix']
+            v.photo = photo_url
         v.save()
         venues_selected_with_photos.append(v)
     return venues_selected_with_photos
@@ -142,8 +159,8 @@ class Planificador(threading.Thread):
     # print(self.lista)
     # def obtener(self, ):
     # self.lock.acquire()
-    #     obj = self.lista.pop()
-    #     self.lock.release()
+    # obj = self.lista.pop()
+    # self.lock.release()
     #     print(obj + "asda")
     #     return obj
     def apply_weighting(self, category, weighting):
@@ -208,6 +225,7 @@ def test_plan():
         traceback.print_exc()
 
 
+# autor: david
 def create_trip(tripForm, request, selected_venues_with_photos, selected_food_with_photos):
     start_date = tripForm.cleaned_data['startDate']
     days = int(tripForm.cleaned_data['days'])
@@ -219,26 +237,40 @@ def create_trip(tripForm, request, selected_venues_with_photos, selected_food_wi
                 startDate=start_date, endDate=end_date, planified=True, coins=0,
                 traveller=TravellerService.find_one(request.user.id),
                 city=city, country=country)
-
-
-
-    # ------------- Relationships --------------#
     trip.save()
+
     for num_day in range(1, days + 1):
         # si no es la primera iteracion sumamos "days" a la fecha
         if num_day == 1:
-            date=start_date
+            date = start_date
         else:
-            date = start_date + datetime.timedelta(days=num_day-1)
+            date = start_date + datetime.timedelta(days=num_day - 1)
 
         day = Day(numberDay=num_day, trip=trip, date=date)
         day.save()
+
+        # 24 - 8h (para dormir) - 3h para comer * 60 (lo pasamos a minutos)
+        time_spent = 13 * 60
         for numero in range(1, 9):
-            venue_day = VenueDay(order=numero, day=day, venue=selected_venues_with_photos.pop(0))
+            venue = selected_venues_with_photos.pop(0)
+            leadtime_average = venue.feedback_set.aggregate(Avg('leadTime')).values()[0]
+            if leadtime_average is None:
+                # 2 horas
+                leadtime_average = 120
+
+            time_spent -= leadtime_average
+            venue_day = VenueDay(order=numero, day=day, venue=venue)
             venue_day.save()
 
-        for numero_comida in range(1, 4):
-            venue_day = VenueDay(order=numero_comida, day=day, venue=selected_food_with_photos.pop(0))
-            venue_day.save()
+            # nos ahorramos un for
+            if numero < 4:
+                venue_day = VenueDay(order=numero, day=day, venue=selected_food_with_photos.pop(0))
+                venue_day.save()
+                # time_spent -= 1
 
+            # Si el tiempo a gastar es 0 o menor, pasamos a un dia nuevo
+            if time_spent <= 0:
+                print("Se agoto el tiempo: " + str(time_spent))
+                break
+            print("tiempo restante: " + str(time_spent))
     return trip
