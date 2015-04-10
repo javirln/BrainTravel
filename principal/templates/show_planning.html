@@ -103,19 +103,23 @@
                     center: results[0].geometry.location
                 };
                 var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                var bounds = new google.maps.LatLngBounds();
                 {% for day in trip.day_set.all %}
                     {% for venue in day.venues.all %}
+                        var coordinates = new google.maps.LatLng({{ venue.latitude }}, {{ venue.longitude }});
                         var marker = new google.maps.Marker({
                             map: map,
-                            position: new google.maps.LatLng({{ venue.latitude }}, {{ venue.longitude }})
+                            position: coordinates
                         });
+                        bounds.extend(coordinates);
                     {% endfor %}
                 {% endfor %}
+                map.fitBounds(bounds);
             } else {
                 alert('Geocode was not successful for the following reason: ' + status);
             }
         });
     }
-        google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 {% endblock %}
