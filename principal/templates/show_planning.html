@@ -93,6 +93,7 @@
     </div>
 </div>
     <script>
+    var infowindow = null;
     function initialize() {
         var address = "{{ trip.city }}" + ", " + "{{ trip.country }}";
         geocoder = new google.maps.Geocoder();
@@ -104,12 +105,18 @@
                 };
                 var map = new google.maps.Map(document.getElementById('map'), mapOptions);
                 var bounds = new google.maps.LatLngBounds();
+                var infoWindow = new google.maps.InfoWindow();
                 {% for day in trip.day_set.all %}
                     {% for venue in day.venues.all %}
                         var coordinates = new google.maps.LatLng({{ venue.latitude }}, {{ venue.longitude }});
                         var marker = new google.maps.Marker({
                             map: map,
+                            icon: {% if venue.is_food == True %} "{% static "img/icons/restaurant-24.svg" %}" {% else %} "{% static "img/icons/marker-24.svg" %}" {% endif %},
                             position: coordinates
+                        });
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infoWindow.setContent("{{ venue.name }}");
+                            infoWindow.open(map, this);
                         });
                         bounds.extend(coordinates);
                     {% endfor %}
