@@ -40,4 +40,7 @@ urlpatterns = patterns('',
     #planner URLs
     url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),
+    
+    #i18n
+    url(r'i18n/change_language', 'principal.views.TranslateViews.change_language'),
 )

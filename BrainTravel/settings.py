@@ -25,6 +25,8 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+FILE_CHARSET = 'iso-8859-1'
+
 
 # Application definition
 
@@ -49,7 +51,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
+
+#Dir for i18n
+LOCALE_PATHS = (
+                os.path.join(BASE_DIR, "locale"),
+                )
+
 
 ROOT_URLCONF = 'BrainTravel.urls'
 

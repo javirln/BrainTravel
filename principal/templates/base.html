@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="ISO-8859-1">
 {#    {% block title %} {% endblock %}#}
-    <title>{% block title %} {% endblock %} | BrainTravel</title>
-    <meta charset="ISO-8859-1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<title>{% block title %} {% endblock %} | BrainTravel</title>-->
+    
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     {% load staticfiles %}
-    {% load i18n %}
+    <!--{% load i18n %} -->
     <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
     <link rel="stylesheet" href="{% static "css/custom.css" %}">
     <link rel="stylesheet" href="{% static "css/animate.css" %}">
@@ -28,10 +29,9 @@
     <!-- Custom Javascript -->
     <script src="{% static "js/home/morphext.min.js" %}"></script>
 
-    {% block extrahead %} {% endblock %}
+    <!--{% block extrahead %} {% endblock %} -->
 </head>
 <body>
-
     <!-- Navigation -->
 	{% include "miscellaneous/menu.html" %}
 

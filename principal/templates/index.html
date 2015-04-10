@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+
 {% block content %}
+{% load i18n %}
 
 	<header id="top" class="header">
 		<div class="text-vertical-center">
@@ -15,13 +17,16 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2>What is this?</h2>
-					<p class="lead">BrainTravel is the perfect tool for all
-						travellers. It automatically creates a trip planning for you,
-						offering a daily schedule with the highest rated sites in the
-						area. It also has an internal network in which users can interact
-						between them regarding trips they made, commenting and sharing
-						experiences.</p>
+					<h2>{% trans "What is this?" %}</h2>
+					<p class="lead">
+						{% blocktrans trimmed %}
+						 BrainTravel is the perfect tool for all travellers. It automatically creates a trip planning for you,
+						 offering a daily schedule with the highest rated sites in the
+						 area. It also has an internal network in which users can interact
+						 between them regarding trips they made, commenting and sharing
+						 experiences.
+						 {%endblocktrans%}
+					</p>
 				</div>
 			</div>
 			<!-- /.row -->

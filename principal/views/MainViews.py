@@ -1,3 +1,6 @@
+# -*- coding: iso-8859-1 -*-
+
+
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from principal.utils import BrainTravelUtils as btutils

@@ -1,4 +1,4 @@
-# -*- coding: latin-1 -*-
+# -*- coding: iso-8859-1 -*-
 import ast
 
 from django.contrib.auth.decorators import login_required, permission_required
@@ -49,7 +49,7 @@ def buy_coins(request):
         "business": settings.PAYPAL_RECEIVER_EMAIL,
         "amount": "4.50",
         "item_name": "40 Coins",
-        "notify_url": "http://564027ec.ngrok.com" + reverse('paypal-ipn'),
+        "notify_url": "http://5653f2da.ngrok.com" + reverse('paypal-ipn'),
         "return_url": "http://www.braintravel.com/coin/list/",
         "cancel_return": "http://www.braintravel.com/payment_cancel",
         "currency_code":"EUR",
@@ -61,7 +61,7 @@ def buy_coins(request):
         "business": settings.PAYPAL_RECEIVER_EMAIL,
         "amount": "7.00",
         "item_name": "60 Coins",
-        "notify_url": "http://564027ec.ngrok.com" + reverse('paypal-ipn'),
+        "notify_url": "http://5653f2da.ngrok.com" + reverse('paypal-ipn'),
         "return_url": "http://www.braintravel.com/coin/list/",
         "cancel_return": "http://www.braintravel.com/payment_cancel",
         "currency_code":"EUR",
@@ -76,7 +76,7 @@ def buy_coins(request):
         "business": settings.PAYPAL_RECEIVER_EMAIL,
         "amount": "10.00",
         "item_name": "100 Coins",
-        "notify_url": "http://564027ec.ngrok.com" + reverse('paypal-ipn'),
+        "notify_url": "http://5653f2da.ngrok.com" + reverse('paypal-ipn'),
         "return_url": "http://www.braintravel.com/coin/list/",
         "cancel_return": "http://www.braintravel.com/payment_cancel",
         "currency_code":"EUR",
