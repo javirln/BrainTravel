@@ -53,7 +53,7 @@ def check_coins(days):
     else:
         coins = 80
     return coins
-
+# Autor: david
 def check_coins_available(traveller, coins_spent):
     coins_available = traveller.coins
     if coins_available < coins_spent:
@@ -61,6 +61,7 @@ def check_coins_available(traveller, coins_spent):
     else:
         return True
 
+# autor: david y cuder
 @permission_required('principal.traveller')
 def foursquare_list_venues(request):
     try:
