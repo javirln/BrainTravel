@@ -71,7 +71,8 @@ def foursquare_list_venues(request):
             form = PlanForm(request.POST)
             if form.is_valid():
                 days = int(form.cleaned_data['days'])
-                if check_coins_available(traveller, check_coins(days)) is False:
+                coins_cost = check_coins(days)
+                if check_coins_available(traveller, coins_cost) is False:
                     BrainTravelUtils.save_error(request, "Insufficient coins available")
                     return buy_coins(request)
                 start_date = form.cleaned_data['startDate']
@@ -84,6 +85,7 @@ def foursquare_list_venues(request):
                 elif days > 3 and days <= 7:
                     limit = 25
 
+                print("FS views " + city)
                 venues_sigths = FoursquareServices.search_by_section(city, "sights", limit=limit)
                 venues_outdoors = FoursquareServices.search_by_section(city, "outdoors", limit=limit)
                 venues_arts = FoursquareServices.search_by_section(city, "arts", limit=limit)
@@ -108,6 +110,9 @@ def foursquare_list_venues(request):
 
                 trip = FoursquareServices.create_trip(form, request, selected_venues_with_photos,
                                                       selected_food_with_photos)
+
+                # traveller.coins -= coins_cost
+                # traveller.save()
                 return show_planning(request, trip.id)
             # si no es valido el form devolvemos a editar
             return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller},

@@ -62,6 +62,7 @@ def search_by_section(city, section, limit=40):
     # section = One of food, drinks, coffee, shops, arts, outdoors, sights, trending or specials, nextVenues
     # (venues frequently visited after a given venue)
     # or topPicks (a mix of recommendations generated without a query from the user).
+    print("FS servicio " + city)
     response = client.venues.explore(params={'near': city, 'section': section, 'limit': limit})
     # pp = pprint.PrettyPrinter()
     # pp.pprint(response)
