@@ -50,7 +50,7 @@
 											{{ hidden }}
 										{% endfor %}
 
-										<div class="form-group {% if form.visible_fields..errors %} has-error {% endif %} ">
+										<div class="form-group {% if form.visible_fields.errors %} has-error {% endif %} ">
 											<label for="id_{{ form.visible_fields.3.html_name }}"
 												   class="control-label">{% trans "Days" %}</label>
 											<input class="form-control" id="id_days" name="days" type="number" min="1" max="7"

@@ -63,6 +63,7 @@ class TripEditForm(forms.Form):
 
     publishedDescription = forms.CharField(label='Published Description',
                                            widget=SummernoteWidget(attrs={'class': 'form-control'}))
+    name = forms.CharField(label='Name', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     def clean(self):
         start_date = self.cleaned_data['startDate']

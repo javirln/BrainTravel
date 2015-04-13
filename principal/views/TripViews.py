@@ -66,13 +66,12 @@ def list_trip_administrator(request):
         trips = paginator.page(1)
     except EmptyPage:
         trips = paginator.page(paginator.num_pages)
-    return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
+    return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True}, context_instance=RequestContext(request))
 
 
 @permission_required('principal.traveller')
 def planned_trips(request):
     trips = TripService.find_planed_trips_by_traveller(request.user.id)
-    
     if trips is not False:
         paginator = Paginator(trips, 5)
         page = request.GET.get('page')
@@ -83,8 +82,8 @@ def planned_trips(request):
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
 
-    return render_to_response('trip_list.html', {'trips': trips},
-                                  context_instance=RequestContext(request))
+    return render_to_response('trip_list.html', {'trips': trips, 'create_trip': False},
+                              context_instance=RequestContext(request))
     
 
 # author: Juane
@@ -106,6 +105,7 @@ def update_state(request, trip_id):
         return render_to_response('error.html')
 
 
+# autor: david
 @login_required()
 def list_all_by_traveller(request, optional=0):
     if optional == "0":
@@ -127,7 +127,7 @@ def list_all_by_traveller(request, optional=0):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips},
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True},
                                   context_instance=RequestContext(request))
 
 
@@ -144,7 +144,8 @@ def list_all_by_traveller_draft(request):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True},
+                                  context_instance = RequestContext(request))
 
 
 # david
@@ -171,7 +172,7 @@ def trip_create(request):
         form = TripEditForm(initial=data)
 
     return render_to_response('trip_edit.html', {"form": form, "create": True},
-                              context_instance=RequestContext(request))
+                              context_instance = RequestContext(request))
 
 
 # david
@@ -265,6 +266,7 @@ def list_trip_approved_by_profile(request, profile_id):
     try:
         traveller = TravellerService.find_one(profile_id)
         trips = TripService.list_trip_approved(traveller.id)
-        return render_to_response('trip_list.html', {'trips': trips}, context_instance=RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True},
+                                  context_instance = RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')
