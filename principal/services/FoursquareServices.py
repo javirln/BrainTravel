@@ -9,7 +9,7 @@ from django.db.models import Avg
 
 import foursquare
 
-from principal.models import Category, Venue, Trip, Day, VenueDay
+from principal.models import Category, Venue, Trip, Day, VenueDay, CoinHistory
 from principal.services import TravellerService
 from django.db.models.fields import Empty
 
@@ -227,7 +227,7 @@ def test_plan():
 
 
 # autor: david
-def create_trip(tripForm, request, selected_venues_with_photos, selected_food_with_photos):
+def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, selected_food_with_photos):
     start_date = tripForm.cleaned_data['startDate']
     days = int(tripForm.cleaned_data['days'])
     country = tripForm.cleaned_data['country']
@@ -235,7 +235,7 @@ def create_trip(tripForm, request, selected_venues_with_photos, selected_food_wi
     end_date = start_date + datetime.timedelta(days=days)
 
     trip = Trip(name=str(days) + " days in " + city, publishedDescription="", state='ap',
-                startDate=start_date, endDate=end_date, planified=True, coins=0,
+                startDate=start_date, endDate=end_date, planified=True, coins=coins_cost,
                 traveller=TravellerService.find_one(request.user.id),
                 city=city, country=country)
     trip.save()
@@ -275,3 +275,9 @@ def create_trip(tripForm, request, selected_venues_with_photos, selected_food_wi
                 break
             print("tiempo restante: " + str(time_spent))
     return trip
+
+
+def create_history(trip):
+    coin_history = CoinHistory(amount=trip.coins, concept=trip.name, date=datetime.datetime.now(),
+                               traveller=trip.traveller, trip=trip)
+    coin_history.save()
