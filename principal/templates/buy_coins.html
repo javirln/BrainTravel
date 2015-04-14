@@ -4,38 +4,61 @@
 <div class="container">
     <h1>Paquetes de monedas</h1>
     <p>Con nuestras monedas virtuales podras organizar tus viajes. Aprovecha nuestros packs!</p>
-    <div class="pricing-table pricing-three-column row">
-        <div class="plan col-sm-4 col-lg-4">
-          <div class="plan-name-bronze">
-            <h2>Bronze</h2>
-            <span>4.50&euro;</span>
-          </div>
-          <ul>
-            <li class="plan-feature">40 Coins</li>
-            <li class="plan-feature">{{form1.render}}</li>
-          </ul>
+
+    <div class="db-padding-btm db-attached">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="db-wrapper">
+                <div class="db-pricing-eleven db-bk-color-one">
+                    <div class="price">
+                        <p>4.50&euro;</p>
+                    </div>
+                    <div class="type">
+                        SMALL PACK
+                    </div>
+                    <ul>
+                        <li>40 Coins</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        {{form1.render}}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="z-index:55;" class="plan col-sm-4 col-lg-4">
-          <div class="plan-name-silver">
-              <h2>Silver</h2>
-{#            <h2>Silver <span class="badge badge-warning">Popular</span></h2>#}
-{#            <span><strike>$10.99</strike>   <font color="red">$9.99 - <span class="label label-warning">Sale</span></font></span>#}
-              <span>7.00&euro;</span>
-          </div>
-          <ul>
-            <li class="plan-feature">60 Coins</li>
-              <li class="plan-feature">{{form2.render}}</li>
-          </ul>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+             <div class="db-wrapper">
+            <div class="db-pricing-eleven db-bk-color-two popular">
+                <div class="price">
+                    <p>7&euro;</p>
+                </div>
+                <div class="type">
+                    MEDIUM PACK
+                </div>
+                <ul>
+                    <li>60 Coins</li>
+                </ul>
+                <div class="pricing-footer">
+                    {{form2.render}}
+                </div>
+            </div>
+                 </div>
         </div>
-        <div class="plan col-sm-4 col-lg-4">
-          <div class="plan-name-gold">
-            <h2>Gold</h2>
-            <span>10.00&euro;</span>
-          </div>
-          <ul>
-            <li class="plan-feature">100 Coins</li>
-              <li class="plan-feature">{{form3.render}}</li>
-          </ul>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+             <div class="db-wrapper">
+            <div class="db-pricing-eleven db-bk-color-three">
+                <div class="price">
+                     <p>10&euro;</p>
+                </div>
+                <div class="type">
+                    ADVANCE PACK
+                </div>
+                <ul>
+                    <li>100 Coins</li>
+                </ul>
+                <div class="pricing-footer">
+                    {{form3.render}}
+                </div>
+            </div>
+                 </div>
         </div>
     </div>
 </div>
