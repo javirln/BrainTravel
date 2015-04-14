@@ -9,11 +9,11 @@ from django.db.models import Avg
 
 import foursquare
 
-<<<<<<< HEAD
+<< << << < HEAD
 from principal.models import Category, Venue, Trip, Day, VenueDay, Feedback
-=======
+== == == =
 from principal.models import Category, Venue, Trip, Day, VenueDay, CoinHistory
->>>>>>> d6362776a73aeedfa9c8dbb10d3936abafa00351
+>> >> >> > d6362776a73aeedfa9c8dbb10d3936abafa00351
 from principal.services import TravellerService
 from django.db.models.fields import Empty
 from math import radians, sin, cos, sqrt, asin
@@ -132,7 +132,7 @@ def filter_and_save(items, days, food=False):
 # autor david.
 # Si tiene el venue hours lo guarda
 # def save_hours(venue_time):
-#     timeframe = venue_time['timeframes']
+# timeframe = venue_time['timeframes']
 #     for time in timeframe:
 #         day = time['days']
 #
@@ -294,15 +294,14 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, sele
             print("tiempo restante: " + str(time_spent))
     return trip
 
-<<<<<<< HEAD
+
 #author: Javi Rodriguez
 def retrieve_tips(id_venue):
     tips = Feedback.objects.filter(venues=id_venue)
     return tips
-=======
+
 
 def create_history(trip):
     coin_history = CoinHistory(amount=trip.coins, concept=trip.name, date=datetime.datetime.now(),
                                traveller=trip.traveller, trip=trip)
     coin_history.save()
->>>>>>> d6362776a73aeedfa9c8dbb10d3936abafa00351
