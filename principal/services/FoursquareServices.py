@@ -293,9 +293,9 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, sele
 
 
 #author: Javi Rodriguez
-def retrieve_tips(id_venue):
-    tips = Feedback.objects.filter(venues=id_venue)
-    return tips
+def retrieve_venues(id_venue):
+    venue = Venue.objects.get(id=id_venue)
+    return venue
 
 
 def create_history(trip):

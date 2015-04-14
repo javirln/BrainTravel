@@ -9,9 +9,9 @@ from principal.models import Trip, Traveller, Comment, Assessment, Scorable
 def searchTrip(title):
     trip_list = []
     if title and title != " ":
-        trip_list = Trip.objects.filter(Q(name__icontains=title, state='ap', planified='false')
-                                        | Q(city__icontains=title, state='ap', planified='false')
-                                        | Q(country__icontains=title, state='ap', planified='false')).order_by('likes')
+        trip_list = Trip.objects.filter(Q(name__icontains=title, state='ap', planified="False")
+                                        | Q(city__icontains=title, state='ap', planified="False")
+                                        | Q(country__icontains=title, state='ap', planified="False")).order_by('likes')
     return trip_list
 
 
