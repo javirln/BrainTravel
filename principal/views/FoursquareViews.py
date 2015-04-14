@@ -10,7 +10,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render_to_response
 from django.template.context import RequestContext
 from principal.forms import PlanForm
-from principal.models import Trip, Traveller
+from principal.models import Trip, Traveller, Feedback
 from principal.services import TravellerService
 from principal.services import FoursquareServices
 from principal.services.FoursquareServices import init_fs, categories_initializer, search_by_category
@@ -129,11 +129,12 @@ def foursquare_list_venues(request):
         return render_to_response('error.html', context_instance=RequestContext(request))
 
 
-def retrieve_tips(request, id_venue):
+def retrieve_venue(request, id_venue):
     if request.method == 'GET':
         try:
-            data = serializers.serialize('json', FoursquareServices.retrieve_tips(id_venue))
-            return render_to_response('', {},
+            venue = FoursquareServices.retrieve_venues(id_venue)
+            tips = Feedback.objects.filter(venues=id_venue)
+            return render_to_response('venue_details.html', {"venue": venue, "tips": tips},
                                       context_instance=RequestContext(request))
         except Exception as e:
             return HttpResponse(e)

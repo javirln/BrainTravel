@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block title %} My trips {% endblock %}
+{% block content %} {% load i18n %} {% load staticfiles %}
+    <div class="container">
+        <div class="row">
+            <div class="well" style="margin-top: 69px;">
+            <div class="media">
+                <div class="row">
+                    <div class="col-md-2 col-sm-3 col-lg-2 col-xs-12 text-center">
+                        <a href="#">
+                            <img class="img-rounded" style="width: 150px;" src="{{venue.photo}}">
+                        </a>
+                        <h4 class="media-heading" style="margin-top: 14px;">{{venue.name}}</h4>
+                        <a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" href="#">Give feedback</a>
+                    </div>
+                    <div class="col-md-10 col-sm-9 col-lg-10 col-xs-12">
+                        <div class="media-body">
+                            <h4>Useful tips</h4>
+                                {% for tip in tips %}
+                                <div class="row">
+	                                <div class="col-sm-1">
+	                                    <img class="img-responsive img-circle user-photo" src="/{{ tip.traveller.photo }}">
+	                                </div><!-- /col-sm-1 -->
+	
+	                                <div class="col-sm-9">
+	                                    <div class="panel panel-default">
+	                                        <div class="panel-heading">
+	                                            <strong>{{ tip.traveller.first_name }}</strong>
+	                                        </div>
+	                                        <div class="panel-body">
+	                                            {{ tip.description }}
+	                                        </div><!-- /panel-body -->
+	                                        <div class="panel-footer">
+	                                            <a  type="button" class="btn btn-primary btn-sm" href="#">Rate this tip</a>
+	                                        </div>
+	                                    </div><!-- /panel panel-default -->
+	                                </div><!-- /col-sm-5 -->
+	                            </div>
+	                            {% empty %}
+                                <h4>Sorry, there aren't tips available for this venue.</h4>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

@@ -135,7 +135,6 @@ class Traveller(User):
     genre = models.CharField(max_length=2, choices=Genre, null=True)
     photo = models.ImageField(upload_to='static/user_folder/', null=True, default='static/user_folder/default.jpg')
 
-
     # ----------- Derivates -------------------#
     reputation = models.FloatField(null=True, blank=True,
                                    validators=[MinValueValidator(0), MaxValueValidator(10)], default=0)
