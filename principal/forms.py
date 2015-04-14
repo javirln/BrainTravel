@@ -81,7 +81,16 @@ class TripEditForm(forms.Form):
 
 # david
 class PlanForm(forms.Form):
-    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    city = forms.CharField(
+        label='City',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+            }
+        )
+    )
     country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     startDate = forms.DateField(label="Start date",
