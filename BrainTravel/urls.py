@@ -36,6 +36,7 @@ urlpatterns = patterns('',
     url(r'^buy_coins/$', 'principal.views.Coinviews.buy_coins'),
     url(r'^test_paypal/$', 'principal.views.PayPalViews.test_paypal_view'),
     url(r'^show_planning/(?P<trip_id>[0-9]+)/$', 'principal.views.FoursquareViews.show_planning'),
+    url(r'^venue_tips/(?P<id_venue>[0-9]+)$', 'principal.views.FoursquareViews.retrieve_tips'),
     
     #planner URLs
     url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),

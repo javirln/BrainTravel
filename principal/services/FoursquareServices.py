@@ -9,7 +9,7 @@ from django.db.models import Avg
 
 import foursquare
 
-from principal.models import Category, Venue, Trip, Day, VenueDay
+from principal.models import Category, Venue, Trip, Day, VenueDay, Feedback
 from principal.services import TravellerService
 from django.db.models.fields import Empty
 
@@ -23,6 +23,7 @@ def init_fs():
     # Construct the client object
     global client
     client = foursquare.Foursquare(client_id=_client_id, client_secret=_client_secret)
+    categories_initializer()
 
 
 def categories_initializer():
@@ -275,3 +276,8 @@ def create_trip(tripForm, request, selected_venues_with_photos, selected_food_wi
                 break
             print("tiempo restante: " + str(time_spent))
     return trip
+
+#author: Javi Rodriguez
+def retrieve_tips(id_venue):
+    tips = Feedback.objects.filter(venues=id_venue)
+    return tips

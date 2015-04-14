@@ -9,13 +9,16 @@ from principal.models import Trip, Traveller, Comment, Assessment, Scorable
 def searchTrip(title):
     trip_list = []
     if title and title != " ":
-        trip_list = Trip.objects.filter(name__icontains=title, state='ap', planified='false').order_by('likes')
+        trip_list = Trip.objects.filter(Q(name__icontains=title, state='ap', planified='false')
+                                        | Q(city__icontains=title, state='ap', planified='false')
+                                        | Q(country__icontains=title, state='ap', planified='false')).order_by('likes')
     return trip_list
 
 
 def find_planed_trips_by_traveller(traveller_id):
-    res = Trip.objects.filter(Q(traveller=traveller_id) & Q(planified = True))
+    res = Trip.objects.filter(Q(traveller=traveller_id) & Q(planified=True))
     return res
+
 
 # author: Juane
 def list_trip_administrator(user):
@@ -45,7 +48,7 @@ def list_my_trip(id_traveller):
 
 # author: David
 def list_trip_draft(id_traveller):
-    trips = Trip.objects.all().filter(traveller=id_traveller,  planified=False, state='df')
+    trips = Trip.objects.all().filter(traveller=id_traveller, planified=False, state='df')
     return trips
 
 
@@ -141,7 +144,8 @@ def send_assessment(user_id, rate_value, trip_id, rate_text):
     score_trip = Scorable.objects.get(id=trip_id)
     occurrences_same_traveller = Assessment.objects.all().filter(traveller=user_id, scorable_id=trip_id).count()
     scorable_instance = Scorable.objects.get(id=trip_id)
-    scorable_math = Scorable.objects.filter(id=trip_id).annotate(rating_number=Count('rating'), rating_sum=Sum('rating'))
+    scorable_math = Scorable.objects.filter(id=trip_id).annotate(rating_number=Count('rating'),
+                                                                 rating_sum=Sum('rating'))
     if 0 == occurrences_same_traveller:
         comment = Assessment(
             score=rate_value,

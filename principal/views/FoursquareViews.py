@@ -4,8 +4,9 @@ import pprint
 from datetime import date, datetime
 import traceback
 from django.contrib.auth.decorators import permission_required
+from django.core import serializers
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render_to_response
 from django.template.context import RequestContext
 from principal.forms import PlanForm
@@ -125,3 +126,13 @@ def foursquare_list_venues(request):
     except:
         print traceback.format_exc()
         return render_to_response('error.html', context_instance=RequestContext(request))
+
+
+def retrieve_tips(request, id_venue):
+    if request.method == 'GET':
+        try:
+            data = serializers.serialize('json', FoursquareServices.retrieve_tips(id_venue))
+            return render_to_response('', {},
+                                      context_instance=RequestContext(request))
+        except Exception as e:
+            return HttpResponse(e)
