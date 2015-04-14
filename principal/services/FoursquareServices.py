@@ -9,11 +9,8 @@ from django.db.models import Avg
 
 import foursquare
 
-<< << << < HEAD
 from principal.models import Category, Venue, Trip, Day, VenueDay, Feedback
-== == == =
 from principal.models import Category, Venue, Trip, Day, VenueDay, CoinHistory
->> >> >> > d6362776a73aeedfa9c8dbb10d3936abafa00351
 from principal.services import TravellerService
 from django.db.models.fields import Empty
 from math import radians, sin, cos, sqrt, asin
