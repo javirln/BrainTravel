@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Payments {% endblock %}
 {% block content %}
+<div class="container">
     {% load i18n %}
 
     <h2>{% trans "List of all my payments" %}</h2>
@@ -29,4 +30,5 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
 {% endblock %}

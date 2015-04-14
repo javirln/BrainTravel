@@ -28,6 +28,19 @@
                             {% csrf_token %}
                             <!-- edit form column -->
                             <div class="col-md-5 col-sm-6 col-xs-8 personal-info">
+
+                                <div class="form-group {% if form.visible_fields.5.errors %} has-error {% endif %} ">
+                                    <label for="id_{{ form.visible_fields.5.html_name }}" class="control-label">
+                                        {% trans "Name" %}</label>
+                                    <input class="form-control" id="id_name" name="name" type="text"
+                                           value="{% if form.initial|length != 5 %}{{ form.initial.city }}{% else %}{{ form.data.city }}{% endif %}"
+                                           required/>
+
+                                    <div class="help-block with-errors">
+                                        {{ form.visible_fields.5.errors }}
+                                    </div>
+                                </div>
+
                                 <div class="form-group {% if form.visible_fields.0.errors %} has-error {% endif %} ">
                                     <label for="id_{{ form.visible_fields.0.html_name }}" class="control-label">
                                         {% trans "City" %}</label>

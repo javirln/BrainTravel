@@ -83,7 +83,7 @@ def foursquare_list_venues(request):
                 limit = 40
                 if days <= 3:
                     limit = 15
-                elif days > 3 and days <= 7:
+                elif 3 < days <= 7:
                     limit = 25
 
                 print("FS views " + city)
@@ -109,11 +109,12 @@ def foursquare_list_venues(request):
                 selected_venues_with_photos = FoursquareServices.save_data(selected_venues)
                 selected_food_with_photos = FoursquareServices.save_data(selected_food)
 
-                trip = FoursquareServices.create_trip(form, request, selected_venues_with_photos,
+                trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues_with_photos,
                                                       selected_food_with_photos)
 
                 # traveller.coins -= coins_cost
                 # traveller.save()
+                FoursquareServices.create_history(trip)
                 return show_planning(request, trip.id)
             # si no es valido el form devolvemos a editar
             return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller},

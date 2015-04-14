@@ -9,10 +9,14 @@ from django.db.models import Avg
 
 import foursquare
 
+<<<<<<< HEAD
 from principal.models import Category, Venue, Trip, Day, VenueDay, Feedback
+=======
+from principal.models import Category, Venue, Trip, Day, VenueDay, CoinHistory
+>>>>>>> d6362776a73aeedfa9c8dbb10d3936abafa00351
 from principal.services import TravellerService
 from django.db.models.fields import Empty
-
+from math import radians, sin, cos, sqrt, asin
 
 _client_id = "TWYKUP301GVPHIAHBPYFQQT0PJGZ0O2B24HQ3RUGLUFSLP1E"
 _client_secret = "TDNQ441CNLDJZKC3UJYDERT2MNDWN1E2CX1550CW1OXPEST2"
@@ -24,6 +28,19 @@ def init_fs():
     global client
     client = foursquare.Foursquare(client_id=_client_id, client_secret=_client_secret)
     categories_initializer()
+
+
+def calculate_distance(lat1, lon1, lat2, lon2):
+    R = 6372.8  # Earth radius in kilometers
+    dLat = radians(lat2 - lat1)
+    dLon = radians(lon2 - lon1)
+    lat1 = radians(lat1)
+    lat2 = radians(lat2)
+
+    a = sin(dLat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dLon / 2) ** 2
+    c = 2 * asin(sqrt(a))
+    # retorna en Km
+    return R * c
 
 
 def categories_initializer():
@@ -228,7 +245,7 @@ def test_plan():
 
 
 # autor: david
-def create_trip(tripForm, request, selected_venues_with_photos, selected_food_with_photos):
+def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, selected_food_with_photos):
     start_date = tripForm.cleaned_data['startDate']
     days = int(tripForm.cleaned_data['days'])
     country = tripForm.cleaned_data['country']
@@ -236,7 +253,7 @@ def create_trip(tripForm, request, selected_venues_with_photos, selected_food_wi
     end_date = start_date + datetime.timedelta(days=days)
 
     trip = Trip(name=str(days) + " days in " + city, publishedDescription="", state='ap',
-                startDate=start_date, endDate=end_date, planified=True, coins=0,
+                startDate=start_date, endDate=end_date, planified=True, coins=coins_cost,
                 traveller=TravellerService.find_one(request.user.id),
                 city=city, country=country)
     trip.save()
@@ -277,7 +294,15 @@ def create_trip(tripForm, request, selected_venues_with_photos, selected_food_wi
             print("tiempo restante: " + str(time_spent))
     return trip
 
+<<<<<<< HEAD
 #author: Javi Rodriguez
 def retrieve_tips(id_venue):
     tips = Feedback.objects.filter(venues=id_venue)
     return tips
+=======
+
+def create_history(trip):
+    coin_history = CoinHistory(amount=trip.coins, concept=trip.name, date=datetime.datetime.now(),
+                               traveller=trip.traveller, trip=trip)
+    coin_history.save()
+>>>>>>> d6362776a73aeedfa9c8dbb10d3936abafa00351
