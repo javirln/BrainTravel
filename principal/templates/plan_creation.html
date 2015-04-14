@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block extrahead %} {{form.media}} {% endblock %}
 {% block title %} Plan creation {% endblock %}
 {% block content %}
@@ -76,8 +77,8 @@
 										{% endfor %}
 
 										<div class="form-group">
-											<input class="btn btn-primary" name="save" value="Create Plan"
-												   type="submit">
+											<input id="create_plan" class="btn btn-primary" name="save" value="Create Plan"
+												   type="submit" onclick=whileLoading()>
 											<span></span>
 										</div>
 									</div>
@@ -99,6 +100,14 @@
     </div>
 	
 	<script>
+        function whileLoading() {
+            swal({
+                title: "Loading...",
+                text: "We are working hard on your plan. It might take a while, please, be patient :)",
+                showConfirmButton: false,
+                imageUrl: "{% static "img/gears.svg" %}"
+            });
+        }
 		function calculatePlanPrice(days){
 			coins = 0;
 			if(days <= 3){
