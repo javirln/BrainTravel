@@ -17,9 +17,11 @@ def profile_details(request, traveller_id):
         traveller = TravellerService.find_one(traveller_id)
         if traveller.id == request.user.id:
             trips = TripService.list_my_trip(traveller.id)
+            payments = PaymentsService.all_payments(traveller.id)
         else:
             trips = TripService.list_trip_approved(traveller.id)
-        return render_to_response('profile_details.html', {'traveller': traveller, 'trips': len(trips)}, context_instance=RequestContext(request))
+            payments = []
+        return render_to_response('profile_details.html', {'traveller': traveller, 'trips': len(trips), 'payments': len(payments)}, context_instance=RequestContext(request))
     except AssertionError:
         render_to_response('error.html')
 

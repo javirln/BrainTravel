@@ -2,70 +2,60 @@
 {% block title %} Profile {% endblock %}
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 .col-sm-6 .col-md-8">
-            <div class="well panel panel-default">
-                <h1 class="page-header">Profile</h1>
-                    <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4 text-center">
-                            <img src="/{{traveller.photo}}" alt="" class="center-block img-circle img-thumbnail img-responsive" width="200">
-                            <ul class="list-inline ratings text-center" title="Ratings">
-                                {% if traveller.reputation != None %}
-                                    <br/>
-                                    <li><span class="fa fa-star fa-lg"> {{ traveller.reputation }}/10</span></li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                        <!--/col-->
-                        <div class="col-xs-12 col-sm-8">
-                            {% if traveller.id == user.traveller.id %}
-                                <div class="span2 text-right">
-                                    <div class="btn-group">
-                                        <a class="btn btn-primary btn-block" data-toggle="dropdown" href="#">
-                                            <span class="fa fa-gear"></span> Options
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="/profile/edit/"><span class="icon-wrench"></span> Modify profile</a></li>
-                                            <li><a href="/profile/edit/password/"><span class="icon-trash"></span> Change password</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            {% endif %}
-                            <h2>{{traveller.first_name}} {{traveller.last_name}}</h2>
-                            <p><strong>{{traveller.email}}</strong></p>
-                        </div>
-                        <!--/col-->
-                        <div class="clearfix"></div>
-                        <div class="col-xs-12 col-sm-4"></div>
-                        <div class="col-xs-12 col-sm-4">
-                            {% if traveller.id == user.traveller.id %}
-                            <h2><strong> <i class="fa fa-money"></i> {{traveller.coins}} </strong></h2>
-                            <p><small>Coins</small></p>
-                            <a href="/coin/list/" class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> History coins </a>
-                            {% endif %}
-                        </div>
-                        <!--/col-->
-                        <div class="col-xs-12 col-sm-4">
-                            <h2><strong><i class="fa fa-globe"></i> {{ trips }}</strong></h2>
-                            <p><small>Trips</small></p>
-                            {% if traveller.id == user.traveller.id %}
-                                <a href="/trip/mylist/" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> My Trips </a>
-                            {% else %}
-                                <a href="/trip/list/{{ traveller.id }}" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> Your Trips </a>
-                            {% endif %}
-                        </div>
-                        <!--/col-->
-                    </div>
-                    <!--/row-->
+    <div class="fb-profile">
+        <img align="left" class="fb-image-lg" src="/static/img/bg_profile.png" alt="Profile image example"/>
+        <img align="left" class="fb-image-profile thumbnail img-circle" src="/{{traveller.photo}}" alt="{{traveller.first_name}}"/>
+        <div class="fb-profile-text">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5">
+                    <h1>
+                        {{traveller.first_name}} {{traveller.last_name}}
+                        {% if traveller.id == user.traveller.id %}
+                            <div class="btn-group">
+                                <a class="btn btn-block" data-toggle="dropdown" href="#">
+                                    <span class="fa fa-gear fa-2x"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/profile/edit/"><span class="icon-wrench"></span> Modify profile</a></li>
+                                    <li><a href="/profile/edit/password/"><span class="icon-trash"></span> Change password</a></li>
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </h1>
+                    <h4>{{traveller.email}}</h4>
                 </div>
-                <!--/panel-body-->
+                <div class="col-xs-12 col-sm-4 text-center">
+                    {% if traveller.reputation != None %}
+                        <h2><span class="fa fa-star fa-lg"> {{ traveller.reputation }}/10</span></h2>
+                    {% endif %}
+                </div>
             </div>
-            <!--/panel-->
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    {% if traveller.id == user.traveller.id %}
+                    <h2><strong> <i class="fa fa-paypal"></i> {{payments}} </strong></h2>
+                    <p><small>Payments</small></p>
+                    <a href="/payment" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> My payments </a>
+                    {% endif %}
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    {% if traveller.id == user.traveller.id %}
+                    <h2><strong> <i class="fa fa-money"></i> {{traveller.coins}} </strong></h2>
+                    <p><small>Coins</small></p>
+                    <a href="/coin/list/" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> History coins </a>
+                    {% endif %}
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <h2><strong><i class="fa fa-globe"></i> {{ trips }}</strong></h2>
+                    <p><small>Trips</small></p>
+                    {% if traveller.id == user.traveller.id %}
+                        <a href="/trip/mylist/" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> My Trips </a>
+                    {% else %}
+                        <a href="/trip/list/{{ traveller.id }}" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> Your Trips </a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        <!--/col-->
     </div>
-    <!--/row-->
 </div>
-<!--/container-->
 {%endblock%}
