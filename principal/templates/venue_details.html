@@ -10,7 +10,7 @@
                             <img class="img-rounded" style="width: 150px;" src="{{venue.photo}}">
                         </a>
                         <h4 class="media-heading" style="margin-top: 14px;">{{venue.name}}</h4>
-                        <a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" href="#">Give feedback</a>
+                        <a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Give feedback</a>
                     </div>
                     <div class="col-md-10 col-sm-9 col-lg-10 col-xs-12">
                         <div class="media-body">
@@ -24,7 +24,7 @@
 	                                <div class="col-sm-9">
 	                                    <div class="panel panel-default">
 	                                        <div class="panel-heading">
-	                                            <strong>{{ tip.traveller.first_name }}</strong>
+	                                            <strong>{{ tip.traveller.first_name }} {{ tip.traveller.last_name }}</strong>
 	                                        </div>
 	                                        <div class="panel-body">
 	                                            {{ tip.description }}
@@ -44,5 +44,49 @@
             </div>
         </div>
         </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Give us some feedback!</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form" method="post" action="/venue_details/rate/" id="form-rate-id">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <p>By giving feedback you enhance our algorithm. The more feedback it gets, the more accurate it becomes. We give you some coins as gift as well :)</p>
+                            <hr>
+                            <h4>Lead time: <small>How much time you spent waiting to buy the tickets, on the queue...</small></h4>
+                            <input id="lead-time" type="number" name="lead-time-value" min="0"/><span> min.</span>
+                            <br>
+                            <h4>Duration: <small>How much time you spent inside the venue, you were walking around...</small></h4>
+                            <input id="duration-time" type="number" name="duration-time-value" min="0" onfocus=checkValues()/><span> min.</span>
+                            <div id="duration-error" class="help-block with-errors"></div>
+                            <br>
+                            <h4>Description: <small>Something else you want to say?</small></h4>
+                            <textarea id="text-comment" class="form-control input-block-level" name="text-description" rows="3" required maxlength="255" style="resize: none;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button id="submit-comment" type="submit" class="btn btn-success">Send</button>
+                                <input type="hidden" name="venue-id" value="{{venue.id}}"/>
+                            </div>
+                         </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
     </div>
+    <script>
+    function checkValues(){
+        if ( $("#lead-time").val() != " " && $("#lead-time").val() != " "){
+            if ( $("#lead-time").val()<$("#lead-time").val()){
+                $("#duration-error").text("Duration time must be greater than the lead time")
+            }
+        }
+    }
+    </script>
 {% endblock %}

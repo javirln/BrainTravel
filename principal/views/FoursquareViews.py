@@ -128,12 +128,12 @@ def foursquare_list_venues(request):
         print traceback.format_exc()
         return render_to_response('error.html', context_instance=RequestContext(request))
 
-
+#author: Javi Rodriguez
 def retrieve_venue(request, id_venue):
     if request.method == 'GET':
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
-            tips = Feedback.objects.filter(venues=id_venue)
+            tips = Feedback.objects.filter(venues=id_venue).order_by("usefulCount")
             return render_to_response('venue_details.html', {"venue": venue, "tips": tips},
                                       context_instance=RequestContext(request))
         except Exception as e:

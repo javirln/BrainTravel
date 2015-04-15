@@ -270,3 +270,21 @@ def list_trip_approved_by_profile(request, profile_id):
                                   context_instance = RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')
+
+# author: Javi Rodriguez
+@login_required()
+def send_feedback(request):
+    try:
+        user_id = request.user.id
+        description = request.POST['text-description']
+        venue_id = request.POST['venue-id']
+        lead_time = request.POST['lead-time-value']
+        duration_time = request.POST['duration-time-value']
+        url = request.path.split("/")
+        TripService.send_feedback(user_id, venue_id, lead_time, duration_time, description)
+        BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
+        return HttpResponseRedirect("/" + url[1] + "/" + venue_id)
+    except:
+        msg_errors = ["Something went wrong..."]
+        print traceback.format_exc()
+        return HttpResponseRedirect("/" + url[1] + "/" + venue_id, {'msg_errors': msg_errors})

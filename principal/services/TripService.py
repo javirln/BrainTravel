@@ -2,16 +2,16 @@
 
 from django.db.models import Q, Count, Sum
 
-from principal.models import Trip, Traveller, Comment, Assessment, Scorable
+from principal.models import Trip, Traveller, Comment, Assessment, Scorable, Feedback, Venue
 
 
 # author: Javi
 def searchTrip(title):
     trip_list = []
     if title and title != " ":
-        trip_list = Trip.objects.filter(Q(name__icontains=title, state='ap', planified="False")
-                                        | Q(city__icontains=title, state='ap', planified="False")
-                                        | Q(country__icontains=title, state='ap', planified="False")).order_by('likes')
+        trip_list = Trip.objects.filter(Q(name__icontains=title, state='ap', planified="false")
+                                        | Q(city__icontains=title, state='ap', planified="false")
+                                        | Q(country__icontains=title, state='ap', planified="false")).order_by('likes')
     return trip_list
 
 
@@ -171,3 +171,18 @@ def find_one(trip_id):
     except Trip.DoesNotExist:
         assert False
     return trip
+
+
+# author: Javi Rodriguez
+def send_feedback(user_id, venue_id, lead_time, duration_time, description):
+    user = Traveller.objects.get(id=user_id)
+    venue = Venue.objects.get(id=venue_id)
+    feedback_instance = Feedback(
+        description=description,
+        leadTime=lead_time,
+        duration=duration_time,
+        traveller=user,
+        usefulCount=0,
+        venues=venue
+    )
+    feedback_instance.save()
