@@ -15,27 +15,29 @@
                     <div class="col-md-10 col-sm-9 col-lg-10 col-xs-12">
                         <div class="media-body">
                             <h4>Useful tips</h4>
-                            <div class="row">
                                 {% for tip in tips %}
-                                <div class="col-sm-1">
-                                    <img class="img-responsive img-circle user-photo" src="/{{ tip.traveller.photo }}">
-                                </div><!-- /col-sm-1 -->
-
-                                <div class="col-sm-9">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <strong>{{ tip.traveller.first_name }} {{ tip.traveller.last_name }}</strong>
-                                        </div>
-                                        <div class="panel-body">
-                                            {{ tip.description|safe }}
-                                        </div><!-- /panel-body -->
-                                        <div class="panel-footer">
-                                            <a  type="button" class="btn btn-primary btn-sm" href="#">Rate this tip</a>
-                                        </div>
-                                    </div><!-- /panel panel-default -->
-                                </div><!-- /col-sm-5 -->
-                                {% endfor %}
-                            </div>
+                                <div class="row">
+	                                <div class="col-sm-1">
+	                                    <img class="img-responsive img-circle user-photo" src="/{{ tip.traveller.photo }}">
+	                                </div><!-- /col-sm-1 -->
+	
+	                                <div class="col-sm-9">
+	                                    <div class="panel panel-default">
+	                                        <div class="panel-heading">
+	                                            <strong>{{ tip.traveller.first_name }}</strong>
+	                                        </div>
+	                                        <div class="panel-body">
+	                                            {{ tip.description }}
+	                                        </div><!-- /panel-body -->
+	                                        <div class="panel-footer">
+	                                            <a  type="button" class="btn btn-primary btn-sm" href="#">Rate this tip</a>
+	                                        </div>
+	                                    </div><!-- /panel panel-default -->
+	                                </div><!-- /col-sm-5 -->
+	                            </div>
+	                            {% empty %}
+                                <h4>Sorry, there aren't tips available for this venue.</h4>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
