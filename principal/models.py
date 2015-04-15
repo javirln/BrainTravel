@@ -135,40 +135,40 @@ class Traveller(User):
     genre = models.CharField(max_length=2, choices=Genre, null=True)
     photo = models.ImageField(upload_to='static/user_folder/', null=True, default='static/user_folder/default.jpg')
 
-# ----------- Derivates -------------------#
-reputation = models.FloatField(null=True, blank=True,
-                               validators=[MinValueValidator(0), MaxValueValidator(10)],     default=0)
-coins = models.IntegerField(validators=[MinValueValidator(0)], default=0)
-recommendations = models.IntegerField(validators=[MinValueValidator(0)], default=0)
-
-# ------------- Relationships --------------#
-likedFeedback = models.ManyToManyField(Feedback, through='Likes', related_name='traveller_likes')
-jugedTrips = models.ManyToManyField(Trip, through='Judges', related_name='judges')
-commentedTrips = models.ManyToManyField(Trip, through='Comment', related_name='commenters')
-assessedScorables = models.ManyToManyField(Scorable, through='Assessment')
-
-
-class Meta:
-    db_table = 'traveller'
-    permissions = (
-        ('traveller', 'Traveller'),
-    )
-
-
-def __unicode__(self):
-    return self.first_name
-
-
-def save(self, *args, **kwargs):
-    # delete old file when replacing by updating the file
-    try:
-        this = Traveller.objects.get(id=self.id)
-        if this.photo != self.photo and this.photo.name != 'static/user_folder/default.jpg':
-            this.photo.delete(save=False)
-    except:
-        # when new photo then we do nothing, normal case
-        pass
-    super(Traveller, self).save(*args, **kwargs)
+    # ----------- Derivates -------------------#
+    reputation = models.FloatField(null=True, blank=True,
+                                   validators=[MinValueValidator(0), MaxValueValidator(10)], default=0)
+    coins = models.IntegerField(validators=[MinValueValidator(0)], default=0)
+    recommendations = models.IntegerField(validators=[MinValueValidator(0)], default=0)
+    
+    # ------------- Relationships --------------#
+    likedFeedback = models.ManyToManyField(Feedback, through='Likes', related_name='traveller_likes')
+    jugedTrips = models.ManyToManyField(Trip, through='Judges', related_name='judges')
+    commentedTrips = models.ManyToManyField(Trip, through='Comment', related_name='commenters')
+    assessedScorables = models.ManyToManyField(Scorable, through='Assessment')
+    
+    
+    class Meta:
+        db_table = 'traveller'
+        permissions = (
+            ('traveller', 'Traveller'),
+        )
+    
+    
+    def __unicode__(self):
+        return self.first_name
+    
+    
+    def save(self, *args, **kwargs):
+        # delete old file when replacing by updating the file
+        try:
+            this = Traveller.objects.get(id=self.id)
+            if this.photo != self.photo and this.photo.name != 'static/user_folder/default.jpg':
+                this.photo.delete(save=False)
+        except:
+            # when new photo then we do nothing, normal case
+            pass
+        super(Traveller, self).save(*args, **kwargs)
 
 
 class Notification(models.Model):
