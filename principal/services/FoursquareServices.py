@@ -259,7 +259,7 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, sele
         if num_day == 1:
             date = start_date
         else:
-            date = start_date + datetime.timedelta(days=num_day - 1)
+            date = start_date + timedelta(days=num_day - 1)
 
         day = Day(numberDay=num_day, trip=trip, date=date)
         day.save()
