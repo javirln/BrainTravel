@@ -30,7 +30,7 @@
 	                                            {{ tip.description }}
 	                                        </div><!-- /panel-body -->
 	                                        <div class="panel-footer">
-	                                            <a  type="button" class="btn btn-primary btn-sm" href="#">Rate this tip</a>
+	                                            <a  type="button" class="btn btn-primary btn-success btn-sm" href="#">Useful</a>
 	                                        </div>
 	                                    </div><!-- /panel panel-default -->
 	                                </div><!-- /col-sm-5 -->
@@ -61,8 +61,8 @@
                             <input id="lead-time" type="number" name="lead-time-value" min="0"/><span> min.</span>
                             <br>
                             <h4>Duration: <small>How much time you spent inside the venue, you were walking around...</small></h4>
-                            <input id="duration-time" type="number" name="duration-time-value" min="0" onfocus=checkValues()/><span> min.</span>
-                            <div id="duration-error" class="help-block with-errors"></div>
+                            <input id="duration-time" type="number" name="duration-time-value" min="0"/><span> min.</span>
+                            <div id="duration-error" class="help-block" style="color: #A94442"></div>
                             <br>
                             <h4>Description: <small>Something else you want to say?</small></h4>
                             <textarea id="text-comment" class="form-control input-block-level" name="text-description" rows="3" required maxlength="255" style="resize: none;"></textarea>
@@ -81,12 +81,18 @@
             </div>
     </div>
     <script>
-    function checkValues(){
-        if ( $("#lead-time").val() != " " && $("#lead-time").val() != " "){
-            if ( $("#lead-time").val()<$("#lead-time").val()){
-                $("#duration-error").text("Duration time must be greater than the lead time")
+    $("#duration-time").change(function(){
+        var lead_time = $("#lead-time").val();
+        var duration_time = $("#duration-time").val()
+        if ( lead_time != " " && duration_time != " "){
+            if ( duration_time < lead_time){
+                $("#duration-error").text("Duration time must be greater than the lead time");
+                $("#submit-comment").prop('disabled', true);
+            }else{
+                $("#duration-error").empty();
+                $("#submit-comment").prop('disabled', false);
             }
         }
-    }
+    });
     </script>
 {% endblock %}
