@@ -1,19 +1,18 @@
 # -*- coding: iso-8859-1 -*-
-import pprint
+import json
 import threading
 import traceback
-
 import pprint
 import datetime
-from django.db.models import Avg
+from math import radians, sin, cos, sqrt, asin
+import urllib2
 
+from django.db.models import Avg
 import foursquare
 
-from principal.models import Category, Venue, Trip, Day, VenueDay, Feedback
 from principal.models import Category, Venue, Trip, Day, VenueDay, CoinHistory
 from principal.services import TravellerService
-from django.db.models.fields import Empty
-from math import radians, sin, cos, sqrt, asin
+
 
 _client_id = "TWYKUP301GVPHIAHBPYFQQT0PJGZ0O2B24HQ3RUGLUFSLP1E"
 _client_secret = "TDNQ441CNLDJZKC3UJYDERT2MNDWN1E2CX1550CW1OXPEST2"
@@ -130,7 +129,7 @@ def filter_and_save(items, days, food=False):
 # Si tiene el venue hours lo guarda
 # def save_hours(venue_time):
 # timeframe = venue_time['timeframes']
-#     for time in timeframe:
+# for time in timeframe:
 #         day = time['days']
 #
 #     pass
@@ -298,7 +297,53 @@ def retrieve_venues(id_venue):
     return venue
 
 
+# autor: david
 def create_history(trip):
     coin_history = CoinHistory(amount=trip.coins, concept=trip.name, date=datetime.datetime.now(),
                                traveller=trip.traveller, trip=trip)
     coin_history.save()
+
+
+def get_venues_order(list_venues):
+#obtengo la primera qe es la que tiene mayor puntuacion en FS
+    centre = list_venues.pop()
+    lat_centre = centre['venue']['location']['lat']
+    lng_centre = centre['venue']['location']['lng']
+    destinations = ""
+    for venue in list_venues:
+        venue = venue['venue']
+        lat = venue['location']['lat']
+        lng = venue['location']['lng']
+
+        destinations = destinations + str(lat) + "," + str(lng) + "|"
+    destinations = destinations[:-1]
+
+    url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str(lat_centre) + "," + str(lng_centre)\
+          + "&destinations=" + destinations + "&language=es-ES&sensor=false"
+    print(len(url))
+    response = urllib2.urlopen(url)
+    data = json.load(response)
+    for element in data['rows']['0']['elements']:
+        # son metros
+        distance = element['distance']['value']
+        # son segundos
+        duration = element['duration']['value']
+
+    print(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
