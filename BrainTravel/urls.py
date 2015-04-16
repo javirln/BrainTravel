@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from BrainTravel import settings
 
 urlpatterns = patterns('',
     # Examples:
@@ -19,7 +20,6 @@ urlpatterns = patterns('',
     url(r'^coin/list/$', 'principal.views.Coinviews.list_coin_traveller'),
     url(r'^trip/mylist/(?P<optional>.*)$', 'principal.views.TripViews.list_all_by_traveller'),
     url(r'^trip/edit/(?P<trip_id>[0-9]+)$$', 'principal.views.TripViews.trip_edit'),
-    url(r'^summernote/', include('django_summernote.urls')),
     url(r'^trip/create/$', 'principal.views.TripViews.trip_create'),
     url(r'^judge/(?P<trip_id>[0-9]+)/(?P<like>[0-1])', 'principal.views.JudgeViews.judge'),
     url(r'^profile/(?P<traveller_id>[0-9]+)$', 'principal.views.TravellerViews.profile_details'),
@@ -41,7 +41,14 @@ urlpatterns = patterns('',
     #planner URLs
     url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),
-    
+
     #i18n
     url(r'i18n/change_language', 'principal.views.TranslateViews.change_language'),
+)
+
+if settings.DEBUG:
+    import debug_toolbar
+
+urlpatterns += patterns('',
+                        url(r'^__debug__/', include(debug_toolbar.urls)),
 )

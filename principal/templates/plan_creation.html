@@ -81,16 +81,17 @@
         });
     }
     function calculatePlanPrice(days){
+        var coins;
         coins = 0;
-        if(days <= 3){
+        if (days <= 3) {
             coins = 20
-        }else if(days > 3 && days <= 7){
+        } else if (days > 3 && days <= 7) {
             coins = 40
-        }else{
+        } else {
             coins = 80
         }
 
-        $('#tripPrice').append(coins);
+        $('#tripPrice').empty().append(coins);
     }
 </script>
 

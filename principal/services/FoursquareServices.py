@@ -3,10 +3,10 @@ import json
 import threading
 import traceback
 import pprint
-import datetime
 from math import radians, sin, cos, sqrt, asin
 import urllib2
-
+from datetime import datetime
+from datetime import timedelta
 from django.db.models import Avg
 import foursquare
 
@@ -76,7 +76,6 @@ def search_by_section(city, section, limit=40):
     # section = One of food, drinks, coffee, shops, arts, outdoors, sights, trending or specials, nextVenues
     # (venues frequently visited after a given venue)
     # or topPicks (a mix of recommendations generated without a query from the user).
-    print("FS servicio " + city)
     response = client.venues.explore(params={'near': city, 'section': section, 'limit': limit})
     # pp = pprint.PrettyPrinter()
     # pp.pprint(response)
@@ -130,7 +129,7 @@ def filter_and_save(items, days, food=False):
 # def save_hours(venue_time):
 # timeframe = venue_time['timeframes']
 # for time in timeframe:
-#         day = time['days']
+# day = time['days']
 #
 #     pass
 
@@ -242,11 +241,12 @@ def test_plan():
 
 # autor: david
 def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, selected_food_with_photos):
-    start_date = tripForm.cleaned_data['startDate']
+    start_date = tripForm.data['startDate']
+    start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
     days = int(tripForm.cleaned_data['days'])
     country = tripForm.cleaned_data['country']
     city = tripForm.cleaned_data['city']
-    end_date = start_date + datetime.timedelta(days=days)
+    end_date = start_date + timedelta(days=days)
 
     trip = Trip(name=str(days) + " days in " + city, publishedDescription="", state='ap',
                 startDate=start_date, endDate=end_date, planified=True, coins=coins_cost,
@@ -299,37 +299,48 @@ def retrieve_venues(id_venue):
 
 # autor: david
 def create_history(trip):
-    coin_history = CoinHistory(amount=trip.coins, concept=trip.name, date=datetime.datetime.now(),
+    coin_history = CoinHistory(amount=trip.coins, concept=trip.name, date=datetime.now(),
                                traveller=trip.traveller, trip=trip)
     coin_history.save()
 
 
-def get_venues_order(list_venues):
-#obtengo la primera qe es la que tiene mayor puntuacion en FS
-    centre = list_venues.pop()
-    lat_centre = centre['venue']['location']['lat']
-    lng_centre = centre['venue']['location']['lng']
+def get_venues_order(centre, list_venues):
+    # obtengo la primera qe es la que tiene mayor puntuacion en FS
+    lat_centre = centre.latitude
+    lng_centre = centre.longitude
     destinations = ""
     for venue in list_venues:
-        venue = venue['venue']
-        lat = venue['location']['lat']
-        lng = venue['location']['lng']
+        lat = venue.latitude
+        lng = venue.longitude
 
-        destinations = destinations + str(lat) + "," + str(lng) + "|"
+        # 107 caracteres son fijos y obligatorios
+        if len(destinations) < (2024 - 107):
+            destinations = destinations + str(lat) + "," + str(lng) + "|"
+        else:
+            break
+
     destinations = destinations[:-1]
 
-    url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str(lat_centre) + "," + str(lng_centre)\
+    url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str(lat_centre) + "," + str(lng_centre) \
           + "&destinations=" + destinations + "&language=es-ES&sensor=false"
+    print(url)
     print(len(url))
+
     response = urllib2.urlopen(url)
     data = json.load(response)
-    for element in data['rows']['0']['elements']:
+    list_distancias = []
+    count = 0
+    for element in data['rows'][0]['elements']:
         # son metros
-        distance = element['distance']['value']
+        # distance = element['distance']['value']
         # son segundos
-        duration = element['duration']['value']
+        # duration = element['duration']['value']
+        tupla = (str(list_venues[count].id), element['duration']['value'])
+        list_distancias.append(tupla)
+        count += 1
+    list_distancias.sort(key=lambda x: x[1])
 
-    print(data)
+    return list_distancias
 
 
 

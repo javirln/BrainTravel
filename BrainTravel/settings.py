@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -31,6 +32,7 @@ FILE_CHARSET = 'iso-8859-1'
 # Application definition
 
 INSTALLED_APPS = (
+    'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,12 +40,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'principal',
-    'django_summernote',
-    'bootstrap3_datetime',
     'paypal.standard.ipn',
+
 )
 
 MIDDLEWARE_CLASSES = (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -54,11 +56,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
 )
 
-#Dir for i18n
+# Dir for i18n
 LOCALE_PATHS = (
-                os.path.join(BASE_DIR, "locale"),
-                )
-
+    os.path.join(BASE_DIR, "locale"),
+)
 
 ROOT_URLCONF = 'BrainTravel.urls'
 
@@ -69,52 +70,21 @@ WSGI_APPLICATION = 'BrainTravel.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'braintravel',
-         'USER': 'braintravel',
-         'PASSWORD': 'bR@1nTr@veL',
-         'HOST': '127.0.0.1',
-         'PORT': '3306',
-         'ATOMIC_REQUESTS': 'True'
-     }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'braintravel',
+        'USER': 'braintravel',
+        'PASSWORD': 'bR@1nTr@veL',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'ATOMIC_REQUESTS': 'True'
+    }
 }
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "/principal/templates"),
     os.path.join(BASE_DIR, "/principal/emailTemplates"),
 )
-
-# configuracion del summernote
-SUMMERNOTE_CONFIG = {
-    # Using SummernoteWidget - iframe mode
-    'iframe': True,  # or set False to use SummernoteInplaceWidget - no iframe mode
-
-    # Using Summernote Air-mode
-    'airMode': True,
-
-    # Use native HTML tags (`<b>`, `<i>`, ...) instead of style attributes
-    # (Firefox, Chrome only)
-    'styleWithTags': True,
-
-    # Change editor size
-    'width': '150%',
-    'height': '480',
-
-    # Customize toolbar buttons
-    'toolbar': [
-        ['style', ['style']],
-        ['style', ['bold', 'italic', 'underline', 'clear', 'remove Font Style']],
-        ['fontname', ['fontname']],
-        ['fontsize', ['fontsize']],
-        ['para', ['ul', 'ol', 'height']],
-        ['insert', ['link']],
-        ['color', ['color']],
-    ],
-
-    # Use proper language setting automatically (default)
-    # 'lang': None
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -143,14 +113,13 @@ STATICFILES_DIRS = (
 LOGIN_URL = '/signin/'
 LOGIN_REDIRECT_URL = '/signin/'
 
-
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'notificaciones.braintravel@gmail.com'
 EMAIL_HOST_PASSWORD = 'braintravelredmine'
 
-#PAYPAL CONFIGURATION
+# PAYPAL CONFIGURATION
 PAYPAL_RECEIVER_EMAIL = 'notificaciones.braintravel-facilitator@gmail.com'
 PAYPAL_TEST = True
 
