@@ -10,8 +10,8 @@
 
 .omb_login .omb_authTitle {
     text-align: center;
-	line-height: 300%;
-    margin-top: 50px;
+    font-size: 26px;
+    margin-bottom: 30px;
 }
 
 .omb_login .omb_socialButtons a {
@@ -50,6 +50,16 @@
 	background-color: white;
 	width: 3em;
 	text-align: center;
+}
+
+.omb_login .omb_loginForm {
+    margin-bottom: 80px;
+    margin-top: 80px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: #cccccc;
 }
 
 .omb_login .omb_loginForm .input-group.i {
