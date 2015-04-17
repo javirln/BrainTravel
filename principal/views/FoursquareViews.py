@@ -1,24 +1,23 @@
 # -*- coding: latin-1 -*-
 
-import pprint
-from datetime import date, datetime
 import traceback
-from django.contrib.auth.decorators import permission_required
-from django.core import serializers
 
-from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import permission_required
+from django.http import HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.template.context import RequestContext
+from django.db.models import Q
+
 from principal.forms import PlanForm
 from principal.models import Trip, Traveller, Feedback
 from principal.services import TravellerService
 from principal.services import FoursquareServices
-from principal.services.FoursquareServices import init_fs, categories_initializer, search_by_category
-from principal.services.FoursquareServices import init_fs, test_plan
+from principal.services.FoursquareServices import categories_initializer
+from principal.services.FoursquareServices import init_fs
 from principal.utils import BrainTravelUtils
 from principal.views import TripViews
 from principal.views.Coinviews import buy_coins
-from django.db.models import Q
+
 
 client = init_fs()
 
@@ -103,15 +102,14 @@ def foursquare_list_venues(request):
 
                 items_food += venues_eat['groups'][0]['items']
 
+                dicc_venues = FoursquareServices.get_venues_order("-31.4265080477", "-64.1809502782", items_venues)
+
                 # Filter and save
                 selected_venues = FoursquareServices.filter_and_save(items_venues, days=days)
                 selected_food = FoursquareServices.filter_and_save(items_food, days=days, food=True)
 
                 selected_venues_with_photos = FoursquareServices.save_data(selected_venues)
                 selected_food_with_photos = FoursquareServices.save_data(selected_food)
-                
-                #  dicc_venues = FoursquareServices.get_venues_order(selected_venues_with_photos[0],
-                #                                                   selected_venues_with_photos)
 
                 trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues_with_photos,
                                                       selected_food_with_photos)

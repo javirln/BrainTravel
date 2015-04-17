@@ -304,14 +304,12 @@ def create_history(trip):
     coin_history.save()
 
 
-def get_venues_order(centre, list_venues):
+def get_venues_order(lat_centre, lng_centre, list_venues):
     # obtengo la primera qe es la que tiene mayor puntuacion en FS
-    lat_centre = centre.latitude
-    lng_centre = centre.longitude
     destinations = ""
     for venue in list_venues:
-        lat = venue.latitude
-        lng = venue.longitude
+        lat = venue['venue']['location']['lat']
+        lng = venue['venue']['location']['lng']
 
         # 107 caracteres son fijos y obligatorios
         if len(destinations) < (2024 - 107):
@@ -328,19 +326,19 @@ def get_venues_order(centre, list_venues):
 
     response = urllib2.urlopen(url)
     data = json.load(response)
-    list_distancias = []
+    list_durations = []
     count = 0
     for element in data['rows'][0]['elements']:
         # son metros
         # distance = element['distance']['value']
         # son segundos
         # duration = element['duration']['value']
-        tupla = (str(list_venues[count].id), element['duration']['value'])
-        list_distancias.append(tupla)
+        tupla = (list_venues[count], element['duration']['value'])
+        list_durations.append(tupla)
         count += 1
-    list_distancias.sort(key=lambda x: x[1])
+    list_durations.sort(key=lambda x: x[1])
 
-    return list_distancias
+    return list_durations
 
 
 
