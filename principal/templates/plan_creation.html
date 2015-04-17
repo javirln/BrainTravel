@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block extrahead %} {{form.media}} {% endblock %}
 {% block title %} Plan a trip {% endblock %}
 {% block content %}
 {% load i18n %}
@@ -17,6 +16,7 @@
                            required/>
                     <div class="help-block with-errors"></div>
                 </div>
+
                 <div class="form-group {% if form.visible_fields.1.errors %} has-error {% endif %} ">
                     <label for="id_{{ form.visible_fields.1.html_name }}"
                            class="control-label">{% trans "Country" %}</label>
@@ -28,10 +28,12 @@
                         {{ form.visible_fields.1.errors }}
                     </div>
                 </div>
-                <div class="form-group {% if form.visible_fields.2.errors %} has-error {% endif %}">
+
+                <div class="form-group {% if form.visible_fields.2.errors %} has-error {% endif %} ">
                     <label for="id_{{ form.visible_fields.2.html_name }}"
                            class="control-label">{% trans "Start Date" %}</label>
-                    {{ form.visible_fields.2 }}
+                    {{ form.visible_fields.2}}
+
                     <div class="help-block with-errors">
                         {{ form.visible_fields.2.errors }}
                     </div>
@@ -48,7 +50,7 @@
                     </div>
                 </div>
 
-                {% for hidden in form.hidden_fields %}
+            {% for hidden in form.hidden_fields %}
                     {{ hidden }}
                 {% endfor %}
 
@@ -103,17 +105,57 @@
         });
     }
     function calculatePlanPrice(days){
+        var coins;
         coins = 0;
-        if(days <= 3){
+        if (days <= 3) {
             coins = 20
-        }else if(days > 3 && days <= 7){
+        } else if (days > 3 && days <= 7) {
             coins = 40
-        }else{
+        } else {
             coins = 80
         }
 
-        $('#tripPrice').empty();
-        $('#tripPrice').append(coins);
+        $('#tripPrice').empty().append(coins);
     }
 </script>
+
+    <script>
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true
+        }).on('changeDate', function (e) {
+            // Revalidate the date field
+            $('#eventForm').formValidation('revalidateField', 'date');
+        });
+
+
+        $('.eventForm').formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The name is required'
+                        }
+                    }
+                },
+                date: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The date is required'
+                        },
+                        date: {
+                            format: 'DD/MM/YYYY',
+                            message: 'The date is not a valid'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 {% endblock %}

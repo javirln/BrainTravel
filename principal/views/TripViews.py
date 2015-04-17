@@ -172,7 +172,7 @@ def trip_create(request):
         form = TripEditForm(initial=data)
 
     return render_to_response('trip_edit.html', {"form": form, "create": True},
-                              context_instance = RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 # david
