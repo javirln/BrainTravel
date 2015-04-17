@@ -303,7 +303,7 @@ def create_history(trip):
                                traveller=trip.traveller, trip=trip)
     coin_history.save()
 
-
+# Autor: david
 def get_venues_order(lat_centre, lng_centre, list_venues):
     # obtengo la primera qe es la que tiene mayor puntuacion en FS
     destinations = ""

@@ -102,7 +102,7 @@ def foursquare_list_venues(request):
 
                 items_food += venues_eat['groups'][0]['items']
 
-                dicc_venues = FoursquareServices.get_venues_order("-31.4265080477", "-64.1809502782", items_venues)
+                # dicc_venues = FoursquareServices.get_venues_order("-31.4265080477", "-64.1809502782", items_venues)
 
                 # Filter and save
                 selected_venues = FoursquareServices.filter_and_save(items_venues, days=days)
