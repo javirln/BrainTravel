@@ -18,7 +18,7 @@ from principal.services.FoursquareServices import init_fs, test_plan
 from principal.utils import BrainTravelUtils
 from principal.views import TripViews
 from principal.views.Coinviews import buy_coins
-
+from django.db.models import Q
 
 client = init_fs()
 
@@ -45,6 +45,7 @@ def foursquare_request(request):
     else:
         return redirect('/')
 
+
 # autor: david
 def check_coins(days):
     if days <= 3:
@@ -54,6 +55,8 @@ def check_coins(days):
     else:
         coins = 80
     return coins
+
+
 # Autor: david
 def check_coins_available(traveller, coins_spent):
     coins_available = traveller.coins
@@ -61,6 +64,7 @@ def check_coins_available(traveller, coins_spent):
         return False
     else:
         return True
+
 
 # autor: david y cuder
 @permission_required('principal.traveller')
@@ -128,12 +132,13 @@ def foursquare_list_venues(request):
         print traceback.format_exc()
         return render_to_response('error.html', context_instance=RequestContext(request))
 
-#author: Javi Rodriguez
+
+# author: Javi Rodriguez
 def retrieve_venue(request, id_venue):
     if request.method == 'GET':
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
-            tips = Feedback.objects.filter(venues=id_venue).order_by("usefulCount")
+            tips = Feedback.objects.filter(Q(venues=id_venue) & ~Q(description__exact='')).order_by("usefulCount")
             return render_to_response('venue_details.html', {"venue": venue, "tips": tips},
                                       context_instance=RequestContext(request))
         except Exception as e:

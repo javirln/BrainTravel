@@ -29,9 +29,11 @@
 	                                        <div class="panel-body">
 	                                            {{ tip.description }}
 	                                        </div><!-- /panel-body -->
-	                                        <div class="panel-footer">
-	                                            <a  type="button" class="btn btn-primary btn-success btn-sm" href="#">Useful</a>
-	                                        </div>
+                                            {% if user.id != tip.traveller.id %}
+                                            <div class="panel-footer">
+                                                <a  type="button" class="btn btn-primary btn-success btn-sm" href="/venue_details/value_tip/">Useful</a>
+                                            </div>
+                                            {% endif %}
 	                                    </div><!-- /panel panel-default -->
 	                                </div><!-- /col-sm-5 -->
 	                            </div>

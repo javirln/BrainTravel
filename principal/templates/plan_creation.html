@@ -70,6 +70,30 @@
 {#    </div>#}
 </div>
 <script>
+    $("#id_city").change(function(){
+        var city = $("#id_city").val();
+        if(!city.trim()){
+            $("#create_plan").prop('disabled', true);
+        }else{
+            $("#create_plan").prop('disabled', false);
+        }
+    });
+    $("#id_country").change(function(){
+        var country = $("#id_country").val();
+        if(!country.trim()){
+            $("#create_plan").prop('disabled', true);
+        }else{
+            $("#create_plan").prop('disabled', false);
+        }
+    });
+    $("#id_days").change(function(){
+        var days = $("#id_days").val();
+        if(!days.trim()){
+            $("#create_plan").prop('disabled', true);
+        }else{
+            $("#create_plan").prop('disabled', false);
+        }
+    });
     function whileLoading() {
         swal({
             title: "Loading...",
