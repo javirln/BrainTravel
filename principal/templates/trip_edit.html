@@ -33,7 +33,7 @@
                                     <label for="id_{{ form.visible_fields.5.html_name }}" class="control-label">
                                         {% trans "Name" %}</label>
                                     <input class="form-control" id="id_name" name="name" type="text"
-                                           value="{% if form.initial|length != 5 %}{{ form.initial.city }}{% else %}{{ form.data.city }}{% endif %}"
+                                           value="{% if form.initial|length != 0 %}{{ form.initial.name }}{% else %}{{ form.data.name }}{% endif %}"
                                            required/>
 
                                     <div class="help-block with-errors">
@@ -87,14 +87,16 @@
                                     {{ hidden }}
                                 {% endfor %}
 
+
                                 <div class="form-group {% if form.visible_fields.4.errors %} has-error {% endif %}">
                                     <label for="id_{{ form.visible_fields.4.html_name }}"
-                                           class="control-label">{{ form.visible_fields.4.html_name }}</label>
+                                           class="control-label">{% trans "Published Description" %}</label>
                                     {{ form.visible_fields.4 }}
                                     <div class="help-block with-errors">
                                         {{ form.visible_fields.4.errors }}
                                     </div>
                                 </div>
+
                                 {% for hidden in form.hidden_fields %}
                                     {{ hidden }}
                                 {% endfor %}
@@ -125,5 +127,74 @@
         </div>
         <!--/row-->
     </div>
+    <script>
+        $('#summernote').summernote(
+                {
+                    onChange: function () {
+                        formmodified = 1;
+                    },
+                    lang: 'es-ES',
+                    height: 100,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+                        ['fontname', ['fontname']],
+                        // ['fontsize', ['fontsize']], // Still buggy
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture']]
+                        // ['view', ['fullscreen', 'codeview']],
+                        //['help', ['help']]
+                    ],
+                    // insertTable max size
+                    insertTableMaxSize: {
+                        col: 10,
+                        row: 10
+                    }
+                });
+    </script>
+
+    <script>
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true
+        }).on('changeDate', function (e) {
+            // Revalidate the date field
+            $('#eventForm').formValidation('revalidateField', 'date');
+        });
+
+
+        $('.eventForm').formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The name is required'
+                        }
+                    }
+                },
+                date: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The date is required'
+                        },
+                        date: {
+                            format: 'DD/MM/YYYY',
+                            message: 'The date is not a valid'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
     <!--/container-->
 {% endblock %}

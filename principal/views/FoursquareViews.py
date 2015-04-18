@@ -1,20 +1,19 @@
 # -*- coding: latin-1 -*-
 
-import pprint
-from datetime import date, datetime
 import traceback
-from django.contrib.auth.decorators import permission_required
-from django.core import serializers
 
-from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import permission_required
+from django.http import HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.template.context import RequestContext
+from django.db.models import Q
+
 from principal.forms import PlanForm
 from principal.models import Trip, Traveller, Feedback
 from principal.services import TravellerService
 from principal.services import FoursquareServices
-from principal.services.FoursquareServices import init_fs, categories_initializer, search_by_category
-from principal.services.FoursquareServices import init_fs, test_plan
+from principal.services.FoursquareServices import categories_initializer
+from principal.services.FoursquareServices import init_fs
 from principal.utils import BrainTravelUtils
 from principal.views import TripViews
 from principal.views.Coinviews import buy_coins
@@ -45,6 +44,7 @@ def foursquare_request(request):
     else:
         return redirect('/')
 
+
 # autor: david
 def check_coins(days):
     if days <= 3:
@@ -54,6 +54,8 @@ def check_coins(days):
     else:
         coins = 80
     return coins
+
+
 # Autor: david
 def check_coins_available(traveller, coins_spent):
     coins_available = traveller.coins
@@ -61,6 +63,7 @@ def check_coins_available(traveller, coins_spent):
         return False
     else:
         return True
+
 
 # autor: david y cuder
 @permission_required('principal.traveller')
@@ -76,8 +79,6 @@ def foursquare_list_venues(request):
                 if check_coins_available(traveller, coins_cost) is False:
                     BrainTravelUtils.save_error(request, "Insufficient coins available")
                     return buy_coins(request)
-                start_date = form.cleaned_data['startDate']
-                country = form.cleaned_data['country']
                 city = form.cleaned_data['city']
 
                 limit = 40
@@ -86,7 +87,6 @@ def foursquare_list_venues(request):
                 elif 3 < days <= 7:
                     limit = 25
 
-                print("FS views " + city)
                 venues_sigths = FoursquareServices.search_by_section(city, "sights", limit=limit)
                 venues_outdoors = FoursquareServices.search_by_section(city, "outdoors", limit=limit)
                 venues_arts = FoursquareServices.search_by_section(city, "arts", limit=limit)
@@ -101,6 +101,8 @@ def foursquare_list_venues(request):
                 items_venues += venues_arts['groups'][0]['items']
 
                 items_food += venues_eat['groups'][0]['items']
+
+                # dicc_venues = FoursquareServices.get_venues_order("-31.4265080477", "-64.1809502782", items_venues)
 
                 # Filter and save
                 selected_venues = FoursquareServices.filter_and_save(items_venues, days=days)
@@ -128,12 +130,13 @@ def foursquare_list_venues(request):
         print traceback.format_exc()
         return render_to_response('error.html', context_instance=RequestContext(request))
 
-#author: Javi Rodriguez
+
+# author: Javi Rodriguez
 def retrieve_venue(request, id_venue):
     if request.method == 'GET':
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
-            tips = Feedback.objects.filter(venues=id_venue).order_by("usefulCount")
+            tips = Feedback.objects.filter(Q(venues=id_venue) & ~Q(description__exact='')).order_by("usefulCount")
             return render_to_response('venue_details.html', {"venue": venue, "tips": tips},
                                       context_instance=RequestContext(request))
         except Exception as e:

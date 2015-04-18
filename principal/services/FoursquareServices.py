@@ -1,19 +1,18 @@
 # -*- coding: iso-8859-1 -*-
-import pprint
+import json
 import threading
 import traceback
-
 import pprint
-import datetime
+from math import radians, sin, cos, sqrt, asin
+import urllib2
+from datetime import datetime
+from datetime import timedelta
 from django.db.models import Avg
-
 import foursquare
 
-from principal.models import Category, Venue, Trip, Day, VenueDay, Feedback
 from principal.models import Category, Venue, Trip, Day, VenueDay, CoinHistory
 from principal.services import TravellerService
-from django.db.models.fields import Empty
-from math import radians, sin, cos, sqrt, asin
+
 
 _client_id = "TWYKUP301GVPHIAHBPYFQQT0PJGZ0O2B24HQ3RUGLUFSLP1E"
 _client_secret = "TDNQ441CNLDJZKC3UJYDERT2MNDWN1E2CX1550CW1OXPEST2"
@@ -77,7 +76,6 @@ def search_by_section(city, section, limit=40):
     # section = One of food, drinks, coffee, shops, arts, outdoors, sights, trending or specials, nextVenues
     # (venues frequently visited after a given venue)
     # or topPicks (a mix of recommendations generated without a query from the user).
-    print("FS servicio " + city)
     response = client.venues.explore(params={'near': city, 'section': section, 'limit': limit})
     # pp = pprint.PrettyPrinter()
     # pp.pprint(response)
@@ -130,8 +128,8 @@ def filter_and_save(items, days, food=False):
 # Si tiene el venue hours lo guarda
 # def save_hours(venue_time):
 # timeframe = venue_time['timeframes']
-#     for time in timeframe:
-#         day = time['days']
+# for time in timeframe:
+# day = time['days']
 #
 #     pass
 
@@ -243,11 +241,12 @@ def test_plan():
 
 # autor: david
 def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, selected_food_with_photos):
-    start_date = tripForm.cleaned_data['startDate']
+    start_date = tripForm.data['startDate']
+    start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
     days = int(tripForm.cleaned_data['days'])
     country = tripForm.cleaned_data['country']
     city = tripForm.cleaned_data['city']
-    end_date = start_date + datetime.timedelta(days=days)
+    end_date = start_date + timedelta(days=days)
 
     trip = Trip(name=str(days) + " days in " + city, publishedDescription="", state='ap',
                 startDate=start_date, endDate=end_date, planified=True, coins=coins_cost,
@@ -260,7 +259,7 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, sele
         if num_day == 1:
             date = start_date
         else:
-            date = start_date + datetime.timedelta(days=num_day - 1)
+            date = start_date + timedelta(days=num_day - 1)
 
         day = Day(numberDay=num_day, trip=trip, date=date)
         day.save()
@@ -298,7 +297,62 @@ def retrieve_venues(id_venue):
     return venue
 
 
+# autor: david
 def create_history(trip):
-    coin_history = CoinHistory(amount=trip.coins, concept=trip.name, date=datetime.datetime.now(),
+    coin_history = CoinHistory(amount=trip.coins, concept=trip.name, date=datetime.now(),
                                traveller=trip.traveller, trip=trip)
     coin_history.save()
+
+# Autor: david
+def get_venues_order(lat_centre, lng_centre, list_venues):
+    # obtengo la primera qe es la que tiene mayor puntuacion en FS
+    destinations = ""
+    for venue in list_venues:
+        lat = venue['venue']['location']['lat']
+        lng = venue['venue']['location']['lng']
+
+        # 107 caracteres son fijos y obligatorios
+        if len(destinations) < (2024 - 107):
+            destinations = destinations + str(lat) + "," + str(lng) + "|"
+        else:
+            break
+
+    destinations = destinations[:-1]
+
+    url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str(lat_centre) + "," + str(lng_centre) \
+          + "&destinations=" + destinations + "&language=es-ES&sensor=false"
+    print(url)
+    print(len(url))
+
+    response = urllib2.urlopen(url)
+    data = json.load(response)
+    list_durations = []
+    count = 0
+    for element in data['rows'][0]['elements']:
+        # son metros
+        # distance = element['distance']['value']
+        # son segundos
+        # duration = element['duration']['value']
+        tupla = (list_venues[count], element['duration']['value'])
+        list_durations.append(tupla)
+        count += 1
+    list_durations.sort(key=lambda x: x[1])
+
+    return list_durations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

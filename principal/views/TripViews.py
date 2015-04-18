@@ -171,7 +171,7 @@ def trip_create(request):
         form = TripEditForm(initial=data)
 
     return render_to_response('trip_edit.html', {"form": form, "create": True},
-                              context_instance = RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 # david
@@ -266,7 +266,7 @@ def list_trip_approved_by_profile(request, profile_id):
         traveller = TravellerService.find_one(profile_id)
         trips = TripService.list_trip_approved(traveller.id)
         return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True},
-                                  context_instance = RequestContext(request))
+                                  context_instance=RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')
 
@@ -287,3 +287,15 @@ def send_feedback(request):
         msg_errors = ["Something went wrong..."]
         print traceback.format_exc()
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id, {'msg_errors': msg_errors})
+
+@login_required()
+def value_tip(request, id_venue, id_tip):
+    try:
+        url = request.path.split("/")
+        TripService.value_tip(id_tip, id_venue)
+        BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
+        return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
+    except:
+        msg_errors = ["Something went wrong..."]
+        print traceback.format_exc()
+        return HttpResponseRedirect("/" + url[1] + "/" + id_venue, {'msg_errors': msg_errors})
