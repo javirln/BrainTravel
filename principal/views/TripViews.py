@@ -23,8 +23,7 @@ def search_trip(request):
         trip_result = None
         try:
             trip_result = TripService.searchTrip(title)
-            return render_to_response('search.html', {'trip_result': trip_result},
-                                      context_instance=RequestContext(request))
+            return render_to_response('search.html', {'trip_result': trip_result, 'title_search': title}, context_instance=RequestContext(request))
         except Exception as e:
             return HttpResponse(e)
 
