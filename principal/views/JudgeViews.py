@@ -3,8 +3,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
 from principal.models import Judges, Trip, Traveller
-from principal.services import JudgeServices, TripService
-
+from principal.services import JudgeServices, TripService, CoinService
 
 # author: Juane
 @login_required()
@@ -23,6 +22,10 @@ def judge(request, trip_id, like):
 
     traveller = Traveller.objects.get(id=request.user.id)
     list_judges = Judges.objects.filter(trip_id=trip_id, traveller_id=traveller.id)
+
+    if (len(list_judges) % 5) == 0 | 5:
+        coins = round(len(list_judges) // 5)
+        CoinService.increase_coins(traveller.id, coins * 2)
 
     if len(list_judges) == 0:
         judge1 = JudgeServices.create(trip, traveller, like)
@@ -49,4 +52,4 @@ def judge(request, trip_id, like):
                 trip = TripService.increase_dislike(trip)
                 trip = TripService.decrement_like(trip)
     TripService.save(trip)
-    return HttpResponseRedirect('/public_trip_details/'+trip_id)
+    return HttpResponseRedirect('/public_trip_details/' + trip_id)
