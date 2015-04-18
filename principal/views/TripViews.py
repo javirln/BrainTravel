@@ -288,3 +288,15 @@ def send_feedback(request):
         msg_errors = ["Something went wrong..."]
         print traceback.format_exc()
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id, {'msg_errors': msg_errors})
+
+@login_required()
+def value_tip(request, id_venue, id_tip):
+    try:
+        url = request.path.split("/")
+        TripService.value_tip(id_tip, id_venue)
+        BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
+        return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
+    except:
+        msg_errors = ["Something went wrong..."]
+        print traceback.format_exc()
+        return HttpResponseRedirect("/" + url[1] + "/" + id_venue, {'msg_errors': msg_errors})

@@ -188,7 +188,9 @@ def send_feedback(user_id, venue_id, lead_time, duration_time, description):
     feedback_instance.save()
 
 
-def value_tip(venue_id):
-    tip = Feedback.objects.get(venues=venue_id)
-    tip.set_usefulCount(tip.usefulCount+1)
+# author: Javi Rodriguez
+def value_tip(id_tip, id_venue):
+    tip = Feedback.objects.get(id=id_tip, venues=id_venue)
+    new_count = tip.usefulCount + 1
+    tip.usefulCount = new_count
     tip.save()

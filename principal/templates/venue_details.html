@@ -31,7 +31,7 @@
 	                                        </div><!-- /panel-body -->
                                             {% if user.id != tip.traveller.id %}
                                             <div class="panel-footer">
-                                                <a  type="button" class="btn btn-primary btn-success btn-sm" href="/venue_details/value_tip/">Useful</a>
+                                                <a  type="button" class="btn btn-primary btn-success btn-sm" href="/venue_details/value_tip/{{ tip.venues.id }}/{{ tip.id }}">Useful</a>
                                             </div>
                                             {% endif %}
 	                                    </div><!-- /panel panel-default -->
