@@ -7,17 +7,17 @@ hr{
 	color: #000;
 }
 
-#input-search {
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
-    font-size: 40px;
-    border-width: 0px;
-    background: #EEEEEE;
-}
+/*#input-search {*/
+    /*font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;*/
+    /*font-size: 40px;*/
+    /*border-width: 0px;*/
+    /*background: #EEEEEE;*/
+/*}*/
 
-#input-search:focus{
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
-    outline-width: 0;
-}
+/*#input-search:focus{*/
+    /*font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;*/
+    /*outline-width: 0;*/
+/*}*/
 
 .error-message-search {
     text-align: center;
