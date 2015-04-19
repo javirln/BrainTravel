@@ -2,63 +2,74 @@
 {% block title %} Edit Profile {% endblock %}
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 .col-sm-6 .col-md-8">
-            <div class="well panel panel-default">
-                <h1 class="page-header">Edit Profile</h1>
-                <div class="panel-body">
-                    <div class="row">
-                        <form class="form-horizontal" role="form" action="/profile/edit/" method="post" data-toggle="validator"  enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <!-- left column -->
-                            <div class="col-md-4 col-sm-6 col-xs-8" style="margin-right: 50px">
-                                <div class="form-group {% if form.visible_fields.3.errors %} has-error {% endif %} ">
-                                    <div class="text-center ">
-                                        <img src="/{{ photo_profile }}" alt="" class="center-block img-circle img-thumbnail img-responsive" width="211">
-                                    </div>
-                                    <label for="id_photo" class="control-label"></label>
-                                    <div>
-                                        {{ form.visible_fields.4 }} <label for="id_photo_clear">Default image</label>
-                                        {{ form.visible_fields.3 }}
-                                    </div>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <!-- edit form column -->
-                            <div class="col-md-5 col-sm-6 col-xs-8 personal-info">
-                                    <div class="form-group {% if form.visible_fields.0.errors %} has-error {% endif %} ">
-                                        <label for="id_first_name" class="control-label">First name:</label>
-                                        {{ form.visible_fields.0 }}
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="id_last_name" class="control-label">Last name:</label>
-                                        {{ form.visible_fields.1 }}
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="id_genre" class="control-label">Genre:</label>
-                                        {{ form.visible_fields.2 }}
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
-                                    <div class="form-group">
-                                        <input class="btn btn-primary" value="Save Changes" type="submit">
-                                        <span></span>
-                                        <a href="/profile/{{ form.id.value }}" class="btn btn-default">Cancel</a>
-                                    </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!--/row-->
-                </div>
-                <!--/panel-body-->
-            </div>
-            <!--/panel-->
+    <h1>Edit Profile</h1>
+    {% if form.errors %}
+        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {% if  form.visible_fields.0.errors%}
+                <strong>First name</strong>
+                {{ form.visible_fields.0.errors }}
+            {% endif %}
+            {% if  form.visible_fields.1.errors%}
+                <strong>Last name</strong>
+                {{ form.visible_fields.1.errors }}
+            {% endif %}
+            {% if  form.visible_fields.2.errors%}
+                <strong>Genre</strong>
+                {{ form.visible_fields.2.errors }}
+            {% endif %}
+            {% if  form.visible_fields.3.errors or form.visible_fields.4.errors %}
+                <strong>Photo</strong>
+                {{ form.visible_fields.3.errors }}
+                {{ form.visible_fields.4.errors }}
+            {% endif %}
         </div>
-        <!--/col-->
+    {% endif %}
+    <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
+
+        <div class="row">
+            <form class="form-horizontal" role="form" action="/profile/edit/" method="post" data-toggle="validator"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- left column -->
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                    <div class="form-group">
+                        <div class="text-center ">
+                            <img src="/{{ photo_profile }}" alt="" class="center-block img-circle img-thumbnail img-responsive" width="188">
+                        </div>
+                        <label for="id_photo" class="control-label"></label>
+                        <div>
+                            {{ form.visible_fields.4 }} <label for="id_photo_clear">Default image</label>
+                            {{ form.visible_fields.3 }}
+                        </div>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <!-- edit form column -->
+                <div class="col-xs-12 col-sm-offset-1 col-sm-6 col-md-offset-1 col-md-6 col-lg-offset-1 col-lg-6">
+                        <div class="form-group">
+                            <label for="id_first_name" class="control-label">First name:</label>
+                            {{ form.visible_fields.0 }}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_last_name" class="control-label">Last name:</label>
+                            {{ form.visible_fields.1 }}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_genre" class="control-label">Genre:</label>
+                            {{ form.visible_fields.2 }}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+                        <div class="form-group">
+                            <input class="btn btn-primary" value="Save Changes" type="submit">
+                            <span></span>
+                            <a href="/profile/{{ form.id.value }}" class="btn btn-default">Cancel</a>
+                        </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <!--/row-->
 </div>
-<!--/container-->
 {%endblock%}
