@@ -47,9 +47,9 @@ urlpatterns = patterns('',
     url(r'i18n/change_language', 'principal.views.TranslateViews.change_language'),
 )
 
-if settings.DEBUG:
-    import debug_toolbar
-
-urlpatterns += patterns('',
-                        url(r'^__debug__/', include(debug_toolbar.urls)),
-)
+# if settings.DEBUG:
+#     import debug_toolbar
+# 
+# urlpatterns += patterns('',
+#                         url(r'^__debug__/', include(debug_toolbar.urls)),
+# )
