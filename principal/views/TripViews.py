@@ -110,11 +110,11 @@ def list_all_by_traveller(request, optional=0):
     if optional == "0":
         BrainTravelUtils.save_error(request)
     if optional == "1":
-        BrainTravelUtils.save_success(request, "Successfully complete action")
+        BrainTravelUtils.save_success(request, "Action completed successfully")
     if optional == "2":
-        BrainTravelUtils.save_success(request, "Your trip must be accept by a admin")
+        BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
     if optional == "3":
-        BrainTravelUtils.save_success(request, "Delete trip")
+        BrainTravelUtils.save_success(request, "Trip deleted successfully")
 
     trips = TripService.list_my_trip(request.user.id)
     if trips is not False:
