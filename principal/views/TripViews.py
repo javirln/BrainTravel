@@ -132,7 +132,11 @@ def list_all_by_traveller(request, optional=0):
 
 # david
 @login_required()
-def list_all_by_traveller_draft(request):
+def list_all_by_traveller_draft(request, optional=0):
+    if optional == "0":
+        BrainTravelUtils.save_error(request)
+    if optional == "1":
+        BrainTravelUtils.save_success(request, "Action completed successfully")
     trips = TripService.list_trip_draft(request.user.id)
     if trips is not False:
         paginator = Paginator(trips, 5)
@@ -158,7 +162,7 @@ def trip_create(request):
             if "save" in request.POST and request.POST['save'] == "Save draft":
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
-                return redirect('/trip/mylist/1')
+                return redirect('/trip/draft/1')
             elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)

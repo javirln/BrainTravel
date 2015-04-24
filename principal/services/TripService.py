@@ -71,6 +71,7 @@ def create(form, user_id):
     trip.traveller = traveller
     trip.city = form.cleaned_data['city']
     trip.country = form.cleaned_data['country']
+    trip.name = form.cleaned_data['name']
     return trip
 
 

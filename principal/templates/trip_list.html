@@ -8,11 +8,13 @@
     <a class="btn btn-default btn-lg" href="/planner/list_venues/"> {% trans "Plan a trip" %}</a>
     {% endif %}
 
-    {% if create_trip %}
+        {% if create_trip %}
     <a class="btn btn-default btn-lg" href="/trip/create/"> {% trans "Create Trip" %}</a>
     {% endif %}
 
-    {% if not trips %}<p>{% trans "We couldn't find anything..." %}</p>{% endif %}
+<div class="text-center">
+    {% if not trips %}<h2>{% trans "We couldn't find anything..." %}</h2>{% endif %}
+    </div>
     {% for trip in trips %}
         <div class="well animated fadeInUp">
             <div class="media">

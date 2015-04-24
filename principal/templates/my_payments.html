@@ -4,7 +4,9 @@
 <div class="container">
     {% load i18n %}
 
-    <h2>{% trans "List of all my payments" %}</h2>
+    <div class="text-center">
+        <h2>{% trans "List of all my payments" %}</h2>
+    </div>
 
     {% if not list_payments %}
         <h4>{% trans "We couldn't find anything..." %}</h4>
