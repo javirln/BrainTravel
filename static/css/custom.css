@@ -222,4 +222,23 @@ body {
     padding: 0px 10px;
 }
 
+/* ------------------------------------------------------------ */
+.text-right-center{
+        text-align: right;
+    }
 
+@media (max-width: 720px) {
+    .text-right-center{
+        text-align: center;
+    }
+}
+
+.text-left-center{
+        text-align: left;
+    }
+
+@media (max-width: 720px) {
+    .text-left-center{
+        text-align: center;
+    }
+}

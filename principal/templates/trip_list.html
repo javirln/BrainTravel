@@ -1,62 +1,55 @@
 {% extends 'base.html' %}
 {% block title %} Trip list {% endblock %}
 {% block content %}
-    <div class="container">
+<div class="container">
     {% load i18n %}
-
-    {% if not create_trip %}
-    <a class="btn btn-default btn-lg" href="/planner/list_venues/"> {% trans "Plan a trip" %}</a>
-    {% endif %}
-
-    {% if create_trip %}
-    <a class="btn btn-default btn-lg" href="/trip/create/"> {% trans "Create Trip" %}</a>
-    {% endif %}
-
-    {% if not trips %}<p>{% trans "We couldn't find anything..." %}</p>{% endif %}
-    {% for trip in trips %}
-        <div class="well animated fadeInUp">
-            <div class="media">
-                <a class="pull-left" href="/profile/{{ trip.traveller.id }}">
-                    <img class="img-rounded" src="/{{trip.traveller.photo}}">
-                </a>
-                <div class="media-body">
-                    <h3 class="media-heading">{{trip.name}} {% if create_trip %}({{ trip.get_state_display }}) {% endif %}</h3>
-                    <p class="text-right">By {{trip.traveller}}</p>
-                    <p>{{trip.publishedDescription|safe|slice:":250" }}</p>
-                    <ul class="list-inline list-unstyled">
-                        <li><span><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</span></li>
-                        <li>|</li>
-                        <span> {{trip.comment_set.all.count}} <i class="fa fa-comments"></i></span>
-                        <li>|</li>
-                        <span><i class="fa fa-thumbs-o-up"></i> {{trip.likes}}</span>
-                        <li>|</li>
-                        <span><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</span>
-                        <li>|</li>
-                        {% if trip.planified %}
-                            <li><a href="/show_planning/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a></li>
-                        {% else %}
-                            <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}"><i class="fa fa-info-circle"></i> View more</a></li>
-                        {% endif %}
-
-                    </ul>
+    <h1>{{ title_list }}</h1>
+    {% if not trips %}
+        <p>Oops! BrainTravel could not find anything...</p>
+    {% else %}
+        {% for trip in trips %}
+            <div class="well animated col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="media">
+                    <div class="row">
+                        <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <h2>{{trip.name}}</h2>
+                        </div>
+                        <div class="text-right-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p><i class="fa fa-globe fa-1x"></i> {{trip.city|safe}} ({{trip.country|safe}})</p>
+                        </div>
+                        <div class="text-justify col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <p>{{trip.publishedDescription|safe}}</p>
+                        </div>
+                        <div class="text-left-center col-xs-12 col-sm-12 col-md-6 col-lg-5">
+                            <p><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</p>
+                        </div>
+                        <div class="text-right-center col-xs-12 col-sm-12 col-md-offset-1 col-md-5 col-lg-offset-2 col-lg-5">
+                            <ul class="list-inline list-unstyled">
+                                <li> {{trip.comment_set.all.count}} <i class="fa fa-comments"></i></li>
+                                <li>|</li>
+                                <li><i class="fa fa-thumbs-o-up"></i> {{trip.likes}}</li>
+                                <li>|</li>
+                                <li><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</li>
+                                <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}" style="text-decoration: None;"><i class="fa fa-info-circle"></i> View more</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
-    <div class="pagination">
-        <span class="step-links">
-            {% if trips.has_previous %}
-                <a href="?page={{ trips.previous_page_number }}">previous</a>
-            {% endif %}
-
-            <span class="current">
-                Page {{ trips.number }} of {{ trips.paginator.num_pages }}.
+        {% endfor %}
+        <div class="pagination col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <span class="step-links">
+                {% if trips.has_previous %}
+                    <a href="?page={{ trips.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="current">
+                    Page {{ trips.number }} of {{ trips.paginator.num_pages }}.
+                </span>
+                {% if trips.has_next %}
+                    <a href="?page={{ trips.next_page_number }}">next</a>
+                {% endif %}
             </span>
-
-            {% if trips.has_next %}
-                <a href="?page={{ trips.next_page_number }}">next</a>
-            {% endif %}
-        </span>
-    </div>
+        </div>
+    {% endif %}
 </div>
 {%endblock%}
