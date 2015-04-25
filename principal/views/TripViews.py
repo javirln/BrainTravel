@@ -10,7 +10,7 @@ from django.template.context import RequestContext
 
 from principal.forms import TripEditForm
 from principal.forms import TripUpdateStateForm
-from principal.models import Judges
+from principal.models import Judges, Assessment
 from principal.models import Trip, Comment, Traveller
 from principal.services import TripService, TravellerService, CoinService
 from principal.utils import BrainTravelUtils
@@ -35,16 +35,21 @@ def public_trip_details(request, trip_id):
     # is_edit = False
     if trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator'):
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
+        assessment = Assessment.objects.filter(scorable_id=trip_id, traveller_id=request.user.id)
         if len(judges) == 0:
             judge = None
         else:
             judge = list(judges)[0]
+        if len(assessment) == 0:
+            assessment = None
+        else:
+            assessment = list(assessment)[0]
         # is_edit = True
         data = {'id': trip.id, 'state': trip.state}
         form = TripUpdateStateForm(initial=data)
         return render_to_response('public_trip_details.html',
                                   {'trip': trip, 'comments': comments, 'traveller_edit': True,
-                                   'judge': judge, 'form': form}, context_instance=RequestContext(request))
+                                   'judge': judge, 'form': form, 'assessment': assessment}, context_instance=RequestContext(request))
     else:
         BrainTravelUtils.save_error(request)
         return render_to_response('search.html', {}, context_instance=RequestContext(request))
