@@ -75,6 +75,15 @@
 
         $('#tripPrice').empty().append(coins);
     }
+
+    function whileLoading() {
+        swal({
+            title: "Loading...",
+            text: "We are working hard on your plan. It might take a while, please, be patient :)",
+            showConfirmButton: false,
+            imageUrl: "{% static "img/gears.svg" %}"
+        });
+    }
 </script>
     <script>
         $(document).ready(function () {
