@@ -47,17 +47,18 @@ class TripUpdateStateForm(forms.Form):
 
 # david
 class TripEditForm(forms.Form):
-    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    city = forms.CharField(label='City', widget=forms.TextInput())
+    country = forms.CharField(label='Country', widget=forms.TextInput())
     startDate = forms.DateField(label="Start date", widget=forms.TextInput(attrs={'class': 'datepicker form-control'}))
     endDate = forms.DateField(label="End date", widget=forms.TextInput(attrs={'class': 'datepicker form-control'}))
 
     publishedDescription = forms.CharField(label='Published Description',
                                            widget=forms.Textarea(attrs={'id': 'summernote'}))
 
-    name = forms.CharField(label='Name', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    name = forms.CharField(label='Name', widget=forms.TextInput())
 
     def clean(self):
+
         start_date = self.data['startDate']
         start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
         end_date = self.data['endDate']
@@ -75,20 +76,9 @@ class TripEditForm(forms.Form):
 
 # david
 class PlanForm(forms.Form):
-    city = forms.CharField(
-        label='City',
-        required=True,
-        widget=forms.TextInput(
-            attrs={
-                'class': 'form-control',
-                'required': 'required',
-            }
-        )
-    )
+    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control',}))
     country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
-
-    startDate = forms.DateField(widget=forms.TextInput(attrs={'class': 'datepicker form-control'}))
-
+    startDate = forms.DateField(label="starDate", widget=forms.TextInput(attrs={'class': 'datepicker form-control'}))
     days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min': 0, 'max': 7, 'class': 'form-control'}))
 
     def clean(self):

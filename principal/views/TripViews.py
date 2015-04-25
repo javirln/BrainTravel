@@ -124,12 +124,16 @@ def list_all_by_traveller(request, optional=0):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My approved trips'}, context_instance=RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My trips'}, context_instance=RequestContext(request))
 
 
 # david
 @login_required()
-def list_all_by_traveller_draft(request):
+def list_all_by_traveller_draft(request, optional=0):
+    if optional == "0":
+        BrainTravelUtils.save_error(request)
+    if optional == "1":
+        BrainTravelUtils.save_success(request, "Action completed successfully")
     trips = TripService.list_trip_draft(request.user.id)
     if trips is not False:
         paginator = Paginator(trips, 5)
@@ -140,8 +144,7 @@ def list_all_by_traveller_draft(request):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True},
-                                  context_instance = RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My draft trips'}, context_instance = RequestContext(request))
 
 
 # david
@@ -155,7 +158,7 @@ def trip_create(request):
             if "save" in request.POST and request.POST['save'] == "Save draft":
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
-                return redirect('/trip/mylist/1')
+                return redirect('/trip/draft/1')
             elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)
