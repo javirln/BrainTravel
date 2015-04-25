@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label for="id_name" class="control-label"> {% trans "Name" %}</label>
                 <input class="form-control" id="id_name" name="name" type="text" maxlength="150"
-                       value="{% if form.initial|length != 0 %}{{ form.initial.name }}{% else %}{{ form.data.name }}{% endif %}"
+                       value="{{ trip.name }}"
                        required/>
                 <span class="help-block with-errors">Up to 150 letters, numbers and underscores</span>
             </div>
@@ -54,7 +54,7 @@
                        class="control-label">{% trans "Start Date" %}</label>
                     <input pattern="\d\d/\d\d/\d\d\d\d" class="form-control" id="id_startDate" name="startDate"
                            type="text"
-    value="{% if form.initial|length != 0 %}{{ form.initial.startDate }}{% else %}{{ form.data.startDate }}{% endif %}"
+        value="{% if form.initial|length != 0 %}{{ form.initial.startDate|date:"d/m/Y" }}{% else %}{{ form.data.startDate }}{% endif %}"
                            required/>
                 <div class="help-block with-errors">
                     {{ form.visible_fields.2.errors }}
@@ -66,7 +66,7 @@
                        class="control-label">{% trans "End Date" %}</label>
                     <input pattern="\d\d/\d\d/\d\d\d\d" class="form-control" id="id_endDate" name="endDate"
                            type="text"
-    value="{% if form.initial|length != 0 %}{{ form.initial.endDate}}{% else %}{{ form.data.endDate }}{% endif %}"
+                value="{% if form.initial|length != 0 %}{{ form.initial.endDate|date:"d/m/Y"}}{% else %}{{ form.data.endDate }}{% endif %}"
                            required/>
                 <div class="help-block with-errors">
                     {{ form.visible_fields.3.errors }}
