@@ -176,9 +176,9 @@ def trip_create(request):
 
 # david
 @login_required()
+@permission_required('principal.traveller')
 def trip_edit(request, trip_id):
     try:
-        assert request.user.has_perm('principal.traveller')
         trip = Trip.objects.get(id=trip_id)
         assert trip.traveller.id == request.user.id
         if request.POST:
@@ -192,7 +192,7 @@ def trip_edit(request, trip_id):
                 if 'save' in request.POST and request.POST['save'] == "Save draft":
                     trip.state = "df"
                     TripService.save_secure(trip)
-                    return redirect('/trip/mylist/1')
+                    return redirect('/trip/draft/1')
                 elif 'save' in request.POST and request.POST['save'] == "Publish Trip":
                     trip.state = "pe"
                     TripService.save_secure(trip)
