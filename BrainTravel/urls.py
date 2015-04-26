@@ -39,6 +39,7 @@ urlpatterns = patterns('',
     url(r'^venue_details/(?P<id_venue>[0-9]+)$', 'principal.views.FoursquareViews.retrieve_venue'),
     url(r'^venue_details/rate/$', 'principal.views.TripViews.send_feedback'),
     url(r'^venue_details/value_tip/(?P<id_venue>[0-9]+)/(?P<id_tip>[0-9]+)$', 'principal.views.TripViews.value_tip'),
+    url(r'^statistics/$', 'principal.views.TripViews.stats'),
     #planner URLs
     url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),

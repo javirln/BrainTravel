@@ -3,7 +3,7 @@
 from django.db.models import Q, Count, Sum
 
 from principal.models import Trip, Traveller, Comment, Assessment, Scorable, Feedback, Venue
-
+from collections import Counter
 
 # author: Javi
 def searchTrip(title):
@@ -12,6 +12,7 @@ def searchTrip(title):
         trip_list = Trip.objects.filter(Q(name__icontains=title, state='ap', planified="false")
                                         | Q(city__icontains=title, state='ap', planified="false")
                                         | Q(country__icontains=title, state='ap', planified="false")).order_by('likes')
+    stats()
     return trip_list
 
 
@@ -194,3 +195,16 @@ def value_tip(id_tip, id_venue):
     new_count = tip.usefulCount + 1
     tip.usefulCount = new_count
     tip.save()
+
+
+#author: Javi Rodriguez
+def stats():
+    travellers_travelling = Traveller.objects.annotate(num_trips=Count('trip')).order_by('-num_trips')
+    travellers_publishing = Traveller.objects.annotate(num_trips=Count('trip')) \
+        .filter(trip__planified=False).order_by('-num_trips')
+    best_trips = Trip.objects.filter(judges__likes=True).annotate(num_judges=Count('judges')).order_by('-num_judges')
+    most_liked_trips = Trip.objects.filter(planified=False).annotate(num_likes=Count('likes')).order_by('-num_likes')
+    most_useful_tips = Feedback.objects.annotate(num_useful=Count('usefulCount')).order_by('-num_useful')
+    result = {'travellers_travelling': travellers_travelling, 'travellers_publishing': travellers_publishing,
+              'best_trips': best_trips, 'most_liked_trips': most_liked_trips, 'most_useful_tips': most_useful_tips}
+    return result

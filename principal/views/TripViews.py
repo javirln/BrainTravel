@@ -307,3 +307,9 @@ def value_tip(request, id_venue, id_tip):
         msg_errors = ["Something went wrong..."]
         print traceback.format_exc()
         return HttpResponseRedirect("/" + url[1] + "/" + id_venue, {'msg_errors': msg_errors})
+
+@login_required()
+def stats(request):
+    result = TripService.stats()
+    return render_to_response('stats.html', {'travellers_travelling': result['travellers_travelling']},
+                                  context_instance=RequestContext(request))
