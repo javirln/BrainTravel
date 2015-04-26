@@ -4,10 +4,12 @@
 {% block content %}
 {% load i18n %}
 <div class="container">
-    <h1>Plan a trip</h1>
+
     <div class="col-xs-12 col-sm-3 col-md-3"></div>
     <div class="col-xs-12 col-sm-6 col-md-6">
-        <form class="form-horizontal" role="form" action="/planner/list_venues/" method="post" data-toggle="validator">
+    <h1 class="page-header">{% trans "Plan a trip" %}</h1>
+        <form id="form-create" class="form-horizontal" role="form" action="/planner/list_venues/" method="post"
+              data-toggle="validator">
             {% csrf_token %}
                 <div class="form-group">
                     <label for="id_city" class="control-label">{% trans "City" %}</label>
@@ -17,44 +19,37 @@
                     <div class="help-block with-errors"></div>
                 </div>
 
-                <div class="form-group {% if form.visible_fields.1.errors %} has-error {% endif %} ">
-                    <label for="id_{{ form.visible_fields.1.html_name }}"
+                <div class="form-group">
+                    <label for="id_country"
                            class="control-label">{% trans "Country" %}</label>
                     <input class="form-control" id="id_country" name="country" type="text"
                            value="{% if form.initial|length != 0 %}{{ form.initial.country }}{% else %}{{ form.data.country }}{% endif %}"
                            required/>
-
-                    <div class="help-block with-errors">
-                        {{ form.visible_fields.1.errors }}
-                    </div>
+                    <div class="help-block with-errors"></div>
                 </div>
 
-                <div class="form-group {% if form.visible_fields.2.errors %} has-error {% endif %} ">
-                    <label for="id_{{ form.visible_fields.2.html_name }}"
+                <div class="form-group {% if form.visible_fields.2.errors %} has-error {% endif %}">
+                    <label for="id_startDate"
                            class="control-label">{% trans "Start Date" %}</label>
-                    {{ form.visible_fields.2}}
+                    <input pattern="\d\d/\d\d/\d\d\d\d" class="form-control" id="id_startDate" name="startDate" type="text"
+                           value="{% if form.initial|length != 0 %}{{ form.initial.startDate }}{% else %}{{ form.data.startDate }}{% endif %}"
+                           required/>
 
-                    <div class="help-block with-errors">
+                    <div class="help-block with-errors has-error">
                         {{ form.visible_fields.2.errors }}
                     </div>
                 </div>
 
-                <div class="form-group {% if form.visible_fields.errors %} has-error {% endif %} ">
-                    <label for="id_{{ form.visible_fields.3.html_name }}"
+                <div class="form-group">
+                    <label for="id_days"
                            class="control-label">{% trans "Days" %}</label>
                     <input class="form-control" id="id_days" name="days" type="number" min="1" max="7"
                            value="{% if form.initial|length != 0 %}{{ form.initial.days }}{% else %}{{ form.data.days }}{% endif %}"
                            required onchange="calculatePlanPrice(this.value);"/>
-                    <div class="help-block with-errors">
-                        {{ form.visible_fields.1.errors }}
-                    </div>
+                    <div class="help-block with-errors"></div>
                 </div>
 
-            {% for hidden in form.hidden_fields %}
-                    {{ hidden }}
-                {% endfor %}
-
-                <div class="form-group">
+                <div class="form-group text-center">
                     <h3>{% trans "Price" %} <span id="tripPrice">?</span> {% trans "Coins" %}</h3>
                     <h3>{% trans "My coins" %}: <span id="myCoins">{{traveller.coins}}</span> {% trans "Coins" %}</h3>
                 </div>
@@ -62,48 +57,11 @@
                 <div class="form-group">
                     <input id="create_plan" class="btn btn-primary" name="save" value="Create Plan"
                            type="submit" onclick=whileLoading()>
-                    <span></span>
                 </div>
         </form>
     </div>
-
-{#    <div class="col-xs-12 col-sm-6 col-md-6">#}
-{#        #}
-{#    </div>#}
 </div>
 <script>
-    $("#id_city").change(function(){
-        var city = $("#id_city").val();
-        if(!city.trim()){
-            $("#create_plan").prop('disabled', true);
-        }else{
-            $("#create_plan").prop('disabled', false);
-        }
-    });
-    $("#id_country").change(function(){
-        var country = $("#id_country").val();
-        if(!country.trim()){
-            $("#create_plan").prop('disabled', true);
-        }else{
-            $("#create_plan").prop('disabled', false);
-        }
-    });
-    $("#id_days").change(function(){
-        var days = $("#id_days").val();
-        if(!days.trim()){
-            $("#create_plan").prop('disabled', true);
-        }else{
-            $("#create_plan").prop('disabled', false);
-        }
-    });
-    function whileLoading() {
-        swal({
-            title: "Loading...",
-            text: "We are working hard on your plan. It might take a while, please, be patient :)",
-            showConfirmButton: false,
-            imageUrl: "{% static "img/gears.svg" %}"
-        });
-    }
     function calculatePlanPrice(days){
         var coins;
         coins = 0;
@@ -117,45 +75,23 @@
 
         $('#tripPrice').empty().append(coins);
     }
-</script>
 
-    <script>
-        $('.datepicker').datepicker({
-            format: 'dd/mm/yyyy',
-            autoclose: true
-        }).on('changeDate', function (e) {
-            // Revalidate the date field
-            $('#eventForm').formValidation('revalidateField', 'date');
+    function whileLoading() {
+        swal({
+            title: "Loading...",
+            text: "We are working hard on your plan. It might take a while, please, be patient :)",
+            showConfirmButton: false,
+            imageUrl: "{% static "img/gears.svg" %}"
         });
-
-
-        $('.eventForm').formValidation({
-            framework: 'bootstrap',
-            icon: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                name: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The name is required'
-                        }
-                    }
-                },
-                date: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The date is required'
-                        },
-                        date: {
-                            format: 'DD/MM/YYYY',
-                            message: 'The date is not a valid'
-                        }
-                    }
-                }
-            }
+    }
+</script>
+    <script>
+        $(document).ready(function () {
+            $('#id_startDate').datepicker({
+                format: 'dd/mm/yyyy',
+                autoclose: true
+            });
         });
     </script>
+
 {% endblock %}

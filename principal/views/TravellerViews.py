@@ -35,16 +35,13 @@ def profile_edit(request):
         if request.POST:
             form = TravellerEditProfileForm(request.POST, request.FILES)
             if form.is_valid():
-                traveller = TravellerService.construct_profile(request.user.id, form)
-                TravellerService.save(traveller)
-                BrainTravelUtils.save_success(request, "Profile successfully updated")
-                return HttpResponseRedirect('/profile/'+str(traveller.id))
-            else:
-                message = ""
-                for error in form.errors:
-                    for me in form.errors[error]:
-                        message = message + me
-                BrainTravelUtils.save_error(request, message)
+                try:
+                    traveller = TravellerService.construct_profile(request.user.id, form)
+                    TravellerService.save(traveller)
+                    BrainTravelUtils.save_success(request, "Profile successfully updated")
+                    return HttpResponseRedirect('/profile/'+str(traveller.id))
+                except:
+                    return render_to_response('error.html')
         else:
             data = {'first_name': traveller.first_name, 'last_name': traveller.last_name, 'genre': traveller.genre,
                     'id': traveller.id, 'photo': traveller.photo}
@@ -62,16 +59,13 @@ def profile_edit_password(request):
         if request.POST:
             form = TravellerEditPasswordForm(request.POST)
             if form.is_valid():
-                traveller = TravellerService.construct_password(request.user.id, form)
-                TravellerService.save(traveller)
-                BrainTravelUtils.save_success(request, "Password successfully updated")
-                return HttpResponseRedirect('/profile/'+str(traveller.id))
-            else:
-                message = ""
-                for error in form.errors:
-                    for me in form.errors[error]:
-                        message = message + me
-                BrainTravelUtils.save_error(request, message)
+                try:
+                    traveller = TravellerService.construct_password(request.user.id, form)
+                    TravellerService.save(traveller)
+                    BrainTravelUtils.save_success(request, "Password successfully updated")
+                    return HttpResponseRedirect('/profile/'+str(traveller.id))
+                except:
+                    return render_to_response('error.html')
         else:
             traveller = TravellerService.find_one(request.user.id)
             data = {'id': traveller.id}
