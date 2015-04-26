@@ -12,6 +12,8 @@ import foursquare
 
 from principal.models import Category, Venue, Trip, Day, VenueDay, CoinHistory
 from principal.services import TravellerService
+from BrainTravel import constants
+from lib2to3.pgen2.token import GREATER
 
 
 _client_id = "TWYKUP301GVPHIAHBPYFQQT0PJGZ0O2B24HQ3RUGLUFSLP1E"
@@ -89,11 +91,10 @@ def get_categories(fs_categories):
     return res
 
 
-def filter_and_save(items, days, food=False):
+def filter_and_save(items, food=False):
     # Days contiene la longitud del viaje en dias
     all_venues = []
     id_list = []
-    amount_sites = 8
     counter = 0
     if food:
         amount_sites = 3  # En el caso que estemos seleccionando sitios para comer, solo elegimos 3 por dia
@@ -120,8 +121,7 @@ def filter_and_save(items, days, food=False):
             # print("Venue repetido: " + venue['name'])
             counter = counter + 1
     # Devolvemos 8 viajes por dias
-    print ("Hay " + str((counter + 1)) + " sitios repetidos")
-    return all_venues[0:(amount_sites * days)]
+    return all_venues
 
 
 # autor david.
@@ -240,7 +240,7 @@ def test_plan():
 
 
 # autor: david
-def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, selected_food_with_photos):
+def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, indexes_venues, selected_food_with_photos):
     start_date = tripForm.data['startDate']
     start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
     days = int(tripForm.cleaned_data['days'])
@@ -265,33 +265,43 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, sele
         day.save()
 
         # 24 - 8h (para dormir) - 3h para comer * 60 (lo pasamos a minutos)
-        time_spent = 13 * 60
-        for numero in range(1, 9):
-            venue = selected_venues_with_photos.pop(0)
-            leadtime_average = venue.feedback_set.aggregate(Avg('leadTime')).values()[0]
-            if leadtime_average is None:
+        
+        
+        day_venues = []
+        if num_day == 1:
+            day_venues = selected_venues_with_photos[0 : indexes_venues[num_day - 1]]
+        elif num_day == len(indexes_venues) + 1:
+            day_venues = selected_venues_with_photos[indexes_venues[num_day - 2]:]
+        else:
+            day_venues = selected_venues_with_photos[indexes_venues[num_day - 2] : indexes_venues[num_day - 1]]
+        
+        
+        #enumerate devuelve el elemento sobre el que se esta iterando y el indice que ocupa
+        for idx, venue in enumerate(day_venues):
+            #venue = selected_venues_with_photos.pop(0)
+            #leadtime_average = venue.feedback_set.aggregate(Avg('leadTime')).values()[0]
+            #if leadtime_average is None:
                 # 2 horas
-                leadtime_average = 120
+                #leadtime_average = 120
 
-            time_spent -= leadtime_average
-            venue_day = VenueDay(order=numero, day=day, venue=venue)
+            #time_spent -= leadtime_average
+            venue_day = VenueDay(order=idx, day=day, venue=venue)
             venue_day.save()
 
             # nos ahorramos un for
-            if numero < 4:
-                venue_day = VenueDay(order=numero, day=day, venue=selected_food_with_photos.pop(0))
+            if idx < 3:
+                venue_day = VenueDay(order=idx, day=day, venue=selected_food_with_photos.pop(0))
                 venue_day.save()
-                # time_spent -= 1
 
             # Si el tiempo a gastar es 0 o menor, pasamos a un dia nuevo
-            if time_spent <= 0:
-                print("Se agoto el tiempo: " + str(time_spent))
-                break
-            print("tiempo restante: " + str(time_spent))
+            #if time_spent <= 0:
+                #print("Se agoto el tiempo: " + str(time_spent))
+                #break
+            #print("tiempo restante: " + str(time_spent))
     return trip
 
 
-#author: Javi Rodriguez
+# author: Javi Rodriguez
 def retrieve_venues(id_venue):
     venue = Venue.objects.get(id=id_venue)
     return venue
@@ -340,19 +350,55 @@ def get_venues_order(lat_centre, lng_centre, list_venues):
 
     return list_durations
 
+def get_plan(fs_venues, num_days):
+    origin = fs_venues[0]
+    venues_ordered = get_venues_order(origin['venue']['location']['lat'], 
+                                      origin['venue']['location']['lng'], 
+                                      fs_venues)
+    
+    
+    total_threshold = constants.DAY_THRESHOLD * num_days; 
+    acum_time = 0 #Tiempo acumulado en cada iteración en segundos
+    acum_time_per_day = 0
+    index_days = []
+    selected_venues = []
+    
+    selected_venues_ids = [] #Para controlar que no haya sitios repetidos
+    i = 0
+    for venue in venues_ordered:
+        
+        if venue[0]['venue']['id'] in selected_venues_ids:
+            continue
+        
+        i += 1
+        
+        selected_venues.append(venue[0])
+        selected_venues_ids.append(venue[0]['venue']['id'])
+        
+        acum_time += venue[1] + constants.AVERAGE_TIME_PER_VENUE
+        acum_time_per_day += venue[1] + constants.AVERAGE_TIME_PER_VENUE
+        
+        if acum_time_per_day >= constants.DAY_THRESHOLD:
+            index_days.append(i)
+            acum_time_per_day = 0
+        if  acum_time >= total_threshold:
+            return (selected_venues, index_days)
+        
+    return (selected_venues, index_days)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+def get_plan_food(fs_venues_food, num_days):
+    origin = fs_venues_food[0]
+    venues_ordered = get_venues_order(origin['venue']['location']['lat'], 
+                                      origin['venue']['location']['lng'], 
+                                      fs_venues_food)
+    
+    selected_venues = []
+    for idx, venue in enumerate(venues_ordered):
+        selected_venues.append(venue[0])
+        
+        if idx >= (num_days * 3):
+            break
+        
+    return selected_venues
 
