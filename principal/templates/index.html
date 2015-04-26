@@ -1,8 +1,41 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BrainTravel</title>
 
-{% block content %}
-{% load i18n %}
+    {% load staticfiles %}
+    {% load i18n %}
 
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/home/morphext.css" %}">
+    <link rel="stylesheet" href="{% static "css/home/stylish-portfolio.css" %}">
+    <link rel="stylesheet" href="{% static "css/animate.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" >
+    <link rel="stylesheet" href="{% static "css/navbar.css" %}">
+
+    <script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+	<script src="{% static "js/home/morphext.min.js" %}"></script>
+</head>
+<body>
+	<!-- Navigation -->
+	{% include "miscellaneous/menu.html" %}
+	<div class="collapse" id="collapseExample">
+        <div class="well">
+            <form action="/search_trip/" method="get" role="search">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" id="input-search" class="form-control" name="title" placeholder="Type to search">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="reset" data-toggle="collapse" href="#collapseExample"><span class="glyphicon glyphicon-remove"></span></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+	<!-- Header -->
 	<header id="top" class="header">
 		<div class="text-vertical-center">
 			<h1>BrainTravel</h1>
@@ -11,31 +44,23 @@
 				More</a>
 		</div>
 	</header>
-
-    <!-- About -->
+	<!-- About -->
 	<section id="about" class="about">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2>{% trans "What is this?" %}</h2>
-					<p class="lead">
-						{% blocktrans trimmed %}
-						 BrainTravel is the perfect tool for all travellers. It automatically creates a trip planning for you,
-						 offering a daily schedule with the highest rated sites in the
-						 area. It also has an internal network in which users can interact
-						 between them regarding trips they made, commenting and sharing
-						 experiences.
-						 {%endblocktrans%}
-					</p>
+					<h2>What is this?</h2>
+					<p class="lead">BrainTravel is the perfect tool for all
+						travellers. It automatically creates a trip planning for you,
+						offering a daily schedule with the highest rated sites in the
+						area. It also has an internal network in which users can interact
+						between them regarding trips they made, commenting and sharing
+						experiences.</p>
 				</div>
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.container -->
 	</section>
-
 	<!-- Services -->
-	<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
 	<section id="services" class="services bg-primary">
 		<div class="container">
 			<div class="row text-center">
@@ -98,15 +123,10 @@
 							</div>
 						</div>
 					</div>
-					<!-- /.row (nested) -->
 				</div>
-				<!-- /.col-lg-10 -->
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.container -->
 	</section>
-
 	<!-- Callout -->
 	<aside class="callout">
 		<div class="text-vertical-center">
@@ -117,12 +137,16 @@
 					"quotidian", not touristy.; If you can recommend activities outside
 					the typical, to better understand the place, would be happy to use
 					the tool.;There's history, places and landscapes that only
-					residents of the area known.;That's what I ever wanted...</span>
+					residents of the area known.;That's what I ever wanted...
+                </span>
 			</h1>
 		</div>
 	</aside>
+     {% include "miscellaneous/footer.html" %}
 
-    <!-- Custom Theme JavaScript -->
+
+
+	<!-- Custom Theme JavaScript -->
 	<script>
 		$("#js-rotating").Morphext({
 			animation : "fadeIn",
@@ -166,5 +190,5 @@
 		});
 	</script>
 
-{%endblock%}
-
+</body>
+</html>

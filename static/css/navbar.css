@@ -1,0 +1,20 @@
+.navbar-bt-gen{
+    background: #fff;
+    border-bottom: #fece08 5px solid;
+    margin-bottom: 0px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #337ab7;
+}
+
+/* Profile
+------------------------------------------------------------ */
+.navbar-login {
+    width: 305px;
+    padding: 10px;
+}
+
+.navbar-login-session {
+    padding: 0px 10px;
+}

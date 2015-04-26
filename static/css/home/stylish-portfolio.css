@@ -6,6 +6,12 @@
 
 /* Global Styles */
 
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -148,27 +154,24 @@ hr.small {
     display: table;
     position: relative;
     width: 100%;
-    min-height: 750px;
+    height: 100%;
     background: url(../../img/home/bg.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    margin-top: -25px;
-    border-bottom: #fece08 5px solid;
+    /*margin-top: -25px;*/
 }
 
 /* About */
 
 .about {
     padding: 50px 0;
-    border-bottom: #fece08 5px solid;
 }
 
 /* Services */
 
 .services {
-    border-bottom: #fece08 5px solid;
     padding: 50px 0;
 }
 
@@ -179,7 +182,6 @@ hr.small {
 /* Callout */
 
 .callout {
-    border-bottom: #fece08 5px solid;
     display: table;
     width: 100%;
     height: 400px;
@@ -217,4 +219,10 @@ hr.small {
 
 .call-to-action .btn {
     margin: 10px;
+}
+
+/* Footer */
+
+footer {
+    padding: 100px 0;
 }
