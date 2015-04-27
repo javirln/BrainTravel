@@ -331,8 +331,8 @@ def get_venues_order(lat_centre, lng_centre, list_venues):
 
     url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str(lat_centre) + "," + str(lng_centre) \
           + "&destinations=" + destinations + "&language=es-ES&sensor=false"
-    print(url)
-    print(len(url))
+    # print(url)
+    # print(len(url))
 
     response = urllib2.urlopen(url)
     data = json.load(response)
@@ -355,9 +355,8 @@ def get_plan(fs_venues, num_days):
     venues_ordered = get_venues_order(origin['venue']['location']['lat'], 
                                       origin['venue']['location']['lng'], 
                                       fs_venues)
-    
-    
-    total_threshold = constants.DAY_THRESHOLD * num_days; 
+
+    total_threshold = constants.DAY_THRESHOLD * num_days
     acum_time = 0 #Tiempo acumulado en cada iteración en segundos
     acum_time_per_day = 0
     index_days = []
@@ -381,7 +380,7 @@ def get_plan(fs_venues, num_days):
         if acum_time_per_day >= constants.DAY_THRESHOLD:
             index_days.append(i)
             acum_time_per_day = 0
-        if  acum_time >= total_threshold:
+        if acum_time >= total_threshold:
             return (selected_venues, index_days)
         
     return (selected_venues, index_days)

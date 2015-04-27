@@ -62,23 +62,23 @@ def create_traveller(request):
     form = TravellerRegistrationForm(data)
     response = {}
     if form.is_valid():
-            response['success']= True
-            traveller = TravellerService.create(form)
-            rand_password = BrainTravelUtils.id_generator()
-            traveller.set_password(rand_password)
-            TravellerService.save(traveller) #Aqui se asignan los permisos
-            EmailViews.send_email_confirmation(traveller, rand_password)
+        response['success'] = True
+        traveller = TravellerService.create(form)
+        rand_password = BrainTravelUtils.id_generator()
+        traveller.set_password(rand_password)
+        TravellerService.save(traveller)  # Aqui se asignan los permisos
+        EmailViews.send_email_confirmation(traveller, rand_password)
     else:
         message = ""
         for field, errors in form.errors.items():
             for error in errors:
                 message += error
-        
-        #response['errors'] = _(message) 
-        response['success']= False
+
+        # response['errors'] = _(message)
+        response['success'] = False
         response['error'] = _(message)
-        #HttpResponse(json.dumps(response))
-    
+        # HttpResponse(json.dumps(response))
+
     return JsonResponse(response)
 
 
@@ -97,3 +97,15 @@ def confirm_account(request):
         return HttpResponseRedirect("/")
     else:
         return HttpResponse("Hash not math!! :(")
+
+
+def cookies_policies(request):
+    return render_to_response('cookies_policies.html', {}, context_instance=RequestContext(request))
+
+
+def about_us(request):
+    return render_to_response('about_us.html', {}, context_instance=RequestContext(request))
+
+
+def privacy_terms(request):
+    return render_to_response('privacy_terms.html', {}, context_instance=RequestContext(request))

@@ -14,10 +14,13 @@
     <link rel="stylesheet" href="{% static "css/animate.css" %}">
     <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" >
     <link rel="stylesheet" href="{% static "css/navbar.css" %}">
+    <link rel="stylesheet" href="{% static "css/jquery.cookiebar.css" %}">
 
     <script src="{% static "js/jquery-1.11.0.min.js" %}"></script>
 	<script src="{% static "js/bootstrap.min.js" %}"></script>
 	<script src="{% static "js/home/morphext.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.cookiebar.js" %}"></script>
+
 </head>
 <body>
 	<!-- Navigation -->
@@ -148,6 +151,15 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script>
+        $(document).ready(function(){
+            $.cookieBar({
+                policyURL: 'cookies_policies',
+                policyText: 'Cookies policy',
+                policyButton : true,
+                bottom: true,
+                declineButton: true
+            });
+        });
 		$("#js-rotating").Morphext({
 			animation : "fadeIn",
 			separator : ";",
