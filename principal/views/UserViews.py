@@ -20,35 +20,25 @@ from django.utils.translation import ugettext as _
 
 def sign_in(request):
     registerForm = TravellerRegistrationForm()
-    if request.method == "POST":
+    if request.POST:
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            if user is not None:
+            try:
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+                user = authenticate(username=username, password=password)
                 if user.is_active:
                     login(request, user)
                     return redirect("/")
                 else:
-                    message = 'Your account is desactivated'
-                    BrainTravelUtils.save_error(request, message)
-                    result = render_to_response('signin.html', {'registerForm': registerForm}, context_instance=RequestContext(request))
-            else:
-                message = 'Wrong user or password'
-                BrainTravelUtils.save_error(request, message)
-                result = render_to_response('signin.html', {'message': message, 'registerForm': registerForm}, context_instance=RequestContext(request))
-
+                    return render_to_response('error.html')
+            except:
+                return render_to_response('error.html')
         else:
-            message = "Wrong email!"
-            BrainTravelUtils.save_error(request, message)
-            result = render_to_response('signin.html', {'form': form, 'registerForm': registerForm}, context_instance=RequestContext(request))
+            return render_to_response('signin.html', {'form': form, 'registerForm': registerForm}, context_instance=RequestContext(request))
     else:
-        next = request.GET.get('next', '/')
         form = LoginForm()
-        result = render_to_response('signin.html', {'next': next, 'registerForm': registerForm, 'form': form}, context_instance=RequestContext(request))
-
-    return result
+        return render_to_response('signin.html', {'registerForm': registerForm, 'form': form}, context_instance=RequestContext(request))
 
 
 @login_required()

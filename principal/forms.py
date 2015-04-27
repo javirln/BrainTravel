@@ -1,6 +1,6 @@
 # -*- coding: latin-1 -*-
 from datetime import datetime
-
+from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -28,35 +28,34 @@ class LoginForm(forms.Form):
                 'class': 'form-control',
                 'required': 'required',
                 'maxlength': '254',
-                'placeholder': 'email address'
+                'placeholder': 'Email address'
             }
         )
     )
     password = forms.CharField(
         required=True,
-        min_length=8,
         max_length=32,
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
                 'required': 'required',
                 'maxlength': '32',
-                'minlength': '8',
+                'placeholder': 'Password'
             }
         )
     )
 
-    # def clean(self):
-    #     if self.cleaned_data.get('photo') and self.cleaned_data.get('photo_clear'):
-    #         self.add_error('photo', "Please either submit a file or check the default image checkbox, not both")
-    #     elif self.cleaned_data.get('photo'):
-    #         content_types = ['image/png', 'image/jpg', 'image/jpeg']
-    #         if self.cleaned_data.get('photo').content_type in content_types:
-    #             if self.cleaned_data.get('photo').size > 2 * 1024 * 1024:
-    #                 self.add_error('photo', "Image file too large ( > 2mb )")
-    #         else:
-    #             self.add_error('photo', "Not valid file type. Only PNG and JPG are supported")
-    #     return self.cleaned_data
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if not user.is_active:
+                self.add_error('username', "Your account is desactivated")
+        else:
+            self.add_error('username', "Wrong email or password")
+
+        return self.cleaned_data
 
 
 class TravellerRegistrationForm(forms.Form):

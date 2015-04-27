@@ -8,6 +8,19 @@
             <div class="omb_authTitle">
                 Login or <a href="#" data-toggle="modal" data-target="#registerModal">Sign up</a>
             </div>
+            {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12 col-lg-12" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {% if  form.visible_fields.0.errors %}
+                        <strong>Email</strong>
+                        {{ form.visible_fields.0.errors }}
+                    {% endif %}
+                    {% if  form.visible_fields.1.errors %}
+                        <strong>Password</strong>
+                        {{ form.visible_fields.1.errors }}
+                    {% endif %}
+                </div>
+            {% endif %}
             {% csrf_token %}
             <div class="form-group">
                 <div class="input-group">
