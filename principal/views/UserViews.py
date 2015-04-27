@@ -33,23 +33,20 @@ def sign_in(request):
                 else:
                     message = 'Your account is desactivated'
                     BrainTravelUtils.save_error(request, message)
-                    result = render_to_response('signin.html', {'registerForm': registerForm},
-                                                context_instance=RequestContext(request))
+                    result = render_to_response('signin.html', {'registerForm': registerForm}, context_instance=RequestContext(request))
             else:
                 message = 'Wrong user or password'
                 BrainTravelUtils.save_error(request, message)
-                result = render_to_response('signin.html', {'message': message, 'registerForm': registerForm},
-                                            context_instance=RequestContext(request))
+                result = render_to_response('signin.html', {'message': message, 'registerForm': registerForm}, context_instance=RequestContext(request))
 
         else:
             message = "Wrong email!"
             BrainTravelUtils.save_error(request, message)
-            result = render_to_response('signin.html', {'form': form, 'registerForm': registerForm},
-                                        context_instance=RequestContext(request))
+            result = render_to_response('signin.html', {'form': form, 'registerForm': registerForm}, context_instance=RequestContext(request))
     else:
         next = request.GET.get('next', '/')
-        result = render_to_response('signin.html', {'next': next, 'registerForm': registerForm},
-                                    context_instance=RequestContext(request))
+        form = LoginForm()
+        result = render_to_response('signin.html', {'next': next, 'registerForm': registerForm, 'form': form}, context_instance=RequestContext(request))
 
     return result
 

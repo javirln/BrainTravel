@@ -18,9 +18,45 @@ def user_exist_validator(value):
         raise ValidationError(_('Already exists a user with that email!'))
 
 
+# Formulario de login
 class LoginForm(forms.Form):
-    username = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.EmailField(
+        required=True,
+        max_length=254,
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                'maxlength': '254',
+                'placeholder': 'email address'
+            }
+        )
+    )
+    password = forms.CharField(
+        required=True,
+        min_length=8,
+        max_length=32,
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                'maxlength': '32',
+                'minlength': '8',
+            }
+        )
+    )
+
+    # def clean(self):
+    #     if self.cleaned_data.get('photo') and self.cleaned_data.get('photo_clear'):
+    #         self.add_error('photo', "Please either submit a file or check the default image checkbox, not both")
+    #     elif self.cleaned_data.get('photo'):
+    #         content_types = ['image/png', 'image/jpg', 'image/jpeg']
+    #         if self.cleaned_data.get('photo').content_type in content_types:
+    #             if self.cleaned_data.get('photo').size > 2 * 1024 * 1024:
+    #                 self.add_error('photo', "Image file too large ( > 2mb )")
+    #         else:
+    #             self.add_error('photo', "Not valid file type. Only PNG and JPG are supported")
+    #     return self.cleaned_data
 
 
 class TravellerRegistrationForm(forms.Form):
@@ -76,7 +112,7 @@ class TripEditForm(forms.Form):
 
 # david
 class PlanForm(forms.Form):
-    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control',}))
+    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control', }))
     country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
     startDate = forms.DateField(label="starDate", widget=forms.TextInput(attrs={'class': 'datepicker form-control'}))
     days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min': 0, 'max': 7, 'class': 'form-control'}))

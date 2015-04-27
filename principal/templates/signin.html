@@ -2,37 +2,6 @@
 {% block title %} Sign in {% endblock %}
 {% block content %}
 <div class="container-fluid">
-{#    <div class="omb_login">#}
-{#		<div class="row omb_row-sm-offset-3">#}
-{#			<div class="col-xs-12 col-sm-6">#}
-{#			    <form id="siginForm" class="omb_loginForm" action="/signin/" autocomplete="off" method="POST" role="form" data-toggle="validator">#}
-{#                    <span class="omb_authTitle">Login or <a href="#" data-toggle="modal" data-target="#registerModal">Sign up</a></span>#}
-{#	                {% csrf_token %}#}
-{#	                <div class="form-group">#}
-{#	                    <div class="input-group">#}
-{#	                        <div class="input-group-addon">#}
-{#	                            <span class="fa fa-envelope"></span>#}
-{#	                        </div>#}
-{#	                        <input type="email" class="form-control" data-error="Invalid email address" placeholder="email address" name="username" required />#}
-{#	                    </div>#}
-{#	                    <span class="help-block with-errors"></span>#}
-{#	                </div>#}
-{#	#}
-{#	                <div class="form-group">#}
-{#	                    <div class="input-group">#}
-{#	                        <div class="input-group-addon">#}
-{#	                            <span class="glyphicon glyphicon-lock"></span>#}
-{#	                        </div>#}
-{#	                        <input  type="password" class="form-control" name="password" placeholder="Password" required>#}
-{#	                    </div>#}
-{#	                    <span class="help-block with-errors"></span>#}
-{#	                </div>#}
-{#	#}
-{#					<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>#}
-{#				</form>#}
-{#			</div>#}
-{#		</div>#}
-{#	</div>#}
 
     <div class="omb_login col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
         <form id="siginForm" class="omb_loginForm" action="/signin/" autocomplete="off" method="POST" role="form" data-toggle="validator">
@@ -45,7 +14,8 @@
                     <div class="input-group-addon">
                         <span class="fa fa-envelope"></span>
                     </div>
-                    <input type="email" class="form-control" data-error="Invalid email address" placeholder="email address" name="username" required />
+                    <!--<input type="email" class="form-control" data-error="Invalid email address" placeholder="email address" name="username" required />-->
+                    {{ form.visible_fields.0 }}
                 </div>
                 <span class="help-block with-errors"></span>
             </div>
@@ -55,7 +25,8 @@
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-lock"></span>
                     </div>
-                    <input  type="password" class="form-control" name="password" placeholder="Password" required>
+                    <!--<input  type="password" class="form-control" name="password" placeholder="Password" required>-->
+                    {{ form.visible_fields.1 }}
                 </div>
                 <span class="help-block with-errors"></span>
             </div>
