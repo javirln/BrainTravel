@@ -64,13 +64,15 @@ def list_trip_administrator(request):
         return render_to_response('error.html')
     paginator = Paginator(trips, 2)
     page = request.GET.get('page')
+    url = request.get_full_path()[:-1]
     try:
         trips = paginator.page(page)
     except PageNotAnInteger:
         trips = paginator.page(1)
     except EmptyPage:
         trips = paginator.page(paginator.num_pages)
-    return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True}, context_instance=RequestContext(request))
+    return render_to_response('trip_list.html', {'trips': trips, 'url': url, 'create_trip': True},
+                              context_instance=RequestContext(request))
 
 
 @permission_required('principal.traveller')
@@ -119,6 +121,8 @@ def list_all_by_traveller(request, optional=0):
     if optional == "3":
         BrainTravelUtils.save_success(request, "Trip deleted successfully")
 
+    url = request.get_full_path()[:-1]
+
     trips = TripService.list_my_trip(request.user.id)
     if trips is not False:
         paginator = Paginator(trips, 5)
@@ -129,7 +133,8 @@ def list_all_by_traveller(request, optional=0):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My trips'}, context_instance=RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips, 'url': url, 'create_trip': True, 'title_list': 'My trips'},
+                                  context_instance=RequestContext(request))
 
 
 # david
@@ -140,6 +145,7 @@ def list_all_by_traveller_draft(request, optional=0):
     if optional == "1":
         BrainTravelUtils.save_success(request, "Action completed successfully")
     trips = TripService.list_trip_draft(request.user.id)
+    url = request.get_full_path()[:-1]
     if trips is not False:
         paginator = Paginator(trips, 5)
         page = request.GET.get('page')
@@ -149,7 +155,9 @@ def list_all_by_traveller_draft(request, optional=0):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My draft trips'}, context_instance = RequestContext(request))
+        return render_to_response('trip_list.html',
+                                  {'trips': trips, 'url': url, 'create_trip': True, 'title_list': 'My draft trips'},
+                                  context_instance=RequestContext(request))
 
 
 # david
@@ -269,8 +277,10 @@ def send_assessment(request):
 def list_trip_approved_by_profile(request, profile_id):
     try:
         traveller = TravellerService.find_one(profile_id)
+        url = request.get_full_path()[:-1]
         trips = TripService.list_trip_approved(traveller.id)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True}, context_instance=RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips, 'url': url, 'create_trip': True},
+                                  context_instance=RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')
 
