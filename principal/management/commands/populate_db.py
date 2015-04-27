@@ -421,7 +421,7 @@ class Command(BaseCommand):
             genre='MA',
             photo='static/user_folder/allen_sutton.jpg',
             reputation=8.2,
-            coins=23,
+            coins=239,
             recommendations=13)
         traveller_allen.set_password('allen')
         traveller_allen.save()

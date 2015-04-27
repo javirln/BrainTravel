@@ -110,10 +110,8 @@ def foursquare_list_venues(request):
                 print "=================== DIA 1 =========================="
                 for venue in plan_venues[0][0 : plan_venues[1][0]]:
                     print venue['venue']['name']
-                
-                print "===================================================="
-                    
 
+                print "===================================================="
 
                 # dicc_venues = FoursquareServices.get_venues_order("-31.4265080477", "-64.1809502782", items_venues)
 
@@ -130,7 +128,8 @@ def foursquare_list_venues(request):
                 # traveller.coins -= coins_cost
                 # traveller.save()
                 FoursquareServices.create_history(trip)
-                return show_planning(request, trip.id)
+                # return show_planning(request, trip.id)
+                return redirect("/show_planning/" + str(trip.id) + "/")
             # si no es valido el form devolvemos a editar
             return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller},
                                       context_instance=RequestContext(request))
