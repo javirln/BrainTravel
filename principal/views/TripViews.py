@@ -16,16 +16,25 @@ from principal.services import TripService, TravellerService, CoinService
 from principal.utils import BrainTravelUtils
 
 
-# author: Javi
+# author: Juane
 def search_trip(request):
-    if request.method == 'GET':
-        title = request.GET.get('title', False)
-        trip_result = None
+    if request.method == 'POST':
+        title = request.POST.get('title')
+    else:
+        title = request.GET.get('title')
+    try:
+        trips = TripService.searchTrip(title)
+        paginator = Paginator(trips, 2)
+        page = request.GET.get('page')
         try:
-            trip_result = TripService.searchTrip(title)
-            return render_to_response('search.html', {'trip_result': trip_result, 'title_search': title}, context_instance=RequestContext(request))
-        except Exception as e:
-            return HttpResponse(e)
+            trips = paginator.page(page)
+        except PageNotAnInteger:
+            trips = paginator.page(1)
+        except EmptyPage:
+            trips = paginator.page(paginator.num_pages)
+        return render_to_response('search.html', {'trip_result': trips, 'title_search': title}, context_instance=RequestContext(request))
+    except:
+        return render_to_response('error.html')
 
 
 # author: Javi

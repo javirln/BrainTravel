@@ -42,10 +42,10 @@
 
     <div class="collapse" id="collapseExample">
         <div class="well">
-            <form action="/search_trip/" method="get" role="search">
+            <form action="/search_trip/" method="POST" role="search">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input type="text" id="input-search" class="form-control" name="title" placeholder="Type to search">
+                    <input type="search" id="input-search" class="form-control" name="title" placeholder="Type to search" value="{{ title_search }}">
                     <span class="input-group-btn">
                         <button class="btn btn-danger" type="reset" data-toggle="collapse" href="#collapseExample"><span class="glyphicon glyphicon-remove"></span></button>
                     </span>

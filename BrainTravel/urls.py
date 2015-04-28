@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^signin/$', 'principal.views.UserViews.sign_in'),
     url(r'^logout/$', 'principal.views.UserViews.system_logout'),
-    url(r'^search', 'principal.views.TripViews.search_trip'),
+    url(r'^search_trip/$', 'principal.views.TripViews.search_trip'),
     #Para indicar en las URLs un metodo que se encuentra dentro de un archivo .py
     # url(r'^<nombre_url>$', '<app>.<paquete>.<archivo>.<metodo>'),
     # url(r'^<nombre_url>$', 'principal.views.ViewsModel1.method1')
