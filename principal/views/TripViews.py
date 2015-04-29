@@ -8,11 +8,11 @@ from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
-from principal.forms import TripEditForm
+from principal.forms import TripEditForm, CommentForm
 from principal.forms import TripUpdateStateForm
 from principal.models import Judges, Assessment
 from principal.models import Trip, Comment, Traveller
-from principal.services import TripService, TravellerService, CoinService
+from principal.services import TripService, TravellerService, CoinService, CommentService
 from principal.utils import BrainTravelUtils
 
 
@@ -57,7 +57,8 @@ def public_trip_details(request, trip_id):
             assessment = list(assessment)[0]
         data = {'id': trip.id, 'state': trip.state}
         form = TripUpdateStateForm(initial=data)
-        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'assessment': assessment}, context_instance=RequestContext(request))
+        comment_form = CommentForm(initial={'id_trip': trip.id})
+        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'comment_form': comment_form, 'assessment': assessment}, context_instance=RequestContext(request))
     except Exception:
         return render_to_response('error.html')
 
@@ -225,26 +226,22 @@ def trip_edit(request, trip_id):
         return render_to_response('error.html')
 
 
-# author: Javi Rodriguez
+# author: Javi Rodriguez ----- Reviewed: Juane
 @login_required()
+@permission_required('principal.traveller')
 def comment_trip(request):
     try:
-        comment = request.POST['text-comment']
-        user_id = request.user.id
-        trip_id = request.POST['trip-id']
-        url = request.path.split("/")
-        res = TripService.submit_comment(user_id, comment, trip_id)
-        if res['state'] == False:
-            BrainTravelUtils.save_warning(request, 'This trip is pending of the approval by an administrator.')
-            return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
-        elif res['ownership'] == False:
-            BrainTravelUtils.save_warning(request, 'You cannot comment your own trip!')
-        elif res['state'] == True and res['ownership'] == True:
-            BrainTravelUtils.save_success(request, 'Your comment has been saved!')
-        return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
-    except:
-        msg_errors = ["Something went wrong..."]
-        return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
+        if request.POST:
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment = CommentService.construct_comment(request.user.id, comment_form)
+                CommentService.save(request.user.id, comment)
+                BrainTravelUtils.save_success(request, 'Comment successfully')
+                return HttpResponseRedirect("/public_trip_details/" + str(comment.trip.id))
+    except AssertionError:
+        return render_to_response('error.html')
+
+    return render_to_response('error.html')
 
 
 # author: Javi Rodriguez
