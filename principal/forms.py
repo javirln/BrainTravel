@@ -93,7 +93,9 @@ class TripEditForm(forms.Form):
     name = forms.CharField(label='Name', widget=forms.TextInput())
 
     def clean(self):
-
+        name = self.cleaned_data['name']
+        if len(name) > 150:
+            self.add_error('name', _("Message length too long"))
         start_date = self.data['startDate']
         start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
         end_date = self.data['endDate']
