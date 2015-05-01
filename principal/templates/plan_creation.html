@@ -10,7 +10,7 @@
     <h1 class="page-header">{% trans "Plan a trip" %}</h1>
         <form id="form-create" class="form-horizontal" role="form" action="/planner/list_venues/" method="post"
               data-toggle="validator">
-            {% csrf_token %}
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="id_city" class="control-label">{% trans "City" %}</label>
                     <input class="form-control" id="id_city" name="city" type="text"
@@ -58,13 +58,87 @@
                     <input id="create_plan" class="btn btn-primary" name="save" value="Create Plan"
                            type="submit" onclick=whileLoading()>
                 </div>
-        </form>
+
+
+            <div class="form-group">
+                <label for="selec">Select for your funny TRIP</label>
+                <select id="selec" style="display: none;"  class="chosen-select"
+                        tabindex="-1">
+                    <option value=""></option>
+                    <option value="Food">Food</option>
+                    <option value="Drink">Drink</option>
+                    <option value="Sex">Sex</option>
+                    <option value="Alcohol">Alcohol</option>
+                </select>
+
+                <label for="cantidad">Selec cantidad</label>
+                <select id="cantidad" style="display: none;" class="chosen-select"
+                        tabindex="-1">
+                    <option value=""></option>
+                    <option value="Mucho">Mucho</option>
+                    <option value="Poco">Poco</option>
+                    <option value="Nada">Nada</option>
+                </select>
+
+
+
+                <table id="filter" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>{% trans "Filter" %}</th>
+                        <th>{% trans "Cantidad" %}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr> <input type="hidden" name="name" value="your value"/></tr>
+                    </tbody>
+                </table>
+
+            <input class="btn btn-primary" id="copy" name="copy" value="Add Restriction"
+                   type="button" onclick=copyValues()>
+                </div>
+    </form>
+
+
     </div>
 </div>
 <script>
+
+{#    function deleteOption() {#}
+{#        $('.chosen-select option[value=Food]').remove();#}
+{#    }#}
+
+{#   $('.chosen-select option[value=Food]').remove();#}
+
+    function copyValues(){
+        var category;
+        var rowCustom;
+        var cantidad;
+
+        var rowCount = $('#filter').find('tr').length;
+        if (rowCount >= 4){
+            $("#copy").prop('disabled', true);
+            return false;
+        }
+
+        cantidad = $("#cantidad").find('option:selected').text();
+        category = $("#selec").find('option:selected').text();
+        rowCustom = '<tr>'.concat('<td>').concat(category).concat('</td>').concat('<td>').concat(cantidad)
+                .concat('</td>').concat('<td><a class="deleteLink" href="" >delete</a></td>').concat('</tr>');
+
+        $('#filter').find('tr:last').after(rowCustom);
+    }
+
+    function deleteLast(){
+        $('#filter').find('tr:last').remove();
+        $("#copy").prop('disabled', false);
+    }
+
     function calculatePlanPrice(days){
         var coins;
         coins = 0;
+
         if (days <= 3) {
             coins = 20
         } else if (days > 3 && days <= 7) {
@@ -72,9 +146,20 @@
         } else {
             coins = 80
         }
-
+        var availableCoins= $('#myCoins').text();
+        if (coins > availableCoins){
+            $("#create_plan").prop('disabled', true);
+        }else{
+            $("#create_plan").prop('disabled', false);
+        }
         $('#tripPrice').empty().append(coins);
     }
+
+     $(function() {
+        $('.chosen-select').chosen();
+        $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+      });
+
 
     function whileLoading() {
         swal({
@@ -84,14 +169,13 @@
             imageUrl: "{% static "img/gears.svg" %}"
         });
     }
-</script>
-    <script>
-        $(document).ready(function () {
-            $('#id_startDate').datepicker({
-                format: 'dd/mm/yyyy',
-                autoclose: true
-            });
+
+    $(document).ready(function () {
+        $('#id_startDate').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true
         });
-    </script>
+    });
+</script>
 
 {% endblock %}
