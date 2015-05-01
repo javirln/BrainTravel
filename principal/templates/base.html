@@ -40,20 +40,6 @@
     <!-- Navigation -->
 	{% include "miscellaneous/menu.html" %}
 
-    <div class="collapse" id="collapseExample">
-        <div class="well">
-            <form action="/search_trip/" method="get" role="search">
-                {% csrf_token %}
-                <div class="input-group">
-                    <input type="text" id="input-search" class="form-control" name="title" placeholder="Type to search">
-                    <span class="input-group-btn">
-                        <button class="btn btn-danger" type="reset" data-toggle="collapse" href="#collapseExample"><span class="glyphicon glyphicon-remove"></span></button>
-                    </span>
-                </div>
-            </form>
-        </div>
-    </div>
-
     {% block content %} {% endblock %}
 
     {% include "miscellaneous/footer.html" %}
