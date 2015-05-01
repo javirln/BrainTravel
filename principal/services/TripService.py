@@ -1,7 +1,6 @@
 # -*- coding: latin-1 -*-
 
 from django.db.models import Q, Count, Sum
-
 from principal.models import Trip, Traveller, Comment, Assessment, Scorable, Feedback, Venue
 
 

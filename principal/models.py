@@ -1,4 +1,5 @@
 # -*- coding: latin-1 -*-
+import datetime
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -227,7 +228,7 @@ class VenueDay(models.Model):
 
 class Comment(models.Model):
     description = models.CharField(max_length=255, null=True)
-
+    date = models.DateTimeField(default=timezone.now)
     # ------------- Relationships --------------#
     traveller = models.ForeignKey(Traveller)
     trip = models.ForeignKey(Trip)
