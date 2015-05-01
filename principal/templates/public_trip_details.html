@@ -108,38 +108,53 @@
                         </div>
                     </article>
                 {% endif %}
-                {% for comment in comments %}
-                    {% if comments.last %}
-                        <article class="timeline-entry begin">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon">
-                                    <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">
+                {% if comments %}
+                    {% for comment in comments %}
+                        {% if comments.last %}
+                            <article class="timeline-entry begin">
+                                <div class="timeline-entry-inner">
+                                    <div class="timeline-icon">
+                                        <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">
+                                    </div>
+                                    <div class="timeline-label">
+                                        <h2><a href="#">{{comment.traveller}} says:</a></h2>
+                                        <!--<br>-->
+                                        <i class="fa fa-quote-left fa-1x pull-left"></i>
+                                        {{comment.description|safe}}
+                                    </div>
                                 </div>
-                                <div class="timeline-label">
-                                    <h2><a href="#">{{comment.traveller}} says:</a></h2>
-                                    <!--<br>-->
-                                    <i class="fa fa-quote-left fa-1x pull-left"></i>
-                                    {{comment.description|safe}}
+                            </article>
+                        {% else %}
+                            <article class="timeline-entry">
+                                <div class="timeline-entry-inner">
+                                    <div class="timeline-icon bg-success">
+                                        <i class="entypo-suitcase"></i>
+                                        <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">
+                                    </div>
+                                    <div class="timeline-label">
+                                        <h2><a href="#">{{comment.traveller}} says:</a></h2>
+                                        <!--<br>-->
+                                        <i class="fa fa-quote-left fa-1x pull-left"></i>
+                                        {{comment.description|safe}}
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
-                    {% else %}
-                        <article class="timeline-entry">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon bg-success">
-                                    <i class="entypo-suitcase"></i>
-                                    <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">
-                                </div>
-                                <div class="timeline-label">
-                                    <h2><a href="#">{{comment.traveller}} says:</a></h2>
-                                    <!--<br>-->
-                                    <i class="fa fa-quote-left fa-1x pull-left"></i>
-                                    {{comment.description|safe}}
-                                </div>
-                            </div>
-                        </article>
-                    {% endif %}
-                {% endfor %}
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="pagination col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <span class="step-links">
+                            {% if comments.has_previous %}
+                                <a href="?page={{ comments.previous_page_number }}">previous</a>
+                            {% endif %}
+                            <span class="current">
+                                Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
+                            </span>
+                            {% if comments.has_next %}
+                                <a href="?page={{ comments.next_page_number }}">next</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

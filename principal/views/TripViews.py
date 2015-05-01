@@ -44,7 +44,17 @@ def public_trip_details(request, trip_id):
     try:
         trip = Trip.objects.get(id=trip_id)
         assert trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator')
+        # -------------Paginacion de los comentarios-------------------
         comments = Comment.objects.filter(trip=trip_id)
+        paginator = Paginator(comments, 2)
+        page = request.GET.get('page')
+        try:
+            comments = paginator.page(page)
+        except PageNotAnInteger:
+            comments = paginator.page(1)
+        except EmptyPage:
+            comments = paginator.page(paginator.num_pages)
+        # ------------------------------------------------------------
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
         assessment = Assessment.objects.filter(scorable_id=trip_id, traveller_id=request.user.id)
         if len(judges) == 0:
