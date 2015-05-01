@@ -15,7 +15,6 @@ def PastValidator(value):
 
 # -----------------------------------------------------------------------------------
 
-
 # Create your models here.
 class Administrator(User):
     class Meta:
@@ -118,6 +117,8 @@ class Trip(Scorable):
     # city = models.ForeignKey(City)
     city = models.CharField(max_length=50, null=False)
     country = models.CharField(max_length=50, null=False)
+    possible_venues = models.ManyToManyField(Venue)
+    
 
     class Meta:
         db_table = 'trip'

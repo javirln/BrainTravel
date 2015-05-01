@@ -16,24 +16,35 @@ from principal.services import TripService, TravellerService, CoinService
 from principal.utils import BrainTravelUtils
 
 
-# author: Javi
+# author: Juane
 def search_trip(request):
-    if request.method == 'GET':
-        title = request.GET.get('title', False)
-        trip_result = None
+    try:
+        if request.method == 'POST':
+            title = request.POST.get('title')
+        else:
+            title = request.GET.get('title')
+
+        trips = TripService.searchTrip(title)
+        paginator = Paginator(trips, 2)
+        page = request.GET.get('page')
         try:
-            trip_result = TripService.searchTrip(title)
-            return render_to_response('search.html', {'trip_result': trip_result, 'title_search': title}, context_instance=RequestContext(request))
-        except Exception as e:
-            return HttpResponse(e)
+            trips = paginator.page(page)
+        except PageNotAnInteger:
+            trips = paginator.page(1)
+        except EmptyPage:
+            trips = paginator.page(paginator.num_pages)
+        return render_to_response('search.html', {'trip_result': trips, 'title_search': title},
+                                  context_instance=RequestContext(request))
+    except:
+        return render_to_response('error.html')
 
 
-# author: Javi
+# author: Javi ----- Reviewed: Juane
 def public_trip_details(request, trip_id):
-    trip = Trip.objects.get(id=trip_id)
-    comments = Comment.objects.filter(trip=trip_id)
-    # is_edit = False
-    if trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator'):
+    try:
+        trip = Trip.objects.get(id=trip_id)
+        assert trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator')
+        comments = Comment.objects.filter(trip=trip_id)
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
         assessment = Assessment.objects.filter(scorable_id=trip_id, traveller_id=request.user.id)
         if len(judges) == 0:
@@ -44,15 +55,11 @@ def public_trip_details(request, trip_id):
             assessment = None
         else:
             assessment = list(assessment)[0]
-        # is_edit = True
         data = {'id': trip.id, 'state': trip.state}
         form = TripUpdateStateForm(initial=data)
-        return render_to_response('public_trip_details.html',
-                                  {'trip': trip, 'comments': comments, 'traveller_edit': True,
-                                   'judge': judge, 'form': form, 'assessment': assessment}, context_instance=RequestContext(request))
-    else:
-        BrainTravelUtils.save_error(request)
-        return render_to_response('search.html', {}, context_instance=RequestContext(request))
+        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'assessment': assessment}, context_instance=RequestContext(request))
+    except Exception:
+        return render_to_response('error.html')
 
 
 # author: Juane
@@ -64,14 +71,13 @@ def list_trip_administrator(request):
         return render_to_response('error.html')
     paginator = Paginator(trips, 2)
     page = request.GET.get('page')
-    url = request.get_full_path()[:-1]
     try:
         trips = paginator.page(page)
     except PageNotAnInteger:
         trips = paginator.page(1)
     except EmptyPage:
         trips = paginator.page(paginator.num_pages)
-    return render_to_response('trip_list.html', {'trips': trips, 'url': url, 'create_trip': True},
+    return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True},
                               context_instance=RequestContext(request))
 
 
@@ -87,7 +93,9 @@ def planned_trips(request):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-    return render_to_response('trip_planned_list.html', {'trips': trips, 'create_trip': False, 'title_list': 'My planned trips'}, context_instance=RequestContext(request))
+    return render_to_response('trip_planned_list.html',
+                              {'trips': trips, 'create_trip': False, 'title_list': 'My planned trips'},
+                              context_instance=RequestContext(request))
     
 
 # author: Juane
@@ -111,18 +119,7 @@ def update_state(request, trip_id):
 
 # autor: david
 @login_required()
-def list_all_by_traveller(request, optional=0):
-    if optional == "0":
-        BrainTravelUtils.save_error(request)
-    if optional == "1":
-        BrainTravelUtils.save_success(request, "Action completed successfully")
-    if optional == "2":
-        BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
-    if optional == "3":
-        BrainTravelUtils.save_success(request, "Trip deleted successfully")
-
-    url = request.get_full_path()[:-1]
-
+def list_all_by_traveller(request):
     trips = TripService.list_my_trip(request.user.id)
     if trips is not False:
         paginator = Paginator(trips, 5)
@@ -133,19 +130,14 @@ def list_all_by_traveller(request, optional=0):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips, 'url': url, 'create_trip': True, 'title_list': 'My trips'},
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My trips'},
                                   context_instance=RequestContext(request))
 
 
 # david
 @login_required()
-def list_all_by_traveller_draft(request, optional=0):
-    if optional == "0":
-        BrainTravelUtils.save_error(request)
-    if optional == "1":
-        BrainTravelUtils.save_success(request, "Action completed successfully")
+def list_all_by_traveller_draft(request):
     trips = TripService.list_trip_draft(request.user.id)
-    url = request.get_full_path()[:-1]
     if trips is not False:
         paginator = Paginator(trips, 5)
         page = request.GET.get('page')
@@ -156,7 +148,7 @@ def list_all_by_traveller_draft(request, optional=0):
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
         return render_to_response('trip_list.html',
-                                  {'trips': trips, 'url': url, 'create_trip': True, 'title_list': 'My draft trips'},
+                                  {'trips': trips, 'create_trip': True, 'title_list': 'My draft trips'},
                                   context_instance=RequestContext(request))
 
 
@@ -171,13 +163,15 @@ def trip_create(request):
             if "save" in request.POST and request.POST['save'] == "Save draft":
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
-                return redirect('/trip/draft/1')
+                BrainTravelUtils.save_success(request, "Action completed successfully")
+                return HttpResponseRedirect("/trip/draft/")
             elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)
-                return redirect('/trip/mylist/2')
-
-            return redirect('/trip/mylist/0')
+                BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
+                return HttpResponseRedirect("/trip/mylist/")
+            BrainTravelUtils.save_error(request)
+            return HttpResponseRedirect("/trip/mylist/")
 
     else:
         data = {}
@@ -205,15 +199,18 @@ def trip_edit(request, trip_id):
                 if 'save' in request.POST and request.POST['save'] == "Save draft":
                     trip.state = "df"
                     TripService.save_secure(trip)
-                    return redirect('/trip/draft/1')
+                    BrainTravelUtils.save_success(request, "Action completed successfully")
+                    return HttpResponseRedirect("/trip/draft/")
                 elif 'save' in request.POST and request.POST['save'] == "Publish Trip":
                     trip.state = "pe"
                     TripService.save_secure(trip)
-                    return redirect('/trip/mylist/2')
+                    BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
+                    return HttpResponseRedirect("/trip/mylist/")
 
             if 'delete' in request.POST:
                 TripService.delete(request, trip)
-                return redirect('/trip/mylist/3')
+                BrainTravelUtils.save_success(request, "Trip deleted successfully")
+                return HttpResponseRedirect("/trip/mylist/")
 
         else:
             data = {'city': trip.city, 'publishedDescription': trip.publishedDescription, 'country': trip.country,
@@ -277,9 +274,8 @@ def send_assessment(request):
 def list_trip_approved_by_profile(request, profile_id):
     try:
         traveller = TravellerService.find_one(profile_id)
-        url = request.get_full_path()[:-1]
         trips = TripService.list_trip_approved(traveller.id)
-        return render_to_response('trip_list.html', {'trips': trips, 'url': url, 'create_trip': True},
+        return render_to_response('trip_list.html', {'trips': trips,  'create_trip': True},
                                   context_instance=RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')
