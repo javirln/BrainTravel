@@ -42,9 +42,9 @@
 	<header id="top" class="header">
 		<div class="text-vertical-center">
 			<h1>BrainTravel</h1>
-			<h3>Automate the way you travel</h3>
-			<br> <a href="#about" class="btn btn-dark btn-lg">Find Out
-				More</a>
+			<h3>{% trans "Automate the way you travel" %}</h3>
+			<br> <a href="#about" class="btn btn-dark btn-lg">{% trans "Find Out More" %}</a>
+			
 		</div>
 	</header>
 	<!-- About -->
@@ -52,13 +52,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2>What is this?</h2>
-					<p class="lead">BrainTravel is the perfect tool for all
+					<h2>{%trans "What is this?" %}</h2>
+					<p class="lead">
+						{% blocktrans trimmed %}
+						BrainTravel is the perfect tool for all
 						travellers. It automatically creates a trip planning for you,
 						offering a daily schedule with the highest rated sites in the
 						area. It also has an internal network in which users can interact
 						between them regarding trips they made, commenting and sharing
-						experiences.</p>
+						experiences.
+						{% endblocktrans %}
+					</p>
+						
 				</div>
 			</div>
 		</div>
@@ -78,10 +83,13 @@
 									class="fa fa-calendar fa-stack-1x text-primary"></i>
 								</span>
 								<h4>
-									<strong>Automatic plans</strong>
+									<strong>{% trans "Automatic plans" %}</strong>
 								</h4>
-								<p>Day by day plan for your trip with a few clicks based on
+								<p>
+									{% blocktrans trimmed %}
+									Day by day plan for your trip with a few clicks based on
 									others travellers recommendations.</p>
+									{% endblocktrans %}
 								<!--<a href="#" class="btn btn-light">Learn More</a>-->
 							</div>
 						</div>
@@ -92,10 +100,14 @@
 									class="fa fa-compass fa-stack-1x text-primary"></i>
 								</span>
 								<h4>
-									<strong>Constraints</strong>
+									<strong>{% trans "Constraints" %}</strong>
 								</h4>
-								<p>Give us restrictions for your trip and we'll do the rest
-									for you.</p>
+								<p>
+									{% blocktrans trimmed%}
+									Give us restrictions for your trip and we'll do the rest
+									for you.
+									{% endblocktrans %}
+								</p>
 								<!--<a href="#" class="btn btn-light">Learn More</a>-->
 							</div>
 						</div>
@@ -106,9 +118,9 @@
 									class="fa fa-pie-chart fa-stack-1x text-primary"></i>
 								</span>
 								<h4>
-									<strong>Satistics</strong>
+									<strong>{% trans "Satistics" %}</strong>
 								</h4>
-								<p>Travel stats for your own orientation.</p>
+								<p> {% trans "Travel stats for your own orientation." %}</p>
 								<!--<a href="#" class="btn btn-light">Learn More</a>-->
 							</div>
 						</div>
@@ -119,9 +131,9 @@
 									class="fa fa-connectdevelop fa-stack-1x text-primary"></i>
 								</span>
 								<h4>
-									<strong>Social trips</strong>
+									<strong>{%trans "Social trips" %}</strong>
 								</h4>
-								<p>Share experiences with other users.</p>
+								<p>{%trans "Share experiences with other users." %}</p>
 								<!--<a href="#" class="btn btn-light">Learn More</a>-->
 							</div>
 						</div>
@@ -133,14 +145,31 @@
 	<!-- Callout -->
 	<aside class="callout">
 		<div class="text-vertical-center">
-			<h2>A customer says...</h2>
+			<h2>{%trans "A customer says..." %}</h2>
 			<h1>
-				<span id="js-rotating">I really like this idea of the
-					project;I love to travel and see the city from a point of view
-					"quotidian", not touristy.; If you can recommend activities outside
+				<span id="js-rotating">
+					{% blocktrans trimmed %}
+					I really like this idea of the
+					project
+					{% endblocktrans %}
+					;
+					{% blocktrans trimmed%}
+					I love to travel and see the city from a point of view
+					"quotidian", not touristy.
+					{% endblocktrans %}
+					; 
+					{% blocktrans trimmed %}
+					If you can recommend activities outside
 					the typical, to better understand the place, would be happy to use
-					the tool.;There's history, places and landscapes that only
-					residents of the area known.;That's what I ever wanted...
+					the tool.
+					{% endblocktrans %}
+					;
+					{% blocktrans trimmed %}
+					There's history, places and landscapes that only
+					residents of the area known.
+					{% endblocktrans %}
+					;
+					{% trans "That's what I ever wanted..." %}
                 </span>
 			</h1>
 		</div>
