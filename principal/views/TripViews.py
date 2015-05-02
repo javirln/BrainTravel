@@ -3,6 +3,7 @@ import traceback
 
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models.query_utils import Q
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
@@ -10,7 +11,7 @@ from django.template.context import RequestContext
 
 from principal.forms import TripEditForm, CommentForm
 from principal.forms import TripUpdateStateForm
-from principal.models import Judges, Assessment
+from principal.models import Judges, Assessment, Day, Venue, VenueDay
 from principal.models import Trip, Comment, Traveller
 from principal.services import TripService, TravellerService, CoinService, CommentService
 from principal.utils import BrainTravelUtils
@@ -235,6 +236,28 @@ def trip_edit(request, trip_id):
         print(traceback.format_exc())
         return render_to_response('error.html')
 
+
+@permission_required('principal.traveller')
+def change_venue(request):
+    trip = Trip.objects.get(id = request.POST['trip'])
+    assert trip.traveller.id == request.user.id
+    
+    try:
+        day = Day.objects.get(id = request.POST['day'])
+        oldVenue = Venue.objects.get(id = request.POST['oldVenue'])
+        newVenue = Venue.objects.get(id = request.POST['newVenue'])
+        
+        venue_day = VenueDay.objects.get(Q(venue = oldVenue) & Q(day = day))
+        venue_day.venue = newVenue
+        venue_day.save()
+        
+        trip.possible_venues.remove(newVenue)
+        trip.possible_venues.add(oldVenue)
+        
+        return HttpResponseRedirect("/show_planning/" + str(trip.id))
+    except Exception as e:
+        return render_to_response('error.html')
+        
 
 # author: Javi Rodriguez ----- Reviewed: Juane
 @login_required()

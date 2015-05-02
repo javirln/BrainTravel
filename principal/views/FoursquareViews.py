@@ -102,28 +102,26 @@ def foursquare_list_venues(request):
 
                 items_food += venues_eat['groups'][0]['items']
 
+                all_venues = FoursquareServices.filter_and_save(items_venues)
+                all_food = FoursquareServices.filter_and_save(items_food, food=True)
+                
+                all_venues = FoursquareServices.save_data(all_venues)
+                all_food = FoursquareServices.save_data(all_food)
+                
+                
                 
                 #Llamada al nuevo algoritmo
                 plan_venues = FoursquareServices.get_plan(items_venues, days)
                 plan_food = FoursquareServices.get_plan_food(items_food, days)
-                #Day 1
-                print "=================== DIA 1 =========================="
-                for venue in plan_venues[0][0 : plan_venues[1][0]]:
-                    print venue['venue']['name']
-
-                print "===================================================="
-
-                # dicc_venues = FoursquareServices.get_venues_order("-31.4265080477", "-64.1809502782", items_venues)
-
                 # Filter and save
                 selected_venues = FoursquareServices.filter_and_save(plan_venues[0])
                 selected_food = FoursquareServices.filter_and_save(plan_food, food=True)
                 
-                selected_venues_with_photos = FoursquareServices.save_data(selected_venues)
-                selected_food_with_photos = FoursquareServices.save_data(selected_food)
+                #selected_venues_with_photos = FoursquareServices.save_data(selected_venues)
+                #selected_food_with_photos = FoursquareServices.save_data(selected_food)
 
-                trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues_with_photos, plan_venues[1],
-                                                      selected_food_with_photos)
+                trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues, plan_venues[1],
+                                                      selected_food, all_venues, all_food)
 
                 # traveller.coins -= coins_cost
                 # traveller.save()
