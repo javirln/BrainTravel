@@ -96,8 +96,6 @@ def filter_and_save(items, food=False):
     all_venues = []
     id_list = []
     counter = 0
-    if food:
-        amount_sites = 3  # En el caso que estemos seleccionando sitios para comer, solo elegimos 3 por dia
     for item in items:
         venue = item['venue']
         id = venue['id']
@@ -240,19 +238,23 @@ def test_plan():
 
 
 # autor: david
-def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, indexes_venues, selected_food_with_photos):
+def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, indexes_venues, selected_food_with_photos, all_venues, all_food):
     start_date = tripForm.data['startDate']
     start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
     days = int(tripForm.cleaned_data['days'])
     country = tripForm.cleaned_data['country']
     city = tripForm.cleaned_data['city']
     end_date = start_date + timedelta(days=days)
+    
 
     trip = Trip(name=str(days) + " days in " + city, publishedDescription="", state='ap',
                 startDate=start_date, endDate=end_date, planified=True, coins=coins_cost,
                 traveller=TravellerService.find_one(request.user.id),
                 city=city, country=country)
     trip.save()
+    
+    trip.possible_venues.add(*(set(all_venues) - set(selected_venues_with_photos)))
+    trip.possible_venues.add(*(set(all_food) - set(selected_food_with_photos)))
 
     for num_day in range(1, days + 1):
         # si no es la primera iteracion sumamos "days" a la fecha
@@ -384,7 +386,6 @@ def get_plan(fs_venues, num_days):
             return (selected_venues, index_days)
         
     return (selected_venues, index_days)
-
 
 def get_plan_food(fs_venues_food, num_days):
     origin = fs_venues_food[0]

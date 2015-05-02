@@ -58,8 +58,11 @@
                         <div class="col-sm-3 col-xs-6 clearfix">
                             <img src="{{venue.photo}}" class="img-responsive img-thumbnail img-venue" onerror="this.src='{% static "img/no-image.png" %}'">
                             <h4><a href="/venue_details/{{ venue.id }}" >{{venue.name}}</a></h4>
-
+                            <a onclick="loadDataModalChangeVenue({{venue.id}}, {{day.id}});" id="changeVenue" type="button" class="btn btn-default" data-toggle="modal" data-target="#changeVenueModal">
+                            	<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                            </a>
                         </div>
+                        
                         {% if forloop.counter|divisibleby:2 %}
 						<div class="clearfix visible-xs-block"></div>
 						{% endif %}
@@ -79,6 +82,9 @@
                             <img src="{{venue.photo}}"
                                 class="img-responsive img-thumbnail img-venue" onerror="this.src='{% static "img/no-image.png" %}'">
                             <h4><a href="/venue_details/{{ venue.id }}" >{{venue.name}}</a></h4>
+                            <a onclick="loadDataModalChangeFood({{venue.id}}, {{day.id}});" id="changeVenue" type="button" class="btn btn-default" data-toggle="modal" data-target="#changeFoodModal">
+                            	<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                            </a>
                         </div>
                         {% if forloop.counter|divisibleby:2 %}
 						<div class="clearfix visible-xs-block"></div>
@@ -93,8 +99,176 @@
         </div>
         {% endfor %}
     </div>
+    
+    <div class="modal fade" id="changeVenueModal" tabindex="-1" role="dialog" aria-labelledby="VenueModal" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Current Venue</h4>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10">
+                    	<div class="col-sm-12 col-xs-6">
+                            <img id="imageVenueToChange" src="{{venue.photo}}" class="img-responsive img-thumbnail img-venue" onerror="this.src='{% static "img/no-image.png" %}'">
+                            <h4 id="nameCurrentVenue">Name</h4>
+                        </div>
+                        
+                        <form action="/planner/change_venue/" method="POST">
+                        	{% csrf_token %}
+                        	<input type="hidden" id="oldVenue" name="oldVenue" value="" />
+                        	<input type="hidden" id="dayVenue" name="day" value="" />
+                        	<input type="hidden" id="trip" name="trip" value="{{trip.id}}" />
+                        	
+	                        <select id="selectNewVenue" name="newVenue" style="display:none;" tabindex="-1" class="chosen-select" data-placeholder="Choose a new venue...">
+	                        	<option></option>
+	                        	{% for v in trip.possible_venues.all %}
+	                        		{% if not v.is_food %}
+	                        			<option value="{{v.id}}">{{v.name}}</option>
+	                        		{% endif %}
+	                        	{%endfor%}
+	                        </select>
+	                        <button class="btn btn-primary">Change!</button>
+						</form>
+                        
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="changeFoodModal" tabindex="-1" role="dialog" aria-labelledby="FoodModal" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="foodModal">Current Venue</h4>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10">
+                    	<div class="col-sm-12 col-xs-6">
+                            <img id="imageFoodToChange" src="{{venue.photo}}" class="img-responsive img-thumbnail img-venue" onerror="this.src='{% static "img/no-image.png" %}'">
+                            <h4 id="nameCurrentFood">Name</h4>
+                        </div>
+                        
+                        <form action="/planner/change_venue/" method="POST">
+                        	{% csrf_token %}
+                        	<input type="hidden" id="oldFood" name="oldVenue" value="" />
+                        	<input type="hidden" id="dayFood" name="day" value="" />
+                        	<input type="hidden" id="trip" name="trip" value="{{trip.id}}" />
+	                        <select id="selectNewFood" name="newVenue" style="display:none;" tabindex="-1" class="chosen-select" data-placeholder="Choose a new venue...">
+	                        	<option></option>
+	                        	{% for v in trip.possible_venues.all %}
+	                        		{% if v.is_food %}
+	                        			<option value="{{v.id}}">{{v.name}}</option>
+	                        		{% endif %}
+	                        	{% endfor %}
+	                        </select>
+	                        <button class="btn btn-primary" type="submit">Change!</button>
+						</form>
+                        
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
 </div>
     <script>
+    
+    $(function() {
+ 		$('.chosen-select').chosen();
+ 		$('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+ 		//$("#selectNewVenue").trigger("chosen:updated");
+ 	});
+    
+    function changeModalPhoto(id_venue){
+		$.ajax({
+		    url : "/venue_details_json/" + id_venue + "/", // the endpoint
+		    type : "GET", // http method
+			dataType : "json",
+		    // handle a successful response
+		    success : function(json) {
+		    	$.each($.parseJSON(json), function(){
+					$.each(this.fields, function(key, value){
+						if(key == "photo"){
+							$('#imageVenueToChange').attr("src", value);
+							//$('#selectNewVenue').attr('selectedIndex', '-1');
+							//$('#selectNewVenue option[value="' + id_venue + '"]').attr('selected', 'selected');
+						}
+						if(key == "name"){
+							$('#nameCurrentVenue').empty();
+							$('#nameCurrentVenue').append(value);
+						}
+					});
+		    	});	
+			},
+		
+		    // handle a non-successful response
+		    error : function(xhr,errmsg,err) {
+		    }
+		});
+    }
+    
+    
+	function changeModalPhotoFood(id_venue){
+		$.ajax({
+		    url : "/venue_details_json/" + id_venue + "/", // the endpoint
+		    type : "GET", // http method
+			dataType : "json",
+		    // handle a successful response
+		    success : function(json) {
+		    	$.each($.parseJSON(json), function(){
+					$.each(this.fields, function(key, value){
+						if(key == "photo"){
+							$('#imageFoodToChange').attr("src", value);
+							//$('#selectNewVenue').attr('selectedIndex', '-1');
+							//$('#selectNewVenue option[value="' + id_venue + '"]').attr('selected', 'selected');
+						}
+						if(key == "name"){
+							$('#nameCurrentFood').empty();
+							$('#nameCurrentFood').append(value);
+						}
+					});
+		    	});	
+			},
+		
+		    // handle a non-successful response
+		    error : function(xhr,errmsg,err) {
+		    }
+		});
+    }
+    
+    
+    
+    $('#selectNewVenue').change(function(){
+    	changeModalPhoto(this.value);
+    });
+    
+	$('#selectNewFood').change(function(){
+    	changeModalPhotoFood(this.value);
+    });
+    
+    
+    
+    
+    function loadDataModalChangeVenue(venueId, dayId){
+    	$('#oldVenue').attr('value', venueId);
+    	$('#dayVenue').attr('value', dayId);
+    	changeModalPhoto(venueId);
+    }
+    
+	function loadDataModalChangeFood(venueId, dayId){
+		$('#oldFood').attr('value', venueId);
+    	$('#dayFood').attr('value', dayId);
+    	changeModalPhotoFood(venueId);
+    }
+    
     var infowindow = null;
     function initialize() {
         var address = "{{ trip.city }}" + ", " + "{{ trip.country }}";

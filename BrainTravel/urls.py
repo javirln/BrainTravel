@@ -39,12 +39,21 @@ urlpatterns = patterns('',
     url(r'^venue_details/(?P<id_venue>[0-9]+)$', 'principal.views.FoursquareViews.retrieve_venue'),
     url(r'^venue_details/rate/$', 'principal.views.TripViews.send_feedback'),
     url(r'^venue_details/value_tip/(?P<id_venue>[0-9]+)/(?P<id_tip>[0-9]+)$', 'principal.views.TripViews.value_tip'),
+    
+    #Para llamadas en ajax
+    url(r'^venue_details_json/(?P<id_venue>[0-9]+)/$', 'principal.views.VenueViews.venue_details_json'),
+    url(r'^venues_to_change_json/(?P<id_trip>[0-9]+)/$', 'principal.views.VenueViews.venues_to_change_json'),
+    
+    
+    
     url(r'^statistics/$', 'principal.views.TripViews.stats'),
     url(r'^cookies_policies/$', 'principal.views.UserViews.cookies_policies'),
     url(r'^about_us/$', 'principal.views.UserViews.about_us'),
     url(r'^privacy_terms/$', 'principal.views.UserViews.privacy_terms'),
+    
     #planner URLs
     url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
+    url(r'^planner/change_venue/$', 'principal.views.TripViews.change_venue'),
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),
 
     #i18n
