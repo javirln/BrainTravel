@@ -37,5 +37,20 @@
 		    </table>
 		</div>
 	</div>
+
+    <div class="pagination col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <span class="step-links">
+        {% if list_payments.has_previous %}
+            <a href="?page={{ list_payments.previous_page_number }}">{% trans "previous" %}</a>
+        {% endif %}
+            <span class="current">
+        Page {{ list_payments.number }} of {{ list_payments.paginator.num_pages }}.
+        </span>
+            {% if list_payments.has_next %}
+                <a href="?page={{ list_payments.next_page_number }}">{% trans "next" %}</a>
+            {% endif %}
+        </span>
+    </div>
+
 </div>
 {% endblock %}

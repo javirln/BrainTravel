@@ -35,6 +35,20 @@
 		        </tbody>
 		    </table>
 		</div>
-		</div>
+	</div>
+
+    <div class="pagination col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <span class="step-links">
+            {% if list_coin_history.has_previous %}
+                <a href="?page={{ list_coin_history.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+                    Page {{ list_coin_history.number }} of {{ list_coin_history.paginator.num_pages }}.
+            </span>
+            {% if list_coin_history.has_next %}
+                <a href="?page={{ list_coin_history.next_page_number }}">next</a>
+            {% endif %}
+        </span>
     </div>
+</div>
 {% endblock %}

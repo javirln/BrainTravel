@@ -28,7 +28,7 @@ class LoginForm(forms.Form):
                 'class': 'form-control',
                 'required': 'required',
                 'maxlength': '254',
-                'placeholder': 'Email address'
+                'placeholder': _('Email address')
             }
         )
     )
@@ -40,7 +40,7 @@ class LoginForm(forms.Form):
                 'class': 'form-control',
                 'required': 'required',
                 'maxlength': '32',
-                'placeholder': 'Password'
+                'placeholder': _('Password')
             }
         )
     )
@@ -53,7 +53,7 @@ class LoginForm(forms.Form):
             if not user.is_active:
                 self.add_error('username', "Your account is desactivated")
         else:
-            self.add_error('username', "Wrong email or password")
+            self.add_error('username', _("Wrong email or password"))
 
         return self.cleaned_data
 
@@ -101,12 +101,12 @@ class TripEditForm(forms.Form):
         end_date = self.data['endDate']
         end_date = datetime.strptime(end_date, '%d/%m/%Y').date()
         if start_date > datetime.now().date():
-            self.add_error('startDate', "Must be a date in the past")
+            self.add_error('startDate', _("Must be a date in the past"))
         if start_date > end_date:
-            self.add_error('startDate', "Incorrect logic date")
-            self.add_error('endDate', "Incorrect logic date")
+            self.add_error('startDate', _("Incorrect logic date"))
+            self.add_error('endDate', _("Incorrect logic date"))
         if end_date > datetime.now().date():
-            self.add_error('endDate', "Must be a date in the past")
+            self.add_error('endDate', _("Must be a date in the past"))
 
         return self.cleaned_data
 
@@ -122,7 +122,7 @@ class PlanForm(forms.Form):
         start_date = self.data['startDate']
         start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
         if start_date < datetime.now().date():
-            self.add_error('startDate', "Must be a date in the future")
+            self.add_error('startDate', _("Must be a date in the future"))
         return self.data
 
 
@@ -191,9 +191,9 @@ class TravellerEditProfileForm(forms.Form):
             content_types = ['image/png', 'image/jpg', 'image/jpeg']
             if self.cleaned_data.get('photo').content_type in content_types:
                 if self.cleaned_data.get('photo').size > 2 * 1024 * 1024:
-                    self.add_error('photo', "Image file too large ( > 2mb )")
+                    self.add_error('photo', _("Image file too large ( > 2mb )"))
             else:
-                self.add_error('photo', "Not valid file type. Only PNG and JPG are supported")
+                self.add_error('photo', _("Not valid file type. Only PNG and JPG are supported"))
         return self.cleaned_data
 
 
@@ -248,7 +248,7 @@ class TravellerEditPasswordForm(forms.Form):
                 'minlength': '8',
                 'pattern': '^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$',
                 'data-match': '#id_password',
-                'data-match-error': "Whoops, these don't match"
+                'data-match-error': _("Whoops, these don't match")
             }
         )
     )
@@ -257,15 +257,15 @@ class TravellerEditPasswordForm(forms.Form):
         traveller = Traveller.objects.get(id=self.cleaned_data.get('id'))
         old_password = self.cleaned_data.get('old_password')
         if not check_password(old_password, traveller.password):
-            self.add_error('old_password', "Wrong password")
+            self.add_error('old_password', _("Wrong password"))
         if self.cleaned_data.get('password') != self.cleaned_data.get('password_repeat'):
-            self.add_error('password_repeat', "Password do not match")
+            self.add_error('password_repeat', _("Password do not match"))
         return self.cleaned_data
 
 
 class FormPaypalOwn(PayPalPaymentsForm):
     def get_image(self):
-        return "https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png";
+        return "https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png"
 
 
 # @author: Juane

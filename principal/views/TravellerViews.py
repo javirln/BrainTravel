@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required, permission_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render_to_response, HttpResponseRedirect
 from django.template.context import RequestContext
 
@@ -80,6 +81,14 @@ def all_payments(request):
     if request.method == 'GET' or request.method == 'POST':
         try:
             list_payments = PaymentsService.all_payments(request.user.id)
+            paginator = Paginator(list_payments, 5)
+            page = request.GET.get('page')
+            try:
+                list_payments = paginator.page(page)
+            except PageNotAnInteger:
+                list_payments = paginator.page(1)
+            except EmptyPage:
+                list_payments = paginator.page(paginator.num_pages)
             return render_to_response('my_payments.html',
                                       {'list_payments': list_payments},
                                       context_instance=RequestContext(request))
