@@ -170,57 +170,24 @@
 	<script>
         $(document).ready(function(){
             $.cookieBar({
+            	bottom: true,
+            	fixed: true,
                 policyURL: 'cookies_policies',
                 policyText: 'Cookies policy',
                 policyButton : true,
-                bottom: true,
                 declineButton: true
             });
         });
+        
+        
 		$("#js-rotating").Morphext({
 			animation : "fadeIn",
 			separator : ";",
 			speed : 6000
 		});
 
-		// Closes the sidebar menu
-		$("#menu-close").click(function(e) {
-			e.preventDefault();
-			$("#sidebar-wrapper").toggleClass("active");
-		});
-
-		// Opens the sidebar menu
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#sidebar-wrapper").toggleClass("active");
-		});
-
-		$('#searchCollapse').on(){
-			
-		}
+	
 		
-		// Scrolls to the selected menu item on the page
-		$(function() {
-			$('a[href*=#]:not([href=#])')
-					.click(
-							function() {
-								if (location.pathname.replace(/^\//, '') == this.pathname
-										.replace(/^\//, '')
-										|| location.hostname == this.hostname) {
-
-									var target = $(this.hash);
-									target = target.length ? target
-											: $('[name=' + this.hash.slice(1)
-													+ ']');
-									if (target.length) {
-										$('html,body').animate({
-											scrollTop : target.offset().top
-										}, 1000);
-										return false;
-									}
-								}
-							});
-		});
 	</script>
 
 </body>
