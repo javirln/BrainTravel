@@ -266,3 +266,25 @@ class TravellerEditPasswordForm(forms.Form):
 class FormPaypalOwn(PayPalPaymentsForm):
     def get_image(self):
         return "https://www.paypalobjects.com/webstatic/en_US/btn/btn_checkout_pp_142x27.png";
+
+
+# @author: Juane
+class CommentForm(forms.Form):
+    id_trip = forms.IntegerField(
+        widget=forms.HiddenInput
+    )
+    comment = forms.CharField(
+        required=True,
+        min_length=3,
+        max_length=254,
+        widget=forms.Textarea(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                'maxlength': '254',
+                'minlength': '3',
+                'rows': '3',
+                'style': 'resize: none;'
+            }
+        )
+    )

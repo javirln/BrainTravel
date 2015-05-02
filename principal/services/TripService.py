@@ -1,7 +1,6 @@
 # -*- coding: latin-1 -*-
 
 from django.db.models import Q, Count, Sum
-
 from principal.models import Trip, Traveller, Comment, Assessment, Scorable, Feedback, Venue
 
 
@@ -109,28 +108,6 @@ def save_secure(trip):
         pass
     else:
         trip.save()
-
-
-# author: Javi Rodriguez
-def submit_comment(user_id, comment_text, trip_id):
-    traveller = Traveller.objects.get(id=user_id)
-    trip = Trip.objects.get(id=trip_id)
-    results = {'state': True, 'ownership': True}
-    if trip.state == 'ap':
-        if traveller.id != trip.traveller.id:
-            comment = Comment(
-                description=comment_text,
-                trip=trip,
-                traveller=traveller,
-            )
-            comment.save()
-            return results
-        else:
-            results['ownership'] = False
-            return results
-    else:
-        results['state'] = False
-        return results
 
 
 # david
