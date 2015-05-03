@@ -227,3 +227,6 @@ body {
 	text-align: center;
 	font-weight: bold;
 }
+.venue-details{
+	min-height: 350px;
+}
