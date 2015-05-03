@@ -77,7 +77,7 @@ class Feedback(models.Model):
 
     # ------------- Relationships --------------#
     traveller = models.ForeignKey('principal.Traveller')
-    venues = models.ForeignKey(Venue)
+    venues = models.ForeignKey(Venue) #Deberia ser Venue, en singular
 
     class Meta:
         db_table = 'feedback'

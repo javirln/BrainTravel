@@ -112,7 +112,7 @@ def foursquare_list_venues(request):
                 
                 #Llamada al nuevo algoritmo
                 plan_venues = FoursquareServices.get_plan(items_venues, days)
-                plan_food = FoursquareServices.get_plan_food(items_food, days)
+                plan_food = FoursquareServices.get_plan_food(items_food, days, items_venues[0])
                 # Filter and save
                 selected_venues = FoursquareServices.filter_and_save(plan_venues[0])
                 selected_food = FoursquareServices.filter_and_save(plan_food, food=True)
