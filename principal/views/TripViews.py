@@ -255,7 +255,7 @@ def change_venue(request):
         trip.possible_venues.add(oldVenue)
         
         return HttpResponseRedirect("/show_planning/" + str(trip.id))
-    except Exception as e:
+    except Exception:
         return render_to_response('error.html')
         
 
