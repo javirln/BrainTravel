@@ -47,7 +47,7 @@ urlpatterns = patterns('',
     
     
     url(r'^statistics/$', 'principal.views.TripViews.stats'),
-    url(r'^cookies_policies/$', 'principal.views.UserViews.cookies_policies'),
+    url(r'^cookies_policy/$', 'principal.views.UserViews.cookies_policies'),
     url(r'^about_us/$', 'principal.views.UserViews.about_us'),
     url(r'^privacy_terms/$', 'principal.views.UserViews.privacy_terms'),
     

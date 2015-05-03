@@ -14,5 +14,5 @@ def create(id_traveller, amount):
 
 
 def all_payments(id_traveller):
-    payment = Payment.objects.all().filter(traveller=id_traveller)
+    payment = Payment.objects.all().filter(traveller=id_traveller).order_by('-date')
     return payment

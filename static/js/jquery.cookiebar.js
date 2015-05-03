@@ -130,7 +130,7 @@
 				if(options.append){
 					$(options.element).append('<div id="cookie-bar"'+fixed+zindex+'><p>'+message+acceptButton+declineButton+policyButton+'</p></div>');
 				}else{
-					$(options.element).prepend('<div id="cookie-bar"'+fixed+zindex+'><p>'+message+acceptButton+declineButton+policyButton+'</p></div>');
+					$(options.element).prepend('<div id="cookie-bar"'+fixed+zindex+'><div class="col-xs-12 col-sm-3 col-sm-offset-3"><p>'+message+'</p></div><div class="col-xs-12 col-sm-3">'+acceptButton+declineButton+policyButton+'</div></div>');
 				}
 			}
 			

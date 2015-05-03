@@ -1,36 +1,56 @@
 {% extends 'base.html' %}
 {% block title %} Payments {% endblock %}
 {% block content %}
-<div class="container">
-    {% load i18n %}
+{% load i18n %}
 
-    <div class="text-center">
-        <h2>{% trans "List of all my payments" %}</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+		    <div>
+		        <h2>{% trans "Payment historial" %}</h2>
+	           <p>{% trans "Those are payments that made through the platform to buy coins" %}
+		    </div>
+		
+		    {% if not list_payments %}
+		        <h4>{% trans "We couldn't find anything..." %}</h4>
+		    {% endif %}
+		
+		    <table class="table table-striped">
+		        <thead>
+		        <tr>
+ 		            <!-- <th>{% trans "Id" %}</th> -->
+		            <th>{% trans "Amount" %}</th>
+		            <th>{% trans "Date" %}</th>
+		            <th>{% trans "Concept" %}</th>
+		        </tr>
+		        </thead>
+		        <tbody>
+		        {% for payment in list_payments %}
+		            <tr>
+		                <!-- <td>{{ payment.id|safe }}</td> -->
+		                <td>{{ payment.amount|safe }}</td>
+		                <td>{{ payment.date|date:"D d M Y"|safe }}</td>
+		                <td>{{ payment.coinhistory.concept|safe }}</td>
+		            </tr>
+		        {% endfor %}
+		        </tbody>
+		    </table>
+		</div>
+	</div>
+
+    <div class="pagination col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <span class="step-links">
+        {% if list_payments.has_previous %}
+            <a href="?page={{ list_payments.previous_page_number }}">{% trans "previous" %}</a>
+        {% endif %}
+            <span class="current">
+        Page {{ list_payments.number }} of {{ list_payments.paginator.num_pages }}.
+        </span>
+            {% if list_payments.has_next %}
+                <a href="?page={{ list_payments.next_page_number }}">{% trans "next" %}</a>
+            {% endif %}
+        </span>
     </div>
 
-    {% if not list_payments %}
-        <h4>{% trans "We couldn't find anything..." %}</h4>
-    {% endif %}
-
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>{% trans "Id" %}</th>
-            <th>{% trans "Amount" %}</th>
-            <th>{% trans "Date" %}</th>
-            <th>{% trans "Concept" %}</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for payment in list_payments %}
-            <tr>
-                <td>{{ payment.id|safe }}</td>
-                <td>{{ payment.amount|safe }}</td>
-                <td>{{ payment.date|date:"D d M Y"|safe }}</td>
-                <td>{{ payment.coinhistory.concept|safe }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 </div>
 {% endblock %}
