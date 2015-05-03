@@ -181,12 +181,11 @@ def value_tip(id_tip, id_venue):
 
 # author: Javi Rodriguez
 def stats():
-    travellers_travelling = Traveller.objects.annotate(num_trips=Count('trip')).order_by('-num_trips')
-    travellers_publishing = Traveller.objects.annotate(num_trips=Count('trip')) \
-        .filter(trip__planified=False).order_by('-num_trips')
-    best_trips = Trip.objects.filter(judges__likes=True).annotate(num_judges=Count('judges')).order_by('-num_judges')
-    most_liked_trips = Trip.objects.filter(planified=False).annotate(num_likes=Count('likes')).order_by('-num_likes')
-    most_useful_tips = Feedback.objects.annotate(num_useful=Count('usefulCount')).order_by('-num_useful')
+    travellers_travelling = Traveller.objects.annotate(num_trips=Count('trip')).order_by('-num_trips')[:5]
+    travellers_publishing = Traveller.objects.annotate(num_trips=Count('trip')).filter(trip__planified=False).order_by('-num_trips')[:5]
+    best_trips = Trip.objects.filter(judges__likes=True).annotate(num_judges=Count('judges')).order_by('-num_judges')[:5]
+    most_liked_trips = Trip.objects.filter(planified=False).annotate(num_likes=Count('likes')).order_by('-num_likes')[:5]
+    most_useful_tips = Feedback.objects.annotate(num_useful=Count('usefulCount')).order_by('-num_useful')[:5]
     result = {'travellers_travelling': travellers_travelling, 'travellers_publishing': travellers_publishing,
               'best_trips': best_trips, 'most_liked_trips': most_liked_trips, 'most_useful_tips': most_useful_tips}
     return result

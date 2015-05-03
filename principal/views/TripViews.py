@@ -4,7 +4,7 @@ import traceback
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models.query_utils import Q
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
@@ -12,8 +12,8 @@ from django.template.context import RequestContext
 from principal.forms import TripEditForm, CommentForm
 from principal.forms import TripUpdateStateForm
 from principal.models import Judges, Assessment, Day, Venue, VenueDay
-from principal.models import Trip, Comment, Traveller
-from principal.services import TripService, TravellerService, CoinService, CommentService
+from principal.models import Trip, Comment
+from principal.services import TripService, TravellerService, CommentService
 from principal.utils import BrainTravelUtils
 
 
@@ -294,7 +294,6 @@ def send_assessment(request):
         return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
     except:
         msg_errors = ["Something went wrong..."]
-        print traceback.format_exc()
         return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
 
 
@@ -325,7 +324,6 @@ def send_feedback(request):
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id)
     except:
         msg_errors = ["Something went wrong..."]
-        print traceback.format_exc()
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id, {'msg_errors': msg_errors})
 
 @login_required()
@@ -345,7 +343,6 @@ def value_tip(request, id_venue, id_tip):
         return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
     except:
         msg_errors = ["Something went wrong..."]
-        print traceback.format_exc()
         return HttpResponseRedirect("/" + url[1] + "/" + id_venue, {'msg_errors': msg_errors})
 
 @login_required()
