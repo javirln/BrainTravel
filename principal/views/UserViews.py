@@ -1,18 +1,15 @@
-from django.core.exceptions import ValidationError
-
 import hashlib
-import json
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import HttpResponse, JsonResponse, \
     HttpResponseRedirect
-from django.shortcuts import redirect, render_to_response, render
+from django.shortcuts import redirect, render_to_response
 from django.template.context import RequestContext
 
 from principal.forms import LoginForm, TravellerRegistrationForm
-from principal.services import TravellerService, UserService
+from principal.services import TravellerService
 from principal.utils import BrainTravelUtils
 from principal.views import EmailViews
 from django.utils.translation import ugettext as _
@@ -32,7 +29,7 @@ def sign_in(request):
                     return redirect("/")
                 else:
                     return render_to_response('error.html')
-            except:
+            except Exception as e:
                 return render_to_response('error.html')
         else:
             return render_to_response('signin.html', {'form': form, 'registerForm': registerForm}, context_instance=RequestContext(request))

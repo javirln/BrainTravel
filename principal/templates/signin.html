@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 {% block title %} Sign in {% endblock %}
 {% block content %}
-<div class="container-fluid">
+{% load i18n %}
 
-    <div class="omb_login col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+<div class="container-fluid">
+    <div class="omb_login col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
         <form id="siginForm" class="omb_loginForm" action="/signin/" autocomplete="off" method="POST" role="form" data-toggle="validator">
+        	{% csrf_token %}
             <div class="omb_authTitle">
-                Login or <a href="#" data-toggle="modal" data-target="#registerModal">Sign up</a>
+                <p>{% trans "Login" %}</p>
+                <p class="small">{% trans "Don't have an account yet?" %}<a href="#" data-toggle="modal" data-target="#registerModal"> {% trans "Sign up" %}</a></p>
+            </div>
+            <div>
+                
             </div>
             {% if form.errors %}
-                <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12 col-lg-12" role="alert">
+                <div class="alert alert-danger alert-dismissible col-xs-12" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     {% if  form.visible_fields.0.errors %}
                         <strong>Email</strong>
@@ -20,8 +26,8 @@
                         {{ form.visible_fields.1.errors }}
                     {% endif %}
                 </div>
+                <div class="clearfix"></div>
             {% endif %}
-            {% csrf_token %}
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon">
@@ -50,47 +56,49 @@
     
     <div class="modal fade registrationForm" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
-            <div class="modal-content">
+            <div class="modal-content modal-bt">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
                 </div>
-                <div class="modal-body row">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-10">
-                        <form class="form-horizontal" action="/register_traveller/" id="traveller-registration" method="post" data-toggle="validator" role="form">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="fa fa-user"></span>
-                                    </div>
-                                    <input  type="text" class="form-control" id="first_name" name="first_name" placeholder="Name" required />
-                                </div>
-                                <span class="help-block with-errors"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="fa fa-envelope"></span>
-                                    </div>
-                                    <input type="email" id="email" name="username" class="form-control" data-error="Invalid email address" placeholder="email address" required />
-                                </div>
-                                <span class="help-block with-errors"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label><input type="checkbox" name="terms" required> I agree with the <a href="/privacy_terms">Terms and Conditions</a>.</label>
-                                <span class="help-block with-errors"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" id="singUp-button" class="btn btn-lg btn-primary btn-block">Sign up</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-sm-1"></div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+		                    <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+		                        <form class="form-horizontal" id="traveller-registration" method="post" data-toggle="validator" role="form">
+		                            {% csrf_token %}
+		                            <div class="form-group">
+		                                <div class="input-group">
+		                                    <div class="input-group-addon">
+		                                        <span class="fa fa-user"></span>
+		                                    </div>
+		                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Name" required="required" />
+		                                </div>
+		                                <span class="help-block with-errors"></span>
+		                            </div>
+		
+		                            <div class="form-group">
+		                                <div class="input-group">
+		                                    <div class="input-group-addon">
+		                                        <span class="fa fa-envelope"></span>
+		                                    </div>
+		                                    <input type="email" id="email" name="email" class="form-control" data-error="Invalid email address" placeholder="email address" required="required" />
+		                                </div>
+		                                <span class="help-block with-errors"></span>
+		                            </div>
+		
+		                            <div class="form-group">
+		                                <label><input type="checkbox" name="terms" required> I agree with the <a href="/privacy_terms" target="_blank">Terms and Conditions</a>.</label>
+		                                <span class="help-block with-errors"></span>
+		                            </div>
+		
+		                            <div class="form-group">
+		                                <button type="submit" id="singUp-button" class="btn btn-lg btn-primary btn-block">Sign up</button>
+		                            </div>
+		                        </form>
+		                    </div>
+		                </div>
+		            </div>
                 </div>
             </div>
         </div>
@@ -98,6 +106,15 @@
 </div>
 
 <script>
+
+	$('#traveller-registration').validator().on('submit', function (e) {
+		if (e.isDefaultPrevented()) {}
+		else {
+			e.preventDefault();
+	    	register_traveller();
+	  	}
+	});
+
 	// This function gets cookie with a given name
 	function getCookie(name) {
 	    var cookieValue = null;
@@ -149,13 +166,10 @@
 	    }
 	});
 	
-	$('#traveller-registration').on('submit', function(event){
-	    event.preventDefault();
-		$('#singUp-button').hide();
-	    register_traveller();
-	});
 	
 	function register_traveller() {
+		$('#singUp-button').hide();
+		
 		$.ajax({
 	        url : "/register_traveller/", // the endpoint
 	        type : "POST", // http method
@@ -165,11 +179,12 @@
 	        success : function(json) {
 				$('#singUp-button').show()
 	            if(json.success == true){
-	                sweetAlert("Well done!",json.success, "success"); // log the returned json to the console    
+	                sweetAlert("Well done!", "", "success"); // log the returned json to the console    
 	            }else{
 	                sweetAlert(json.error, "","error");
+	                //alert(json.error);
 				}
-				$('#traveller-registration')[0].reset();
+				//$('#traveller-registration')[0].reset();
 			},
 	
 	        // handle a non-successful response

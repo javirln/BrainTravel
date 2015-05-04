@@ -2,232 +2,6 @@
 {% block title %} Details {% endblock %}
 {% block content %}
 <div class="container">
-    <!--<div class="row">-->
-        <!--<div class="col-xs-12">-->
-            <!--<h1>{{trip.name}}</h1>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--<div class="row">-->
-    <!--<div class="col-lg-9 animated fadeInUp">-->
-        <!--<div class="media well">-->
-            <!--<div class="row">-->
-                <!--<div class="col-xs-12 col-md-2 col-sm-2 col-lg-2 text-center">-->
-                    <!--<div>-->
-                        <!--<img class="avatar img-circle img-thumbnail" src="/{{trip.traveller.photo}}" width="64" title="{{trip.traveller.first_name}}">-->
-                        <!--<p>-->
-                            <!--<strong><a href="/profile/{{trip.traveller.id}}">{{trip.traveller}}</a></strong>-->
-                            <!--{% if trip.traveller.reputation != None %}-->
-                            <!--<br><i class="fa fa-star"></i> {{ trip.traveller.reputation }} / 10-->
-                            <!--{% endif %}-->
-                        <!--</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-xs-12 col-sm-10 col-lg-10 col-md-10">-->
-                    <!--<div class="text-justify media-body">-->
-                        <!--<blockquote>-->
-                            <!--{{trip.publishedDescription|safe}}-->
-                            <!--{% if user.traveller.id == trip.traveller.id %}-->
-                            <!--<p><br><a href="/trip/edit/{{trip.scorable_ptr_id}}"><i class="fa fa-pencil"></i> Edit</a></p>-->
-                            <!--{% endif %}-->
-                        <!--</blockquote>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!---->
-        <!--<div class="timeline-centered">-->
-	    <!--{% if not perms.administrator and not user.is_anonymous %}-->
-	        <!--<article class="timeline-entry entry">-->
-	            <!--<div class="timeline-entry-inner">-->
-	                <!--<div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">-->
-	                    <!--<i class="entypo-flight" style="text-decoration: None"></i> +-->
-	                <!--</div>-->
-	                <!--<div class="timeline-label">-->
-	                    <!--<form class="form" method="post" action="comment/" id="form-comment-id">-->
-	                        <!--{% csrf_token %}-->
-	                        <!--<div class="form-group">-->
-	                            <!--<textarea id="text-comment" class="form-control input-block-level" name="text-comment" rows="3" style="resize: none;"></textarea>-->
-	                        <!--</div>-->
-	                        <!--<div class="form-group text-right">-->
-	                            <!--<button id="submit-comment" type="submit" class="btn btn-success">Send</button>-->
-	                            <!--<input type="hidden" name="trip-id" value="{{trip.id}}"/>-->
-	                            <!--<input type="hidden" name="last-path" value="{{ request.path }}"/>-->
-	                        <!--</div>-->
-	                    <!--</form>-->
-	                <!--</div>-->
-	            <!--</div>-->
-	        <!--</article>-->
-	        <!--{% endif %}-->
-	        <!---->
-	        <!--{% for comment in comments %}-->
-	            <!--{% if comments.last %}-->
-	                <!--<article class="timeline-entry begin">-->
-	                    <!--<div class="timeline-entry-inner">-->
-	                        <!--<div class="timeline-icon">-->
-	                            <!--<img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">-->
-	                        <!--</div>-->
-	                        <!--<div class="timeline-label">-->
-	                            <!--<h2><a href="#">{{comment.traveller}} says:</a></h2>-->
-	                            <!--<br>-->
-	                            <!--<i class="fa fa-quote-left fa-1x pull-left"></i>-->
-	                            <!--{{comment.description|safe}}-->
-	                        <!--</div>-->
-	                    <!--</div>-->
-	                <!--</article>-->
-	            <!--{% else %}-->
-		            <!--<article class="timeline-entry">-->
-		                <!--<div class="timeline-entry-inner">-->
-		                    <!--<div class="timeline-icon bg-success">-->
-		                        <!--<i class="entypo-suitcase"></i>-->
-		                        <!--<img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">-->
-		                    <!--</div>-->
-		                    <!--<div class="timeline-label">-->
-		                        <!--<h2><a href="#">{{comment.traveller}} says:</a></h2>-->
-		                        <!--<br>-->
-		                        <!--<i class="fa fa-quote-left fa-1x pull-left"></i>-->
-		                        <!--{{comment.description|safe}}-->
-		                    <!--</div>-->
-		                <!--</div>-->
-		            <!--</article>-->
-	            <!--{% endif %}-->
-	        <!--{% endfor %}-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="col-lg-3">-->
-        <!--<div class="row">-->
-            <!--<div class="well">-->
-                <!--<i class="fa fa-globe fa-2x"> {{ trip.city }}, {{ trip.country }}</i>-->
-                <!--<br>-->
-                <!--<br>-->
-                <!--<i class="fa fa-calendar fa-2x"> {{ trip.startDate }}</i>-->
-                <!--<br>-->
-                <!--<br>-->
-                <!--<i class="fa fa-calendar-o fa-2x"> {{ trip.endDate }}</i>-->
-            <!--</div>-->
-            <!--<div class="well">-->
-                <!--<p class="fa fa-star fa-2x text-left"  style="text-decoration: None"> <small>{% firstof trip.rating '-' %}</small> / <strong>10</strong></p>-->
-                <!--<br>-->
-                <!--<br>-->
-                <!--{% if user.is_anonymous or perms.principal.administrator or trip.state != 'ap' %}-->
-                    <!--<i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>-->
-                    <!--<br>-->
-                    <!--<br>-->
-                    <!--<i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>-->
-                <!--{% endif %}-->
-
-                <!--{% if perms.principal.traveller and trip.state == 'ap'%}-->
-                    <!--{% if judge == None %}-->
-                        <!--<a href="/judge/{{trip.scorable_ptr_id}}/1">-->
-                            <!--<i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>-->
-                        <!--</a>-->
-                        <!--<br>-->
-                        <!--<br>-->
-                        <!--<a href="/judge/{{trip.scorable_ptr_id}}/0">-->
-                            <!--<i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>-->
-                        <!--</a>-->
-                        <!--<br>-->
-                        <!--<br>-->
-                    <!--{% elif judge.like == True %}-->
-                        <!--<a href="/judge/{{trip.scorable_ptr_id}}/1">-->
-                            <!--<i class="fa fa-thumbs-up fa-2x text-left"> {{trip.likes}} likes</i>-->
-                        <!--</a>-->
-                        <!--<br>-->
-                        <!--<br>-->
-                        <!--<a href="/judge/{{trip.scorable_ptr_id}}/0">-->
-                            <!--<i class="fa fa-thumbs-o-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>-->
-                        <!--</a>-->
-                    <!--{% else %}-->
-                        <!--<a href="/judge/{{trip.scorable_ptr_id}}/1">-->
-                            <!--<i class="fa fa-thumbs-o-up fa-2x text-left"> {{trip.likes}} likes</i>-->
-                        <!--</a>-->
-                        <!--<br>-->
-                        <!--<br>-->
-                        <!--<a href="/judge/{{trip.scorable_ptr_id}}/0">-->
-                            <!--<i class="fa fa-thumbs-down fa-2x text-right"> {{trip.dislikes}} dislikes</i>-->
-                        <!--</a>-->
-                    <!--{% endif %}-->
-                <!--{% endif %}-->
-            <!--</div>-->
-            <!---->
-			<!--{% if trip.traveller.id != user.id%}-->
-				<!--<div class="col-md-12 center-block">-->
-					<!--<button style="width: 100%;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Rate this trip!</button>-->
-				<!--</div>-->
-			<!--{% endif %}-->
-			<!---->
-			<!--{% if trip.planified %}-->
-				<!--<div class="col-md-12 center-block">-->
-					<!--<a style="width: 100%;" type="button" class="btn btn-primary btn-lg" href="/show_planning/{{trip.id}}">Show plan!</a>-->
-				<!--</div>-->
-			<!--{% endif %}-->
-			<!---->
-			<!---->
-			<!---->
-			<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
-              <!--<div class="modal-dialog">-->
-                <!--<div class="modal-content">-->
-                  <!--<div class="modal-header">-->
-                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                    <!--<h4 class="modal-title" id="myModalLabel">Rate this trip</h4>-->
-                  <!--</div>-->
-                  <!--<div class="modal-body">-->
-                    <!--<form class="form" method="post" action="rate/" id="form-rate-id">-->
-                        <!--{% csrf_token %}-->
-                        <!--<div class="form-group">-->
-                            <!--<p>Please choose a number between 0 and 10:</p>-->
-                            <!--<input type="number" name="rate-value" min="0" max="10" required/>-->
-                            <!--<p>Please, write a fancy description:</p>-->
-                            <!--<textarea id="text-comment" class="form-control input-block-level" name="text-rate-description" rows="3" required maxlength="255" style="resize: none;"></textarea>-->
-                        <!--</div>-->
-                        <!--<div class="modal-footer">-->
-                            <!--<div class="form-group">-->
-                                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                                <!--<button id="submit-comment" type="submit" class="btn btn-success">Send</button>-->
-                                <!--<input type="hidden" name="trip-id" value="{{trip.id}}"/>-->
-                            <!--</div>-->
-                         <!--</div>-->
-                    <!--</form>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-
-            <!--{% if perms.principal.administrator %}-->
-                <!--<div class="well">-->
-                    <!--<h3>Trip moderation</h3>-->
-                    <!--<p>Select an option and click save to change the trip status.</p>-->
-                    <!--<form class="form-horizontal" role="form" action="/administrator/trip/update/{{ trip.id }}" method="post" data-toggle="validator">-->
-                        <!--{% csrf_token %}-->
-                        <!--<div class="form-group {% if form.visible_fields.0.errors %} has-error {% endif %}">-->
-                            <!--{{ form.visible_fields.0 }}-->
-                            <!--<div class="help-block with-errors">-->
-                                <!--{{ form.visible_fields.0.errors }}-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--{% for hidden in form.hidden_fields %}-->
-                            <!--{{ hidden }}-->
-                        <!--{% endfor %}-->
-                        <!--<button type="submit" name="save" value="save" onclick="return confirm('Are you sure?')" class="btn btn-block btn-danger">Save</button>-->
-                    <!--</form>-->
-<!--{#                    <form id="stateSelectForm" action="/administrator/trip/update/" method="post" class="well">#}-->
-<!--{#                        {% csrf_token %}#}-->
-<!--{#                        <h3>Trip moderation</h3>#}-->
-<!--{#                        <p>Select an option and click save to change the trip status.</p>#}-->
-<!--{#                        <input type="hidden" name="id" value="{{trip.scorable_ptr_id}}"/>#}-->
-<!--{#                        <select name="state" id="state" class="form-control">#}-->
-<!--{#                            <option value="ap" {% if trip.state == "ap" %} selected="selected" {% endif %} >APPROVED</option>#}-->
-<!--{#                            <option value="re"  {% if trip.state == "re" %} selected="selected" {% endif %}>REJECTED</option>#}-->
-<!--{#                            <option value="pe" {% if trip.state == "pe" %}selected="selected" {% endif %}>PENDING</option>#}-->
-<!--{#                        </select>#}-->
-<!--{#                        <br>#}-->
-<!--{#                        <button type="submit" name="save" value="save" onclick="return confirm('Are you sure?')" class="btn btn-block btn-danger">Save</button>#}-->
-<!--{#                    </form>#}-->
-                <!--</div>-->
-            <!--{% endif %}-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
     <h1>{{trip.name}}</h1>
     <div class="row">
         <div class="col-lg-12">
@@ -315,19 +89,19 @@
                 {% if not perms.administrator and not user.is_anonymous %}
                     <article class="timeline-entry entry">
                         <div class="timeline-entry-inner">
-                            <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
-                                <i class="entypo-flight" style="text-decoration: None"></i> +
+                            <div class="timeline-icon">
+                                <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ user.traveller.photo }}">
                             </div>
                             <div class="timeline-label">
-                                <form class="form" method="post" action="comment/" id="form-comment-id">
+                                <form class="form" role="form" method="post" action="comment/" id="form-comment-id" data-toggle="validator">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <textarea id="text-comment" class="form-control input-block-level" name="text-comment" rows="3" style="resize: none;"></textarea>
+                                        {{ comment_form.visible_fields.0 }}
+                                        <div class="help-block with-errors"></div>
                                     </div>
+                                    {% for hidden in comment_form.hidden_fields %}{{ hidden }}{% endfor %}
                                     <div class="form-group text-right">
-                                        <button id="submit-comment" type="submit" class="btn btn-success">Send</button>
-                                        <input type="hidden" name="trip-id" value="{{trip.id}}"/>
-                                        <input type="hidden" name="last-path" value="{{ request.path }}"/>
+                                        <input class="btn btn-success" value="Send" type="submit">
                                     </div>
                                 </form>
                             </div>
@@ -339,10 +113,17 @@
                         <article class="timeline-entry begin">
                             <div class="timeline-entry-inner">
                                 <div class="timeline-icon">
-                                    <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">
+                                    <a href="/profile/{{comment.traveller.id}}"><img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}"></a>
                                 </div>
                                 <div class="timeline-label">
-                                    <h2><a href="#">{{comment.traveller}} says:</a></h2>
+                                     <div class="row">
+                                        <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6">
+                                            <h2>{{comment.traveller}} says:</h2>
+                                        </div>
+                                        <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6 text-right">
+                                            <p>{{comment.date}}</p>
+                                        </div>
+                                    </div>
                                     <!--<br>-->
                                     <i class="fa fa-quote-left fa-1x pull-left"></i>
                                     {{comment.description|safe}}
@@ -354,10 +135,17 @@
                             <div class="timeline-entry-inner">
                                 <div class="timeline-icon bg-success">
                                     <i class="entypo-suitcase"></i>
-                                    <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}">
+                                    <a href="/profile/{{comment.traveller.id}}"><img class="img-circle" style="width: 40px; height: 40px;" src="/{{ comment.traveller.photo }}"></a>
                                 </div>
                                 <div class="timeline-label">
-                                    <h2><a href="#">{{comment.traveller}} says:</a></h2>
+                                    <div class="row">
+                                        <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6">
+                                            <h2>{{comment.traveller}} says:</h2>
+                                        </div>
+                                        <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6 text-right">
+                                            <p>{{comment.date}}</p>
+                                        </div>
+                                    </div>
                                     <!--<br>-->
                                     <i class="fa fa-quote-left fa-1x pull-left"></i>
                                     {{comment.description|safe}}
@@ -367,6 +155,21 @@
                     {% endif %}
                 {% endfor %}
             </div>
+            {% if comments %}
+                <div class="pagination col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <span class="step-links">
+                        {% if comments.has_previous %}
+                            <a href="?page={{ comments.previous_page_number }}">previous</a>
+                        {% endif %}
+                        <span class="current">
+                            Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
+                        </span>
+                        {% if comments.has_next %}
+                            <a href="?page={{ comments.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endif %}
         </div>
     </div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -377,13 +180,13 @@
                     <h4 class="modal-title" id="myModalLabel">Rate this trip</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" method="post" action="rate/" id="form-rate-id">
+                    <form class="form" method="post" action="rate/" id="form-rate-id" data-toggle="validator">
                         {% csrf_token %}
                         <div class="form-group">
                             <p>Please choose a number between 0 and 10:</p>
                             <input type="number" name="rate-value" min="0" max="10" required/>
                             <p>Please, write a fancy description:</p>
-                            <textarea id="text-comment" class="form-control input-block-level" name="text-rate-description" rows="3" required maxlength="255" style="resize: none;"></textarea>
+                            <textarea id="text-comment" class="form-control input-block-level" name="text-rate-description" rows="3" required="required" maxlength="255" style="resize: none;"></textarea>
                         </div>
                         <div class="modal-footer">
                             <div class="form-group">

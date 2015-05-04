@@ -21,7 +21,7 @@ msgstr ""
 msgid "Already exists a user with that email!"
 msgstr ""
 
-#: .\principal\templates\base.html:43
+#: .\principal\templates\base.html:43 
 msgid "Accept"
 msgstr "Aceptar"
 

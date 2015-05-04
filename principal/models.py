@@ -1,4 +1,5 @@
 # -*- coding: latin-1 -*-
+import datetime
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -14,7 +15,6 @@ def PastValidator(value):
 
 
 # -----------------------------------------------------------------------------------
-
 
 # Create your models here.
 class Administrator(User):
@@ -77,7 +77,7 @@ class Feedback(models.Model):
 
     # ------------- Relationships --------------#
     traveller = models.ForeignKey('principal.Traveller')
-    venues = models.ForeignKey(Venue)
+    venues = models.ForeignKey(Venue) #Deberia ser Venue, en singular
 
     class Meta:
         db_table = 'feedback'
@@ -118,6 +118,8 @@ class Trip(Scorable):
     # city = models.ForeignKey(City)
     city = models.CharField(max_length=50, null=False)
     country = models.CharField(max_length=50, null=False)
+    possible_venues = models.ManyToManyField(Venue)
+    
 
     class Meta:
         db_table = 'trip'
@@ -226,7 +228,7 @@ class VenueDay(models.Model):
 
 class Comment(models.Model):
     description = models.CharField(max_length=255, null=True)
-
+    date = models.DateTimeField(default=timezone.now)
     # ------------- Relationships --------------#
     traveller = models.ForeignKey(Traveller)
     trip = models.ForeignKey(Trip)

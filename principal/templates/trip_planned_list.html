@@ -4,34 +4,38 @@
 <div class="container">
     {% load i18n %}
     <h1>{{ title_list }}</h1>
-    {% if not trips %}
-        <p>Oops! BrainTravel could not find anything...</p>
-    {% else %}
-        <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
+
+        <div class="col-xs-12 col-sm-11">
         {% for trip in trips %}
-            <div class="well col-xs-12 col-sm-offset-1 col-sm-5  col-md-offset-1 col-md-5  col-lg-3 col-lg-offset-1">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="min-height: 80px; text-align: center">
+            <div class="well col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-5  col-lg-3 col-lg-offset-1">
+                <div class="col-xs-12 text-center" style="min-height: 80px; text-align: center">
                     <h3 style="height: 80px; vertical-align: middle; display: table-cell;">{{trip.city|safe}}</h3>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12">
                     <img src="https://irs3.4sqi.net/img/general/720x960/10460920_ggzBjOkJPBgFBzPGfy1FXPmz6UCGGU3ykunR4XZESFs.jpg" class="img-responsive" style="max-height: 250px">
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 20px">
+                
+
+                <div class="col-xs-12" style="margin-top: 20px">
                     <p><i class="fa fa-globe fa-1x"></i> {{trip.country|safe}}</p>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12">
                     <p><i class="fa fa-calendar"></i> {{trip.startDate}}</p>
                     <p><i class="fa fa-money"></i> {{trip.coins}}</p>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12">
                     <ul class="list-inline list-unstyled">
                         <li><a href="/show_planning/{{trip.scorable_ptr_id}}" style="text-decoration: None;"><i class="fa fa-info-circle"></i> View more</a></li>
                     </ul>
                 </div>
             </div>
+        {% empty %}
+        <p>Oops! BrainTravel could not find anything...</p>
         {% endfor %}
+        
+       
         </div>
-        <div class="pagination col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="pagination col-xs-12">
             <span class="step-links">
                 {% if trips.has_previous %}
                     <a href="?page={{ trips.previous_page_number }}">previous</a>
@@ -44,6 +48,5 @@
                 {% endif %}
             </span>
         </div>
-    {% endif %}
 </div>
 {%endblock%}

@@ -220,3 +220,13 @@ body {
   /* Set the fixed height of the footer here */
   height: 170px;
 }
+
+/*Estilo personalizado para ventanas modales*/
+.modal-bt{
+	border-radius: 0px;
+	text-align: center;
+	font-weight: bold;
+}
+.venue-details{
+	min-height: 350px;
+}

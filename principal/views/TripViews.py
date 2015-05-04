@@ -3,37 +3,59 @@ import traceback
 
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.db.models.query_utils import Q
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
-from principal.forms import TripEditForm
+from principal.forms import TripEditForm, CommentForm
 from principal.forms import TripUpdateStateForm
-from principal.models import Judges, Assessment
-from principal.models import Trip, Comment, Traveller
-from principal.services import TripService, TravellerService, CoinService
+from principal.models import Judges, Assessment, Day, Venue, VenueDay
+from principal.models import Trip, Comment
+from principal.services import TripService, TravellerService, CommentService
 from principal.utils import BrainTravelUtils
 
 
-# author: Javi
+# author: Juane
 def search_trip(request):
-    if request.method == 'GET':
-        title = request.GET.get('title', False)
-        trip_result = None
+    try:
+        if request.method == 'POST':
+            title = request.POST.get('title')
+        else:
+            title = request.GET.get('title')
+
+        trips = TripService.searchTrip(title)
+        paginator = Paginator(trips, 2)
+        page = request.GET.get('page')
         try:
-            trip_result = TripService.searchTrip(title)
-            return render_to_response('search.html', {'trip_result': trip_result, 'title_search': title}, context_instance=RequestContext(request))
-        except Exception as e:
-            return HttpResponse(e)
+            trips = paginator.page(page)
+        except PageNotAnInteger:
+            trips = paginator.page(1)
+        except EmptyPage:
+            trips = paginator.page(paginator.num_pages)
+        return render_to_response('search.html', {'trip_result': trips, 'title_search': title},
+                                  context_instance=RequestContext(request))
+    except:
+        return render_to_response('error.html')
 
 
-# author: Javi
+# author: Javi ----- Reviewed: Juane
 def public_trip_details(request, trip_id):
-    trip = Trip.objects.get(id=trip_id)
-    comments = Comment.objects.filter(trip=trip_id)
-    # is_edit = False
-    if trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator'):
+    try:
+        trip = Trip.objects.get(id=trip_id)
+        assert trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator')
+        # -------------Paginacion de los comentarios-------------------
+        comments = Comment.objects.filter(trip=trip_id).order_by('-date')
+        paginator = Paginator(comments, 5)
+        page = request.GET.get('page')
+        try:
+            comments = paginator.page(page)
+        except PageNotAnInteger:
+            comments = paginator.page(1)
+        except EmptyPage:
+            comments = paginator.page(paginator.num_pages)
+        # ------------------------------------------------------------
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
         assessment = Assessment.objects.filter(scorable_id=trip_id, traveller_id=request.user.id)
         if len(judges) == 0:
@@ -44,15 +66,12 @@ def public_trip_details(request, trip_id):
             assessment = None
         else:
             assessment = list(assessment)[0]
-        # is_edit = True
         data = {'id': trip.id, 'state': trip.state}
         form = TripUpdateStateForm(initial=data)
-        return render_to_response('public_trip_details.html',
-                                  {'trip': trip, 'comments': comments, 'traveller_edit': True,
-                                   'judge': judge, 'form': form, 'assessment': assessment}, context_instance=RequestContext(request))
-    else:
-        BrainTravelUtils.save_error(request)
-        return render_to_response('search.html', {}, context_instance=RequestContext(request))
+        comment_form = CommentForm(initial={'id_trip': trip.id})
+        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'comment_form': comment_form, 'assessment': assessment}, context_instance=RequestContext(request))
+    except Exception:
+        return render_to_response('error.html')
 
 
 # author: Juane
@@ -70,7 +89,8 @@ def list_trip_administrator(request):
         trips = paginator.page(1)
     except EmptyPage:
         trips = paginator.page(paginator.num_pages)
-    return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True}, context_instance=RequestContext(request))
+    return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True},
+                              context_instance=RequestContext(request))
 
 
 @permission_required('principal.traveller')
@@ -85,7 +105,9 @@ def planned_trips(request):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-    return render_to_response('trip_planned_list.html', {'trips': trips, 'create_trip': False, 'title_list': 'My planned trips'}, context_instance=RequestContext(request))
+    return render_to_response('trip_planned_list.html',
+                              {'trips': trips, 'create_trip': False, 'title_list': 'My planned trips'},
+                              context_instance=RequestContext(request))
     
 
 # author: Juane
@@ -109,16 +131,7 @@ def update_state(request, trip_id):
 
 # autor: david
 @login_required()
-def list_all_by_traveller(request, optional=0):
-    if optional == "0":
-        BrainTravelUtils.save_error(request)
-    if optional == "1":
-        BrainTravelUtils.save_success(request, "Action completed successfully")
-    if optional == "2":
-        BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
-    if optional == "3":
-        BrainTravelUtils.save_success(request, "Trip deleted successfully")
-
+def list_all_by_traveller(request):
     trips = TripService.list_my_trip(request.user.id)
     if trips is not False:
         paginator = Paginator(trips, 5)
@@ -129,16 +142,13 @@ def list_all_by_traveller(request, optional=0):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My trips'}, context_instance=RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My trips'},
+                                  context_instance=RequestContext(request))
 
 
 # david
 @login_required()
-def list_all_by_traveller_draft(request, optional=0):
-    if optional == "0":
-        BrainTravelUtils.save_error(request)
-    if optional == "1":
-        BrainTravelUtils.save_success(request, "Action completed successfully")
+def list_all_by_traveller_draft(request):
     trips = TripService.list_trip_draft(request.user.id)
     if trips is not False:
         paginator = Paginator(trips, 5)
@@ -149,7 +159,9 @@ def list_all_by_traveller_draft(request, optional=0):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My draft trips'}, context_instance = RequestContext(request))
+        return render_to_response('trip_list.html',
+                                  {'trips': trips, 'create_trip': True, 'title_list': 'My draft trips'},
+                                  context_instance=RequestContext(request))
 
 
 # david
@@ -163,13 +175,15 @@ def trip_create(request):
             if "save" in request.POST and request.POST['save'] == "Save draft":
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
-                return redirect('/trip/draft/1')
+                BrainTravelUtils.save_success(request, "Action completed successfully")
+                return HttpResponseRedirect("/trip/draft/")
             elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)
-                return redirect('/trip/mylist/2')
-
-            return redirect('/trip/mylist/0')
+                BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
+                return HttpResponseRedirect("/trip/mylist/")
+            BrainTravelUtils.save_error(request)
+            return HttpResponseRedirect("/trip/mylist/")
 
     else:
         data = {}
@@ -197,15 +211,18 @@ def trip_edit(request, trip_id):
                 if 'save' in request.POST and request.POST['save'] == "Save draft":
                     trip.state = "df"
                     TripService.save_secure(trip)
-                    return redirect('/trip/draft/1')
+                    BrainTravelUtils.save_success(request, "Action completed successfully")
+                    return HttpResponseRedirect("/trip/draft/")
                 elif 'save' in request.POST and request.POST['save'] == "Publish Trip":
                     trip.state = "pe"
                     TripService.save_secure(trip)
-                    return redirect('/trip/mylist/2')
+                    BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
+                    return HttpResponseRedirect("/trip/mylist/")
 
             if 'delete' in request.POST:
                 TripService.delete(request, trip)
-                return redirect('/trip/mylist/3')
+                BrainTravelUtils.save_success(request, "Trip deleted successfully")
+                return HttpResponseRedirect("/trip/mylist/")
 
         else:
             data = {'city': trip.city, 'publishedDescription': trip.publishedDescription, 'country': trip.country,
@@ -220,26 +237,44 @@ def trip_edit(request, trip_id):
         return render_to_response('error.html')
 
 
-# author: Javi Rodriguez
+@permission_required('principal.traveller')
+def change_venue(request):
+    trip = Trip.objects.get(id = request.POST['trip'])
+    assert trip.traveller.id == request.user.id
+    
+    try:
+        day = Day.objects.get(id = request.POST['day'])
+        oldVenue = Venue.objects.get(id = request.POST['oldVenue'])
+        newVenue = Venue.objects.get(id = request.POST['newVenue'])
+        
+        venue_day = VenueDay.objects.get(Q(venue = oldVenue) & Q(day = day))
+        venue_day.venue = newVenue
+        venue_day.save()
+        
+        trip.possible_venues.remove(newVenue)
+        trip.possible_venues.add(oldVenue)
+        
+        return HttpResponseRedirect("/show_planning/" + str(trip.id))
+    except Exception:
+        return render_to_response('error.html')
+        
+
+# author: Javi Rodriguez ----- Reviewed: Juane
 @login_required()
+@permission_required('principal.traveller')
 def comment_trip(request):
     try:
-        comment = request.POST['text-comment']
-        user_id = request.user.id
-        trip_id = request.POST['trip-id']
-        url = request.path.split("/")
-        res = TripService.submit_comment(user_id, comment, trip_id)
-        if res['state'] == False:
-            BrainTravelUtils.save_warning(request, 'This trip is pending of the approval by an administrator.')
-            return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
-        elif res['ownership'] == False:
-            BrainTravelUtils.save_warning(request, 'You cannot comment your own trip!')
-        elif res['state'] == True and res['ownership'] == True:
-            BrainTravelUtils.save_success(request, 'Your comment has been saved!')
-        return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
-    except:
-        msg_errors = ["Something went wrong..."]
-        return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
+        if request.POST:
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment = CommentService.construct_comment(request.user.id, comment_form)
+                CommentService.save(request.user.id, comment)
+                BrainTravelUtils.save_success(request, 'Comment successfully')
+                return HttpResponseRedirect("/public_trip_details/" + str(comment.trip.id))
+    except AssertionError:
+        return render_to_response('error.html')
+
+    return render_to_response('error.html')
 
 
 # author: Javi Rodriguez
@@ -259,7 +294,6 @@ def send_assessment(request):
         return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
     except:
         msg_errors = ["Something went wrong..."]
-        print traceback.format_exc()
         return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
 
 
@@ -270,7 +304,8 @@ def list_trip_approved_by_profile(request, profile_id):
     try:
         traveller = TravellerService.find_one(profile_id)
         trips = TripService.list_trip_approved(traveller.id)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True}, context_instance=RequestContext(request))
+        return render_to_response('trip_list.html', {'trips': trips,  'create_trip': True},
+                                  context_instance=RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')
 
@@ -289,7 +324,6 @@ def send_feedback(request):
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id)
     except:
         msg_errors = ["Something went wrong..."]
-        print traceback.format_exc()
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id, {'msg_errors': msg_errors})
 
 @login_required()
@@ -309,7 +343,6 @@ def value_tip(request, id_venue, id_tip):
         return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
     except:
         msg_errors = ["Something went wrong..."]
-        print traceback.format_exc()
         return HttpResponseRedirect("/" + url[1] + "/" + id_venue, {'msg_errors': msg_errors})
 
 @login_required()
