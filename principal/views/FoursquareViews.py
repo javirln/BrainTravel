@@ -146,7 +146,8 @@ def retrieve_venue(request, id_venue):
     if request.method == 'GET':
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
-            tips = Feedback.objects.filter(Q(venues=id_venue) & ~Q(description__exact='')).order_by("usefulCount")
+            tips = Feedback.objects.filter(Q(venues=id_venue) & ~Q(description__exact='') & Q(description__isnull=True)).\
+                order_by("usefulCount")
             return render_to_response('venue_details.html', {"venue": venue, "tips": tips},
                                       context_instance=RequestContext(request))
         except Exception as e:
