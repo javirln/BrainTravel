@@ -43,10 +43,13 @@ def search_trip(request):
 # author: Javi ----- Reviewed: Juane
 def public_trip_details(request, trip_id):
     try:
-        trip = Trip.objects.get(id=trip_id)
+        trip = Trip.objects.get(id=trip_id, planified=False)
         assert trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator')
-        # -------------Paginacion de los comentarios-------------------
+
+        # Obtener todos los comentarios de un viaje
         comments = Comment.objects.filter(trip=trip_id).order_by('-date')
+
+        # Paginacion para la lista de comentarios
         paginator = Paginator(comments, 5)
         page = request.GET.get('page')
         try:
@@ -55,20 +58,34 @@ def public_trip_details(request, trip_id):
             comments = paginator.page(1)
         except EmptyPage:
             comments = paginator.page(paginator.num_pages)
-        # ------------------------------------------------------------
+
+        # Obtener todos los 'judges' realizados por un viajero a un viaje
         judges = Judges.objects.filter(trip_id=trip_id, traveller_id=request.user.id)
-        assessment = Assessment.objects.filter(scorable_id=trip_id, traveller_id=request.user.id)
         if len(judges) == 0:
             judge = None
         else:
             judge = list(judges)[0]
+
+        # Obtener todos los 'assessment' realizados por un viajero a un viaje
+        assessment = Assessment.objects.filter(scorable_id=trip_id, traveller_id=request.user.id)
         if len(assessment) == 0:
             assessment = None
         else:
             assessment = list(assessment)[0]
-        data = {'id': trip.id, 'state': trip.state}
-        form = TripUpdateStateForm(initial=data)
-        comment_form = CommentForm(initial={'id_trip': trip.id})
+
+        # Validacion del comentario
+        if request.POST:
+            assert request.user.has_perm('principal.traveller')
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment = CommentService.construct_comment(request.user.id, comment_form)
+                CommentService.save(request.user.id, comment)
+                BrainTravelUtils.save_success(request, 'Comment successfully')
+                return HttpResponseRedirect("/public_trip_details/" + str(comment.trip.id))
+        else:
+            comment_form = CommentForm(initial={'id_trip': trip.id})
+
+        form = TripUpdateStateForm(initial={'id': trip.id, 'state': trip.state})
         return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'comment_form': comment_form, 'assessment': assessment}, context_instance=RequestContext(request))
     except Exception:
         return render_to_response('error.html')
@@ -258,24 +275,6 @@ def change_venue(request):
     except Exception:
         return render_to_response('error.html')
         
-
-# author: Javi Rodriguez ----- Reviewed: Juane
-@login_required()
-@permission_required('principal.traveller')
-def comment_trip(request):
-    try:
-        if request.POST:
-            comment_form = CommentForm(request.POST)
-            if comment_form.is_valid():
-                comment = CommentService.construct_comment(request.user.id, comment_form)
-                CommentService.save(request.user.id, comment)
-                BrainTravelUtils.save_success(request, 'Comment successfully')
-                return HttpResponseRedirect("/public_trip_details/" + str(comment.trip.id))
-    except AssertionError:
-        return render_to_response('error.html')
-
-    return render_to_response('error.html')
-
 
 # author: Javi Rodriguez
 @login_required()

@@ -26,7 +26,6 @@ urlpatterns = patterns('',
     url(r'^profile/edit/$', 'principal.views.TravellerViews.profile_edit'),
     url(r'^profile/edit/password/$', 'principal.views.TravellerViews.profile_edit_password'),
     url(r'^trip/draft/$', 'principal.views.TripViews.list_all_by_traveller_draft'),
-    url(r'^public_trip_details/comment/$', 'principal.views.TripViews.comment_trip'),
     url(r'^public_trip_details/rate/$', 'principal.views.TripViews.send_assessment'),
     url(r'^auth_request/$', 'principal.views.FoursquareViews.foursquare_request'),
     url(r'^trip/list/(?P<profile_id>[0-9]+)$', 'principal.views.TripViews.list_trip_approved_by_profile'),
@@ -50,7 +49,8 @@ urlpatterns = patterns('',
     url(r'^cookies_policy/$', 'principal.views.UserViews.cookies_policies'),
     url(r'^about_us/$', 'principal.views.UserViews.about_us'),
     url(r'^privacy_terms/$', 'principal.views.UserViews.privacy_terms'),
-    
+    url(r'^stats/$', 'principal.views.TripViews.stats'),
+
     #planner URLs
     url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
     url(r'^planner/change_venue/$', 'principal.views.TripViews.change_venue'),
