@@ -43,6 +43,7 @@ urlpatterns = patterns('',
     url(r'^cookies_policies/$', 'principal.views.UserViews.cookies_policies'),
     url(r'^about_us/$', 'principal.views.UserViews.about_us'),
     url(r'^privacy_terms/$', 'principal.views.UserViews.privacy_terms'),
+    url(r'^stats/$', 'principal.views.TripViews.stats'),
     #planner URLs
     url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),
