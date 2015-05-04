@@ -132,7 +132,7 @@ def filter_and_save(items, food=False):
 # for time in timeframe:
 # day = time['days']
 #
-#     pass
+# pass
 
 
 def save_data(venues_selected):
@@ -147,7 +147,7 @@ def save_data(venues_selected):
             #     save_hours(venue['venue']['hours'])
             # elif 'popular' in venue['venue'] and not 'hours' in venue['venue']:
             #     save_hours(venue['venue']['popular'])
-    
+
             if len(venue['venue']['photos']['groups']) != 0:
                 photo = venue['venue']['photos']['groups'][0]['items'][0]
                 photo_url = photo['prefix'] + str(photo['width']) + "x" + str(photo['height']) + photo['suffix']
@@ -244,21 +244,21 @@ def test_plan():
 
 
 # autor: david
-def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, indexes_venues, selected_food_with_photos, all_venues, all_food):
+def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, indexes_venues, selected_food_with_photos,
+                all_venues, all_food):
     start_date = tripForm.data['startDate']
     start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
     days = int(tripForm.cleaned_data['days'])
     country = tripForm.cleaned_data['country']
     city = tripForm.cleaned_data['city']
     end_date = start_date + timedelta(days=days)
-    
 
     trip = Trip(name=str(days) + " days in " + city, publishedDescription="", state='ap',
                 startDate=start_date, endDate=end_date, planified=True, coins=coins_cost,
                 traveller=TravellerService.find_one(request.user.id),
                 city=city, country=country)
     trip.save()
-    
+
     trip.possible_venues.add(*(set(all_venues) - set(selected_venues_with_photos)))
     trip.possible_venues.add(*(set(all_food) - set(selected_food_with_photos)))
 
@@ -273,24 +273,24 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, inde
         day.save()
 
         # 24 - 8h (para dormir) - 3h para comer * 60 (lo pasamos a minutos)
-        
-        
+
+
         day_venues = []
         if num_day == 1:
-            day_venues = selected_venues_with_photos[0 : indexes_venues[num_day - 1]]
+            day_venues = selected_venues_with_photos[0: indexes_venues[num_day - 1]]
         elif num_day == len(indexes_venues) + 1:
             day_venues = selected_venues_with_photos[indexes_venues[num_day - 2]:]
         else:
-            day_venues = selected_venues_with_photos[indexes_venues[num_day - 2] : indexes_venues[num_day - 1]]
-        
-        
+            day_venues = selected_venues_with_photos[indexes_venues[num_day - 2]: indexes_venues[num_day - 1]]
+
+
         # enumerate devuelve el elemento sobre el que se esta iterando y el indice que ocupa
         for idx, venue in enumerate(day_venues):
             # venue = selected_venues_with_photos.pop(0)
             # leadtime_average = venue.feedback_set.aggregate(Avg('leadTime')).values()[0]
             # if leadtime_average is None:
-                # 2 horas
-                # leadtime_average = 120
+            # 2 horas
+            # leadtime_average = 120
 
             # time_spent -= leadtime_average
             venue_day = VenueDay(order=idx, day=day, venue=venue)
@@ -301,11 +301,11 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, inde
                 venue_day = VenueDay(order=idx, day=day, venue=selected_food_with_photos.pop(0))
                 venue_day.save()
 
-            # Si el tiempo a gastar es 0 o menor, pasamos a un dia nuevo
-            # if time_spent <= 0:
+                # Si el tiempo a gastar es 0 o menor, pasamos a un dia nuevo
+                # if time_spent <= 0:
                 # print("Se agoto el tiempo: " + str(time_spent))
                 # break
-            # print("tiempo restante: " + str(time_spent))
+                # print("tiempo restante: " + str(time_spent))
     return trip
 
 
@@ -320,6 +320,7 @@ def create_history(trip):
     coin_history = CoinHistory(amount=trip.coins, concept=trip.name, date=datetime.now(),
                                traveller=trip.traveller, trip=trip)
     coin_history.save()
+
 
 # Autor: david
 def get_venues_order(lat_centre, lng_centre, list_venues):
@@ -358,6 +359,7 @@ def get_venues_order(lat_centre, lng_centre, list_venues):
 
     return list_durations
 
+
 def get_plan(fs_venues, num_days):
     origin = fs_venues[0]
     venues_ordered = get_venues_order(origin['venue']['location']['lat'],
@@ -369,57 +371,59 @@ def get_plan(fs_venues, num_days):
     acum_time_per_day = 0
     index_days = []
     selected_venues = []
-    
+
     selected_venues_ids = []  # Para controlar que no haya sitios repetidos
     i = 0
     for venue in venues_ordered:
-        
+
         venue_fs_id = venue[0]['venue']['id']
         if venue_fs_id in selected_venues_ids:
             continue
-        
+
         i += 1
-        
+
         selected_venues.append(venue[0])
         selected_venues_ids.append(venue_fs_id)
-        
-        
-        
+
         average_duration = constants.AVERAGE_TIME_PER_VENUE
         average_lead_time = constants.AVERAGE_LEAD_TIME
-        
+
         time_travel = constants.AVERAGE_LEAD_TIME
         if venue[1] > time_travel:
             time_travel = venue[1]
-        
+
         if Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id) & ~Q(leadTime=0)):
-            average_lead_time = Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id) & ~Q(leadTime=0)).aggregate(Avg('leadTime')).values()[0]
-        
+            average_lead_time = \
+                Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id) & ~Q(leadTime=0)).aggregate(
+                    Avg('leadTime')).values()[0]
+
         if Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id) & ~Q(duration=0)):
-            average_duration = Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id ) & ~Q(duration=0)).aggregate(Avg('duration')).values()[0]
-        
+            average_duration = Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id) & ~Q(duration=0)).aggregate(
+                Avg('duration')).values()[0]
+
         acum_time += time_travel + average_duration + average_lead_time
         acum_time_per_day += time_travel + average_duration + average_lead_time
-        
+
         if acum_time_per_day >= constants.DAY_THRESHOLD:
             index_days.append(i)
             acum_time_per_day = 0
         if acum_time >= total_threshold:
             return (selected_venues, index_days)
-        
+
     return (selected_venues, index_days)
+
 
 def get_plan_food(fs_venues_food, num_days, origin):
     venues_ordered = get_venues_order(origin['venue']['location']['lat'],
                                       origin['venue']['location']['lng'],
                                       fs_venues_food)
-    
+
     selected_venues = []
     for idx, venue in enumerate(venues_ordered):
         selected_venues.append(venue[0])
-        
+
         if idx >= (num_days * 3):
             break
-        
+
     return selected_venues
 

@@ -1,10 +1,14 @@
 # -*- coding: latin-1 -*-
 
 from django.db.models import Q, Count, Sum
-from principal.models import Trip, Traveller, Comment, Assessment, Scorable, Feedback, Venue
+from datetime import datetime
 
+from principal.models import Trip, Traveller, Assessment, Scorable, Feedback, Venue, Likes, CoinHistory
 
 # author: Javi
+from principal.services.UserService import add_coins
+
+
 def searchTrip(title):
     trip_list = []
     if title and title != " ":
@@ -75,9 +79,20 @@ def create(form, user_id):
 
 
 # author: Juane
-def increase_like(trip):
-    likes = trip.likes
-    trip.likes = likes + 1
+def increase_like(trip, traveller_id):
+    traveller = Traveller.objects.get(id=traveller_id)
+    trip_likes = trip.likes + 1
+
+    if (trip_likes % 5) == 0 | (trip_likes % 5) == 5:
+        traveller.coins += long(2)
+        save(traveller)
+        new_entry = CoinHistory(
+            amount=2,
+            date=datetime.now(),
+            concept="Gift for number of likes",
+            traveller=traveller
+        )
+        new_entry.save()
     return trip
 
 
@@ -169,7 +184,13 @@ def send_feedback(user_id, venue_id, lead_time, duration_time, description):
         venues=venue
     )
     feedback_instance.save()
-
+    like_instance = Likes(
+        useful=feedback_instance.usefulCount,
+        comment=feedback_instance.description,
+        traveller=user,
+        feedback=feedback_instance,
+    )
+    like_instance.save()
 
 # author: Javi Rodriguez
 def value_tip(id_tip, id_venue):
@@ -182,9 +203,12 @@ def value_tip(id_tip, id_venue):
 # author: Javi Rodriguez
 def stats():
     travellers_travelling = Traveller.objects.annotate(num_trips=Count('trip')).order_by('-num_trips')[:5]
-    travellers_publishing = Traveller.objects.annotate(num_trips=Count('trip')).filter(trip__planified=False).order_by('-num_trips')[:5]
-    best_trips = Trip.objects.filter(judges__likes=True).annotate(num_judges=Count('judges')).order_by('-num_judges')[:5]
-    most_liked_trips = Trip.objects.filter(planified=False).annotate(num_likes=Count('likes')).order_by('-num_likes')[:5]
+    travellers_publishing = Traveller.objects.annotate(num_trips=Count('trip')).filter(trip__planified=False).order_by(
+        '-num_trips')[:5]
+    best_trips = Trip.objects.filter(judges__likes=True).annotate(num_judges=Count('judges')).order_by('-num_judges')[
+                 :5]
+    most_liked_trips = Trip.objects.filter(planified=False).annotate(num_likes=Count('likes')).order_by('-num_likes')[
+                       :5]
     most_useful_tips = Feedback.objects.annotate(num_useful=Count('usefulCount')).order_by('-num_useful')[:5]
     result = {'travellers_travelling': travellers_travelling, 'travellers_publishing': travellers_publishing,
               'best_trips': best_trips, 'most_liked_trips': most_liked_trips, 'most_useful_tips': most_useful_tips}

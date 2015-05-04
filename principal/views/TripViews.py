@@ -1,4 +1,5 @@
 # -*- coding: latin-1 -*-
+from datetime import datetime
 import traceback
 
 from django.contrib.auth.decorators import login_required, permission_required
@@ -11,9 +12,10 @@ from django.template.context import RequestContext
 
 from principal.forms import TripEditForm, CommentForm
 from principal.forms import TripUpdateStateForm
-from principal.models import Judges, Assessment, Day, Venue, VenueDay
+from principal.models import Judges, Assessment, Day, Venue, VenueDay, Feedback, Traveller, Likes, CoinHistory
 from principal.models import Trip, Comment
 from principal.services import TripService, TravellerService, CommentService
+from principal.services.TravellerService import save
 from principal.utils import BrainTravelUtils
 
 
@@ -328,18 +330,29 @@ def send_feedback(request):
 @login_required()
 def value_tip(request, id_venue, id_tip):
     try:
-        '''
-        trip = Trip.objects.get(traveller=traveller)
-        list_judges = Judges.objects.filter(trip_id=trip.id, traveller_id=traveller.id)
-
-        if (len(list_judges) % 5) == 0 | 5:
-            coins = round(len(list_judges) // 5)
-            CoinService.increase_coins(traveller.id, coins * 2)
-        '''
         url = request.path.split("/")
-        TripService.value_tip(id_tip, id_venue)
-        BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
-        return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
+        current_traveller = Traveller.objects.get(id=request.user.id)
+        likes_instance = Likes.objects.get(traveller=current_traveller)
+        feedback_instance = Feedback.objects.get(id=likes_instance.id)
+        if feedback_instance is None:
+            if (feedback_instance.usefulCounts % 5) == 0 | (feedback_instance.usefulCounts % 5) == 5:
+                tip_owner = feedback_instance.traveller
+                tip_owner.coins += long(2)
+                save(tip_owner)
+                new_entry = CoinHistory(
+                    amount=2,
+                    date=datetime.now(),
+                    concept="Gift for useful tips",
+                    traveller=tip_owner
+                )
+                new_entry.save()
+            else:
+                TripService.value_tip(id_tip, id_venue)
+                BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
+                return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
+        else:
+            BrainTravelUtils.save_info(request, "You voted this tip already.")
+            return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
     except:
         msg_errors = ["Something went wrong..."]
         return HttpResponseRedirect("/" + url[1] + "/" + id_venue, {'msg_errors': msg_errors})

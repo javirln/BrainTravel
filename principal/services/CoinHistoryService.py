@@ -6,8 +6,6 @@ def save(coin_history):
 
 
 def create(amount_coins, concept, traveller, payment):
-    
-    
     coin_history = CoinHistory(amount = amount_coins,
                                date = payment.date,
                                concept = concept,
