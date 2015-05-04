@@ -29,7 +29,7 @@
 		            <tr>
 		                <!-- <td>{{ payment.id|safe }}</td> -->
 		                <td>{{ payment.amount|safe }}</td>
-		                <td>{{ payment.date|date:"D d M Y"|safe }}</td>
+		                <td>{{ payment.date|date:"d/m/Y"|safe }}</td>
 		                <td>{{ payment.coinhistory.concept|safe }}</td>
 		            </tr>
 		        {% endfor %}
