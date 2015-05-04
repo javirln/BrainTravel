@@ -29,7 +29,7 @@ def sign_in(request):
                     return redirect("/")
                 else:
                     return render_to_response('error.html')
-            except:
+            except Exception as e:
                 return render_to_response('error.html')
         else:
             return render_to_response('signin.html', {'form': form, 'registerForm': registerForm}, context_instance=RequestContext(request))

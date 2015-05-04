@@ -6,6 +6,7 @@
 <div class="container-fluid">
     <div class="omb_login col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
         <form id="siginForm" class="omb_loginForm" action="/signin/" autocomplete="off" method="POST" role="form" data-toggle="validator">
+        	{% csrf_token %}
             <div class="omb_authTitle">
                 <p>{% trans "Login" %}</p>
                 <p class="small">{% trans "Don't have an account yet?" %}<a href="#" data-toggle="modal" data-target="#registerModal"> {% trans "Sign up" %}</a></p>
@@ -27,7 +28,6 @@
                 </div>
                 <div class="clearfix"></div>
             {% endif %}
-            {% csrf_token %}
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-addon">

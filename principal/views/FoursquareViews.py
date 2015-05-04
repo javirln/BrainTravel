@@ -138,7 +138,7 @@ def foursquare_list_venues(request):
 
     except:
         print traceback.format_exc()
-        return render_to_response('error.html', context_instance=RequestContext(request))
+        return render_to_response('error_planning.html', context_instance=RequestContext(request))
 
 
 # author: Javi Rodriguez
