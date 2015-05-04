@@ -13,7 +13,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a data-toggle="collapse" href="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse" id="search-toggle">
+                    <a data-toggle="collapse" href="#searchCollapse" id="search-toggle">
                         <span class="fa fa-search"></span>
                         <strong>Search</strong>
                     </a>
@@ -33,15 +33,15 @@
 </div>
 
 
-<div class="collapse" id="searchCollapse">
-	<div class="well">
+<div class="collapse padding-control" id="searchCollapse">
+	<div class="well search-bt">
 		<form action="/search_trip/" method="post" role="search">
 			{% csrf_token %}
 			<div class="input-group">
 				<input type="text" id="input-search" class="form-control"
-					name="title" placeholder="Type to search"> <span
+					name="title" placeholder="Type to search" autofocus="autofocus"> <span
 					class="input-group-btn">
-					<button class="btn btn-danger" type="reset" data-toggle="collapse">
+					<button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#searchCollapse">
 						<span class="fa fa-times"></span>
 					</button>
 				</span>

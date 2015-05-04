@@ -41,13 +41,27 @@
 <body>
     <!-- Navigation -->
 	{% include "miscellaneous/menu.html" %}
-    
-    <div class="padding-control">
+	
+    <div class="padding-control" id="content">
         {% block content %} {% endblock %}
     </div>
     
 
     {% include "miscellaneous/footer.html" %}
+
+    <script type="text/javascript">
+	    $('#searchCollapse').on('hide.bs.collapse', function (e) {
+	    	  e.preventDefault();
+	    	  $('#content').addClass("padding-control");
+	    	  $('#searchCollapse').removeClass('in');
+	    });
+	    
+	    $('#searchCollapse').on('show.bs.collapse', function (e) {
+	    	  e.preventDefault();
+	    	  $('#content').removeClass("padding-control");
+	    	  $('#searchCollapse').addClass('in')
+	    });
+    </script>
 
     {% if messages %}
         {% trans "Accept" as confirm_button %}

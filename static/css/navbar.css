@@ -18,3 +18,10 @@
 .navbar-login-session {
     padding: 0px 10px;
 }
+.padding-control{
+    padding-top: 55px;
+}
+.search-bt{
+	border-radius: 0px;
+	margin-bottom: 0px;
+}
