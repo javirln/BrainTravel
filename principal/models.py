@@ -4,13 +4,11 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from django.utils import timezone
-from django.template.defaultfilters import default
 
 
 # --------------------------- CUSTOMS VALIDATORS  ----------------------------------
 def PastValidator(value):
-    if value > timezone.now():
+    if value > datetime.datetime.now():
         raise ValidationError(u'' + str(value) + ' Is a future date!')
 
 
@@ -228,7 +226,7 @@ class VenueDay(models.Model):
 
 class Comment(models.Model):
     description = models.CharField(max_length=255, null=True)
-    date = models.DateTimeField(default=timezone.now)
+    date = models.DateTimeField(auto_now=True)
     # ------------- Relationships --------------#
     traveller = models.ForeignKey(Traveller)
     trip = models.ForeignKey(Trip)
