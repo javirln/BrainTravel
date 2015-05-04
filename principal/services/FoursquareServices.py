@@ -385,14 +385,18 @@ def get_plan(fs_venues, num_days):
         average_duration = constants.AVERAGE_TIME_PER_VENUE
         average_lead_time = constants.AVERAGE_LEAD_TIME
         
+        time_travel = constants.AVERAGE_LEAD_TIME
+        if venue[1] > time_travel:
+            time_travel = venue[1]
+        
         if Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id) & ~Q(leadTime=0)):
             average_lead_time = Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id) & ~Q(leadTime=0)).aggregate(Avg('leadTime')).values()[0]
         
         if Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id) & ~Q(duration=0)):
             average_duration = Feedback.objects.filter(Q(venues__id_foursquare=venue_fs_id ) & ~Q(duration=0)).aggregate(Avg('duration')).values()[0]
         
-        acum_time += venue[1] + average_duration + average_lead_time
-        acum_time_per_day += venue[1] + average_duration + average_lead_time
+        acum_time += time_travel + average_duration + average_lead_time
+        acum_time_per_day += time_travel + average_duration + average_lead_time
         
         if acum_time_per_day >= constants.DAY_THRESHOLD:
             index_days.append(i)
