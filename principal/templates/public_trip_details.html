@@ -86,18 +86,27 @@
                 </div>
             </div>
             <div class="timeline-centered">
-                {% if not perms.administrator and not user.is_anonymous %}
+                {% if not perms.principal.administrator and not user.is_anonymous %}
                     <article class="timeline-entry entry">
                         <div class="timeline-entry-inner">
                             <div class="timeline-icon">
                                 <img class="img-circle" style="width: 40px; height: 40px;" src="/{{ user.traveller.photo }}">
                             </div>
                             <div class="timeline-label">
-                                <form class="form" role="form" method="post" action="comment/" id="form-comment-id" data-toggle="validator">
+                                <form class="form" role="form" method="post" action="/public_trip_details/{{trip.id}}" id="form-comment-id" data-toggle="validator">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         {{ comment_form.visible_fields.0 }}
-                                        <div class="help-block with-errors"></div>
+                                        <div class="help-block with-errors">
+                                            {% if comment_form.errors %}
+                                                <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12 col-lg-12" role="alert">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    {% if  comment_form.visible_fields.0.errors %}
+                                                        {{ comment_form.visible_fields.0.errors }}
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                     {% for hidden in comment_form.hidden_fields %}{{ hidden }}{% endfor %}
                                     <div class="form-group text-right">
