@@ -43,7 +43,7 @@ def search_trip(request):
 # author: Javi ----- Reviewed: Juane
 def public_trip_details(request, trip_id):
     try:
-        trip = Trip.objects.get(id=trip_id)
+        trip = Trip.objects.get(id=trip_id, planified=False)
         assert trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator')
         # -------------Paginacion de los comentarios-------------------
         comments = Comment.objects.filter(trip=trip_id).order_by('-date')

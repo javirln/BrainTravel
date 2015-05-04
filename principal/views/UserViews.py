@@ -26,7 +26,7 @@ def sign_in(request):
                 user = authenticate(username=username, password=password)
                 if user.is_active:
                     login(request, user)
-                    return redirect("/")
+                    return HttpResponseRedirect('/profile/'+str(user.id))
                 else:
                     return render_to_response('error.html')
             except Exception as e:
