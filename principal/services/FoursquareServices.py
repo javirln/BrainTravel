@@ -138,19 +138,22 @@ def filter_and_save(items, food=False):
 def save_data(venues_selected):
     venues_selected_with_photos = []
     for v in venues_selected:
-        venue = client.venues(v.id_foursquare)
-        photo = ""
-        # if 'hours' in venue['venue']:
-        #     save_hours(venue['venue']['hours'])
-        # elif 'popular' in venue['venue'] and not 'hours' in venue['venue']:
-        #     save_hours(venue['venue']['popular'])
-
-        if len(venue['venue']['photos']['groups']) != 0:
-            photo = venue['venue']['photos']['groups'][0]['items'][0]
-            photo_url = photo['prefix'] + str(photo['width']) + "x" + str(photo['height']) + photo['suffix']
-            v.photo = photo_url
-        v.save()
-        venues_selected_with_photos.append(v)
+        if v.photo is not None and v.photo is not "":
+            venues_selected_with_photos.append(v)
+        else:
+            venue = client.venues(v.id_foursquare)
+            photo = ""
+            # if 'hours' in venue['venue']:
+            #     save_hours(venue['venue']['hours'])
+            # elif 'popular' in venue['venue'] and not 'hours' in venue['venue']:
+            #     save_hours(venue['venue']['popular'])
+    
+            if len(venue['venue']['photos']['groups']) != 0:
+                photo = venue['venue']['photos']['groups'][0]['items'][0]
+                photo_url = photo['prefix'] + str(photo['width']) + "x" + str(photo['height']) + photo['suffix']
+                v.photo = photo_url
+            v.save()
+            venues_selected_with_photos.append(v)
     return venues_selected_with_photos
 
 
