@@ -205,28 +205,25 @@ img {
 
 /* Sticky footer styles
 -------------------------------------------------- */
+/* Sticky footer styles
+-------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 150px;
+  margin-bottom: 260px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 170px;
+  height: 260px;
+  background-color: #f5f5f5;
 }
-
-/*Estilo personalizado para ventanas modales*/
-.modal-bt{
-	border-radius: 0px;
-	text-align: center;
-	font-weight: bold;
-}
-.venue-details{
-	min-height: 350px;
+.padding-control {
+	padding-top: 55px;
+	paddin-botton: 5rem;
 }

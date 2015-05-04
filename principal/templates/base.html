@@ -41,8 +41,11 @@
 <body>
     <!-- Navigation -->
 	{% include "miscellaneous/menu.html" %}
-
-    {% block content %} {% endblock %}
+    
+    <div class="padding-control">
+        {% block content %} {% endblock %}
+    </div>
+    
 
     {% include "miscellaneous/footer.html" %}
 
