@@ -55,47 +55,57 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="create_plan" class="btn btn-primary btn-block" name="save" value="Create Plan" type="submit" onclick=whileLoading()>
+                    <input id="create_plan" class="btn btn-primary btn-block" name="save"
+                           value="{% trans "Create Plan" %}"
+                           type="submit" onclick=whileLoading()>
                 </div>
 
 
             <div class="form-group">
-                <label for="selec">Select for your funny TRIP</label>
-                <select id="selec" style="display: none;"  class="chosen-select"
-                        tabindex="-1">
-                    <option value=""></option>
-                    <option value="Food">Food</option>
-                    <option value="Drink">Drink</option>
-                    <option value="Sex">Sex</option>
-                    <option value="Alcohol">Alcohol</option>
+                <label for="selec">{% trans "Select your custom constrains" %}</label>
+                <select id="selec" style="display: none;"  class="chosen-select">
+                    <option></option>
+                    {% for cat in list_cat %}
+                        <option value= {{ cat }}>{% trans cat %}</option>
+                    {% endfor %}
+
                 </select>
 
                 <label for="cantidad">Selec cantidad</label>
                 <select id="cantidad" style="display: none;" class="chosen-select"
                         tabindex="-1">
                     <option value=""></option>
-                    <option value="Mucho">Mucho</option>
-                    <option value="Poco">Poco</option>
-                    <option value="Nada">Nada</option>
+                    <option value="Mucho">{% trans "A lot of" %}</option>
+                    <option value="Poco">{% trans "Some of" %}</option>
+                    <option value="Nada">{% trans "Any of" %}</option>
                 </select>
+            <div>
+                <br>
 
+                <input class="btn btn-primary" id="copy" name="copy"
+                       value="{% trans 'Add Restriction' %}" type="button" onclick=copyValues()>
+                <br>
+                <br>
+                
+                <fieldset><legend>{% trans "Custom constraints" %}</legend>
 
-
-                <table id="filter" class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>{% trans "Filter" %}</th>
-                        <th>{% trans "Cantidad" %}</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr> <input type="hidden" name="name" value="your value"/></tr>
-                    </tbody>
-                </table>
-
-            <input class="btn btn-primary" id="copy" name="copy" value="Add Restriction"
-                   type="button" onclick=copyValues()>
+                    <input class="form-control" type="text" readonly name="rests" id="rest1"
+                           value="{% if form.initial|length != 0 %}{{ form.initial.rest1 }}{% else %}{{ form.data.rest1 }}{% endif %}" />
+                    <input type="hidden" class="btn btn-primary" id="delete1" name="Delete lb1"
+                           value="{% trans "Delete" %}" onclick=deleteHidden("1")>
+                    <br>
+                    <input class="form-control" type="text" readonly name="rests" id="rest2"
+                            value="{% if form.initial|length != 0 %}{{ form.initial.rest2 }}{% else %}{{ form.data.rest2 }}{% endif %}" />
+                    <input type="hidden" class="btn btn-primary" id="delete2" name="Delete lb2"
+                           value="{% trans "Delete " %}" onclick=deleteHidden("2")>
+                    <br>
+                    <input class="form-control" type="text" readonly name="rests" id="rest3"
+                            value="{% if form.initial|length != 0 %}{{ form.initial.rest3 }}{% else %}{{ form.data.rest3 }}{% endif %}" />
+                    <input type="hidden" readonly class="btn btn-primary" id="delete3" name="Delete lb3"
+                           value="{% trans "Delete" %}" onclick=deleteHidden("3")>
+                    <br>
+                </fieldset>
+            </div>
                 </div>
     </form>
 
@@ -104,36 +114,52 @@
 </div>
 <script>
 
-{#    function deleteOption() {#}
-{#        $('.chosen-select option[value=Food]').remove();#}
-{#    }#}
+function deleteHidden(number){
+    var target = "rest" + number;
+    var deleteTo = "delete" + number;
+    $('#' + target).val("");
+    $("#copy").prop('disabled', false);
 
-{#   $('.chosen-select option[value=Food]').remove();#}
+    $('#' + deleteTo).prop("type", "hidden");
+}
 
-    function copyValues(){
-        var category;
-        var rowCustom;
-        var cantidad;
+function copyValues() {
+    var category;
+    var cantidad;
 
-        var rowCount = $('#filter').find('tr').length;
-        if (rowCount >= 4){
-            $("#copy").prop('disabled', true);
-            return false;
-        }
+    cantidad = $("#cantidad").find('option:selected').text();
+    category = $("#selec").find('option:selected').text();
 
-        cantidad = $("#cantidad").find('option:selected').text();
-        category = $("#selec").find('option:selected').text();
-        rowCustom = '<tr>'.concat('<td>').concat(category).concat('</td>').concat('<td>').concat(cantidad)
-                .concat('</td>').concat('<td><a class="deleteLink" href="" >delete</a></td>').concat('</tr>');
 
-        $('#filter').find('tr:last').after(rowCustom);
+    var input1 = $("#rest1");
+    var input2 = $("#rest2");
+    var input3 = $("#rest3");
+
+    var txt1 = input1.val();
+    var txt2 = input2.val();
+    var txt3 = input3.val();
+
+    if (category == input1.val().split(":")[0] || category == input2.val().split(":")[0] || category == input3.val().split(":")[0]) {
+        return false;
     }
 
-    function deleteLast(){
-        $('#filter').find('tr:last').remove();
-        $("#copy").prop('disabled', false);
+    if (txt1 == "") {
+        input1.val(category + ":" + cantidad);
+        $("#delete1").prop("type", "button");
+    }
+    else if (txt2 == "") {
+        input2.val(category + ":" + cantidad);
+        $("#delete2").prop("type", "button");
+    }
+    else if (txt3 == "") {
+        input3.val(category + ":" + cantidad);
+        $("#delete3").prop("type", "button");
     }
 
+    if (input1.val() != "" && input2.val() != "" && input3.val() != "") {
+        $("#copy").prop('disabled', true);
+    }
+}
     function calculatePlanPrice(days){
         var coins;
         coins = 0;
