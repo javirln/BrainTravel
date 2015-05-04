@@ -7,3 +7,4 @@ Created on 22/4/2015
 DAY_THRESHOLD = 43200 #Umbral en segundos que se puede dedicar al dia a la visita de lugares
 AVERAGE_TIME_PER_VENUE = 5400 #Tiempo medio en segundos por defecto para visitar un lugares
 AVERAGE_LEAD_TIME = 1800 #Tiempo de de cola por defecto para los venues que no tengan feedback
+AVERAGE_TIME_TRAVEL = 900

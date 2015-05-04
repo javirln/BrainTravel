@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Search {% endblock %}
+{% block content %}
+{% load i18n %}
+<div class="container">
+    <h1>{% trans "Sorry, an error has ocurred" %}</h1>
+    	{% blocktrans trimmed %}
+        <p>
+        	Oops! BrainTravel has not been able to get a plan for you :(. Try it again with the name of the city and country in English.
+        	This operation will have <b>NO</b> charge for your coins.
+        </p>
+        <p>
+        	If the error persist, please contact us.
+        </p>
+        {% endblocktrans %}
+        
+</div>
+{%endblock%}
