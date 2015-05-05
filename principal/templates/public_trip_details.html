@@ -110,7 +110,7 @@
                                     </div>
                                     {% for hidden in comment_form.hidden_fields %}{{ hidden }}{% endfor %}
                                     <div class="form-group text-right">
-                                        <input class="btn btn-success" value="Send" type="submit">
+                                        <input class="btn btn-success" value="Comment"  name="comment_name" type="submit">
                                     </div>
                                 </form>
                             </div>
@@ -189,25 +189,49 @@
                     <h4 class="modal-title" id="myModalLabel">Rate this trip</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" method="post" action="rate/" id="form-rate-id" data-toggle="validator">
+                    {% if assessment_form.errors %}
+                        <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-12 col-lg-12" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {% if  assessment_form.visible_fields.0.errors%}
+                                <strong>Score</strong>
+                                {{ assessment_form.visible_fields.0.errors }}
+                            {% endif %}
+                            {% if  assessment_form.visible_fields.1.errors%}
+                                <strong>Description</strong>
+                                {{ assessment_form.visible_fields.1.errors }}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    <form class="form" method="post" action="/public_trip_details/{{trip.id}}" id="form-rate-id" data-toggle="validator">
                         {% csrf_token %}
                         <div class="form-group">
                             <p>Please choose a number between 0 and 10:</p>
-                            <input type="number" name="rate-value" min="0" max="10" required/>
-                            <p>Please, write a fancy description:</p>
-                            <textarea id="text-comment" class="form-control input-block-level" name="text-rate-description" rows="3" required="required" maxlength="255" style="resize: none;"></textarea>
+                            {{ assessment_form.visible_fields.0 }}
+                            <div class="help-block with-errors"></div>
                         </div>
+                        <div class="form-group">
+                            <p>Please, write a fancy description:</p>
+                            {{ assessment_form.visible_fields.1 }}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        {% for hidden in assessment_form.hidden_fields %}{{ hidden }}{% endfor %}
                         <div class="modal-footer">
                             <div class="form-group">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button id="submit-comment" type="submit" class="btn btn-success">Send</button>
-                                <input type="hidden" name="trip-id" value="{{trip.id}}"/>
+                                <input class="btn btn-success" name="assessment_name" value="Rate" type="submit">
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+{% if modal %}
+<script>$('#myModal').modal('show');</script>
+{% endif %}
+
 {% endblock %}

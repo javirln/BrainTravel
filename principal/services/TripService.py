@@ -1,6 +1,6 @@
 # -*- coding: latin-1 -*-
 
-from django.db.models import Q, Count, Sum
+from django.db.models import Q, Count, Sum, Avg
 from principal.models import Trip, Traveller, Comment, Assessment, Scorable, Feedback, Venue
 
 
@@ -117,34 +117,49 @@ def delete(request, trip):
 
 
 # author: Javi Rodriguez
-def send_assessment(user_id, rate_value, trip_id, rate_text):
-    to_check = Trip.objects.get(id=trip_id)
-    if to_check.state == "ap":
-        user = Traveller.objects.get(id=user_id)
-        score_trip = Scorable.objects.get(id=trip_id)
-        score_user = Scorable.objects.get(id=user_id)
-        occurrences_same_traveller = Assessment.objects.all().filter(traveller=user_id, scorable_id=trip_id).count()
-        scorable_instance = Scorable.objects.get(id=trip_id)
-        scorable_math = Scorable.objects.filter(id=trip_id).annotate(rating_number=Count('rating'),
-                                                                     rating_sum=Sum('rating'))
-        if 0 == occurrences_same_traveller:
-            comment = Assessment(
-                score=rate_value,
-                comment=rate_text,
-                traveller=user,
-                scorable=score_trip
-            )
-            comment.save()
-            num = scorable_math[0].rating_sum
-            if num is None:
-                num = 0
-            number = scorable_math[0].rating_number
-            scorable_instance.rating = int(num) + int(rate_value) / (int(number) + 1)
-            score_user.rating += int(num) + int(rate_value) / (int(number) + 1)
-            score_user.save()
-            scorable_instance.save()
-            return True
-    return False
+def construct_assessment(user_id, assessment_form):
+
+    # Obtener los valores del formulario
+    comment = assessment_form.cleaned_data['comment']
+    trip_id = assessment_form.cleaned_data['id_trip']
+    score = assessment_form.cleaned_data['score']
+
+    # Validaciones
+    trip = Trip.objects.get(id=trip_id)
+    assert trip.state == "ap"
+    assert trip.traveller.id != user_id
+    assert trip.planified is False
+    occurrences_same_traveller = Assessment.objects.all().filter(traveller=user_id, scorable_id=trip_id).count()
+    assert 0 == occurrences_same_traveller
+
+    # Obtener el viajero
+    traveller = Traveller.objects.get(id=user_id)
+
+    # Obtener el viaje puntuable
+    score_trip = Scorable.objects.get(id=trip_id)
+
+    # Crear la valoracion
+    assessment = Assessment(
+        score=score,
+        comment=comment,
+        traveller=traveller,
+        scorable=score_trip
+    )
+
+    # Guardar la valoracion en la base de datos
+    assessment.save()
+
+    # Calcular y guardar el rating del viaje
+    scorable_instance = Scorable.objects.get(id=trip_id)
+    average_score = Assessment.objects.filter(scorable_id=scorable_instance.id).aggregate(average_score=Avg('score'))
+    scorable_instance.rating = round(average_score["average_score"], 2)
+    scorable_instance.save()
+
+    # Calcular y guardar la reputacion
+    average_reputation = Trip.objects.filter(traveller_id=trip.traveller.id).aggregate(average_rating=Avg('rating'))
+    traveller = Traveller.objects.get(id=trip.traveller.id)
+    traveller.reputation = round(average_reputation["average_rating"], 2)
+    traveller.save()
 
 
 # author: Juane

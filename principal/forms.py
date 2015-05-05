@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import ugettext as _
 from paypal.standard.forms import PayPalPaymentsForm
 from django import forms
@@ -273,6 +274,42 @@ class CommentForm(forms.Form):
     id_trip = forms.IntegerField(
         widget=forms.HiddenInput
     )
+    comment = forms.CharField(
+        required=True,
+        min_length=3,
+        max_length=254,
+        widget=forms.Textarea(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                'maxlength': '254',
+                'minlength': '3',
+                'rows': '3',
+                'style': 'resize: none;'
+            }
+        )
+    )
+
+
+# @author: Juane
+class AssessmentForm(forms.Form):
+    id_trip = forms.IntegerField(
+        widget=forms.HiddenInput
+    )
+
+    score = forms.IntegerField(
+        required=True,
+        validators=[MinValueValidator(0), MaxValueValidator(10)],
+        widget=forms.NumberInput(
+            attrs={
+                'class': 'form-control',
+                'required': 'required',
+                'min': '0',
+                'max': '10'
+            }
+        )
+    )
+
     comment = forms.CharField(
         required=True,
         min_length=3,
