@@ -157,92 +157,6 @@ def save_data(venues_selected):
     return venues_selected_with_photos
 
 
-# 1º parametro = categorias que ha puntuado el usuario
-def planificador(dict_category_weighting, number_days):
-    com = Planificador(dict_category_weighting)
-    com.ejecute()
-
-
-class Planificador(threading.Thread):
-    def __init__(self, dict_category_weighting):
-        # self.lock = threading.Lock()
-        threading.Thread.__init__(self)
-        self.lista = []
-        self.dict_category_weighting = dict_category_weighting
-
-    # def anyadir(self, obj):
-    # self.lock.acquire()
-    # self.lista.append(obj)
-    # self.lock.release()
-    # print(self.lista)
-    # def obtener(self, ):
-    # self.lock.acquire()
-    # obj = self.lista.pop()
-    # self.lock.release()
-    #     print(obj + "asda")
-    #     return obj
-    def apply_weighting(self, category, weighting):
-        # category_bd = Category.objects.filter(name=category)
-        all_venue_category = Venue.objects.filter(categories__name=category)
-
-        # todo asegurarse de los valores
-        if weighting == "a lot of":
-            for categoria in all_venue_category:
-                categoria.scorable_ptr.rating *= 1.6
-
-        if weighting == "many of":
-            for categoria in all_venue_category:
-                categoria.scorable_ptr.rating *= 1.4
-
-        if weighting == "never":
-            for categoria in all_venue_category:
-                categoria.scorable_ptr.rating *= 0.01
-
-        # finalmente escribimos los resultados
-        self.lista.extend(all_venue_category)
-
-    # dict categorias:puntuacion del usuario
-    def ejecute(self):
-        actual = threading.active_count()
-        for categoria in self.dict_category_weighting:
-            print(threading.active_count())
-            # sacamos la ponderacion de dicha categoria
-            weighting = self.dict_category_weighting[categoria]
-            th = threading.Thread(target=self.apply_weighting, args=(categoria, weighting,))
-            # print(categoria)
-            # print(weighting)
-            th.start()
-            # print("+1")
-        #     lo uso para sincronizar los hilos
-        while actual != threading.active_count():
-            # esperamos a que todos los hilos terminen
-            pass
-        # Ordenados de mayor a menor rating
-        self.lista.sort(cmpRating, reverse=True)
-        pprint.pprint(self.lista)
-
-        # for i in self.lista:
-        #     print(i.scorable_ptr.name)
-        #     print(i.scorable_ptr.rating)
-
-
-# comparamos venue segun su rating
-def cmpRating(venue1, venue2):
-    """ Compara dos hoteles por su precio. """
-    return cmp(venue1.scorable_ptr.rating, venue2.scorable_ptr.rating)
-
-
-def test_plan():
-    try:
-        dict_categories_and_options = {'Castle': "a lot of", 'Stadium': "many of"}
-        com = Planificador(dict_categories_and_options)
-        com.ejecute()
-        # while True:
-        # if len(com.lista) != 0:
-    except:
-        traceback.print_exc()
-
-
 # autor: david
 def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, indexes_venues, selected_food_with_photos,
                 all_venues, all_food):
@@ -262,9 +176,6 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, inde
     for num_day in range(1, days + 1):
         day = Day(numberDay=num_day, trip=trip)
         day.save()
-
-        # 24 - 8h (para dormir) - 3h para comer * 60 (lo pasamos a minutos)
-
 
         day_venues = []
         if num_day == 1:
@@ -313,9 +224,22 @@ def create_history(trip):
 
 
 # Autor: david
-def get_venues_order(lat_centre, lng_centre, list_venues):
+def get_venues_order(list_constrains, lat_centre, lng_centre, list_venues):
     # obtengo la primera qe es la que tiene mayor puntuacion en FS
     destinations = ""
+    map_const = {}
+    for const in list_constrains:
+        split = const.split(":")
+        cat = Category.objects.filter(name=split[0]).first()
+        id_category_fs = cat.id_foursquare
+        if split[1] == "Mucho":
+            split[1] = 0.5
+        elif split[1] == "Poco":
+            split[1] = 0.7
+        elif split[1] == "Any of":
+            split[1] = 4
+        map_const[id_category_fs] = split[1]
+
     for venue in list_venues:
         lat = venue['venue']['location']['lat']
         lng = venue['venue']['location']['lng']
@@ -340,7 +264,14 @@ def get_venues_order(lat_centre, lng_centre, list_venues):
         # distance = element['distance']['value']
         # son segundos
         # duration = element['duration']['value']
-        tupla = (list_venues[count], element['duration']['value'])
+        venue_actual = list_venues[count]
+        tiempo = element['duration']['value']
+
+        for rest in map_const:
+            if rest in venue_actual['venue']['categories'][0]['id']:
+                tiempo = int(tiempo)*map_const[rest]
+
+        tupla = (venue_actual, tiempo)
         list_durations.append(tupla)
         count += 1
     list_durations.sort(key=lambda x: x[1])
@@ -348,9 +279,9 @@ def get_venues_order(lat_centre, lng_centre, list_venues):
     return list_durations
 
 
-def get_plan(fs_venues, num_days):
+def get_plan(list_constrains, fs_venues, num_days):
     origin = fs_venues[0]
-    venues_ordered = get_venues_order(origin['venue']['location']['lat'],
+    venues_ordered = get_venues_order(list_constrains, origin['venue']['location']['lat'],
                                       origin['venue']['location']['lng'],
                                       fs_venues)
 
@@ -401,8 +332,8 @@ def get_plan(fs_venues, num_days):
     return (selected_venues, index_days)
 
 
-def get_plan_food(fs_venues_food, num_days, origin):
-    venues_ordered = get_venues_order(origin['venue']['location']['lat'],
+def get_plan_food(list_constrains, fs_venues_food, num_days, origin):
+    venues_ordered = get_venues_order(list_constrains, origin['venue']['location']['lat'],
                                       origin['venue']['location']['lng'],
                                       fs_venues_food)
 

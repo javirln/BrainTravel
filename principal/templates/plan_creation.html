@@ -77,17 +77,17 @@
                 
                 <fieldset><legend>{% trans "Custom constraints" %}</legend>
 
-                    <input class="form-control" type="text" readonly name="rests" id="rest1"
+                    <input class="form-control" type="hidden" readonly name="rests" id="rest1"
                            value="{% if form.initial|length != 0 %}{{ form.initial.rest1 }}{% else %}{{ form.data.rest1 }}{% endif %}" />
                     <input type="hidden" class="btn btn-primary" id="delete1" name="Delete lb1"
                            value="{% trans "Delete" %}" onclick=deleteHidden("1")>
                     <br>
-                    <input class="form-control" type="text" readonly name="rests" id="rest2"
+                    <input class="form-control" type="hidden" readonly name="rests" id="rest2"
                             value="{% if form.initial|length != 0 %}{{ form.initial.rest2 }}{% else %}{{ form.data.rest2 }}{% endif %}" />
                     <input type="hidden" class="btn btn-primary" id="delete2" name="Delete lb2"
                            value="{% trans "Delete " %}" onclick=deleteHidden("2")>
                     <br>
-                    <input class="form-control" type="text" readonly name="rests" id="rest3"
+                    <input class="form-control" type="hidden" readonly name="rests" id="rest3"
                             value="{% if form.initial|length != 0 %}{{ form.initial.rest3 }}{% else %}{{ form.data.rest3 }}{% endif %}" />
                     <input type="hidden" readonly class="btn btn-primary" id="delete3" name="Delete lb3"
                            value="{% trans "Delete" %}" onclick=deleteHidden("3")>
