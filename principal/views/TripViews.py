@@ -17,7 +17,7 @@ from principal.models import Trip, Comment
 from principal.services import TripService, TravellerService, CommentService
 from principal.services.TravellerService import save
 from principal.utils import BrainTravelUtils
-
+from django.utils.translation import ugettext as _
 
 # author: Juane
 def search_trip(request):
@@ -82,13 +82,16 @@ def public_trip_details(request, trip_id):
             if comment_form.is_valid():
                 comment = CommentService.construct_comment(request.user.id, comment_form)
                 CommentService.save(request.user.id, comment)
-                BrainTravelUtils.save_success(request, 'Comment successfully')
+                BrainTravelUtils.save_success(request, _('Comment successfully'))
                 return HttpResponseRedirect("/public_trip_details/" + str(comment.trip.id))
         else:
             comment_form = CommentForm(initial={'id_trip': trip.id})
 
         form = TripUpdateStateForm(initial={'id': trip.id, 'state': trip.state})
-        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'comment_form': comment_form, 'assessment': assessment}, context_instance=RequestContext(request))
+        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge,
+                                                               'form': form, 'comment_form': comment_form,
+                                                               'assessment': assessment},
+                                  context_instance=RequestContext(request))
     except Exception:
         return render_to_response('error.html')
 
@@ -125,7 +128,7 @@ def planned_trips(request):
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
     return render_to_response('trip_planned_list.html',
-                              {'trips': trips, 'create_trip': False, 'title_list': 'My planned trips'},
+                              {'trips': trips, 'create_trip': False, 'title_list': _('My planned trips')},
                               context_instance=RequestContext(request))
     
 
@@ -140,7 +143,7 @@ def update_state(request, trip_id):
                 trip = TripService.update_state(request.user, trip_form)
                 assert str(trip.scorable_ptr_id) == trip_id
                 TripService.save(trip)
-                BrainTravelUtils.save_success(request, 'Trip successfully updated')
+                BrainTravelUtils.save_success(request, _('Trip successfully updated'))
                 return redirect(list_trip_administrator)
         else:
             return redirect(public_trip_details(request, trip_id))
@@ -161,7 +164,7 @@ def list_all_by_traveller(request):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My trips'},
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': _('My trips')},
                                   context_instance=RequestContext(request))
 
 
@@ -179,7 +182,7 @@ def list_all_by_traveller_draft(request):
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
         return render_to_response('trip_list.html',
-                                  {'trips': trips, 'create_trip': True, 'title_list': 'My draft trips'},
+                                  {'trips': trips, 'create_trip': True, 'title_list': _('My draft trips')},
                                   context_instance=RequestContext(request))
 
 
@@ -191,15 +194,15 @@ def trip_create(request):
         form = TripEditForm(request.POST)
         if form.is_valid():
             trip_new = TripService.create(form, user_id)
-            if "save" in request.POST and request.POST['save'] == "Save draft":
+            if "save" in request.POST and request.POST['save'] == "Save in draft":
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
-                BrainTravelUtils.save_success(request, "Action completed successfully")
+                BrainTravelUtils.save_success(request, _("Action completed successfully"))
                 return HttpResponseRedirect("/trip/draft/")
             elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)
-                BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
+                BrainTravelUtils.save_success(request, _("Your trip must be accepted by an administrator"))
                 return HttpResponseRedirect("/trip/mylist/")
             BrainTravelUtils.save_error(request)
             return HttpResponseRedirect("/trip/mylist/")

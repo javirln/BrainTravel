@@ -229,16 +229,19 @@ def get_venues_order(list_constrains, lat_centre, lng_centre, list_venues):
     destinations = ""
     map_const = {}
     for const in list_constrains:
-        split = const.split(":")
-        cat = Category.objects.filter(name=split[0]).first()
-        id_category_fs = cat.id_foursquare
-        if split[1] == "Mucho":
-            split[1] = 0.5
-        elif split[1] == "Poco":
-            split[1] = 0.7
-        elif split[1] == "Any of":
-            split[1] = 4
-        map_const[id_category_fs] = split[1]
+        if len(const) != 0:
+            split = const.split(":")
+            cat = Category.objects.filter(id_foursquare=split[0]).first()
+            id_category_fs = cat.id_foursquare
+            if split[1] == "Mucho":
+                split[1] = constants.NUMBER_A_LOT_OF
+            elif split[1] == "Poco":
+                split[1] = constants.NUMBER_SOME_OF
+            elif split[1] == "Nada":
+                split[1] = constants.NUMBER_ANYTHING_OF
+            else:
+                raise ValueError('Input value incorrect')
+            map_const[id_category_fs] = split[1]
 
     for venue in list_venues:
         lat = venue['venue']['location']['lat']
@@ -267,9 +270,18 @@ def get_venues_order(list_constrains, lat_centre, lng_centre, list_venues):
         venue_actual = list_venues[count]
         tiempo = element['duration']['value']
 
+        tupla = ()
+        # recorremos el mapa y vemos si coincide el id_FS de la vista con el del algoritmo
         for rest in map_const:
             if rest in venue_actual['venue']['categories'][0]['id']:
-                tiempo = int(tiempo)*map_const[rest]
+                # Aqui entra si coincide el id_FS con el id_categoria_venue
+
+                # Este IF ES PARA  los venues que estan muy cercas pero no quieres ver.
+                # si esta a menos 1min, la distancia es 0 y eso al multiplicar sigue siendo 0
+                if map_const[rest] == constants.NUMBER_ANYTHING_OF:
+                    tiempo = int(tiempo) + map_const[rest]
+                else:
+                    tiempo = int(tiempo) * map_const[rest]
 
         tupla = (venue_actual, tiempo)
         list_durations.append(tupla)
@@ -284,7 +296,6 @@ def get_plan(list_constrains, fs_venues, num_days):
     venues_ordered = get_venues_order(list_constrains, origin['venue']['location']['lat'],
                                       origin['venue']['location']['lng'],
                                       fs_venues)
-
     total_threshold = constants.DAY_THRESHOLD * num_days
     acum_time = 0  # Tiempo acumulado en cada iteración en segundos
     acum_time_per_day = 0
@@ -341,7 +352,7 @@ def get_plan_food(list_constrains, fs_venues_food, num_days, origin):
     for idx, venue in enumerate(venues_ordered):
         selected_venues.append(venue[0])
 
-        if idx >= (num_days * 3):
+        if idx >= (num_days * 5):
             break
 
     return selected_venues

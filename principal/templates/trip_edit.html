@@ -94,12 +94,14 @@
 	               <div class="col-xs-12">
 		                <div class="form-group">
 		                  <div class="col-xs-12">
-		                    <input class="btn btn-primary" name="save" value="Publish Trip" type="submit" onclick="return confirm('Are you sure? An administrator must accept your trip.')">
+		                    <input class="btn btn-primary" name="publis" value="{% trans "Publish Trip"%}" type="submit"
+                                   onclick="return confirm({% trans 'Are you sure? An administrator must accept your trip.'%})">
 		                    <span></span>
-		                    <input class="btn btn-primary" name="save" value="Save in drafts" type="submit">
+		                    <input class="btn btn-primary" name="save" value="{% trans "Save in drafts"%}" type="submit">
 		                    <span></span>
 		                    {% if not create %}
-		                    <input class="btn btn-primary" name="delete" value="Delete Trip" type="submit" onclick="return confirm('Are you sure? This cannot be recovered.')">
+		                    <input class="btn btn-primary" name="delete" value="{% trans "Delete Trip"%}" type="submit"
+                                   onclick="return confirm({% trans 'Are you sure? This cannot be recovered.'%})">
 		                    {% endif %}
 		                    </div>
 		                </div>
