@@ -115,16 +115,7 @@ class TripEditForm(forms.Form):
 class PlanForm(forms.Form):
     city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control', }))
     country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    startDate = forms.DateField(label="starDate", widget=forms.TextInput(attrs={'class': 'datepicker form-control'}))
     days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min': 0, 'max': 7, 'class': 'form-control'}))
-
-    def clean(self):
-        start_date = self.data['startDate']
-        start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
-        if start_date < datetime.now().date():
-            self.add_error('startDate', _("Must be a date in the future"))
-        return self.data
-
 
 # author: Juane
 class TravellerEditProfileForm(forms.Form):

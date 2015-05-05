@@ -28,18 +28,6 @@
                     <div class="help-block with-errors"></div>
                 </div>
 
-                <div class="form-group {% if form.visible_fields.2.errors %} has-error {% endif %}">
-                    <label for="id_startDate"
-                           class="control-label">{% trans "Start Date" %}</label>
-                    <input pattern="\d\d/\d\d/\d\d\d\d" class="form-control" id="id_startDate" name="startDate" type="text"
-                           value="{% if form.initial|length != 0 %}{{ form.initial.startDate }}{% else %}{{ form.data.startDate }}{% endif %}"
-                           required/>
-
-                    <div class="help-block with-errors has-error">
-                        {{ form.visible_fields.2.errors }}
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <label for="id_days"
                            class="control-label">{% trans "Days" %}</label>

@@ -246,15 +246,12 @@ def test_plan():
 # autor: david
 def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, indexes_venues, selected_food_with_photos,
                 all_venues, all_food):
-    start_date = tripForm.data['startDate']
-    start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
     days = int(tripForm.cleaned_data['days'])
     country = tripForm.cleaned_data['country']
     city = tripForm.cleaned_data['city']
-    end_date = start_date + timedelta(days=days)
 
     trip = Trip(name=str(days) + " days in " + city, publishedDescription="", state='ap',
-                startDate=start_date, endDate=end_date, planified=True, coins=coins_cost,
+                planified=True, coins=coins_cost,
                 traveller=TravellerService.find_one(request.user.id),
                 city=city, country=country)
     trip.save()
@@ -263,13 +260,7 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, inde
     trip.possible_venues.add(*(set(all_food) - set(selected_food_with_photos)))
 
     for num_day in range(1, days + 1):
-        # si no es la primera iteracion sumamos "days" a la fecha
-        if num_day == 1:
-            date = start_date
-        else:
-            date = start_date + timedelta(days=num_day - 1)
-
-        day = Day(numberDay=num_day, trip=trip, date=date)
+        day = Day(numberDay=num_day, trip=trip)
         day.save()
 
         # 24 - 8h (para dormir) - 3h para comer * 60 (lo pasamos a minutos)
@@ -282,7 +273,6 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, inde
             day_venues = selected_venues_with_photos[indexes_venues[num_day - 2]:]
         else:
             day_venues = selected_venues_with_photos[indexes_venues[num_day - 2]: indexes_venues[num_day - 1]]
-
 
         # enumerate devuelve el elemento sobre el que se esta iterando y el indice que ocupa
         for idx, venue in enumerate(day_venues):
@@ -340,8 +330,6 @@ def get_venues_order(lat_centre, lng_centre, list_venues):
 
     url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str(lat_centre) + "," + str(lng_centre) \
           + "&destinations=" + destinations + "&language=es-ES&sensor=false"
-    # print(url)
-    # print(len(url))
 
     response = urllib2.urlopen(url)
     data = json.load(response)
