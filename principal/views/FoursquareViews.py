@@ -76,9 +76,9 @@ def foursquare_list_venues(request):
             list_cat.append(p.name)
         if request.POST:
             form = PlanForm(request.POST)
-            list = request.POST.getlist('rests')
+            list_constrains = request.POST.getlist('rests')
 
-            print list
+            print list_constrains
             if form.is_valid():
                 days = int(form.cleaned_data['days'])
                 coins_cost = check_coins(days)
@@ -116,15 +116,12 @@ def foursquare_list_venues(request):
                 
 
                 #Llamada al nuevo algoritmo
-                plan_venues = FoursquareServices.get_plan(items_venues, days)
-                plan_food = FoursquareServices.get_plan_food(items_food, days, items_venues[0])
+                plan_venues = FoursquareServices.get_plan(list_constrains, items_venues, days)
+                plan_food = FoursquareServices.get_plan_food(list_constrains, items_food, days, items_venues[0])
                 # Filter and save
                 selected_venues = FoursquareServices.filter_and_save(plan_venues[0])
                 selected_food = FoursquareServices.filter_and_save(plan_food, food=True)
                 
-                #selected_venues_with_photos = FoursquareServices.save_data(selected_venues)
-                #selected_food_with_photos = FoursquareServices.save_data(selected_food)
-
                 trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues, plan_venues[1],
                                                       selected_food, all_venues, all_food)
 
