@@ -69,6 +69,7 @@ WSGI_APPLICATION = 'BrainTravel.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+#produccion mysql.cvu77qxolqzd.us-west-2.rds.amazonaws.com
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
