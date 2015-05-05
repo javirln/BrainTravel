@@ -1,25 +1,26 @@
 {% extends 'base.html' %}
-{% block title %} Edit Profile {% endblock %}
+{% block title %} Edit profile {% endblock %}
 {% block content %}
+    {% load i18n %}
 <div class="container">
-    <h1>Edit Profile</h1>
+    <h1>{% trans "Edit Profile" %}</h1>
     {% if form.errors %}
         <div class="alert alert-danger alert-dismissible col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             {% if  form.visible_fields.0.errors%}
-                <strong>First name</strong>
+                <strong>{% trans "First name" %}</strong>
                 {{ form.visible_fields.0.errors }}
             {% endif %}
             {% if  form.visible_fields.1.errors%}
-                <strong>Last name</strong>
+                <strong>{% trans "Last name" %}/strong>
                 {{ form.visible_fields.1.errors }}
             {% endif %}
             {% if  form.visible_fields.2.errors%}
-                <strong>Genre</strong>
+                <strong>{% trans "Genre" %}</strong>
                 {{ form.visible_fields.2.errors }}
             {% endif %}
             {% if  form.visible_fields.3.errors or form.visible_fields.4.errors %}
-                <strong>Photo</strong>
+                <strong>{% trans "Photo" %}</strong>
                 {{ form.visible_fields.3.errors }}
                 {{ form.visible_fields.4.errors }}
             {% endif %}
@@ -38,7 +39,7 @@
                         </div>
                         <label for="id_photo" class="control-label"></label>
                         <div>
-                            {{ form.visible_fields.4 }} <label for="id_photo_clear">Default image</label>
+                            {{ form.visible_fields.4 }} <label for="id_photo_clear">{% trans "Default image" %}</label>
                             {{ form.visible_fields.3 }}
                         </div>
                         <div class="help-block with-errors"></div>
@@ -47,17 +48,17 @@
                 <!-- edit form column -->
                 <div class="col-xs-12 col-sm-offset-1 col-sm-6 col-md-offset-1 col-md-6 col-lg-offset-1 col-lg-6">
                         <div class="form-group">
-                            <label for="id_first_name" class="control-label">First name:</label>
+                            <label for="id_first_name" class="control-label">{% trans "First name" %}:</label>
                             {{ form.visible_fields.0 }}
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <label for="id_last_name" class="control-label">Last name:</label>
+                            <label for="id_last_name" class="control-label">{% trans "Last name" %}:</label>
                             {{ form.visible_fields.1 }}
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
-                            <label for="id_genre" class="control-label">Genre:</label>
+                            <label for="id_genre" class="control-label">{% trans "Genre" %}:</label>
                             {{ form.visible_fields.2 }}
                             <div class="help-block with-errors"></div>
                         </div>
@@ -65,7 +66,7 @@
                         <div class="form-group">
                             <input class="btn btn-primary" value="Save Changes" type="submit">
                             <span></span>
-                            <a href="/profile/{{ form.id.value }}" class="btn btn-default">Cancel</a>
+                            <a href="/profile/{{ form.id.value }}" class="btn btn-default">{% trans "Cancel" %}</a>
                         </div>
                 </div>
             </form>

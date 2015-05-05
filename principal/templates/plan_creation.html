@@ -28,18 +28,6 @@
                     <div class="help-block with-errors"></div>
                 </div>
 
-                <div class="form-group {% if form.visible_fields.2.errors %} has-error {% endif %}">
-                    <label for="id_startDate"
-                           class="control-label">{% trans "Start Date" %}</label>
-                    <input pattern="\d\d/\d\d/\d\d\d\d" class="form-control" id="id_startDate" name="startDate" type="text"
-                           value="{% if form.initial|length != 0 %}{{ form.initial.startDate }}{% else %}{{ form.data.startDate }}{% endif %}"
-                           required/>
-
-                    <div class="help-block with-errors has-error">
-                        {{ form.visible_fields.2.errors }}
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <label for="id_days"
                            class="control-label">{% trans "Days" %}</label>
@@ -55,85 +43,128 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="create_plan" class="btn btn-primary btn-block" name="save" value="Create Plan" type="submit" onclick=whileLoading()>
+                    <input id="create_plan" class="btn btn-primary btn-block" name="save"
+                           value="{% trans "Create Plan" %}"
+                           type="submit" onclick=whileLoading()>
                 </div>
 
 
             <div class="form-group">
-                <label for="selec">Select for your funny TRIP</label>
-                <select id="selec" style="display: none;"  class="chosen-select"
-                        tabindex="-1">
-                    <option value=""></option>
-                    <option value="Food">Food</option>
-                    <option value="Drink">Drink</option>
-                    <option value="Sex">Sex</option>
-                    <option value="Alcohol">Alcohol</option>
+                <label for="selec">{% trans "Select your custom constrains" %}</label>
+                <select id="selec" style="display: none;"  class="chosen-select">
+                    <option></option>
+                    {% for cat in list_cat %}
+                        <option value= {{ cat.id_foursquare }}>{% trans cat.name %}</option>
+                    {% endfor %}
+
                 </select>
 
                 <label for="cantidad">Selec cantidad</label>
                 <select id="cantidad" style="display: none;" class="chosen-select"
                         tabindex="-1">
                     <option value=""></option>
-                    <option value="Mucho">Mucho</option>
-                    <option value="Poco">Poco</option>
-                    <option value="Nada">Nada</option>
+                    <option value="Mucho">{% trans "A lot of" %}</option>
+                    <option value="Poco">{% trans "Some of" %}</option>
+                    <option value="Nada">{% trans "Anything of" %}</option>
                 </select>
+            <div>
+                <br>
 
-
-
-                <table id="filter" class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>{% trans "Filter" %}</th>
-                        <th>{% trans "Cantidad" %}</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr> <input type="hidden" name="name" value="your value"/></tr>
-                    </tbody>
-                </table>
-
-            <input class="btn btn-primary" id="copy" name="copy" value="Add Restriction"
-                   type="button" onclick=copyValues()>
+                <input class="btn btn-primary" id="copy" name="copy"
+                       value="{% trans 'Add Restriction' %}" type="button" onclick=copyValues()>
+                    <input class="form-control" type="hidden" readonly name="rests" id="rest1"/>
+                    <input class="form-control" type="hidden" readonly name="rests" id="rest2"/>
+                    <input class="form-control" type="hidden" readonly name="rests" id="rest3"/>
+            </div>
                 </div>
     </form>
 
+<div class="form-group">
+    <fieldset><legend>{% trans "Custom constraints" %}</legend>
+        <input class="form-control" type="text" readonly name="rests" id="rest1_lb1"/>
+        <input type="hidden" class="btn btn-primary" id="delete1" name="Delete lb1"
+               value="{% trans "Delete" %}" onclick=deleteHidden("1")>
+        <br>
+        <input class="form-control" type="text" readonly name="rests" id="rest1_lb2"/>
+        <input type="hidden" class="btn btn-primary" id="delete2" name="Delete lb2"
+               value="{% trans "Delete " %}" onclick=deleteHidden("2")>
+        <br>
+        <input class="form-control" type="text" readonly name="rests" id="rest1_lb3"/>
+        <input type="hidden" readonly class="btn btn-primary" id="delete3" name="Delete lb3"
+               value="{% trans "Delete" %}" onclick=deleteHidden("3")>
+        <br>
+        </fieldset>
+</div>
 
     </div>
 </div>
 <script>
 
-{#    function deleteOption() {#}
-{#        $('.chosen-select option[value=Food]').remove();#}
-{#    }#}
+function deleteHidden(number){
+    var target = "rest" + number;
+    var rest_lbN = "rest1_lb" + number;
+    var deleteTo = "delete" + number;
+    //borramos el hidden
+    $('#' + target).val("");
+    //Borramos el visible
+    $('#' + rest_lbN).val("");
+    //Habilitamos el boton de agregar mas restricciones
+    $("#copy").prop('disabled', false);
+    //desabilitamos el boton de borrar
+    $('#' + deleteTo).prop("type", "hidden");
+}
 
-{#   $('.chosen-select option[value=Food]').remove();#}
+function copyValues() {
+    var category;
+    var cantidad;
 
-    function copyValues(){
-        var category;
-        var rowCustom;
-        var cantidad;
+    cantidad = $("#cantidad").find('option:selected').text();
+    category = $("#selec").find('option:selected').text();
 
-        var rowCount = $('#filter').find('tr').length;
-        if (rowCount >= 4){
-            $("#copy").prop('disabled', true);
-            return false;
-        }
+    //son los hidden
+    var input1 = $("#rest1");
+    var input2 = $("#rest2");
+    var input3 = $("#rest3");
 
-        cantidad = $("#cantidad").find('option:selected').text();
-        category = $("#selec").find('option:selected').text();
-        rowCustom = '<tr>'.concat('<td>').concat(category).concat('</td>').concat('<td>').concat(cantidad)
-                .concat('</td>').concat('<td><a class="deleteLink" href="" >delete</a></td>').concat('</tr>');
+    //son los que se ven en la pantalla
+    var rest_lb1 = $("#rest1_lb1");
+    var rest_lb2 = $("#rest1_lb2");
+    var rest_lb3 = $("#rest1_lb3");
 
-        $('#filter').find('tr:last').after(rowCustom);
+    //selecciona la id_categoria
+    var cat_id = jQuery("#selec option:selected").val();
+
+    //selecciona la cantidad
+    var vals = jQuery("#cantidad option:selected").val();
+
+    var txt1 = input1.val();
+    var txt2 = input2.val();
+    var txt3 = input3.val();
+
+    if (category == input1.val().split(":")[0] || category == input2.val().split(":")[0] || category == input3.val().split(":")[0]) {
+        return false;
     }
 
-    function deleteLast(){
-        $('#filter').find('tr:last').remove();
-        $("#copy").prop('disabled', false);
+    if (txt1 == "") {
+        input1.val(cat_id + ":" + vals);
+        rest_lb1.val(category + ": " + cantidad);
+        $("#delete1").prop("type", "button");
+    }
+    else if (txt2 == "") {
+        input2.val(cat_id + ":" + vals);
+        rest_lb2.val(category + ": " + cantidad);
+        $("#delete2").prop("type", "button");
+    }
+    else if (txt3 == "") {
+        input3.val(cat_id + ":" + vals);
+        rest_lb3.val(category + ": " + cantidad);
+        $("#delete3").prop("type", "button");
     }
 
+    if (input1.val() != "" && input2.val() != "" && input3.val() != "") {
+        $("#copy").prop('disabled', true);
+    }
+}
     function calculatePlanPrice(days){
         var coins;
         coins = 0;
@@ -163,7 +194,7 @@
     function whileLoading() {
         swal({
             title: "Loading...",
-            text: "We are working hard on your plan. It might take a while, please, be patient :)",
+            text: " {%  trans "We are working hard on your plan. It might take a while, please, be patient :)"%}",
             showConfirmButton: false,
             imageUrl: "{% static "img/gears.svg" %}"
         });
