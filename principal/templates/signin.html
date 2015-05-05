@@ -93,7 +93,7 @@
 		                            </div>
 		
 		                            <div class="form-group">
-		                                <button type="submit" id="singUp-button" class="btn btn-lg btn-primary btn-block">Sign up</button>
+		                                <button type="submit" id="singUp-button" class="btn btn-lg btn-primary btn-block"><span id="spinner" class="fa fa-spinner fa-spin"></span> Sign up</button>
 		                            </div>
 		                        </form>
 		                    </div>
@@ -166,32 +166,42 @@
 	    }
 	});
 	
-	
+	var $loading = $('#spinner').hide();
+	    
+
+	$(function() {
+	}).ajaxStart(function() {
+		$loading.show();
+	}).ajaxStop(function() {
+		$loading.hide();
+	});
+
 	function register_traveller() {
-		$('#singUp-button').hide();
-		
+		$('#singUp-button').prop('disabled', true);
+
 		$.ajax({
-	        url : "/register_traveller/", // the endpoint
-	        type : "POST", // http method
-	        data : $('#traveller-registration').serialize(),
+			url : "/register_traveller/", // the endpoint
+			type : "POST", // http method
+			data : $('#traveller-registration').serialize(),
 			dataType : "json",
-	        // handle a successful response
-	        success : function(json) {
-				$('#singUp-button').show()
-	            if(json.success == true){
-	                sweetAlert("Well done!", "", "success"); // log the returned json to the console    
-	            }else{
-	                sweetAlert(json.error, "","error");
-	                //alert(json.error);
+			// handle a successful response
+			success : function(json) {
+				$('#singUp-button').prop('disabled', false);
+				if (json.success == true) {
+					sweetAlert("Well done!", "", "success"); // log the returned json to the console    
+				} else {
+					sweetAlert(json.error, "", "error");
+					//alert(json.error);
 				}
 				//$('#traveller-registration')[0].reset();
 			},
-	
-	        // handle a non-successful response
-	        error : function(xhr,errmsg,err) {
-				$('#singUp-button').show()
-	        }
-	    });
+
+			// handle a non-successful response
+			error : function(xhr, errmsg, err) {
+				$('#singUp-button').prop('disabled', false);
+			}
+		});
+		
 	};
 </script>
 

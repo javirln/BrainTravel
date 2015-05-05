@@ -10,7 +10,7 @@
                             <img class="img-rounded" style="width: 150px;" src="{{venue.photo}}">
                         </a>
                         <h4 class="media-heading" style="margin-top: 14px;">{{venue.name}}</h4>
-                        <a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Give feedback</a>
+                        <a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">{% trans "Give feedback" %}</a>
                     </div>
                     <div class="col-md-10 col-sm-9 col-lg-10 col-xs-12">
                         <div class="media-body">
@@ -38,7 +38,7 @@
 	                                </div><!-- /col-sm-5 -->
 	                            </div>
 	                            {% empty %}
-                                <h4>Sorry, there aren't tips available for this venue.</h4>
+                                <h4>{% trans "Sorry, there aren't tips available for this venue." %}</h4>
                             {% endfor %}
                         </div>
                     </div>
@@ -57,22 +57,22 @@
                     <form class="form" method="post" action="/venue_details/rate/" id="form-rate-id">
                         {% csrf_token %}
                         <div class="form-group">
-                            <p>By giving feedback you enhance our algorithm. The more feedback it gets, the more accurate it becomes. We give you some coins as gift as well :)</p>
+                            <p>{% trans "By giving feedback you enhance our algorithm. The more feedback it gets, the more accurate it becomes. We give you some coins as gift as well :)" %}</p>
                             <hr>
-                            <h4>Lead time: <small>How much time you spent waiting to buy the tickets, on the queue...</small></h4>
+                            {% trans "<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on the queue...</small></h4>" %}
                             <input id="lead-time" type="number" name="lead-time-value" min="0" required/><span> min.</span>
                             <br>
-                            <h4>Duration: <small>How much time you spent inside the venue, you were walking around...</small></h4>
+                            {% trans "<h4>Duration: <small>How much time you spent inside the venue, you were walking around...</small></h4>" %}
                             <input id="duration-time" type="number" name="duration-time-value" min="0" required/><span> min.</span>
                             <div id="duration-error" class="help-block" style="color: #A94442"></div>
                             <br>
-                            <h4>Description: <small>Something else you want to say?</small></h4>
+                            {% trans "<h4>Description: <small>Something else you want to say?</small></h4>" %}
                             <textarea id="text-comment" class="form-control input-block-level" name="text-description" rows="3" required maxlength="255" style="resize: none;"></textarea>
                         </div>
                         <div class="modal-footer">
                             <div class="form-group">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button id="submit-comment" type="submit" class="btn btn-success">Send</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+                                <button id="submit-comment" type="submit" class="btn btn-success">{% trans "Send" %}</button>
                                 <input type="hidden" name="venue-id" value="{{venue.id}}"/>
                             </div>
                          </div>
