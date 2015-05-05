@@ -3,21 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-
-"POT-Creation-Date: 2015-05-04 10:15+0200\n"
-"PO-Revision-Date: 2015-05-05 00:22+0100\n"
+"POT-Creation-Date: 2015-05-05 15:31+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: es\n"
-"X-Generator: Poedit 1.7.6\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 
 #: myvenv/lib/python2.7/site-packages/django/contrib/sitemaps/apps.py:8
 msgid "Site Maps"
@@ -478,6 +476,8 @@ msgid "Order"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/forms/formsets.py:371
+#: principal/templates/plan_creation.html:95
+#: principal/templates/plan_creation.html:105
 msgid "Delete"
 msgstr ""
 
@@ -753,10 +753,8 @@ msgid "sep"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
-#, fuzzy
-#| msgid "Concept"
 msgid "oct"
-msgstr "Concepto"
+msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
 msgid "nov"
@@ -1057,6 +1055,154 @@ msgstr ""
 #: myvenv/lib/python2.7/site-packages/django/views/static.py:96
 #, python-format
 msgid "Index of %(directory)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:313
+msgid "usage: "
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:821
+msgid ".__call__() not defined"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1105
+#, python-format
+msgid "unknown parser %r (choices: %s)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1146
+#, python-format
+msgid "argument \"-\" with mode %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1349
+#, python-format
+msgid "cannot merge actions - two groups are named %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1387
+msgid "'required' is an invalid argument for positionals"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1407
+#, python-format
+msgid "invalid option string %r: must start with a character %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1428
+#, python-format
+msgid "dest= is required for options like %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1445
+#, python-format
+msgid "invalid conflict_resolution value: %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1463
+#, python-format
+msgid "conflicting option string(s): %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1526
+msgid "mutually exclusive arguments must be optional"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1596
+msgid "positional arguments"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1597
+msgid "optional arguments"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1615
+msgid "show this help message and exit"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1621
+msgid "show program's version number and exit"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1653
+msgid "cannot have multiple subparser arguments"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1705
+#, python-format
+msgid "unrecognized arguments: %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1802
+#, python-format
+msgid "not allowed with argument %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1848
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1862
+#, python-format
+msgid "ignored explicit argument %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1952
+msgid "too few arguments"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1959
+#, python-format
+msgid "argument %s is required"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1973
+#, python-format
+msgid "one of the arguments %s is required"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2019
+msgid "expected one argument"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2020
+msgid "expected at most one argument"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2021
+msgid "expected at least one argument"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2023
+#, python-format
+msgid "expected %s argument(s)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2080
+#, python-format
+msgid "ambiguous option: %s could match %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2142
+#, python-format
+msgid "unexpected option string: %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2243
+#, python-format
+msgid "%r is not callable"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2259
+#, python-format
+msgid "invalid %s value: %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2269
+#, python-format
+msgid "invalid choice: %r (choose from %s)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2362
+#, python-format
+msgid "%s: error: %s\n"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:103
@@ -2701,60 +2847,273 @@ msgid "Text nodes have no children"
 msgstr ""
 
 #: principal/forms.py:18 principal/forms.py:68
-msgid "Already exists a user with that email"
-msgstr "Ya existe un usuario con este email"
+msgid "Already exists a user with that email!"
+msgstr ""
 
 #: principal/forms.py:43
 msgid "Password"
-msgstr "Contraseña"
+msgstr ""
 
 #: principal/forms.py:56
 msgid "Wrong email or password"
-msgstr "Email o contraseña incorrecto"
+msgstr ""
 
 #: principal/forms.py:98
 msgid "Message length too long"
-msgstr "El tamañao del mensaje es muy largo"
+msgstr ""
 
 #: principal/forms.py:104 principal/forms.py:109
 msgid "Must be a date in the past"
-msgstr "Debe de ser una fecha en el pasado"
+msgstr ""
 
 #: principal/forms.py:106 principal/forms.py:107
 msgid "Incorrect logic date"
-msgstr "Fecha incorrecta"
+msgstr ""
 
 #: principal/forms.py:125
 msgid "Must be a date in the future"
-msgstr "Debe ser una fecha en el futuro"
+msgstr ""
 
 #: principal/forms.py:194
 msgid "Image file too large ( > 2mb )"
-msgstr "El tamaño de la imagen es muy grande ( > 2mb)"
+msgstr ""
 
 #: principal/forms.py:196
 msgid "Not valid file type. Only PNG and JPG are supported"
-msgstr "Formato de imagen no valido. Solo aceptamos PNG y JPG"
+msgstr ""
 
 #: principal/forms.py:251
 msgid "Whoops, these don't match"
-msgstr "Whoops, esto no coincide"
+msgstr ""
 
 #: principal/forms.py:260
 msgid "Wrong password"
-msgstr "La contraseña no es correcta"
+msgstr ""
 
 #: principal/forms.py:262
 msgid "Password do not match"
-msgstr "Las contraseñas no coinciden"
+msgstr ""
+
+#: principal/templates/about_us.html:7
+msgid "Sobre nosotros"
+msgstr ""
+
+#: principal/templates/about_us.html:9
+msgid "es propiedad de BrainTravel Co."
+msgstr ""
+
+#: principal/templates/about_us.html:12
+msgid "Residente en Alcal&aacute; del R&iacute;o &ndash; Sevilla 41200"
+msgstr ""
+
+#: principal/templates/about_us.html:16
+msgid ""
+"Informaci&oacute;n Registro: Inscrita en el registro Mercantil de Sevilla, "
+"Fecha: 01/01/2014, N&ordm;"
+msgstr ""
+
+#: principal/templates/about_us.html:17
+msgid "Anuncio: 169011 BORME"
+msgstr ""
+
+#: principal/templates/about_us.html:20
+msgid "La p&aacute;gina web <a href="
+msgstr ""
+
+#: principal/templates/about_us.html:21
+msgid "propietario) en calidad de empresa."
+msgstr ""
+
+#: principal/templates/about_us.html:24
+msgid ""
+"Para cualquier problema al respecto, deben ponerse en contacto con la "
+"direcci&oacute;n de correo"
+msgstr ""
+
+#: principal/templates/about_us.html:25
+msgid ""
+"electr&oacute;nico <a href='mailto:clientes.braintravel@gmail.com'>clientes."
+"braintravel@gmail.com</a> o"
+msgstr ""
+
+#: principal/templates/about_us.html:27
+msgid "SEVILLA Telf.: +34 955555555 Fax:+34"
+msgstr ""
 
 #: principal/templates/base.html:67
 msgid "Accept"
-msgstr "Aceptar"
+msgstr ""
+
+#: principal/templates/buy_coins.html:7
+msgid "Paquetes de monedas"
+msgstr ""
+
+#: principal/templates/buy_coins.html:8
+msgid ""
+"Con nuestras monedas virtuales podras organizar tus viajes. Aprovecha "
+"nuestros packs!"
+msgstr ""
+
+#: principal/templates/buy_coins.html:18 principal/templates/buy_coins.html:34
+#: principal/templates/buy_coins.html:50
+#: principal/templates/plan_creation.html:54
+msgid "coins"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:8
+msgid "Pol&iacute;tica de Cookies"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:10
+msgid ""
+"Nuestra pol&iacute;tica de cookies est&aacute; sujeta a actualizaciones "
+"peri&oacute;dicas. Su prop&oacute;sito es ayudarle a comprender el uso que "
+"hacemos de las cookies, la finalidad de las cookies utilizadas, as&iacute; "
+"como las opciones que tiene el usuario para gestionarlas."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:17
+msgid ""
+"Los usuarios pueden acceder a esta informaci&oacute;n en todo momento a "
+"trav&eacute;s del link habilitado en la web."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:19
+msgid "&iquest;Qu&eacute; es una Cookie?"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:21
+msgid ""
+"Una &ldquo;Cookie&rdquo; es un peque&ntilde;o archivo de texto que un sitio "
+"web almacena en el navegador del usuario. Las cookies facilitan el uso y la "
+"navegaci&oacute;n por una p&aacute;gina web y son esenciales para el "
+"funcionamiento de internet, aportando innumerables ventajas en la "
+"prestaci&oacute;n de servicios interactivos."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:29
+msgid ""
+"Las cookies se utilizan, por ejemplo, para gestionar la sesi&oacute;n del "
+"usuario (reduciendo el n&uacute;mero de veces que tiene que incluir su "
+"contrase&ntilde;a), mejorar los servicios ofrecidos, o para adecuar los "
+"contenidos de una p&aacute;gina web a sus preferencias."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:38
+msgid ""
+"Las cookies pueden ser de &ldquo;sesi&oacute;n&rdquo;, por lo que se "
+"borrar&aacute;n una vez el usuario abandone la p&aacute;gina web que las "
+"gener&oacute; o &ldquo;persistentes&rdquo;, que permanecen en su ordenador "
+"hasta una fecha determinada."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:47
+msgid ""
+"Asimismo, las cookies pueden ser &ldquo;propias&rdquo;, gestionadas por el "
+"dominio al que el usuario accede y del que solicita un determinado servicio "
+"(en este caso los domicilio titularidad de BrainTravel Co., Inc.) o &ldquo;"
+"cookies de terceros&rdquo;, enviadas al equipo de usuario desde un dominio "
+"diferente al que se accede."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:57
+msgid "Cookies comunes de los sitios de braintravel.com"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:59
+msgid ""
+"En los siguientes puntos recogen las cookies utilizadas por todos los sitios "
+"que abarca el estudio, tanto las de la propia aplicaci&oacute;n como las de "
+"terceros:"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:66
+msgid ""
+"Cookie de sesi&oacute;n (&ldquo;sessionid&rdquo;): Sirve para identificar "
+"inequ&iacute;vocamente a cada usuario que accede a la aplicaci&oacute;n. "
+"Esta cookie es necesaria para usar estos sitios web, por lo que si el "
+"usuario decide eliminar esta cookie de su dispositivo, el sitio web puede no "
+"funcionar correctamente."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:74
+msgid ""
+"Cookie de token CSRF (&ldquo;csrftoken&rdquo;): Se usa como medida de "
+"seguridad para evitar diversos ataques."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:80
+msgid ""
+"Cookie de aceptaci&oacute;n de cookies (&ldquo;cp-enabled&rdquo;): Se "
+"utiliza para recordar si el usuario ha aceptado ya la pol&iacute;tica de "
+"cookies del sitio."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:87
+msgid "Deshabilitar el uso de cookies"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:89
+msgid ""
+"Si el usuario as&iacute; lo desea, es posible dejar de aceptar las Cookies "
+"del navegador, o dejar de aceptar las Cookies de un servicio en particular."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:95
+msgid ""
+"Todos los navegadores modernos permiten cambiar la configuraci&oacute;n de "
+"Cookies. Estos ajustes normalmente se encuentran en las \"Opciones\" o "
+"\"Preferencias\" del men&uacute; del navegador."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:101
+msgid ""
+"El usuario podr&aacute;, en cualquier momento, deshabilitar el uso de "
+"Cookies en este sitio web mediante:"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:108
+msgid "La configuraci&oacute;n del navegador, por ejemplo:"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:111
+msgid ""
+"Google Chrome: <a href=\"http://support.google.com/chrome/bin/answer.py?"
+"hl=es&answer=95647\">http://support.google.com/chrome/bin/answer.py?"
+"hl=es&answer=95647</a>"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:117
+msgid ""
+"Internet Explorer: <a href=\"http://windows.microsoft.com/es-es/windows7/how-"
+"to-manage-cookies-in-internet-explorer-9\">http://windows.microsoft.com/es-"
+"es/windows7/how-to-manage-cookies-in-internet-explorer-9</a>"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:123
+msgid ""
+"Mozilla Firefox: <a href=\"http://support.mozilla.org/es/kb/habilitar-y-"
+"deshabilitar-cookies-que-los-sitios-we\">http://support.mozilla.org/es/kb/"
+"habilitar-y-deshabilitar-cookies-que-los-sitios-we</a>"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:129
+msgid ""
+"Apple Safari: <a href=\"http://support.apple.com/kb/ph5042\">http://support."
+"apple.com/kb/ph5042</a>"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:137
+msgid ""
+"Otras herramientas de terceros, disponibles on-line, que permiten a los "
+"usuarios detectar las Cookies en cada sitio web que visita y gestionar su "
+"desactivaci&oacute;n (por ejemplo, Ghostery: <a href=\"http://www.ghostery."
+"com/privacy-statement\">http://www.ghostery.com/privacy-statement</a>)."
+msgstr ""
 
 #: principal/templates/error_planning.html:6
-msgid "Sorry, an error has occurred"
-msgstr "Lo sentimos, ha ocurrido un error"
+msgid "Sorry, an error has ocurred"
+msgstr ""
 
 #: principal/templates/error_planning.html:7
 msgid ""
@@ -2763,109 +3122,20 @@ msgid ""
 "have <b>NO</b> charge for your coins. </p> <p> If the error persist, please "
 "contact us. </p>"
 msgstr ""
-"<p> Oops! BrainTravel no ha podido conseguir un plan para ti :(. Prueba "
-"otra vez pero con el nombre de la ciudad y el país en Ingles. Esta operación "
-" <b>NO</b> tendrá cargos en tus monedas. </p> <p> Si el error persiste, por favor "
-"contacta con nosotros. </p>"
 
 #: principal/templates/index.html:33
 msgid "Automate the way you travel"
-msgstr "Automatiza la manaera en la que viajas"
+msgstr ""
 
 #: principal/templates/index.html:34
 msgid "Find Out More"
-msgstr "Descubre más"
+msgstr ""
 
 #: principal/templates/index.html:43
 msgid "What is this?"
-msgstr "¿Qué somos?"
+msgstr ""
 
 #: principal/templates/index.html:45
-#: .\principal\forms.py:18 .\principal\forms.py:68
-msgid "Already exists a user with that email!"
-msgstr "Ya existe un usuario con ese e-mail!"
-
-#: .\principal\forms.py:31
-msgid "Email address"
-msgstr "Dirección de correo electrónico"
-
-#: .\principal\forms.py:43
-msgid "Password"
-msgstr "Contraseña"
-
-#: .\principal\forms.py:56
-msgid "Wrong email or password"
-msgstr "E-mail o contraseña incorrectos"
-
-#: .\principal\forms.py:98
-msgid "Message length too long"
-msgstr "La longitud del mensaje demasiado largo"
-
-#: .\principal\forms.py:104 .\principal\forms.py:109
-msgid "Must be a date in the past"
-msgstr "Debe ser una fecha en el pasado"
-
-#: .\principal\forms.py:106 .\principal\forms.py:107
-msgid "Incorrect logic date"
-msgstr "Fecha incorrecta"
-
-#: .\principal\forms.py:125
-msgid "Must be a date in the future"
-msgstr "Debe ser una fecha en el futuro"
-
-#: .\principal\forms.py:194
-msgid "Image file too large ( > 2mb )"
-msgstr "Archivo de imagen demasiado grande (&gt; 2mb)"
-
-#: .\principal\forms.py:196
-msgid "Not valid file type. Only PNG and JPG are supported"
-msgstr "No es un tipo de fichero válido. Sólo PNG y JPG son compatibles"
-
-#: .\principal\forms.py:251
-msgid "Whoops, these don't match"
-msgstr "¡Vaya, estos no coinciden"
-
-#: .\principal\forms.py:260
-msgid "Wrong password"
-msgstr "Contraseña equivocada"
-
-#: .\principal\forms.py:262
-msgid "Password do not match"
-msgstr "Las contraseÃ±as introducidas no coinciden."
-
-#: .\principal\templates\base.html:50
-msgid "Accept"
-msgstr "Aceptar"
-
-#: .\principal\templates\error_planning.html:6
-msgid "Sorry, an error has ocurred"
-msgstr "Lo sentimos, Ha ocurrido un error"
-
-#: .\principal\templates\error_planning.html:7
-msgid ""
-"<p> Oops! BrainTravel has not been able to get a plan for you :(. Try it "
-"again with the name of the city in English. This operation will have <b>NO</"
-"b> charge for your coins. </p> <p> If the error persist, please contact us!. "
-"</p>"
-msgstr ""
-"¡Huy! BrainTravel no ha sido capaz de obtener un plan para ti :(. Inténtelo "
-"de nuevo con el nombre de la ciudad en Inglés. Esta operación <b>no</b> "
-"tendrá cargo para sus monedas. </p><p> Si persiste el error, póngase en "
-"contacto con nosotros !. </p>"
-
-#: .\principal\templates\index.html:33
-msgid "Automate the way you travel"
-msgstr "Automatizar el estilo de viajar!"
-
-#: .\principal\templates\index.html:34
-msgid "Find Out More"
-msgstr "Conoce más sobre..."
-
-#: .\principal\templates\index.html:43
-msgid "What is this?"
-msgstr "Quienes somos?"
-
-#: .\principal\templates\index.html:45
 msgid ""
 "BrainTravel is the perfect tool for all travellers. It automatically creates "
 "a trip planning for you, offering a daily schedule with the highest rated "
@@ -2873,50 +3143,44 @@ msgid ""
 "interact between them regarding trips they made, commenting and sharing "
 "experiences."
 msgstr ""
-"BrainTravel es la herramienta perfecta para todos los viajeros. Con ella "
-"puedes crear un plan de viaje que se adapte a tus necesidades, ofreciendote "
-"una planificación distribuida por dís con los sitios mejor valorados de la "
-"zona. Tambien dispone de una red social interna en la que los usuarios "
-"pueden interactuar entre ellos en base a los viajes que han realizado, "
-"comentarlos y compartir experiencias."
 
 #: principal/templates/index.html:74
 msgid "Automatic plans"
-msgstr "Planes automaticos"
+msgstr ""
 
 #: principal/templates/index.html:77
 msgid ""
 "Day by day plan for your trip with a few clicks based on others travellers "
 "recommendations.</p>"
-msgstr "Un plan día a día para tu viaje en unos solos clicks basado en las recomendaciones de otros viajeros.</p>"
+msgstr ""
 
 #: principal/templates/index.html:91
 msgid "Constraints"
-msgstr "Restricciones"
+msgstr ""
 
 #: principal/templates/index.html:94
 msgid "Give us restrictions for your trip and we'll do the rest for you."
-msgstr "Danos las restricciones para tu viaje y nosotros hacemos el resto."
+msgstr ""
 
 #: principal/templates/index.html:109
-msgid "Statistics"
-msgstr "Estadisticas"
+msgid "Satistics"
+msgstr ""
 
 #: principal/templates/index.html:111
 msgid "Travel stats for your own orientation."
-msgstr "Estadísticas de viajes para que te orientes tu solo"
+msgstr ""
 
 #: principal/templates/index.html:122
 msgid "Social trips"
-msgstr "Viajes sociales"
+msgstr ""
 
 #: principal/templates/index.html:124
 msgid "Share experiences with other users."
-msgstr "Comparte tus experiencias con otros usuarios"
+msgstr ""
 
 #: principal/templates/index.html:136
 msgid "A customer says..."
-msgstr "Nuestros clientes dicen..."
+msgstr ""
 
 #: principal/templates/index.html:139
 msgid ""
@@ -2926,371 +3190,409 @@ msgid ""
 "happy to use the tool.;There's history, places and landscapes that only "
 "residents of the area known.;That's what I ever wanted..."
 msgstr ""
-"Me gusta mucho la idea de este proyecto;Me encanta viajar y ver las ciudades"
-"desde un punto de vista \"cotidiano\", no turistico.;Si pudieras recomendar "
-"actividades mas allá de lo típico, para entende mejor los lugares, estaría "
-"muy feliz de usar la aplicación.;Hay historias, lugares y paisajes que solo"
-"lo residentes de la zona conocen.;Es lo que siempre quise..."
 
 #: principal/templates/list_coin_history.html:11
 msgid "Coin historial"
-msgstr "Historial de monedas"
+msgstr ""
 
 #: principal/templates/list_coin_history.html:12
 msgid "Those are movements that you made with your coins through the platform"
-msgstr "Estos son los movimientos que has hecho con tus monedas através de la plataforma"
+msgstr ""
 
 #: principal/templates/list_coin_history.html:16
 #: principal/templates/my_payments.html:15
 msgid "We couldn't find anything..."
-msgstr "No pudimos encontrar nada..."
+msgstr ""
 
 #: principal/templates/list_coin_history.html:22
 #: principal/templates/my_payments.html:22
 msgid "Amount"
-msgstr "Cantidad"
+msgstr ""
 
 #: principal/templates/list_coin_history.html:23
 #: principal/templates/my_payments.html:23
 msgid "Date"
-msgstr "Fecha"
+msgstr ""
 
 #: principal/templates/list_coin_history.html:24
 #: principal/templates/my_payments.html:24
 msgid "Concept"
-msgstr "Concepto"
+msgstr ""
 
 #: principal/templates/my_payments.html:10
 msgid "Payment historial"
-msgstr "Historial de pagos"
+msgstr ""
 
 #: principal/templates/my_payments.html:11
 msgid "Those are payments that made through the platform to buy coins"
-msgstr "Estos son los pagos que has hecho através de la plataforma para comprar monedas"
+msgstr ""
 
 #: principal/templates/my_payments.html:21
 msgid "Id"
-msgstr "Id"
+msgstr ""
 
 #: principal/templates/my_payments.html:44
 msgid "previous"
-msgstr "anterior"
+msgstr ""
 
 #: principal/templates/my_payments.html:50
 msgid "next"
-msgstr "siguiente"
+msgstr ""
 
 #: principal/templates/plan_creation.html:10
-#, fuzzy
-#| msgid "Plan creation"
 msgid "Plan a trip"
-msgstr "Creación de un plan"
+msgstr ""
 
 #: principal/templates/plan_creation.html:15
 #: principal/templates/trip_edit.html:36
 msgid "City"
-msgstr "Ciudad"
+msgstr ""
 
 #: principal/templates/plan_creation.html:24
 #: principal/templates/trip_edit.html:47
 msgid "Country"
-msgstr "Pais"
+msgstr ""
 
 #: principal/templates/plan_creation.html:33
 #: principal/templates/trip_edit.html:59
 msgid "Start Date"
-msgstr "Fecha de inicio"
+msgstr ""
 
 #: principal/templates/plan_creation.html:45
 msgid "Days"
-msgstr "Dias"
+msgstr ""
 
 #: principal/templates/plan_creation.html:53
 msgid "Price"
-msgstr "Precio"
+msgstr ""
 
 #: principal/templates/plan_creation.html:53
 msgid "Coins"
-msgstr "Monedas"
+msgstr ""
 
 #: principal/templates/plan_creation.html:54
 msgid "You have"
-msgstr "Tienes"
+msgstr ""
 
-#: principal/templates/plan_creation.html:54
-msgid "coins"
-msgstr "monedas"
+#: principal/templates/plan_creation.html:59
+msgid "Create Plan"
+msgstr ""
 
-#: principal/templates/plan_creation.html:87
-msgid "Filter"
-msgstr "Filtro"
+#: principal/templates/plan_creation.html:65
+msgid "Select your custom constrains"
+msgstr ""
 
-#: principal/templates/plan_creation.html:88
-msgid "Cantidad"
-msgstr "Amount"
+#: principal/templates/plan_creation.html:78
+msgid "A lot of"
+msgstr ""
+
+#: principal/templates/plan_creation.html:79
+msgid "Some of"
+msgstr ""
+
+#: principal/templates/plan_creation.html:80
+msgid "Any of"
+msgstr ""
+
+#: principal/templates/plan_creation.html:86
+msgid "Add Restriction"
+msgstr ""
+
+#: principal/templates/plan_creation.html:90
+msgid "Custom constraints"
+msgstr ""
+
+#: principal/templates/plan_creation.html:100
+msgid "Delete "
+msgstr ""
+
+#: principal/templates/privacy_terms.html:8
+msgid ""
+"<h2>T&eacute;rminos y condiciones</h2> <p> De acuerdo con las disposiciones "
+"de la Ley 15/1999, de 13 de Diciembre, de Protecci&oacute;n de Datos de "
+"Car&aacute;cter Personal, (en adelante, LOPD), BrainTravel Co., Inc. NIF "
+"12345678A le informa que los datos recogidos en este sitio web ser&aacute;n "
+"incorporados a un fichero automatizado inscrito ante la Agencia de "
+"Protecci&oacute;n de Datos y pertenecen a BrainTravel Co., Inc., teniendo "
+"como finalidad la de atender las peticiones que usted demande. En virtud del "
+"art&iacute;culo 5 de la citada ley, usted ser&aacute; debidamente informado "
+"con todo detalle en nuestros formularios de la finalidad y uso de los datos "
+"que proporcione. </p> <h3>Informaci&oacute;n: Alta de Datos</h3> <p> Los "
+"datos facilitados por Usted en los documentos del sitio web, ser&aacute;n "
+"objeto de tratamiento automatizado y pasar&aacute;n a formar parte del "
+"fichero propiedad de BrainTravel Co., Inc.,  inscrito en la Agencia de "
+"Protecci&oacute;n de Datos. Estos datos podr&aacute;n ser utilizados para la "
+"gesti&oacute;n interna de los contactos comerciales que solicitan "
+"informaci&oacute;n o con aquellos con los que se mantiene una relaci&oacute;"
+"n comercial. </p> <p> Salvo en los campos que se indique lo contrario, las "
+"respuestas a las preguntas sobre sus datos personales son voluntarias. El "
+"afectado se compromete a la veracidad de los datos que suministra. </p> <p> "
+"De conformidad con el art&iacute;culo 5 de la Ley 15/1999, de 13 de "
+"diciembre de Protecci&oacute;n de Datos de Car&aacute;cter Personal, Ud. "
+"tiene derecho a acceder a esta informaci&oacute;n, a rectificarla si los "
+"datos son err&oacute;neos y darse de baja del fichero mediante una solicitud "
+"escrita a: Atenci&oacute;n LOPD, BrainTravel Co., Inc., C/ Madrid, 1 - 41200 "
+"Alcal&aacute; del R&iacute;o (Sevilla) Espa&ntilde;a, o bien, enviando dicha "
+"solicitud a la direcci&oacute;n de correo electr&oacute;nico <a href="
+"\"mailto:clientes.braintravel@gmail.com\">clientes.braintravel@gmail.com</a> "
+"para ser atendido y guiado para cumplimentar el proceso, cumpli&eacute;ndose "
+"as&iacute; la notificaci&oacute;n prevista en el art&iacute;culo 5.4 de la "
+"misma. </p> <h3>Condiciones del servicio</h3> <ol> <li> El usuario o "
+"visitante de la p&aacute;gina web <a href=\"http://www.braintravel.com"
+"\">http://www.braintravel.com</a> tiene la obligaci&oacute;n leer las "
+"condiciones de prestaci&oacute;n del servicio que se detallan en este texto, "
+"de manera que asume estas como v&aacute;lidas en la prestaci&oacute;n del "
+"servicio. </li> <li> Objetivos de la p&aacute;gina web http://www."
+"braintravel.com: La p&aacute;gina web es econ&oacute;micamente a trav&eacute;"
+"s de los pagos que se realizan a trav&eacute;s de la pasarela de pago "
+"PayPal. </li> <li> Condiciones de uso del contenido y servicios prestados en "
+"esta p&aacute;gina web: </li> <ul> <li> No est&aacute; permitida la "
+"reproducci&oacute;n de los contenidos (de cualquier tipo) publicados en <a "
+"href=\"http://www.braintravel.com\">http://www.braintravel.com</a> sin el "
+"consentimiento expreso del autor de dicha web. En este caso hablamos de "
+"textos, gr&aacute;ficos, c&oacute;digo fuente, y cualquier otro contenido "
+"que sea servido desde esta p&aacute;gina web. </li> <li> En esta p&aacute;"
+"gina web pueden existir contenidos de terceros. En cualquiera de los casos, "
+"y como es intenci&oacute;n siempre el respetar los derechos de autor y las "
+"leyes del copyright, si hubiera cualquier m&iacute;nimo problema respecto a "
+"cualquier material publicado en esta web, se ruega que se pongan en contacto "
+"a trav&eacute;s del email: <a href=\"mailto:clientes.braintravel@gmail.com"
+"\">clientes.braintravel@gmail.com</a> y el contenido ser&aacute; retirado "
+"(tras ser comprobado) con la m&aacute;xima celeridad posible, ya que es "
+"intenci&oacute;n primera el respeto por los derechos de autor y el trabajo "
+"ajeno. </li> <li> El autor de esta web no se hace responsable del mal uso "
+"que se haga del contenido expuesto en esta p&aacute;gina web (<a href="
+"\"http://www.braintravel.com\">http://www.braintravel.com</a>). </li> <li> "
+"La p&aacute;gina web <a href=\"http://www.braintravel.com\">http://www."
+"braintravel.com</a> es financiada y explotada trav&eacute;s de la publicidad "
+"expuesta en la misma, no existiendo ning&uacute;n otro tipo de "
+"explotaci&oacute;n econ&oacute;mica. </li> <li> El autor de <a href=\"http://"
+"www.braintravel.com\">http://www.braintravel.com</a> no se hace responsable "
+"del del sistema o servicio prestado en esta p&aacute;gina web, aunque "
+"siempre se pretende y trabaja para ofrecer el mejor servicio. </li> <li> El "
+"autor de la p&aacute;gina web <a href=\"http://www.braintravel.com\">http://"
+"www.braintravel.com</a> utiliza la misma publicitario y no se hace "
+"responsable del mal servicio o problemas surgidos por los servicios "
+"anunciados, de forma que la publicidad y los servicios posteriores que esta "
+"remita son responsabilidad &uacute;nica del anunciante. </li> <li> En esta "
+"p&aacute;gina web (<a href=\"http://www.braintravel.com\">http://www."
+"braintravel.com</a>) NO existen contenidos ilegales (pornograf&iacute;a "
+"infantil, apolog&iacute;a del terrorismo, o cualquier otro tipo de contenido "
+"ilegal). </li> </ul> </ol> <p> Para cualquier problema al respecto, deben "
+"ponerse en contacto con la direcci&oacute;n de correo electr&oacute;nico <a "
+"href=\"mailto:clientes.braintravel@gmail.com\">clientes.braintravel@gmail."
+"com</a>o tel&eacute;fonos: </p> <p> SEVILLA Telf.: +34 955555555 Fax:+34 </p>"
+msgstr ""
+
+#: principal/templates/profile_details.html:20
+msgid "Modify profile"
+msgstr ""
+
+#: principal/templates/profile_details.html:21
+msgid "Change password"
+msgstr ""
+
+#: principal/templates/profile_details.html:39
+msgid "My payments"
+msgstr ""
+
+#: principal/templates/profile_details.html:46
+msgid "View coin movements"
+msgstr ""
+
+#: principal/templates/profile_details.html:53
+msgid "View my trips"
+msgstr ""
+
+#: principal/templates/profile_details.html:55
+msgid "Trips published by"
+msgstr ""
+
+#: principal/templates/profile_edit.html:6
+msgid "Edit Profile"
+msgstr ""
+
+#: principal/templates/profile_edit.html:11
+#: principal/templates/profile_edit.html:51
+msgid "First name"
+msgstr ""
+
+#: principal/templates/profile_edit.html:15
+#: principal/templates/profile_edit.html:56
+msgid "Last name"
+msgstr ""
+
+#: principal/templates/profile_edit.html:19
+#: principal/templates/profile_edit.html:61
+msgid "Genre"
+msgstr ""
+
+#: principal/templates/profile_edit.html:23
+msgid "Photo"
+msgstr ""
+
+#: principal/templates/profile_edit.html:42
+msgid "Default image"
+msgstr ""
+
+#: principal/templates/profile_edit.html:69
+msgid "Cancel"
+msgstr ""
+
+#: principal/templates/profile_edit_password.html:8
+msgid "Edit Password"
+msgstr ""
+
+#: principal/templates/profile_edit_password.html:14
+#: principal/templates/profile_edit_password.html:33
+msgid "Old password"
+msgstr ""
+
+#: principal/templates/profile_edit_password.html:18
+#: principal/templates/profile_edit_password.html:38
+msgid "New password"
+msgstr ""
+
+#: principal/templates/profile_edit_password.html:22
+#: principal/templates/profile_edit_password.html:43
+msgid "Repeat new password"
+msgstr ""
+
+#: principal/templates/profile_edit_password.html:55
+msgid ""
+"<strong>The passwords</strong> must contain at least one uppercase, a "
+"lowercase letter and a number."
+msgstr ""
+
+#: principal/templates/public_trip_details.html:2
+msgid "Details"
+msgstr ""
+
+#: principal/templates/public_trip_details.html:62
+msgid "Rate this trip!"
+msgstr ""
+
+#: principal/templates/public_trip_details.html:68
+msgid "Trip moderation"
+msgstr ""
+
+#: principal/templates/public_trip_details.html:69
+msgid "Select an option and click save to change the trip status."
+msgstr ""
+
+#: principal/templates/public_trip_details.html:81
+msgid "Save"
+msgstr ""
+
+#: principal/templates/public_trip_details.html:196
+msgid "Please choose a number between 0 and 10:"
+msgstr ""
+
+#: principal/templates/public_trip_details.html:198
+msgid "Please, write a fancy description:"
+msgstr ""
+
+#: principal/templates/public_trip_details.html:203
+#: principal/templates/venue_details.html:74
+msgid "Close"
+msgstr ""
+
+#: principal/templates/public_trip_details.html:204
+#: principal/templates/venue_details.html:75
+msgid "Send"
+msgstr ""
+
+#: principal/templates/search.html:8 principal/templates/trip_list.html:9
+#: principal/templates/trip_planned_list.html:34
+msgid "Oops! BrainTravel could not find anything..."
+msgstr ""
 
 #: principal/templates/signin.html:11
 msgid "Login"
-msgstr "Login"
+msgstr ""
 
 #: principal/templates/signin.html:12
 msgid "Don't have an account yet?"
-msgstr "¿No tienes una cuenta todavía?"
+msgstr ""
 
 #: principal/templates/signin.html:12
 msgid "Sign up"
-msgstr "Registrarse"
+msgstr ""
 
 #: principal/templates/trip_edit.html:9
 msgid "Create Trip"
-msgstr "Crear viaje"
+msgstr ""
 
 #: principal/templates/trip_edit.html:10
 msgid ""
 "Post a trip and get free coins. Get 5 coins for every 2 'like' you receive."
-msgstr "Publíca un viaje  consigue monedas gratis. Consigue 5 monedas porque 2 likes que recives"
+msgstr ""
 
 #: principal/templates/trip_edit.html:12
 msgid "Edit Trip"
-msgstr "Editar viaje"
+msgstr ""
 
 #: principal/templates/trip_edit.html:22
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: principal/templates/trip_edit.html:23
 msgid "Up to 150 letters, numbers and underscores"
-msgstr "Hasta 150 letras, numeros y guiones bajos"
+msgstr ""
 
 #: principal/templates/trip_edit.html:71
 msgid "End Date"
-msgstr "Fecha de finalización"
+msgstr ""
 
 #: principal/templates/trip_edit.html:85
 msgid "Published Description"
-msgstr "Descripción pública"
+msgstr ""
 
-#~ msgid "List of my coin history"
-#~ msgstr "Mis historiales de monedas"
+#: principal/templates/trip_planned_list.html:29
+msgid "View more"
+msgstr ""
 
-#~ msgid "List of all my payments"
-#~ msgstr "Mis pagos"
+#: principal/templates/venue_details.html:13
+msgid "Give feedback"
+msgstr ""
 
-#: .\principal\templates\index.html:74
-msgid "Automatic plans"
-msgstr "Plan automatico"
+#: principal/templates/venue_details.html:41
+msgid "Sorry, there aren't tips available for this venue."
+msgstr ""
 
-#: .\principal\templates\index.html:77
+#: principal/templates/venue_details.html:60
 msgid ""
-"Day by day plan for your trip with a few clicks based on others travellers "
-"recommendations.</p>"
+"By giving feedback you enhance our algorithm. The more feedback it gets, the "
+"more accurate it becomes. We give you some coins as gift as well :)"
 msgstr ""
-"Planifique día a día su viaje con unos pocos clics basandose las "
-"recomendaciones de otros viajeros."
 
-#: .\principal\templates\index.html:91
-msgid "Constraints"
-msgstr "Restricciones"
-
-#: .\principal\templates\index.html:94
-msgid "Give us restrictions for your trip and we'll do the rest for you."
-msgstr "Danos restricciones para su viaje y nosotros haremos el resto."
-
-#: .\principal\templates\index.html:109
-msgid "Satistics"
-msgstr "Estadísticas"
-
-#: .\principal\templates\index.html:111
-msgid "Travel stats for your own orientation."
-msgstr "Estadísticas de viajes para su propia orientación."
-
-#: .\principal\templates\index.html:122
-msgid "Social trips"
-msgstr "Viajes Sociales"
-
-#: .\principal\templates\index.html:124
-msgid "Share experiences with other users."
-msgstr "Compartir experiencias con otros usuarios."
-
-#: .\principal\templates\index.html:136
-msgid "A customer says..."
-msgstr "Un cliente dice ..."
-
-#: .\principal\templates\index.html:139
+#: principal/templates/venue_details.html:62
 msgid ""
-"I really like this idea of the project;I love to travel and see the city from "
-"a point of view \"quotidian\", not touristy.;If you can recommend activities "
-"outside the typical, to better understand the place, would be happy to use "
-"the tool.;There's history, places and landscapes that only residents of the "
-"area known.;That's what I ever wanted..."
+"<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on "
+"the queue...</small></h4>"
 msgstr ""
-"Me gusta mucho esta idea del proyecto, me encanta viajar y ver la ciudad "
-"desde un punto de vista \"cotidiano\", no turÃ­stico. Si se puede recomendar "
-"actividades fuera de la tÃ­pica, a entender mejor el lugar, serÃ­a feliz de "
-"usar la herramienta;. No hay historia, lugares y paisajes que sÃ³lo los "
-"residentes de la zona conocida;. Eso es lo que siempre quise ..."
 
-#: .\principal\templates\list_coin_history.html:11
-msgid "Coin historial"
-msgstr "Mis historiales de monedas"
-
-#: .\principal\templates\list_coin_history.html:12
-msgid "Those are movements that you made with your coins through the platform"
+#: principal/templates/venue_details.html:65
+msgid ""
+"<h4>Duration: <small>How much time you spent inside the venue, you were "
+"walking around...</small></h4>"
 msgstr ""
-"Esos son los movimientos que ha realizado con sus monedas a travÃ©s de la "
-"plataforma"
 
-#: .\principal\templates\list_coin_history.html:16
-#: .\principal\templates\my_payments.html:15
-msgid "We couldn't find anything..."
-msgstr "No pudimos encontrar nada..."
-
-#: .\principal\templates\list_coin_history.html:22
-#: .\principal\templates\my_payments.html:22
-msgid "Amount"
-msgstr "Cantidad"
-
-#: .\principal\templates\list_coin_history.html:23
-#: .\principal\templates\my_payments.html:23
-msgid "Date"
-msgstr "Fecha"
-
-#: .\principal\templates\list_coin_history.html:24
-#: .\principal\templates\my_payments.html:24
-msgid "Concept"
-msgstr "Concepto"
-
-#: .\principal\templates\my_payments.html:10
-msgid "Payment historial"
-msgstr "Historial de pago"
-
-#: .\principal\templates\my_payments.html:11
-msgid "Those are payments that made through the platform to buy coins"
+#: principal/templates/venue_details.html:69
+msgid "<h4>Description: <small>Something else you want to say?</small></h4>"
 msgstr ""
-"Esos son los pagos que realizan a través de la plataforma para comprar monedas"
 
-#: .\principal\templates\my_payments.html:21
-msgid "Id"
-msgstr "Id"
-
-#: .\principal\templates\my_payments.html:44
-msgid "previous"
-msgstr "anterior"
-
-#: .\principal\templates\my_payments.html:50
-msgid "next"
-msgstr "Siguiente"
-
-#: .\principal\templates\plan_creation.html:10
-msgid "Plan a trip"
-msgstr "¡Planifica un Viaje Ahora!"
-
-#: .\principal\templates\plan_creation.html:15
-#: .\principal\templates\trip_edit.html:23
-msgid "City"
-msgstr "Ciudad"
-
-#: .\principal\templates\plan_creation.html:24
-#: .\principal\templates\trip_edit.html:29
-msgid "Country"
-msgstr "Pais"
-
-#: .\principal\templates\plan_creation.html:33
-#: .\principal\templates\trip_edit.html:35
-msgid "Start Date"
-msgstr "Fecha de inicio"
-
-#: .\principal\templates\plan_creation.html:45
-msgid "Days"
-msgstr "Dias"
-
-#: .\principal\templates\plan_creation.html:53
-msgid "Price"
-msgstr "Precio"
-
-#: .\principal\templates\plan_creation.html:53
-msgid "Coins"
-msgstr "Monedas"
-
-#: .\principal\templates\plan_creation.html:54
-msgid "You have"
-msgstr "Tú tienes"
-
-#: .\principal\templates\plan_creation.html:54
-msgid "coins"
-msgstr "monedas"
-
-#: .\principal\templates\plan_creation.html:59
-msgid "Create Plan"
-msgstr "Crear plan"
-
-#: .\principal\templates\plan_creation.html:78
-msgid "A lot of"
-msgstr "Muchos"
-
-#: .\principal\templates\plan_creation.html:79
-msgid "Some of"
-msgstr "Algunos"
-
-#: .\principal\templates\plan_creation.html:80
-msgid "Any of"
-msgstr "Ninguno"
-
-#: .\principal\templates\plan_creation.html:89
-msgid "Add Restriction"
-msgstr "Añadir Restricción"
-
-#: .\principal\templates\plan_creation.html:93
-msgid "Custom constraints"
-msgstr "Restricciones personalizadas"
-
-#: .\principal\templates\plan_creation.html:98
-#: .\principal\templates\plan_creation.html:108
-msgid "Delete"
-msgstr "Eliminar"
-
-#: .\principal\templates\plan_creation.html:103
-msgid "Delete "
-msgstr "Eliminar"
-
-#: .\principal\templates\signin.html:11
-msgid "Login"
-msgstr "ACCEDER"
-
-#: .\principal\templates\signin.html:12
-msgid "Don't have an account yet?"
-msgstr "¿No tiene una cuenta con nosotros?"
-
-#: .\principal\templates\signin.html:12
-msgid "Sign up"
-msgstr "Inicia sesión"
-
-#: .\principal\templates\trip_edit.html:6
-msgid "Create Trip"
-msgstr "Crear viaje"
-
-#: .\principal\templates\trip_edit.html:8
-msgid "Edit Trip"
-msgstr "Editar viaje"
-
-#: .\principal\templates\trip_edit.html:15
-msgid "Name"
-msgstr "Nombre"
-
-#: .\principal\templates\trip_edit.html:16
-msgid "Up to 150 letters, numbers and underscores"
-msgstr "Hasta 150 letras, números y guiones bajos"
-
-#: .\principal\templates\trip_edit.html:43
-msgid "End Date"
-msgstr "Fecha de finalizacion"
-
-#: .\principal\templates\trip_edit.html:51
-msgid "Published Description"
-msgstr "Descripcion publica"
 
 # Categorias:
-msgid "Arts & Entertainment"
+
+msgid "Meze Restaurants"
+msgstr ""
+
+msgid "Modern Greek Restaurants"
+msgstr "Restaurantes Griego moderno"
+
+msgid "Ouzeries"
+msgstr ""msgid "Arts & Entertainment"
 msgstr "Artes y Entretenimiento"
 
 msgid "Aquariums"
@@ -3911,14 +4213,6 @@ msgstr "Kafenia"
 msgid "Magirio"
 msgstr ""
 
-msgid "Meze Restaurants"
-msgstr ""
-
-msgid "Modern Greek Restaurants"
-msgstr "Restaurantes Griego moderno"
-
-msgid "Ouzeries"
-msgstr ""
 
 msgid "Patsa Restaurants"
 msgstr "Restaurantes de Pasta"
