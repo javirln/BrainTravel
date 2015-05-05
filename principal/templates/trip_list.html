@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block title %} Trip list {% endblock %}
 {% block content %}
+    {% load i18n %}
 <div class="container">
     {% load i18n %}
     <h1>{{ title_list }}</h1>
     {% if not trips %}
-        <p>Oops! BrainTravel could not find anything...</p>
+        <p>{% trans "Oops! BrainTravel could not find anything..." %}</p>
     {% else %}
         {% for trip in trips %}
             <div class="well animated col-xs-12 col-sm-12 col-md-12 col-lg-12">

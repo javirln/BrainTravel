@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Profile {% endblock %}
 {% block content %}
+    {% load i18n %}
 <div class="container">
     <div class="fb-profile">
         <img align="left" class="fb-image-lg" src="/static/img/bg_profile.png" alt="Profile image example"/>
@@ -16,8 +17,8 @@
                                     <span class="fa fa-gear fa-2x"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/profile/edit/"><span class="icon-wrench"></span> Modify profile</a></li>
-                                    <li><a href="/profile/edit/password/"><span class="icon-trash"></span> Change password</a></li>
+                                    <li><a href="/profile/edit/"><span class="icon-wrench"></span> {% trans "Modify profile" %}</a></li>
+                                    <li><a href="/profile/edit/password/"><span class="icon-trash"></span> {% trans "Change password" %}</a></li>
                                 </ul>
                             </div>
                         {% endif %}
@@ -35,23 +36,23 @@
                     {% if traveller.id == user.traveller.id %}
                     <h2><strong> <i class="fa fa-paypal"></i> {{payments}} </strong></h2>
                     <p><small>Payments</small></p>
-                    <a href="/payment" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> My payments </a>
+                    <a href="/payment" class="btn btn-info btn-block"><span class="fa fa-plus-circle"></span> {% trans "My payments" %} </a>
                     {% endif %}
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     {% if traveller.id == user.traveller.id %}
                     <h2><strong> <i class="fa fa-money"></i> {{traveller.coins}} </strong></h2>
                     <p><small>Coins</small></p>
-                    <button class="btn btn-info btn-block" onclick="window.location.href='/coin/list/'">View coin movements</button>
+                    <button class="btn btn-info btn-block" onclick="window.location.href='/coin/list/'">{% trans "View coin movements" %}</button>
                     {% endif %}
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <h2><strong><i class="fa fa-globe"></i> {{ trips }}</strong></h2>
                     <p><small>Trips</small></p>
                     {% if traveller.id == user.traveller.id %}
-                        <button class="btn btn-info btn-block" onclick="window.location.href='/trip/mylist/'">View my trips</button>
+                        <button class="btn btn-info btn-block" onclick="window.location.href='/trip/mylist/'">{% trans "View my trips" %}</button>
                     {% else %}
-                        <button class="btn btn-info btn-block" onclick="window.location.href='/trip/list/{{ traveller.id }}'">Trips published by {{traveller.first_name}}</button>
+                        <button class="btn btn-info btn-block" onclick="window.location.href='/trip/list/{{ traveller.id }}'">{% trans "Trips published by"%} {{traveller.first_name}}</button>
                     {% endif %}
                 </div>
             </div>

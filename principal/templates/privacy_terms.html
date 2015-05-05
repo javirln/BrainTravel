@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-{% block title %} Cookies policies {% endblock %}
+{% block title %} Privacy terms {% endblock %}
 {% block content %}
+    {% load i18n %}
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-justify">
+            {% blocktrans trimmed %}
             <h2>T&eacute;rminos y condiciones</h2>
             <p>
                 De acuerdo con las disposiciones de la Ley 15/1999, de 13 de Diciembre, de Protecci&oacute;n de
@@ -134,6 +136,7 @@
             <p>
                 SEVILLA Telf.: +34 955555555 Fax:+34
             </p>
+            {% endblocktrans %}
         </div>
     </div>
 </div>

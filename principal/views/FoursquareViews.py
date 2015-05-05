@@ -9,7 +9,7 @@ from django.template.context import RequestContext
 from django.db.models import Q
 
 from principal.forms import PlanForm
-from principal.models import Trip, Traveller, Feedback
+from principal.models import Trip, Traveller, Feedback, Category
 from principal.services import TravellerService
 from principal.services import FoursquareServices
 from principal.services.FoursquareServices import categories_initializer
@@ -17,7 +17,6 @@ from principal.services.FoursquareServices import init_fs
 from principal.utils import BrainTravelUtils
 from principal.views import TripViews
 from principal.views.Coinviews import buy_coins
-
 
 client = init_fs()
 
@@ -71,8 +70,15 @@ def foursquare_list_venues(request):
     try:
         assert request.user.has_perm('principal.traveller')
         traveller = TravellerService.find_one(request.user.id)
+        list_cat = []
+        # categories = Category.objects.raw('SELECT * FROM category')
+        for p in Category.objects.raw('SELECT id, name FROM category'):
+            list_cat.append(p.name)
         if request.POST:
             form = PlanForm(request.POST)
+            list = request.POST.getlist('rests')
+
+            print list
             if form.is_valid():
                 days = int(form.cleaned_data['days'])
                 coins_cost = check_coins(days)
@@ -108,8 +114,7 @@ def foursquare_list_venues(request):
                 all_venues = FoursquareServices.save_data(all_venues)
                 all_food = FoursquareServices.save_data(all_food)
                 
-                
-                
+
                 #Llamada al nuevo algoritmo
                 plan_venues = FoursquareServices.get_plan(items_venues, days)
                 plan_food = FoursquareServices.get_plan_food(items_food, days, items_venues[0])
@@ -127,13 +132,16 @@ def foursquare_list_venues(request):
                 # traveller.save()
                 FoursquareServices.create_history(trip)
                 # return show_planning(request, trip.id)
+
                 return redirect("/show_planning/" + str(trip.id) + "/")
             # si no es valido el form devolvemos a editar
-            return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller},
+            return render_to_response('plan_creation.html',
+                                      {'form': form, 'traveller': traveller, 'list_cat': list_cat},
                                       context_instance=RequestContext(request))
         else:
             form = PlanForm()
-            return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller},
+            return render_to_response('plan_creation.html',
+                                      {'form': form, 'traveller': traveller, 'list_cat': list_cat},
                                       context_instance=RequestContext(request))
 
     except:
