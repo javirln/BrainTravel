@@ -5,142 +5,69 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-justify">
-            <h2>{% trans "Pol&iacute;tica de Cookies" %}</h2>
+            <h2>{% trans "Cookies policy" %}</h2>
+            <p>{% blocktrans trimmed %} Our cookies policy is subject to
+				periodic updates. Its purpose is to help you understand our use of
+				cookies, the purpose of cookies used and options for the user to
+				manage them. {% endblocktrans %}</p>
             <p>
-                {% blocktrans trimmed %}
-                Nuestra pol&iacute;tica de cookies est&aacute; sujeta a actualizaciones peri&oacute;dicas. Su prop&oacute;sito es ayudarle a
-                comprender el uso que hacemos de las cookies, la finalidad de las cookies utilizadas, as&iacute; como
-                las opciones que tiene el usuario para gestionarlas.
-                {% endblocktrans %}
+               {% trans  " Users can access this information at any time via the link enabled on the webpage." %}
             </p>
-            <p>
-               {% trans  "Los usuarios pueden acceder a esta informaci&oacute;n en todo momento a trav&eacute;s del link habilitado en la web." %}
-            </p>
-            <h3>{% trans "&iquest;Qu&eacute; es una Cookie?" %}</h3>
-            <p>
-                {% blocktrans trimmed %}
-                Una &ldquo;Cookie&rdquo; es un peque&ntilde;o archivo de texto que un sitio web almacena en el navegador del
-                usuario. Las cookies facilitan el uso y la navegaci&oacute;n por una p&aacute;gina web y son esenciales para el
-                funcionamiento de internet, aportando innumerables ventajas en la prestaci&oacute;n de servicios
-                interactivos.
-                {% endblocktrans %}
-             </p>
-            <p>
-                {% blocktrans trimmed %}
-                Las cookies se utilizan, por ejemplo, para gestionar la sesi&oacute;n del usuario (reduciendo el n&uacute;mero
-
-                de veces que tiene que incluir su contrase&ntilde;a), mejorar los servicios ofrecidos, o para adecuar
-
-                los contenidos de una p&aacute;gina web a sus preferencias.
-                {% endblocktrans %}
-            </p>
-            <p>
-                {% blocktrans trimmed %}
-                Las cookies pueden ser de &ldquo;sesi&oacute;n&rdquo;, por lo que se borrar&aacute;n una vez el usuario abandone la
-
-                p&aacute;gina web que las gener&oacute; o &ldquo;persistentes&rdquo;, que permanecen en su ordenador hasta una fecha
-
-                determinada.
-                {% endblocktrans %}
-            </p>
-            <p>
-                {% blocktrans trimmed %}
-                Asimismo, las cookies pueden ser &ldquo;propias&rdquo;, gestionadas por el dominio al que el usuario
-
-                accede y del que solicita un determinado servicio (en este caso los domicilio titularidad de
-
-                BrainTravel Co., Inc.) o &ldquo;cookies de terceros&rdquo;, enviadas al equipo de usuario desde un dominio
-
-                diferente al que se accede.
-                {% endblocktrans %}
-            </p>
-            <h3>{%  trans "Cookies comunes de los sitios de braintravel.com" %}</h3>
-            <p>
-                {% blocktrans trimmed %}
-                En los siguientes puntos recogen las cookies utilizadas por todos los sitios que abarca el
-                estudio, tanto las de la propia aplicaci&oacute;n como las de terceros:
-                {% endblocktrans %}
-            </p>
+            
+            <h3>{% trans "What is a Cookie?" %}</h3>
+           
+            <p>{% blocktrans trimmed %} A 'cookie' is a small text file
+				that a website stores on browser user. Cookies make using and
+				navigating a website and are essential for Internet operation,
+				providing many advantages in service delivery interactive. 
+				{% endblocktrans %}
+		    </p>
+		    
+		    <p>{% blocktrans trimmed %} 
+		        Cookies are used, for example, to
+				manage the user's session (reducing the number of times that you
+				must insert your user data), improving the services offered, or to
+				adapt the contents of a web page to your preferences.
+				{% endblocktrans %}
+		    </p>
+            
+            <p>{% blocktrans trimmed %}
+                Cookies may be 'session', so it
+				will be erased once the user leaves the page web that generated or
+				â€œpersistent', which remain on your computer to a date determined. 
+				{% endblocktrans %}
+		    </p>
+           
+            <p>{% blocktrans trimmed %} 
+                Cookies also can be 'proper',
+				managed by the domain to which the user accesses and requesting a
+				service (in this case the home owned by Acme-SportTracking Co.,
+				Inc.) or €'third party cookies', sent to the user equipment from a
+				domain accessed differently. 
+				{% endblocktrans %}
+			</p>
+            
+            <h3>{%  trans "Common cookies in the webpages of braintravel.com" %}</h3>
                 <ul>
                     <li>
+	                    {% blocktrans trimmed %}
+		                    Session Cookie ('sessionid'): Used to uniquely identify each user accessing the
+							application. This cookie is necessary to use these websites, so if
+							the user decides to delete this cookie from your device, the web
+							site may not function correctly. 
+						{% endblocktrans %}
+					</li>
+                    <li>
                         {% blocktrans trimmed %}
-                        Cookie de sesi&oacute;n (&ldquo;sessionid&rdquo;): Sirve para identificar inequ&iacute;vocamente a cada usuario
-                        que accede a la aplicaci&oacute;n. Esta cookie es necesaria para usar estos sitios web, por lo
-                        que si el usuario decide eliminar esta cookie de su dispositivo, el sitio web puede no
-                        funcionar correctamente.
+                           CSRF token cookie ('csrftoken'): It is used as a security measure to prevent various attacks.
                         {% endblocktrans %}
                     </li>
                     <li>
                         {% blocktrans trimmed %}
-                        Cookie de token CSRF (&ldquo;csrftoken&rdquo;): Se usa como medida de seguridad para evitar
-                        diversos ataques.
-                        {% endblocktrans %}
-                    </li>
-                    <li>
-                        {% blocktrans trimmed %}
-                        Cookie de aceptaci&oacute;n de cookies (&ldquo;cp-enabled&rdquo;): Se utiliza para recordar si el usuario
-                        ha aceptado ya la pol&iacute;tica de cookies del sitio.
+                            Aceptance cookie ('cp-enabled'): Used to remember if the user has already accepted the cookie policy of the site.
                         {% endblocktrans %}
                     </li>
                 </ul>
-            
-            <h3>{%  trans "Deshabilitar el uso de cookies" %}</h3>
-            <p>
-                {% blocktrans trimmed %}
-                Si el usuario as&iacute; lo desea, es posible dejar de aceptar las Cookies del navegador, o dejar de
-                aceptar las Cookies de un servicio en particular.
-                {% endblocktrans %}
-            </p>
-            <p>
-                {% blocktrans trimmed %}
-                Todos los navegadores modernos permiten cambiar la configuraci&oacute;n de Cookies. Estos ajustes
-                normalmente se encuentran en las "Opciones" o "Preferencias" del men&uacute; del navegador.
-                {% endblocktrans %}
-            </p>
-            <p>
-                {% blocktrans trimmed %}
-                El usuario podr&aacute;, en cualquier momento, deshabilitar el uso de Cookies en este sitio web
-                mediante:
-                {% endblocktrans %}
-            </p>
-            <ul>
-                <li>
-                    {%  trans "La configuraci&oacute;n del navegador, por ejemplo:" %}
-                    <ul>
-                        <li>
-                            {% blocktrans trimmed %}
-                            Google Chrome:
-                            <a href="http://support.google.com/chrome/bin/answer.py?hl=es&answer=95647">http://support.google.com/chrome/bin/answer.py?hl=es&answer=95647</a>
-                            {% endblocktrans %}
-                        </li>
-                        <li>
-                            {% blocktrans trimmed %}
-                            Internet Explorer:
-                            <a href="http://windows.microsoft.com/es-es/windows7/how-to-manage-cookies-in-internet-explorer-9">http://windows.microsoft.com/es-es/windows7/how-to-manage-cookies-in-internet-explorer-9</a>
-                            {% endblocktrans %}
-                        </li>
-                        <li>
-                            {% blocktrans trimmed %}
-                            Mozilla Firefox:
-                            <a href="http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-los-sitios-we">http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-los-sitios-we</a>
-                            {% endblocktrans %}
-                        </li>
-                        <li>
-                            {% blocktrans trimmed %}
-                            Apple Safari:
-                            <a href="http://support.apple.com/kb/ph5042">http://support.apple.com/kb/ph5042</a>
-                            {% endblocktrans %}
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    {% blocktrans trimmed %}
-                    Otras herramientas de terceros, disponibles on-line, que permiten a los usuarios
-                    detectar las Cookies en cada sitio web que visita y gestionar su desactivaci&oacute;n (por
-                    ejemplo, Ghostery: <a href="http://www.ghostery.com/privacy-statement">http://www.ghostery.com/privacy-statement</a>).
-                    {% endblocktrans %}
-                </li>
-            </ul>
             <br>
         </div>
     </div>

@@ -26,7 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-FILE_CHARSET = 'iso-8859-1'
+FILE_CHARSET = 'ISO-8859-1'
 
 
 # Application definition
