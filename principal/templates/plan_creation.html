@@ -54,7 +54,7 @@
                 <select id="selec" style="display: none;"  class="chosen-select">
                     <option></option>
                     {% for cat in list_cat %}
-                        <option value= {{ cat }}>{% trans cat %}</option>
+                        <option value= {{ cat.id_foursquare }}>{% trans cat.name %}</option>
                     {% endfor %}
 
                 </select>
@@ -65,38 +65,36 @@
                     <option value=""></option>
                     <option value="Mucho">{% trans "A lot of" %}</option>
                     <option value="Poco">{% trans "Some of" %}</option>
-                    <option value="Nada">{% trans "Any of" %}</option>
+                    <option value="Nada">{% trans "Anything of" %}</option>
                 </select>
             <div>
                 <br>
 
                 <input class="btn btn-primary" id="copy" name="copy"
                        value="{% trans 'Add Restriction' %}" type="button" onclick=copyValues()>
-                <br>
-                <br>
-                
-                <fieldset><legend>{% trans "Custom constraints" %}</legend>
-
-                    <input class="form-control" type="hidden" readonly name="rests" id="rest1"
-                           value="{% if form.initial|length != 0 %}{{ form.initial.rest1 }}{% else %}{{ form.data.rest1 }}{% endif %}" />
-                    <input type="hidden" class="btn btn-primary" id="delete1" name="Delete lb1"
-                           value="{% trans "Delete" %}" onclick=deleteHidden("1")>
-                    <br>
-                    <input class="form-control" type="hidden" readonly name="rests" id="rest2"
-                            value="{% if form.initial|length != 0 %}{{ form.initial.rest2 }}{% else %}{{ form.data.rest2 }}{% endif %}" />
-                    <input type="hidden" class="btn btn-primary" id="delete2" name="Delete lb2"
-                           value="{% trans "Delete " %}" onclick=deleteHidden("2")>
-                    <br>
-                    <input class="form-control" type="hidden" readonly name="rests" id="rest3"
-                            value="{% if form.initial|length != 0 %}{{ form.initial.rest3 }}{% else %}{{ form.data.rest3 }}{% endif %}" />
-                    <input type="hidden" readonly class="btn btn-primary" id="delete3" name="Delete lb3"
-                           value="{% trans "Delete" %}" onclick=deleteHidden("3")>
-                    <br>
-                </fieldset>
+                    <input class="form-control" type="hidden" readonly name="rests" id="rest1"/>
+                    <input class="form-control" type="hidden" readonly name="rests" id="rest2"/>
+                    <input class="form-control" type="hidden" readonly name="rests" id="rest3"/>
             </div>
                 </div>
     </form>
 
+<div class="form-group">
+    <fieldset><legend>{% trans "Custom constraints" %}</legend>
+        <input class="form-control" type="text" readonly name="rests" id="rest1_lb1"/>
+        <input type="hidden" class="btn btn-primary" id="delete1" name="Delete lb1"
+               value="{% trans "Delete" %}" onclick=deleteHidden("1")>
+        <br>
+        <input class="form-control" type="text" readonly name="rests" id="rest1_lb2"/>
+        <input type="hidden" class="btn btn-primary" id="delete2" name="Delete lb2"
+               value="{% trans "Delete " %}" onclick=deleteHidden("2")>
+        <br>
+        <input class="form-control" type="text" readonly name="rests" id="rest1_lb3"/>
+        <input type="hidden" readonly class="btn btn-primary" id="delete3" name="Delete lb3"
+               value="{% trans "Delete" %}" onclick=deleteHidden("3")>
+        <br>
+        </fieldset>
+</div>
 
     </div>
 </div>
@@ -104,10 +102,15 @@
 
 function deleteHidden(number){
     var target = "rest" + number;
+    var rest_lbN = "rest1_lb" + number;
     var deleteTo = "delete" + number;
+    //borramos el hidden
     $('#' + target).val("");
+    //Borramos el visible
+    $('#' + rest_lbN).val("");
+    //Habilitamos el boton de agregar mas restricciones
     $("#copy").prop('disabled', false);
-
+    //desabilitamos el boton de borrar
     $('#' + deleteTo).prop("type", "hidden");
 }
 
@@ -118,10 +121,21 @@ function copyValues() {
     cantidad = $("#cantidad").find('option:selected').text();
     category = $("#selec").find('option:selected').text();
 
-
+    //son los hidden
     var input1 = $("#rest1");
     var input2 = $("#rest2");
     var input3 = $("#rest3");
+
+    //son los que se ven en la pantalla
+    var rest_lb1 = $("#rest1_lb1");
+    var rest_lb2 = $("#rest1_lb2");
+    var rest_lb3 = $("#rest1_lb3");
+
+    //selecciona la id_categoria
+    var cat_id = jQuery("#selec option:selected").val();
+
+    //selecciona la cantidad
+    var vals = jQuery("#cantidad option:selected").val();
 
     var txt1 = input1.val();
     var txt2 = input2.val();
@@ -132,15 +146,18 @@ function copyValues() {
     }
 
     if (txt1 == "") {
-        input1.val(category + ":" + cantidad);
+        input1.val(cat_id + ":" + vals);
+        rest_lb1.val(category + ": " + cantidad);
         $("#delete1").prop("type", "button");
     }
     else if (txt2 == "") {
-        input2.val(category + ":" + cantidad);
+        input2.val(cat_id + ":" + vals);
+        rest_lb2.val(category + ": " + cantidad);
         $("#delete2").prop("type", "button");
     }
     else if (txt3 == "") {
-        input3.val(category + ":" + cantidad);
+        input3.val(cat_id + ":" + vals);
+        rest_lb3.val(category + ": " + cantidad);
         $("#delete3").prop("type", "button");
     }
 
@@ -177,7 +194,7 @@ function copyValues() {
     function whileLoading() {
         swal({
             title: "Loading...",
-            text: "We are working hard on your plan. It might take a while, please, be patient :)",
+            text: " {%  trans "We are working hard on your plan. It might take a while, please, be patient :)"%}",
             showConfirmButton: false,
             imageUrl: "{% static "img/gears.svg" %}"
         });

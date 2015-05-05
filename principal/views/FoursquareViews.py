@@ -70,10 +70,8 @@ def foursquare_list_venues(request):
     try:
         assert request.user.has_perm('principal.traveller')
         traveller = TravellerService.find_one(request.user.id)
-        list_cat = []
+        list_cat = Category.objects.all()
         # categories = Category.objects.raw('SELECT * FROM category')
-        for p in Category.objects.raw('SELECT id, name FROM category'):
-            list_cat.append(p.name)
         if request.POST:
             form = PlanForm(request.POST)
             list_constrains = request.POST.getlist('rests')
@@ -87,11 +85,11 @@ def foursquare_list_venues(request):
                     return buy_coins(request)
                 city = form.cleaned_data['city']
 
-                limit = 40
+                limit = 0
                 if days <= 3:
-                    limit = 15
+                    limit = 20
                 elif 3 < days <= 7:
-                    limit = 25
+                    limit = 40
 
                 venues_sigths = FoursquareServices.search_by_section(city, "sights", limit=limit)
                 venues_outdoors = FoursquareServices.search_by_section(city, "outdoors", limit=limit)
@@ -113,7 +111,6 @@ def foursquare_list_venues(request):
                 
                 all_venues = FoursquareServices.save_data(all_venues)
                 all_food = FoursquareServices.save_data(all_food)
-                
 
                 #Llamada al nuevo algoritmo
                 plan_venues = FoursquareServices.get_plan(list_constrains, items_venues, days)
@@ -151,7 +148,7 @@ def retrieve_venue(request, id_venue):
     if request.method == 'GET':
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
-            tips = Feedback.objects.filter(Q(venues=id_venue) & ~Q(description__exact='') & Q(description__isnull=True)).\
+            tips = Feedback.objects.filter(Q(venues=id_venue) & ~Q(description__exact='') & Q(description__isnull=False)).\
                 order_by("usefulCount")
             return render_to_response('venue_details.html', {"venue": venue, "tips": tips},
                                       context_instance=RequestContext(request))
