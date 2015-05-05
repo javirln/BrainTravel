@@ -3193,118 +3193,118 @@ msgstr ""
 
 #: principal/templates/list_coin_history.html:11
 msgid "Coin historial"
-msgstr ""
+msgstr "Historial de monedas"
 
 #: principal/templates/list_coin_history.html:12
 msgid "Those are movements that you made with your coins through the platform"
-msgstr ""
+msgstr "Estos son los movimientos que has hecho con tus monedas en la plataforma"
 
 #: principal/templates/list_coin_history.html:16
 #: principal/templates/my_payments.html:15
 msgid "We couldn't find anything..."
-msgstr ""
+msgstr "No pudimos encontrar nada..."
 
 #: principal/templates/list_coin_history.html:22
 #: principal/templates/my_payments.html:22
 msgid "Amount"
-msgstr ""
+msgstr "Cantidad"
 
 #: principal/templates/list_coin_history.html:23
 #: principal/templates/my_payments.html:23
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
 #: principal/templates/list_coin_history.html:24
 #: principal/templates/my_payments.html:24
 msgid "Concept"
-msgstr ""
+msgstr "Concepto"
 
 #: principal/templates/my_payments.html:10
 msgid "Payment historial"
-msgstr ""
+msgstr "Historial de pagos"
 
 #: principal/templates/my_payments.html:11
 msgid "Those are payments that made through the platform to buy coins"
-msgstr ""
+msgstr "Estos son los pagos que has hecho a través de nuestra plataforma para comprar monedas"
 
 #: principal/templates/my_payments.html:21
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #: principal/templates/my_payments.html:44
 msgid "previous"
-msgstr ""
+msgstr "anterior"
 
 #: principal/templates/my_payments.html:50
 msgid "next"
-msgstr ""
+msgstr "siguiente"
 
 #: principal/templates/plan_creation.html:10
 msgid "Plan a trip"
-msgstr ""
+msgstr "Planear un viaje"
 
 #: principal/templates/plan_creation.html:15
 #: principal/templates/trip_edit.html:36
 msgid "City"
-msgstr ""
+msgstr "Ciudad"
 
 #: principal/templates/plan_creation.html:24
 #: principal/templates/trip_edit.html:47
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 #: principal/templates/plan_creation.html:33
 #: principal/templates/trip_edit.html:59
 msgid "Start Date"
-msgstr ""
+msgstr "Fecha de inicio"
 
 #: principal/templates/plan_creation.html:45
 msgid "Days"
-msgstr ""
+msgstr "Dias"
 
 #: principal/templates/plan_creation.html:53
 msgid "Price"
-msgstr ""
+msgstr "Precio"
 
 #: principal/templates/plan_creation.html:53
 msgid "Coins"
-msgstr ""
+msgstr "Monedas"
 
 #: principal/templates/plan_creation.html:54
 msgid "You have"
-msgstr ""
+msgstr "Tienes"
 
 #: principal/templates/plan_creation.html:59
 msgid "Create Plan"
-msgstr ""
+msgstr "Crear un plan"
 
 #: principal/templates/plan_creation.html:65
 msgid "Select your custom constrains"
-msgstr ""
+msgstr "Selecciona tus restricciones personalizadas"
 
 #: principal/templates/plan_creation.html:78
 msgid "A lot of"
-msgstr ""
+msgstr "Un montón de"
 
 #: principal/templates/plan_creation.html:79
 msgid "Some of"
-msgstr ""
+msgstr "Algo de"
 
 #: principal/templates/plan_creation.html:80
 msgid "Any of"
-msgstr ""
+msgstr "Nada de"
 
 #: principal/templates/plan_creation.html:86
 msgid "Add Restriction"
-msgstr ""
+msgstr "Añadir restricción"
 
 #: principal/templates/plan_creation.html:90
 msgid "Custom constraints"
-msgstr ""
+msgstr "Restricciones personalizadas"
 
 #: principal/templates/plan_creation.html:100
 msgid "Delete "
-msgstr ""
+msgstr "Borrar"
 
 #: principal/templates/privacy_terms.html:8
 msgid ""
@@ -3386,201 +3386,203 @@ msgstr ""
 
 #: principal/templates/profile_details.html:20
 msgid "Modify profile"
-msgstr ""
+msgstr "Modificar perfil"
 
 #: principal/templates/profile_details.html:21
 msgid "Change password"
-msgstr ""
+msgstr "Cambiar contraseña"
 
 #: principal/templates/profile_details.html:39
 msgid "My payments"
-msgstr ""
+msgstr "Mis pagos"
 
 #: principal/templates/profile_details.html:46
 msgid "View coin movements"
-msgstr ""
+msgstr "Ver el movimiento de mis monedas"
 
 #: principal/templates/profile_details.html:53
 msgid "View my trips"
-msgstr ""
+msgstr "Ver mis viajes"
 
 #: principal/templates/profile_details.html:55
 msgid "Trips published by"
-msgstr ""
+msgstr "Viajes publicados por"
 
 #: principal/templates/profile_edit.html:6
 msgid "Edit Profile"
-msgstr ""
+msgstr "Editar perfil"
 
 #: principal/templates/profile_edit.html:11
 #: principal/templates/profile_edit.html:51
 msgid "First name"
-msgstr ""
+msgstr "Nombre"
 
 #: principal/templates/profile_edit.html:15
 #: principal/templates/profile_edit.html:56
 msgid "Last name"
-msgstr ""
+msgstr "Apellidos"
 
 #: principal/templates/profile_edit.html:19
 #: principal/templates/profile_edit.html:61
 msgid "Genre"
-msgstr ""
+msgstr "Género"
 
 #: principal/templates/profile_edit.html:23
 msgid "Photo"
-msgstr ""
+msgstr "Foto"
 
 #: principal/templates/profile_edit.html:42
 msgid "Default image"
-msgstr ""
+msgstr "Imagen default"
 
 #: principal/templates/profile_edit.html:69
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: principal/templates/profile_edit_password.html:8
 msgid "Edit Password"
-msgstr ""
+msgstr "Editar contraseña"
 
 #: principal/templates/profile_edit_password.html:14
 #: principal/templates/profile_edit_password.html:33
 msgid "Old password"
-msgstr ""
+msgstr "Antigua contraseña"
 
 #: principal/templates/profile_edit_password.html:18
 #: principal/templates/profile_edit_password.html:38
 msgid "New password"
-msgstr ""
+msgstr "Nueva contraseña"
 
 #: principal/templates/profile_edit_password.html:22
 #: principal/templates/profile_edit_password.html:43
 msgid "Repeat new password"
-msgstr ""
+msgstr "Repite la nueva contraseña"
 
 #: principal/templates/profile_edit_password.html:55
 msgid ""
 "<strong>The passwords</strong> must contain at least one uppercase, a "
 "lowercase letter and a number."
-msgstr ""
+msgstr "<strong>Las contraseñas</strong> deben contenear al menos una mayuscula, una "
+"minúscula y un número."
 
 #: principal/templates/public_trip_details.html:2
 msgid "Details"
-msgstr ""
+msgstr "Detalles"
 
 #: principal/templates/public_trip_details.html:62
 msgid "Rate this trip!"
-msgstr ""
+msgstr "Evalúa este viaje!"
 
 #: principal/templates/public_trip_details.html:68
 msgid "Trip moderation"
-msgstr ""
+msgstr "Moderación de viajes"
 
 #: principal/templates/public_trip_details.html:69
 msgid "Select an option and click save to change the trip status."
-msgstr ""
+msgstr "Selecciona una opción y haz click en guardar para cambiar el estado del viaje."
 
 #: principal/templates/public_trip_details.html:81
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: principal/templates/public_trip_details.html:196
 msgid "Please choose a number between 0 and 10:"
-msgstr ""
+msgstr "Por favor elige un número entre 0 y 10:"
 
 #: principal/templates/public_trip_details.html:198
 msgid "Please, write a fancy description:"
-msgstr ""
+msgstr "Por favor, escribe una descripción agradable:"
 
 #: principal/templates/public_trip_details.html:203
 #: principal/templates/venue_details.html:74
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: principal/templates/public_trip_details.html:204
 #: principal/templates/venue_details.html:75
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #: principal/templates/search.html:8 principal/templates/trip_list.html:9
 #: principal/templates/trip_planned_list.html:34
 msgid "Oops! BrainTravel could not find anything..."
-msgstr ""
+msgstr "Oops! BrainTravel no pudo encontrar nada..."
 
 #: principal/templates/signin.html:11
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: principal/templates/signin.html:12
 msgid "Don't have an account yet?"
-msgstr ""
+msgstr "¿Todavía no tienes una cuenta?"
 
 #: principal/templates/signin.html:12
 msgid "Sign up"
-msgstr ""
+msgstr "Resgistrarse"
 
 #: principal/templates/trip_edit.html:9
 msgid "Create Trip"
-msgstr ""
+msgstr "Crear viaje"
 
 #: principal/templates/trip_edit.html:10
-msgid ""
-"Post a trip and get free coins. Get 5 coins for every 2 'like' you receive."
-msgstr ""
+msgid "Post a trip and get free coins. Get 2 coins for every 5 'like' you receive."
+msgstr "Publica un viaje y consigue monedas gratis. Cada 5 likes que recibas te regalaremos 2 monedas "
 
 #: principal/templates/trip_edit.html:12
 msgid "Edit Trip"
-msgstr ""
+msgstr "Editar viaje"
 
 #: principal/templates/trip_edit.html:22
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: principal/templates/trip_edit.html:23
 msgid "Up to 150 letters, numbers and underscores"
-msgstr ""
+msgstr "Hasta 150 letras, numeros y guiones bajos"
 
 #: principal/templates/trip_edit.html:71
 msgid "End Date"
-msgstr ""
+msgstr "Fecha de fin"
 
 #: principal/templates/trip_edit.html:85
 msgid "Published Description"
-msgstr ""
+msgstr "Descripción pública"
 
 #: principal/templates/trip_planned_list.html:29
 msgid "View more"
-msgstr ""
+msgstr "Ver más"
 
 #: principal/templates/venue_details.html:13
 msgid "Give feedback"
-msgstr ""
+msgstr "Dar feedback"
 
 #: principal/templates/venue_details.html:41
 msgid "Sorry, there aren't tips available for this venue."
-msgstr ""
+msgstr "Lo sentimos, pero no hay recomendaciones para este sitio."
 
 #: principal/templates/venue_details.html:60
 msgid ""
 "By giving feedback you enhance our algorithm. The more feedback it gets, the "
 "more accurate it becomes. We give you some coins as gift as well :)"
-msgstr ""
+msgstr "Dandonos feedback contribuyes a mejorar nuestro algoritmo. Cuanto mas feedback consigue, "
+"mas preciso se vuelve. Te regalaremos algunas monedas también :)"
 
 #: principal/templates/venue_details.html:62
 msgid ""
 "<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on "
 "the queue...</small></h4>"
-msgstr ""
+msgstr "<h4>Tiempo de espera: <small>Cuanto tiempo pasaste esperando para comprar los tickets en la cola... </small></h4>"
 
 #: principal/templates/venue_details.html:65
 msgid ""
 "<h4>Duration: <small>How much time you spent inside the venue, you were "
 "walking around...</small></h4>"
-msgstr ""
+msgstr "<h4>Duración: <small>Cuanto tiempo pasaste dentro del sitio, que estuviste "
+"dando vueltas...</small></h4>"
 
 #: principal/templates/venue_details.html:69
 msgid "<h4>Description: <small>Something else you want to say?</small></h4>"
-msgstr ""
+msgstr "<h4>Descripción: <small>¿Hay algo más que quieras añadir?</small></h4>"
 
 
 # Categorias:
