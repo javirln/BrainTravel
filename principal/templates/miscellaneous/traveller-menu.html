@@ -1,3 +1,4 @@
+{% load i18n %}
 {#<li>#}
 {#    <a id="sign_ind_nav" href="/auth_request">test FS</a>#}
 {#</li>#}
@@ -23,10 +24,11 @@
         <span class="fa fa-chevron-down"></span>
     </a>
     <ul class="dropdown-menu">
-        <li><a id="sign_ind_nav" href="/trip/create"><i class="fa fa-plus"></i> Publish trip </a></li>
-        <li><a id="sign_ind_nav" href="/trip/mylist"><i class="fa fa-plane"></i> My trips </a></li>
-        <li><a id="sign_ind_nav" href="/trip/planned_trips"><span class="fa fa-list-ol"></span> My planned trips</a></li>
-        <li><a id="sign_ind_nav" href="/trip/draft"><i class="fa fa-archive"></i> Drafts</a></li>
+        <li><a href="/trip/create"><i class="fa fa-plus"></i> {% trans "Publish trip" %}</a></li>
+        <li><a href="/trip/mylist"><i class="fa fa-plane"></i> {% trans "My trips" %}</a></li>
+        <li><a href="/trip/planned_trips"><i class="fa fa-list-ol"></i> {% trans "My planned trips" %}</a></li>
+        <li><a href="/trip/draft"><i class="fa fa-archive"></i> {% trans "Drafts" %}</a></li>
+        <li><a href="/statistics"><i class="fa fa-pie-chart"></i> {% trans "Statisticas" %}</a></li>
     </ul>
 </li>
 
