@@ -232,3 +232,7 @@ body {
 .venue-details{
     min-height: 350px;
 }
+.modal-bt{
+    border-radius: 0px;
+    font-weight: bold;
+}
