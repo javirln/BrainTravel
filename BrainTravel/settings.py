@@ -68,7 +68,7 @@ WSGI_APPLICATION = 'BrainTravel.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -76,6 +76,18 @@ DATABASES = {
         'USER': 'braintravel',
         'PASSWORD': 'bR@1nTr@veL',
         'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'ATOMIC_REQUESTS': 'True'
+    }
+}
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'braintravel',
+        'USER': 'braintravel',
+        'PASSWORD': 'bR@1nTr@veL',
+        'HOST': 'mysql.cvu77qxolqzd.us-west-2.rds.amazonaws.com',
         'PORT': '3306',
         'ATOMIC_REQUESTS': 'True'
     }
