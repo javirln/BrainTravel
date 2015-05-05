@@ -190,6 +190,7 @@ class Likes(models.Model):
     feedback = models.ForeignKey(Feedback)
 
     class Meta:
+        unique_together = ('traveller', 'feedback')
         db_table = 'likes'
 
 

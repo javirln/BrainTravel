@@ -14,8 +14,10 @@ from principal.forms import TripEditForm, CommentForm
 from principal.forms import TripUpdateStateForm
 from principal.models import Judges, Assessment, Day, Venue, VenueDay, Feedback, Traveller, Likes, CoinHistory
 from principal.models import Trip, Comment
-from principal.services import TripService, TravellerService, CommentService
+from principal.services import TripService, TravellerService, CommentService,\
+    LikeService
 from principal.services.TravellerService import save
+from principal.services.LikeService import can_vote
 from principal.utils import BrainTravelUtils
 
 
@@ -332,10 +334,13 @@ def value_tip(request, id_venue, id_tip):
     try:
         url = request.path.split("/")
         current_traveller = Traveller.objects.get(id=request.user.id)
-        likes_instance = Likes.objects.get(traveller=current_traveller)
-        feedback_instance = Feedback.objects.get(id=likes_instance.id)
-        if feedback_instance is None:
-            if (feedback_instance.usefulCounts % 5) == 0 | (feedback_instance.usefulCounts % 5) == 5:
+        feedback_instance = Feedback.objects.get(id=id_tip)
+        
+        if LikeService.can_vote(current_traveller.id, feedback_instance.id):
+            new_useful_count = feedback_instance.usefulCount + long(1)
+            
+            if (new_useful_count % 2) == 0:
+                #Recompensa de monedas
                 tip_owner = feedback_instance.traveller
                 tip_owner.coins += long(2)
                 save(tip_owner)
@@ -346,10 +351,10 @@ def value_tip(request, id_venue, id_tip):
                     traveller=tip_owner
                 )
                 new_entry.save()
-            else:
-                TripService.value_tip(id_tip, id_venue)
-                BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
-                return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
+            
+            TripService.value_tip(feedback_instance, current_traveller)
+            BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
+            return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
         else:
             BrainTravelUtils.save_info(request, "You voted this tip already.")
             return HttpResponseRedirect("/" + url[1] + "/" + id_venue)

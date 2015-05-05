@@ -83,7 +83,7 @@ def increase_like(trip, traveller_id):
     traveller = Traveller.objects.get(id=traveller_id)
     trip_likes = trip.likes + 1
 
-    if (trip_likes % 5) == 0 | (trip_likes % 5) == 5:
+    if (trip_likes % 5) == 0:
         traveller.coins += long(2)
         save(traveller)
         new_entry = CoinHistory(
@@ -184,20 +184,22 @@ def send_feedback(user_id, venue_id, lead_time, duration_time, description):
         venues=venue
     )
     feedback_instance.save()
-    like_instance = Likes(
-        useful=feedback_instance.usefulCount,
-        comment=feedback_instance.description,
-        traveller=user,
-        feedback=feedback_instance,
-    )
-    like_instance.save()
+    
 
 # author: Javi Rodriguez
-def value_tip(id_tip, id_venue):
-    tip = Feedback.objects.get(id=id_tip, venues=id_venue)
+def value_tip(tip, user):
     new_count = tip.usefulCount + 1
     tip.usefulCount = new_count
     tip.save()
+    
+    #guardar la relacion entre like y feedback
+    likes_instance = Likes(
+        useful=True,
+        traveller=user,
+        feedback=tip
+    )
+    
+    likes_instance.save()
 
 
 # author: Javi Rodriguez
