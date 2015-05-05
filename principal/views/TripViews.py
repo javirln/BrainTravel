@@ -10,7 +10,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
-from principal.forms import TripEditForm, CommentForm
+from principal.forms import TripEditForm, CommentForm, AssessmentForm
 from principal.forms import TripUpdateStateForm
 from principal.models import Judges, Assessment, Day, Venue, VenueDay, Feedback, Traveller, Likes, CoinHistory
 from principal.models import Trip, Comment
@@ -47,6 +47,10 @@ def search_trip(request):
 # author: Javi ----- Reviewed: Juane
 def public_trip_details(request, trip_id):
     try:
+        # Variable que hace que se muestre el modal de las valoraciones
+        modal = False
+
+        # Obtener el viaje
         trip = Trip.objects.get(id=trip_id, planified=False)
         assert trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator')
 
@@ -77,23 +81,36 @@ def public_trip_details(request, trip_id):
         else:
             assessment = list(assessment)[0]
 
-        # Validacion del comentario
         if request.POST:
             assert request.user.has_perm('principal.traveller')
-            comment_form = CommentForm(request.POST)
-            if comment_form.is_valid():
-                comment = CommentService.construct_comment(request.user.id, comment_form)
-                CommentService.save(request.user.id, comment)
-                BrainTravelUtils.save_success(request, _('Comment successfully'))
-                return HttpResponseRedirect("/public_trip_details/" + str(comment.trip.id))
+            # Validacion del comentario
+            if 'comment_name' in request.POST:
+                comment_form = CommentForm(request.POST)
+                if comment_form.is_valid():
+                    comment = CommentService.construct_comment(request.user.id, comment_form)
+                    CommentService.save(request.user.id, comment)
+                    BrainTravelUtils.save_success(request, _('Comment successfully'))
+                    return HttpResponseRedirect("/public_trip_details/" + str(comment.trip.id))
+            else:
+                comment_form = CommentForm(initial={'id_trip': trip.id})
+            # Validacion de la valoracion
+            if 'assessment_name' in request.POST:
+                assessment_form = AssessmentForm(request.POST)
+                if assessment_form.is_valid():
+                    TripService.construct_assessment(request.user.id, assessment_form)
+                    BrainTravelUtils.save_success(request, _('Your vote has been saved!'))
+                    return HttpResponseRedirect("/public_trip_details/" + str(trip.id))
+                else:
+                    modal = True
+            else:
+                assessment_form = AssessmentForm(initial={'id_trip': trip.id})
+
         else:
             comment_form = CommentForm(initial={'id_trip': trip.id})
+            assessment_form = AssessmentForm(initial={'id_trip': trip.id})
 
         form = TripUpdateStateForm(initial={'id': trip.id, 'state': trip.state})
-        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge,
-                                                               'form': form, 'comment_form': comment_form,
-                                                               'assessment': assessment},
-                                  context_instance=RequestContext(request))
+        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'comment_form': comment_form, 'assessment_form': assessment_form, 'assessment': assessment, 'modal': modal}, context_instance=RequestContext(request))
     except Exception:
         return render_to_response('error.html')
 
