@@ -86,8 +86,8 @@ def buy_coins(request):
         "amount": "10.00",
         "item_name": "100 Coins",
         "notify_url": "http://3e5d44b.ngrok.com" + reverse('paypal-ipn'),
-        "return_url": "http://www.braintravel.com/coin/list/",
-        "cancel_return": "http://www.braintravel.com/payment_cancel",
+        "return_url": "http://fierce-springs-5908.herokuapp.com/coin/list/",
+        "cancel_return": "http://fierce-springs-5908.herokuapp.com/payment_cancel",
         "currency_code":"EUR",
         "custom":track_data3,
     }
