@@ -301,26 +301,6 @@ def change_venue(request):
         return render_to_response('error.html')
         
 
-# author: Javi Rodriguez
-@login_required()
-def send_assessment(request):
-    try:
-        user_id = request.user.id
-        rate_text = request.POST['text-rate-description']
-        trip_id = request.POST['trip-id']
-        rate_value = request.POST['rate-value']
-        url = request.path.split("/")
-        res = TripService.send_assessment(user_id, rate_value, trip_id, rate_text)
-        if res == False:
-            BrainTravelUtils.save_warning(request, 'You already voted this trip!')
-        else:
-            BrainTravelUtils.save_success(request, 'Your vote has been saved!')
-        return HttpResponseRedirect("/" + url[1] + "/" + trip_id)
-    except:
-        msg_errors = ["Something went wrong..."]
-        return render_to_response('public_trip_details.html', {'msg_errors': msg_errors})
-
-
 # author: Juane
 @login_required()
 @permission_required('principal.traveller')
