@@ -4,6 +4,8 @@ from BrainTravel import settings
 
 urlpatterns = patterns('',
     # Examples:
+    url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
+    url(r'^planner/change_venue/$', 'principal.views.TripViews.change_venue'),
     url(r'^$', 'principal.views.MainViews.home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^signin/$', 'principal.views.UserViews.sign_in'),
@@ -53,8 +55,7 @@ urlpatterns = patterns('',
     url(r'^stats/$', 'principal.views.TripViews.stats'),
 
     #planner URLs
-    url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
-    url(r'^planner/change_venue/$', 'principal.views.TripViews.change_venue'),
+
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),
 
     #i18n
