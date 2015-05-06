@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-{% block title %} Edit profile {% endblock %}
+{% load i18n %}
+{% block title %} {% trans "Edit profile" %} {% endblock %}
 {% block content %}
-    {% load i18n %}
+
 <div class="container">
     <h1>{% trans "Edit Profile" %}</h1>
     {% if form.errors %}
@@ -64,7 +65,7 @@
                         </div>
                         {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
                         <div class="form-group">
-                            <input class="btn btn-primary" value="Save Changes" type="submit">
+                            <input class="btn btn-primary" value={% trans "Save Changes" %} type="submit">
                             <span></span>
                             <a href="/profile/{{ form.id.value }}" class="btn btn-default">{% trans "Cancel" %}</a>
                         </div>

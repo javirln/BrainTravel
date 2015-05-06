@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
-{% block title %} Buy coins {% endblock %}
+{% load i18n %}
+{% block title %} {% trans "Buy coins" %} {% endblock %}
+{% load staticfiles %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/pricing-table.css" %}"> 
+{% endblock %}
 {% block content %}
-    {% load i18n %}
+    
 <div class="container">
 <div class="text-center">
     <h1>{% trans "Coin packs" %}</h1>

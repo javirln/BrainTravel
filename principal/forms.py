@@ -97,6 +97,10 @@ class TripEditForm(forms.Form):
         name = self.cleaned_data['name']
         if len(name) > 150:
             self.add_error('name', _("Message length too long"))
+        if len(self.cleaned_data['city']) == 0:
+            self.add_error('city', _("City is required"))
+        if len(self.cleaned_data['country']) == 0:
+            self.add_error('country', _("Country is required"))
         start_date = self.data['startDate']
         start_date = datetime.strptime(start_date, '%d/%m/%Y').date()
         end_date = self.data['endDate']
@@ -114,9 +118,12 @@ class TripEditForm(forms.Form):
 
 # david
 class PlanForm(forms.Form):
-    city = forms.CharField(label='City', widget=forms.TextInput(attrs={'class': 'form-control', }))
-    country = forms.CharField(label='Country', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    days = forms.CharField(label='Days', widget=forms.NumberInput(attrs={'min': 0, 'max': 7, 'class': 'form-control'}))
+    city = forms.CharField(label='City',
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'required', }))
+    country = forms.CharField(label='Country',
+                              widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'required', }))
+    days = forms.CharField(label='Days', widget=forms.NumberInput(
+        attrs={'min': 0, 'max': 7, 'class': 'form-control', 'required': 'required', }))
 
 # author: Juane
 class TravellerEditProfileForm(forms.Form):

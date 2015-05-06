@@ -112,7 +112,7 @@ def public_trip_details(request, trip_id):
 
         form = TripUpdateStateForm(initial={'id': trip.id, 'state': trip.state})
         return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'comment_form': comment_form, 'assessment_form': assessment_form, 'assessment': assessment, 'modal': modal}, context_instance=RequestContext(request))
-    except Exception:
+    except Exception as e:
         return render_to_response('error.html')
 
 
@@ -214,12 +214,12 @@ def trip_create(request):
         form = TripEditForm(request.POST)
         if form.is_valid():
             trip_new = TripService.create(form, user_id)
-            if "save" in request.POST and request.POST['save'] == "Save in draft":
+            if "save" in request.POST:
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
                 BrainTravelUtils.save_success(request, _("Action completed successfully"))
                 return HttpResponseRedirect("/trip/draft/")
-            elif "save" in request.POST and request.POST['save'] == "Publish Trip":
+            elif "publis" in request.POST:
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)
                 BrainTravelUtils.save_success(request, _("Your trip must be accepted by an administrator"))
@@ -250,12 +250,12 @@ def trip_edit(request, trip_id):
                 trip.startDate = form.cleaned_data['startDate']
                 trip.endDate = form.cleaned_data['endDate']
                 trip.country = form.cleaned_data['country']
-                if 'save' in request.POST and request.POST['save'] == "Save draft":
+                if 'save' in request.POST:
                     trip.state = "df"
                     TripService.save_secure(trip)
                     BrainTravelUtils.save_success(request, "Action completed successfully")
                     return HttpResponseRedirect("/trip/draft/")
-                elif 'save' in request.POST and request.POST['save'] == "Publish Trip":
+                elif 'publis' in request.POST:
                     trip.state = "pe"
                     TripService.save_secure(trip)
                     BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")

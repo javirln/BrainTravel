@@ -6,7 +6,7 @@
 <li>
     <a id="sign_ind_nav" href="/planner/list_venues/">
         <span class="fa fa-file-text"></span>
-        <strong>Plan a trip</strong>
+        <strong>{% trans "Plan a trip" %}</strong>
     </a>
 </li>
 
@@ -20,14 +20,14 @@
 <li>
     <a id="sign_ind_nav" href="/buy_coins">
         <span class="fa fa-shopping-cart"></span>
-        <strong>Buy coins</strong>
+        <strong>{% trans "Buy coins" %}</strong>
     </a>
 </li>
 
 <li class="dropdown">
      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <span class="fa fa-plane"></span>
-		<strong>Trips</strong>
+		<strong>{% trans "Trips" %}</strong>
         <span class="fa fa-chevron-down"></span>
     </a>
     <ul class="dropdown-menu">
@@ -59,7 +59,7 @@
 						</p>
 						<p class="text-left small">{{ user.traveller.email }}</p>
 						<p class="text-left">
-							<a href="/profile/{{ user.traveller.id }}" class="btn btn-primary btn-block btn-sm">View profile</a>
+							<a href="/profile/{{ user.traveller.id }}" class="btn btn-primary btn-block btn-sm">{% trans "View profile" %}</a>
 						</p>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 			<div class="navbar-login navbar-login-session">
 				<div class="row">
 					<div class="col-xs-12 text-center">
-					   <button class="btn btn-danger btn-block" onclick="window.location.href='/logout'">Logout</button>
+					   <button class="btn btn-danger btn-block" onclick="window.location.href='/logout'">{% trans "Logout" %}</button>
 					</div>
 				</div>
 			</div>

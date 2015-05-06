@@ -15,7 +15,7 @@
                 <li>
                     <a data-toggle="collapse" href="#searchCollapse" id="search-toggle">
                         <span class="fa fa-search"></span>
-                        <strong>Search</strong>
+                        <strong>{% trans "Search"%}</strong>
                     </a>
                 </li>
                 {% if user.is_anonymous %}
@@ -39,7 +39,7 @@
 			{% csrf_token %}
 			<div class="input-group">
 				<input type="text" id="input-search" class="form-control"
-					name="title" placeholder="Type to search" autofocus="autofocus"> <span
+					name="title" placeholder={% trans "Type to search"%} autofocus="autofocus"> <span
 					class="input-group-btn">
 					<button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#searchCollapse">
 						<span class="fa fa-times"></span>
