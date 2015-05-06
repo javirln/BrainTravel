@@ -1,5 +1,9 @@
-{% extends 'base.html' %} {% block title %} My trips {% endblock %}
-{% block content %} {% load i18n %} {% load staticfiles %}
+{% extends 'base.html' %}
+{% load i18n %} 
+{% load staticfiles %} 
+{% block title %} {% trans "My trips"%}{% endblock %}
+{% block content %} 
+
     <div class="container">
         <div class="row">
             <div class="well" style="margin-top: 69px;">

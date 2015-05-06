@@ -1,5 +1,8 @@
-{% extends 'base.html' %} {% block title %} Plan details {% endblock %} 
-{% block content %} {% load i18n %} {% load staticfiles %}
+{% extends 'base.html' %} 
+{% load i18n %}
+{% block title %} {% trans "Plan details" %} {% endblock %} 
+{% load staticfiles %}
+{% block content %}
 <div class="container">
     <!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
