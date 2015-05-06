@@ -9,17 +9,18 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
+from django.utils.translation import ugettext as _
 
 from principal.forms import TripEditForm, CommentForm, AssessmentForm
 from principal.forms import TripUpdateStateForm
 from principal.models import Judges, Assessment, Day, Venue, VenueDay, Feedback, Traveller, Likes, CoinHistory
 from principal.models import Trip, Comment
-from principal.services import TripService, TravellerService, CommentService,\
+from principal.services import TripService, TravellerService, CommentService, \
     LikeService
-from principal.services.TravellerService import save
 from principal.services.LikeService import can_vote
+from principal.services.TravellerService import save
 from principal.utils import BrainTravelUtils
-from django.utils.translation import ugettext as _
+
 
 # author: Juane
 def search_trip(request):

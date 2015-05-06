@@ -1,9 +1,14 @@
 # -*- coding: latin-1 -*-
-from django.db.models import Q, Count, Avg, Sumfrom datetime import datetimefrom principal.models import Trip, Traveller, Assessment, Scorable, Feedback, Venue, Likes, CoinHistory, Comment
-# author: Javi
+import datetime
+
+from django.db.models import Q, Count, Avg, Sum
+from datetime import datetime
+from principal.models import Trip, Traveller, Assessment, Scorable, Feedback, Venue, Likes, CoinHistory, Comment
+
 from principal.services.UserService import add_coins
 
 
+# author: Javi
 def searchTrip(title):
     trip_list = []
     if title and title != " ":
@@ -181,6 +186,38 @@ def find_one(trip_id):
     return trip
 
 
+
+def send_assessment(user_id, rate_value, trip_id, rate_text):
+    to_check = Trip.objects.get(id=trip_id)
+    if to_check.state == "ap":
+        user = Traveller.objects.get(id=user_id)
+        score_trip = Scorable.objects.get(id=trip_id)
+        score_user = Scorable.objects.get(id=user_id)
+        occurrences_same_traveller = Assessment.objects.all().filter(traveller=user_id, scorable_id=trip_id).count()
+        scorable_instance = Scorable.objects.get(id=trip_id)
+        scorable_math = Scorable.objects.filter(id=trip_id).annotate(rating_number=Count('rating'),
+                                                                     rating_sum=Sum('rating'))
+        if 0 == occurrences_same_traveller:
+            comment = Assessment(
+                score=rate_value,
+                comment=rate_text,
+                traveller=user,
+                scorable=score_trip
+            )
+            comment.save()
+            num = scorable_math[0].rating_sum
+            if num is None:
+                num = 0
+            number = scorable_math[0].rating_number
+            scorable_instance.rating = int(num) + int(rate_value) / (int(number) + 1)
+            score_user.rating += int(num) + int(rate_value) / (int(number) + 1)
+            score_user.save()
+            scorable_instance.save()
+            return True
+    return False
+
+
+
 # author: Javi Rodriguez
 def send_feedback(user_id, venue_id, lead_time, duration_time, description):
     user = Traveller.objects.get(id=user_id)
@@ -223,5 +260,6 @@ def stats():
                        :5]
     most_useful_tips = Feedback.objects.annotate(num_useful=Count('usefulCount')).order_by('-num_useful')[:5]
     most_visited_venues = Venue.objects.annotate(num_visit=Count('day__trip')).order_by('-num_visit')[:5]
-    result = {'travellers_travelling': travellers_travelling, 'travellers_publishing': travellers_publishing
-              'best_trips': best_trips, 'most_liked_trips': most_liked_trips, 'most_useful_tips': most_useful_tips, 'most_visited_venues': most_visited_venues}    return result
+    result = {'travellers_travelling': travellers_travelling, 'travellers_publishing': travellers_publishing,
+              'best_trips': best_trips, 'most_liked_trips': most_liked_trips, 'most_useful_tips': most_useful_tips, 'most_visited_venues': most_visited_venues}
+    return result
