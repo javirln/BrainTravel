@@ -35,7 +35,7 @@
                                 <li><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</li>
                                 <li>|</li>
                                 <li><i class="fa fa-star fa"></i> {% firstof trip.scorable_ptr.rating  ' -' %} / 10</li>
-                                <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}" style="text-decoration: None;"><i class="fa fa-info-circle"></i> View more</a></li>
+                                <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}" style="text-decoration: None;"><i class="fa fa-info-circle"></i> {% trans "View more" %}</a></li>
                             </ul>
                         </div>
                     </div>

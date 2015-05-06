@@ -56,8 +56,8 @@
                                     {% endif %}
                                 </ul>
                                 {% if user.traveller.id == trip.traveller.id %}
-                                    <p><br><a href="/trip/edit/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="Click here to view edit"><i class="fa fa-pencil"></i> Edit</a></p>
-                                    <p><a href="/assessment/list/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="Click here to view details"><i class="fa fa-list"></i> Assessments</a></p>
+                                    <p><br><a href="/trip/edit/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="Click here to view edit"><i class="fa fa-pencil"></i> {% trans "Edit" %}</a></p>
+                                    <p><a href="/assessment/list/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="Click here to view details"><i class="fa fa-list"></i> {% trans "Assessments" %}</a></p>
                                 {% endif %}
                                 {% if perms.principal.traveller and trip.state == 'ap' and trip.traveller.id != user.id and assessment == None%}
                                     <div class="center-block">
@@ -113,7 +113,7 @@
                                     </div>
                                     {% for hidden in comment_form.hidden_fields %}{{ hidden }}{% endfor %}
                                     <div class="form-group text-right">
-                                        <input class="btn btn-success" value="Comment"  name="comment_name" type="submit">
+                                        <input class="btn btn-success" value={% trans "Comment"%}  name="comment_name" type="submit">
                                     </div>
                                 </form>
                             </div>
@@ -130,7 +130,7 @@
                                 <div class="timeline-label">
                                      <div class="row">
                                         <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6">
-                                            <h2>{{comment.traveller}} says:</h2>
+                                            <h2>{{comment.traveller}} {% trans "says:" %}</h2>
                                         </div>
                                         <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6 text-right">
                                             <p>{{comment.date}}</p>
@@ -152,7 +152,7 @@
                                 <div class="timeline-label">
                                     <div class="row">
                                         <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6">
-                                            <h2>{{comment.traveller}} says:</h2>
+                                            <h2>{{comment.traveller}} {% trans "says:" %}</h2>
                                         </div>
                                         <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6 text-right">
                                             <p>{{comment.date}}</p>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-06 13:05+0200\n"
+"POT-Creation-Date: 2015-05-07 00:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,7 +231,7 @@ msgstr ""
 #: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1453
 #: principal/forms.py:32
 msgid "Email address"
-msgstr ""
+msgstr "Dirección de correo"
 
 #: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1479
 msgid "File path"
@@ -476,10 +476,10 @@ msgid "Order"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/forms/formsets.py:371
-#: principal/templates/plan_creation.html:86
-#: principal/templates/plan_creation.html:94
+#: principal/templates/plan_creation.html:114
+#: principal/templates/plan_creation.html:132
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: myvenv/lib/python2.7/site-packages/django/forms/models.py:710
 #, python-format
@@ -2848,67 +2848,67 @@ msgstr ""
 
 #: principal/forms.py:19 principal/forms.py:69
 msgid "Already exists a user with that email!"
-msgstr ""
+msgstr "Ya existe un usuario con ese email!"
 
 #: principal/forms.py:44
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: principal/forms.py:57
 msgid "Wrong email or password"
-msgstr ""
+msgstr "Email o contraseña erroneos"
 
 #: principal/forms.py:99
 msgid "Message length too long"
-msgstr ""
+msgstr "El mensaje es muy largo"
 
 #: principal/forms.py:105 principal/forms.py:110
 msgid "Must be a date in the past"
-msgstr ""
+msgstr "Debe de ser una fecha en el pasado"
 
 #: principal/forms.py:107 principal/forms.py:108
 msgid "Incorrect logic date"
-msgstr ""
+msgstr "La fecha es incorrecta"
 
 #: principal/forms.py:186
-msgid "Image file too large ( > 2mb )"
-msgstr ""
+msgid "Image file too large ( > 512kb )"
+msgstr "El tamaño de la imagen es muy grande ( > 512kb )"
 
 #: principal/forms.py:188
 msgid "Not valid file type. Only PNG and JPG are supported"
-msgstr ""
+msgstr "No es un tipo de archivo valido. Solo se acepta PNG y JPG"
 
 #: principal/forms.py:243
 msgid "Whoops, these don't match"
-msgstr ""
+msgstr "Whoops, esto no coincide"
 
 #: principal/forms.py:252
 msgid "Wrong password"
-msgstr ""
+msgstr "Contraseña errónea"
 
 #: principal/forms.py:254
 msgid "Password do not match"
-msgstr ""
+msgstr "La contraseña no coincide"
 
 #: principal/templates/404.html:12
 msgid "We did something wrong..."
-msgstr ""
+msgstr "Algo hicimos mal..."
 
 #: principal/templates/404.html:15 principal/templates/500.html:15
 msgid "Take Me Home"
-msgstr ""
+msgstr "Llévame a casa"
 
 #: principal/templates/404.html:16 principal/templates/500.html:16
 msgid "Contact Support"
-msgstr ""
+msgstr "Contacta con el soporte"
 
 #: principal/templates/500.html:12
 msgid "We think you're lost..."
-msgstr ""
+msgstr "Creemos que te has perdido..."
 
-#: principal/templates/about_us.html:8
+#: principal/templates/about_us.html:2 principal/templates/about_us.html:8
 msgid "About us"
-msgstr ""
+msgstr "Sobre nosotros"
 
 #: principal/templates/about_us.html:10
 msgid "is owned by BrainTravel Co., Inc. "
@@ -2940,31 +2940,55 @@ msgstr ""
 msgid "or phone +34 955555555"
 msgstr ""
 
+#: principal/templates/assessment_list.html:8
+#: principal/templates/search.html:9 principal/templates/trip_list.html:9
+#: principal/templates/trip_planned_list.html:34
+msgid "Oops! BrainTravel could not find anything..."
+msgstr "Oops! BrainTravel no pudo encontrar nada..."
+
 #: principal/templates/base.html:53
 msgid "Accept"
-msgstr ""
+msgstr "Aceptar"
 
-#: principal/templates/buy_coins.html:7
+#: principal/templates/buy_coins.html:3
+#: principal/templates/miscellaneous/traveller-menu.html:23
+msgid "Buy coins"
+msgstr "Comprar monedas"
+
+#: principal/templates/buy_coins.html:8
 #, fuzzy
 #| msgid "Coins"
 msgid "Coin packs"
 msgstr "Monedas"
 
-#: principal/templates/buy_coins.html:8
+#: principal/templates/buy_coins.html:9
 msgid ""
 "With our virtual coins you can plan your trips. Buy a pack and start using "
 "the automatic planner!"
 msgstr ""
+"Con nuestra monedas virutales puedes planear tus viajes. Compra un pack y "
+"empieza a usar el planificador!"
 
-#: principal/templates/buy_coins.html:18 principal/templates/buy_coins.html:34
-#: principal/templates/buy_coins.html:50
-#: principal/templates/plan_creation.html:42
+#: principal/templates/buy_coins.html:19 principal/templates/buy_coins.html:35
+#: principal/templates/buy_coins.html:51
+#: principal/templates/plan_creation.html:18
+#: principal/templates/plan_creation.html:19
 msgid "coins"
-msgstr ""
+msgstr "monedas"
+
+#: principal/templates/error.html:3
+msgid "Error"
+msgstr "Error"
+
+#: principal/templates/error_planning.html:3
+#: principal/templates/miscellaneous/menu.html:18
+#: principal/templates/search.html:3
+msgid "Search"
+msgstr "Buscar"
 
 #: principal/templates/error_planning.html:6
 msgid "Sorry, an error has ocurred"
-msgstr ""
+msgstr "Lo sentimos, ha ocurrido un error"
 
 #: principal/templates/error_planning.html:7
 msgid ""
@@ -2973,18 +2997,22 @@ msgid ""
 "have <b>NO</b> charge for your coins. </p> <p> If the error persist, please "
 "contact us. </p>"
 msgstr ""
+"<p>Oops! BrainTravel no ha sido capaz de encontrar un plan para ti :(.Prueba "
+"de nuevo con el nombre de la ciudad y el país en Inglés. Esta "
+"operación<b>NO<b> generará un cargo en tus monedas.</p> <p> Si el error "
+"persiste,por favor, contacta con nosotros."
 
 #: principal/templates/index.html:33
 msgid "Automate the way you travel"
-msgstr ""
+msgstr "Automatiza la manera en la que viajas."
 
 #: principal/templates/index.html:34
 msgid "Find Out More"
-msgstr ""
+msgstr "Descubre más"
 
 #: principal/templates/index.html:43
 msgid "What is this?"
-msgstr ""
+msgstr "¿Qué es esto?"
 
 #: principal/templates/index.html:45
 msgid ""
@@ -2994,10 +3022,15 @@ msgid ""
 "interact between them regarding trips they made, commenting and sharing "
 "experiences."
 msgstr ""
+"BrainTravel es la perfecta herramienta para todos los viajerosAutoaticamente "
+"crea un plan de viaje para ti, ofreciendo un horario por díascon los mejores "
+"sitios recomendados en el área. También tiene una red internadonde los "
+"usuarios pueden interactuar en relación a los viajes que hacen, comentando "
+"ycompartiendo experiencias"
 
 #: principal/templates/index.html:74
 msgid "Automatic plans"
-msgstr ""
+msgstr "Planes automáticos"
 
 #: principal/templates/index.html:77
 msgid ""
@@ -3015,23 +3048,23 @@ msgstr ""
 
 #: principal/templates/index.html:109
 msgid "Satistics"
-msgstr ""
+msgstr "Estadísticas"
 
 #: principal/templates/index.html:111
 msgid "Travel stats for your own orientation."
-msgstr ""
+msgstr "Estadísticas de viajes para que tú mismo opines"
 
 #: principal/templates/index.html:122
 msgid "Social trips"
-msgstr ""
+msgstr "Viajes sociales"
 
 #: principal/templates/index.html:124
 msgid "Share experiences with other users."
-msgstr ""
+msgstr "Comparte tus experiencias con otros usuarios."
 
 #: principal/templates/index.html:136
 msgid "A customer says..."
-msgstr ""
+msgstr "Nuestros clientes dicen..."
 
 #: principal/templates/index.html:139
 msgid ""
@@ -3041,47 +3074,105 @@ msgid ""
 "happy to use the tool.;There's history, places and landscapes that only "
 "residents of the area known.;That's what I ever wanted..."
 msgstr ""
+"Me gusta mucho la idea de este proyecto; Me encanta viajar y ver la "
+"ciudaddesde un punto de vista \"cotidiano\", no turístico.; Si pudiera "
+"recomendaractividades fuera de lo típico, para entender mejor los lugares, "
+"estaría muycontenta de usar la aplicación.;Hay historias, lugares y paisajes "
+"que sólolos residentes del área conocen.; Es lo que siempre he querido..."
 
-#: principal/templates/list_coin_history.html:11
+#: principal/templates/list_coin_history.html:3
+#: principal/templates/list_coin_history.html:10
 msgid "Coin historial"
 msgstr "Historial de monedas"
 
-#: principal/templates/list_coin_history.html:12
+#: principal/templates/list_coin_history.html:11
 msgid "Those are movements that you made with your coins through the platform"
 msgstr ""
 "Estos son los movimientos que has hecho con tus monedas en la plataforma"
 
-#: principal/templates/list_coin_history.html:16
+#: principal/templates/list_coin_history.html:15
 #: principal/templates/my_payments.html:15
 msgid "We couldn't find anything..."
 msgstr "No pudimos encontrar nada..."
 
-#: principal/templates/list_coin_history.html:22
+#: principal/templates/list_coin_history.html:21
 #: principal/templates/my_payments.html:22
 msgid "Amount"
 msgstr "Cantidad"
 
-#: principal/templates/list_coin_history.html:23
+#: principal/templates/list_coin_history.html:22
 #: principal/templates/my_payments.html:23
 msgid "Date"
 msgstr "Fecha"
 
-#: principal/templates/list_coin_history.html:24
+#: principal/templates/list_coin_history.html:23
 #: principal/templates/my_payments.html:24
 msgid "Concept"
 msgstr "Concepto"
 
+#: principal/templates/list_coin_history.html:46
+#: principal/templates/my_payments.html:52
+#: principal/templates/public_trip_details.html:178
+#: principal/templates/search.html:60 principal/templates/trip_list.html:53
+#: principal/templates/trip_planned_list.html:44
+msgid "Page"
+msgstr "Página"
+
+#: principal/templates/list_coin_history.html:46
+#: principal/templates/my_payments.html:52
+#: principal/templates/public_trip_details.html:178
+#: principal/templates/search.html:60 principal/templates/trip_list.html:53
+#: principal/templates/trip_planned_list.html:44
+msgid "of"
+msgstr "de"
+
+#: principal/templates/miscellaneous/admin-menu.html:2
+#: principal/templates/trip_list.html:3
+#: principal/templates/trip_planned_list.html:3
+#, fuzzy
+#| msgid "Strip Clubs"
+msgid "Trip list"
+msgstr "Clubes de striptease"
+
+#: principal/templates/miscellaneous/admin-menu.html:5
+#: principal/templates/miscellaneous/traveller-menu.html:73
+msgid "Logout"
+msgstr "Salir"
+
+#: principal/templates/miscellaneous/anonymous-menu.html:5
+#, fuzzy
+#| msgid "Sign up"
+msgid "Sign In"
+msgstr "Resgístrate"
+
+#: principal/templates/miscellaneous/menu.html:42
+msgid "Type to search"
+msgstr "Escribe para buscar"
+
+#: principal/templates/miscellaneous/traveller-menu.html:9
+#: principal/templates/plan_creation.html:4
+#: principal/templates/plan_creation.html:11
+msgid "Plan a trip"
+msgstr "Planear un viaje"
+
 #: principal/templates/miscellaneous/traveller-menu.html:16
 msgid "View statistics"
-msgstr ""
+msgstr "Ver estadisticas"
+
+#: principal/templates/miscellaneous/traveller-menu.html:30
+#: principal/templates/profile_details.html:52
+msgid "Trips"
+msgstr "Viajes"
 
 #: principal/templates/miscellaneous/traveller-menu.html:34
+#: principal/templates/trip_edit.html:97
 #, fuzzy
 #| msgid "Published Description"
 msgid "Publish trip"
-msgstr "Descripción pública"
+msgstr "Publicar viaje"
 
 #: principal/templates/miscellaneous/traveller-menu.html:35
+#: principal/templates/payment.html:3 principal/templates/venue_details.html:4
 #: principal/views/TripViews.py:187
 #, fuzzy
 #| msgid "View my trips"
@@ -3091,18 +3182,25 @@ msgstr "Ver mis viajes"
 #: principal/templates/miscellaneous/traveller-menu.html:36
 #: principal/views/TripViews.py:151
 msgid "My planned trips"
-msgstr ""
+msgstr "Mis viajes planeados"
 
 #: principal/templates/miscellaneous/traveller-menu.html:37
 msgid "Drafts"
-msgstr ""
+msgstr "Borrador"
 
 #: principal/templates/miscellaneous/traveller-menu.html:38
 #: principal/templates/my_visited_venues.html:7
-#, fuzzy
-#| msgid "Music Venues"
 msgid "Visited venues"
-msgstr "Lugares de la música"
+msgstr "Sitios visitados"
+
+#: principal/templates/miscellaneous/traveller-menu.html:62
+msgid "View profile"
+msgstr "Ver perfil"
+
+#: principal/templates/my_payments.html:3
+#: principal/templates/profile_details.html:39
+msgid "Payments"
+msgstr "Pagos"
 
 #: principal/templates/my_payments.html:10
 msgid "Payment historial"
@@ -3120,85 +3218,99 @@ msgstr "Id"
 
 #: principal/templates/my_payments.html:37
 msgid "Pruchase coins"
-msgstr ""
+msgstr "Comprar monedas"
 
-#: principal/templates/my_payments.html:49
-msgid "previous"
-msgstr "anterior"
+#: principal/templates/plan_creation.html:12
+msgid "Enter the data and we'll plan a trip for you"
+msgstr "Introduce los datos y nosotros creamos el plan por ti"
 
-#: principal/templates/my_payments.html:55
-msgid "next"
-msgstr "siguiente"
+#: principal/templates/plan_creation.html:17
+msgid "Trip data"
+msgstr "Datos del viaje"
 
-#: principal/templates/plan_creation.html:10
-msgid "Plan a trip"
-msgstr "Planear un viaje"
+#: principal/templates/plan_creation.html:18
+msgid "Price"
+msgstr "Precio"
 
-#: principal/templates/plan_creation.html:15
+#: principal/templates/plan_creation.html:19
+msgid "You have"
+msgstr "Tienes"
+
+#: principal/templates/plan_creation.html:29
 #: principal/templates/trip_edit.html:36
 msgid "City"
 msgstr "Ciudad"
 
-#: principal/templates/plan_creation.html:24
+#: principal/templates/plan_creation.html:42
 #: principal/templates/trip_edit.html:47
 msgid "Country"
 msgstr "País"
 
-#: principal/templates/plan_creation.html:33
+#: principal/templates/plan_creation.html:54
 msgid "Days"
 msgstr "Dias"
 
-#: principal/templates/plan_creation.html:41
-msgid "Price"
-msgstr "Precio"
-
-#: principal/templates/plan_creation.html:41
-msgid "Coins"
-msgstr "Monedas"
-
-#: principal/templates/plan_creation.html:42
-msgid "You have"
-msgstr "Tienes"
-
-#: principal/templates/plan_creation.html:47
-msgid "Create Plan"
-msgstr "Crear un plan"
-
-#: principal/templates/plan_creation.html:53
-msgid "Select your custom constrains"
-msgstr "Selecciona tus restricciones personalizadas"
-
-#: principal/templates/plan_creation.html:66
-msgid "A lot of"
-msgstr "Un montón de"
-
-#: principal/templates/plan_creation.html:67
-msgid "Some of"
-msgstr "Algo de"
-
-#: principal/templates/plan_creation.html:68
-msgid "Anything of"
-msgstr ""
-
-#: principal/templates/plan_creation.html:74
-msgid "Add Restriction"
-msgstr "Añadir restricción"
-
-#: principal/templates/plan_creation.html:83
+#: principal/templates/plan_creation.html:65
 msgid "Custom constraints"
 msgstr "Restricciones personalizadas"
 
-#: principal/templates/plan_creation.html:90
+#: principal/templates/plan_creation.html:65
+msgid "Hide/show"
+msgstr "Esconder/mostrar"
+
+#: principal/templates/plan_creation.html:71
+msgid "Select modifier"
+msgstr "Seleccionar modificador"
+
+#: principal/templates/plan_creation.html:74
+msgid "A lot of"
+msgstr "Un montón de"
+
+#: principal/templates/plan_creation.html:75
+msgid "Some of"
+msgstr "Algo de"
+
+#: principal/templates/plan_creation.html:76
+msgid "Anything of"
+msgstr "Nada de"
+
+#: principal/templates/plan_creation.html:85
+msgid "Select your custom constrains"
+msgstr "Selecciona las categorías"
+
+#: principal/templates/plan_creation.html:99
+msgid "Add Restriction"
+msgstr "Añadir restricción"
+
+#: principal/templates/plan_creation.html:108
+msgid "Selected constrains"
+msgstr "Restricciones elegidas"
+
+#: principal/templates/plan_creation.html:123
 msgid "Delete "
 msgstr "Borrar"
 
-#: principal/templates/plan_creation.html:197
+#: principal/templates/plan_creation.html:144
+msgid "Create Plan"
+msgstr "Crear un plan"
+
+#: principal/templates/plan_creation.html:256
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: principal/templates/plan_creation.html:257
 msgid ""
 "We are working hard on your plan. It might take a while, please, be "
 "patient :)"
 msgstr ""
+"Estamos trabajando muy duro en tu plan. Quizás nos lleve algo de tiempopor "
+"favor, se paciente :)"
 
-#: principal/templates/privacy_terms.html:8
+#: principal/templates/privacy_terms.html:3
+msgid "Privacy terms"
+msgstr "Términos de privacidad"
+
+#: principal/templates/privacy_terms.html:9
 msgid ""
 "<h2>Terms of use</h2> <p>According to the provisions of Law 15 /1999 of "
 "December 13, Protection of Personal Data (hereinafter LOPD), BrainTravel "
@@ -3255,60 +3367,90 @@ msgid ""
 "SEVILLA Tel: +34 955555555 </p>"
 msgstr ""
 
-#: principal/templates/profile_details.html:20
+#: principal/templates/profile_details.html:3
+#, fuzzy
+#| msgid "Edit Profile"
+msgid "Profile"
+msgstr "Editar perfil"
+
+#: principal/templates/profile_details.html:21
 msgid "Modify profile"
 msgstr "Modificar perfil"
 
-#: principal/templates/profile_details.html:21
+#: principal/templates/profile_details.html:22
 msgid "Change password"
 msgstr "Cambiar contraseña"
 
-#: principal/templates/profile_details.html:39
+#: principal/templates/profile_details.html:40
 msgid "My payments"
 msgstr "Mis pagos"
 
 #: principal/templates/profile_details.html:46
+msgid "Coins"
+msgstr "Monedas"
+
+#: principal/templates/profile_details.html:47
 msgid "View coin movements"
 msgstr "Ver el movimiento de mis monedas"
 
-#: principal/templates/profile_details.html:53
+#: principal/templates/profile_details.html:54
 msgid "View my trips"
 msgstr "Ver mis viajes"
 
-#: principal/templates/profile_details.html:55
+#: principal/templates/profile_details.html:56
 msgid "Trips published by"
 msgstr "Viajes publicados por"
 
-#: principal/templates/profile_edit.html:6
+#: principal/templates/profile_edit.html:3
+#, fuzzy
+#| msgid "Edit Profile"
+msgid "Edit profile"
+msgstr "Editar perfil"
+
+#: principal/templates/profile_edit.html:7
 msgid "Edit Profile"
 msgstr "Editar perfil"
 
-#: principal/templates/profile_edit.html:11
-#: principal/templates/profile_edit.html:51
+#: principal/templates/profile_edit.html:12
+#: principal/templates/profile_edit.html:52
 msgid "First name"
 msgstr "Nombre"
 
-#: principal/templates/profile_edit.html:15
-#: principal/templates/profile_edit.html:56
+#: principal/templates/profile_edit.html:16
+#: principal/templates/profile_edit.html:57
 msgid "Last name"
 msgstr "Apellidos"
 
-#: principal/templates/profile_edit.html:19
-#: principal/templates/profile_edit.html:61
+#: principal/templates/profile_edit.html:20
+#: principal/templates/profile_edit.html:62
 msgid "Genre"
 msgstr "Género"
 
-#: principal/templates/profile_edit.html:23
+#: principal/templates/profile_edit.html:24
 msgid "Photo"
 msgstr "Foto"
 
-#: principal/templates/profile_edit.html:42
+#: principal/templates/profile_edit.html:43
 msgid "Default image"
 msgstr "Imagen default"
 
-#: principal/templates/profile_edit.html:69
+#: principal/templates/profile_edit.html:68
+#: principal/templates/profile_edit_password.html:49
+#, fuzzy
+#| msgid "Travel Lounges"
+msgid "Save Changes"
+msgstr "Salones de viaje"
+
+#: principal/templates/profile_edit.html:70
+#: principal/templates/profile_edit_password.html:51
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: principal/templates/profile_edit_password.html:3
+#, fuzzy
+#| msgid "Edit Password"
+msgid "Edit password"
+msgstr "Editar contraseña"
 
 #: principal/templates/profile_edit_password.html:8
 msgid "Edit Password"
@@ -3337,46 +3479,72 @@ msgstr ""
 "<strong>Las contraseñas</strong> deben contenear al menos una mayuscula, una "
 "minúscula y un número."
 
-#: principal/templates/public_trip_details.html:62
+#: principal/templates/public_trip_details.html:3
+msgid "Details"
+msgstr "Detalles"
+
+#: principal/templates/public_trip_details.html:59
+msgid "Edit"
+msgstr "Editar"
+
+#: principal/templates/public_trip_details.html:60
+msgid "Assessments"
+msgstr "Valoraciones"
+
+#: principal/templates/public_trip_details.html:64
 msgid "Rate this trip!"
 msgstr "Evalúa este viaje!"
 
-#: principal/templates/public_trip_details.html:68
+#: principal/templates/public_trip_details.html:70
 msgid "Trip moderation"
 msgstr "Moderación de viajes"
 
-#: principal/templates/public_trip_details.html:69
+#: principal/templates/public_trip_details.html:71
 msgid "Select an option and click save to change the trip status."
 msgstr ""
 "Selecciona una opción y haz click en guardar para cambiar el estado del "
 "viaje."
 
-#: principal/templates/public_trip_details.html:81
+#: principal/templates/public_trip_details.html:83
 msgid "Save"
 msgstr "Guardar"
 
-#: principal/templates/public_trip_details.html:210
+#: principal/templates/public_trip_details.html:116
+msgid "Comment"
+msgstr "Comentar"
+
+#: principal/templates/public_trip_details.html:133
+#: principal/templates/public_trip_details.html:155
+msgid "says:"
+msgstr "dice:"
+
+#: principal/templates/public_trip_details.html:215
 msgid "Please choose a number between 0 and 10:"
 msgstr "Por favor elige un número entre 0 y 10:"
 
-#: principal/templates/public_trip_details.html:215
+#: principal/templates/public_trip_details.html:220
 msgid "Please, write a fancy description:"
 msgstr "Por favor, escribe una descripción agradable:"
 
-#: principal/templates/public_trip_details.html:222
-#: principal/templates/venue_details.html:72
+#: principal/templates/public_trip_details.html:227
+#: principal/templates/venue_details.html:76
 msgid "Close"
 msgstr "Cerrar"
 
-#: principal/templates/public_trip_details.html:223
-#: principal/templates/venue_details.html:73
+#: principal/templates/public_trip_details.html:228
+#: principal/templates/venue_details.html:77
 msgid "Send"
 msgstr "Enviar"
 
-#: principal/templates/search.html:8 principal/templates/trip_list.html:9
-#: principal/templates/trip_planned_list.html:34
-msgid "Oops! BrainTravel could not find anything..."
-msgstr "Oops! BrainTravel no pudo encontrar nada..."
+#: principal/templates/show_planning.html:3
+#, fuzzy
+#| msgid "Planetariums"
+msgid "Plan details"
+msgstr "Planetarios"
+
+#: principal/templates/signin.html:3
+msgid "Sign in"
+msgstr "Resgistrarse"
 
 #: principal/templates/signin.html:11
 msgid "Login"
@@ -3392,23 +3560,23 @@ msgstr "Resgistrarse"
 
 #: principal/templates/stats.html:9
 msgid "Users who travel more"
-msgstr ""
+msgstr "Usuarios que mas viajan"
 
 #: principal/templates/stats.html:20
 msgid "Number of trips"
-msgstr ""
+msgstr "Número de viajes"
 
 #: principal/templates/stats.html:30
 msgid "Venues most visited"
-msgstr ""
+msgstr "Sitios mas visitados"
 
 #: principal/templates/stats.html:41
 msgid "Number of visits"
-msgstr ""
+msgstr "Número de visitas"
 
 #: principal/templates/stats.html:53
 msgid "Most useful tips"
-msgstr ""
+msgstr "Consejos mas útiles"
 
 #: principal/templates/stats.html:64
 #, fuzzy
@@ -3418,11 +3586,11 @@ msgstr "Descripción pública"
 
 #: principal/templates/stats.html:74
 msgid "Most liked trips"
-msgstr ""
+msgstr "Viajes que mas gustan"
 
 #: principal/templates/stats.html:83
 msgid "Number of likes"
-msgstr ""
+msgstr "Número de \"me gusta\""
 
 #: principal/templates/stats.html:84
 #, fuzzy
@@ -3435,10 +3603,6 @@ msgid "Create Trip"
 msgstr "Crear viaje"
 
 #: principal/templates/trip_edit.html:10
-#, fuzzy
-#| msgid ""
-#| "Post a trip and get free coins. Get 2 coins for every 5 'like' you "
-#| "receive."
 msgid ""
 "Post a trip and get free coins. Get 5 coins for every 2 'like' you receive."
 msgstr ""
@@ -3469,43 +3633,36 @@ msgstr "Fecha de fin"
 msgid "Published Description"
 msgstr "Descripción pública"
 
-#: principal/templates/trip_edit.html:97
-#, fuzzy
-#| msgid "Published Description"
-msgid "Publish Trip"
-msgstr "Descripción pública"
-
 #: principal/templates/trip_edit.html:98
 msgid "Are you sure? An administrator must accept your trip."
-msgstr ""
+msgstr "¿Está seguro? Un administrador debe de aceptar su viaje"
 
 #: principal/templates/trip_edit.html:100
 msgid "Save in drafts"
-msgstr ""
+msgstr "Guardar en borradores"
 
 #: principal/templates/trip_edit.html:103
-#, fuzzy
-#| msgid "Delete "
 msgid "Delete Trip"
-msgstr "Borrar"
+msgstr "Borrar viaje"
 
 #: principal/templates/trip_edit.html:104
 msgid "Are you sure? This cannot be recovered."
-msgstr ""
+msgstr "¿Está seguro? Esta acción no puede ser deshecha."
 
+#: principal/templates/trip_list.html:38
 #: principal/templates/trip_planned_list.html:29
 msgid "View more"
 msgstr "Ver más"
 
-#: principal/templates/venue_details.html:11
+#: principal/templates/venue_details.html:15
 msgid "Give feedback"
 msgstr "Dar feedback"
 
-#: principal/templates/venue_details.html:39
+#: principal/templates/venue_details.html:43
 msgid "Sorry, there aren't tips available for this venue."
 msgstr "Lo sentimos, pero no hay recomendaciones para este sitio."
 
-#: principal/templates/venue_details.html:58
+#: principal/templates/venue_details.html:62
 #, fuzzy
 #| msgid ""
 #| "By giving feedback you enhance our algorithm. The more feedback it gets, "
@@ -3519,7 +3676,7 @@ msgstr ""
 "feedback consigue, mas preciso se vuelve. Te regalaremos algunas monedas "
 "también :)"
 
-#: principal/templates/venue_details.html:60
+#: principal/templates/venue_details.html:64
 msgid ""
 "<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on "
 "the queue...</small></h4>"
@@ -3527,7 +3684,7 @@ msgstr ""
 "<h4>Tiempo de espera: <small>Cuanto tiempo pasaste esperando para comprar "
 "los tickets en la cola... </small></h4>"
 
-#: principal/templates/venue_details.html:63
+#: principal/templates/venue_details.html:67
 msgid ""
 "<h4>Duration: <small>How much time you spent inside the venue, you were "
 "walking around...</small></h4>"
@@ -3535,39 +3692,45 @@ msgstr ""
 "<h4>Duración: <small>Cuanto tiempo pasaste dentro del sitio, que estuviste "
 "dando vueltas...</small></h4>"
 
-#: principal/templates/venue_details.html:67
+#: principal/templates/venue_details.html:71
 msgid "<h4>Description: <small>Something else you want to say?</small></h4>"
 msgstr "<h4>Descripción: <small>¿Hay algo más que quieras añadir?</small></h4>"
 
 #: principal/views/TripViews.py:93
 msgid "Comment successfully"
-msgstr ""
+msgstr "Se ha guardado su comentario"
 
 #: principal/views/TripViews.py:102
 msgid "Your vote has been saved!"
-msgstr ""
+msgstr "‚Su voto se ha guardado!"
 
 #: principal/views/TripViews.py:166
 msgid "Trip successfully updated"
-msgstr ""
+msgstr "Viaje actualizado satisfactoriamente"
 
 #: principal/views/TripViews.py:205
 msgid "My draft trips"
-msgstr ""
+msgstr "Mis viajes en borradores"
 
 #: principal/views/TripViews.py:220
 msgid "Action completed successfully"
-msgstr ""
+msgstr "Acción completada con éxito"
 
 #: principal/views/TripViews.py:225
 msgid "Your trip must be accepted by an administrator"
-msgstr ""
+msgstr "Su viaje debe de ser acceptado por un administrador"
+
+#~ msgid "Publish Trip"
+#~ msgstr "Publicar viaje"
+
+#~ msgid "previous"
+#~ msgstr "anterior"
+
+#~ msgid "next"
+#~ msgstr "siguiente"
 
 #~ msgid "Any of"
 #~ msgstr "Nada de"
-
-#~ msgid "Details"
-#~ msgstr "Detalles"
 
 #~ msgid "Modern Greek Restaurants"
 #~ msgstr "Restaurantes Griego moderno"
@@ -3634,9 +3797,6 @@ msgstr ""
 
 #~ msgid "History Museums"
 #~ msgstr "Los museos de historia"
-
-#~ msgid "Planetariums"
-#~ msgstr "Planetarios"
 
 #~ msgid "Science Museums"
 #~ msgstr "Museos de ciencia"
@@ -4285,9 +4445,6 @@ msgstr ""
 
 #~ msgid "Sports Bars"
 #~ msgstr "Bares deportivos"
-
-#~ msgid "Strip Clubs"
-#~ msgstr "Clubes de striptease"
 
 #~ msgid "Whisky Bars"
 #~ msgstr "Whisky bares"
@@ -5341,9 +5498,6 @@ msgstr ""
 
 #~ msgid "Transportation Services"
 #~ msgstr "Servicios de Transporte"
-
-#~ msgid "Travel Lounges"
-#~ msgstr "Salones de viaje"
 
 #~ msgid "Tunnels"
 #~ msgstr "Túneles"
