@@ -38,7 +38,7 @@
                                     <li><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</li>
                                     {% if user.traveller.id == trip.traveller.id %}
                                     <li>|</li>
-                                    <li><a href="/assessment/list/{{trip.scorable_ptr_id}}"><i class="fa fa-list"></i> Assessments</a></li>
+                                    <li><i class="fa fa-star fa"></i> {% firstof trip.scorable_ptr.rating  ' -' %} / 10</li>
                                     {% endif %}
                                     <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}" style="text-decoration: None;"><i class="fa fa-info-circle"></i> View more</a></li>
                                 </ul>
