@@ -6,18 +6,16 @@
             <div class="media">
                 <div class="row">
                     <div class="col-md-2 col-sm-3 col-lg-2 col-xs-12 text-center">
-                        <a href="#">
-                            <img class="img-rounded" style="width: 150px;" src="{{venue.photo}}">
-                        </a>
+                        <img class="img-rounded" style="width: 150px;" src="{{venue.photo}}">
                         <h4 class="media-heading" style="margin-top: 14px;">{{venue.name}}</h4>
-                        <a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Give feedback</a>
+                        <a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">{% trans "Give feedback" %}</a>
                     </div>
                     <div class="col-md-10 col-sm-9 col-lg-10 col-xs-12">
                         <div class="media-body">
                             <h4>Useful tips</h4>
                                 {% for tip in tips %}
                                 <div class="row">
-	                                <div class="col-sm-1">
+	                                <div class="col-sm-1 hidden-xs">
 	                                    <img class="img-responsive img-circle user-photo" src="/{{ tip.traveller.photo }}">
 	                                </div><!-- /col-sm-1 -->
 	
@@ -31,14 +29,14 @@
 	                                        </div><!-- /panel-body -->
                                             {% if user.id != tip.traveller.id %}
                                             <div class="panel-footer">
-                                                <a  type="button" class="btn btn-primary btn-success btn-sm" href="/venue_details/value_tip/{{ tip.venues.id }}/{{ tip.id }}">Useful</a>
+                                                <a  type="button" class="btn btn-primary btn-success btn-sm" href="/venue_details/value_tip/{{ tip.venues.id }}/{{ tip.id }}">This is useful</a>
                                             </div>
                                             {% endif %}
 	                                    </div><!-- /panel panel-default -->
 	                                </div><!-- /col-sm-5 -->
 	                            </div>
 	                            {% empty %}
-                                <h4>Sorry, there aren't tips available for this venue.</h4>
+                                <h4>{% trans "Sorry, there aren't tips available for this venue." %}</h4>
                             {% endfor %}
                         </div>
                     </div>
@@ -48,8 +46,8 @@
         </div>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
+                <div class="modal-content modal-bt">
+                  <div class="modal-header text-center">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Give us some feedback!</h4>
                   </div>
@@ -57,22 +55,22 @@
                     <form class="form" method="post" action="/venue_details/rate/" id="form-rate-id">
                         {% csrf_token %}
                         <div class="form-group">
-                            <p>By giving feedback you enhance our algorithm. The more feedback it gets, the more accurate it becomes. We give you some coins as gift as well :)</p>
+                            <p>{% trans "By giving feedback you enhance our algorithm. The more feedback it gets, the more accurate it becomes. If you enter something in the description and users like it, we give you some free coins (2 coins per 5 likes)" %}</p>
                             <hr>
-                            <h4>Lead time: <small>How much time you spent waiting to buy the tickets, on the queue...</small></h4>
-                            <input id="lead-time" type="number" name="lead-time-value" min="0"/><span> min.</span>
+                            {% trans "<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on the queue...</small></h4>" %}
+                            <input id="lead-time" type="number" name="lead-time-value" min="0" required/><span> min.</span>
                             <br>
-                            <h4>Duration: <small>How much time you spent inside the venue, you were walking around...</small></h4>
-                            <input id="duration-time" type="number" name="duration-time-value" min="0"/><span> min.</span>
+                            {% trans "<h4>Duration: <small>How much time you spent inside the venue, you were walking around...</small></h4>" %}
+                            <input id="duration-time" type="number" name="duration-time-value" min="0" required/><span> min.</span>
                             <div id="duration-error" class="help-block" style="color: #A94442"></div>
                             <br>
-                            <h4>Description: <small>Something else you want to say?</small></h4>
+                            {% trans "<h4>Description: <small>Something else you want to say?</small></h4>" %}
                             <textarea id="text-comment" class="form-control input-block-level" name="text-description" rows="3" required maxlength="255" style="resize: none;"></textarea>
                         </div>
                         <div class="modal-footer">
                             <div class="form-group">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button id="submit-comment" type="submit" class="btn btn-success">Send</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+                                <button id="submit-comment" type="submit" class="btn btn-success">{% trans "Send" %}</button>
                                 <input type="hidden" name="venue-id" value="{{venue.id}}"/>
                             </div>
                          </div>
@@ -85,10 +83,10 @@
     <script>
     $("#duration-time").change(function(){
         var lead_time = $("#lead-time").val();
-        var duration_time = $("#duration-time").val()
+        var duration_time = $("#duration-time").val();
         if ( lead_time != " " && duration_time != " "){
-            if ( duration_time < lead_time){
-                $("#duration-error").text("Duration time must be greater than the lead time");
+            if ( parseInt(duration_time) < parseInt(lead_time)){
+                $("#duration-error").text("Duration time must be greater than lead time");
                 $("#submit-comment").prop('disabled', true);
             }else{
                 $("#duration-error").empty();

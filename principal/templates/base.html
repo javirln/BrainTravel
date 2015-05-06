@@ -29,7 +29,7 @@
     <script type="text/javascript" src="{% static "js/summernote.js" %}"></script>
     <script type="text/javascript" src="{% static "js/summernote-es-ES.js" %}"></script>
     <script type="text/javascript" src="{% static "js/bootstrap-datepicker.min.js" %}"></script>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB2Ejc7OmM9YxiWGvUqBrx3sKPKedF-IA8&sensor=false"></script>
+    <script type="text/javascript" src="{% static "js/google-maps.js" %}"></script>
     <script type="text/javascript" src="{% static "js/sweet-alert.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/countUp.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/main.js" %}"></script>
@@ -48,20 +48,6 @@
     
 
     {% include "miscellaneous/footer.html" %}
-
-    <script type="text/javascript">
-	    $('#searchCollapse').on('hide.bs.collapse', function (e) {
-	    	  e.preventDefault();
-	    	  $('#content').addClass("padding-control");
-	    	  $('#searchCollapse').removeClass('in');
-	    });
-	    
-	    $('#searchCollapse').on('show.bs.collapse', function (e) {
-	    	  e.preventDefault();
-	    	  $('#content').removeClass("padding-control");
-	    	  $('#searchCollapse').addClass('in')
-	    });
-    </script>
 
     {% if messages %}
         {% trans "Accept" as confirm_button %}

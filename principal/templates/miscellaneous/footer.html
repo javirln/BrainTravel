@@ -16,3 +16,18 @@
 		</div>
 	</div>
 </footer>
+
+<script type="text/javascript">
+	$('#searchCollapse').on('hide.bs.collapse', function(e) {
+		e.preventDefault();
+		$('#content').addClass("padding-control");
+		$('#searchCollapse').removeClass('in');
+	});
+
+	$('#searchCollapse').on('show.bs.collapse', function(e) {
+		e.preventDefault();
+		$('#content').removeClass("padding-control");
+		$('#searchCollapse').addClass('in');
+		$('.navbar-collapse').collapse('hide');
+	});
+</script>

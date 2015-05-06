@@ -1,0 +1,1 @@
+web: gunicorn BrainTravel.wsgi --log-file -

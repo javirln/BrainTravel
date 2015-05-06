@@ -2,77 +2,118 @@
 {% block content %}
     {% load i18n %}
     <div class="container">
-        {% if create %}
-        <h1>{% trans "Create Trip" %}</h1>
-        {% else %}
-        <h1>{% trans "Edit Trip" %}</h1>
-        {% endif %}
-        <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
-            <form class="form-horizontal" role="form" action="{% if create %}/trip/create/{% else %}/trip/edit/{{ trip.id }}{% endif %}" method="post" data-toggle="validator">
-                {% csrf_token %}
-
-                <div class="form-group {% if form.visible_fields.5.errors %} has-error {% endif %}">
-                    <label for="id_name" class="control-label"> {% trans "Name" %}</label>
-                    <input class="form-control" id="id_name" name="name" placeholder="{%  trans "Up to 150 letters, numbers and underscores"%}" type="text" maxlength="150" value="{{ trip.name }}" required/>
-                    <div class="help-block with-errors">
-                        {{ form.visible_fields.5.errors }}
-                    </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
+                <div class="text-center">
+                    {% if create %}
+                        <h1>{% trans "Create Trip" %}</h1>
+                        <p>{% trans "Post a trip and get free coins. Get 5 coins for every 2 'like' you receive." %}</p>
+                    {% else %}
+                        <h1>{% trans "Edit Trip" %}</h1>
+                        {% endif %}
                 </div>
 
-                <div class="form-group">
-                    <label for="id_city" class="control-label">{% trans "City" %}</label>
-                    <input class="form-control" id="id_city" name="city" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.city }}{% else %}{{ form.data.city }}{% endif %}" required/>
-                    <div class="help-block with-errors"></div>
-                </div>
+	            <form class="form-horizontal" role="form" action="{% if create %}/trip/create/{% else %}/trip/edit/{{ trip.id }}{% endif %}" method="post" data-toggle="validator">
+	                {% csrf_token %}
+	
+	                <div class="col-xs-12">
+	                    <div class="form-group {% if form.visible_fields.5.errors %} has-error {% endif %}">
+	                       <div class="col-xs-12">
+	                        <label for="id_name" class="control-label"> {% trans "Name" %}</label>
+	                        <input class="form-control" id="id_name" name="name" placeholder="{%  trans "Up to 150 letters, numbers and underscores"%}" type="text" maxlength="150" value="{{ trip.name }}" required/>
+	                        <div class="help-block with-errors">
+	                            {{ form.visible_fields.5.errors }}
+	                        </div>
+	                       </div>
+	                    </div>
+	                </div>
+	                
+                    <div class="clearfix"></div>
+                    
+	                <div class="col-xs-6">
+		                <div class="form-group">
+		                  <div class="col-xs-12">
+		                      <label for="id_city" class="control-label">{% trans "City" %}</label>
+                              <input class="form-control" id="id_city" name="city" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.city }}{% else %}{{ form.data.city }}{% endif %}" required/>
+                              <div class="help-block with-errors"></div>
+		                  </div>
 
-                <div class="form-group">
-                    <label for="id_country" class="control-label">{% trans "Country" %}</label>
-                    <input class="form-control" id="id_country" name="country" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.country }}{% else %}{{ form.data.country }}{% endif %}" required/>
-                    <div class="help-block with-errors"></div>
-                </div>
+		                </div>
+	                </div>
+	
+	                <div class="col-xs-6">
+		                <div class="form-group">
+		                  <div class="col-xs-12">
+		                    <label for="id_country" class="control-label">{% trans "Country" %}</label>
+		                    <input class="form-control" id="id_country" name="country" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.country }}{% else %}{{ form.data.country }}{% endif %}" required/>
+		                    <div class="help-block with-errors"></div>
+		                  </div>
+		                </div>
+		            </div>
+		            
+	                <div class="clearfix"></div>
+	                
+	                <div class="col-xs-6">
+	                    <div class="form-group {% if form.visible_fields.2.errors %} has-error {% endif %}">
+	                       <div class="col-xs-12">
+	                        <label for="id_startDate" class="control-label">{% trans "Start Date" %}</label>
+	                            <input pattern="\d\d/\d\d/\d\d\d\d" class="form-control" id="id_startDate" name="startDate" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.startDate|date:"d/m/Y" }}{% else %}{{ form.data.startDate }}{% endif %}"required/>
+	                        <div class="help-block with-errors">
+	                            {{ form.visible_fields.2.errors }}
+	                        </div>
+	                      </div>
+	                    </div>
+	                </div>   
+	                
+	                <div class="col-xs-6">
+	                    <div class="form-group {% if form.visible_fields.3.errors %} has-error {% endif %}">
+	                        <div class="col-xs-12">
+		                        <label for="id_endDate" class="control-label">{% trans "End Date" %}</label>
+		                        <input pattern="\d\d/\d\d/\d\d\d\d" class="form-control" id="id_endDate" name="endDate" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.endDate|date:"d/m/Y"}}{% else %}{{ form.data.endDate }}{% endif %}"required/>
+		                        <div class="help-block with-errors">
+		                            {{ form.visible_fields.3.errors }}
+		                        </div>
+	                        </div>
+	                    </div>
+	                </div>
 
-                <div class="form-group {% if form.visible_fields.2.errors %} has-error {% endif %}">
-                    <label for="id_startDate" class="control-label">{% trans "Start Date" %}</label>
-                        <input pattern="\d\d/\d\d/\d\d\d\d" class="form-control" id="id_startDate" name="startDate" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.startDate|date:"d/m/Y" }}{% else %}{{ form.data.startDate }}{% endif %}"required/>
-                    <div class="help-block with-errors">
-                        {{ form.visible_fields.2.errors }}
-                    </div>
-                </div>
+                    <div class="clearfix"></div>
 
-                <div class="form-group {% if form.visible_fields.3.errors %} has-error {% endif %}">
-                    <label for="id_endDate" class="control-label">{% trans "End Date" %}</label>
-                    <input pattern="\d\d/\d\d/\d\d\d\d" class="form-control" id="id_endDate" name="endDate" type="text" value="{% if form.initial|length != 0 %}{{ form.initial.endDate|date:"d/m/Y"}}{% else %}{{ form.data.endDate }}{% endif %}"required/>
-                    <div class="help-block with-errors">
-                        {{ form.visible_fields.3.errors }}
-                    </div>
-                </div>
-
-                <div class="form-group {% if form.visible_fields.4.errors %} has-error {% endif %}">
-                    <label for="id_publishedDescription" class="control-label">{% trans "Published Description" %}</label>
-                    {{ form.visible_fields.4 }}
-                    <div class="help-block with-errors">
-                        {{ form.visible_fields.4.errors }}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <input class="btn btn-primary" name="save" value="Publish Trip" type="submit">
-                    <span></span>
-                    <input class="btn btn-primary" name="save" value="Save draft" type="submit">
-                    <span></span>
-                    {% if not create %}
-                    <input class="btn btn-primary" name="delete" value="Delete Trip" type="submit">
-                    {% endif %}
-                </div>
-            </form>
+	               <div class="col-xs-12">
+		                <div class="form-group {% if form.visible_fields.4.errors %} has-error {% endif %}">
+		                    <div class="col-xs-12">
+			                    <label for="id_publishedDescription" class="control-label">{% trans "Published Description" %}</label>
+			                    {{ form.visible_fields.4 }}
+			                    <div class="help-block with-errors">
+			                        {{ form.visible_fields.4.errors }}
+			                    </div>
+		                    </div>
+		                </div>
+	               </div>
+	
+	               <div class="col-xs-12">
+		                <div class="form-group">
+		                  <div class="col-xs-12">
+		                    <input class="btn btn-primary" name="publis" value="{% trans "Publish Trip"%}" type="submit"
+                                   onclick="return confirm({% trans 'Are you sure? An administrator must accept your trip.'%})">
+		                    <span></span>
+		                    <input class="btn btn-primary" name="save" value="{% trans "Save in drafts"%}" type="submit">
+		                    <span></span>
+		                    {% if not create %}
+		                    <input class="btn btn-primary" name="delete" value="{% trans "Delete Trip"%}" type="submit"
+                                   onclick="return confirm({% trans 'Are you sure? This cannot be recovered.'%})">
+		                    {% endif %}
+		                    </div>
+		                </div>
+	                </div>
+	            </form>
+	        </div>
         </div>
+        
     </div>
     <script>
         $('#summernote').summernote(
                 {
-                    onChange: function () {
-                        formmodified = 1;
-                    },
                     lang: 'es-ES',
                     height: 100,
                     toolbar: [

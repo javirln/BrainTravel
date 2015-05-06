@@ -125,8 +125,7 @@ def receive_payment(sender, **kwargs):
             CoinHistoryService.save(coin_history)
 
         except Exception as e:
-             print("Algo habrá que hacer aqui")
-
+            print(e)
 
 def error(sender, **kwargs):
     print("Algo ha pasado")

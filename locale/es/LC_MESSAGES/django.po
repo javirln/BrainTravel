@@ -8,28 +8,3134 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-10 19:23+0200\n"
+"POT-Creation-Date: 2015-05-05 15:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\principal\forms.py:19 .\principal\forms.py:34
+#: myvenv/lib/python2.7/site-packages/django/contrib/sitemaps/apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/contrib/staticfiles/apps.py:8
+msgid "Static Files"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/contrib/syndication/apps.py:8
+msgid "Syndication"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/contrib/webdesign/apps.py:8
+msgid "Web Design"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:21
+msgid "Enter a valid value."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:77
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:664
+msgid "Enter a valid URL."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:115
+msgid "Enter a valid integer."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:120
+msgid "Enter a valid email address."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:185
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:188
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:207
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:193
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:208
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:203
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:206
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:229
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1075
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:236
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:255
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:262
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:271
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/core/validators.py:282
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/base.py:971
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:716
+msgid "and"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/base.py:973
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:104
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:105
+msgid "This field cannot be null."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:106
+msgid "This field cannot be blank."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:107
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:111
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:118
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:852
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1582
+msgid "Integer"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:856
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1580
+#, python-format
+msgid "'%(value)s' value must be an integer."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:931
+#, python-format
+msgid "'%(value)s' value must be either True or False."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:933
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1009
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1070
+msgid "Comma-separated integers"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1085
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1087
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1194
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1090
+msgid "Date (without time)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1192
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1196
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1200
+msgid "Date (with time)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1306
+#, python-format
+msgid "'%(value)s' value must be a decimal number."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1308
+msgid "Decimal number"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1453
+#: principal/forms.py:31
+msgid "Email address"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1479
+msgid "File path"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1546
+#, python-format
+msgid "'%(value)s' value must be a float."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1548
+msgid "Floating point number"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1632
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1647
+msgid "IPv4 address"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1677
+msgid "IP address"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1756
+#, python-format
+msgid "'%(value)s' value must be either None, True or False."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1758
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1818
+msgid "Positive integer"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1830
+msgid "Positive small integer"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1843
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1872
+msgid "Small integer"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1879
+msgid "Text"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1902
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1904
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1907
+msgid "Time"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1989
+msgid "URL"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:2012
+msgid "Raw binary data"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/files.py:225
+msgid "File"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/files.py:375
+msgid "Image"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/related.py:1606
+#, python-format
+msgid "%(model)s instance with pk %(pk)r does not exist."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/related.py:1608
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/related.py:1798
+msgid "One-to-one relationship"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/related.py:1868
+msgid "Many-to-many relationship"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:55
+msgid "This field is required."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:225
+msgid "Enter a whole number."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:268
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:305
+msgid "Enter a number."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:307
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:311
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:315
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:426
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:1132
+msgid "Enter a valid date."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:450
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:1133
+msgid "Enter a valid time."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:472
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:553
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:554
+msgid "No file was submitted."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:555
+msgid "The submitted file is empty."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:557
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:560
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:621
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:771
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:860
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:1205
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:861
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:976
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:1204
+msgid "Enter a list of values."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/fields.py:977
+msgid "Enter a complete value."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: myvenv/lib/python2.7/site-packages/django/forms/forms.py:122
+msgid ":"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/forms.py:192
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: myvenv/lib/python2.7/site-packages/django/forms/forms.py:620
+msgid ":?.!"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/formsets.py:95
+msgid "ManagementForm data is missing or has been tampered with"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/formsets.py:332
+#, python-format
+msgid "Please submit %d or fewer forms."
+msgid_plural "Please submit %d or fewer forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/formsets.py:339
+#, python-format
+msgid "Please submit %d or more forms."
+msgid_plural "Please submit %d or more forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/formsets.py:367
+#: myvenv/lib/python2.7/site-packages/django/forms/formsets.py:369
+msgid "Order"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/formsets.py:371
+#: principal/templates/plan_creation.html:95
+#: principal/templates/plan_creation.html:105
+msgid "Delete"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:710
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:714
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:720
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:728
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:1030
+msgid "The inline foreign key did not match the parent instance primary key."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:1096
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:1207
+#, python-format
+msgid "\"%(pk)s\" is not a valid value for a primary key."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/models.py:1218
+msgid ""
+"Hold down \"Control\", or \"Command\" on a Mac, to select more than one."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/utils.py:157
+#, python-format
+msgid ""
+"%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/widgets.py:350
+msgid "Currently"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/widgets.py:351
+msgid "Change"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/widgets.py:352
+msgid "Clear"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/widgets.py:546
+msgid "Unknown"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/widgets.py:547
+msgid "Yes"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/forms/widgets.py:548
+msgid "No"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/template/defaultfilters.py:855
+msgid "yes,no,maybe"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/template/defaultfilters.py:884
+#: myvenv/lib/python2.7/site-packages/django/template/defaultfilters.py:896
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/template/defaultfilters.py:898
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/template/defaultfilters.py:900
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/template/defaultfilters.py:902
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/template/defaultfilters.py:904
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/template/defaultfilters.py:906
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dateformat.py:59
+msgid "p.m."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dateformat.py:60
+msgid "a.m."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dateformat.py:65
+msgid "PM"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dateformat.py:66
+msgid "AM"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dateformat.py:149
+msgid "midnight"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dateformat.py:151
+msgid "noon"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Monday"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Tuesday"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Wednesday"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Thursday"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:6
+msgid "Friday"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:7
+msgid "Saturday"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:7
+msgid "Sunday"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Mon"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Tue"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:10
+msgid "Fri"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:11
+msgid "Sat"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:11
+msgid "Sun"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "January"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "February"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "March"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "April"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "May"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
+msgid "June"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "July"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "August"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "September"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "October"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:19
+msgid "November"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:20
+msgid "December"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "jan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "feb"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "mar"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "apr"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "may"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:23
+msgid "jun"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "jul"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "aug"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "sep"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "oct"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "nov"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
+msgid "dec"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:31
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:32
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:33
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:34
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:35
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:36
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:37
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:38
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:39
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:40
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:41
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:42
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:45
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:46
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:47
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:48
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:49
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:50
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:51
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:52
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:53
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:54
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:55
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/dates.py:56
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/ipv6.py:10
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/text.py:76
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s..."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/text.py:245
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: myvenv/lib/python2.7/site-packages/django/utils/text.py:264
+#: myvenv/lib/python2.7/site-packages/django/utils/timesince.py:57
+msgid ", "
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/timesince.py:25
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/timesince.py:26
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/timesince.py:27
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/timesince.py:28
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/timesince.py:29
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/timesince.py:30
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: myvenv/lib/python2.7/site-packages/django/utils/timesince.py:46
+msgid "0 minutes"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/csrf.py:105
+msgid "Forbidden"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/csrf.py:106
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/csrf.py:110
+msgid ""
+"You are seeing this message because this HTTPS site requires a 'Referer "
+"header' to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/csrf.py:115
+msgid ""
+"If you have configured your browser to disable 'Referer' headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for 'same-"
+"origin' requests."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/csrf.py:120
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/csrf.py:125
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for 'same-origin' requests."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/csrf.py:129
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/dates.py:43
+msgid "No year specified"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/dates.py:99
+msgid "No month specified"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/dates.py:158
+msgid "No day specified"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/dates.py:214
+msgid "No week specified"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/dates.py:369
+#: myvenv/lib/python2.7/site-packages/django/views/generic/dates.py:397
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/dates.py:650
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/dates.py:682
+#, python-format
+msgid "Invalid date string '%(datestr)s' given format '%(format)s'"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/list.py:62
+msgid "Page is not 'last', nor can it be converted to an int."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/list.py:67
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/generic/list.py:158
+#, python-format
+msgid "Empty list and '%(class_name)s.allow_empty' is False."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/static.py:54
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/static.py:56
+#, python-format
+msgid "\"%(path)s\" does not exist"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/django/views/static.py:96
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:313
+msgid "usage: "
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:821
+msgid ".__call__() not defined"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1105
+#, python-format
+msgid "unknown parser %r (choices: %s)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1146
+#, python-format
+msgid "argument \"-\" with mode %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1349
+#, python-format
+msgid "cannot merge actions - two groups are named %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1387
+msgid "'required' is an invalid argument for positionals"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1407
+#, python-format
+msgid "invalid option string %r: must start with a character %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1428
+#, python-format
+msgid "dest= is required for options like %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1445
+#, python-format
+msgid "invalid conflict_resolution value: %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1463
+#, python-format
+msgid "conflicting option string(s): %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1526
+msgid "mutually exclusive arguments must be optional"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1596
+msgid "positional arguments"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1597
+msgid "optional arguments"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1615
+msgid "show this help message and exit"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1621
+msgid "show program's version number and exit"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1653
+msgid "cannot have multiple subparser arguments"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1705
+#, python-format
+msgid "unrecognized arguments: %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1802
+#, python-format
+msgid "not allowed with argument %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1848
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1862
+#, python-format
+msgid "ignored explicit argument %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1952
+msgid "too few arguments"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1959
+#, python-format
+msgid "argument %s is required"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1973
+#, python-format
+msgid "one of the arguments %s is required"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2019
+msgid "expected one argument"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2020
+msgid "expected at most one argument"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2021
+msgid "expected at least one argument"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2023
+#, python-format
+msgid "expected %s argument(s)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2080
+#, python-format
+msgid "ambiguous option: %s could match %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2142
+#, python-format
+msgid "unexpected option string: %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2243
+#, python-format
+msgid "%r is not callable"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2259
+#, python-format
+msgid "invalid %s value: %r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2269
+#, python-format
+msgid "invalid choice: %r (choose from %s)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2362
+#, python-format
+msgid "%s: error: %s\n"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:103
+msgid "United States of America"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:104
+msgid "Canada"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:105
+msgid "Afghanistan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:106
+msgid "Albania"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:107
+msgid "Algeria"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:108
+msgid "American Samoa"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:109
+msgid "Andorra"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:110
+msgid "Angola"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:111
+msgid "Anguilla"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:112
+msgid "Antarctica"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:113
+msgid "Antigua & Barbuda"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:114
+msgid "Argentina"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:115
+msgid "Armenia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:116
+msgid "Aruba"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:117
+msgid "Australia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:118
+msgid "Austria"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:119
+msgid "Azerbaijan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:120
+msgid "Bahama"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:121
+msgid "Bahrain"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:122
+msgid "Bangladesh"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:123
+msgid "Barbados"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:124
+msgid "Belarus"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:125
+msgid "Belgium"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:126
+msgid "Belize"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:127
+msgid "Benin"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:128
+msgid "Bermuda"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:129
+msgid "Bhutan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:130
+msgid "Bolivia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:131
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:132
+msgid "Botswana"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:133
+msgid "Bouvet Island"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:134
+msgid "Brazil"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:135
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:136
+msgid "British Virgin Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:137
+msgid "Brunei Darussalam"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:138
+msgid "Bulgaria"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:139
+msgid "Burkina Faso"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:140
+msgid "Burundi"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:141
+msgid "Cambodia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:142
+msgid "Cameroon"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:143
+msgid "Cape Verde"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:144
+msgid "Cayman Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:145
+msgid "Central African Republic"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:146
+msgid "Chad"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:147
+msgid "Chile"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:148
+msgid "China"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:149
+msgid "Christmas Island"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:150
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:151
+msgid "Colombia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:152
+msgid "Comoros"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:153
+msgid "Congo"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:154
+msgid "Cook Iislands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:155
+msgid "Costa Rica"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:156
+msgid "Croatia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:157
+msgid "Cuba"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:158
+msgid "Cyprus"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:159
+msgid "Czech Republic"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:160
+msgid "Denmark"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:161
+msgid "Djibouti"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:162
+msgid "Dominica"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:163
+msgid "Dominican Republic"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:164
+msgid "East Timor"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:165
+msgid "Ecuador"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:166
+msgid "Egypt"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:167
+msgid "El Salvador"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:168
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:169
+msgid "Eritrea"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:170
+msgid "Estonia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:171
+msgid "Ethiopia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:172
+msgid "Falkland Islands (Malvinas)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:173
+msgid "Faroe Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:174
+msgid "Fiji"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:175
+msgid "Finland"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:176
+msgid "France"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:177
+msgid "France, Metropolitan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:178
+msgid "French Guiana"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:179
+msgid "French Polynesia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:180
+msgid "French Southern Territories"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:181
+msgid "Gabon"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:182
+msgid "Gambia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:183
+msgid "Georgia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:184
+msgid "Germany"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:185
+msgid "Ghana"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:186
+msgid "Gibraltar"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:187
+msgid "Greece"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:188
+msgid "Greenland"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:189
+msgid "Grenada"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:190
+msgid "Guadeloupe"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:191
+msgid "Guam"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:192
+msgid "Guatemala"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:193
+msgid "Guinea"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:194
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:195
+msgid "Guyana"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:196
+msgid "Haiti"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:197
+msgid "Heard & McDonald Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:198
+msgid "Honduras"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:199
+msgid "Hong Kong"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:200
+msgid "Hungary"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:201
+msgid "Iceland"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:202
+msgid "India"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:203
+msgid "Indonesia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:204
+msgid "Iraq"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:205
+msgid "Ireland"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:206
+msgid "Islamic Republic of Iran"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:207
+msgid "Israel"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:208
+msgid "Italy"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:209
+msgid "Ivory Coast"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:210
+msgid "Jamaica"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:211
+msgid "Japan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:212
+msgid "Jordan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:213
+msgid "Kazakhstan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:214
+msgid "Kenya"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:215
+msgid "Kiribati"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:216
+msgid "Korea, Democratic People's Republic of"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:217
+msgid "Korea, Republic of"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:218
+msgid "Kuwait"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:219
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:220
+msgid "Lao People's Democratic Republic"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:221
+msgid "Latvia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:222
+msgid "Lebanon"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:223
+msgid "Lesotho"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:224
+msgid "Liberia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:225
+msgid "Libyan Arab Jamahiriya"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:226
+msgid "Liechtenstein"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:227
+msgid "Lithuania"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:228
+msgid "Luxembourg"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:229
+msgid "Macau"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:230
+msgid "Madagascar"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:231
+msgid "Malawi"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:232
+msgid "Malaysia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:233
+msgid "Maldives"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:234
+msgid "Mali"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:235
+msgid "Malta"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:236
+msgid "Marshall Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:237
+msgid "Martinique"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:238
+msgid "Mauritania"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:239
+msgid "Mauritius"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:240
+msgid "Mayotte"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:241
+msgid "Mexico"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:242
+msgid "Micronesia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:243
+msgid "Moldova, Republic of"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:244
+msgid "Monaco"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:245
+msgid "Mongolia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:246
+msgid "Monserrat"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:247
+msgid "Morocco"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:248
+msgid "Mozambique"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:249
+msgid "Myanmar"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:250
+msgid "Namibia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:251
+msgid "Nauru"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:252
+msgid "Nepal"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:253
+msgid "Netherlands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:254
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:255
+msgid "New Caledonia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:256
+msgid "New Zealand"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:257
+msgid "Nicaragua"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:258
+msgid "Niger"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:259
+msgid "Nigeria"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:260
+msgid "Niue"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:261
+msgid "Norfolk Island"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:262
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:263
+msgid "Norway"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:264
+msgid "Oman"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:265
+msgid "Pakistan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:266
+msgid "Palau"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:267
+msgid "Panama"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:268
+msgid "Papua New Guinea"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:269
+msgid "Paraguay"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:270
+msgid "Peru"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:271
+msgid "Philippines"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:272
+msgid "Pitcairn"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:273
+msgid "Poland"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:274
+msgid "Portugal"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:275
+msgid "Puerto Rico"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:276
+msgid "Qatar"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:277
+msgid "Reunion"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:278
+msgid "Romania"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:279
+msgid "Russian Federation"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:280
+msgid "Rwanda"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:281
+msgid "Saint Lucia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:282
+msgid "Samoa"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:283
+msgid "San Marino"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:284
+msgid "Sao Tome & Principe"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:285
+msgid "Saudi Arabia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:286
+msgid "Senegal"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:287
+msgid "Seychelles"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:288
+msgid "Sierra Leone"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:289
+msgid "Singapore"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:290
+msgid "Slovakia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:291
+msgid "Slovenia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:292
+msgid "Solomon Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:293
+msgid "Somalia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:294
+msgid "South Africa"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:295
+msgid "South Georgia and the South Sandwich Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:296
+msgid "Spain"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:297
+msgid "Sri Lanka"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:298
+msgid "St. Helena"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:299
+msgid "St. Kitts and Nevis"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:300
+msgid "St. Pierre & Miquelon"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:301
+msgid "St. Vincent & the Grenadines"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:302
+msgid "Sudan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:303
+msgid "Suriname"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:304
+msgid "Svalbard & Jan Mayen Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:305
+msgid "Swaziland"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:306
+msgid "Sweden"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:307
+msgid "Switzerland"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:308
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:309
+msgid "Taiwan, Province of China"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:310
+msgid "Tajikistan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:311
+msgid "Tanzania, United Republic of"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:312
+msgid "Thailand"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:313
+msgid "Togo"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:314
+msgid "Tokelau"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:315
+msgid "Tonga"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:316
+msgid "Trinidad & Tobago"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:317
+msgid "Tunisia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:318
+msgid "Turkey"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:319
+msgid "Turkmenistan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:320
+msgid "Turks & Caicos Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:321
+msgid "Tuvalu"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:322
+msgid "Uganda"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:323
+msgid "Ukraine"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:324
+msgid "United Arab Emirates"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:325
+msgid "United Kingdom (Great Britain)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:326
+msgid "United States Minor Outlying Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:327
+msgid "United States Virgin Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:328
+msgid "Unknown or unspecified country"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:329
+msgid "Uruguay"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:330
+msgid "Uzbekistan"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:331
+msgid "Vanuatu"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:332
+msgid "Vatican City State (Holy See)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:333
+msgid "Venezuela"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:334
+msgid "Viet Nam"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:335
+msgid "Wallis & Futuna Islands"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:336
+msgid "Western Sahara"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:337
+msgid "Yemen"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:338
+msgid "Yugoslavia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:339
+msgid "Zaire"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:340
+msgid "Zambia"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:341
+msgid "Zimbabwe"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:11
+msgid "Null character in input stream, replaced with U+FFFD."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:13
+msgid "Invalid codepoint in stream."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:15
+msgid "Solidus (/) incorrectly placed in tag."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:17
+msgid "Incorrect CR newline entity, replaced with LF."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:19
+msgid "Entity used with illegal number (windows-1252 reference)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:21
+#, python-format
+msgid ""
+"Numeric entity couldn't be converted to character (codepoint U+"
+"%(charAsInt)08x)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:24
+#, python-format
+msgid "Numeric entity represents an illegal codepoint: U+%(charAsInt)08x."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:27
+msgid "Numeric entity didn't end with ';'."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:29
+msgid "Numeric entity expected. Got end of file instead."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:31
+msgid "Numeric entity expected but none found."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:33
+msgid "Named entity didn't end with ';'."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:35
+msgid "Named entity expected. Got none."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:37
+msgid "End tag contains unexpected attributes."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:39
+msgid "End tag contains unexpected self-closing flag."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:41
+msgid "Expected tag name. Got '>' instead."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:43
+msgid ""
+"Expected tag name. Got '?' instead. (HTML doesn't support processing "
+"instructions.)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:46
+msgid "Expected tag name. Got something else instead"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:48
+msgid "Expected closing tag. Got '>' instead. Ignoring '</>'."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:50
+msgid "Expected closing tag. Unexpected end of file."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:52
+#, python-format
+msgid "Expected closing tag. Unexpected character '%(data)s' found."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:54
+msgid "Unexpected end of file in the tag name."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:56
+msgid "Unexpected end of file. Expected attribute name instead."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:58
+msgid "Unexpected end of file in attribute name."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:60
+msgid "Invalid character in attribute name"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:62
+msgid "Dropped duplicate attribute on tag."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:64
+msgid "Unexpected end of file. Expected = or end of tag."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:66
+msgid "Unexpected end of file. Expected attribute value."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:68
+msgid "Expected attribute value. Got '>' instead."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:70
+msgid "Unexpected = in unquoted attribute"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:72
+msgid "Unexpected character in unquoted attribute"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:74
+msgid "Unexpected character after attribute name."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:76
+msgid "Unexpected character after attribute value."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:78
+msgid "Unexpected end of file in attribute value (\")."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:80
+msgid "Unexpected end of file in attribute value (')."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:82
+msgid "Unexpected end of file in attribute value."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:84
+msgid "Unexpected end of file in tag. Expected >"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:86
+msgid "Unexpected character after / in tag. Expected >"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:88
+msgid "Expected '--' or 'DOCTYPE'. Not found."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:90
+msgid "Unexpected ! after -- in comment"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:92
+msgid "Unexpected space after -- in comment"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:94
+msgid "Incorrect comment."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:96
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:104
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:106
+msgid "Unexpected end of file in comment."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:98
+msgid "Unexpected end of file in comment (-)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:100
+msgid "Unexpected '-' after '--' found in comment."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:102
+msgid "Unexpected end of file in comment (--)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:108
+msgid "Unexpected character in comment found."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:110
+msgid "No space after literal string 'DOCTYPE'."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:112
+msgid "Unexpected > character. Expected DOCTYPE name."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:114
+msgid "Unexpected end of file. Expected DOCTYPE name."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:116
+msgid "Unexpected end of file in DOCTYPE name."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:118
+msgid "Unexpected end of file in DOCTYPE."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:120
+#, python-format
+msgid "Expected space or '>'. Got '%(data)s'"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:122
+msgid "Unexpected end of DOCTYPE."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:124
+msgid "Unexpected character in DOCTYPE."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:126
+msgid "XXX innerHTML EOF"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:128
+msgid "Unexpected DOCTYPE. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:130
+msgid "html needs to be the first start tag."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:132
+msgid "Unexpected End of file. Expected DOCTYPE."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:134
+msgid "Erroneous DOCTYPE."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:136
+msgid "Unexpected non-space characters. Expected DOCTYPE."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:138
+#, python-format
+msgid "Unexpected start tag (%(name)s). Expected DOCTYPE."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:140
+#, python-format
+msgid "Unexpected end tag (%(name)s). Expected DOCTYPE."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:142
+#, python-format
+msgid "Unexpected end tag (%(name)s) after the (implied) root element."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:144
+#, python-format
+msgid "Unexpected end of file. Expected end tag (%(name)s)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:146
+msgid "Unexpected start tag head in existing head. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:148
+#, python-format
+msgid "Unexpected end tag (%(name)s). Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:150
+#, python-format
+msgid "Unexpected start tag (%(name)s) that can be in head. Moved."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:152
+#, python-format
+msgid "Unexpected start tag (%(name)s)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:154
+#, python-format
+msgid "Missing end tag (%(name)s)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:156
+#, python-format
+msgid "Missing end tags (%(name)s)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:158
+#, python-format
+msgid "Unexpected start tag (%(startName)s) implies end tag (%(endName)s)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:161
+#, python-format
+msgid "Unexpected start tag (%(originalName)s). Treated as %(newName)s."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:163
+#, python-format
+msgid "Unexpected start tag %(name)s. Don't use it!"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:165
+#, python-format
+msgid "Unexpected start tag %(name)s. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:167
+#, python-format
+msgid "Unexpected end tag (%(gotName)s). Missing end tag (%(expectedName)s)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:170
+#, python-format
+msgid "End tag (%(name)s) seen too early. Expected other end tag."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:172
+#, python-format
+msgid "Unexpected end tag (%(gotName)s). Expected end tag (%(expectedName)s)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:174
+#, python-format
+msgid "End tag (%(name)s) seen too early. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:176
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 1, paragraph 1 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:179
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 1, paragraph 2 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:182
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 1, paragraph 3 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:185
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 4, paragraph 4 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:188
+#, python-format
+msgid "Unexpected end tag (%(originalName)s). Treated as %(newName)s."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:190
+#, python-format
+msgid "This element (%(name)s) has no end tag."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:192
+#, python-format
+msgid "Unexpected implied end tag (%(name)s) in the table phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:194
+#, python-format
+msgid "Unexpected implied end tag (%(name)s) in the table body phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:196
+msgid "Unexpected non-space characters in table context caused voodoo mode."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:199
+msgid "Unexpected input with type hidden in table context."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:201
+msgid "Unexpected form in table context."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:203
+#, python-format
+msgid "Unexpected start tag (%(name)s) in table context caused voodoo mode."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:206
+#, python-format
+msgid "Unexpected end tag (%(name)s) in table context caused voodoo mode."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:209
+#, python-format
+msgid "Unexpected table cell start tag (%(name)s) in the table body phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:212
+#, python-format
+msgid "Got table cell end tag (%(name)s) while required end tags are missing."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:215
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the table body phase. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:217
+#, python-format
+msgid "Unexpected implied end tag (%(name)s) in the table row phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:219
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the table row phase. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:221
+msgid ""
+"Unexpected select start tag in the select phase treated as select end tag."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:224
+msgid "Unexpected input start tag in the select phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:226
+#, python-format
+msgid "Unexpected start tag token (%(name)s in the select phase. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:229
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the select phase. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:231
+#, python-format
+msgid ""
+"Unexpected table element start tag (%(name)s) in the select in table phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:233
+#, python-format
+msgid ""
+"Unexpected table element end tag (%(name)s) in the select in table phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:235
+msgid "Unexpected non-space characters in the after body phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:237
+#, python-format
+msgid "Unexpected start tag token (%(name)s) in the after body phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:240
+#, python-format
+msgid "Unexpected end tag token (%(name)s) in the after body phase."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:243
+msgid "Unexpected characters in the frameset phase. Characters ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:245
+#, python-format
+msgid "Unexpected start tag token (%(name)s) in the frameset phase. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:248
+msgid "Unexpected end tag token (frameset) in the frameset phase (innerHTML)."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:251
+#, python-format
+msgid "Unexpected end tag token (%(name)s) in the frameset phase. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:254
+msgid "Unexpected non-space characters in the after frameset phase. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:257
+#, python-format
+msgid "Unexpected start tag (%(name)s) in the after frameset phase. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:260
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the after frameset phase. Ignored."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:263
+msgid "Unexpected end tag after body(innerHtml)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:265
+msgid "Unexpected non-space characters. Expected end of file."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:267
+#, python-format
+msgid "Unexpected start tag (%(name)s). Expected end of file."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:270
+#, python-format
+msgid "Unexpected end tag (%(name)s). Expected end of file."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:273
+msgid "Unexpected end of file. Expected table content."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:275
+msgid "Unexpected end of file. Expected select content."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:277
+msgid "Unexpected end of file. Expected frameset content."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:279
+msgid "Unexpected end of file. Expected script content."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:281
+msgid "Unexpected end of file. Expected foreign content"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:283
+#, python-format
+msgid "Trailing solidus not allowed on element %(name)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:285
+#, python-format
+msgid "Element %(name)s not allowed in a non-html context"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:287
+#, python-format
+msgid "Unexpected end tag (%(name)s) before html."
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:289
+msgid "Undefined error (this sucks and should be fixed)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:26
+#, python-format
+msgid "StartTag not in PCDATA content model flag: %(tag)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:28
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:54
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:84
+#, python-format
+msgid "Tag name is not a string: %(tag)r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:30
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:56
+msgid "Empty tag name"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:32
+#, python-format
+msgid "Void element reported as StartTag token: %(tag)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:34
+#, python-format
+msgid "Non-void element reported as EmptyTag token: %(tag)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:39
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:71
+#, python-format
+msgid "Attribute name is not a string: %(name)r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:41
+msgid "Empty attribute name"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:43
+#, python-format
+msgid "Attribute value is not a string: %(value)r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:58
+#, python-format
+msgid "Void element reported as EndTag token: %(tag)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:61
+#, python-format
+msgid "EndTag (%(end)s) does not match StartTag (%(start)s)"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:66
+msgid "Comment not in PCDATA content model flag"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:73
+#, python-format
+msgid "%(type)s token with empty data"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:77
+#, python-format
+msgid "Non-space character(s) found in SpaceCharacters token: %(token)r"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:82
+#, python-format
+msgid "Doctype not in PCDATA content model flag: %(name)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/filters/lint.py:91
+#, python-format
+msgid "Unknown token type: %(type)s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/serializer/htmlserializer.py:211
+msgid "System identifer contains both single and double quote characters"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/serializer/htmlserializer.py:223
+msgid "Unexpected </ in CDATA"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/serializer/htmlserializer.py:234
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/serializer/htmlserializer.py:282
+msgid "Unexpected child element of a CDATA element"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/serializer/htmlserializer.py:288
+msgid "Comment contains --"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/serializer/htmlserializer.py:295
+#, python-format
+msgid "Entity %s not recognized"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/_base.py:61
+msgid "Void element has children"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/_base.py:125
+msgid "Unknown node type: "
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/lxmletree.py:133
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/lxmletree.py:183
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/lxmletree.py:199
+#, python-format
+msgid "Text nodes are text or tail, found %s"
+msgstr ""
+
+#: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/treewalkers/lxmletree.py:172
+msgid "Text nodes have no children"
+msgstr ""
+
+#: principal/forms.py:18 principal/forms.py:68
 msgid "Already exists a user with that email!"
 msgstr ""
 
-#: .\principal\templates\base.html:43 
+#: principal/forms.py:43
+msgid "Password"
+msgstr ""
+
+#: principal/forms.py:56
+msgid "Wrong email or password"
+msgstr ""
+
+#: principal/forms.py:98
+msgid "Message length too long"
+msgstr ""
+
+#: principal/forms.py:104 principal/forms.py:109
+msgid "Must be a date in the past"
+msgstr ""
+
+#: principal/forms.py:106 principal/forms.py:107
+msgid "Incorrect logic date"
+msgstr ""
+
+#: principal/forms.py:125
+msgid "Must be a date in the future"
+msgstr ""
+
+#: principal/forms.py:194
+msgid "Image file too large ( > 2mb )"
+msgstr ""
+
+#: principal/forms.py:196
+msgid "Not valid file type. Only PNG and JPG are supported"
+msgstr ""
+
+#: principal/forms.py:251
+msgid "Whoops, these don't match"
+msgstr ""
+
+#: principal/forms.py:260
+msgid "Wrong password"
+msgstr ""
+
+#: principal/forms.py:262
+msgid "Password do not match"
+msgstr ""
+
+#: principal/templates/about_us.html:7
+msgid "Sobre nosotros"
+msgstr ""
+
+#: principal/templates/about_us.html:9
+msgid "es propiedad de BrainTravel Co."
+msgstr ""
+
+#: principal/templates/about_us.html:12
+msgid "Residente en Alcal&aacute; del R&iacute;o &ndash; Sevilla 41200"
+msgstr ""
+
+#: principal/templates/about_us.html:16
+msgid ""
+"Informaci&oacute;n Registro: Inscrita en el registro Mercantil de Sevilla, "
+"Fecha: 01/01/2014, N&ordm;"
+msgstr ""
+
+#: principal/templates/about_us.html:17
+msgid "Anuncio: 169011 BORME"
+msgstr ""
+
+#: principal/templates/about_us.html:20
+msgid "La p&aacute;gina web <a href="
+msgstr ""
+
+#: principal/templates/about_us.html:21
+msgid "propietario) en calidad de empresa."
+msgstr ""
+
+#: principal/templates/about_us.html:24
+msgid ""
+"Para cualquier problema al respecto, deben ponerse en contacto con la "
+"direcci&oacute;n de correo"
+msgstr ""
+
+#: principal/templates/about_us.html:25
+msgid ""
+"electr&oacute;nico <a href='mailto:clientes.braintravel@gmail.com'>clientes."
+"braintravel@gmail.com</a> o"
+msgstr ""
+
+#: principal/templates/about_us.html:27
+msgid "SEVILLA Telf.: +34 955555555 Fax:+34"
+msgstr ""
+
+#: principal/templates/base.html:67
 msgid "Accept"
-msgstr "Aceptar"
+msgstr ""
 
-#: .\principal\templates\index.html:20
+#: principal/templates/buy_coins.html:7
+msgid "Paquetes de monedas"
+msgstr ""
+
+#: principal/templates/buy_coins.html:8
+msgid ""
+"Con nuestras monedas virtuales podras organizar tus viajes. Aprovecha "
+"nuestros packs!"
+msgstr ""
+
+#: principal/templates/buy_coins.html:18 principal/templates/buy_coins.html:34
+#: principal/templates/buy_coins.html:50
+#: principal/templates/plan_creation.html:54
+msgid "coins"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:8
+msgid "Pol&iacute;tica de Cookies"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:10
+msgid ""
+"Nuestra pol&iacute;tica de cookies est&aacute; sujeta a actualizaciones "
+"peri&oacute;dicas. Su prop&oacute;sito es ayudarle a comprender el uso que "
+"hacemos de las cookies, la finalidad de las cookies utilizadas, as&iacute; "
+"como las opciones que tiene el usuario para gestionarlas."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:17
+msgid ""
+"Los usuarios pueden acceder a esta informaci&oacute;n en todo momento a "
+"trav&eacute;s del link habilitado en la web."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:19
+msgid "&iquest;Qu&eacute; es una Cookie?"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:21
+msgid ""
+"Una &ldquo;Cookie&rdquo; es un peque&ntilde;o archivo de texto que un sitio "
+"web almacena en el navegador del usuario. Las cookies facilitan el uso y la "
+"navegaci&oacute;n por una p&aacute;gina web y son esenciales para el "
+"funcionamiento de internet, aportando innumerables ventajas en la "
+"prestaci&oacute;n de servicios interactivos."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:29
+msgid ""
+"Las cookies se utilizan, por ejemplo, para gestionar la sesi&oacute;n del "
+"usuario (reduciendo el n&uacute;mero de veces que tiene que incluir su "
+"contrase&ntilde;a), mejorar los servicios ofrecidos, o para adecuar los "
+"contenidos de una p&aacute;gina web a sus preferencias."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:38
+msgid ""
+"Las cookies pueden ser de &ldquo;sesi&oacute;n&rdquo;, por lo que se "
+"borrar&aacute;n una vez el usuario abandone la p&aacute;gina web que las "
+"gener&oacute; o &ldquo;persistentes&rdquo;, que permanecen en su ordenador "
+"hasta una fecha determinada."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:47
+msgid ""
+"Asimismo, las cookies pueden ser &ldquo;propias&rdquo;, gestionadas por el "
+"dominio al que el usuario accede y del que solicita un determinado servicio "
+"(en este caso los domicilio titularidad de BrainTravel Co., Inc.) o &ldquo;"
+"cookies de terceros&rdquo;, enviadas al equipo de usuario desde un dominio "
+"diferente al que se accede."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:57
+msgid "Cookies comunes de los sitios de braintravel.com"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:59
+msgid ""
+"En los siguientes puntos recogen las cookies utilizadas por todos los sitios "
+"que abarca el estudio, tanto las de la propia aplicaci&oacute;n como las de "
+"terceros:"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:66
+msgid ""
+"Cookie de sesi&oacute;n (&ldquo;sessionid&rdquo;): Sirve para identificar "
+"inequ&iacute;vocamente a cada usuario que accede a la aplicaci&oacute;n. "
+"Esta cookie es necesaria para usar estos sitios web, por lo que si el "
+"usuario decide eliminar esta cookie de su dispositivo, el sitio web puede no "
+"funcionar correctamente."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:74
+msgid ""
+"Cookie de token CSRF (&ldquo;csrftoken&rdquo;): Se usa como medida de "
+"seguridad para evitar diversos ataques."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:80
+msgid ""
+"Cookie de aceptaci&oacute;n de cookies (&ldquo;cp-enabled&rdquo;): Se "
+"utiliza para recordar si el usuario ha aceptado ya la pol&iacute;tica de "
+"cookies del sitio."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:87
+msgid "Deshabilitar el uso de cookies"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:89
+msgid ""
+"Si el usuario as&iacute; lo desea, es posible dejar de aceptar las Cookies "
+"del navegador, o dejar de aceptar las Cookies de un servicio en particular."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:95
+msgid ""
+"Todos los navegadores modernos permiten cambiar la configuraci&oacute;n de "
+"Cookies. Estos ajustes normalmente se encuentran en las \"Opciones\" o "
+"\"Preferencias\" del men&uacute; del navegador."
+msgstr ""
+
+#: principal/templates/cookies_policies.html:101
+msgid ""
+"El usuario podr&aacute;, en cualquier momento, deshabilitar el uso de "
+"Cookies en este sitio web mediante:"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:108
+msgid "La configuraci&oacute;n del navegador, por ejemplo:"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:111
+msgid ""
+"Google Chrome: <a href=\"http://support.google.com/chrome/bin/answer.py?"
+"hl=es&answer=95647\">http://support.google.com/chrome/bin/answer.py?"
+"hl=es&answer=95647</a>"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:117
+msgid ""
+"Internet Explorer: <a href=\"http://windows.microsoft.com/es-es/windows7/how-"
+"to-manage-cookies-in-internet-explorer-9\">http://windows.microsoft.com/es-"
+"es/windows7/how-to-manage-cookies-in-internet-explorer-9</a>"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:123
+msgid ""
+"Mozilla Firefox: <a href=\"http://support.mozilla.org/es/kb/habilitar-y-"
+"deshabilitar-cookies-que-los-sitios-we\">http://support.mozilla.org/es/kb/"
+"habilitar-y-deshabilitar-cookies-que-los-sitios-we</a>"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:129
+msgid ""
+"Apple Safari: <a href=\"http://support.apple.com/kb/ph5042\">http://support."
+"apple.com/kb/ph5042</a>"
+msgstr ""
+
+#: principal/templates/cookies_policies.html:137
+msgid ""
+"Otras herramientas de terceros, disponibles on-line, que permiten a los "
+"usuarios detectar las Cookies en cada sitio web que visita y gestionar su "
+"desactivaci&oacute;n (por ejemplo, Ghostery: <a href=\"http://www.ghostery."
+"com/privacy-statement\">http://www.ghostery.com/privacy-statement</a>)."
+msgstr ""
+
+#: principal/templates/error_planning.html:6
+msgid "Sorry, an error has ocurred"
+msgstr ""
+
+#: principal/templates/error_planning.html:7
+msgid ""
+"<p> Oops! BrainTravel has not been able to get a plan for you :(. Try it "
+"again with the name of the city and country in English. This operation will "
+"have <b>NO</b> charge for your coins. </p> <p> If the error persist, please "
+"contact us. </p>"
+msgstr ""
+
+#: principal/templates/index.html:33
+msgid "Automate the way you travel"
+msgstr ""
+
+#: principal/templates/index.html:34
+msgid "Find Out More"
+msgstr ""
+
+#: principal/templates/index.html:43
 msgid "What is this?"
-msgstr "�Qu� somos?"
+msgstr ""
 
-#: .\principal\templates\index.html:22
+#: principal/templates/index.html:45
 msgid ""
 "BrainTravel is the perfect tool for all travellers. It automatically creates "
 "a trip planning for you, offering a daily schedule with the highest rated "
@@ -37,78 +3143,2587 @@ msgid ""
 "interact between them regarding trips they made, commenting and sharing "
 "experiences."
 msgstr ""
-"BrainTravel es la herramienta perfecta para todos los viajeros. Con ella "
-"puedes crear un plan de viaje que se adapte a tus necesidades, ofreciendote "
-"una planificaci�n distribuida por d�s con los sitios mejor valorados de la "
-"zona. Tambien dispone de una red social interna en la que los usuarios "
-"pueden interactuar entre ellos en base a los viajes que han realizado, "
-"comentarlos y compartir experiencias."
 
-#: .\principal\templates\list_coin_history.html:6
-msgid "List of my coin history"
-msgstr "Mis historiales de monedas"
+#: principal/templates/index.html:74
+msgid "Automatic plans"
+msgstr ""
 
-#: .\principal\templates\list_coin_history.html:9
-#: .\principal\templates\my_payments.html:9
-#: .\principal\templates\trip_list.html:6
+#: principal/templates/index.html:77
+msgid ""
+"Day by day plan for your trip with a few clicks based on others travellers "
+"recommendations.</p>"
+msgstr ""
+
+#: principal/templates/index.html:91
+msgid "Constraints"
+msgstr ""
+
+#: principal/templates/index.html:94
+msgid "Give us restrictions for your trip and we'll do the rest for you."
+msgstr ""
+
+#: principal/templates/index.html:109
+msgid "Satistics"
+msgstr ""
+
+#: principal/templates/index.html:111
+msgid "Travel stats for your own orientation."
+msgstr ""
+
+#: principal/templates/index.html:122
+msgid "Social trips"
+msgstr ""
+
+#: principal/templates/index.html:124
+msgid "Share experiences with other users."
+msgstr ""
+
+#: principal/templates/index.html:136
+msgid "A customer says..."
+msgstr ""
+
+#: principal/templates/index.html:139
+msgid ""
+"I really like this idea of the project;I love to travel and see the city "
+"from a point of view \"quotidian\", not touristy.;If you can recommend "
+"activities outside the typical, to better understand the place, would be "
+"happy to use the tool.;There's history, places and landscapes that only "
+"residents of the area known.;That's what I ever wanted..."
+msgstr ""
+
+#: principal/templates/list_coin_history.html:11
+msgid "Coin historial"
+msgstr "Historial de monedas"
+
+#: principal/templates/list_coin_history.html:12
+msgid "Those are movements that you made with your coins through the platform"
+msgstr "Estos son los movimientos que has hecho con tus monedas en la plataforma"
+
+#: principal/templates/list_coin_history.html:16
+#: principal/templates/my_payments.html:15
 msgid "We couldn't find anything..."
 msgstr "No pudimos encontrar nada..."
 
-#: .\principal\templates\list_coin_history.html:15
-#: .\principal\templates\my_payments.html:16
+#: principal/templates/list_coin_history.html:22
+#: principal/templates/my_payments.html:22
 msgid "Amount"
 msgstr "Cantidad"
 
-#: .\principal\templates\list_coin_history.html:16
-#: .\principal\templates\my_payments.html:17
+#: principal/templates/list_coin_history.html:23
+#: principal/templates/my_payments.html:23
 msgid "Date"
 msgstr "Fecha"
 
-#: .\principal\templates\list_coin_history.html:17
-#: .\principal\templates\my_payments.html:18
+#: principal/templates/list_coin_history.html:24
+#: principal/templates/my_payments.html:24
 msgid "Concept"
 msgstr "Concepto"
 
-#: .\principal\templates\my_payments.html:6
-msgid "List of all my payments"
-msgstr "Mis pagos"
+#: principal/templates/my_payments.html:10
+msgid "Payment historial"
+msgstr "Historial de pagos"
 
-#: .\principal\templates\my_payments.html:15
+#: principal/templates/my_payments.html:11
+msgid "Those are payments that made through the platform to buy coins"
+msgstr "Estos son los pagos que has hecho a través de nuestra plataforma para comprar monedas"
+
+#: principal/templates/my_payments.html:21
 msgid "Id"
 msgstr "Id"
 
-#: .\principal\templates\plan_creation.html:10
-msgid "Plan creation"
-msgstr "Creaci�n de un plan"
+#: principal/templates/my_payments.html:44
+msgid "previous"
+msgstr "anterior"
 
-#: .\principal\templates\plan_creation.html:21
-#: .\principal\templates\trip_edit.html:33
+#: principal/templates/my_payments.html:50
+msgid "next"
+msgstr "siguiente"
+
+#: principal/templates/plan_creation.html:10
+msgid "Plan a trip"
+msgstr "Planear un viaje"
+
+#: principal/templates/plan_creation.html:15
+#: principal/templates/trip_edit.html:36
 msgid "City"
 msgstr "Ciudad"
 
-#: .\principal\templates\plan_creation.html:32
-#: .\principal\templates\trip_edit.html:44
+#: principal/templates/plan_creation.html:24
+#: principal/templates/trip_edit.html:47
 msgid "Country"
-msgstr "Pais"
+msgstr "País"
 
-#: .\principal\templates\plan_creation.html:43
-#: .\principal\templates\trip_edit.html:55
+#: principal/templates/plan_creation.html:33
+#: principal/templates/trip_edit.html:59
 msgid "Start Date"
 msgstr "Fecha de inicio"
 
-#: .\principal\templates\plan_creation.html:55
+#: principal/templates/plan_creation.html:45
 msgid "Days"
 msgstr "Dias"
 
-#: .\principal\templates\trip_edit.html:10
-#: .\principal\templates\trip_list.html:5
+#: principal/templates/plan_creation.html:53
+msgid "Price"
+msgstr "Precio"
+
+#: principal/templates/plan_creation.html:53
+msgid "Coins"
+msgstr "Monedas"
+
+#: principal/templates/plan_creation.html:54
+msgid "You have"
+msgstr "Tienes"
+
+#: principal/templates/plan_creation.html:59
+msgid "Create Plan"
+msgstr "Crear un plan"
+
+#: principal/templates/plan_creation.html:65
+msgid "Select your custom constrains"
+msgstr "Selecciona tus restricciones personalizadas"
+
+#: principal/templates/plan_creation.html:78
+msgid "A lot of"
+msgstr "Un montón de"
+
+#: principal/templates/plan_creation.html:79
+msgid "Some of"
+msgstr "Algo de"
+
+#: principal/templates/plan_creation.html:80
+msgid "Any of"
+msgstr "Nada de"
+
+#: principal/templates/plan_creation.html:86
+msgid "Add Restriction"
+msgstr "Añadir restricción"
+
+#: principal/templates/plan_creation.html:90
+msgid "Custom constraints"
+msgstr "Restricciones personalizadas"
+
+#: principal/templates/plan_creation.html:100
+msgid "Delete "
+msgstr "Borrar"
+
+#: principal/templates/privacy_terms.html:8
+msgid ""
+"<h2>T&eacute;rminos y condiciones</h2> <p> De acuerdo con las disposiciones "
+"de la Ley 15/1999, de 13 de Diciembre, de Protecci&oacute;n de Datos de "
+"Car&aacute;cter Personal, (en adelante, LOPD), BrainTravel Co., Inc. NIF "
+"12345678A le informa que los datos recogidos en este sitio web ser&aacute;n "
+"incorporados a un fichero automatizado inscrito ante la Agencia de "
+"Protecci&oacute;n de Datos y pertenecen a BrainTravel Co., Inc., teniendo "
+"como finalidad la de atender las peticiones que usted demande. En virtud del "
+"art&iacute;culo 5 de la citada ley, usted ser&aacute; debidamente informado "
+"con todo detalle en nuestros formularios de la finalidad y uso de los datos "
+"que proporcione. </p> <h3>Informaci&oacute;n: Alta de Datos</h3> <p> Los "
+"datos facilitados por Usted en los documentos del sitio web, ser&aacute;n "
+"objeto de tratamiento automatizado y pasar&aacute;n a formar parte del "
+"fichero propiedad de BrainTravel Co., Inc.,  inscrito en la Agencia de "
+"Protecci&oacute;n de Datos. Estos datos podr&aacute;n ser utilizados para la "
+"gesti&oacute;n interna de los contactos comerciales que solicitan "
+"informaci&oacute;n o con aquellos con los que se mantiene una relaci&oacute;"
+"n comercial. </p> <p> Salvo en los campos que se indique lo contrario, las "
+"respuestas a las preguntas sobre sus datos personales son voluntarias. El "
+"afectado se compromete a la veracidad de los datos que suministra. </p> <p> "
+"De conformidad con el art&iacute;culo 5 de la Ley 15/1999, de 13 de "
+"diciembre de Protecci&oacute;n de Datos de Car&aacute;cter Personal, Ud. "
+"tiene derecho a acceder a esta informaci&oacute;n, a rectificarla si los "
+"datos son err&oacute;neos y darse de baja del fichero mediante una solicitud "
+"escrita a: Atenci&oacute;n LOPD, BrainTravel Co., Inc., C/ Madrid, 1 - 41200 "
+"Alcal&aacute; del R&iacute;o (Sevilla) Espa&ntilde;a, o bien, enviando dicha "
+"solicitud a la direcci&oacute;n de correo electr&oacute;nico <a href="
+"\"mailto:clientes.braintravel@gmail.com\">clientes.braintravel@gmail.com</a> "
+"para ser atendido y guiado para cumplimentar el proceso, cumpli&eacute;ndose "
+"as&iacute; la notificaci&oacute;n prevista en el art&iacute;culo 5.4 de la "
+"misma. </p> <h3>Condiciones del servicio</h3> <ol> <li> El usuario o "
+"visitante de la p&aacute;gina web <a href=\"http://www.braintravel.com"
+"\">http://www.braintravel.com</a> tiene la obligaci&oacute;n leer las "
+"condiciones de prestaci&oacute;n del servicio que se detallan en este texto, "
+"de manera que asume estas como v&aacute;lidas en la prestaci&oacute;n del "
+"servicio. </li> <li> Objetivos de la p&aacute;gina web http://www."
+"braintravel.com: La p&aacute;gina web es econ&oacute;micamente a trav&eacute;"
+"s de los pagos que se realizan a trav&eacute;s de la pasarela de pago "
+"PayPal. </li> <li> Condiciones de uso del contenido y servicios prestados en "
+"esta p&aacute;gina web: </li> <ul> <li> No est&aacute; permitida la "
+"reproducci&oacute;n de los contenidos (de cualquier tipo) publicados en <a "
+"href=\"http://www.braintravel.com\">http://www.braintravel.com</a> sin el "
+"consentimiento expreso del autor de dicha web. En este caso hablamos de "
+"textos, gr&aacute;ficos, c&oacute;digo fuente, y cualquier otro contenido "
+"que sea servido desde esta p&aacute;gina web. </li> <li> En esta p&aacute;"
+"gina web pueden existir contenidos de terceros. En cualquiera de los casos, "
+"y como es intenci&oacute;n siempre el respetar los derechos de autor y las "
+"leyes del copyright, si hubiera cualquier m&iacute;nimo problema respecto a "
+"cualquier material publicado en esta web, se ruega que se pongan en contacto "
+"a trav&eacute;s del email: <a href=\"mailto:clientes.braintravel@gmail.com"
+"\">clientes.braintravel@gmail.com</a> y el contenido ser&aacute; retirado "
+"(tras ser comprobado) con la m&aacute;xima celeridad posible, ya que es "
+"intenci&oacute;n primera el respeto por los derechos de autor y el trabajo "
+"ajeno. </li> <li> El autor de esta web no se hace responsable del mal uso "
+"que se haga del contenido expuesto en esta p&aacute;gina web (<a href="
+"\"http://www.braintravel.com\">http://www.braintravel.com</a>). </li> <li> "
+"La p&aacute;gina web <a href=\"http://www.braintravel.com\">http://www."
+"braintravel.com</a> es financiada y explotada trav&eacute;s de la publicidad "
+"expuesta en la misma, no existiendo ning&uacute;n otro tipo de "
+"explotaci&oacute;n econ&oacute;mica. </li> <li> El autor de <a href=\"http://"
+"www.braintravel.com\">http://www.braintravel.com</a> no se hace responsable "
+"del del sistema o servicio prestado en esta p&aacute;gina web, aunque "
+"siempre se pretende y trabaja para ofrecer el mejor servicio. </li> <li> El "
+"autor de la p&aacute;gina web <a href=\"http://www.braintravel.com\">http://"
+"www.braintravel.com</a> utiliza la misma publicitario y no se hace "
+"responsable del mal servicio o problemas surgidos por los servicios "
+"anunciados, de forma que la publicidad y los servicios posteriores que esta "
+"remita son responsabilidad &uacute;nica del anunciante. </li> <li> En esta "
+"p&aacute;gina web (<a href=\"http://www.braintravel.com\">http://www."
+"braintravel.com</a>) NO existen contenidos ilegales (pornograf&iacute;a "
+"infantil, apolog&iacute;a del terrorismo, o cualquier otro tipo de contenido "
+"ilegal). </li> </ul> </ol> <p> Para cualquier problema al respecto, deben "
+"ponerse en contacto con la direcci&oacute;n de correo electr&oacute;nico <a "
+"href=\"mailto:clientes.braintravel@gmail.com\">clientes.braintravel@gmail."
+"com</a>o tel&eacute;fonos: </p> <p> SEVILLA Telf.: +34 955555555 Fax:+34 </p>"
+msgstr ""
+
+#: principal/templates/profile_details.html:20
+msgid "Modify profile"
+msgstr "Modificar perfil"
+
+#: principal/templates/profile_details.html:21
+msgid "Change password"
+msgstr "Cambiar contraseña"
+
+#: principal/templates/profile_details.html:39
+msgid "My payments"
+msgstr "Mis pagos"
+
+#: principal/templates/profile_details.html:46
+msgid "View coin movements"
+msgstr "Ver el movimiento de mis monedas"
+
+#: principal/templates/profile_details.html:53
+msgid "View my trips"
+msgstr "Ver mis viajes"
+
+#: principal/templates/profile_details.html:55
+msgid "Trips published by"
+msgstr "Viajes publicados por"
+
+#: principal/templates/profile_edit.html:6
+msgid "Edit Profile"
+msgstr "Editar perfil"
+
+#: principal/templates/profile_edit.html:11
+#: principal/templates/profile_edit.html:51
+msgid "First name"
+msgstr "Nombre"
+
+#: principal/templates/profile_edit.html:15
+#: principal/templates/profile_edit.html:56
+msgid "Last name"
+msgstr "Apellidos"
+
+#: principal/templates/profile_edit.html:19
+#: principal/templates/profile_edit.html:61
+msgid "Genre"
+msgstr "Género"
+
+#: principal/templates/profile_edit.html:23
+msgid "Photo"
+msgstr "Foto"
+
+#: principal/templates/profile_edit.html:42
+msgid "Default image"
+msgstr "Imagen default"
+
+#: principal/templates/profile_edit.html:69
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: principal/templates/profile_edit_password.html:8
+msgid "Edit Password"
+msgstr "Editar contraseña"
+
+#: principal/templates/profile_edit_password.html:14
+#: principal/templates/profile_edit_password.html:33
+msgid "Old password"
+msgstr "Antigua contraseña"
+
+#: principal/templates/profile_edit_password.html:18
+#: principal/templates/profile_edit_password.html:38
+msgid "New password"
+msgstr "Nueva contraseña"
+
+#: principal/templates/profile_edit_password.html:22
+#: principal/templates/profile_edit_password.html:43
+msgid "Repeat new password"
+msgstr "Repite la nueva contraseña"
+
+#: principal/templates/profile_edit_password.html:55
+msgid ""
+"<strong>The passwords</strong> must contain at least one uppercase, a "
+"lowercase letter and a number."
+msgstr "<strong>Las contraseñas</strong> deben contenear al menos una mayuscula, una "
+"minúscula y un número."
+
+#: principal/templates/public_trip_details.html:2
+msgid "Details"
+msgstr "Detalles"
+
+#: principal/templates/public_trip_details.html:62
+msgid "Rate this trip!"
+msgstr "Evalúa este viaje!"
+
+#: principal/templates/public_trip_details.html:68
+msgid "Trip moderation"
+msgstr "Moderación de viajes"
+
+#: principal/templates/public_trip_details.html:69
+msgid "Select an option and click save to change the trip status."
+msgstr "Selecciona una opción y haz click en guardar para cambiar el estado del viaje."
+
+#: principal/templates/public_trip_details.html:81
+msgid "Save"
+msgstr "Guardar"
+
+#: principal/templates/public_trip_details.html:196
+msgid "Please choose a number between 0 and 10:"
+msgstr "Por favor elige un número entre 0 y 10:"
+
+#: principal/templates/public_trip_details.html:198
+msgid "Please, write a fancy description:"
+msgstr "Por favor, escribe una descripción agradable:"
+
+#: principal/templates/public_trip_details.html:203
+#: principal/templates/venue_details.html:74
+msgid "Close"
+msgstr "Cerrar"
+
+#: principal/templates/public_trip_details.html:204
+#: principal/templates/venue_details.html:75
+msgid "Send"
+msgstr "Enviar"
+
+#: principal/templates/search.html:8 principal/templates/trip_list.html:9
+#: principal/templates/trip_planned_list.html:34
+msgid "Oops! BrainTravel could not find anything..."
+msgstr "Oops! BrainTravel no pudo encontrar nada..."
+
+#: principal/templates/signin.html:11
+msgid "Login"
+msgstr "Login"
+
+#: principal/templates/signin.html:12
+msgid "Don't have an account yet?"
+msgstr "¿Todavía no tienes una cuenta?"
+
+#: principal/templates/signin.html:12
+msgid "Sign up"
+msgstr "Resgistrarse"
+
+#: principal/templates/trip_edit.html:9
 msgid "Create Trip"
 msgstr "Crear viaje"
 
-#: .\principal\templates\trip_edit.html:13
+#: principal/templates/trip_edit.html:10
+msgid "Post a trip and get free coins. Get 2 coins for every 5 'like' you receive."
+msgstr "Publica un viaje y consigue monedas gratis. Cada 5 likes que recibas te regalaremos 2 monedas "
+
+#: principal/templates/trip_edit.html:12
 msgid "Edit Trip"
 msgstr "Editar viaje"
 
-#: .\principal\templates\trip_edit.html:67
+#: principal/templates/trip_edit.html:22
+msgid "Name"
+msgstr "Nombre"
+
+#: principal/templates/trip_edit.html:23
+msgid "Up to 150 letters, numbers and underscores"
+msgstr "Hasta 150 letras, numeros y guiones bajos"
+
+#: principal/templates/trip_edit.html:71
 msgid "End Date"
-msgstr "Fecha de finalizaci�n"
+msgstr "Fecha de fin"
+
+#: principal/templates/trip_edit.html:85
+msgid "Published Description"
+msgstr "Descripción pública"
+
+#: principal/templates/trip_planned_list.html:29
+msgid "View more"
+msgstr "Ver más"
+
+#: principal/templates/venue_details.html:13
+msgid "Give feedback"
+msgstr "Dar feedback"
+
+#: principal/templates/venue_details.html:41
+msgid "Sorry, there aren't tips available for this venue."
+msgstr "Lo sentimos, pero no hay recomendaciones para este sitio."
+
+#: principal/templates/venue_details.html:60
+msgid ""
+"By giving feedback you enhance our algorithm. The more feedback it gets, the "
+"more accurate it becomes. We give you some coins as gift as well :)"
+msgstr "Dandonos feedback contribuyes a mejorar nuestro algoritmo. Cuanto mas feedback consigue, "
+"mas preciso se vuelve. Te regalaremos algunas monedas también :)"
+
+#: principal/templates/venue_details.html:62
+msgid ""
+"<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on "
+"the queue...</small></h4>"
+msgstr "<h4>Tiempo de espera: <small>Cuanto tiempo pasaste esperando para comprar los tickets en la cola... </small></h4>"
+
+#: principal/templates/venue_details.html:65
+msgid ""
+"<h4>Duration: <small>How much time you spent inside the venue, you were "
+"walking around...</small></h4>"
+msgstr "<h4>Duración: <small>Cuanto tiempo pasaste dentro del sitio, que estuviste "
+"dando vueltas...</small></h4>"
+
+#: principal/templates/venue_details.html:69
+msgid "<h4>Description: <small>Something else you want to say?</small></h4>"
+msgstr "<h4>Descripción: <small>¿Hay algo más que quieras añadir?</small></h4>"
+
+
+# Categorias:
+
+msgid "Meze Restaurants"
+msgstr ""
+
+msgid "Modern Greek Restaurants"
+msgstr "Restaurantes Griego moderno"
+
+msgid "Ouzeries"
+msgstr ""msgid "Arts & Entertainment"
+msgstr "Artes y Entretenimiento"
+
+msgid "Aquariums"
+msgstr "Acuarios"
+
+msgid "Arcades"
+msgstr "Arcades"
+
+msgid "Art Galleries"
+msgstr "Galería de arte"
+
+msgid "Bowling Alleys"
+msgstr "Boleras"
+
+msgid "Casinos"
+msgstr "Casinos"
+
+msgid "Circuses"
+msgstr "Circos"
+
+msgid "Comedy Clubs"
+msgstr "Clubes de comedia"
+
+msgid "Concert Halls"
+msgstr "Salas de conciertos"
+
+msgid "Country Dance Clubs"
+msgstr "Clubes de baile Country"
+
+msgid "Disc Golf Courses"
+msgstr "Campos de golf"
+
+msgid "General Entertainment"
+msgstr "Entretenimiento general"
+
+msgid "Go Kart Tracks"
+msgstr "Ir a las pistas de Kart"
+
+msgid "Historic Sites"
+msgstr "Lugares de interés históricos"
+
+msgid "Laser Tag Places"
+msgstr ""
+
+msgid "Mini Golf Courses"
+msgstr "Mini campos de golf"
+
+msgid "Movie Theaters"
+msgstr "Salas de cine"
+
+msgid "Indie Movie Theaters"
+msgstr "Salas de cine indie"
+
+msgid "Multiplexes"
+msgstr "Multicines"
+
+msgid "Museums"
+msgstr "Museos"
+
+msgid "Art Museums"
+msgstr "Museos de arte"
+
+msgid "History Museums"
+msgstr "Los museos de historia"
+
+msgid "Planetariums"
+msgstr "Planetarios"
+
+msgid "Science Museums"
+msgstr "Museos de ciencia"
+
+msgid "Music Venues"
+msgstr "Lugares de la música"
+
+msgid "Jazz Clubs"
+msgstr "Clubes de jazz"
+
+msgid "Piano Bars"
+msgstr "Piano bares"
+
+msgid "Rock Clubs"
+msgstr "Clubes de rocks"
+
+msgid "Outdoor Sculptures"
+msgstr "Esculturas al aire libre"
+
+msgid "Performing Arts Venues"
+msgstr "Lugares de artes escénicas"
+
+msgid "Dance Studios"
+msgstr "Estudios de baile"
+
+msgid "Indie Theaters"
+msgstr "Teatros indie"
+
+msgid "Opera Houses"
+msgstr "Teatro de ópera"
+
+msgid "Theaters"
+msgstr "Teatros"
+
+msgid "Pool Halls"
+msgstr "Salas de billar"
+
+msgid "Public Art"
+msgstr "Arte público"
+
+msgid "Racetracks"
+msgstr "Hipódromos"
+
+msgid "Roller Rinks"
+msgstr "Pistas de rodillo"
+
+msgid "Salsa Clubs"
+msgstr "Clubes de salsa"
+
+msgid "Stadiums"
+msgstr "Estadios"
+
+msgid "Baseball Stadiums"
+msgstr "Estadios de béisbol"
+
+msgid "Basketball Stadiums"
+msgstr "Estadios de baloncesto"
+
+msgid "Cricket Grounds"
+msgstr "Zona de Cricket"
+
+msgid "Football Stadiums"
+msgstr "Estadios de fútbol americano"
+
+msgid "Hockey Arenas"
+msgstr "Hockey arena"
+
+msgid "Soccer Stadiums"
+msgstr "Estadios de fútbol"
+
+msgid "Tennis Stadiums"
+msgstr "Estadios de tenis"
+
+msgid "Track Stadiums"
+msgstr "Pistas de estadios"
+
+msgid "Street Art Installations"
+msgstr "Arte callejero"
+
+msgid "Theme Parks"
+msgstr "Parque de atracciones"
+
+msgid "Theme Park Rides/Attractions"
+msgstr "Parque temático/Atracciones"
+
+msgid "Water Parks"
+msgstr "Parque acuático"
+
+msgid "Zoos"
+msgstr "Zoo"
+
+msgid "Colleges & Universities"
+msgstr "Escuelas, terciarios y universidades"
+
+msgid "College Academic Buildings"
+msgstr ""
+
+msgid "College Arts Buildings"
+msgstr "Universidad de Arte"
+
+msgid "College Communications Buildings"
+msgstr "Universidad de Comunicación"
+
+msgid "College Engineering Buildings"
+msgstr "Universidad de Ingeniería"
+
+msgid "College History Buildings"
+msgstr ""
+
+msgid "College Math Buildings"
+msgstr "Universidad de Matemáticas"
+
+msgid "College Science Buildings"
+msgstr "Universidad Ciencias "
+
+msgid "College Technology Buildings"
+msgstr "Universidad de tecnología"
+
+msgid "College Administrative Buildings"
+msgstr ""
+
+msgid "College Auditoriums"
+msgstr ""
+
+msgid "College Bookstores"
+msgstr ""
+
+msgid "College Cafeterias"
+msgstr "Comedores universitarios"
+
+msgid "College Classrooms"
+msgstr "Aulas de la Universidad"
+
+msgid "College Gyms"
+msgstr "Gimnasios"
+
+msgid "College Labs"
+msgstr "Laboratorios de la Universidad"
+
+msgid "College Libraries"
+msgstr "Bibliotecas de la Universidad"
+
+msgid "College Quads"
+msgstr ""
+
+msgid "College Rec Centers"
+msgstr ""
+
+msgid "College Residence Halls"
+msgstr "Residencias universitarias"
+
+msgid "College Stadiums"
+msgstr ""
+
+msgid "College Baseball Diamonds"
+msgstr ""
+
+msgid "College Basketball Courts"
+msgstr ""
+
+msgid "College Cricket Pitches"
+msgstr ""
+
+msgid "College Football Fields"
+msgstr "Campos de fútbol americano de la Universidad"
+
+msgid "College Hockey Rinks"
+msgstr ""
+
+msgid "College Soccer Fields"
+msgstr "Campos de fútbol de la Universidad"
+
+msgid "College Tennis Courts"
+msgstr "Escuela de tenis"
+
+msgid "College Tracks"
+msgstr "Pistas de universidad"
+
+msgid "College Theaters"
+msgstr "Teatros universitarios"
+
+msgid "Community Colleges"
+msgstr "Universidad Comunitaria"
+
+msgid "Fraternity Houses"
+msgstr "Fraternidades"
+
+msgid "General Colleges & Universities"
+msgstr "Escuelas, terciarios y universidades"
+
+msgid "Law Schools"
+msgstr "Las facultades de derecho"
+
+msgid "Medical Schools"
+msgstr "Facultad de medicina"
+
+msgid "Sorority Houses"
+msgstr "Hermandad de mujeres"
+
+msgid "Student Centers"
+msgstr "Centros de estudiantes"
+
+msgid "Trade Schools"
+msgstr "Escuelas de comercio"
+
+msgid "Universities"
+msgstr "Universidades"
+
+msgid "Events"
+msgstr "Eventos"
+
+msgid "Conferences"
+msgstr "Congresos"
+
+msgid "Conventions"
+msgstr "Convenciones"
+
+msgid "Festivals"
+msgstr "Festival"
+
+msgid "Music Festivals"
+msgstr "Festival de música"
+
+msgid "Other Events"
+msgstr "Mostrar otros eventos"
+
+msgid "Parades"
+msgstr "Desfile"
+
+msgid "Stoop Sales"
+msgstr ""
+
+msgid "Street Fairs"
+msgstr "Ferias callejeras"
+
+msgid "Food"
+msgstr "Comida"
+
+msgid "Afghan Restaurants"
+msgstr "Restaurantes afganos"
+
+msgid "African Restaurants"
+msgstr "Restaurantes africanos"
+
+msgid "American Restaurants"
+msgstr "Restaurantes americanos"
+
+msgid "Arepa Restaurants"
+msgstr ""
+
+msgid "Argentinian Restaurants"
+msgstr "Restaurantes argentinos"
+
+msgid "Asian Restaurants"
+msgstr "Restaurantes Asiaticos"
+
+msgid "Australian Restaurants"
+msgstr "Restaurantes australianos"
+
+msgid "Austrian Restaurants"
+msgstr "Restaurantes de Austria"
+
+msgid "BBQ Joints"
+msgstr "Parrillada"
+
+msgid "Bagel Shops"
+msgstr "Tiendas de rosquillas"
+
+msgid "Bakeries"
+msgstr "Panaderías"
+
+msgid "Belarusian Restaurants"
+msgstr "Restaurantes bielorruso"
+
+msgid "Belgian Restaurants"
+msgstr "Restaurantes belgas"
+
+msgid "Bistros"
+msgstr "Bistró"
+
+msgid "Brazilian Restaurants"
+msgstr "Restaurantes brasileños"
+
+msgid "Acai Houses"
+msgstr ""
+
+msgid "Baiano Restaurants"
+msgstr ""
+
+msgid "Central Brazilian Restaurants"
+msgstr ""
+
+msgid "Churrascarias"
+msgstr "Churrascaria"
+
+msgid "Empada Houses"
+msgstr ""
+
+msgid "Goiano Restaurants"
+msgstr ""
+
+msgid "Mineiro Restaurants"
+msgstr ""
+
+msgid "Northeastern Brazilian Restaurants"
+msgstr ""
+
+msgid "Northern Brazilian Restaurants"
+msgstr ""
+
+msgid "Pastelarias"
+msgstr ""
+
+msgid "Southeastern Brazilian Restaurants"
+msgstr ""
+
+msgid "Southern Brazilian Restaurants"
+msgstr ""
+
+msgid "Tapiocarias"
+msgstr ""
+
+msgid "Breakfast Spots"
+msgstr ""
+
+msgid "Bubble Tea Shops"
+msgstr ""
+
+msgid "Buffets"
+msgstr "Buffets"
+
+msgid "Burger Joints"
+msgstr ""
+
+msgid "Burrito Places"
+msgstr "Lugares de burrito"
+
+msgid "Cafeterias"
+msgstr "Cafeterías"
+
+msgid "Cafes"
+msgstr "Café"
+
+msgid "Cajun / Creole Restaurants"
+msgstr ""
+
+msgid "Cambodian Restaurants"
+msgstr "Restaurantes de Camboya"
+
+msgid "Caribbean Restaurants"
+msgstr "Restaurantes del Caribe"
+
+msgid "Caucasian Restaurants"
+msgstr "Restaurantes caucásico"
+
+msgid "Chinese Restaurants"
+msgstr "Restaurantes chinos"
+
+msgid "Anhui Restaurants"
+msgstr ""
+
+msgid "Beijing Restaurants"
+msgstr ""
+
+msgid "Cantonese Restaurants"
+msgstr ""
+
+msgid "Chinese Aristocrat Restaurants"
+msgstr ""
+
+msgid "Chinese Breakfast Places"
+msgstr ""
+
+msgid "Dongbei Restaurants"
+msgstr ""
+
+msgid "Fujian Restaurants"
+msgstr ""
+
+msgid "Guizhou Restaurants"
+msgstr ""
+
+msgid "Hainan Restaurants"
+msgstr ""
+
+msgid "Hakka Restaurants"
+msgstr ""
+
+msgid "Henan Restaurants"
+msgstr ""
+
+msgid "Hong Kong Restaurants"
+msgstr "Restaurantes de Hong Kong"
+
+msgid "Huaiyang Restaurants"
+msgstr ""
+
+msgid "Hubei Restaurants"
+msgstr ""
+
+msgid "Hunan Restaurants"
+msgstr ""
+
+msgid "Imperial Restaurants"
+msgstr ""
+
+msgid "Jiangsu Restaurants"
+msgstr ""
+
+msgid "Jiangxi Restaurants"
+msgstr ""
+
+msgid "Macanese Restaurants"
+msgstr ""
+
+msgid "Manchu Restaurants"
+msgstr ""
+
+msgid "Peking Duck Restaurants"
+msgstr ""
+
+msgid "Shaanxi Restaurants"
+msgstr ""
+
+msgid "Shandong Restaurants"
+msgstr ""
+
+msgid "Shanghai Restaurants"
+msgstr ""
+
+msgid "Shanxi Restaurants"
+msgstr ""
+
+msgid "Szechuan Restaurants"
+msgstr ""
+
+msgid "Taiwanese Restaurants"
+msgstr "Restaurantes taiwanés"
+
+msgid "Tianjin Restaurants"
+msgstr ""
+
+msgid "Xinjiang Restaurants"
+msgstr ""
+
+msgid "Yunnan Restaurants"
+msgstr ""
+
+msgid "Zhejiang Restaurants"
+msgstr ""
+
+msgid "Coffee Shops"
+msgstr "Tiendas de café"
+
+msgid "Comfort Food Restaurants"
+msgstr "Comida casera"
+
+msgid "Creperies"
+msgstr "Creperies"
+
+msgid "Cuban Restaurants"
+msgstr "Restaurantes cubanos"
+
+msgid "Cupcake Shops"
+msgstr "Tiendas de Cupcake"
+
+msgid "Czech Restaurants"
+msgstr "Restaurantes chechos"
+
+msgid "Delis / Bodegas"
+msgstr "Sandwicheria / Bodegas"
+
+msgid "Dessert Shops"
+msgstr "Tiendas de postre"
+
+msgid "Dim Sum Restaurants"
+msgstr ""
+
+msgid "Diners"
+msgstr "Comedores"
+
+msgid "Distilleries"
+msgstr "Destilerías"
+
+msgid "Donut Shops"
+msgstr "Tienda de donuts"
+
+msgid "Dumpling Restaurants"
+msgstr "restaurantes"
+
+msgid "Eastern European Restaurants"
+msgstr "Restaurantes de europa del este "
+
+msgid "English Restaurants"
+msgstr "Restaurantes ingleses"
+
+msgid "Ethiopian Restaurants"
+msgstr ""
+
+msgid "Falafel Restaurants"
+msgstr "Restaurantes de falafel"
+
+msgid "Fast Food Restaurants"
+msgstr "Restaurantes de comida rápida"
+
+msgid "Filipino Restaurants"
+msgstr "Restaurantes filipinos"
+
+msgid "Fish & Chips Shops"
+msgstr "Fish and chips"
+
+msgid "Fondue Restaurants"
+msgstr "Restaurantes de fondue"
+
+msgid "Food Trucks"
+msgstr "Camiones de comida"
+
+msgid "French Restaurants"
+msgstr "Restaurantes franceses"
+
+msgid "Fried Chicken Joints"
+msgstr "Pollo frio"
+
+msgid "Gastropubs"
+msgstr "Gastropubs"
+
+msgid "German Restaurants"
+msgstr "Restaurantes alemanes"
+
+msgid "Gluten-free Restaurants"
+msgstr "Restaurantes sin gluten"
+
+msgid "Greek Restaurants"
+msgstr "Restaurantes griegos"
+
+msgid "Bougatsa Shops"
+msgstr "Tiendas de Bougatsa"
+
+msgid "Cretan Restaurants"
+msgstr ""
+
+msgid "Fish Tavernas"
+msgstr "Tabernas de pescado"
+
+msgid "Grilled Meat Restaurants"
+msgstr "Restaurantes de carnes a la brasa"
+
+msgid "Kafenia"
+msgstr "Kafenia"
+
+msgid "Magirio"
+msgstr ""
+
+
+msgid "Patsa Restaurants"
+msgstr "Restaurantes de Pasta"
+
+msgid "Tavernas"
+msgstr "Tabernas"
+
+msgid "Tsipouro Restaurants"
+msgstr ""
+
+msgid "Halal Restaurants"
+msgstr ""
+
+msgid "Hawaiian Restaurants"
+msgstr "Restaurantes hawaiano"
+
+msgid "Himalayan Restaurants"
+msgstr ""
+
+msgid "Hot Dog Joints"
+msgstr "Perrito caliente"
+
+msgid "Hotpot Restaurants"
+msgstr "Restaurantes de estofado"
+
+msgid "Hungarian Restaurants"
+msgstr "Restaurantes Húngaro"
+
+msgid "Ice Cream Shops"
+msgstr "Heladerías"
+
+msgid "Indian Restaurants"
+msgstr "Restaurantes indios"
+
+msgid "Andhra Restaurants"
+msgstr ""
+
+msgid "Awadhi Restaurants"
+msgstr ""
+
+msgid "Bengali Restaurants"
+msgstr "Restaurantes bengalí"
+
+msgid "Chaat Places"
+msgstr ""
+
+msgid "Chettinad Restaurants"
+msgstr ""
+
+msgid "Dhabas"
+msgstr ""
+
+msgid "Dosa Places"
+msgstr ""
+
+msgid "Goan Restaurants"
+msgstr ""
+
+msgid "Gujarati Restaurants"
+msgstr ""
+
+msgid "Hyderabadi Restaurants"
+msgstr ""
+
+msgid "Indian Chinese Restaurants"
+msgstr ""
+
+msgid "Irani Cafes"
+msgstr "Cafetería Iraní"
+
+msgid "Jain Restaurants"
+msgstr "Restaurantes Jain"
+
+msgid "Karnataka Restaurants"
+msgstr ""
+
+msgid "Kerala Restaurants"
+msgstr ""
+
+msgid "Maharashtrian Restaurants"
+msgstr ""
+
+msgid "Mughlai Restaurants"
+msgstr ""
+
+msgid "Multicuisine Indian Restaurants"
+msgstr "Restaurantes indios multicocina"
+
+msgid "North Indian Restaurants"
+msgstr "Restaurantes indios del norte"
+
+msgid "Northeast Indian Restaurants"
+msgstr "Restaurantes indios del noreste"
+
+msgid "Parsi Restaurants"
+msgstr ""
+
+msgid "Punjabi Restaurants"
+msgstr ""
+
+msgid "Rajasthani Restaurants"
+msgstr ""
+
+msgid "South Indian Restaurants"
+msgstr "Restaurantes indios del sur"
+
+msgid "Sweet Shops"
+msgstr "Confiterías"
+
+msgid "Udupi Restaurants"
+msgstr ""
+
+msgid "Indonesian Restaurants"
+msgstr "Restaurantes indonesio"
+
+msgid "Acehnese Restaurants"
+msgstr ""
+
+msgid "Balinese Restaurants"
+msgstr "Restaurantes de Bali"
+
+msgid "Betawinese Restaurants"
+msgstr ""
+
+msgid "Javanese Restaurants"
+msgstr ""
+
+msgid "Manadonese Restaurants"
+msgstr ""
+
+msgid "Meatball Places"
+msgstr "Lugares de bolas de carne"
+
+msgid "Padangnese Restaurants"
+msgstr ""
+
+msgid "Sundanese Restaurants"
+msgstr "Restaurantes sudanés"
+
+msgid "Irish Pubs"
+msgstr "Pubs irlandeses"
+
+msgid "Italian Restaurants"
+msgstr "Restaurantes italianos"
+
+msgid "Japanese Restaurants"
+msgstr "Restaurantes japoneses"
+
+msgid "Jewish Restaurants"
+msgstr "Restaurantes judíos"
+
+msgid "Juice Bars"
+msgstr "Bar de zumos"
+
+msgid "Korean Restaurants"
+msgstr "Restaurantes coreanos"
+
+msgid "Kosher Restaurants"
+msgstr "Restaurantes de Kosher"
+
+msgid "Latin American Restaurants"
+msgstr "Restaurantes de América Latina"
+
+msgid "Empanada Restaurants"
+msgstr "Restaurantes de empanada"
+
+msgid "Mac & Cheese Joints"
+msgstr "Hamburgueserías"
+
+msgid "Malaysian Restaurants"
+msgstr "Restaurantes de Malasia"
+
+msgid "Mediterranean Restaurants"
+msgstr "Restaurantes mediterraneos"
+
+msgid "Mexican Restaurants"
+msgstr "Restaurantes mexicanos"
+
+msgid "Middle Eastern Restaurants"
+msgstr "Restaurantes del medio este"
+
+msgid "Modern European Restaurants"
+msgstr "Restaurantes de la europa moderna"
+
+msgid "Molecular Gastronomy Restaurants"
+msgstr "Restaurantes de gastronomía molecular"
+
+msgid "Mongolian Restaurants"
+msgstr "Restaurantes mongol"
+
+msgid "Moroccan Restaurants"
+msgstr "Restaurantes marroquíes"
+
+msgid "New American Restaurants"
+msgstr "Restaurantes New American"
+
+msgid "Pakistani Restaurants"
+msgstr "Restaurantes paquistaníes"
+
+msgid "Persian Restaurants"
+msgstr "Restaurantes persa"
+
+msgid "Peruvian Restaurants"
+msgstr "Restaurantes peruanos"
+
+msgid "Pie Shops"
+msgstr "Tiendas de pastel"
+
+msgid "Pizza Places"
+msgstr "Pizzerías"
+
+msgid "Polish Restaurants"
+msgstr "Restaurantes Polaco"
+
+msgid "Portuguese Restaurants"
+msgstr "Restaurantes portugueses"
+
+msgid "Ramen / Noodle Houses"
+msgstr "Casa de ramen/noodles"
+
+msgid "Restaurants"
+msgstr "Restaurantes"
+
+msgid "Romanian Restaurants"
+msgstr "Restaurantes Rumano"
+
+msgid "Russian Restaurants"
+msgstr "Restaurantes ruso"
+
+msgid "Blini Houses"
+msgstr ""
+
+msgid "Pelmeni Houses"
+msgstr ""
+
+msgid "Salad Shop"
+msgstr "Tiendas de ensaladas"
+
+msgid "Sandwich Places"
+msgstr "Lugares de sandwich"
+
+msgid "Scandinavian Restaurants"
+msgstr "Restaurantes escandinavos"
+
+msgid "Seafood Restaurants"
+msgstr "MARISCOS"
+
+msgid "Snack Places"
+msgstr "Lugares de snack"
+
+msgid "Soup Places"
+msgstr "Lugares de sopa"
+
+msgid "South American Restaurants"
+msgstr "Restaurantes de América del sur"
+
+msgid "Southern / Soul Food Restaurants"
+msgstr ""
+
+msgid "Souvlaki Shops"
+msgstr ""
+
+msgid "Spanish Restaurants"
+msgstr "Restaurantes españoles"
+
+msgid "Paella Restaurants"
+msgstr "Restaurantes de paella"
+
+msgid "Sri Lankan Restaurants"
+msgstr "Restaurantes de Sri Lankan"
+
+msgid "Steakhouses"
+msgstr "Asadores"
+
+msgid "Sushi Restaurants"
+msgstr "Restaurantes de sushi"
+
+msgid "Swiss Restaurants"
+msgstr "Restaurantes suizos"
+
+msgid "Taco Places"
+msgstr "Lugares de taco"
+
+msgid "Tapas Restaurants"
+msgstr "Restaurantes de tapas"
+
+msgid "Tatar Restaurants"
+msgstr "Restaurantes de tartar"
+
+msgid "Tea Rooms"
+msgstr "Salones de té"
+
+msgid "Thai Restaurants"
+msgstr "Restaurante tailandes"
+
+msgid "Tibetan Restaurants"
+msgstr "Restaurantes tibetanos"
+
+msgid "Turkish Restaurants"
+msgstr "Restaurantes de Turco"
+
+msgid "Borek Places"
+msgstr ""
+
+msgid "Cigkofte Places"
+msgstr ""
+
+msgid "Doner Restaurants"
+msgstr ""
+
+msgid "Gozleme Places"
+msgstr ""
+
+msgid "Home Cooking Restaurants"
+msgstr ""
+
+msgid "Kebab Restaurants"
+msgstr "Restaurantes kebab"
+
+msgid "Kofte Places"
+msgstr ""
+
+msgid "KokoreÃ§ Restaurants"
+msgstr ""
+
+msgid "Manti Places"
+msgstr ""
+
+msgid "Meyhanes"
+msgstr ""
+
+msgid "Pide Places"
+msgstr ""
+
+msgid "Ukrainian Restaurants"
+msgstr "Restaurante Ukraniano"
+
+msgid "Varenyky Restaurants"
+msgstr ""
+
+msgid "West-Ukrainian Restaurants"
+msgstr "Restaurantes del oeste Ukraniano"
+
+msgid "Vegetarian / Vegan Restaurants"
+msgstr "Restaurantes Vegetariana / vegana"
+
+msgid "Vietnamese Restaurants"
+msgstr "Restaurantes vietnamitas"
+
+msgid "Wineries"
+msgstr "Bodega"
+
+msgid "Wings Joints"
+msgstr ""
+
+msgid "Yogurt"
+msgstr "Yogurt"
+
+msgid "Nightlife Spots"
+msgstr "Nocturnos"
+
+msgid "Bars"
+msgstr "Bars"
+
+msgid "Beach Bars"
+msgstr "Bares de playa"
+
+msgid "Beer Gardens"
+msgstr "Jardines de la cerveza"
+
+msgid "Breweries"
+msgstr "Industria cervecera"
+
+msgid "Champagne Bars"
+msgstr "Bares de Champagne"
+
+msgid "Cocktail Bars"
+msgstr "Cocktelerías"
+
+msgid "Dive Bars"
+msgstr "Dive Bars"
+
+msgid "Gay Bars"
+msgstr "Bares gay"
+
+msgid "Hookah Bars"
+msgstr "Barras de la cachimba"
+
+msgid "Hotel Bars"
+msgstr "Bares del Hotel"
+
+msgid "Karaoke Bars"
+msgstr "Karaokes"
+
+msgid "Lounges"
+msgstr "Salones"
+
+msgid "Night Markets"
+msgstr "Mercados nocturnos"
+
+msgid "Nightclubs"
+msgstr "Discotecas"
+
+msgid "Other Nightlife"
+msgstr "Vida Nocturna"
+
+msgid "Pubs"
+msgstr "Pubs"
+
+msgid "Sake Bars"
+msgstr "Bares de sake"
+
+msgid "Speakeasies"
+msgstr ""
+
+msgid "Sports Bars"
+msgstr "Bares deportivos"
+
+msgid "Strip Clubs"
+msgstr "Clubes de striptease"
+
+msgid "Whisky Bars"
+msgstr "Whisky bares"
+
+msgid "Wine Bars"
+msgstr "Bares de vinos"
+
+msgid "Outdoors & Recreation"
+msgstr "En espacios exteriores"
+
+msgid "Athletics & Sports"
+msgstr "Atletismo y deportes"
+
+msgid "Badminton Courts"
+msgstr "Zonas de bádminton"
+
+msgid "Baseball Fields"
+msgstr "Campos de béisbol"
+
+msgid "Basketball Courts"
+msgstr "Canchas de baloncesto"
+
+msgid "Bowling Greens"
+msgstr "Bolos"
+
+msgid "Golf Courses"
+msgstr "Campos de golf"
+
+msgid "Hockey Fields"
+msgstr "Campos de hockey"
+
+msgid "Paintball Fields"
+msgstr "Campos de paintball"
+
+msgid "Rugby Pitches"
+msgstr "Campos de rugby"
+
+msgid "Skate Parks"
+msgstr "Parques de Skate"
+
+msgid "Skating Rinks"
+msgstr "Pistas de patinaje"
+
+msgid "Soccer Fields"
+msgstr "Campos de fútbol"
+
+msgid "Sports Clubs"
+msgstr "Clubes deportivos"
+
+msgid "Squash Courts"
+msgstr "Zonas de squas"
+
+msgid "Tennis Courts"
+msgstr "Pista de tenis"
+
+msgid "Volleyball Courts"
+msgstr "Canchas de voleibol"
+
+msgid "Bath Houses"
+msgstr "Balnearios"
+
+msgid "Bathing Areas"
+msgstr "Zonas de baño"
+
+msgid "Beaches"
+msgstr "Playas"
+
+msgid "Nudist Beaches"
+msgstr "Playas nudistas"
+
+msgid "Surf Spots"
+msgstr "Zonas de surf"
+
+msgid "Botanical Gardens"
+msgstr "Jardines botánicos"
+
+msgid "Bridges"
+msgstr "Puentes"
+
+msgid "Campgrounds"
+msgstr "zona de camping"
+
+msgid "Castles"
+msgstr "Castillos"
+
+msgid "Cemeteries"
+msgstr "Cementerio"
+
+msgid "Dive Spots"
+msgstr "Puntos de buceo"
+
+msgid "Dog Runs"
+msgstr "Carreras de perro"
+
+msgid "Farms"
+msgstr "Granjas"
+
+msgid "Fields"
+msgstr "Campos"
+
+msgid "Fishing Spots"
+msgstr "Lugares de pesca"
+
+msgid "Forests"
+msgstr "Bosques"
+
+msgid "Gardens"
+msgstr "Jardines"
+
+msgid "Gun Ranges"
+msgstr "Galería de tiro"
+
+msgid "Harbors / Marinas"
+msgstr "Puerto deportivo"
+
+msgid "Hot Springs"
+msgstr "Aguas termales"
+
+msgid "Islands"
+msgstr "Islas"
+
+msgid "Lakes"
+msgstr "Lagos"
+
+msgid "Lighthouses"
+msgstr "Faros"
+
+msgid "Mountains"
+msgstr "Montañas"
+
+msgid "National Parks"
+msgstr "Parques nacionales"
+
+msgid "Nature Preserves"
+msgstr "Reserva natural"
+
+msgid "Other Great Outdoors"
+msgstr "Otros grandes al aire libre"
+
+msgid "Palaces"
+msgstr "Palacios"
+
+msgid "Parks"
+msgstr "Parques"
+
+msgid "Pedestrian Plazas"
+msgstr "Plazas peatonales"
+
+msgid "Playgrounds"
+msgstr "Parques infantiles"
+
+msgid "Plazas"
+msgstr "Plazas"
+
+msgid "Pools"
+msgstr "Piscinas"
+
+msgid "Rafting Spots"
+msgstr "Descenso de ríos"
+
+msgid "Recreation Centers"
+msgstr "Centros recreativos"
+
+msgid "Rivers"
+msgstr "Ríos"
+
+msgid "Rock Climbing Spots"
+msgstr "Manchas de escalada de roca"
+
+msgid "Scenic Lookouts"
+msgstr "Miradores escénicos"
+
+msgid "Sculpture Gardens"
+msgstr "Jardines de escultura"
+
+msgid "Ski Areas"
+msgstr "Zonas de esquí"
+
+msgid "Apres Ski Bars"
+msgstr ""
+
+msgid "Ski Chairlifts"
+msgstr "Telesillas"
+
+msgid "Ski Chalets"
+msgstr ""
+
+msgid "Ski Lodges"
+msgstr "Alojamientos de esquí"
+
+msgid "Ski Trails"
+msgstr "Pistas de esquí"
+
+msgid "Stables"
+msgstr "Establos"
+
+msgid "States & Municipalities"
+msgstr "Estados y municipios"
+
+msgid "Cities"
+msgstr "Ciudades"
+
+msgid "Counties"
+msgstr "Condados"
+
+msgid "Countries"
+msgstr "Países"
+
+msgid "Neighborhoods"
+msgstr "Barrios"
+
+msgid "States"
+msgstr "Estados"
+
+msgid "Towns"
+msgstr "Ciudades"
+
+msgid "Villages"
+msgstr "Pueblos"
+
+msgid "Summer Camps"
+msgstr "Campamentos de verano"
+
+msgid "Trails"
+msgstr "Senderos"
+
+msgid "Trees"
+msgstr "Árboles"
+
+msgid "Vineyards"
+msgstr "Viñedos"
+
+msgid "Volcanoes"
+msgstr "Volcanes"
+
+msgid "Wells"
+msgstr "Pozos"
+
+msgid "Professional & Other Places"
+msgstr "Profesiones y otros lugares"
+
+msgid "Animal Shelters"
+msgstr "Refugio de animales"
+
+msgid "Auditoriums"
+msgstr "Auditorios"
+
+msgid "Buildings"
+msgstr "Edificios"
+
+msgid "Club Houses"
+msgstr "Casas Club"
+
+msgid "Community Centers"
+msgstr "Centros comunitarios"
+
+msgid "Convention Centers"
+msgstr "Centros de convenciones"
+
+msgid "Meeting Rooms"
+msgstr "Salas de reuniones"
+
+msgid "Cultural Centers"
+msgstr "Centros culturales"
+
+msgid "Distribution Centers"
+msgstr "Centros de distribución"
+
+msgid "Event Spaces"
+msgstr "Eventos espaciales"
+
+msgid "Factories"
+msgstr "Fábricas"
+
+msgid "Fairs"
+msgstr "Ferias"
+
+msgid "Funeral Homes"
+msgstr "Funerarias"
+
+msgid "Government Buildings"
+msgstr "Edificios gubernamentales"
+
+msgid "Capitol Buildings"
+msgstr "Edificios del Capitolio"
+
+msgid "City Halls"
+msgstr "Ayuntamientos"
+
+msgid "Courthouses"
+msgstr "Tribunales"
+
+msgid "Embassies / Consulates"
+msgstr "Embajadas / Consulados"
+
+msgid "Fire Stations"
+msgstr "Estaciones de bomberos"
+
+msgid "Monuments / Landmarks"
+msgstr "Monumentos / hitos"
+
+msgid "Police Stations"
+msgstr "Comisarías de policía"
+
+msgid "Town Halls"
+msgstr "Ayuntamientos"
+
+msgid "Libraries"
+msgstr "bibliotecas"
+
+msgid "Medical Centers"
+msgstr "Centros médicos"
+
+msgid "Acupuncturists"
+msgstr "Acupunturistas"
+
+msgid "Alternative Healers"
+msgstr "Curanderos alternativos"
+
+msgid "Chiropractors"
+msgstr "Quiroprácticos"
+
+msgid "Dentist's Offices"
+msgstr "Dentistas"
+
+msgid "Doctor's Offices"
+msgstr "Consultorios"
+
+msgid "Emergency Rooms"
+msgstr "Salas de emergencia"
+
+msgid "Eye Doctors"
+msgstr "Oculistas"
+
+msgid "Hospitals"
+msgstr "Hospitales"
+
+msgid "Laboratories"
+msgstr "Laboratorios"
+
+msgid "Mental Health Offices"
+msgstr "Salud mental"
+
+msgid "Veterinarians"
+msgstr "Veterinario"
+
+msgid "Military Bases"
+msgstr "Bases militares"
+
+msgid "Non-Profits"
+msgstr "Organización sin ánimo de lucro"
+
+msgid "Offices"
+msgstr "Oficinas"
+
+msgid "Advertising Agencies"
+msgstr "Agencias de Publicidad"
+
+msgid "Campaign Offices"
+msgstr "Oficinas"
+
+msgid "Conference Rooms"
+msgstr "Salas de conferencias"
+
+msgid "Corporate Cafeterias"
+msgstr "Cafeterías corporativas"
+
+msgid "Coworking Spaces"
+msgstr "Espacios coworking"
+
+msgid "Tech Startups"
+msgstr "Startups tecnológicas"
+
+msgid "Parking"
+msgstr "Parkings"
+
+msgid "Post Offices"
+msgstr "Oficinas de correos"
+
+msgid "Prisons"
+msgstr "Prisiones"
+
+msgid "Radio Stations"
+msgstr "Estaciones de radio"
+
+msgid "Recruiting Agencies"
+msgstr "Agencias de reclutamiento"
+
+msgid "Schools"
+msgstr "Escuelas"
+
+msgid "Circus Schools"
+msgstr "Escuelas de circo"
+
+msgid "Driving Schools"
+msgstr "Autoescuelas"
+
+msgid "Elementary Schools"
+msgstr "Escuelas primarias"
+
+msgid "Flight Schools"
+msgstr "Escuelas de vuelo"
+
+msgid "High Schools"
+msgstr "Escuela secundaria"
+
+msgid "Language Schools"
+msgstr "Escuelas de idiomas"
+
+msgid "Middle Schools"
+msgstr "Escuelas intermedias"
+
+msgid "Music Schools"
+msgstr "Escuelas de música"
+
+msgid "Nursery Schools"
+msgstr "Escuelas de párvulos"
+
+msgid "Preschools"
+msgstr "Centros preescolares"
+
+msgid "Private Schools"
+msgstr "Colegios privados"
+
+msgid "Religious Schools"
+msgstr "Colegios religiosos"
+
+msgid "Swim Schools"
+msgstr "Escuelas de natación"
+
+msgid "Social Clubs"
+msgstr "Clubes sociales"
+
+msgid "Spiritual Centers"
+msgstr "Centros espirituales"
+
+msgid "Buddhist Temples"
+msgstr "Templos budistas"
+
+msgid "Churches"
+msgstr "Iglesias"
+
+msgid "Hindu Temples"
+msgstr "Templos hindúes"
+
+msgid "Monasteries"
+msgstr "Monasterios"
+
+msgid "Mosques"
+msgstr "Mezquitas"
+
+msgid "Prayer Rooms"
+msgstr "Salas de oración"
+
+msgid "Shrines"
+msgstr "Santuarios"
+
+msgid "Synagogues"
+msgstr "Sinagogas"
+
+msgid "Temples"
+msgstr "Templos"
+
+msgid "TV Stations"
+msgstr "Estaciones de televisión"
+
+msgid "Voting Booths"
+msgstr "Cabinas de votos"
+
+msgid "Warehouses"
+msgstr "Almacenes"
+
+msgid "Residences"
+msgstr "Residencias"
+
+msgid "Assisted Living"
+msgstr "Vivienda asistida"
+
+msgid "Homes (private)"
+msgstr "Casas (privado)"
+
+msgid "Housing Developments"
+msgstr "Desarrollos habitacionales"
+
+msgid "Residential Buildings (Apartments / Condos)"
+msgstr "Urbanización"
+
+msgid "Trailer Parks"
+msgstr "Aparcamiento de caravanas"
+
+msgid "Shops & Services"
+msgstr "Tiendas y servicios"
+
+msgid "ATMs"
+msgstr "Cajeros automÃ¡ticos"
+
+msgid "Adult Boutiques"
+msgstr "Tiendas para adultos"
+
+msgid "Antique Shops"
+msgstr "Tiendas de antigüedades"
+
+msgid "Arts & Crafts Stores"
+msgstr "Artes & tiendas de artesanías"
+
+msgid "Astrologers"
+msgstr "Astrología"
+
+msgid "Auto Garages"
+msgstr "Garajes"
+
+msgid "Automotive Shops"
+msgstr "Tiendas automotrices"
+
+msgid "Baby Stores"
+msgstr "Tiendas de bebé"
+
+msgid "Banks"
+msgstr "Bancos"
+
+msgid "Betting Shops"
+msgstr "Tiendas de apuestas"
+
+msgid "Big Box Stores"
+msgstr "Grandes almacenes"
+
+msgid "Bike Shops"
+msgstr "Tiendas de bicicletas"
+
+msgid "Board Shops"
+msgstr "Tiendas de tablas de deporte"
+
+msgid "Bookstores"
+msgstr "Librerías"
+
+msgid "Bridal Shops"
+msgstr "Tiendas nupciales"
+
+msgid "Business Services"
+msgstr "Servicios Comerciales"
+
+msgid "Camera Stores"
+msgstr "Tiendas de cámara"
+
+msgid "Candy Stores"
+msgstr "Dulcerías"
+
+msgid "Car Dealerships"
+msgstr "Concesionarias de automóviles"
+
+msgid "Car Washes"
+msgstr "Lava coches"
+
+msgid "Carpet Stores"
+msgstr "Tiendas de alfombras"
+
+msgid "Check Cashing Services"
+msgstr "Tienda de cambio de billetes"
+
+msgid "Chocolate Shops"
+msgstr "Chocolaterías"
+
+msgid "Christmas Markets"
+msgstr "Mercadillos de Navidad"
+
+msgid "Clothing Stores"
+msgstr "Tiendas de ropa"
+
+msgid "Accessories Stores"
+msgstr "Tiendas de accesorios"
+
+msgid "Boutiques"
+msgstr "Boutiques"
+
+msgid "Kids Stores"
+msgstr "Tiendas de niños"
+
+msgid "Lingerie Stores"
+msgstr "Tiendas de lencería"
+
+msgid "Men's Stores"
+msgstr "Tiendas de hombres"
+
+msgid "Shoe Stores"
+msgstr "Zapaterías"
+
+msgid "Women's Stores"
+msgstr "Tiendas de mujeres"
+
+msgid "Comic Shops"
+msgstr "Tiendas de cómics"
+
+msgid "Construction & Landscaping"
+msgstr "Construcción y paisajismo"
+
+msgid "Convenience Stores"
+msgstr "Tiendas 24h"
+
+msgid "Cosmetics Shops"
+msgstr "Tiendas de cosméticos"
+
+msgid "Costume Shops"
+msgstr "Tiendas de disfraces"
+
+msgid "Credit Unions"
+msgstr "Crédito"
+
+msgid "Daycares"
+msgstr "Guarderías"
+
+msgid "Department Stores"
+msgstr "Gran almacén"
+
+msgid "Design Studios"
+msgstr "Estudios de diseño"
+
+msgid "Discount Stores"
+msgstr "Tienda de descuento"
+
+msgid "Dive Shops"
+msgstr "Tiendas de buceo"
+
+msgid "Drugstores / Pharmacies"
+msgstr "Droguerías / farmacias"
+
+msgid "Dry Cleaners"
+msgstr "Limpieza en seco"
+
+msgid "EV Charging Stations"
+msgstr "Estaciones de carga de EV"
+
+msgid "Electronics Stores"
+msgstr "Tiendas electrónicas"
+
+msgid "Event Services"
+msgstr "Servicios de eventos"
+
+msgid "Fabric Shops"
+msgstr "Tiendas de telas"
+
+msgid "Financial or Legal Services"
+msgstr "Servicios financieros o legales"
+
+msgid "Fireworks Stores"
+msgstr "Tiendas de fuegos artificiales"
+
+msgid "Fishing Stores"
+msgstr "Tiendas de pesca"
+
+msgid "Flea Markets"
+msgstr "Mercadillo"
+
+msgid "Flower Shops"
+msgstr "Floristería"
+
+msgid "Food & Drink Shops"
+msgstr "Tiendas de alimentos y bebida"
+
+msgid "Beer Stores"
+msgstr "Tiendas de cerveza"
+
+msgid "Butchers"
+msgstr "Carnicero"
+
+msgid "Cheese Shops"
+msgstr "Queserías"
+
+msgid "Farmers Markets"
+msgstr "Mercados de agricultores"
+
+msgid "Fish Markets"
+msgstr "Mercados de pescado"
+
+msgid "Food Courts"
+msgstr "Patios de comida"
+
+msgid "Gourmet Shops"
+msgstr "Tiendas gourmet"
+
+msgid "Grocery Stores"
+msgstr "Tienda de ultramarinos"
+
+msgid "Health Food Stores"
+msgstr "alimentos naturales"
+
+msgid "Liquor Stores"
+msgstr "Tiendas de licores"
+
+msgid "Organic Groceries"
+msgstr "Alimentos orgánicos"
+
+msgid "Street Food Gatherings"
+msgstr "Comida callejera"
+
+msgid "Supermarkets"
+msgstr "Hipermercados"
+
+msgid "Wine Shops"
+msgstr "Tiendas de vino"
+
+msgid "Frame Stores"
+msgstr "Tienda de marcos para cuadros"
+
+msgid "Fruit & Vegetable Stores"
+msgstr "Tienda de fruta y verduras"
+
+msgid "Furniture / Home Stores"
+msgstr "Tiendas de muebles"
+
+msgid "Gaming Cafes"
+msgstr "Ciber"
+
+msgid "Garden Centers"
+msgstr "Centros de jardín"
+
+msgid "Gas Stations / Garages"
+msgstr "Estación de servicio"
+
+msgid "Gift Shops"
+msgstr "Tiendas de regalos"
+
+msgid "Gun Shops"
+msgstr "Armerías"
+
+msgid "Gyms or Fitness Centers"
+msgstr "Gimnasios o centros de Fitness"
+
+msgid "Boxing Gyms"
+msgstr "Gimnasios de boxeo"
+
+msgid "Climbing Gyms"
+msgstr "Gimnasios de escalada"
+
+msgid "Cycle Studios"
+msgstr "Sala de fitness"
+
+msgid "Gym Pools"
+msgstr "Gimnasio piscinas"
+
+msgid "Gymnastics Gyms"
+msgstr "Gimnasia gimnasios"
+
+msgid "Gyms"
+msgstr "Gimnasio"
+
+msgid "Martial Arts Dojos"
+msgstr "Artes marciales"
+
+msgid "Tracks"
+msgstr "Pistas"
+
+msgid "Yoga Studios"
+msgstr "Estudios de yoga"
+
+msgid "Hardware Stores"
+msgstr "Ferreterías"
+
+msgid "Health & Beauty Services"
+msgstr "Salud y servicios de belleza"
+
+msgid "Herbs & Spices Stores"
+msgstr "Hierbas y tiendas de especias"
+
+msgid "Hobby Shops"
+msgstr "Tiendas de hobby"
+
+msgid "Home Services & Repairs"
+msgstr "Servicios en el hogar y reparaciones"
+
+msgid "Hunting Supplies"
+msgstr "Cazería"
+
+msgid "IT Services"
+msgstr "Servicios TI"
+
+msgid "Internet Cafes"
+msgstr "Cibercafé"
+
+msgid "Jewelry Stores"
+msgstr "Joyerías"
+
+msgid "Knitting Stores"
+msgstr "Tiendas de tejer"
+
+msgid "Laundromats"
+msgstr "Lavanderías"
+
+msgid "Laundry Services"
+msgstr "Servicios de lavandería"
+
+msgid "Lawyers"
+msgstr "Abogados"
+
+msgid "Leather Goods Stores"
+msgstr "Tiendas de artículos de cuero"
+
+msgid "Locksmiths"
+msgstr "Cerrajeros"
+
+msgid "Lottery Retailers"
+msgstr "Vendedores de lotería"
+
+msgid "Luggage Stores"
+msgstr "Tienda de equipajes"
+
+msgid "Malls"
+msgstr "Centros comerciales"
+
+msgid "Marijuana Dispensaries"
+msgstr "Dispensarios de marihuana"
+
+msgid "Markets"
+msgstr "Mercados"
+
+msgid "Massage Studios"
+msgstr "Masaje"
+
+msgid "Mattress Stores"
+msgstr "Tiendas de colchones"
+
+msgid "Miscellaneous Shops"
+msgstr "Tiendas varias"
+
+msgid "Mobile Phone Shops"
+msgstr "Tiendas de telefonía móvil"
+
+msgid "Motorcycle Shops"
+msgstr "Tiendas de motos"
+
+msgid "Music Stores"
+msgstr "Tiendas de música"
+
+msgid "Nail Salons"
+msgstr ""
+
+msgid "Newsstands"
+msgstr "Quioscos"
+
+msgid "Optical Shops"
+msgstr "Ópticas"
+
+msgid "Other Repair Shops"
+msgstr "Otras tiendas de reparación"
+
+msgid "Outdoor Supply Stores"
+msgstr "Tiendas de artículos para exteriores"
+
+msgid "Outlet Stores"
+msgstr "Tiendas outlet"
+
+msgid "Paper / Office Supplies Stores"
+msgstr "Papel / tiendas de suministros de oficina"
+
+msgid "Pawn Shops"
+msgstr "Casas de empeño"
+
+msgid "Perfume Shops"
+msgstr "Perfumerías"
+
+msgid "Pet Services"
+msgstr "Servicios de mascotas"
+
+msgid "Pet Stores"
+msgstr "Tiendas de mascotas"
+
+msgid "Photography Labs"
+msgstr "Laboratorios de fotografía"
+
+msgid "Piercing Parlors"
+msgstr "Tienda de piercing"
+
+msgid "Pop-Up Shops"
+msgstr ""
+
+msgid "Print Shops"
+msgstr "Imprentas"
+
+msgid "Real Estate Offices"
+msgstr ""
+
+msgid "Record Shops"
+msgstr "Tiendas de discos"
+
+msgid "Recording Studios"
+msgstr "Estudio de grabación"
+
+msgid "Recycling Facilities"
+msgstr "Instalaciones de reciclaje"
+
+msgid "Salons / Barbershops"
+msgstr "Salones / peluquero"
+
+msgid "Shipping Stores"
+msgstr "Tiendas de envío"
+
+msgid "Shoe Repair Shops"
+msgstr "Talleres de reparación de calzado"
+
+msgid "Smoke Shops"
+msgstr "Tiendas de humo"
+
+msgid "Smoothie Shops"
+msgstr "Smoothie Shops"
+
+msgid "Souvenir Shops"
+msgstr "Tiendas de souvenirs"
+
+msgid "Spas"
+msgstr "Spas"
+
+msgid "Sporting Goods Shops"
+msgstr "Tiendas de artículos deportivos"
+
+msgid "Stationery Stores"
+msgstr "Papelerías"
+
+msgid "Storage Facilities"
+msgstr "Almacén"
+
+msgid "Tailor Shops"
+msgstr "Sastrerías"
+
+msgid "Tanning Salons"
+msgstr "Salones de bronceado"
+
+msgid "Tattoo Parlors"
+msgstr "Tatuadores"
+
+msgid "Thrift / Vintage Stores"
+msgstr "Segunda mano / tiendas Vintage"
+
+msgid "Toy / Game Stores"
+msgstr "Tiendas de juguetes"
+
+msgid "Travel Agencies"
+msgstr "Agencia de viajes"
+
+msgid "Used Bookstores"
+msgstr ""
+
+msgid "Video Game Stores"
+msgstr "Tiendas de videojuego"
+
+msgid "Video Stores"
+msgstr "Tienda de video"
+
+msgid "Warehouse Stores"
+msgstr "Almacenes"
+
+msgid "Watch Repair Shops"
+msgstr "Reparación de relojes"
+
+msgid "Travel & Transport"
+msgstr "Viajes y transportes"
+
+msgid "Airports"
+msgstr "Aeropuertos"
+
+msgid "Airport Food Courts"
+msgstr "Comidas de aeropuerto"
+
+msgid "Airport Gates"
+msgstr "Puertas de embarque aeropuerto"
+
+msgid "Airport Lounges"
+msgstr "Salones de aeropuerto"
+
+msgid "Airport Terminals"
+msgstr "Terminales del aeropuerto"
+
+msgid "Airport Trams"
+msgstr ""
+
+msgid "Planes"
+msgstr "Aviones"
+
+msgid "Bike Rentals / Bike Shares"
+msgstr "Alquiler de bicicletas / compartir bicicletas"
+
+msgid "Boats or Ferries"
+msgstr "Barcos o Ferries"
+
+msgid "Border Crossings"
+msgstr "Cruces fronterizos"
+
+msgid "Bus Stations"
+msgstr "Estación de autobús"
+
+msgid "Bus Lines"
+msgstr "Líneas de autobús"
+
+msgid "Bus Stops"
+msgstr "Parada de autobús"
+
+msgid "Cable Cars"
+msgstr "Teleféricos"
+
+msgid "Cruises"
+msgstr "Cruceros"
+
+msgid "General Travel"
+msgstr ""
+
+msgid "Hotels"
+msgstr "Hoteles"
+
+msgid "Bed & Breakfasts"
+msgstr "Desayunar y dormir"
+
+msgid "Boarding Houses"
+msgstr "Pensiones"
+
+msgid "Hostels"
+msgstr "Albergue juvenil"
+
+msgid "Hotel Pools"
+msgstr "Piscinas del Hotel"
+
+msgid "Motels"
+msgstr "Moteles"
+
+msgid "Resorts"
+msgstr "Resorts"
+
+msgid "Roof Decks"
+msgstr ""
+
+msgid "Intersections"
+msgstr "Intersección"
+
+msgid "Light Rails"
+msgstr ""
+
+msgid "Moving Targets"
+msgstr ""
+
+msgid "Piers"
+msgstr "Muelle"
+
+msgid "RV Parks"
+msgstr "Autocaravana"
+
+msgid "Rental Car Locations"
+msgstr "Oficinas De Alquiler De Coches"
+
+msgid "Rest Areas"
+msgstr "Áreas de descanso"
+
+msgid "Roads"
+msgstr "Carreteras"
+
+msgid "Streets"
+msgstr "Calles"
+
+msgid "Subways"
+msgstr "Metro"
+
+msgid "Taxi Stands"
+msgstr "Paradas de taxis"
+
+msgid "Taxis"
+msgstr "Taxis"
+
+msgid "Toll Booths"
+msgstr "Cabinas de peaje"
+
+msgid "Toll Plazas"
+msgstr "Plazas de peaje"
+
+msgid "Tourist Information Centers"
+msgstr "Centros de información turística"
+
+msgid "Train Stations"
+msgstr "Estaciones de trenes"
+
+msgid "Platforms"
+msgstr "Plataformas"
+
+msgid "Trains"
+msgstr "Trenes"
+
+msgid "Trams"
+msgstr "Tranvía"
+
+msgid "Transportation Services"
+msgstr "Servicios de Transporte"
+
+msgid "Travel Lounges"
+msgstr "Salones de viaje"
+
+msgid "Tunnels"
+msgstr "Túneles"

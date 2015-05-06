@@ -1,4 +1,5 @@
 # -*- coding: latin-1 -*-
+from datetime import datetime
 import traceback
 
 from django.contrib.auth.decorators import login_required, permission_required
@@ -9,13 +10,16 @@ from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
-from principal.forms import TripEditForm, CommentForm
+from principal.forms import TripEditForm, CommentForm, AssessmentForm
 from principal.forms import TripUpdateStateForm
-from principal.models import Judges, Assessment, Day, Venue, VenueDay
+from principal.models import Judges, Assessment, Day, Venue, VenueDay, Feedback, Traveller, Likes, CoinHistory
 from principal.models import Trip, Comment
-from principal.services import TripService, TravellerService, CommentService
+from principal.services import TripService, TravellerService, CommentService,\
+    LikeService
+from principal.services.TravellerService import save
+from principal.services.LikeService import can_vote
 from principal.utils import BrainTravelUtils
-
+from django.utils.translation import ugettext as _
 
 # author: Juane
 def search_trip(request):
@@ -43,6 +47,10 @@ def search_trip(request):
 # author: Javi ----- Reviewed: Juane
 def public_trip_details(request, trip_id):
     try:
+        # Variable que hace que se muestre el modal de las valoraciones
+        modal = False
+
+        # Obtener el viaje
         trip = Trip.objects.get(id=trip_id, planified=False)
         assert trip.traveller.id == request.user.id or trip.state == 'ap' or request.user.has_perm('principal.administrator')
 
@@ -73,20 +81,36 @@ def public_trip_details(request, trip_id):
         else:
             assessment = list(assessment)[0]
 
-        # Validacion del comentario
         if request.POST:
             assert request.user.has_perm('principal.traveller')
-            comment_form = CommentForm(request.POST)
-            if comment_form.is_valid():
-                comment = CommentService.construct_comment(request.user.id, comment_form)
-                CommentService.save(request.user.id, comment)
-                BrainTravelUtils.save_success(request, 'Comment successfully')
-                return HttpResponseRedirect("/public_trip_details/" + str(comment.trip.id))
+            # Validacion del comentario
+            if 'comment_name' in request.POST:
+                comment_form = CommentForm(request.POST)
+                if comment_form.is_valid():
+                    comment = CommentService.construct_comment(request.user.id, comment_form)
+                    CommentService.save(request.user.id, comment)
+                    BrainTravelUtils.save_success(request, _('Comment successfully'))
+                    return HttpResponseRedirect("/public_trip_details/" + str(comment.trip.id))
+            else:
+                comment_form = CommentForm(initial={'id_trip': trip.id})
+            # Validacion de la valoracion
+            if 'assessment_name' in request.POST:
+                assessment_form = AssessmentForm(request.POST)
+                if assessment_form.is_valid():
+                    TripService.construct_assessment(request.user.id, assessment_form)
+                    BrainTravelUtils.save_success(request, _('Your vote has been saved!'))
+                    return HttpResponseRedirect("/public_trip_details/" + str(trip.id))
+                else:
+                    modal = True
+            else:
+                assessment_form = AssessmentForm(initial={'id_trip': trip.id})
+
         else:
             comment_form = CommentForm(initial={'id_trip': trip.id})
+            assessment_form = AssessmentForm(initial={'id_trip': trip.id})
 
         form = TripUpdateStateForm(initial={'id': trip.id, 'state': trip.state})
-        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'comment_form': comment_form, 'assessment': assessment}, context_instance=RequestContext(request))
+        return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'comment_form': comment_form, 'assessment_form': assessment_form, 'assessment': assessment, 'modal': modal}, context_instance=RequestContext(request))
     except Exception:
         return render_to_response('error.html')
 
@@ -123,7 +147,7 @@ def planned_trips(request):
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
     return render_to_response('trip_planned_list.html',
-                              {'trips': trips, 'create_trip': False, 'title_list': 'My planned trips'},
+                              {'trips': trips, 'create_trip': False, 'title_list': _('My planned trips')},
                               context_instance=RequestContext(request))
     
 
@@ -138,7 +162,7 @@ def update_state(request, trip_id):
                 trip = TripService.update_state(request.user, trip_form)
                 assert str(trip.scorable_ptr_id) == trip_id
                 TripService.save(trip)
-                BrainTravelUtils.save_success(request, 'Trip successfully updated')
+                BrainTravelUtils.save_success(request, _('Trip successfully updated'))
                 return redirect(list_trip_administrator)
         else:
             return redirect(public_trip_details(request, trip_id))
@@ -159,7 +183,7 @@ def list_all_by_traveller(request):
             trips = paginator.page(1)
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
-        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': 'My trips'},
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': _('My trips')},
                                   context_instance=RequestContext(request))
 
 
@@ -177,7 +201,7 @@ def list_all_by_traveller_draft(request):
         except EmptyPage:
             trips = paginator.page(paginator.num_pages)
         return render_to_response('trip_list.html',
-                                  {'trips': trips, 'create_trip': True, 'title_list': 'My draft trips'},
+                                  {'trips': trips, 'create_trip': True, 'title_list': _('My draft trips')},
                                   context_instance=RequestContext(request))
 
 
@@ -189,15 +213,15 @@ def trip_create(request):
         form = TripEditForm(request.POST)
         if form.is_valid():
             trip_new = TripService.create(form, user_id)
-            if "save" in request.POST and request.POST['save'] == "Save draft":
+            if "save" in request.POST and request.POST['save'] == "Save in draft":
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
-                BrainTravelUtils.save_success(request, "Action completed successfully")
+                BrainTravelUtils.save_success(request, _("Action completed successfully"))
                 return HttpResponseRedirect("/trip/draft/")
             elif "save" in request.POST and request.POST['save'] == "Publish Trip":
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)
-                BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
+                BrainTravelUtils.save_success(request, _("Your trip must be accepted by an administrator"))
                 return HttpResponseRedirect("/trip/mylist/")
             BrainTravelUtils.save_error(request)
             return HttpResponseRedirect("/trip/mylist/")
@@ -328,18 +352,32 @@ def send_feedback(request):
 @login_required()
 def value_tip(request, id_venue, id_tip):
     try:
-        '''
-        trip = Trip.objects.get(traveller=traveller)
-        list_judges = Judges.objects.filter(trip_id=trip.id, traveller_id=traveller.id)
-
-        if (len(list_judges) % 5) == 0 | 5:
-            coins = round(len(list_judges) // 5)
-            CoinService.increase_coins(traveller.id, coins * 2)
-        '''
         url = request.path.split("/")
-        TripService.value_tip(id_tip, id_venue)
-        BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
-        return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
+        current_traveller = Traveller.objects.get(id=request.user.id)
+        feedback_instance = Feedback.objects.get(id=id_tip)
+        
+        if LikeService.can_vote(current_traveller.id, feedback_instance.id):
+            new_useful_count = feedback_instance.usefulCount + long(1)
+            
+            if (new_useful_count % 2) == 0:
+                #Recompensa de monedas
+                tip_owner = feedback_instance.traveller
+                tip_owner.coins += long(2)
+                save(tip_owner)
+                new_entry = CoinHistory(
+                    amount=2,
+                    date=datetime.now(),
+                    concept="Gift for useful tips",
+                    traveller=tip_owner
+                )
+                new_entry.save()
+            
+            TripService.value_tip(feedback_instance, current_traveller)
+            BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
+            return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
+        else:
+            BrainTravelUtils.save_info(request, "You voted this tip already.")
+            return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
     except:
         msg_errors = ["Something went wrong..."]
         return HttpResponseRedirect("/" + url[1] + "/" + id_venue, {'msg_errors': msg_errors})

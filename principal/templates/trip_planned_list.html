@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Trip list {% endblock %}
 {% block content %}
+    {% load i18n %}
 <div class="container">
     {% load i18n %}
     <h1>{{ title_list }}</h1>
@@ -25,12 +26,12 @@
                 </div>
                 <div class="col-xs-12">
                     <ul class="list-inline list-unstyled">
-                        <li><a href="/show_planning/{{trip.scorable_ptr_id}}" style="text-decoration: None;"><i class="fa fa-info-circle"></i> View more</a></li>
+                        <li><a href="/show_planning/{{trip.scorable_ptr_id}}" style="text-decoration: None;"><i class="fa fa-info-circle"></i> {% trans "View more" %}</a></li>
                     </ul>
                 </div>
             </div>
         {% empty %}
-        <p>Oops! BrainTravel could not find anything...</p>
+        <p>{% trans "Oops! BrainTravel could not find anything..." %}</p>
         {% endfor %}
         
        

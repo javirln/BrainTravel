@@ -1,11 +1,9 @@
 # -*- coding: latin-1 -*-
-
-from django.db.models import Q, Count, Sum
-
-from principal.models import Trip, Traveller, Comment, Assessment, Scorable, Feedback, Venue
-
-
+from django.db.models import Q, Count, Avg, Sumfrom datetime import datetimefrom principal.models import Trip, Traveller, Assessment, Scorable, Feedback, Venue, Likes, CoinHistory, Comment
 # author: Javi
+from principal.services.UserService import add_coins
+
+
 def searchTrip(title):
     trip_list = []
     if title and title != " ":
@@ -76,9 +74,20 @@ def create(form, user_id):
 
 
 # author: Juane
-def increase_like(trip):
-    likes = trip.likes
-    trip.likes = likes + 1
+def increase_like(trip, traveller_id):
+    traveller = Traveller.objects.get(id=traveller_id)
+    trip_likes = trip.likes + 1
+
+    if (trip_likes % 5) == 0:
+        traveller.coins += long(2)
+        save(traveller)
+        new_entry = CoinHistory(
+            amount=2,
+            date=datetime.now(),
+            concept="Gift for number of likes",
+            traveller=traveller
+        )
+        new_entry.save()
     return trip
 
 
@@ -118,34 +127,49 @@ def delete(request, trip):
 
 
 # author: Javi Rodriguez
-def send_assessment(user_id, rate_value, trip_id, rate_text):
-    to_check = Trip.objects.get(id=trip_id)
-    if to_check.state == "ap":
-        user = Traveller.objects.get(id=user_id)
-        score_trip = Scorable.objects.get(id=trip_id)
-        score_user = Scorable.objects.get(id=user_id)
-        occurrences_same_traveller = Assessment.objects.all().filter(traveller=user_id, scorable_id=trip_id).count()
-        scorable_instance = Scorable.objects.get(id=trip_id)
-        scorable_math = Scorable.objects.filter(id=trip_id).annotate(rating_number=Count('rating'),
-                                                                     rating_sum=Sum('rating'))
-        if 0 == occurrences_same_traveller:
-            comment = Assessment(
-                score=rate_value,
-                comment=rate_text,
-                traveller=user,
-                scorable=score_trip
-            )
-            comment.save()
-            num = scorable_math[0].rating_sum
-            if num is None:
-                num = 0
-            number = scorable_math[0].rating_number
-            scorable_instance.rating = int(num) + int(rate_value) / (int(number) + 1)
-            score_user.rating += int(num) + int(rate_value) / (int(number) + 1)
-            score_user.save()
-            scorable_instance.save()
-            return True
-    return False
+def construct_assessment(user_id, assessment_form):
+
+    # Obtener los valores del formulario
+    comment = assessment_form.cleaned_data['comment']
+    trip_id = assessment_form.cleaned_data['id_trip']
+    score = assessment_form.cleaned_data['score']
+
+    # Validaciones
+    trip = Trip.objects.get(id=trip_id)
+    assert trip.state == "ap"
+    assert trip.traveller.id != user_id
+    assert trip.planified is False
+    occurrences_same_traveller = Assessment.objects.all().filter(traveller=user_id, scorable_id=trip_id).count()
+    assert 0 == occurrences_same_traveller
+
+    # Obtener el viajero
+    traveller = Traveller.objects.get(id=user_id)
+
+    # Obtener el viaje puntuable
+    score_trip = Scorable.objects.get(id=trip_id)
+
+    # Crear la valoracion
+    assessment = Assessment(
+        score=score,
+        comment=comment,
+        traveller=traveller,
+        scorable=score_trip
+    )
+
+    # Guardar la valoracion en la base de datos
+    assessment.save()
+
+    # Calcular y guardar el rating del viaje
+    scorable_instance = Scorable.objects.get(id=trip_id)
+    average_score = Assessment.objects.filter(scorable_id=scorable_instance.id).aggregate(average_score=Avg('score'))
+    scorable_instance.rating = round(average_score["average_score"], 2)
+    scorable_instance.save()
+
+    # Calcular y guardar la reputacion
+    average_reputation = Trip.objects.filter(traveller_id=trip.traveller.id).aggregate(average_rating=Avg('rating'))
+    traveller = Traveller.objects.get(id=trip.traveller.id)
+    traveller.reputation = round(average_reputation["average_rating"], 2)
+    traveller.save()
 
 
 # author: Juane
@@ -170,24 +194,34 @@ def send_feedback(user_id, venue_id, lead_time, duration_time, description):
         venues=venue
     )
     feedback_instance.save()
-
+    
 
 # author: Javi Rodriguez
-def value_tip(id_tip, id_venue):
-    tip = Feedback.objects.get(id=id_tip, venues=id_venue)
+def value_tip(tip, user):
     new_count = tip.usefulCount + 1
     tip.usefulCount = new_count
     tip.save()
+    
+    #guardar la relacion entre like y feedback
+    likes_instance = Likes(
+        useful=True,
+        traveller=user,
+        feedback=tip
+    )
+    
+    likes_instance.save()
 
 
 # author: Javi Rodriguez
 def stats():
     travellers_travelling = Traveller.objects.annotate(num_trips=Count('trip')).order_by('-num_trips')[:5]
-    travellers_publishing = Traveller.objects.annotate(num_trips=Count('trip')).filter(trip__planified=False).order_by('-num_trips')[:5]
-    best_trips = Trip.objects.filter(judges__likes=True).annotate(num_judges=Count('judges')).order_by('-num_judges')[:5]
-    most_liked_trips = Trip.objects.filter(planified=False).annotate(num_likes=Count('likes')).order_by('-num_likes')[:5]
+    travellers_publishing = Traveller.objects.annotate(num_trips=Count('trip')).filter(trip__planified=False).order_by(
+        '-num_trips')[:5]
+    best_trips = Trip.objects.filter(judges__likes=True).annotate(num_judges=Count('judges')).order_by('-num_judges')[
+                 :5]
+    most_liked_trips = Trip.objects.filter(planified=False).annotate(num_likes=Count('likes')).order_by('-num_likes')[
+                       :5]
     most_useful_tips = Feedback.objects.annotate(num_useful=Count('usefulCount')).order_by('-num_useful')[:5]
     most_visited_venues = Venue.objects.annotate(num_visit=Count('day__trip')).order_by('-num_visit')[:5]
-    result = {'travellers_travelling': travellers_travelling, 'travellers_publishing': travellers_publishing,
-              'best_trips': best_trips, 'most_liked_trips': most_liked_trips, 'most_useful_tips': most_useful_tips, 'most_visited_venues': most_visited_venues}
-    return result
+    result = {'travellers_travelling': travellers_travelling, 'travellers_publishing': travellers_publishing
+              'best_trips': best_trips, 'most_liked_trips': most_liked_trips, 'most_useful_tips': most_useful_tips, 'most_visited_venues': most_visited_venues}    return result
