@@ -1,13 +1,95 @@
-{% extends 'base.html' %} 
-{% load i18n %} 
-{% block title %} {% trans "Statistics" %} {% endblock %} 
+{% extends 'base.html' %}
+{% block title %} Statistics {% endblock %}
+{% load i18n %} {% block content %}
 
-{% block content %}
 <div class="container">
-	<div class="text-center">
-		<h1>{% trans "Statistics panel" %}</h1>
-		<p>{% trans "There are some interesting statistics about trips and venues." %}</p>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+	  	 	<div class="panel panel-default">
+		  	 	<div class="panel-heading text-center"><h4>{% trans "Users who travel more" %}</h4></div>
+		  	 	<div class="panel-body">
+		    		{% for traveller in travellers_travelling %}
+			    		<div class="media">
+			    			<div class="media-left">
+								<a href="/profile/{{traveller.id}}">
+						      		<img class="media-object img-circle" src="/{{traveller.photo}}" style="width: 150px; height: 150px;"  />
+						    	</a>
+						  	</div>
+						  	<div class="media-body" style="vertical-align: middle;">
+						    	<h4 class="media-heading">{{forloop.counter}}. <a href="/profile/{{traveller.id}}">{{traveller.first_name}} {{traveller.last_name}}</a></h4>
+						    	<b>{% trans "Number of trips" %}</b>: {{traveller.num_trips}}
+						  	</div>
+						</div>
+		    		{% endfor %}
+		    	</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-12 col-sm-6">
+	  	 	<div class="panel panel-default">
+		  	 	<div class="panel-heading text-center"><h4>{% trans "Venues most visited" %}</h4></div>
+		  	 	<div class="panel-body">
+		    		{% for venue in most_visited_venues %}
+			    		<div class="media">
+			    			<div class="media-left">
+								<a href="/venue_details/{{venue.id}}">
+						      		<img class="media-object img-circle" src="{{venue.photo}}" style="width: 150px; height: 150px;" />
+						    	</a>
+						  	</div>
+						  	<div class="media-body" style="vertical-align: middle;">
+							    <h4 class="media-heading">{{forloop.counter}}. <a href="/venue_details/{{venue.id}}">{{venue.name}} </a></h4>
+							    <b>{% trans "Number of visits" %}</b>: {{venue.num_visit}}
+						  	</div>
+			    		</div>
+		    		{% endfor %}
+		    	</div>
+		    </div>
+		</div>
 	</div>
+	
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+	  	 	<div class="panel panel-default">
+		  	 	<div class="panel-heading text-center"><h4>{% trans "Most useful tips" %}</h4></div>
+		  	 	<div class="panel-body">
+		    		{% for feedback in most_useful_tips %}
+			    		<div class="media">
+			    			<div class="media-left">
+								<a href="/venue_details/{{feedback.venues.id}}">
+						      		<img class="media-object img-circle" src="{{feedback.venues.photo}}" style="width: 150px; height: 150px;"  />
+						    	</a>
+						  	</div>
+						  	<div class="media-body" style="vertical-align: middle;">
+						    	<h4 class="media-heading">{{forloop.counter}}. <a href="/venue_details/{{feedback.venues.id}}">{{feedback.venues.name}}</a></h4>
+						    	<b>{% trans "Description" %}</b>: {{feedback.description}}
+						  	</div>
+						</div>
+		    		{% endfor %}
+		    	</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-12 col-sm-6">
+	  	 	<div class="panel panel-default">
+		  	 	<div class="panel-heading text-center"><h4>{% trans "Most liked trips" %}</h4></div>
+		  	 	<div class="panel-body">
+		    		{% for public_trip in most_liked_trips %}
+			    		<div class="media">
+			    			<div class="media-left">
+						      	<img class="media-object img-circle" src="/{{public_trip.traveller.photo}}" style="width: 150px; height: 150px;" />
+						  	</div>
+						  	<div class="media-body" style="vertical-align: middle;">
+						  		<h4 class="media-heading">{{forloop.counter}}. <a href="/public_trip_details/{{public_trip.id}}">{{public_trip.name}}</a></h4>
+							    <div>{% trans "Number of likes" %}: {{public_trip.num_likes}}</div>
+							    <p class="truncate"> <b>{% trans "Description: " %}</b> {{public_trip.publishedDescription|safe}}</p>
+						  	</div>
+			    		</div>
+		    		{% endfor %}
+		    	</div>
+		    </div>
+		</div>
+	</div>
+	
+	
 </div>
-
 {% endblock %}

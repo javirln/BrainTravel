@@ -1,15 +1,8 @@
-dj-database-url==0.3.0
-dj-static==0.0.6
 Django==1.7.6
 django-paypal==0.2.1
-django-toolbelt==0.0.1
 foursquare==2015.2.1
-gunicorn==19.3.0
 MySQL-python==1.2.5
 Pillow==2.7.0
-psycopg2==2.6
 requests==2.6.0
 six==1.9.0
 South==1.0.2
-sqlparse==0.1.15
-static3==0.5.1
