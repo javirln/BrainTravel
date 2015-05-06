@@ -9,7 +9,6 @@ from principal.forms import FormPaypalOwn
 
 
 def test_paypal_view(request):
-    
     # What you want the button to do.
     paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
