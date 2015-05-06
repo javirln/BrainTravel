@@ -26,16 +26,20 @@
                             <div class="text-justify col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <p>{{trip.publishedDescription|safe}}</p>
                             </div>
-                            <div class="text-left-center col-xs-12 col-sm-12 col-md-7 col-lg-6">
+                            <div class="text-left-center col-xs-12 col-sm-12 col-md-5 col-lg-6">
                                 <p><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</p>
                             </div>
-                            <div class="text-right-center col-xs-12 col-sm-12 col-md-5 col-lg-offset-1 col-lg-5">
+                            <div class="text-right-center col-xs-12 col-sm-12 col-md-7 col-lg-offset-0 col-lg-6">
                                 <ul class="list-inline list-unstyled">
                                     <li> {{trip.comment_set.all.count}} <i class="fa fa-comments"></i></li>
                                     <li>|</li>
                                     <li><i class="fa fa-thumbs-o-up"></i> {{trip.likes}}</li>
                                     <li>|</li>
                                     <li><i class="fa fa-thumbs-o-down"></i> {{trip.dislikes}}</li>
+                                    {% if user.traveller.id == trip.traveller.id %}
+                                    <li>|</li>
+                                    <li><a href="/assessment/list/{{trip.scorable_ptr_id}}"><i class="fa fa-list"></i> Assessments</a></li>
+                                    {% endif %}
                                     <li><a href="/public_trip_details/{{trip.scorable_ptr_id}}" style="text-decoration: None;"><i class="fa fa-info-circle"></i> View more</a></li>
                                 </ul>
                             </div>

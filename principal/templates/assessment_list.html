@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} Assessment {% endblock %}
+{% block content %}
+    {% load i18n %}
+<div class="container">
+    <h1>Assessment list</h1>
+    {% if not assessments %}
+        <p>{% trans "Oops! BrainTravel could not find anything..." %}</p>
+    {% else %}
+        {% for assessment in assessments %}
+            <div class="well col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="media">
+                    <div class="row">
+                        <div class="col-xs-offset-4 col-xs-4 col-sm-offset-0 col-sm-2 col-md-offset-0 col-md-2 col-lg-offset-0 col-lg-2">
+                            <a href="/profile/{{ assessment.traveller.id }}">
+                                <img class="img-rounded img-responsive img-circle" src="/{{assessment.traveller.photo}}" title="{{ assessment.traveller.first_name }}" width="150px"/>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                            <p><span style="font-size: 40px"><i class="fa fa-star fa"  style="text-decoration: None"></i> {{ assessment.score }}</span></p>
+                            <p style="font-size: 20px; text-align: justify">{{ assessment.comment }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="pagination col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <span class="step-links">
+                {% if assessments.has_previous %}
+                    <a href="?page={{ assessments.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="current">
+                    Page {{ assessments.number }} of {{ assessments.paginator.num_pages }}.
+                </span>
+                {% if assessments.has_next %}
+                    <a href="?page={{ assessments.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+</div>
+{%endblock%}

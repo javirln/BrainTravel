@@ -30,6 +30,7 @@ urlpatterns = patterns('',
     url(r'^trip/list/(?P<profile_id>[0-9]+)$', 'principal.views.TripViews.list_trip_approved_by_profile'),
     url(r'^trip/planned_trips$', 'principal.views.TripViews.planned_trips'),
     url(r'^payment/$', 'principal.views.TravellerViews.all_payments'),
+    url(r'^assessment/list/(?P<trip_id>[0-9]+)$', 'principal.views.AssessmentViews.assessment_list'),
     #paypal urls
     url(r'^buy_coins/$', 'principal.views.Coinviews.buy_coins'),
     url(r'^test_paypal/$', 'principal.views.PayPalViews.test_paypal_view'),
