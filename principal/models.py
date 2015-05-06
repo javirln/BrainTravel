@@ -244,6 +244,7 @@ class Judges(models.Model):
     trip = models.ForeignKey(Trip, related_name='judgedTrip')
 
     class Meta:
+        unique_together = ('trip', 'traveller')
         db_table = 'judges'
 
 
