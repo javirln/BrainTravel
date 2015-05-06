@@ -134,9 +134,10 @@ def foursquare_list_venues(request):
                                       context_instance=RequestContext(request))
         else:
             form = PlanForm()
-            return render_to_response('plan_creation.html',
+            res = render_to_response('plan_creation.html',
                                       {'form': form, 'traveller': traveller, 'list_cat': list_cat},
                                       context_instance=RequestContext(request))
+            return res
 
     except:
         print traceback.format_exc()

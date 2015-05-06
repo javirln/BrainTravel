@@ -56,7 +56,8 @@
                                     {% endif %}
                                 </ul>
                                 {% if user.traveller.id == trip.traveller.id %}
-                                    <p><br><a href="/trip/edit/{{trip.scorable_ptr_id}}"><i class="fa fa-pencil"></i> Edit</a></p>
+                                    <p><br><a href="/trip/edit/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="Click here to view edit"><i class="fa fa-pencil"></i> Edit</a></p>
+                                    <p><a href="/assessment/list/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="Click here to view details"><i class="fa fa-list"></i> Assessments</a></p>
                                 {% endif %}
                                 {% if perms.principal.traveller and trip.state == 'ap' and trip.traveller.id != user.id and assessment == None%}
                                     <div class="center-block">
@@ -238,6 +239,14 @@
 {% if modal %}
 <script>$('#myModal').modal('show');</script>
 {% endif %}
+
+<script>
+
+    $(function() {
+    	$('[data-toggle="tooltip"]').tooltip();
+ 	});
+
+    </script>
 
 {% endblock %}
 

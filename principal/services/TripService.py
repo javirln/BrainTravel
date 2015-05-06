@@ -1,13 +1,14 @@
 # -*- coding: latin-1 -*-
+import datetime
 
-from django.db.models import Q, Count, Avg
+from django.db.models import Q, Count, Avg, Sum
 from datetime import datetime
-from principal.models import Trip, Traveller, Assessment, Scorable, Feedback, Venue, Likes, CoinHistory
+from principal.models import Trip, Traveller, Assessment, Scorable, Feedback, Venue, Likes, CoinHistory, Comment
 
-# author: Javi
 from principal.services.UserService import add_coins
 
 
+# author: Javi
 def searchTrip(title):
     trip_list = []
     if title and title != " ":
@@ -221,11 +222,10 @@ def stats():
     travellers_travelling = Traveller.objects.annotate(num_trips=Count('trip')).order_by('-num_trips')[:5]
     travellers_publishing = Traveller.objects.annotate(num_trips=Count('trip')).filter(trip__planified=False).order_by(
         '-num_trips')[:5]
-    best_trips = Trip.objects.filter(judges__likes=True).annotate(num_judges=Count('judges')).order_by('-num_judges')[
-                 :5]
-    most_liked_trips = Trip.objects.filter(planified=False).annotate(num_likes=Count('likes')).order_by('-num_likes')[
-                       :5]
+    best_trips = Trip.objects.filter(judges__likes=True).annotate(num_judges=Count('judges')).order_by('-num_judges')[:5]
+    most_liked_trips = Trip.objects.filter(planified=False).annotate(num_likes=Count('likes')).order_by('-num_likes')[:5]
     most_useful_tips = Feedback.objects.annotate(num_useful=Count('usefulCount')).order_by('-num_useful')[:5]
+    most_visited_venues = Venue.objects.annotate(num_visit=Count('day__trip')).order_by('-num_visit')[:5]
     result = {'travellers_travelling': travellers_travelling, 'travellers_publishing': travellers_publishing,
-              'best_trips': best_trips, 'most_liked_trips': most_liked_trips, 'most_useful_tips': most_useful_tips}
+              'best_trips': best_trips, 'most_liked_trips': most_liked_trips, 'most_useful_tips': most_useful_tips, 'most_visited_venues': most_visited_venues}
     return result

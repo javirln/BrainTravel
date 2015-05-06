@@ -32,7 +32,7 @@ FILE_CHARSET = 'ISO-8859-1'
 # Application definition
 
 INSTALLED_APPS = (
-#     'debug_toolbar',
+    # 'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +45,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
-#     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,7 +69,6 @@ WSGI_APPLICATION = 'BrainTravel.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-#produccion mysql.cvu77qxolqzd.us-west-2.rds.amazonaws.com
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -123,5 +122,3 @@ EMAIL_HOST_PASSWORD = 'braintravelredmine'
 # PAYPAL CONFIGURATION
 PAYPAL_RECEIVER_EMAIL = 'notificaciones.braintravel-facilitator@gmail.com'
 PAYPAL_TEST = True
-
-

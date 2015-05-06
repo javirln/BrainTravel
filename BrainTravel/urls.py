@@ -4,6 +4,8 @@ from BrainTravel import settings
 
 urlpatterns = patterns('',
     # Examples:
+    url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
+    url(r'^planner/change_venue/$', 'principal.views.TripViews.change_venue'),
     url(r'^$', 'principal.views.MainViews.home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^signin/$', 'principal.views.UserViews.sign_in'),
@@ -26,11 +28,11 @@ urlpatterns = patterns('',
     url(r'^profile/edit/$', 'principal.views.TravellerViews.profile_edit'),
     url(r'^profile/edit/password/$', 'principal.views.TravellerViews.profile_edit_password'),
     url(r'^trip/draft/$', 'principal.views.TripViews.list_all_by_traveller_draft'),
-    url(r'^public_trip_details/rate/$', 'principal.views.TripViews.send_assessment'),
     url(r'^auth_request/$', 'principal.views.FoursquareViews.foursquare_request'),
     url(r'^trip/list/(?P<profile_id>[0-9]+)$', 'principal.views.TripViews.list_trip_approved_by_profile'),
     url(r'^trip/planned_trips$', 'principal.views.TripViews.planned_trips'),
     url(r'^payment/$', 'principal.views.TravellerViews.all_payments'),
+    url(r'^assessment/list/(?P<trip_id>[0-9]+)$', 'principal.views.AssessmentViews.assessment_list'),
     #paypal urls
     url(r'^buy_coins/$', 'principal.views.Coinviews.buy_coins'),
     url(r'^test_paypal/$', 'principal.views.PayPalViews.test_paypal_view'),
@@ -38,6 +40,7 @@ urlpatterns = patterns('',
     url(r'^venue_details/(?P<id_venue>[0-9]+)$', 'principal.views.FoursquareViews.retrieve_venue'),
     url(r'^venue_details/rate/$', 'principal.views.TripViews.send_feedback'),
     url(r'^venue_details/value_tip/(?P<id_venue>[0-9]+)/(?P<id_tip>[0-9]+)$', 'principal.views.TripViews.value_tip'),
+    url(r'^visited_venues/$', 'principal.views.VenueViews.visited_venues'),
     
     #Para llamadas en ajax
     url(r'^venue_details_json/(?P<id_venue>[0-9]+)/$', 'principal.views.VenueViews.venue_details_json'),
@@ -52,8 +55,7 @@ urlpatterns = patterns('',
     url(r'^stats/$', 'principal.views.TripViews.stats'),
 
     #planner URLs
-    url(r'^planner/list_venues/$', 'principal.views.FoursquareViews.foursquare_list_venues'),
-    url(r'^planner/change_venue/$', 'principal.views.TripViews.change_venue'),
+
     (r'^something/paypal/', include('paypal.standard.ipn.urls')),
 
     #i18n

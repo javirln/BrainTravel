@@ -182,8 +182,8 @@ class TravellerEditProfileForm(forms.Form):
         elif self.cleaned_data.get('photo'):
             content_types = ['image/png', 'image/jpg', 'image/jpeg']
             if self.cleaned_data.get('photo').content_type in content_types:
-                if self.cleaned_data.get('photo').size > 2 * 1024 * 1024:
-                    self.add_error('photo', _("Image file too large ( > 2mb )"))
+                if self.cleaned_data.get('photo').size > 512 * 1024:
+                    self.add_error('photo', _("Image file too large ( > 512kb )"))
             else:
                 self.add_error('photo', _("Not valid file type. Only PNG and JPG are supported"))
         return self.cleaned_data
