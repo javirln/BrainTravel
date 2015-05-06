@@ -256,15 +256,15 @@ def trip_edit(request, trip_id):
 
 @permission_required('principal.traveller')
 def change_venue(request):
-    trip = Trip.objects.get(id = request.POST['trip'])
+    trip = Trip.objects.get(id=request.POST['trip'])
     assert trip.traveller.id == request.user.id
     
     try:
-        day = Day.objects.get(id = request.POST['day'])
-        oldVenue = Venue.objects.get(id = request.POST['oldVenue'])
-        newVenue = Venue.objects.get(id = request.POST['newVenue'])
+        day = Day.objects.get(id=request.POST['day'])
+        oldVenue = Venue.objects.get(id=request.POST['oldVenue'])
+        newVenue = Venue.objects.get(id=request.POST['newVenue'])
         
-        venue_day = VenueDay.objects.get(Q(venue = oldVenue) & Q(day = day))
+        venue_day = VenueDay.objects.get(Q(venue=oldVenue) & Q(day=day))
         venue_day.venue = newVenue
         venue_day.save()
         
@@ -303,7 +303,7 @@ def list_trip_approved_by_profile(request, profile_id):
     try:
         traveller = TravellerService.find_one(profile_id)
         trips = TripService.list_trip_approved(traveller.id)
-        return render_to_response('trip_list.html', {'trips': trips,  'create_trip': True},
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True},
                                   context_instance=RequestContext(request))
     except AssertionError:
         return render_to_response('error.html')
@@ -347,5 +347,8 @@ def value_tip(request, id_venue, id_tip):
 @login_required()
 def stats(request):
     result = TripService.stats()
-    return render_to_response('stats.html', {'travellers_travelling': result['travellers_travelling']},
+    return render_to_response('stats.html', {'travellers_travelling': result['travellers_travelling'], 
+                                             'most_visited_venues':result['most_visited_venues'],
+                                             'most_liked_trips':result['most_liked_trips'],
+                                             'most_useful_tips':result['most_useful_tips']},
                                   context_instance=RequestContext(request))

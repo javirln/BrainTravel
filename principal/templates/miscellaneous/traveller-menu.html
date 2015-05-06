@@ -1,11 +1,18 @@
 {#<li>#}
 {#    <a id="sign_ind_nav" href="/auth_request">test FS</a>#}
 {#</li>#}
-
+{% load i18n %}
 <li>
     <a id="sign_ind_nav" href="/planner/list_venues/">
         <span class="fa fa-file-text"></span>
         <strong>Plan a trip</strong>
+    </a>
+</li>
+
+<li>
+    <a id="sign_ind_nav" href="/statistics/">
+        <span class="fa fa-bar-chart"></span>
+        <strong>{%trans "View statistics" %}</strong>
     </a>
 </li>
 
