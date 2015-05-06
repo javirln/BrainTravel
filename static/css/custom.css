@@ -185,10 +185,16 @@ img {
 .text-right-center{
         text-align: right;
     }
+ .plan-map{
+        height: 500px;
+    }
 
 @media (max-width: 720px) {
     .text-right-center{
         text-align: center;
+    }
+    .plan-map{
+        height: 250px;
     }
 }
 

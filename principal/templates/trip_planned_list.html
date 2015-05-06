@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Trip list {% endblock %}
 {% block content %}
+{% load staticfiles %}
     {% load i18n %}
 <div class="container">
     {% load i18n %}
@@ -13,10 +14,9 @@
                     <h3 style="height: 80px; vertical-align: middle; display: table-cell;">{{trip.city|safe}}</h3>
                 </div>
                 <div class="col-xs-12">
-                    <img src="https://irs3.4sqi.net/img/general/720x960/10460920_ggzBjOkJPBgFBzPGfy1FXPmz6UCGGU3ykunR4XZESFs.jpg" class="img-responsive" style="max-height: 250px">
+                    <img src="{{ trip.day_set.all.0.venues.all.0.photo }}" class="img-responsive" style="max-height: 250px" onerror="this.src='{% static "img/no-image.png" %}'">
                 </div>
                 
-
                 <div class="col-xs-12" style="margin-top: 20px">
                     <p><i class="fa fa-globe fa-1x"></i> {{trip.country|safe}}</p>
                 </div>
