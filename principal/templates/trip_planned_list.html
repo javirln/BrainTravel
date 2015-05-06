@@ -21,7 +21,7 @@
                     <p><i class="fa fa-globe fa-1x"></i> {{trip.country|safe}}</p>
                 </div>
                 <div class="col-xs-12">
-                    <p><i class="fa fa-calendar"></i> {{trip.startDate}}</p>
+                    <!-- <p><i class="fa fa-calendar"></i> {{trip.startDate}}</p> -->
                     <p><i class="fa fa-money"></i> {{trip.coins}}</p>
                 </div>
                 <div class="col-xs-12">
@@ -34,20 +34,23 @@
         <p>{% trans "Oops! BrainTravel could not find anything..." %}</p>
         {% endfor %}
         
+	        <nav class="col-xs-12 col-sm-3 col-sm-offset-6">
+	          <ul class="pager">
+	            <li {% if not trips.has_previous %} class="disabled" {% endif %}>
+	              <a {% if trips.has_previous %} href="?page={{ trips.previous_page_number }}" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+	            </li>
+	            
+	            <li>
+	             <span>{% trans "Page" %} {{ trips.number }} {% trans "of" %} {{ trips.paginator.num_pages }}</span>
+	            </li>
+	            
+	            <li {% if not trips.has_next %} class="disabled" {% endif %}>
+	                <a {% if trips.has_next %} href="?page={{ trips.next_page_number }}" {% endif %}><span aria-hidden="true" class="disabled" >&raquo;</span></a>  
+	            </li>
+	          </ul>
+	        </nav>
        
         </div>
-        <div class="pagination col-xs-12">
-            <span class="step-links">
-                {% if trips.has_previous %}
-                    <a href="?page={{ trips.previous_page_number }}">previous</a>
-                {% endif %}
-                <span class="current">
-                    Page {{ trips.number }} of {{ trips.paginator.num_pages }}.
-                </span>
-                {% if trips.has_next %}
-                    <a href="?page={{ trips.next_page_number }}">next</a>
-                {% endif %}
-            </span>
-        </div>
+
 </div>
 {%endblock%}

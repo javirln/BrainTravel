@@ -111,7 +111,7 @@ def public_trip_details(request, trip_id):
 
         form = TripUpdateStateForm(initial={'id': trip.id, 'state': trip.state})
         return render_to_response('public_trip_details.html', {'trip': trip, 'comments': comments, 'judge': judge, 'form': form, 'comment_form': comment_form, 'assessment_form': assessment_form, 'assessment': assessment, 'modal': modal}, context_instance=RequestContext(request))
-    except Exception:
+    except Exception as e:
         return render_to_response('error.html')
 
 

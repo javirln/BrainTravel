@@ -44,19 +44,22 @@
                 </div>
             </div>
         {% endfor %}
-        <div class="pagination col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <span class="step-links">
-                {% if trip_result.has_previous %}
-                    <a href="/search_trip/?title={{ title_search }}&page={{ trip_result.previous_page_number }}">previous</a>
-                {% endif %}
-                <span class="current">
-                    Page {{ trip_result.number }} of {{ trip_result.paginator.num_pages }}.
-                </span>
-                {% if trip_result.has_next %}
-                    <a href="/search_trip/?title={{ title_search }}&page={{ trip_result.next_page_number }}">next</a>
-                {% endif %}
-            </span>
-        </div>
+        
+            <nav class="col-xs-12">
+              <ul class="pager">
+                <li {% if not trip_result.has_previous %} class="disabled" {% endif %}>
+                  <a {% if trip_result.has_previous %} href="?page={{ trip_result.previous_page_number }}" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+                </li>
+                
+                <li>
+                 <span>{% trans "Page" %} {{ trip_result.number }} {% trans "of" %} {{ trip_result.paginator.num_pages }}</span>
+                </li>
+                
+                <li {% if not trip_result.has_next %} class="disabled" {% endif %}>
+                    <a {% if trip_result.has_next %} href="?page={{ trip_result.next_page_number }}" {% endif %}><span aria-hidden="true" class="disabled" >&raquo;</span></a>  
+                </li>
+              </ul>
+            </nav>
     {% endif %}
 </div>
 {%endblock%}
