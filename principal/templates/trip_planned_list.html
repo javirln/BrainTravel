@@ -5,7 +5,6 @@
 {% block content %}
 
 <div class="container">
-    {% load i18n %}
     <h1>{{ title_list }}</h1>
 
         <div class="col-xs-12 col-sm-11">
@@ -35,7 +34,7 @@
         <p>{% trans "Oops! BrainTravel could not find anything..." %}</p>
         {% endfor %}
         
-	        <nav class="col-xs-12 col-sm-3 col-sm-offset-6">
+	        <nav class="col-xs-12">
 	          <ul class="pager">
 	            <li {% if not trips.has_previous %} class="disabled" {% endif %}>
 	              <a {% if trips.has_previous %} href="?page={{ trips.previous_page_number }}" {% endif %}><span aria-hidden="true">&laquo;</span></a>

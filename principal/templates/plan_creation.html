@@ -5,97 +5,149 @@
 {% block content %}
 
 <div class="container">
-
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-    <h1 class="page-header">{% trans "Plan a trip" %}</h1>
-        <form id="form-create" class="form-horizontal" role="form" action="/planner/list_venues/" method="post"
-              data-toggle="validator">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="id_city" class="control-label">{% trans "City" %}</label>
-                    <input class="form-control" id="id_city" name="city" type="text"
-                           value="{% if form.initial|length != 0 %}{{ form.initial.city }}{% else %}{{ form.data.city }}{% endif %}"
-                           required/>
-                    <div class="help-block with-errors"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="id_country"
-                           class="control-label">{% trans "Country" %}</label>
-                    <input class="form-control" id="id_country" name="country" type="text"
-                           value="{% if form.initial|length != 0 %}{{ form.initial.country }}{% else %}{{ form.data.country }}{% endif %}"
-                           required/>
-                    <div class="help-block with-errors"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="id_days"
-                           class="control-label">{% trans "Days" %}</label>
-                    <input class="form-control" id="id_days" name="days" type="number" min="1" max="7"
-                           value="{% if form.initial|length != 0 %}{{ form.initial.days }}{% else %}{{ form.data.days }}{% endif %}"
-                           required onchange="calculatePlanPrice(this.value);"/>
-                    <div class="help-block with-errors"></div>
-                </div>
-
-                <div class="form-group text-center">
-                    <h4>{% trans "Price" %} <span id="tripPrice">-</span> {% trans "Coins" %}</h4>
-                    <h4>{% trans "You have" %}: <span id="myCoins">{{traveller.coins}}</span> {% trans "coins" %}</h4>
-                </div>
-
-                <div class="form-group">
-                    <input id="create_plan" class="btn btn-primary btn-block" name="save"
-                           value="{% trans "Create Plan" %}"
-                           type="submit" onclick=whileLoading()>
-                </div>
-
-
-            <div class="form-group">
-                <label for="selec">{% trans "Select your custom constrains" %}</label>
-                <select id="selec" style="display: none;"  class="chosen-select">
-                    <option></option>
-                    {% for cat in list_cat %}
-                        <option value= {{ cat.id_foursquare }}>{% trans cat.name %}</option>
-                    {% endfor %}
-
-                </select>
-
-                <label for="cantidad">Selec cantidad</label>
-                <select id="cantidad" style="display: none;" class="chosen-select"
-                        tabindex="-1">
-                    <option value=""></option>
-                    <option value="Mucho">{% trans "A lot of" %}</option>
-                    <option value="Poco">{% trans "Some of" %}</option>
-                    <option value="Nada">{% trans "Anything of" %}</option>
-                </select>
-            <div>
-                <br>
-
-                <input class="btn btn-primary" id="copy" name="copy"
-                       value="{% trans 'Add Restriction' %}" type="button" onclick=copyValues()>
-                    <input class="form-control" type="hidden" readonly name="rests" id="rest1"/>
-                    <input class="form-control" type="hidden" readonly name="rests" id="rest2"/>
-                    <input class="form-control" type="hidden" readonly name="rests" id="rest3"/>
-            </div>
-                </div>
-    </form>
-
-<div class="form-group">
-    <fieldset><legend>{% trans "Custom constraints" %}</legend>
-        <input class="form-control" type="text" readonly name="rests" id="rest1_lb1"/>
-        <input type="hidden" class="btn btn-primary" id="delete1" name="Delete lb1"
-               value="{% trans "Delete" %}" onclick=deleteHidden("1")>
-        <br>
-        <input class="form-control" type="text" readonly name="rests" id="rest1_lb2"/>
-        <input type="hidden" class="btn btn-primary" id="delete2" name="Delete lb2"
-               value="{% trans "Delete " %}" onclick=deleteHidden("2")>
-        <br>
-        <input class="form-control" type="text" readonly name="rests" id="rest1_lb3"/>
-        <input type="hidden" readonly class="btn btn-primary" id="delete3" name="Delete lb3"
-               value="{% trans "Delete" %}" onclick=deleteHidden("3")>
-        <br>
-        </fieldset>
-</div>
-
+    <div class="row">
+	    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+		    <div class="text-center">
+		        <h1>{% trans "Plan a trip" %}</h1>
+		        <p>{% trans "Enter the data and we'll plan a trip for you" %}</p>
+		    </div>
+		    
+		    <div class="text-left">
+		         <fieldset>
+		             <legend>{% trans "Trip data" %}</legend>
+					 <h4>{% trans "Price" %}: <span id="tripPrice">-</span> {% trans "coins" %}</h4>
+					 <h4>{% trans "You have" %}: <span id="myCoins">{{traveller.coins}}</span> {% trans "coins" %}</h4>
+				 </fieldset>
+			 </div>
+			 
+	        <form id="form-create" class="form-horizontal" role="form" action="/planner/list_venues/" method="post"
+	              data-toggle="validator">
+	                {% csrf_token %}
+	                <div class="col-xs-12 col-sm-4">
+		                <div class="form-group">
+		                   <div class="col-xs-12">
+			                    <label for="id_city" class="control-label">{% trans "City" %}</label>
+			                    <input class="form-control" id="id_city" name="city" type="text"
+			                           value="{% if form.initial|length != 0 %}{{ form.initial.city }}{% else %}{{ form.data.city }}{% endif %}"
+			                           required/>
+			                    <div class="help-block with-errors"></div>
+		                   </div>
+		                </div>
+		            </div>
+		            
+		            <div class="col-xs-12 col-sm-4">
+	                    <div class="form-group">
+	                        <div class="col-xs-12">
+			                    <label for="id_country"
+			                           class="control-label">{% trans "Country" %}</label>
+			                    <input class="form-control" id="id_country" name="country" type="text"
+			                           value="{% if form.initial|length != 0 %}{{ form.initial.country }}{% else %}{{ form.data.country }}{% endif %}"
+			                           required/>
+			                    <div class="help-block with-errors"></div>
+		                    </div>
+		                </div>
+	                 </div>
+	                 
+	                <div class="col-xs-12 col-sm-4">
+		                <div class="form-group">
+		                   <div class="col-xs-12">
+			                    <label for="id_days"class="control-label">{% trans "Days" %}</label>
+			                    <input class="form-control" id="id_days" name="days" type="number" min="1" max="7"
+			                           value="{% if form.initial|length != 0 %}{{ form.initial.days }}{% else %}{{ form.data.days }}{% endif %}"
+			                           required onchange="calculatePlanPrice(this.value);"/>
+			                    <div class="help-block with-errors"></div>
+		                   </div>
+		                </div>
+		            </div>
+	            
+	            <div class="col-xs-12">
+		            <div class="form-group">
+		                <fieldset><legend>{% trans "Custom constraints" %} <a data-toggle="collapse" href="#collapseConstraints">{% trans "Hide/show" %}</a></legend></fieldset>
+		                
+		                <div id="collapseConstraints" class="panel-collapse collapse">
+			                <div class="col-xs-12 col-sm-6">    
+			                    <div class="form-group">
+			                        <div class="col-xs-12">
+			                            <label for="cantidad">{% trans "Select modifier" %}</label>
+			                            <select id="cantidad" style="display: none;" class="chosen-select" tabindex="-1">
+			                                <option value=""></option>
+			                                <option value="Mucho">{% trans "A lot of" %}</option>
+			                                <option value="Poco">{% trans "Some of" %}</option>
+			                                <option value="Nada">{% trans "Anything of" %}</option>
+			                            </select>
+			                        </div>
+			                    </div>
+			                </div>
+			                
+			                <div class="col-xs-12 col-sm-6">
+			                    <div class="form-group">
+			                      <div class="col-xs-12">
+			                            <label for="selec">{% trans "Select your custom constrains" %}</label>
+			                            <select id="selec" style="display: none;"  class="chosen-select">
+			                                <option></option>
+			                                {% for cat in list_cat %}
+			                                    <option value= {{ cat.id_foursquare }}>{% trans cat.name %}</option>
+			                                {% endfor %}
+			                            </select>
+			                        </div>
+			                    </div> 
+			                </div>  
+			                
+			                <div class="col-xs-12">
+			                    <div class="form-group">
+			                        <div class="col-xs-12 text-center">
+			                          <input class="btn btn-primary" id="copy" name="copy" value="{% trans 'Add Restriction' %}" type="button" onclick=copyValues()>
+			                        </div>
+				                    <input class="form-control" type="hidden" readonly name="rests" id="rest1"/>
+				                    <input class="form-control" type="hidden" readonly name="rests" id="rest2"/>
+				                    <input class="form-control" type="hidden" readonly name="rests" id="rest3"/>
+			                    </div>
+			                </div>
+			                
+			                <div class="col-xs-12">
+			                    <h4>{% trans "Selected constrains" %}</h4>
+			                    <div class="row">
+			                        <div class="col-xs-8">
+			                            <h4><span class="label label-primary" id="rest1_lb1"></span></h4> 
+	                                </div>
+	                                <div class="col-xs-4">
+	                                   <input type="hidden" class="btn btn-link" id="delete1" name="Delete lb1" value="{% trans "Delete" %}" onclick=deleteHidden("1")>
+	                                </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h4><span class="label label-primary" id="rest1_lb2"></span></h4> 
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input type="hidden" class="btn btn-link" id="delete2" name="Delete lb2" value="{% trans "Delete " %}" onclick=deleteHidden("2")>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h4><span class="label label-primary" id="rest1_lb3"></span></h4> 
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input type="hidden" readonly class="btn btn-link" id="delete3" name="Delete lb3" value="{% trans "Delete" %}" onclick=deleteHidden("3")>
+                                    </div>
+                                </div>
+				            </div>
+			            </div>  
+		            </div>  
+		        </div>
+		    
+	            <div class="col-xs-12">
+	                <div class="form-group">
+	                    <div class="col-xs-12">
+	                       <hr>
+	                       <input id="create_plan" class="btn btn-primary btn-block" name="save" value="{% trans "Create Plan" %}" type="submit" onclick=whileLoading()>
+                        </div>
+                    </div>
+                </div> 
+	                
+	        </form>
+        </div>
     </div>
 </div>
 <script>
@@ -147,17 +199,17 @@ function copyValues() {
 
     if (txt1 == "") {
         input1.val(cat_id + ":" + vals);
-        rest_lb1.val(category + ": " + cantidad);
+        rest_lb1.text(cantidad + ": " + category);
         $("#delete1").prop("type", "button");
     }
     else if (txt2 == "") {
         input2.val(cat_id + ":" + vals);
-        rest_lb2.val(category + ": " + cantidad);
+        rest_lb2.val(cantidad + ": " + category);
         $("#delete2").prop("type", "button");
     }
     else if (txt3 == "") {
         input3.val(cat_id + ":" + vals);
-        rest_lb3.val(category + ": " + cantidad);
+        rest_lb3.val(cantidad + ": " + category);
         $("#delete3").prop("type", "button");
     }
 
@@ -188,32 +240,26 @@ function copyValues() {
      $(function() {
         $('.chosen-select').chosen();
         $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+       
+        $('#form-create').change(function(){
+            if ($('#id_country').val() == '' || $('#id_city').val() == '' || $('#id_days').val() == '') {
+                $('#create_plan').prop('disabled', true);
+            }else{
+                $('#create_plan').prop('disabled', false);
+            }
+        });
       });
 
 
     function whileLoading() {
         swal({
-            title: "Loading...",
+            title: " {% trans "Loading..." %}",
             text: " {%  trans "We are working hard on your plan. It might take a while, please, be patient :)"%}",
             showConfirmButton: false,
             imageUrl: "{% static "img/gears.svg" %}"
         });
     }
 
-    $(document).ready(function () {
-        $('#id_startDate').datepicker({
-            format: 'dd/mm/yyyy',
-            autoclose: true
-        });
-
-        $('#form-create').change(function(){
-            if ($('#id_country').val() == '' || $('#id_city').val() == '' || $('#id_days').val() == '' || $('#id_startDate').val() == '') {
-                $('#create_plan').prop('disabled', true);
-            }else{
-                $('#create_plan').prop('disabled', false);
-            }
-        });
-    });
 </script>
 
 {% endblock %}
