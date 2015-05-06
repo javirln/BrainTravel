@@ -214,12 +214,12 @@ def trip_create(request):
         form = TripEditForm(request.POST)
         if form.is_valid():
             trip_new = TripService.create(form, user_id)
-            if "save" in request.POST and request.POST['save'] == "Save in draft":
+            if "save" in request.POST:
                 trip_new.state = "df"
                 TripService.save_secure(trip_new)
                 BrainTravelUtils.save_success(request, _("Action completed successfully"))
                 return HttpResponseRedirect("/trip/draft/")
-            elif "save" in request.POST and request.POST['save'] == "Publish Trip":
+            elif "publis" in request.POST:
                 trip_new.state = "pe"
                 TripService.save_secure(trip_new)
                 BrainTravelUtils.save_success(request, _("Your trip must be accepted by an administrator"))
@@ -250,12 +250,12 @@ def trip_edit(request, trip_id):
                 trip.startDate = form.cleaned_data['startDate']
                 trip.endDate = form.cleaned_data['endDate']
                 trip.country = form.cleaned_data['country']
-                if 'save' in request.POST and request.POST['save'] == "Save draft":
+                if 'save' in request.POST:
                     trip.state = "df"
                     TripService.save_secure(trip)
                     BrainTravelUtils.save_success(request, "Action completed successfully")
                     return HttpResponseRedirect("/trip/draft/")
-                elif 'save' in request.POST and request.POST['save'] == "Publish Trip":
+                elif 'publis' in request.POST:
                     trip.state = "pe"
                     TripService.save_secure(trip)
                     BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
