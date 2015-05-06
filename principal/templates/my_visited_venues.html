@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} Statistics {% endblock %}
+{% load i18n %} {% block content %}{% load staticfiles %}
+
+<div class="container">
+	<div class="col-xs-12 col-sm-6">
+		<h3>{% trans "Visited venues" %}</h3>
+		{% for venue in visited_venues %}
+			<div class="col-sm-3 col-xs-6 venue-details">
+	            <img src="{{venue.photo}}" class="img-responsive img-thumbnail img-venue" onerror="this.src='{% static "img/no-image.png" %}'">
+	            <h4><a href="/venue_details/{{ venue.id }}" data-toggle="tooltip" data-placement="bottom" title="Click here to view details">{{venue.name}}</a></h4>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
