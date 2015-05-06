@@ -38,6 +38,7 @@ urlpatterns = patterns('',
     url(r'^venue_details/(?P<id_venue>[0-9]+)$', 'principal.views.FoursquareViews.retrieve_venue'),
     url(r'^venue_details/rate/$', 'principal.views.TripViews.send_feedback'),
     url(r'^venue_details/value_tip/(?P<id_venue>[0-9]+)/(?P<id_tip>[0-9]+)$', 'principal.views.TripViews.value_tip'),
+    url(r'^visited_venues/$', 'principal.views.VenueViews.visited_venues'),
     
     #Para llamadas en ajax
     url(r'^venue_details_json/(?P<id_venue>[0-9]+)/$', 'principal.views.VenueViews.venue_details_json'),

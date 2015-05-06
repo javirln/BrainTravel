@@ -20,19 +20,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'wt25dtpbzg9ks8l891^2f+hui6uqux&2s*)9@jxj20i9%=q98s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
-FILE_CHARSET = 'ISO-8859-1'
+FILE_CHARSET = 'iso-8859-1'
 
 
 # Application definition
 
 INSTALLED_APPS = (
-#     'debug_toolbar',
+    # 'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +45,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
-#     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,14 +69,13 @@ WSGI_APPLICATION = 'BrainTravel.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-#produccion mysql.cvu77qxolqzd.us-west-2.rds.amazonaws.com
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'braintravel',
         'USER': 'braintravel',
         'PASSWORD': 'bR@1nTr@veL',
-        'HOST': '127.0.0.1',
+        'HOST': 'mysql.cvu77qxolqzd.us-west-2.rds.amazonaws.com',
         'PORT': '3306',
         'ATOMIC_REQUESTS': 'True'
     }
@@ -124,4 +123,22 @@ EMAIL_HOST_PASSWORD = 'braintravelredmine'
 PAYPAL_RECEIVER_EMAIL = 'notificaciones.braintravel-facilitator@gmail.com'
 PAYPAL_TEST = True
 
+# Heroku
 
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+
+DATABASES['default'] = dj_database_url.config(
+    default='mysql://braintravel:bR@1nTr@veL@mysql.cvu77qxolqzd.us-west-2.rds.amazonaws.com/braintravel')
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
