@@ -86,8 +86,8 @@ def buy_coins(request):
         "amount": "10.00",
         "item_name": "100 Coins",
         "notify_url": "http://3e5d44b.ngrok.com" + reverse('paypal-ipn'),
-        "return_url": "http://fierce-springs-5908.herokuapp.com/coin/list/",
-        "cancel_return": "http://fierce-springs-5908.herokuapp.com/cpayment_cancel",
+        "return_url": "localhost/coin/list/",
+        "cancel_return": "localhost/cpayment_cancel",
         "currency_code":"EUR",
         "custom":track_data3,
     }
