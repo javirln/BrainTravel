@@ -11,7 +11,7 @@
 		        <h1>{% trans "Plan a trip" %}</h1>
 		        <p>{% trans "Enter the data and we'll plan a trip for you" %}</p>
 		    </div>
-		    
+
 		    <div class="text-left">
 		         <fieldset>
 		             <legend>{% trans "Trip data" %}</legend>
@@ -19,7 +19,7 @@
 					 <h4>{% trans "You have" %}: <span id="myCoins">{{traveller.coins}}</span> {% trans "coins" %}</h4>
 				 </fieldset>
 			 </div>
-			 
+
 	        <form id="form-create" class="form-horizontal" role="form" action="/planner/list_venues/" method="post"
 	              data-toggle="validator">
 	                {% csrf_token %}
@@ -34,7 +34,7 @@
 		                   </div>
 		                </div>
 		            </div>
-		            
+
 		            <div class="col-xs-12 col-sm-4">
 	                    <div class="form-group">
 	                        <div class="col-xs-12">
@@ -47,7 +47,7 @@
 		                    </div>
 		                </div>
 	                 </div>
-	                 
+
 	                <div class="col-xs-12 col-sm-4">
 		                <div class="form-group">
 		                   <div class="col-xs-12">
@@ -59,13 +59,13 @@
 		                   </div>
 		                </div>
 		            </div>
-	            
+
 	            <div class="col-xs-12">
 		            <div class="form-group">
 		                <fieldset><legend>{% trans "Custom constraints" %} <a data-toggle="collapse" href="#collapseConstraints">{% trans "Hide/show" %}</a></legend></fieldset>
-		                
+
 		                <div id="collapseConstraints" class="panel-collapse collapse">
-			                <div class="col-xs-12 col-sm-6">    
+			                <div class="col-xs-12 col-sm-6">
 			                    <div class="form-group">
 			                        <div class="col-xs-12">
 			                            <label for="cantidad">{% trans "Select modifier" %}</label>
@@ -78,7 +78,7 @@
 			                        </div>
 			                    </div>
 			                </div>
-			                
+
 			                <div class="col-xs-12 col-sm-6">
 			                    <div class="form-group">
 			                      <div class="col-xs-12">
@@ -90,9 +90,9 @@
 			                                {% endfor %}
 			                            </select>
 			                        </div>
-			                    </div> 
-			                </div>  
-			                
+			                    </div>
+			                </div>
+
 			                <div class="col-xs-12">
 			                    <div class="form-group">
 			                        <div class="col-xs-12 text-center">
@@ -103,12 +103,12 @@
 				                    <input class="form-control" type="hidden" readonly name="rests" id="rest3"/>
 			                    </div>
 			                </div>
-			                
+
 			                <div class="col-xs-12">
 			                    <h4>{% trans "Selected constrains" %}</h4>
 			                    <div class="row">
 			                        <div class="col-xs-8">
-			                            <h4><span class="label label-primary" id="rest1_lb1"></span></h4> 
+			                            <h4><span class="label label-primary" id="rest1_lb1"></span></h4>
 	                                </div>
 	                                <div class="col-xs-4">
 	                                   <input type="hidden" class="btn btn-link" id="delete1" name="Delete lb1" value="{% trans "Delete" %}" onclick=deleteHidden("1")>
@@ -117,7 +117,7 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-xs-8">
-                                        <h4><span class="label label-primary" id="rest1_lb2"></span></h4> 
+                                        <h4><span class="label label-primary" id="rest1_lb2"></span></h4>
                                     </div>
                                     <div class="col-xs-4">
                                         <input type="hidden" class="btn btn-link" id="delete2" name="Delete lb2" value="{% trans "Delete " %}" onclick=deleteHidden("2")>
@@ -126,31 +126,45 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-xs-8">
-                                        <h4><span class="label label-primary" id="rest1_lb3"></span></h4> 
+                                        <h4><span class="label label-primary" id="rest1_lb3"></span></h4>
                                     </div>
                                     <div class="col-xs-4">
                                         <input type="hidden" readonly class="btn btn-link" id="delete3" name="Delete lb3" value="{% trans "Delete" %}" onclick=deleteHidden("3")>
                                     </div>
                                 </div>
 				            </div>
-			            </div>  
-		            </div>  
+			            </div>
+		            </div>
 		        </div>
-		    
+
 	            <div class="col-xs-12">
 	                <div class="form-group">
 	                    <div class="col-xs-12">
 	                       <hr>
-	                       <input id="create_plan" class="btn btn-primary btn-block" name="save" value="{% trans "Create Plan" %}" type="submit" onclick=whileLoading()>
+	                       <input id="create_plan" class="btn btn-primary btn-block" name="save"
+                                  value="{% trans "Create Plan" %}" type="submit" onclick=send_form()>
                         </div>
                     </div>
-                </div> 
-	                
+                </div>
+
 	        </form>
         </div>
     </div>
 </div>
 <script>
+    //son los hidden
+    var input1 = $("#rest1");
+    var input2 = $("#rest2");
+    var input3 = $("#rest3");
+
+    //son los que se ven en la pantalla
+    var rest_lb1 = $("#rest1_lb1");
+    var rest_lb2 = $("#rest1_lb2");
+    var rest_lb3 = $("#rest1_lb3");
+
+    var input_city = $("#id_city");
+    var input_days = $("#id_days");
+    var input_country = $("#id_country");
 
 function deleteHidden(number){
     var target = "rest" + number;
@@ -159,7 +173,7 @@ function deleteHidden(number){
     //borramos el hidden
     $('#' + target).val("");
     //Borramos el visible
-    $('#' + rest_lbN).val("");
+    $('#' + rest_lbN).text("");
     //Habilitamos el boton de agregar mas restricciones
     $("#copy").prop('disabled', false);
     //desabilitamos el boton de borrar
@@ -173,15 +187,9 @@ function copyValues() {
     cantidad = $("#cantidad").find('option:selected').text();
     category = $("#selec").find('option:selected').text();
 
-    //son los hidden
-    var input1 = $("#rest1");
-    var input2 = $("#rest2");
-    var input3 = $("#rest3");
-
-    //son los que se ven en la pantalla
-    var rest_lb1 = $("#rest1_lb1");
-    var rest_lb2 = $("#rest1_lb2");
-    var rest_lb3 = $("#rest1_lb3");
+    if (cantidad.length == 0 || category.length == 0){
+        return false;
+    }
 
     //selecciona la id_categoria
     var cat_id = jQuery("#selec option:selected").val();
@@ -193,6 +201,7 @@ function copyValues() {
     var txt2 = input2.val();
     var txt3 = input3.val();
 
+    //evita repetidos
     if (category == input1.val().split(":")[0] || category == input2.val().split(":")[0] || category == input3.val().split(":")[0]) {
         return false;
     }
@@ -204,12 +213,12 @@ function copyValues() {
     }
     else if (txt2 == "") {
         input2.val(cat_id + ":" + vals);
-        rest_lb2.val(cantidad + ": " + category);
+        rest_lb2.text(cantidad + ": " + category);
         $("#delete2").prop("type", "button");
     }
     else if (txt3 == "") {
         input3.val(cat_id + ":" + vals);
-        rest_lb3.val(cantidad + ": " + category);
+        rest_lb3.text(cantidad + ": " + category);
         $("#delete3").prop("type", "button");
     }
 
@@ -240,16 +249,27 @@ function copyValues() {
      $(function() {
         $('.chosen-select').chosen();
         $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
-       
-        $('#form-create').change(function(){
-            if ($('#id_country').val() == '' || $('#id_city').val() == '' || $('#id_days').val() == '') {
-                $('#create_plan').prop('disabled', true);
-            }else{
-                $('#create_plan').prop('disabled', false);
-            }
-        });
       });
 
+    $('#form-create').change(function () {
+        if (input_city.val() != '' || input_country.val() != '' || input_days.val() != '') {
+            $('#create_plan').prop('disabled', false);
+        } else {
+            $('#create_plan').prop('disabled', true);
+        }
+    });
+
+    $("form").submit(function (event) {
+        //funcion que se lanza al enviar el form
+        if (input_city.val() != '' || input_country.val() != '' || input_days.val() != '') {
+            var response = confirm('{% trans 'Are you sure that you want to create the plan? You can not recover the coins.'%}');
+            if (response == true) {
+                whileLoading()
+            } else {
+                event.preventDefault();
+            }
+        }
+    });
 
     function whileLoading() {
         swal({
