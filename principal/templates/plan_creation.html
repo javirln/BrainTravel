@@ -262,12 +262,24 @@ function copyValues() {
     $("form").submit(function (event) {
         //funcion que se lanza al enviar el form
         if (input_city.val() != '' || input_country.val() != '' || input_days.val() != '') {
-            var response = confirm('{% trans 'Are you sure that you want to create the plan? You can not recover the coins.'%}');
-            if (response == true) {
-                whileLoading()
-            } else {
-                event.preventDefault();
-            }
+
+            swal({
+                title: "{% trans "Are you sure you want to create the plan ?" %}",
+                text: "{% trans "You cannot get your coins back." %}",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "{% trans "Yes, create plan" %}",
+                cancelButtonText: "{% trans "No, I'll give it a think..." %}",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function(isConfirm){
+                if (isConfirm) {
+                    whileLoading()
+                } else {
+                    event.preventDefault();
+                }
+            });
         }
     });
 
