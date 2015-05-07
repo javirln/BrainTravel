@@ -46,7 +46,7 @@ urlpatterns = patterns('',
     url(r'^venue_details_json/(?P<id_venue>[0-9]+)/$', 'principal.views.VenueViews.venue_details_json'),
     url(r'^venues_to_change_json/(?P<id_trip>[0-9]+)/$', 'principal.views.VenueViews.venues_to_change_json'),
     
-    
+    url(r'^precarga/$', 'principal.views.TripViews.precarga'),
     
     url(r'^statistics/$', 'principal.views.TripViews.stats'),
     url(r'^cookies_policy/$', 'principal.views.UserViews.cookies_policies'),
