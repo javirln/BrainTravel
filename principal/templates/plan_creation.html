@@ -202,7 +202,8 @@ function copyValues() {
     var txt3 = input3.val();
 
     //evita repetidos
-    if (category == input1.val().split(":")[0] || category == input2.val().split(":")[0] || category == input3.val().split(":")[0]) {
+    var prueba = input1.val().split(":")[0];
+    if (cat_id == prueba || category == input2.val().split(":")[0] || category == input3.val().split(":")[0]) {
         return false;
     }
 
