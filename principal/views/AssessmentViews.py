@@ -12,7 +12,7 @@ def assessment_list(request, trip_id):
         assert trip.traveller.id == request.user.id
         assessments = AssessmentService.find_all_id_trip(trip_id)
 
-        paginator = Paginator(assessments, 5)
+        paginator = Paginator(assessments, 10)
         page = request.GET.get('page')
         try:
             assessments = paginator.page(page)

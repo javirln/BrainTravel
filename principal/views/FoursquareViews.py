@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render_to_response
 from django.template.context import RequestContext
 
 from principal.forms import PlanForm
-from principal.models import Trip, Traveller, Feedback, Category
+from principal.models import Trip, Feedback, Category
 from principal.services import FoursquareServices, TravellerService, CoinService
 from principal.services.FoursquareServices import categories_initializer, init_fs
 from principal.utils import BrainTravelUtils
@@ -110,7 +110,6 @@ def foursquare_list_venues(request):
 
 
 def retrieve_venue(request, id_venue):
-
     if request.method == 'GET':
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
