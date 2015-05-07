@@ -1,4 +1,5 @@
 import hashlib
+import django
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -26,16 +27,18 @@ def sign_in(request):
                 user = authenticate(username=username, password=password)
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect('/profile/'+str(user.id))
+                    return HttpResponseRedirect('/profile/' + str(user.id))
                 else:
                     return render_to_response('error.html')
             except Exception as e:
                 return render_to_response('error.html')
         else:
-            return render_to_response('signin.html', {'form': form, 'registerForm': registerForm}, context_instance=RequestContext(request))
+            return render_to_response('signin.html', {'form': form, 'registerForm': registerForm},
+                                      context_instance=RequestContext(request))
     else:
         form = LoginForm()
-        return render_to_response('signin.html', {'registerForm': registerForm, 'form': form}, context_instance=RequestContext(request))
+        return render_to_response('signin.html', {'registerForm': registerForm, 'form': form},
+                                  context_instance=RequestContext(request))
 
 
 @login_required()
@@ -87,12 +90,27 @@ def confirm_account(request):
 
 
 def cookies_policies(request):
-    return render_to_response('cookies_policies.html', {}, context_instance=RequestContext(request))
+    if django.utils.translation.get_language() == "es":
+        return render_to_response('cookies_policies_es.html', {}, context_instance=RequestContext(request))
+    if django.utils.translation.get_language() == "en":
+        return render_to_response('cookies_policies_en.html', {}, context_instance=RequestContext(request))
+    else:
+        return render_to_response('cookies_policies_en.html', {}, context_instance=RequestContext(request))
 
 
 def about_us(request):
-    return render_to_response('about_us.html', {}, context_instance=RequestContext(request))
+    if django.utils.translation.get_language() == "es":
+        return render_to_response('about_us_es.html', {}, context_instance=RequestContext(request))
+    if django.utils.translation.get_language() == "en":
+        return render_to_response('about_us_en.html', {}, context_instance=RequestContext(request))
+    else:
+        return render_to_response('about_us_en.html', {}, context_instance=RequestContext(request))
 
 
 def privacy_terms(request):
-    return render_to_response('privacy_terms.html', {}, context_instance=RequestContext(request))
+    if django.utils.translation.get_language() == "es":
+        return render_to_response('privacy_terms_es.html', {}, context_instance=RequestContext(request))
+    if django.utils.translation.get_language() == "en":
+        return render_to_response('privacy_terms_en.html', {}, context_instance=RequestContext(request))
+    else:
+        return render_to_response('privacy_terms_en.html', {}, context_instance=RequestContext(request))

@@ -1,72 +1,61 @@
 {% extends 'base.html' %}
-{% load i18n %}
-{% block title %} {% trans "Cookies policy" %} {% endblock %}
+{% block title %}Cookies policy{% endblock %}
 {% block content %}
 
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-justify">
-            <h2>{% trans "Cookies policy" %}</h2>
-            <p>{% blocktrans trimmed %} Our cookies policy is subject to
+            <h2>Cookies policy</h2>
+            <p> Our cookies policy is subject to
 				periodic updates. Its purpose is to help you understand our use of
 				cookies, the purpose of cookies used and options for the user to
-				manage them. {% endblocktrans %}</p>
+				manage them.</p>
             <p>
-               {% trans  " Users can access this information at any time via the link enabled on the webpage." %}
+               Users can access this information at any time via the link enabled on the webpage.
             </p>
             
-            <h3>{% trans "What is a Cookie?" %}</h3>
+            <h3>What is a Cookie?</h3>
            
-            <p>{% blocktrans trimmed %} A 'cookie' is a small text file
+            <p>A 'cookie' is a small text file
 				that a website stores on browser user. Cookies make using and
 				navigating a website and are essential for Internet operation,
 				providing many advantages in service delivery interactive. 
-				{% endblocktrans %}
 		    </p>
 		    
-		    <p>{% blocktrans trimmed %} 
+		    <p>
 		        Cookies are used, for example, to
 				manage the user's session (reducing the number of times that you
 				must insert your user data), improving the services offered, or to
 				adapt the contents of a web page to your preferences.
-				{% endblocktrans %}
 		    </p>
             
-            <p>{% blocktrans trimmed %}
+            <p>
                 Cookies may be 'session', so it
 				will be erased once the user leaves the page web that generated or
 				â€œpersistent', which remain on your computer to a date determined. 
-				{% endblocktrans %}
 		    </p>
            
-            <p>{% blocktrans trimmed %} 
+            <p>
                 Cookies also can be 'proper',
 				managed by the domain to which the user accesses and requesting a
-				service (in this case the home owned by Acme-SportTracking Co.,
-				Inc.) or €'third party cookies', sent to the user equipment from a
+				service (in this case the home owned by BrainTravel Co.,
+				Inc.) or 'third party cookies', sent to the user equipment from a
 				domain accessed differently. 
-				{% endblocktrans %}
 			</p>
             
-            <h3>{%  trans "Common cookies in the webpages of braintravel.com" %}</h3>
+            <h3>Common cookies in the webpages of braintravel.com</h3>
                 <ul>
                     <li>
-	                    {% blocktrans trimmed %}
 		                    Session Cookie ('sessionid'): Used to uniquely identify each user accessing the
 							application. This cookie is necessary to use these websites, so if
 							the user decides to delete this cookie from your device, the web
 							site may not function correctly. 
-						{% endblocktrans %}
 					</li>
                     <li>
-                        {% blocktrans trimmed %}
-                           CSRF token cookie ('csrftoken'): It is used as a security measure to prevent various attacks.
-                        {% endblocktrans %}
+                            CSRF token cookie ('csrftoken'): It is used as a security measure to prevent various attacks.
                     </li>
                     <li>
-                        {% blocktrans trimmed %}
                             Aceptance cookie ('cp-enabled'): Used to remember if the user has already accepted the cookie policy of the site.
-                        {% endblocktrans %}
                     </li>
                 </ul>
             <br>

@@ -4,7 +4,7 @@
 {% block content %}
     
 <div class="container">
-    <h1>Search results for "{{ title_search }}"</h1>
+    <h1>{% trans "Search results for" %} "{{ title_search }}"</h1>
     {% if not trip_result %}
         <p>{% trans "Oops! BrainTravel could not find anything..." %}</p>
     {% else %}

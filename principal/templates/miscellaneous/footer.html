@@ -1,5 +1,6 @@
 <!-- Footer -->
 {% load staticfiles %}
+{% load i18n %}
 <footer class="footer hidden-xs">
     <div class="container">
         <div class="row text-center">
@@ -8,8 +9,8 @@
 					<strong>BrainTravel</strong>
 				</h4>
                 <br>
-				<p class="text-muted"><a href="/i18n/change_language?language=es">Espa&ntilde;ol</a> | <a href="/i18n/change_language?language=en">English</a></p>
-                <p class="text-muted"><a href="/cookies_policy">Cookies policy</a> | <a href="/about_us">About us</a> | <a href="/privacy_terms">Privacy terms</a></p>
+				<p class="text-muted"><a href="/i18n/change_language?language=es">{% trans "Spanish" %}</a> | <a href="/i18n/change_language?language=en">{% trans "English" %}</a></p>
+                <p class="text-muted"><a href="/cookies_policy">{% trans "Cookies policy" %}</a> | <a href="/about_us">{% trans "About us" %}</a> | <a href="/privacy_terms">{% trans "Privacy terms" %}</a></p>
 				<p class="text-muted">Copyright &copy; BrainTravel 2015</p>
 				<img src="{% static "img/powered_fs.png" %}" alt="BrainTravel is powered by Foursquare"/>
 			</div>

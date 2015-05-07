@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-10 col-sm-9 col-lg-10 col-xs-12">
                         <div class="media-body">
-                            <h4>Useful tips</h4>
+                            <h4>{% trans "Useful tips" %}</h4>
                                 {% for tip in tips %}
                                 <div class="row">
 	                                <div class="col-sm-1 hidden-xs">
@@ -53,7 +53,7 @@
                 <div class="modal-content modal-bt">
                   <div class="modal-header text-center">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Give us some feedback!</h4>
+                    <h4 class="modal-title" id="myModalLabel">{% trans "Give us some feedback!" %}</h4>
                   </div>
                   <div class="modal-body">
                     <form class="form" method="post" action="/venue_details/rate/" id="form-rate-id">

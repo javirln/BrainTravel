@@ -29,14 +29,14 @@
           </a>
         </div>
          -->
-    <h1>Trip details</h1>
+    <h1>{% trans "Trip details" %}</h1>
     <div class="row">
         <div id="map" class="plan-map"></div>
     </div>
-    <h2>{{trip.day_set.count}} days in {{trip.city}}, {{trip.country}}</h2>
-    <p>Click on the day indicator to show te corresponding plan</p>
+    <h2>{{trip.day_set.count}} {% trans "days in" %} {{trip.city}}, {{trip.country}}</h2>
+    <p>{% trans "Click on the day indicator to show te corresponding plan" %}</p>
     <div class="visible-xs">
-        <p>Click on the venue names to view its details.</p>
+        <p>{% trans "Click on the venue names to view its details." %}</p>
     </div>
     <div class="panel-group" id="accordion" role="tablist"
         aria-multiselectable="true">
@@ -47,7 +47,7 @@
                 <h4 class="panel-title">
                     <a class="day-switcher" data-toggle="collapse" data-parent="#accordion"
                         href="#collapse{{day.numberDay}}" aria-expanded="true"
-                        aria-controls="collapse{{day.numberDay}}">Day {{day.numberDay}}</a>
+                        aria-controls="collapse{{day.numberDay}}">{% trans "Day" %} {{day.numberDay}}</a>
                 </h4>
             </div>
             <div id="collapse{{day.numberDay}}"
@@ -55,8 +55,7 @@
                 role="tabpanel" aria-labelledby="headin{{day.numberDay}}">
                 <div class="panel-body">
                     <h3>
-                        <i class="fa fa-map-marker"></i> Those are the venues that we
-                        suggest to visit on day {{day.numberDay}}
+                        <i class="fa fa-map-marker"></i> {% trans "Those are the venues that we suggest to visit on day " %}{{day.numberDay}}
                     </h3>
                     <div class="row text-center">
                         {% for venue in day.venues.all %} {% if not venue.is_food%}
@@ -64,15 +63,14 @@
                             <img src="{{venue.photo}}" class="img-responsive img-thumbnail img-venue" onerror="this.src='{% static "img/no-image.png" %}'">
                             <h4><a href="/venue_details/{{ venue.id }}" data-toggle="tooltip" data-placement="bottom" title="Click here to view details">{{venue.name}}</a></h4>
                             <a onclick="loadDataModalChangeVenue({{venue.id}}, {{day.id}});" id="changeVenue" href="" data-toggle="modal" data-target="#changeVenueModal">
-                            	<i class="fa fa-exchange"></i> Change this
+                            	<i class="fa fa-exchange"></i> {% trans "Change this" %}
                             </a>
                         </div>
                          {% endif %} {% endfor %}
                     </div>
 
                     <h3>
-                        <i class="fa fa-cutlery"></i> Those are the places where we suggest
-                        you to eat on day {{day.numberDay}}
+                        <i class="fa fa-cutlery"></i> {% trans "Those are the places where we suggest you to eat on day " %}{{day.numberDay}}
                     </h3>
                     <div class="row text-center">
                         {% for venue in day.venues.all %} {% if venue.is_food %}
@@ -82,7 +80,7 @@
                             <h4><a href="/venue_details/{{ venue.id }}" >{{venue.name}}</a></h4>
                             
                             <a onclick="loadDataModalChangeFood({{venue.id}}, {{day.id}});" id="changeVenue" href="" data-toggle="modal" data-target="#changeFoodModal">
-                                <i class="fa fa-exchange"></i> Change this
+                                <i class="fa fa-exchange"></i> {% trans "Change this" %}
                             </a>
                         </div>
                         {% endif %} {% endfor %}
@@ -98,14 +96,14 @@
             <div class="modal-content modal-bt">
                 <div class="modal-header text-center">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Change venue</h4>
+                    <h4 class="modal-title" id="myModalLabel">{% trans "Change venue" %}</h4>
                 </div>
                 <div class="modal-body row">
                     <div class="col-sm-10 col-sm-offset-1">
                     	<div class="col-xs-12 text-center">
-                    	    <h3>Select the new venue</h3>
+                    	    <h3>{% trans "Select the new venue" %}</h3>
                             <img id="imageVenueToChange" src="{{venue.photo}}" class="img-responsive img-thumbnail img-venue" onerror="this.src='{% static "img/no-image.png" %}'">
-                            <h4 id="nameCurrentVenue">Name</h4>
+                            <h4 id="nameCurrentVenue">{% trans "Name" %}</h4>
                         </div>
                         
                         <form action="/planner/change_venue/" method="POST">
@@ -115,7 +113,7 @@
                         	<input type="hidden" id="trip" name="trip" value="{{trip.id}}" />
                         	
                         	<div class="form-group">
-                        	   <select id="selectNewVenue" name="newVenue" style="display:none;" tabindex="-1" class="chosen-select" data-placeholder="Choose a new venue...">
+                        	   <select id="selectNewVenue" name="newVenue" style="display:none;" tabindex="-1" class="chosen-select" data-placeholder="{% trans "Choose a new venue..."%}">
 	                                <option></option>
 	                                {% for v in trip.possible_venues.all %}
 	                                    {% if not v.is_food %}
@@ -125,7 +123,7 @@
 	                            </select>
                         	</div>
         
-	                        <button class="btn btn-primary btn-block">Change!</button>
+	                        <button class="btn btn-primary btn-block">{% trans "Change" %}</button>
 						</form>
                     </div>
                 </div>
