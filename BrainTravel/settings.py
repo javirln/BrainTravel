@@ -116,9 +116,9 @@ LOGIN_REDIRECT_URL = '/signin/'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'notificaciones.braintravel@gmail.com'
+EMAIL_HOST_USER = 'braintravel.payments@gmail.com'
 EMAIL_HOST_PASSWORD = 'braintravelredmine'
 
 # PAYPAL CONFIGURATION
-PAYPAL_RECEIVER_EMAIL = 'notificaciones.braintravel-facilitator@gmail.com'
+PAYPAL_RECEIVER_EMAIL = 'braintravel.payments-facilitator@gmail.com'
 PAYPAL_TEST = True
