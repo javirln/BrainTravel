@@ -17,31 +17,25 @@ from django.utils.translation import ugettext as _
 
 
 def sign_in(request):
-    registerForm = TravellerRegistrationForm()
-    if request.POST:
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            try:
+    try:
+        assert not request.user.has_perm('principal.traveller') and not request.user.has_perm('principal.administrator')
+        if request.POST:
+            form = LoginForm(request.POST)
+            if form.is_valid():
                 username = form.cleaned_data['username']
                 password = form.cleaned_data['password']
                 user = authenticate(username=username, password=password)
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponseRedirect('/profile/' + str(user.id))
-                else:
-                    return render_to_response('error.html')
-            except Exception as e:
-                return render_to_response('error.html')
+                assert user.is_active
+                login(request, user)
+                return HttpResponseRedirect('/profile/'+str(user.id))
         else:
-            return render_to_response('signin.html', {'form': form, 'registerForm': registerForm},
-                                      context_instance=RequestContext(request))
-    else:
-        form = LoginForm()
-        return render_to_response('signin.html', {'registerForm': registerForm, 'form': form},
-                                  context_instance=RequestContext(request))
+            form = LoginForm()
+        registerForm = TravellerRegistrationForm()
+        return render_to_response('signin.html', {'registerForm': registerForm, 'form': form}, context_instance=RequestContext(request))
+    except:
+        return render_to_response('error.html', context_instance=RequestContext(request))
 
 
-@login_required()
 def system_logout(request):
     logout(request)
     return HttpResponseRedirect("/")

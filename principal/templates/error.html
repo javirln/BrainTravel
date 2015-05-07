@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %} {% trans "Error" %} {% endblock %}
+{% load staticfiles %}
 {% block content %}
-    <h1 class="error-message-search"><i class="fa fa-exclamation-circle"></i> PANIC!!!</h1>
+<div class="container">
+    <div class="text-center" style="margin-top:100px">
+        <h1>{% trans "We are sorry. An error has occurred." %}</h1>
+        <h4><a href="/"><i class="fa fa-arrow-left"></i> {% trans "Go to index" %}</a></h4>
+        <img src="/static/img/access_denied.png" width="300" class="center-block img-circle img-thumbnail img-responsive">
+    </div>
+</div>
 {% endblock %}
