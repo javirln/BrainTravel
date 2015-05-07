@@ -10,7 +10,6 @@ from principal.utils import BrainTravelUtils
 from django.http import HttpResponse
 
 
-# author: Juane
 @login_required()
 @permission_required('principal.traveller')
 def profile_details(request, traveller_id):
@@ -23,11 +22,10 @@ def profile_details(request, traveller_id):
             trips = TripService.list_trip_approved(traveller.id)
             payments = []
         return render_to_response('profile_details.html', {'traveller': traveller, 'trips': len(trips), 'payments': len(payments)}, context_instance=RequestContext(request))
-    except AssertionError:
-        render_to_response('error.html')
+    except:
+        return render_to_response('error.html', context_instance=RequestContext(request))
 
 
-# author: Juane
 @login_required()
 @permission_required('principal.traveller')
 def profile_edit(request):
@@ -42,17 +40,16 @@ def profile_edit(request):
                     BrainTravelUtils.save_success(request, "Profile successfully updated")
                     return HttpResponseRedirect('/profile/'+str(traveller.id))
                 except:
-                    return render_to_response('error.html')
+                    return render_to_response('error.html', context_instance=RequestContext(request))
         else:
             data = {'first_name': traveller.first_name, 'last_name': traveller.last_name, 'genre': traveller.genre,
                     'id': traveller.id, 'photo': traveller.photo}
             form = TravellerEditProfileForm(initial=data)
         return render_to_response('profile_edit.html', {"form": form, "photo_profile": traveller.photo}, context_instance=RequestContext(request))
-    except AssertionError:
-        return render_to_response('error.html')
+    except:
+        return render_to_response('error.html', context_instance=RequestContext(request))('error.html')
 
 
-# author: Juane
 @login_required()
 @permission_required('principal.traveller')
 def profile_edit_password(request):
@@ -66,31 +63,29 @@ def profile_edit_password(request):
                     BrainTravelUtils.save_success(request, "Password successfully updated")
                     return HttpResponseRedirect('/profile/'+str(traveller.id))
                 except:
-                    return render_to_response('error.html')
+                    return render_to_response('error.html', context_instance=RequestContext(request))
         else:
             traveller = TravellerService.find_one(request.user.id)
             data = {'id': traveller.id}
             form = TravellerEditPasswordForm(initial=data)
         return render_to_response('profile_edit_password.html', {"form": form}, context_instance=RequestContext(request))
     except AssertionError:
-        return render_to_response('error.html')
+        return render_to_response('error.html', context_instance=RequestContext(request))
+
 
 @login_required()
 @permission_required('principal.traveller')
 def all_payments(request):
-    if request.method == 'GET' or request.method == 'POST':
+    try:
+        list_payments = PaymentsService.all_payments(request.user.id)
+        paginator = Paginator(list_payments, 10)
+        page = request.GET.get('page')
         try:
-            list_payments = PaymentsService.all_payments(request.user.id)
-            paginator = Paginator(list_payments, 10)
-            page = request.GET.get('page')
-            try:
-                list_payments = paginator.page(page)
-            except PageNotAnInteger:
-                list_payments = paginator.page(1)
-            except EmptyPage:
-                list_payments = paginator.page(paginator.num_pages)
-            return render_to_response('my_payments.html',
-                                      {'list_payments': list_payments},
-                                      context_instance=RequestContext(request))
-        except Exception as e:
-            return HttpResponse(e)
+            list_payments = paginator.page(page)
+        except PageNotAnInteger:
+            list_payments = paginator.page(1)
+        except EmptyPage:
+            list_payments = paginator.page(paginator.num_pages)
+        return render_to_response('my_payments.html', {'list_payments': list_payments}, context_instance=RequestContext(request))
+    except:
+        return render_to_response('error.html', context_instance=RequestContext(request))
