@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %} {% trans "Details" %} {% endblock %}
+{% load staticfiles %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/timeline.css" %}">   
+{% endblock %}
 {% block content %}
     
 <div class="container">
@@ -27,25 +31,25 @@
                                 <p><i class="fa fa-calendar fa"></i>  {{ trip.startDate }} - {{ trip.endDate }}</p>
                                 <p>{{trip.publishedDescription|safe}}</p>
                                 <ul class="list-inline list-unstyled">
-                                    {% if user.is_anonymous or perms.principal.administrator or trip.state != 'ap' %}
+                                    {% if user.is_anonymous or perms.principal.administrator or trip.state != 'ap' or trip.traveller.id == user.id%}
                                         <li><i class="fa fa-thumbs-o-up fa"></i> {{trip.likes}}</li>
                                         <li>|</li>
                                         <li><i class="fa fa-thumbs-o-down fa"></i> {{trip.dislikes}}</li>
                                         <li>|</li>
                                     {% endif %}
-                                    {% if perms.principal.traveller and trip.state == 'ap'%}
+                                    {% if perms.principal.traveller and trip.state == 'ap' and trip.traveller.id != user.id %}
                                         {% if judge == None %}
                                             <li><a href="/judge/{{trip.scorable_ptr_id}}/1" style="text-decoration: None"><i class="fa fa-thumbs-o-up fa"></i> {{trip.likes}}</a></li>
                                             <li>|</li>
                                             <li><a href="/judge/{{trip.scorable_ptr_id}}/0" style="text-decoration: None"><i class="fa fa-thumbs-o-down fa"></i> {{trip.dislikes}}</a></li>
                                         {% elif judge.like == True %}
-                                            <li><a href="/judge/{{trip.scorable_ptr_id}}/1" style="text-decoration: None"><i class="fa fa-thumbs-up fa"></i> {{trip.likes}}</a></li>
+                                            <li><i class="fa fa-thumbs-o-up fa"></i> {{trip.likes}}</li>
                                             <li>|</li>
                                             <li><a href="/judge/{{trip.scorable_ptr_id}}/0" style="text-decoration: None"><i class="fa fa-thumbs-o-down fa"></i> {{trip.dislikes}}</a></li>
                                         {% else %}
                                             <li><a href="/judge/{{trip.scorable_ptr_id}}/1" style="text-decoration: None"><i class="fa fa-thumbs-o-up fa"></i> {{trip.likes}}</a></li>
                                             <li>|</li>
-                                            <li><a href="/judge/{{trip.scorable_ptr_id}}/0" style="text-decoration: None"><i class="fa fa-thumbs-down fa"></i> {{trip.dislikes}}</a></li>
+                                            <li><i class="fa fa-thumbs-down fa"></i> {{trip.dislikes}}</li>
                                         {% endif %}
                                         <li>|</li>
                                     {% endif %}

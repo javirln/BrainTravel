@@ -1,11 +1,6 @@
 # -*- coding: latin-1 -*-
-import datetime
-
 from django.db.models import Q, Count, Avg, Sum
-from datetime import datetime
 from principal.models import Trip, Traveller, Assessment, Scorable, Feedback, Venue, Likes, CoinHistory, Comment
-
-from principal.services.UserService import add_coins
 
 
 # author: Javi
@@ -78,45 +73,6 @@ def create(form, user_id):
     return trip
 
 
-# author: Juane
-def increase_like(trip, traveller_id):
-    traveller = Traveller.objects.get(id=traveller_id)
-    trip_likes = trip.likes + 1
-
-    if (trip_likes % 5) == 0:
-        traveller.coins += long(2)
-        save(traveller)
-        new_entry = CoinHistory(
-            amount=2,
-            date=datetime.now(),
-            concept="Gift for number of likes",
-            traveller=traveller
-        )
-        new_entry.save()
-    return trip
-
-
-# author: Juane
-def increase_dislike(trip):
-    dislikes = trip.dislikes
-    trip.dislikes = dislikes + 1
-    return trip
-
-
-# author: Juane
-def decrement_like(trip):
-    likes = trip.likes
-    trip.likes = likes - 1
-    return trip
-
-
-# author: Juane
-def decrement_dislike(trip):
-    dislikes = trip.dislikes
-    trip.dislikes = dislikes - 1
-    return trip
-
-
 # david
 def save_secure(trip):
     if trip.startDate > trip.endDate:
@@ -131,7 +87,7 @@ def delete(request, trip):
     trip.delete()
 
 
-# author: Javi Rodriguez
+# author: Juane
 def construct_assessment(user_id, assessment_form):
 
     # Obtener los valores del formulario

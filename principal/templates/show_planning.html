@@ -2,6 +2,9 @@
 {% load i18n %}
 {% block title %} {% trans "Plan details" %} {% endblock %} 
 {% load staticfiles %}
+{% block extrahead %}
+<script type="text/javascript" src="{% static "js/google-maps.js" %}"></script>
+{% endblock %}
 {% block content %}
 <div class="container">
     <!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
