@@ -1,23 +1,16 @@
 # -*- coding: latin-1 -*-
 
-import traceback
-
 from django.contrib.auth.decorators import permission_required
-from django.core import paginator
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
-from django.http import HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.template.context import RequestContext
 
 from principal.forms import PlanForm
-from principal.models import Trip, Traveller, Feedback, Category
-from principal.services import FoursquareServices
-from principal.services import TravellerService
-from principal.services.FoursquareServices import categories_initializer
-from principal.services.FoursquareServices import init_fs
+from principal.models import Trip, Feedback, Category
+from principal.services import FoursquareServices, TravellerService, CoinService
+from principal.services.FoursquareServices import categories_initializer, init_fs
 from principal.utils import BrainTravelUtils
-from principal.views import TripViews
 from principal.views.Coinviews import buy_coins
 
 
@@ -26,48 +19,25 @@ client = init_fs()
 
 @permission_required('principal.traveller')
 def show_planning(request, trip_id):
-    trip = Trip.objects.get(pk=trip_id)
-    if Traveller.objects.get(id=request.user.id) != trip.traveller:
-        BrainTravelUtils.save_error(request, "This is not your trip")
-        return TripViews.planned_trips(request)
-    else:
+    try:
+        trip = Trip.objects.get(pk=trip_id)
+        assert trip.traveller.id == request.user.id
         return render_to_response('show_planning.html', {'trip': trip}, context_instance=RequestContext(request))
+    except:
+        return render_to_response('error.html', context_instance=RequestContext(request))
 
 
 @permission_required('principal.traveller')
 def foursquare_request(request):
-    if request.method == 'GET':
-        try:
-            categories_initializer()
-            # search_by_category("sevilla", "coffee")
-            # test_plan()
-        except Exception as e:
-            return HttpResponse(e)
-    else:
-        return redirect('/')
+    try:
+        if request.method == 'GET':
+                categories_initializer()
+        else:
+            return redirect('/')
+    except:
+        return render_to_response('error.html', context_instance=RequestContext(request))
 
 
-# autor: david
-def check_coins(days):
-    if days <= 3:
-        coins = 20
-    elif 3 < days <= 7:
-        coins = 40
-    else:
-        coins = 80
-    return coins
-
-
-# Autor: david
-def check_coins_available(traveller, coins_spent):
-    coins_available = traveller.coins
-    if coins_available < coins_spent:
-        return False
-    else:
-        return True
-
-
-# autor: david y cuder
 @permission_required('principal.traveller')
 def foursquare_list_venues(request):
     try:
@@ -79,12 +49,11 @@ def foursquare_list_venues(request):
             form = PlanForm(request.POST)
             list_constrains = request.POST.getlist('rests')
 
-            print list_constrains
             if form.is_valid():
                 days = int(form.cleaned_data['days'])
-                coins_cost = check_coins(days)
-                if check_coins_available(traveller, coins_cost) is False:
-                    BrainTravelUtils.save_error(request, "Insufficient coins available")
+                coins_cost = CoinService.check_coins(days)
+                if CoinService.check_coins_available(traveller, coins_cost) is False:
+                    BrainTravelUtils.save_error(request, _("Insufficient coins available"))
                     return buy_coins(request)
                 city = form.cleaned_data['city']
 
@@ -115,55 +84,47 @@ def foursquare_list_venues(request):
                 all_venues = FoursquareServices.save_data(all_venues)
                 all_food = FoursquareServices.save_data(all_food)
 
-                #Llamada al nuevo algoritmo
+                # Llamada al nuevo algoritmo
                 plan_venues = FoursquareServices.get_plan(list_constrains, items_venues, days)
                 plan_food = FoursquareServices.get_plan_food(list_constrains, items_food, days, items_venues[0])
                 # Filter and save
                 selected_venues = FoursquareServices.filter_and_save(plan_venues[0])
                 selected_food = FoursquareServices.filter_and_save(plan_food, food=True)
                 
-                trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues, plan_venues[1],
-                                                      selected_food, all_venues, all_food)
+                trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues, plan_venues[1], selected_food, all_venues, all_food)
 
-                # traveller.coins -= coins_cost
-                # traveller.save()
+                traveller.coins -= coins_cost
+                traveller.save()
                 FoursquareServices.create_history(trip)
-                # return show_planning(request, trip.id)
 
                 return redirect("/show_planning/" + str(trip.id) + "/")
             # si no es valido el form devolvemos a editar
-            return render_to_response('plan_creation.html',
-                                      {'form': form, 'traveller': traveller, 'list_cat': list_cat},
-                                      context_instance=RequestContext(request))
+            return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller, 'list_cat': list_cat}, context_instance=RequestContext(request))
         else:
             form = PlanForm()
-            res = render_to_response('plan_creation.html',
-                                      {'form': form, 'traveller': traveller, 'list_cat': list_cat},
-                                      context_instance=RequestContext(request))
-            return res
+            return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller, 'list_cat': list_cat}, context_instance=RequestContext(request))
 
     except:
-        print traceback.format_exc()
+        # print traceback.format_exc()
         return render_to_response('error_planning.html', context_instance=RequestContext(request))
 
 
-# author: Javi Rodriguez
 def retrieve_venue(request, id_venue):
     if request.method == 'GET':
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
-            tips = Feedback.objects.filter(Q(venues=id_venue)).order_by("usefulCount")
-            
-            if tips is not False:
-                paginator = Paginator(tips, 10)
-                page = request.GET.get('page')
-                tips = paginator.page(page)
-        except PageNotAnInteger:
-            tips = paginator.page(1)
-        except EmptyPage:
-                    tips = paginator.page(paginator.num_pages)
-        except Exception as e:
-            return render_to_response('error.html')
-        
-    return render_to_response('venue_details.html', {"venue": venue, "tips": tips},
-                      context_instance=RequestContext(request))
+            trips = Feedback.objects.filter(Q(venues=id_venue)).order_by("usefulCount")
+
+            paginator = Paginator(trips, 10)
+            page = request.GET.get('page')
+            try:
+                trips = paginator.page(page)
+            except PageNotAnInteger:
+                trips = paginator.page(1)
+            except EmptyPage:
+                trips = paginator.page(paginator.num_pages)
+
+            return render_to_response('venue_details.html', {"venue": venue, "trips": trips}, context_instance=RequestContext(request))
+
+        except:
+            return render_to_response('error.html', context_instance=RequestContext(request))
