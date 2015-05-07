@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-07 21:09+0200\n"
+"POT-Creation-Date: 2015-05-07 23:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3855,17 +3855,27 @@ msgstr "<h4>Descripción: <small>¿Hay algo más que quieras añadir?</small></h
 msgid "An unexpected error has occurred"
 msgstr "Lo sentimos, ha ocurrido un error"
 
-#: principal/views/Coinviews.py:46
+#: principal/views/Coinviews.py:26
+msgid ""
+"Thanks for your bought!. It's possible that coins revenue take for a "
+"minutes. Please, be patient :)"
+msgstr ""
+
+#: principal/views/Coinviews.py:53
 msgid "40 Coins"
 msgstr "40 monedas"
 
-#: principal/views/Coinviews.py:59
+#: principal/views/Coinviews.py:66
 msgid "60 Coins"
 msgstr "60 monedas"
 
-#: principal/views/Coinviews.py:72
+#: principal/views/Coinviews.py:79
 msgid "100 Coins"
 msgstr "100 monedas"
+
+#: principal/views/EmailViews.py:15
+msgid "Welcome to BrainTravel"
+msgstr "Bienvenido a BrainTravel"
 
 #: principal/views/TripViews.py:93
 msgid "Comment successfully"
