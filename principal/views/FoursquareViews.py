@@ -115,7 +115,7 @@ def retrieve_venue(request, id_venue):
             venue = FoursquareServices.retrieve_venues(id_venue)
             trips = Feedback.objects.filter(Q(venues=id_venue)).order_by("usefulCount")
 
-            paginator = Paginator(trips, 2)
+            paginator = Paginator(trips, 10)
             page = request.GET.get('page')
             try:
                 trips = paginator.page(page)
