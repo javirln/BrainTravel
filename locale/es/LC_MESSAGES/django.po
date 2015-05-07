@@ -540,7 +540,7 @@ msgstr "Repite la nueva contraseña"
 msgid ""
 "<strong>The passwords</strong> must contain at least one uppercase, a "
 "lowercase letter and a number."
-msgstr "<strong>Las contraseñas</strong> deben contenear al menos una mayuscula, una minúscula y un número."
+msgstr "<strong>Las contraseñas</strong> deben contener al menos una mayuscula, una minúscula y un número."
 
 #: principal/templates/public_trip_details.html:3
 msgid "Details"
