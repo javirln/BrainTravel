@@ -3171,11 +3171,11 @@ msgstr ""
 
 #: principal/templates/index.html:162
 msgid "I understand"
-msgstr ""
+msgstr "Entiendo"
 
 #: principal/templates/index.html:163
 msgid "We use cookies to track usage and preferences."
-msgstr ""
+msgstr "Usamos cookies para monitorizar el uso y las preferencias."
 
 #: principal/templates/index.html:165
 #: principal/templates/miscellaneous/footer.html:13
@@ -3184,7 +3184,7 @@ msgstr "Política de cookies"
 
 #: principal/templates/index.html:168
 msgid "Disalbe Cookies"
-msgstr ""
+msgstr "Desactivar Cookies"
 
 #: principal/templates/list_coin_history.html:3
 #: principal/templates/list_coin_history.html:10
