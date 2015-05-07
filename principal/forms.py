@@ -54,7 +54,8 @@ class LoginForm(forms.Form):
             if not user.is_active:
                 self.add_error('username', "Your account is desactivated")
         else:
-            self.add_error('username', _("Wrong email or password"))
+            if username is not None and password is not None:
+                self.add_error('username', _("Wrong email or password"))
 
         return self.cleaned_data
 

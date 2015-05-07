@@ -1,6 +1,6 @@
 # -*- coding: latin-1 -*-
 
-from principal.models import CoinHistory, Traveller
+from principal.models import CoinHistory
 
 
 def list_coin_history_traveller(id_traveller):

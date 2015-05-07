@@ -1,11 +1,11 @@
 import hashlib
+import django
 
+from django.utils import translation
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http.response import HttpResponse, JsonResponse, \
-    HttpResponseRedirect
-from django.shortcuts import redirect, render_to_response
+from django.http.response import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.utils.translation import ugettext as _
 
@@ -16,29 +16,28 @@ from principal.views import EmailViews
 
 
 def sign_in(request):
-    registerForm = TravellerRegistrationForm()
-    if request.POST:
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            try:
+    try:
+        assert not request.user.has_perm('principal.traveller') and not request.user.has_perm('principal.administrator')
+        if request.POST:
+            form = LoginForm(request.POST)
+            if form.is_valid():
                 username = form.cleaned_data['username']
                 password = form.cleaned_data['password']
                 user = authenticate(username=username, password=password)
-                if user.is_active:
-                    login(request, user)
+                assert user.is_active
+                login(request, user)
+                if user.has_perm('principal.traveller'):
                     return HttpResponseRedirect('/profile/'+str(user.id))
                 else:
-                    return render_to_response('error.html')
-            except Exception as e:
-                return render_to_response('error.html')
+                    return HttpResponseRedirect('/administrator/trip/list/')
         else:
-            return render_to_response('signin.html', {'form': form, 'registerForm': registerForm}, context_instance=RequestContext(request))
-    else:
-        form = LoginForm()
+            form = LoginForm()
+        registerForm = TravellerRegistrationForm()
         return render_to_response('signin.html', {'registerForm': registerForm, 'form': form}, context_instance=RequestContext(request))
+    except:
+        return render_to_response('error.html', context_instance=RequestContext(request))
 
 
-@login_required()
 def system_logout(request):
     logout(request)
     return HttpResponseRedirect("/")
@@ -90,12 +89,21 @@ def confirm_account(request):
 
 
 def cookies_policies(request):
-    return render_to_response('cookies_policies.html', {}, context_instance=RequestContext(request))
+    if translation.get_language() == "es":
+        return render_to_response('cookies_policies_es.html', {}, context_instance=RequestContext(request))
+    else:
+        return render_to_response('cookies_policies_en.html', {}, context_instance=RequestContext(request))
 
 
 def about_us(request):
-    return render_to_response('about_us.html', {}, context_instance=RequestContext(request))
+    if translation.get_language() == "es":
+        return render_to_response('about_us_es.html', {}, context_instance=RequestContext(request))
+    else:
+        return render_to_response('about_us_en.html', {}, context_instance=RequestContext(request))
 
 
 def privacy_terms(request):
-    return render_to_response('privacy_terms.html', {}, context_instance=RequestContext(request))
+    if translation.get_language() == "es":
+        return render_to_response('privacy_terms_es.html', {}, context_instance=RequestContext(request))
+    else:
+        return render_to_response('privacy_terms_en.html', {}, context_instance=RequestContext(request))

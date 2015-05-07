@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-07 00:03+0200\n"
+"POT-Creation-Date: 2015-05-07 19:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,10 @@ msgid "Site Maps"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/contrib/staticfiles/apps.py:8
+#, fuzzy
+#| msgid "States"
 msgid "Static Files"
-msgstr ""
+msgstr "Estados"
 
 #: myvenv/lib/python2.7/site-packages/django/contrib/syndication/apps.py:8
 msgid "Syndication"
@@ -114,8 +116,10 @@ msgstr[1] ""
 
 #: myvenv/lib/python2.7/site-packages/django/db/models/base.py:971
 #: myvenv/lib/python2.7/site-packages/django/forms/models.py:716
+#, fuzzy
+#| msgid "Islands"
 msgid "and"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/django/db/models/base.py:973
 #, python-format
@@ -231,7 +235,7 @@ msgstr ""
 #: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1453
 #: principal/forms.py:32
 msgid "Email address"
-msgstr "Dirección de correo"
+msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1479
 msgid "File path"
@@ -532,8 +536,9 @@ msgid "Currently"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/forms/widgets.py:351
+#: principal/templates/show_planning.html:129
 msgid "Change"
-msgstr ""
+msgstr "Cambiar esto"
 
 #: myvenv/lib/python2.7/site-packages/django/forms/widgets.py:352
 msgid "Clear"
@@ -602,7 +607,7 @@ msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dateformat.py:66
 msgid "AM"
-msgstr ""
+msgstr "Cajeros automáticos"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dateformat.py:149
 msgid "midnight"
@@ -645,8 +650,10 @@ msgid "Mon"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:10
+#, fuzzy
+#| msgid "Tunnels"
 msgid "Tue"
-msgstr ""
+msgstr "Túneles"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:10
 msgid "Wed"
@@ -661,8 +668,10 @@ msgid "Fri"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:11
+#, fuzzy
+#| msgid "States"
 msgid "Sat"
-msgstr ""
+msgstr "Estados"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:11
 msgid "Sun"
@@ -677,16 +686,20 @@ msgid "February"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
+#, fuzzy
+#| msgid "Search"
 msgid "March"
-msgstr ""
+msgstr "Buscar"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
 msgid "April"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
+#, fuzzy
+#| msgid "Day"
 msgid "May"
-msgstr ""
+msgstr "Día"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:18
 msgid "June"
@@ -733,8 +746,10 @@ msgid "apr"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:23
+#, fuzzy
+#| msgid "Day"
 msgid "may"
-msgstr ""
+msgstr "Día"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:23
 msgid "jun"
@@ -753,8 +768,10 @@ msgid "sep"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
+#, fuzzy
+#| msgid "Concept"
 msgid "oct"
-msgstr ""
+msgstr "Concepto"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:24
 msgid "nov"
@@ -775,9 +792,11 @@ msgid "Feb."
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:33
+#, fuzzy
+#| msgid "Search"
 msgctxt "abbrev. month"
 msgid "March"
-msgstr ""
+msgstr "Buscar"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:34
 msgctxt "abbrev. month"
@@ -785,9 +804,11 @@ msgid "April"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:35
+#, fuzzy
+#| msgid "Day"
 msgctxt "abbrev. month"
 msgid "May"
-msgstr ""
+msgstr "Día"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:36
 msgctxt "abbrev. month"
@@ -835,9 +856,11 @@ msgid "February"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:47
+#, fuzzy
+#| msgid "Search"
 msgctxt "alt. month"
 msgid "March"
-msgstr ""
+msgstr "Buscar"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:48
 msgctxt "alt. month"
@@ -845,9 +868,11 @@ msgid "April"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:49
+#, fuzzy
+#| msgid "Day"
 msgctxt "alt. month"
 msgid "May"
-msgstr ""
+msgstr "Día"
 
 #: myvenv/lib/python2.7/site-packages/django/utils/dates.py:50
 msgctxt "alt. month"
@@ -1113,8 +1138,10 @@ msgid "positional arguments"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1597
+#, fuzzy
+#| msgid "National Parks"
 msgid "optional arguments"
-msgstr ""
+msgstr "Parques nacionales"
 
 #: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:1615
 msgid "show this help message and exit"
@@ -1181,9 +1208,10 @@ msgid "ambiguous option: %s could match %s"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2142
-#, python-format
+#, fuzzy, python-format
+#| msgid "Selected constrains"
 msgid "unexpected option string: %s"
-msgstr ""
+msgstr "Restricciones elegidas"
 
 #: myvenv/lib/python2.7/site-packages/gunicorn/argparse_compat.py:2243
 #, python-format
@@ -1214,8 +1242,10 @@ msgid "Canada"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:105
+#, fuzzy
+#| msgid "Afghan Restaurants"
 msgid "Afghanistan"
-msgstr ""
+msgstr "Restaurantes afganos"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:106
 msgid "Albania"
@@ -1226,8 +1256,10 @@ msgid "Algeria"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:108
+#, fuzzy
+#| msgid "American Restaurants"
 msgid "American Samoa"
-msgstr ""
+msgstr "Restaurantes Americanos"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:109
 msgid "Andorra"
@@ -1278,8 +1310,10 @@ msgid "Bahama"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:121
+#, fuzzy
+#| msgid "Trains"
 msgid "Bahrain"
-msgstr ""
+msgstr "Trenes"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:122
 msgid "Bangladesh"
@@ -1326,8 +1360,10 @@ msgid "Botswana"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:133
+#, fuzzy
+#| msgid "Islands"
 msgid "Bouvet Island"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:134
 msgid "Brazil"
@@ -1370,8 +1406,10 @@ msgid "Cape Verde"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:144
+#, fuzzy
+#| msgid "Islands"
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:145
 msgid "Central African Republic"
@@ -1390,8 +1428,10 @@ msgid "China"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:149
+#, fuzzy
+#| msgid "Christmas Markets"
 msgid "Christmas Island"
-msgstr ""
+msgstr "Mercadillos de Navidad"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:150
 msgid "Cocos (Keeling) Islands"
@@ -1410,8 +1450,10 @@ msgid "Congo"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:154
+#, fuzzy
+#| msgid "Islands"
 msgid "Cook Iislands"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:155
 msgid "Costa Rica"
@@ -1486,8 +1528,10 @@ msgid "Falkland Islands (Malvinas)"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:173
+#, fuzzy
+#| msgid "Islands"
 msgid "Faroe Islands"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:174
 msgid "Fiji"
@@ -1498,16 +1542,20 @@ msgid "Finland"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:176
+#, fuzzy
+#| msgid "Cancel"
 msgid "France"
-msgstr ""
+msgstr "Cancelar"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:177
 msgid "France, Metropolitan"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:178
+#, fuzzy
+#| msgid "French Restaurants"
 msgid "French Guiana"
-msgstr ""
+msgstr "Restaurantes franceses"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:179
 msgid "French Polynesia"
@@ -1590,16 +1638,20 @@ msgid "Honduras"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:199
+#, fuzzy
+#| msgid "Hong Kong Restaurants"
 msgid "Hong Kong"
-msgstr ""
+msgstr "Restaurantes de Hong Kong"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:200
 msgid "Hungary"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:201
+#, fuzzy
+#| msgid "Islands"
 msgid "Iceland"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:202
 msgid "India"
@@ -1614,8 +1666,10 @@ msgid "Iraq"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:205
+#, fuzzy
+#| msgid "Islands"
 msgid "Ireland"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:206
 msgid "Islamic Republic of Iran"
@@ -1738,8 +1792,10 @@ msgid "Malta"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:236
+#, fuzzy
+#| msgid "Islands"
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:237
 msgid "Martinique"
@@ -1806,8 +1862,10 @@ msgid "Nepal"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:253
+#, fuzzy
+#| msgid "Newsstands"
 msgid "Netherlands"
-msgstr ""
+msgstr "Quiosco"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:254
 msgid "Netherlands Antilles"
@@ -1858,8 +1916,10 @@ msgid "Pakistan"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:266
+#, fuzzy
+#| msgid "Palaces"
 msgid "Palau"
-msgstr ""
+msgstr "Palacios"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:267
 msgid "Panama"
@@ -1878,16 +1938,20 @@ msgid "Peru"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:271
+#, fuzzy
+#| msgid "Shipping Stores"
 msgid "Philippines"
-msgstr ""
+msgstr "Tiendas de Envío"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:272
 msgid "Pitcairn"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:273
+#, fuzzy
+#| msgid "Islands"
 msgid "Poland"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:274
 msgid "Portugal"
@@ -1910,8 +1974,10 @@ msgid "Romania"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:279
+#, fuzzy
+#| msgid "Russian Restaurants"
 msgid "Russian Federation"
-msgstr ""
+msgstr "Restaurantes rusos"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:280
 msgid "Rwanda"
@@ -1962,8 +2028,10 @@ msgid "Slovenia"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:292
+#, fuzzy
+#| msgid "Islands"
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Islas"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:293
 msgid "Somalia"
@@ -2086,8 +2154,10 @@ msgid "Uganda"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:323
+#, fuzzy
+#| msgid "Trains"
 msgid "Ukraine"
-msgstr ""
+msgstr "Trenes"
 
 #: myvenv/lib/python2.7/site-packages/paypal/pro/fields.py:324
 msgid "United Arab Emirates"
@@ -2329,8 +2399,10 @@ msgid "Unexpected space after -- in comment"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:94
+#, fuzzy
+#| msgid "Incorrect logic date"
 msgid "Incorrect comment."
-msgstr ""
+msgstr "La fecha es incorrecta"
 
 #: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:96
 #: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py:104
@@ -2819,8 +2891,10 @@ msgid "Unexpected child element of a CDATA element"
 msgstr ""
 
 #: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/serializer/htmlserializer.py:288
+#, fuzzy
+#| msgid "Custom constraints"
 msgid "Comment contains --"
-msgstr ""
+msgstr "Restricciones personalizadas"
 
 #: myvenv/lib/python2.7/site-packages/pip/_vendor/html5lib/serializer/htmlserializer.py:295
 #, python-format
@@ -2846,122 +2920,121 @@ msgstr ""
 msgid "Text nodes have no children"
 msgstr ""
 
-#: principal/forms.py:19 principal/forms.py:69
+#: principal/forms.py:19 principal/forms.py:70
 msgid "Already exists a user with that email!"
 msgstr "Ya existe un usuario con ese email!"
 
-#: principal/forms.py:44
+#: principal/forms.py:44 principal/templates/signin.html:29
 msgid "Password"
 msgstr "Contraseña"
 
-#: principal/forms.py:57
+#: principal/forms.py:58
 msgid "Wrong email or password"
 msgstr "Email o contraseña erroneos"
 
-#: principal/forms.py:99
+#: principal/forms.py:100
 msgid "Message length too long"
 msgstr "El mensaje es muy largo"
 
-#: principal/forms.py:105 principal/forms.py:110
+#: principal/forms.py:102
+msgid "City is required"
+msgstr ""
+
+#: principal/forms.py:104
+msgid "Country is required"
+msgstr ""
+
+#: principal/forms.py:110 principal/forms.py:115
 msgid "Must be a date in the past"
 msgstr "Debe de ser una fecha en el pasado"
 
-#: principal/forms.py:107 principal/forms.py:108
+#: principal/forms.py:112 principal/forms.py:113
 msgid "Incorrect logic date"
 msgstr "La fecha es incorrecta"
 
-#: principal/forms.py:186
+#: principal/forms.py:194
 msgid "Image file too large ( > 512kb )"
 msgstr "El tamaño de la imagen es muy grande ( > 512kb )"
 
-#: principal/forms.py:188
+#: principal/forms.py:196
 msgid "Not valid file type. Only PNG and JPG are supported"
 msgstr "No es un tipo de archivo valido. Solo se acepta PNG y JPG"
 
-#: principal/forms.py:243
+#: principal/forms.py:251
 msgid "Whoops, these don't match"
 msgstr "Whoops, esto no coincide"
 
-#: principal/forms.py:252
+#: principal/forms.py:260
 msgid "Wrong password"
 msgstr "Contraseña errónea"
 
-#: principal/forms.py:254
+#: principal/forms.py:262
 msgid "Password do not match"
 msgstr "La contraseña no coincide"
 
-#: principal/templates/404.html:12
-msgid "We did something wrong..."
-msgstr "Algo hicimos mal..."
+#: principal/templates/400.html:10
+msgid "400 Bad request"
+msgstr "400 Petición erronea"
 
+#: principal/templates/400.html:12
+msgid "Your browser and our server don't understand each other..."
+msgstr "Tu navegador y nuestro servidor no se entiende..."
+
+#: principal/templates/400.html:15 principal/templates/403.html:15
 #: principal/templates/404.html:15 principal/templates/500.html:15
 msgid "Take Me Home"
 msgstr "Llévame a casa"
 
+#: principal/templates/400.html:16 principal/templates/403.html:16
 #: principal/templates/404.html:16 principal/templates/500.html:16
 msgid "Contact Support"
 msgstr "Contacta con el soporte"
 
+#: principal/templates/403.html:10
+msgid "403 Forbidden"
+msgstr "403 Prohibido"
+
+#: principal/templates/403.html:12
+msgid "We know you're curious, but we cannot let you keep going..."
+msgstr ""
+"Sabemos que eres curioso, pero no te podemos permitir seguir adelante..."
+
+#: principal/templates/404.html:10
+msgid "404 Not found"
+msgstr "404 No encontrado"
+
+#: principal/templates/404.html:12
+msgid "The requested page does not exist"
+msgstr "La página pedida no existe"
+
+#: principal/templates/500.html:10
+msgid "Internal error"
+msgstr "Error interno"
+
 #: principal/templates/500.html:12
-msgid "We think you're lost..."
-msgstr "Creemos que te has perdido..."
-
-#: principal/templates/about_us.html:2 principal/templates/about_us.html:8
-msgid "About us"
-msgstr "Sobre nosotros"
-
-#: principal/templates/about_us.html:10
-msgid "is owned by BrainTravel Co., Inc. "
-msgstr ""
-
-#: principal/templates/about_us.html:13
-msgid "Resident of Sevilla (41200)"
-msgstr ""
-
-#: principal/templates/about_us.html:17
-msgid ""
-"Registration Information: Registered in the Commercial Register of Seville, "
-"Date: 01/01/2015, Contract No.: 169011 BORME"
-msgstr ""
-
-#: principal/templates/about_us.html:20
-msgid "The website"
-msgstr ""
-
-#: principal/templates/about_us.html:20
-msgid "is operated by BrainTravel Co., Inc. (the owner) as company."
-msgstr ""
-
-#: principal/templates/about_us.html:23
-msgid "For any problem with it, contact the email"
-msgstr ""
-
-#: principal/templates/about_us.html:24
-msgid "or phone +34 955555555"
-msgstr ""
+msgid "We did something wrong..."
+msgstr "Algo hicimos mal..."
 
 #: principal/templates/assessment_list.html:8
 #: principal/templates/search.html:9 principal/templates/trip_list.html:9
-#: principal/templates/trip_planned_list.html:34
+#: principal/templates/trip_planned_list.html:36
 msgid "Oops! BrainTravel could not find anything..."
 msgstr "Oops! BrainTravel no pudo encontrar nada..."
 
-#: principal/templates/base.html:53
+#: principal/templates/base.html:42
 msgid "Accept"
 msgstr "Aceptar"
 
 #: principal/templates/buy_coins.html:3
-#: principal/templates/miscellaneous/traveller-menu.html:23
+#: principal/templates/miscellaneous/traveller-menu.html:22
 msgid "Buy coins"
 msgstr "Comprar monedas"
 
-#: principal/templates/buy_coins.html:8
-#, fuzzy
-#| msgid "Coins"
+#: principal/templates/buy_coins.html:12
 msgid "Coin packs"
-msgstr "Monedas"
+msgstr "Pack de monedas"
 
-#: principal/templates/buy_coins.html:9
+#: principal/templates/buy_coins.html:13
 msgid ""
 "With our virtual coins you can plan your trips. Buy a pack and start using "
 "the automatic planner!"
@@ -2969,16 +3042,27 @@ msgstr ""
 "Con nuestra monedas virutales puedes planear tus viajes. Compra un pack y "
 "empieza a usar el planificador!"
 
-#: principal/templates/buy_coins.html:19 principal/templates/buy_coins.html:35
-#: principal/templates/buy_coins.html:51
+#: principal/templates/buy_coins.html:23 principal/templates/buy_coins.html:39
+#: principal/templates/buy_coins.html:55
 #: principal/templates/plan_creation.html:18
 #: principal/templates/plan_creation.html:19
+#: principal/templates/precarga.html:18 principal/templates/precarga.html:19
 msgid "coins"
 msgstr "monedas"
 
 #: principal/templates/error.html:3
 msgid "Error"
 msgstr "Error"
+
+#: principal/templates/error.html:8
+#, fuzzy
+#| msgid "Sorry, an error has ocurred"
+msgid "We are sorry. An error has occurred."
+msgstr "Lo sentimos, ha ocurrido un error"
+
+#: principal/templates/error.html:9
+msgid "Go to index"
+msgstr ""
 
 #: principal/templates/error_planning.html:3
 #: principal/templates/miscellaneous/menu.html:18
@@ -2997,10 +3081,10 @@ msgid ""
 "have <b>NO</b> charge for your coins. </p> <p> If the error persist, please "
 "contact us. </p>"
 msgstr ""
-"<p>Oops! BrainTravel no ha sido capaz de encontrar un plan para ti :(.Prueba "
-"de nuevo con el nombre de la ciudad y el país en Inglés. Esta "
-"operación<b>NO<b> generará un cargo en tus monedas.</p> <p> Si el error "
-"persiste,por favor, contacta con nosotros."
+"<p>Oops! BrainTravel no ha sido capaz de encontrar un plan para ti :( Prueba "
+"de nuevo con el nombre de la ciudad y el país en Inglés. Esta operación "
+"<b>NO<b> generará un cargo en tus monedas.</p> <p> Si el error persiste,por "
+"favor, contacta con nosotros."
 
 #: principal/templates/index.html:33
 msgid "Automate the way you travel"
@@ -3028,6 +3112,10 @@ msgstr ""
 "usuarios pueden interactuar en relación a los viajes que hacen, comentando "
 "ycompartiendo experiencias"
 
+#: principal/templates/index.html:64
+msgid "Features"
+msgstr "Características"
+
 #: principal/templates/index.html:74
 msgid "Automatic plans"
 msgstr "Planes automáticos"
@@ -3037,14 +3125,17 @@ msgid ""
 "Day by day plan for your trip with a few clicks based on others travellers "
 "recommendations.</p>"
 msgstr ""
+"Plan día por día detallado en tan sólo unos clicks basado en "
+"lasrecomendaciones de otros viajeros.</p>"
 
 #: principal/templates/index.html:91
 msgid "Constraints"
-msgstr ""
+msgstr "Restricciones"
 
 #: principal/templates/index.html:94
 msgid "Give us restrictions for your trip and we'll do the rest for you."
 msgstr ""
+"Danos tus restricciones para tu viaje y nosotros nos encargamosdel resto."
 
 #: principal/templates/index.html:109
 msgid "Satistics"
@@ -3080,6 +3171,23 @@ msgstr ""
 "estaría muycontenta de usar la aplicación.;Hay historias, lugares y paisajes "
 "que sólolos residentes del área conocen.; Es lo que siempre he querido..."
 
+#: principal/templates/index.html:162
+msgid "I understand"
+msgstr "Entiendo"
+
+#: principal/templates/index.html:163
+msgid "We use cookies to track usage and preferences."
+msgstr "Usamos cookies para monitorizar el uso y las preferencias."
+
+#: principal/templates/index.html:165
+#: principal/templates/miscellaneous/footer.html:13
+msgid "Cookies policy"
+msgstr "Política de cookies"
+
+#: principal/templates/index.html:168
+msgid "Disalbe Cookies"
+msgstr "Desactivar Cookies"
+
 #: principal/templates/list_coin_history.html:3
 #: principal/templates/list_coin_history.html:10
 msgid "Coin historial"
@@ -3112,93 +3220,99 @@ msgstr "Concepto"
 
 #: principal/templates/list_coin_history.html:46
 #: principal/templates/my_payments.html:52
-#: principal/templates/public_trip_details.html:178
+#: principal/templates/public_trip_details.html:182
 #: principal/templates/search.html:60 principal/templates/trip_list.html:53
-#: principal/templates/trip_planned_list.html:44
+#: principal/templates/trip_planned_list.html:46
 msgid "Page"
 msgstr "Página"
 
 #: principal/templates/list_coin_history.html:46
 #: principal/templates/my_payments.html:52
-#: principal/templates/public_trip_details.html:178
+#: principal/templates/public_trip_details.html:182
 #: principal/templates/search.html:60 principal/templates/trip_list.html:53
-#: principal/templates/trip_planned_list.html:44
+#: principal/templates/trip_planned_list.html:46
 msgid "of"
 msgstr "de"
 
-#: principal/templates/miscellaneous/admin-menu.html:2
-#: principal/templates/trip_list.html:3
-#: principal/templates/trip_planned_list.html:3
-#, fuzzy
-#| msgid "Strip Clubs"
-msgid "Trip list"
-msgstr "Clubes de striptease"
+#: principal/templates/miscellaneous/admin-menu.html:6
+#: principal/templates/miscellaneous/traveller-menu.html:29
+#: principal/templates/profile_details.html:56
+#: principal/views/TripViews.py:132
+msgid "Trips"
+msgstr "Viajes"
 
-#: principal/templates/miscellaneous/admin-menu.html:5
-#: principal/templates/miscellaneous/traveller-menu.html:73
+#: principal/templates/miscellaneous/admin-menu.html:13
+#: principal/templates/miscellaneous/traveller-menu.html:72
 msgid "Logout"
 msgstr "Salir"
 
 #: principal/templates/miscellaneous/anonymous-menu.html:5
-#, fuzzy
-#| msgid "Sign up"
 msgid "Sign In"
-msgstr "Resgístrate"
+msgstr "Inciar sesión"
+
+#: principal/templates/miscellaneous/footer.html:12
+msgid "Spanish"
+msgstr "Español"
+
+#: principal/templates/miscellaneous/footer.html:12
+msgid "English"
+msgstr "Inglés"
+
+#: principal/templates/miscellaneous/footer.html:13
+msgid "About us"
+msgstr "Sobre nosotros"
+
+#: principal/templates/miscellaneous/footer.html:13
+msgid "Privacy terms"
+msgstr "Términos de privacidad"
 
 #: principal/templates/miscellaneous/menu.html:42
 msgid "Type to search"
 msgstr "Escribe para buscar"
 
-#: principal/templates/miscellaneous/traveller-menu.html:9
+#: principal/templates/miscellaneous/traveller-menu.html:8
 #: principal/templates/plan_creation.html:4
 #: principal/templates/plan_creation.html:11
+#: principal/templates/precarga.html:4 principal/templates/precarga.html:11
 msgid "Plan a trip"
 msgstr "Planear un viaje"
 
-#: principal/templates/miscellaneous/traveller-menu.html:16
-msgid "View statistics"
-msgstr "Ver estadisticas"
+#: principal/templates/miscellaneous/traveller-menu.html:15
+#: principal/templates/stats.html:7
+msgid "Statistics"
+msgstr "Estadísticas"
 
-#: principal/templates/miscellaneous/traveller-menu.html:30
-#: principal/templates/profile_details.html:52
-msgid "Trips"
-msgstr "Viajes"
-
-#: principal/templates/miscellaneous/traveller-menu.html:34
-#: principal/templates/trip_edit.html:97
-#, fuzzy
-#| msgid "Published Description"
+#: principal/templates/miscellaneous/traveller-menu.html:33
+#: principal/templates/trip_edit.html:106
 msgid "Publish trip"
 msgstr "Publicar viaje"
 
-#: principal/templates/miscellaneous/traveller-menu.html:35
+#: principal/templates/miscellaneous/traveller-menu.html:34
 #: principal/templates/payment.html:3 principal/templates/venue_details.html:4
-#: principal/views/TripViews.py:187
-#, fuzzy
-#| msgid "View my trips"
+#: principal/views/TripViews.py:186
 msgid "My trips"
 msgstr "Ver mis viajes"
 
-#: principal/templates/miscellaneous/traveller-menu.html:36
-#: principal/views/TripViews.py:151
+#: principal/templates/miscellaneous/traveller-menu.html:35
+#: principal/views/TripViews.py:150
 msgid "My planned trips"
 msgstr "Mis viajes planeados"
 
-#: principal/templates/miscellaneous/traveller-menu.html:37
+#: principal/templates/miscellaneous/traveller-menu.html:36
 msgid "Drafts"
 msgstr "Borrador"
 
-#: principal/templates/miscellaneous/traveller-menu.html:38
+#: principal/templates/miscellaneous/traveller-menu.html:37
 #: principal/templates/my_visited_venues.html:7
 msgid "Visited venues"
 msgstr "Sitios visitados"
 
-#: principal/templates/miscellaneous/traveller-menu.html:62
+#: principal/templates/miscellaneous/traveller-menu.html:61
 msgid "View profile"
 msgstr "Ver perfil"
 
 #: principal/templates/my_payments.html:3
-#: principal/templates/profile_details.html:39
+#: principal/templates/profile_details.html:43
 msgid "Payments"
 msgstr "Pagos"
 
@@ -3221,32 +3335,37 @@ msgid "Pruchase coins"
 msgstr "Comprar monedas"
 
 #: principal/templates/plan_creation.html:12
+#: principal/templates/precarga.html:12
 msgid "Enter the data and we'll plan a trip for you"
 msgstr "Introduce los datos y nosotros creamos el plan por ti"
 
 #: principal/templates/plan_creation.html:17
+#: principal/templates/precarga.html:17
 msgid "Trip data"
 msgstr "Datos del viaje"
 
 #: principal/templates/plan_creation.html:18
+#: principal/templates/precarga.html:18
 msgid "Price"
 msgstr "Precio"
 
 #: principal/templates/plan_creation.html:19
+#: principal/templates/precarga.html:19
 msgid "You have"
 msgstr "Tienes"
 
 #: principal/templates/plan_creation.html:29
-#: principal/templates/trip_edit.html:36
+#: principal/templates/precarga.html:29 principal/templates/trip_edit.html:45
 msgid "City"
 msgstr "Ciudad"
 
 #: principal/templates/plan_creation.html:42
-#: principal/templates/trip_edit.html:47
+#: principal/templates/precarga.html:42 principal/templates/trip_edit.html:56
 msgid "Country"
 msgstr "País"
 
 #: principal/templates/plan_creation.html:54
+#: principal/templates/precarga.html:54
 msgid "Days"
 msgstr "Dias"
 
@@ -3256,7 +3375,7 @@ msgstr "Restricciones personalizadas"
 
 #: principal/templates/plan_creation.html:65
 msgid "Hide/show"
-msgstr "Esconder/mostrar"
+msgstr "Ocultar/mostrar"
 
 #: principal/templates/plan_creation.html:71
 msgid "Select modifier"
@@ -3290,120 +3409,75 @@ msgstr "Restricciones elegidas"
 msgid "Delete "
 msgstr "Borrar"
 
-#: principal/templates/plan_creation.html:144
+#: principal/templates/plan_creation.html:145
 msgid "Create Plan"
 msgstr "Crear un plan"
 
-#: principal/templates/plan_creation.html:256
+#: principal/templates/plan_creation.html:268
+msgid "Are you sure you want to create the plan ?"
+msgstr "¿Estás seguro de que quieres crear el plan?"
+
+#: principal/templates/plan_creation.html:269
+msgid "You cannot get your coins back."
+msgstr "No puedes recuperar tus monedas"
+
+#: principal/templates/plan_creation.html:273
+msgid "Yes, create plan"
+msgstr "Sí, crea el plan"
+
+#: principal/templates/plan_creation.html:274
+msgid "No, I'll give it a think..."
+msgstr "No, me lo pensaré mejor..."
+
+#: principal/templates/plan_creation.html:289
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: principal/templates/plan_creation.html:257
+#: principal/templates/plan_creation.html:290
 msgid ""
 "We are working hard on your plan. It might take a while, please, be "
 "patient :)"
 msgstr ""
-"Estamos trabajando muy duro en tu plan. Quizás nos lleve algo de tiempopor "
+"Estamos trabajando muy duro en tu plan. Quizás nos lleve algo de tiempo. Por "
 "favor, se paciente :)"
 
-#: principal/templates/privacy_terms.html:3
-msgid "Privacy terms"
-msgstr "Términos de privacidad"
-
-#: principal/templates/privacy_terms.html:9
-msgid ""
-"<h2>Terms of use</h2> <p>According to the provisions of Law 15 /1999 of "
-"December 13, Protection of Personal Data (hereinafter LOPD), BrainTravel "
-"Co., Inc. NIF 12345678A informs you that the data collected in this web site "
-"will be incorporated into an automated file registered with the data "
-"Protection Agency and belong to BrainTravel Co., Inc., with the purpose of "
-"meeting the requests you sue. Under Article 5 of the law, you will be duly "
-"informed in detail on our forms of the purpose and use of the information "
-"provided.</p> <h3>Information: Data</h3> <p>The data provided by you in the "
-"documents of the website will be processed automatically and will become "
-"part of the file property of BrainTravel Co., Inc., registered in the Data "
-"Protection Agency. These data may be used for internal management of "
-"business contacts requesting information or those with whom a business "
-"relationship is maintained.</p> <p> Except in areas where otherwise noted, "
-"responses to questions about personal data are voluntary. The victim commits "
-"to the accuracy of the data supplied. </p> <p>In accordance with Article 5 "
-"of Law 15/1999 of 13 December on Protection of Personal Data, you are "
-"entitled to access this information , rectify it if the data is wrong and "
-"unsubscribe by a file written request to: Attention LOPD , BrainTravel Co. , "
-"Inc. , C / Madrid, 1-41200 Acalá del Río (Sevilla) Spain or by sending the "
-"request to the e-mail address to be clientes.braintravel@gmail.com assisted "
-"and guided to complete the process , fulfilling the notification provided "
-"for in Article 5.4 of the same.</p> <h3>Terms of service</h3> <ol> <li> The "
-"user or visitor of the website http://www.traintravel.com is required to "
-"read the conditions of the service as detailed in the text, so that it "
-"assumes these as valid in the service. </li> <li> Objectives http://www."
-"traintravel.com website: The website is economically exploited through "
-"payments made through PayPal payment gateway. </li> <li>Conditions of use of "
-"the content and services provided on this site: <ul> <li>No reproduction is "
-"permitted of content (any type) http://www.traintravel.com published without "
-"the express consent of the author of that web. In this case we talk about "
-"text, graphics, source code, and any other content that is served from this "
-"website.</li> <li>On this website there may be third party content. In "
-"either case, as is always the intention to respect the rights of copyright "
-"and copyright law, if there is any problem regarding minimum any material "
-"posted on this website are requested to be contacted via email: clientes."
-"braintravel@gmail.com and the content will be removed (after being checked) "
-"with the maximum possible speed, as first intention is respect for copyright "
-"and the work of others.</li> <li>The author of this site is not responsible "
-"for the misuse of the content posted on this site (http://www.traintravel."
-"com).</li> <li>The website http://www.traintravel.com is funded and operated "
-"through economically exposed to the same advertising, there being no other "
-"kind of economic exploitation.</li> <li>The author of http://www.traintravel."
-"com is not responsible for the malfunction of the system or service provided "
-"on this website, but always seeks and strives to offer the best service.</"
-"li> <li>The author of the website http://www.traintravel.com use it as an "
-"advertising medium and is not responsible for the bad service or problems "
-"arising from the advertised services so that advertising and services they "
-"refer to this post are the sole responsibility of the advertiser.</li> "
-"<li>On this website (http://www.traintravel.com) there are NO illegal "
-"content (child pornography, justifying terrorism or any other illegal "
-"content).</li> </ul> </li> </ol> <p> For any problem with it, they should "
-"contact the email (clientes.braintravel@gmail.com) or phone: </p> <p> "
-"SEVILLA Tel: +34 955555555 </p>"
+#: principal/templates/precarga.html:68
+msgid "Obtaining Venues"
 msgstr ""
 
 #: principal/templates/profile_details.html:3
-#, fuzzy
-#| msgid "Edit Profile"
 msgid "Profile"
-msgstr "Editar perfil"
+msgstr "Perfil"
 
-#: principal/templates/profile_details.html:21
+#: principal/templates/profile_details.html:25
 msgid "Modify profile"
 msgstr "Modificar perfil"
 
-#: principal/templates/profile_details.html:22
+#: principal/templates/profile_details.html:26
 msgid "Change password"
 msgstr "Cambiar contraseña"
 
-#: principal/templates/profile_details.html:40
+#: principal/templates/profile_details.html:44
 msgid "My payments"
 msgstr "Mis pagos"
 
-#: principal/templates/profile_details.html:46
+#: principal/templates/profile_details.html:50
 msgid "Coins"
 msgstr "Monedas"
 
-#: principal/templates/profile_details.html:47
+#: principal/templates/profile_details.html:51
 msgid "View coin movements"
 msgstr "Ver el movimiento de mis monedas"
 
-#: principal/templates/profile_details.html:54
+#: principal/templates/profile_details.html:58
 msgid "View my trips"
 msgstr "Ver mis viajes"
 
-#: principal/templates/profile_details.html:56
+#: principal/templates/profile_details.html:60
 msgid "Trips published by"
 msgstr "Viajes publicados por"
 
 #: principal/templates/profile_edit.html:3
-#, fuzzy
-#| msgid "Edit Profile"
 msgid "Edit profile"
 msgstr "Editar perfil"
 
@@ -3436,10 +3510,8 @@ msgstr "Imagen default"
 
 #: principal/templates/profile_edit.html:68
 #: principal/templates/profile_edit_password.html:49
-#, fuzzy
-#| msgid "Travel Lounges"
 msgid "Save Changes"
-msgstr "Salones de viaje"
+msgstr "Guardar cambios"
 
 #: principal/templates/profile_edit.html:70
 #: principal/templates/profile_edit_password.html:51
@@ -3447,8 +3519,6 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: principal/templates/profile_edit_password.html:3
-#, fuzzy
-#| msgid "Edit Password"
 msgid "Edit password"
 msgstr "Editar contraseña"
 
@@ -3483,174 +3553,255 @@ msgstr ""
 msgid "Details"
 msgstr "Detalles"
 
-#: principal/templates/public_trip_details.html:59
+#: principal/templates/public_trip_details.html:63
 msgid "Edit"
 msgstr "Editar"
 
-#: principal/templates/public_trip_details.html:60
+#: principal/templates/public_trip_details.html:64
 msgid "Assessments"
 msgstr "Valoraciones"
 
-#: principal/templates/public_trip_details.html:64
+#: principal/templates/public_trip_details.html:68
 msgid "Rate this trip!"
 msgstr "Evalúa este viaje!"
 
-#: principal/templates/public_trip_details.html:70
+#: principal/templates/public_trip_details.html:74
 msgid "Trip moderation"
 msgstr "Moderación de viajes"
 
-#: principal/templates/public_trip_details.html:71
+#: principal/templates/public_trip_details.html:75
 msgid "Select an option and click save to change the trip status."
 msgstr ""
 "Selecciona una opción y haz click en guardar para cambiar el estado del "
 "viaje."
 
-#: principal/templates/public_trip_details.html:83
+#: principal/templates/public_trip_details.html:87
 msgid "Save"
 msgstr "Guardar"
 
-#: principal/templates/public_trip_details.html:116
+#: principal/templates/public_trip_details.html:120
 msgid "Comment"
 msgstr "Comentar"
 
-#: principal/templates/public_trip_details.html:133
-#: principal/templates/public_trip_details.html:155
+#: principal/templates/public_trip_details.html:137
+#: principal/templates/public_trip_details.html:159
 msgid "says:"
 msgstr "dice:"
 
-#: principal/templates/public_trip_details.html:215
+#: principal/templates/public_trip_details.html:219
 msgid "Please choose a number between 0 and 10:"
 msgstr "Por favor elige un número entre 0 y 10:"
 
-#: principal/templates/public_trip_details.html:220
+#: principal/templates/public_trip_details.html:224
 msgid "Please, write a fancy description:"
 msgstr "Por favor, escribe una descripción agradable:"
 
-#: principal/templates/public_trip_details.html:227
+#: principal/templates/public_trip_details.html:231
 #: principal/templates/venue_details.html:76
 msgid "Close"
 msgstr "Cerrar"
 
-#: principal/templates/public_trip_details.html:228
+#: principal/templates/public_trip_details.html:232
 #: principal/templates/venue_details.html:77
 msgid "Send"
 msgstr "Enviar"
 
+#: principal/templates/search.html:7
+msgid "Search results for"
+msgstr "Esto es lo que hemos encontrado para"
+
 #: principal/templates/show_planning.html:3
-#, fuzzy
-#| msgid "Planetariums"
 msgid "Plan details"
-msgstr "Planetarios"
+msgstr "Detalles del plans"
+
+#: principal/templates/show_planning.html:35
+msgid "Trip details"
+msgstr "Datos del viaje"
+
+#: principal/templates/show_planning.html:39
+msgid "days in"
+msgstr "días en"
+
+#: principal/templates/show_planning.html:40
+msgid "Click on the day indicator to show te corresponding plan"
+msgstr "Haz click en el indicador para mostrar el plan"
+
+#: principal/templates/show_planning.html:42
+msgid "Click on the venue names to view its details."
+msgstr "Haz click en el nombre del sitio para ver sus detalles."
+
+#: principal/templates/show_planning.html:53
+msgid "Day"
+msgstr "Día"
+
+#: principal/templates/show_planning.html:61
+msgid "Those are the venues that we suggest to visit on day "
+msgstr "Estos son los sitios que te recomendamos que visites en el día "
+
+#: principal/templates/show_planning.html:69
+#: principal/templates/show_planning.html:86
+msgid "Change this"
+msgstr "Cambiar esto"
+
+#: principal/templates/show_planning.html:76
+msgid "Those are the places where we suggest you to eat on day "
+msgstr "Estos son los sitios que te recomendamos que comas en el día "
+
+#: principal/templates/show_planning.html:102
+msgid "Change venue"
+msgstr "Cambiar sitio"
+
+#: principal/templates/show_planning.html:107
+msgid "Select the new venue"
+msgstr "Seleccionar un nuevo sitio"
+
+#: principal/templates/show_planning.html:109
+#: principal/templates/signin.html:79 principal/templates/trip_edit.html:31
+msgid "Name"
+msgstr "Nombre"
+
+#: principal/templates/show_planning.html:119
+msgid "Choose a new venue..."
+msgstr "Escoge un nuevo sitios..."
 
 #: principal/templates/signin.html:3
 msgid "Sign in"
 msgstr "Resgistrarse"
 
-#: principal/templates/signin.html:11
+#: principal/templates/signin.html:15
 msgid "Login"
 msgstr "Login"
 
-#: principal/templates/signin.html:12
+#: principal/templates/signin.html:16
 msgid "Don't have an account yet?"
 msgstr "¿Todavía no tienes una cuenta?"
 
-#: principal/templates/signin.html:12
+#: principal/templates/signin.html:16 principal/templates/signin.html:100
 msgid "Sign up"
 msgstr "Resgistrarse"
 
-#: principal/templates/stats.html:9
+#: principal/templates/signin.html:25
+msgid "Email"
+msgstr "Correo"
+
+#: principal/templates/signin.html:66
+msgid "Sign Up"
+msgstr "Resgistrarse"
+
+#: principal/templates/signin.html:89
+msgid "email address"
+msgstr "email"
+
+#: principal/templates/signin.html:95
+msgid "I am agree with the "
+msgstr "Estoy de acuerdo con los"
+
+#: principal/templates/signin.html:95
+msgid "Terms and Conditions"
+msgstr "Términos y condiciones"
+
+#: principal/templates/signin.html:195
+msgid "Almost done..."
+msgstr "Casi hemos terminado..."
+
+#: principal/templates/signin.html:196
+msgid "We've just sent your a confirmation email with your password."
+msgstr "Acabamos de enviarte un correo de confirmación con tu contraseña."
+
+#: principal/templates/stats.html:8
+msgid "There are a few statistics that you might find interesting "
+msgstr "Hay muchas estadísticas que encontrarás interesantes"
+
+#: principal/templates/stats.html:14
 msgid "Users who travel more"
 msgstr "Usuarios que mas viajan"
 
-#: principal/templates/stats.html:20
+#: principal/templates/stats.html:25
 msgid "Number of trips"
 msgstr "Número de viajes"
 
-#: principal/templates/stats.html:30
+#: principal/templates/stats.html:35
 msgid "Venues most visited"
 msgstr "Sitios mas visitados"
 
-#: principal/templates/stats.html:41
+#: principal/templates/stats.html:46
 msgid "Number of visits"
 msgstr "Número de visitas"
 
-#: principal/templates/stats.html:53
+#: principal/templates/stats.html:58
 msgid "Most useful tips"
 msgstr "Consejos mas útiles"
 
-#: principal/templates/stats.html:64
-#, fuzzy
-#| msgid "Published Description"
+#: principal/templates/stats.html:69
 msgid "Description"
-msgstr "Descripción pública"
+msgstr "Descripción"
 
-#: principal/templates/stats.html:74
+#: principal/templates/stats.html:79
 msgid "Most liked trips"
 msgstr "Viajes que mas gustan"
 
-#: principal/templates/stats.html:83
+#: principal/templates/stats.html:88
 msgid "Number of likes"
 msgstr "Número de \"me gusta\""
 
-#: principal/templates/stats.html:84
-#, fuzzy
-#| msgid "Published Description"
+#: principal/templates/stats.html:89
 msgid "Description: "
-msgstr "Descripción pública"
+msgstr "Descripción"
 
-#: principal/templates/trip_edit.html:9
+#: principal/templates/trip_edit.html:18
 msgid "Create Trip"
 msgstr "Crear viaje"
 
-#: principal/templates/trip_edit.html:10
+#: principal/templates/trip_edit.html:19
 msgid ""
 "Post a trip and get free coins. Get 5 coins for every 2 'like' you receive."
 msgstr ""
 "Publica un viaje y consigue monedas gratis. Cada 5 likes que recibas te "
 "regalaremos 2 monedas "
 
-#: principal/templates/trip_edit.html:12
+#: principal/templates/trip_edit.html:21
 msgid "Edit Trip"
 msgstr "Editar viaje"
 
-#: principal/templates/trip_edit.html:22
-msgid "Name"
-msgstr "Nombre"
-
-#: principal/templates/trip_edit.html:23
+#: principal/templates/trip_edit.html:32
 msgid "Up to 150 letters, numbers and underscores"
 msgstr "Hasta 150 letras, numeros y guiones bajos"
 
-#: principal/templates/trip_edit.html:59
+#: principal/templates/trip_edit.html:68
 msgid "Start Date"
 msgstr "Fecha de inicio"
 
-#: principal/templates/trip_edit.html:71
+#: principal/templates/trip_edit.html:80
 msgid "End Date"
 msgstr "Fecha de fin"
 
-#: principal/templates/trip_edit.html:85
+#: principal/templates/trip_edit.html:94
 msgid "Published Description"
 msgstr "Descripción pública"
 
-#: principal/templates/trip_edit.html:98
+#: principal/templates/trip_edit.html:107
 msgid "Are you sure? An administrator must accept your trip."
 msgstr "¿Está seguro? Un administrador debe de aceptar su viaje"
 
-#: principal/templates/trip_edit.html:100
+#: principal/templates/trip_edit.html:109
 msgid "Save in drafts"
 msgstr "Guardar en borradores"
 
-#: principal/templates/trip_edit.html:103
+#: principal/templates/trip_edit.html:112
 msgid "Delete Trip"
 msgstr "Borrar viaje"
 
-#: principal/templates/trip_edit.html:104
+#: principal/templates/trip_edit.html:113
 msgid "Are you sure? This cannot be recovered."
 msgstr "¿Está seguro? Esta acción no puede ser deshecha."
 
+#: principal/templates/trip_list.html:3
+#: principal/templates/trip_planned_list.html:3
+msgid "Trip list"
+msgstr "Lista de viajes"
+
 #: principal/templates/trip_list.html:38
-#: principal/templates/trip_planned_list.html:29
+#: principal/templates/trip_planned_list.html:30
 msgid "View more"
 msgstr "Ver más"
 
@@ -3658,15 +3809,19 @@ msgstr "Ver más"
 msgid "Give feedback"
 msgstr "Dar feedback"
 
+#: principal/templates/venue_details.html:19
+msgid "Useful tips"
+msgstr "Consejos mas útiles"
+
 #: principal/templates/venue_details.html:43
 msgid "Sorry, there aren't tips available for this venue."
 msgstr "Lo sentimos, pero no hay recomendaciones para este sitio."
 
+#: principal/templates/venue_details.html:56
+msgid "Give us some feedback!"
+msgstr "Dar feedback"
+
 #: principal/templates/venue_details.html:62
-#, fuzzy
-#| msgid ""
-#| "By giving feedback you enhance our algorithm. The more feedback it gets, "
-#| "the more accurate it becomes. We give you some coins as gift as well :)"
 msgid ""
 "By giving feedback you enhance our algorithm. The more feedback it gets, the "
 "more accurate it becomes. If you enter something in the description and "
@@ -3696,6 +3851,10 @@ msgstr ""
 msgid "<h4>Description: <small>Something else you want to say?</small></h4>"
 msgstr "<h4>Descripción: <small>¿Hay algo más que quieras añadir?</small></h4>"
 
+#: principal/utils/BrainTravelUtils.py:31
+msgid "An unexpected error has occurred"
+msgstr "Lo sentimos, ha ocurrido un error"
+
 #: principal/views/TripViews.py:93
 msgid "Comment successfully"
 msgstr "Se ha guardado su comentario"
@@ -3704,1800 +3863,1761 @@ msgstr "Se ha guardado su comentario"
 msgid "Your vote has been saved!"
 msgstr "‚Su voto se ha guardado!"
 
-#: principal/views/TripViews.py:166
+#: principal/views/TripViews.py:165
 msgid "Trip successfully updated"
 msgstr "Viaje actualizado satisfactoriamente"
 
-#: principal/views/TripViews.py:205
+#: principal/views/TripViews.py:204
 msgid "My draft trips"
 msgstr "Mis viajes en borradores"
 
-#: principal/views/TripViews.py:220
+#: principal/views/TripViews.py:219
 msgid "Action completed successfully"
 msgstr "Acción completada con éxito"
 
-#: principal/views/TripViews.py:225
+#: principal/views/TripViews.py:224
 msgid "Your trip must be accepted by an administrator"
 msgstr "Su viaje debe de ser acceptado por un administrador"
 
-#~ msgid "Publish Trip"
-#~ msgstr "Publicar viaje"
+msgid "We think you're lost..."
+msgstr "Creemos que te has perdido..."
 
-#~ msgid "previous"
-#~ msgstr "anterior"
+msgid "View statistics"
+msgstr "Ver estadisticas"
 
-#~ msgid "next"
-#~ msgstr "siguiente"
+msgid "Publish Trip"
+msgstr "Publicar viaje"
 
-#~ msgid "Any of"
-#~ msgstr "Nada de"
+msgid "previous"
+msgstr "anterior"
 
-#~ msgid "Modern Greek Restaurants"
-#~ msgstr "Restaurantes Griego moderno"
+msgid "next"
+msgstr "siguiente"
 
-#~ msgid "Arts & Entertainment"
-#~ msgstr "Artes y Entretenimiento"
+msgid "Any of"
+msgstr "Nada de"
 
-#~ msgid "Aquariums"
-#~ msgstr "Acuarios"
+msgid "Modern Greek Restaurants"
+msgstr "Restaurantes Griego moderno"
 
-#~ msgid "Arcades"
-#~ msgstr "Arcades"
+msgid "Arts & Entertainment"
+msgstr "Artes y Entretenimiento"
 
-#~ msgid "Art Galleries"
-#~ msgstr "Galería de arte"
+msgid "Aquariums"
+msgstr "Acuarios"
 
-#~ msgid "Bowling Alleys"
-#~ msgstr "Boleras"
+msgid "Arcades"
+msgstr "Arcades"
 
-#~ msgid "Casinos"
-#~ msgstr "Casinos"
+msgid "Art Galleries"
+msgstr "Galería de arte"
 
-#~ msgid "Circuses"
-#~ msgstr "Circos"
+msgid "Bowling Alleys"
+msgstr "Boleras"
 
-#~ msgid "Comedy Clubs"
-#~ msgstr "Clubes de comedia"
+msgid "Casinos"
+msgstr "Casinos"
 
-#~ msgid "Concert Halls"
-#~ msgstr "Salas de conciertos"
+msgid "Circuses"
+msgstr "Circos"
 
-#~ msgid "Country Dance Clubs"
-#~ msgstr "Clubes de baile Country"
+msgid "Comedy Clubs"
+msgstr "Clubes de comedia"
 
-#~ msgid "Disc Golf Courses"
-#~ msgstr "Campos de golf"
+msgid "Concert Halls"
+msgstr "Salas de conciertos"
 
-#~ msgid "General Entertainment"
-#~ msgstr "Entretenimiento general"
+msgid "Country Dance Clubs"
+msgstr "Clubes de baile Country"
 
-#~ msgid "Go Kart Tracks"
-#~ msgstr "Ir a las pistas de Kart"
+msgid "Disc Golf Courses"
+msgstr "Campos de golf"
 
-#~ msgid "Historic Sites"
-#~ msgstr "Lugares de interés históricos"
+msgid "General Entertainment"
+msgstr "Entretenimiento general"
 
-#~ msgid "Mini Golf Courses"
-#~ msgstr "Mini campos de golf"
+msgid "Go Kart Tracks"
+msgstr "Pistas de Kart"
 
-#~ msgid "Movie Theaters"
-#~ msgstr "Salas de cine"
+msgid "Historic Sites"
+msgstr "Lugares de interés históricos"
 
-#~ msgid "Indie Movie Theaters"
-#~ msgstr "Salas de cine indie"
+msgid "Mini Golf Courses"
+msgstr "Mini campos de golf"
 
-#~ msgid "Multiplexes"
-#~ msgstr "Multicines"
+msgid "Movie Theaters"
+msgstr "Salas de cine"
 
-#~ msgid "Museums"
-#~ msgstr "Museos"
+msgid "Indie Movie Theaters"
+msgstr "Salas de cine indie"
 
-#~ msgid "Art Museums"
-#~ msgstr "Museos de arte"
+msgid "Multiplexes"
+msgstr "Multicines"
 
-#~ msgid "History Museums"
-#~ msgstr "Los museos de historia"
+msgid "Museums"
+msgstr "Museos"
 
-#~ msgid "Science Museums"
-#~ msgstr "Museos de ciencia"
+msgid "Art Museums"
+msgstr "Museos de arte"
 
-#~ msgid "Jazz Clubs"
-#~ msgstr "Clubes de jazz"
+msgid "History Museums"
+msgstr "Museos de historia"
 
-#~ msgid "Piano Bars"
-#~ msgstr "Piano bares"
+msgid "Science Museums"
+msgstr "Museos de ciencia"
 
-#~ msgid "Rock Clubs"
-#~ msgstr "Clubes de rocks"
+msgid "Jazz Clubs"
+msgstr "Clubes de jazz"
 
-#~ msgid "Outdoor Sculptures"
-#~ msgstr "Esculturas al aire libre"
+msgid "Piano Bars"
+msgstr "Bares con pianos"
 
-#~ msgid "Performing Arts Venues"
-#~ msgstr "Lugares de artes escénicas"
+msgid "Rock Clubs"
+msgstr "Clubes de Rock"
 
-#~ msgid "Dance Studios"
-#~ msgstr "Estudios de baile"
+msgid "Outdoor Sculptures"
+msgstr "Esculturas al aire libre"
 
-#~ msgid "Indie Theaters"
-#~ msgstr "Teatros indie"
+msgid "Performing Arts Venues"
+msgstr "Lugares de artes escénicas"
 
-#~ msgid "Opera Houses"
-#~ msgstr "Teatro de ópera"
+msgid "Dance Studios"
+msgstr "Estudios de Danza"
 
-#~ msgid "Theaters"
-#~ msgstr "Teatros"
+msgid "Indie Theaters"
+msgstr "Teatros indie"
 
-#~ msgid "Pool Halls"
-#~ msgstr "Salas de billar"
+msgid "Opera Houses"
+msgstr "Teatros de ópera"
 
-#~ msgid "Public Art"
-#~ msgstr "Arte público"
+msgid "Theaters"
+msgstr "Teatros"
 
-#~ msgid "Racetracks"
-#~ msgstr "Hipódromos"
+msgid "Pool Halls"
+msgstr "Salas de billar"
 
-#~ msgid "Roller Rinks"
-#~ msgstr "Pistas de rodillo"
+msgid "Public Art"
+msgstr "Arte público"
 
-#~ msgid "Salsa Clubs"
-#~ msgstr "Clubes de salsa"
+msgid "Racetracks"
+msgstr "Hipódromos"
 
-#~ msgid "Stadiums"
-#~ msgstr "Estadios"
+msgid "Roller Rinks"
+msgstr "Pistas de rodillo"
 
-#~ msgid "Baseball Stadiums"
-#~ msgstr "Estadios de béisbol"
+msgid "Salsa Clubs"
+msgstr "Clubes de salsa"
 
-#~ msgid "Basketball Stadiums"
-#~ msgstr "Estadios de baloncesto"
+msgid "Stadiums"
+msgstr "Estadios"
 
-#~ msgid "Cricket Grounds"
-#~ msgstr "Zona de Cricket"
+msgid "Baseball Stadiums"
+msgstr "Estadios de béisbol"
 
-#~ msgid "Football Stadiums"
-#~ msgstr "Estadios de fútbol americano"
+msgid "Basketball Stadiums"
+msgstr "Estadios de baloncesto"
 
-#~ msgid "Hockey Arenas"
-#~ msgstr "Hockey arena"
+msgid "Cricket Grounds"
+msgstr "Zona de Cricket"
 
-#~ msgid "Soccer Stadiums"
-#~ msgstr "Estadios de fútbol"
+msgid "Football Stadiums"
+msgstr "Estadios de fútbol americano"
 
-#~ msgid "Tennis Stadiums"
-#~ msgstr "Estadios de tenis"
+msgid "Hockey Arenas"
+msgstr "Hockey arena"
 
-#~ msgid "Track Stadiums"
-#~ msgstr "Pistas de estadios"
+msgid "Soccer Stadiums"
+msgstr "Estadios de fútbol"
 
-#~ msgid "Street Art Installations"
-#~ msgstr "Arte callejero"
+msgid "Tennis Stadiums"
+msgstr "Estadios de tenis"
 
-#~ msgid "Theme Parks"
-#~ msgstr "Parque de atracciones"
+msgid "Track Stadiums"
+msgstr "Pistas de estadios"
 
-#~ msgid "Theme Park Rides/Attractions"
-#~ msgstr "Parque temático/Atracciones"
+msgid "Street Art Installations"
+msgstr "Instalaciones de arte callejero"
 
-#~ msgid "Water Parks"
-#~ msgstr "Parque acuático"
+msgid "Theme Parks"
+msgstr "Parque de atracciones"
 
-#~ msgid "Zoos"
-#~ msgstr "Zoo"
+msgid "Theme Park Rides/Attractions"
+msgstr "Parque temático/Atracciones"
 
-#~ msgid "Colleges & Universities"
-#~ msgstr "Escuelas, terciarios y universidades"
+msgid "Water Parks"
+msgstr "Parque acuático"
 
-#~ msgid "College Arts Buildings"
-#~ msgstr "Universidad de Arte"
+msgid "Zoos"
+msgstr "Zoo"
 
-#~ msgid "College Communications Buildings"
-#~ msgstr "Universidad de Comunicación"
+msgid "Colleges & Universities"
+msgstr "Facultades y Universidades"
 
-#~ msgid "College Engineering Buildings"
-#~ msgstr "Universidad de Ingeniería"
+msgid "College Arts Buildings"
+msgstr "Facultad de arte"
 
-#~ msgid "College Math Buildings"
-#~ msgstr "Universidad de Matemáticas"
+msgid "College Communications Buildings"
+msgstr "Edificios de la facultad de comunicación"
 
-#~ msgid "College Science Buildings"
-#~ msgstr "Universidad Ciencias "
+msgid "College Engineering Buildings"
+msgstr "Edificios de la facultad de ingeniería"
 
-#~ msgid "College Technology Buildings"
-#~ msgstr "Universidad de tecnología"
+msgid "College Math Buildings"
+msgstr "Edificios de la facultad de matemáticas"
 
-#~ msgid "College Cafeterias"
-#~ msgstr "Comedores universitarios"
+msgid "College Science Buildings"
+msgstr "Universidad Ciencias "
 
-#~ msgid "College Classrooms"
-#~ msgstr "Aulas de la Universidad"
+msgid "College Technology Buildings"
+msgstr "Universidad de tecnología"
 
-#~ msgid "College Gyms"
-#~ msgstr "Gimnasios"
+msgid "College Cafeterias"
+msgstr "Comedores universitarios"
 
-#~ msgid "College Labs"
-#~ msgstr "Laboratorios de la Universidad"
+msgid "College Classrooms"
+msgstr "Aulas de la Universidad"
 
-#~ msgid "College Libraries"
-#~ msgstr "Bibliotecas de la Universidad"
+msgid "College Gyms"
+msgstr "Gimnasios universitarios"
 
-#~ msgid "College Residence Halls"
-#~ msgstr "Residencias universitarias"
+msgid "College Labs"
+msgstr "Laboratorios de la Universidad"
 
-#~ msgid "College Football Fields"
-#~ msgstr "Campos de fútbol americano de la Universidad"
+msgid "College Libraries"
+msgstr "Bibliotecas de la Universidad"
 
-#~ msgid "College Soccer Fields"
-#~ msgstr "Campos de fútbol de la Universidad"
+msgid "College Residence Halls"
+msgstr "Residencias universitarias"
 
-#~ msgid "College Tennis Courts"
-#~ msgstr "Escuela de tenis"
+msgid "College Football Fields"
+msgstr "Campos de fútbol americano de la Universidad"
 
-#~ msgid "College Tracks"
-#~ msgstr "Pistas de universidad"
+msgid "College Soccer Fields"
+msgstr "Campos de fútbol de la Universidad"
 
-#~ msgid "College Theaters"
-#~ msgstr "Teatros universitarios"
+msgid "College Tennis Courts"
+msgstr "Escuela de tenis"
 
-#~ msgid "Community Colleges"
-#~ msgstr "Universidad Comunitaria"
+msgid "College Tracks"
+msgstr "Pistas de universidad"
 
-#~ msgid "Fraternity Houses"
-#~ msgstr "Fraternidades"
+msgid "College Theaters"
+msgstr "Teatros universitarios"
 
-#~ msgid "General Colleges & Universities"
-#~ msgstr "Escuelas, terciarios y universidades"
+msgid "Community Colleges"
+msgstr "Universidad Comunitaria"
 
-#~ msgid "Law Schools"
-#~ msgstr "Las facultades de derecho"
+msgid "Fraternity Houses"
+msgstr "Fraternidades"
 
-#~ msgid "Medical Schools"
-#~ msgstr "Facultad de medicina"
+msgid "General Colleges & Universities"
+msgstr "Escuelas, terciarios y universidades"
 
-#~ msgid "Sorority Houses"
-#~ msgstr "Hermandad de mujeres"
+msgid "Law Schools"
+msgstr "Escuelas de Derecho"
 
-#~ msgid "Student Centers"
-#~ msgstr "Centros de estudiantes"
+msgid "Medical Schools"
+msgstr "Facultad de medicina"
 
-#~ msgid "Trade Schools"
-#~ msgstr "Escuelas de comercio"
+msgid "Sorority Houses"
+msgstr "Hermandad de mujeres"
 
-#~ msgid "Universities"
-#~ msgstr "Universidades"
+msgid "Student Centers"
+msgstr "Centros de estudiantes"
 
-#~ msgid "Events"
-#~ msgstr "Eventos"
+msgid "Trade Schools"
+msgstr "Escuelas de comercio"
 
-#~ msgid "Conferences"
-#~ msgstr "Congresos"
+msgid "Universities"
+msgstr "Universidades"
 
-#~ msgid "Conventions"
-#~ msgstr "Convenciones"
+msgid "Events"
+msgstr "Eventos"
 
-#~ msgid "Festivals"
-#~ msgstr "Festival"
+msgid "Conferences"
+msgstr "Conferencias"
 
-#~ msgid "Music Festivals"
-#~ msgstr "Festival de música"
+msgid "Conventions"
+msgstr "Convenciones"
 
-#~ msgid "Other Events"
-#~ msgstr "Mostrar otros eventos"
+msgid "Festivals"
+msgstr "Festivales"
 
-#~ msgid "Parades"
-#~ msgstr "Desfile"
+msgid "Music Festivals"
+msgstr "Festivales de Música"
 
-#~ msgid "Street Fairs"
-#~ msgstr "Ferias callejeras"
+msgid "Other Events"
+msgstr "Otros Eventos"
 
-#~ msgid "Food"
-#~ msgstr "Comida"
+msgid "Parades"
+msgstr "Desfiles"
 
-#~ msgid "Afghan Restaurants"
-#~ msgstr "Restaurantes afganos"
+msgid "Street Fairs"
+msgstr "Ferias callejeras"
 
-#~ msgid "African Restaurants"
-#~ msgstr "Restaurantes africanos"
+msgid "Food"
+msgstr "Comida"
 
-#~ msgid "American Restaurants"
-#~ msgstr "Restaurantes americanos"
+msgid "African Restaurants"
+msgstr "Restaurantes africanos"
 
-#~ msgid "Argentinian Restaurants"
-#~ msgstr "Restaurantes argentinos"
+msgid "Argentinian Restaurants"
+msgstr "Restaurantes argentinos"
 
-#~ msgid "Asian Restaurants"
-#~ msgstr "Restaurantes Asiaticos"
+msgid "Asian Restaurants"
+msgstr "Restaurantes asiáticos"
 
-#~ msgid "Australian Restaurants"
-#~ msgstr "Restaurantes australianos"
+msgid "Australian Restaurants"
+msgstr "Restaurantes de Australia"
 
-#~ msgid "Austrian Restaurants"
-#~ msgstr "Restaurantes de Austria"
+msgid "Austrian Restaurants"
+msgstr "Restaurantes austriacos"
 
-#~ msgid "BBQ Joints"
-#~ msgstr "Parrillada"
+msgid "BBQ Joints"
+msgstr "Parrillada"
 
-#~ msgid "Bagel Shops"
-#~ msgstr "Tiendas de rosquillas"
+msgid "Bagel Shops"
+msgstr "Tiendas de rosquillas"
 
-#~ msgid "Bakeries"
-#~ msgstr "Panaderías"
+msgid "Bakeries"
+msgstr "Panaderías"
 
-#~ msgid "Belarusian Restaurants"
-#~ msgstr "Restaurantes bielorruso"
+msgid "Belarusian Restaurants"
+msgstr "Restaurantes bielorruso"
 
-#~ msgid "Belgian Restaurants"
-#~ msgstr "Restaurantes belgas"
+msgid "Belgian Restaurants"
+msgstr "Restaurantes belgas"
 
-#~ msgid "Bistros"
-#~ msgstr "Bistró"
+msgid "Bistros"
+msgstr "Bistros"
 
-#~ msgid "Brazilian Restaurants"
-#~ msgstr "Restaurantes brasileños"
+msgid "Brazilian Restaurants"
+msgstr "Restaurantes brasileños"
 
-#~ msgid "Churrascarias"
-#~ msgstr "Churrascaria"
+msgid "Churrascarias"
+msgstr "Churrasquerías"
 
-#~ msgid "Buffets"
-#~ msgstr "Buffets"
+msgid "Buffets"
+msgstr "Buffets"
 
-#~ msgid "Burrito Places"
-#~ msgstr "Lugares de burrito"
+msgid "Burrito Places"
+msgstr "Lugares de burrito"
 
-#~ msgid "Cafeterias"
-#~ msgstr "Cafeterías"
+msgid "Cafeterias"
+msgstr "Cafeterías"
 
-#~ msgid "Cafes"
-#~ msgstr "Café"
+msgid "Cafes"
+msgstr "Cafés"
 
-#~ msgid "Cambodian Restaurants"
-#~ msgstr "Restaurantes de Camboya"
+msgid "Cambodian Restaurants"
+msgstr "Restaurantes de Camboya"
 
-#~ msgid "Caribbean Restaurants"
-#~ msgstr "Restaurantes del Caribe"
+msgid "Caribbean Restaurants"
+msgstr "Restaurantes del Caribe"
 
-#~ msgid "Caucasian Restaurants"
-#~ msgstr "Restaurantes caucásico"
+msgid "Caucasian Restaurants"
+msgstr "Restaurantes caucásicas"
 
-#~ msgid "Chinese Restaurants"
-#~ msgstr "Restaurantes chinos"
+msgid "Chinese Restaurants"
+msgstr "Restaurantes chinos"
 
-#~ msgid "Hong Kong Restaurants"
-#~ msgstr "Restaurantes de Hong Kong"
+msgid "Taiwanese Restaurants"
+msgstr "Restaurantes taiwaneses"
 
-#~ msgid "Taiwanese Restaurants"
-#~ msgstr "Restaurantes taiwanés"
+msgid "Coffee Shops"
+msgstr "Coffee shops"
 
-#~ msgid "Coffee Shops"
-#~ msgstr "Tiendas de café"
+msgid "Comfort Food Restaurants"
+msgstr "Comida casera"
 
-#~ msgid "Comfort Food Restaurants"
-#~ msgstr "Comida casera"
+msgid "Creperies"
+msgstr "Creperías"
 
-#~ msgid "Creperies"
-#~ msgstr "Creperies"
+msgid "Cuban Restaurants"
+msgstr "Restaurantes cubanos"
 
-#~ msgid "Cuban Restaurants"
-#~ msgstr "Restaurantes cubanos"
+msgid "Cupcake Shops"
+msgstr "Tiendas de Cupcake"
 
-#~ msgid "Cupcake Shops"
-#~ msgstr "Tiendas de Cupcake"
+msgid "Czech Restaurants"
+msgstr "Restaurantes Checos"
 
-#~ msgid "Czech Restaurants"
-#~ msgstr "Restaurantes chechos"
+msgid "Delis / Bodegas"
+msgstr "Sandwichería / Bodegas"
 
-#~ msgid "Delis / Bodegas"
-#~ msgstr "Sandwicheria / Bodegas"
+msgid "Dessert Shops"
+msgstr "Tiendas de postre"
 
-#~ msgid "Dessert Shops"
-#~ msgstr "Tiendas de postre"
+msgid "Diners"
+msgstr "Diners"
 
-#~ msgid "Diners"
-#~ msgstr "Comedores"
+msgid "Distilleries"
+msgstr "Destilerías"
 
-#~ msgid "Distilleries"
-#~ msgstr "Destilerías"
+msgid "Donut Shops"
+msgstr "Tienda de donuts"
 
-#~ msgid "Donut Shops"
-#~ msgstr "Tienda de donuts"
+msgid "Dumpling Restaurants"
+msgstr "Restaurantes de dumplings"
 
-#~ msgid "Dumpling Restaurants"
-#~ msgstr "restaurantes"
+msgid "Eastern European Restaurants"
+msgstr "Restaurantes de Europa del Este"
 
-#~ msgid "Eastern European Restaurants"
-#~ msgstr "Restaurantes de europa del este "
+msgid "English Restaurants"
+msgstr "Restaurantes ingleses"
 
-#~ msgid "English Restaurants"
-#~ msgstr "Restaurantes ingleses"
+msgid "Falafel Restaurants"
+msgstr "Restaurantes de falafel"
 
-#~ msgid "Falafel Restaurants"
-#~ msgstr "Restaurantes de falafel"
+msgid "Fast Food Restaurants"
+msgstr "Restaurantes de comida rápida"
 
-#~ msgid "Fast Food Restaurants"
-#~ msgstr "Restaurantes de comida rápida"
+msgid "Filipino Restaurants"
+msgstr "Restaurantes filipinos"
 
-#~ msgid "Filipino Restaurants"
-#~ msgstr "Restaurantes filipinos"
+msgid "Fish & Chips Shops"
+msgstr "Fish and chips"
 
-#~ msgid "Fish & Chips Shops"
-#~ msgstr "Fish and chips"
+msgid "Fondue Restaurants"
+msgstr "Restaurantes de fondue"
 
-#~ msgid "Fondue Restaurants"
-#~ msgstr "Restaurantes de fondue"
+msgid "Food Trucks"
+msgstr "Camiones de comida"
 
-#~ msgid "Food Trucks"
-#~ msgstr "Camiones de comida"
+msgid "Fried Chicken Joints"
+msgstr "Pollo frio"
 
-#~ msgid "French Restaurants"
-#~ msgstr "Restaurantes franceses"
+msgid "Gastropubs"
+msgstr "Gastropubs"
 
-#~ msgid "Fried Chicken Joints"
-#~ msgstr "Pollo frio"
+msgid "German Restaurants"
+msgstr "Restaurantes alemanes"
 
-#~ msgid "Gastropubs"
-#~ msgstr "Gastropubs"
+msgid "Gluten-free Restaurants"
+msgstr "Restaurantes sin gluten"
 
-#~ msgid "German Restaurants"
-#~ msgstr "Restaurantes alemanes"
+msgid "Greek Restaurants"
+msgstr "Restaurantes griegos"
 
-#~ msgid "Gluten-free Restaurants"
-#~ msgstr "Restaurantes sin gluten"
+msgid "Bougatsa Shops"
+msgstr "Tiendas de Bougatsa"
 
-#~ msgid "Greek Restaurants"
-#~ msgstr "Restaurantes griegos"
+msgid "Fish Tavernas"
+msgstr "Tabernas de pescado"
 
-#~ msgid "Bougatsa Shops"
-#~ msgstr "Tiendas de Bougatsa"
+msgid "Grilled Meat Restaurants"
+msgstr "Restaurantes de carnes a la brasa"
 
-#~ msgid "Fish Tavernas"
-#~ msgstr "Tabernas de pescado"
+msgid "Kafenia"
+msgstr "Kafenia"
 
-#~ msgid "Grilled Meat Restaurants"
-#~ msgstr "Restaurantes de carnes a la brasa"
+msgid "Patsa Restaurants"
+msgstr "Restaurantes de Pasta"
 
-#~ msgid "Kafenia"
-#~ msgstr "Kafenia"
+msgid "Tavernas"
+msgstr "Tabernas"
 
-#~ msgid "Patsa Restaurants"
-#~ msgstr "Restaurantes de Pasta"
+msgid "Hawaiian Restaurants"
+msgstr "Restaurantes hawaiano"
 
-#~ msgid "Tavernas"
-#~ msgstr "Tabernas"
+msgid "Hot Dog Joints"
+msgstr "Perrito caliente"
 
-#~ msgid "Hawaiian Restaurants"
-#~ msgstr "Restaurantes hawaiano"
+msgid "Hotpot Restaurants"
+msgstr "Restaurantes de estofado"
 
-#~ msgid "Hot Dog Joints"
-#~ msgstr "Perrito caliente"
+msgid "Hungarian Restaurants"
+msgstr "Restaurantes Húngaro"
 
-#~ msgid "Hotpot Restaurants"
-#~ msgstr "Restaurantes de estofado"
+msgid "Ice Cream Shops"
+msgstr "Heladerías"
 
-#~ msgid "Hungarian Restaurants"
-#~ msgstr "Restaurantes Húngaro"
+msgid "Indian Restaurants"
+msgstr "Restaurantes indios"
 
-#~ msgid "Ice Cream Shops"
-#~ msgstr "Heladerías"
+msgid "Bengali Restaurants"
+msgstr "Restaurantes bengalíes"
 
-#~ msgid "Indian Restaurants"
-#~ msgstr "Restaurantes indios"
+msgid "Irani Cafes"
+msgstr "Cafetería Iraní"
 
-#~ msgid "Bengali Restaurants"
-#~ msgstr "Restaurantes bengalí"
+msgid "Jain Restaurants"
+msgstr "Restaurantes Jain"
 
-#~ msgid "Irani Cafes"
-#~ msgstr "Cafetería Iraní"
+msgid "Multicuisine Indian Restaurants"
+msgstr "Multicuisine restaurantes indios"
 
-#~ msgid "Jain Restaurants"
-#~ msgstr "Restaurantes Jain"
+msgid "North Indian Restaurants"
+msgstr "Restaurantes indios del Norte"
 
-#~ msgid "Multicuisine Indian Restaurants"
-#~ msgstr "Restaurantes indios multicocina"
+msgid "Northeast Indian Restaurants"
+msgstr "Noreste restaurantes indios"
 
-#~ msgid "North Indian Restaurants"
-#~ msgstr "Restaurantes indios del norte"
+msgid "South Indian Restaurants"
+msgstr "Restaurantes indios del Sur"
 
-#~ msgid "Northeast Indian Restaurants"
-#~ msgstr "Restaurantes indios del noreste"
+msgid "Sweet Shops"
+msgstr "Tiendas de chucherías"
 
-#~ msgid "South Indian Restaurants"
-#~ msgstr "Restaurantes indios del sur"
+msgid "Indonesian Restaurants"
+msgstr "Restaurantes de Indonesia"
 
-#~ msgid "Sweet Shops"
-#~ msgstr "Confiterías"
+msgid "Balinese Restaurants"
+msgstr "Restaurantes de Bali"
 
-#~ msgid "Indonesian Restaurants"
-#~ msgstr "Restaurantes indonesio"
+msgid "Meatball Places"
+msgstr "Lugares de bolas de carne"
 
-#~ msgid "Balinese Restaurants"
-#~ msgstr "Restaurantes de Bali"
+msgid "Sundanese Restaurants"
+msgstr "Restaurantes sudanés"
 
-#~ msgid "Meatball Places"
-#~ msgstr "Lugares de bolas de carne"
+msgid "Irish Pubs"
+msgstr "Pubs irlandeses"
 
-#~ msgid "Sundanese Restaurants"
-#~ msgstr "Restaurantes sudanés"
+msgid "Italian Restaurants"
+msgstr "Restaurantes italianos"
 
-#~ msgid "Irish Pubs"
-#~ msgstr "Pubs irlandeses"
+msgid "Japanese Restaurants"
+msgstr "Restaurantes japoneses"
 
-#~ msgid "Italian Restaurants"
-#~ msgstr "Restaurantes italianos"
+msgid "Jewish Restaurants"
+msgstr "Restaurantes judíos"
 
-#~ msgid "Japanese Restaurants"
-#~ msgstr "Restaurantes japoneses"
+msgid "Juice Bars"
+msgstr "Bares para tomar zumos"
 
-#~ msgid "Jewish Restaurants"
-#~ msgstr "Restaurantes judíos"
+msgid "Korean Restaurants"
+msgstr "Restaurantes coreanos"
 
-#~ msgid "Juice Bars"
-#~ msgstr "Bar de zumos"
+msgid "Kosher Restaurants"
+msgstr "Restaurantes de Kosher"
 
-#~ msgid "Korean Restaurants"
-#~ msgstr "Restaurantes coreanos"
+msgid "Latin American Restaurants"
+msgstr "Restaurantes de América Latina"
 
-#~ msgid "Kosher Restaurants"
-#~ msgstr "Restaurantes de Kosher"
+msgid "Empanada Restaurants"
+msgstr "Restaurantes de empanadas "
 
-#~ msgid "Latin American Restaurants"
-#~ msgstr "Restaurantes de América Latina"
+msgid "Mac & Cheese Joints"
+msgstr "Hamburgueserías"
 
-#~ msgid "Empanada Restaurants"
-#~ msgstr "Restaurantes de empanada"
+msgid "Malaysian Restaurants"
+msgstr "Restaurantes de Malasia"
 
-#~ msgid "Mac & Cheese Joints"
-#~ msgstr "Hamburgueserías"
+msgid "Mediterranean Restaurants"
+msgstr "Restaurantes mediterráneos"
 
-#~ msgid "Malaysian Restaurants"
-#~ msgstr "Restaurantes de Malasia"
+msgid "Mexican Restaurants"
+msgstr "Restaurantes mexicanos"
 
-#~ msgid "Mediterranean Restaurants"
-#~ msgstr "Restaurantes mediterraneos"
+msgid "Middle Eastern Restaurants"
+msgstr "Restaurantes de Oriente Medio"
 
-#~ msgid "Mexican Restaurants"
-#~ msgstr "Restaurantes mexicanos"
+msgid "Modern European Restaurants"
+msgstr "Restaurantes de la europa moderna"
 
-#~ msgid "Middle Eastern Restaurants"
-#~ msgstr "Restaurantes del medio este"
+msgid "Molecular Gastronomy Restaurants"
+msgstr "Restaurantes de gastronomía molecular"
 
-#~ msgid "Modern European Restaurants"
-#~ msgstr "Restaurantes de la europa moderna"
+msgid "Mongolian Restaurants"
+msgstr "Restaurantes de Mongolia"
 
-#~ msgid "Molecular Gastronomy Restaurants"
-#~ msgstr "Restaurantes de gastronomía molecular"
+msgid "Moroccan Restaurants"
+msgstr "Restaurantes marroquíes"
 
-#~ msgid "Mongolian Restaurants"
-#~ msgstr "Restaurantes mongol"
+msgid "New American Restaurants"
+msgstr "Restaurantes New American"
 
-#~ msgid "Moroccan Restaurants"
-#~ msgstr "Restaurantes marroquíes"
+msgid "Pakistani Restaurants"
+msgstr "Restaurantes paquistaníes"
 
-#~ msgid "New American Restaurants"
-#~ msgstr "Restaurantes New American"
+msgid "Persian Restaurants"
+msgstr "Restaurantes persas"
 
-#~ msgid "Pakistani Restaurants"
-#~ msgstr "Restaurantes paquistaníes"
+msgid "Peruvian Restaurants"
+msgstr "Restaurantes peruanos"
 
-#~ msgid "Persian Restaurants"
-#~ msgstr "Restaurantes persa"
+msgid "Pie Shops"
+msgstr "Tiendas de pasteles"
 
-#~ msgid "Peruvian Restaurants"
-#~ msgstr "Restaurantes peruanos"
+msgid "Pizza Places"
+msgstr "Pizzerías"
 
-#~ msgid "Pie Shops"
-#~ msgstr "Tiendas de pastel"
+msgid "Polish Restaurants"
+msgstr "Restaurantes polacos"
 
-#~ msgid "Pizza Places"
-#~ msgstr "Pizzerías"
+msgid "Portuguese Restaurants"
+msgstr "Restaurantes portugueses"
 
-#~ msgid "Polish Restaurants"
-#~ msgstr "Restaurantes Polaco"
+msgid "Ramen / Noodle Houses"
+msgstr "Casa de ramen/noodles"
 
-#~ msgid "Portuguese Restaurants"
-#~ msgstr "Restaurantes portugueses"
+msgid "Restaurants"
+msgstr "Restaurantes"
 
-#~ msgid "Ramen / Noodle Houses"
-#~ msgstr "Casa de ramen/noodles"
+msgid "Romanian Restaurants"
+msgstr "Restaurantes rumanos"
 
-#~ msgid "Restaurants"
-#~ msgstr "Restaurantes"
+msgid "Salad Shop"
+msgstr "Tiendas de ensaladas"
 
-#~ msgid "Romanian Restaurants"
-#~ msgstr "Restaurantes Rumano"
+msgid "Sandwich Places"
+msgstr "Lugares de sandwich"
 
-#~ msgid "Russian Restaurants"
-#~ msgstr "Restaurantes ruso"
+msgid "Scandinavian Restaurants"
+msgstr "Restaurantes escandinavos"
 
-#~ msgid "Salad Shop"
-#~ msgstr "Tiendas de ensaladas"
+msgid "Seafood Restaurants"
+msgstr "Restaurantes con mariscos"
 
-#~ msgid "Sandwich Places"
-#~ msgstr "Lugares de sandwich"
+msgid "Snack Places"
+msgstr "Lugares de snack"
 
-#~ msgid "Scandinavian Restaurants"
-#~ msgstr "Restaurantes escandinavos"
+msgid "Soup Places"
+msgstr "Lugares de sopa"
 
-#~ msgid "Seafood Restaurants"
-#~ msgstr "MARISCOS"
+msgid "South American Restaurants"
+msgstr "Restaurantes de América del Sur"
 
-#~ msgid "Snack Places"
-#~ msgstr "Lugares de snack"
+msgid "Spanish Restaurants"
+msgstr "Restaurantes españoles"
 
-#~ msgid "Soup Places"
-#~ msgstr "Lugares de sopa"
+msgid "Paella Restaurants"
+msgstr "Restaurantes de paella"
 
-#~ msgid "South American Restaurants"
-#~ msgstr "Restaurantes de América del sur"
+msgid "Sri Lankan Restaurants"
+msgstr "Restaurantes de Sri Lankan"
 
-#~ msgid "Spanish Restaurants"
-#~ msgstr "Restaurantes españoles"
+msgid "Steakhouses"
+msgstr "Asadores"
 
-#~ msgid "Paella Restaurants"
-#~ msgstr "Restaurantes de paella"
+msgid "Sushi Restaurants"
+msgstr "Restaurantes de sushi"
 
-#~ msgid "Sri Lankan Restaurants"
-#~ msgstr "Restaurantes de Sri Lankan"
+msgid "Swiss Restaurants"
+msgstr "Restaurantes suizos"
 
-#~ msgid "Steakhouses"
-#~ msgstr "Asadores"
+msgid "Taco Places"
+msgstr "Lugares de taco"
 
-#~ msgid "Sushi Restaurants"
-#~ msgstr "Restaurantes de sushi"
+msgid "Tapas Restaurants"
+msgstr "Restaurantes de tapas"
 
-#~ msgid "Swiss Restaurants"
-#~ msgstr "Restaurantes suizos"
+msgid "Tatar Restaurants"
+msgstr "Restaurantes tártaros"
 
-#~ msgid "Taco Places"
-#~ msgstr "Lugares de taco"
+msgid "Tea Rooms"
+msgstr "Salones de té"
 
-#~ msgid "Tapas Restaurants"
-#~ msgstr "Restaurantes de tapas"
+msgid "Thai Restaurants"
+msgstr "Restaurantes tailandeses"
 
-#~ msgid "Tatar Restaurants"
-#~ msgstr "Restaurantes de tartar"
+msgid "Tibetan Restaurants"
+msgstr "Restaurantes tibetanos"
 
-#~ msgid "Tea Rooms"
-#~ msgstr "Salones de té"
+msgid "Turkish Restaurants"
+msgstr "Restaurantes turcos"
 
-#~ msgid "Thai Restaurants"
-#~ msgstr "Restaurante tailandes"
+msgid "Kebab Restaurants"
+msgstr "Restaurantes kebab"
 
-#~ msgid "Tibetan Restaurants"
-#~ msgstr "Restaurantes tibetanos"
+msgid "Ukrainian Restaurants"
+msgstr "Restaurantes de Ucrania"
 
-#~ msgid "Turkish Restaurants"
-#~ msgstr "Restaurantes de Turco"
+msgid "West-Ukrainian Restaurants"
+msgstr "Restaurantes del oeste Ukraniano"
 
-#~ msgid "Kebab Restaurants"
-#~ msgstr "Restaurantes kebab"
+msgid "Vegetarian / Vegan Restaurants"
+msgstr "Restaurantes Vegetariana / vegana"
 
-#~ msgid "Ukrainian Restaurants"
-#~ msgstr "Restaurante Ukraniano"
+msgid "Vietnamese Restaurants"
+msgstr "Restaurantes vietnamitas"
 
-#~ msgid "West-Ukrainian Restaurants"
-#~ msgstr "Restaurantes del oeste Ukraniano"
+msgid "Wineries"
+msgstr "Bodegas"
 
-#~ msgid "Vegetarian / Vegan Restaurants"
-#~ msgstr "Restaurantes Vegetariana / vegana"
+msgid "Yogurt"
+msgstr "Yogur"
 
-#~ msgid "Vietnamese Restaurants"
-#~ msgstr "Restaurantes vietnamitas"
+msgid "Nightlife Spots"
+msgstr "Locales nocturnos"
 
-#~ msgid "Wineries"
-#~ msgstr "Bodega"
+msgid "Bars"
+msgstr "Bares"
 
-#~ msgid "Yogurt"
-#~ msgstr "Yogurt"
+msgid "Beach Bars"
+msgstr "Chiringuitos"
 
-#~ msgid "Nightlife Spots"
-#~ msgstr "Nocturnos"
+msgid "Beer Gardens"
+msgstr "Jardines de la cerveza"
 
-#~ msgid "Bars"
-#~ msgstr "Bars"
+msgid "Breweries"
+msgstr "Cervecerías"
 
-#~ msgid "Beach Bars"
-#~ msgstr "Bares de playa"
+msgid "Champagne Bars"
+msgstr "Champañerías"
 
-#~ msgid "Beer Gardens"
-#~ msgstr "Jardines de la cerveza"
+msgid "Cocktail Bars"
+msgstr "Coctelerías"
 
-#~ msgid "Breweries"
-#~ msgstr "Industria cervecera"
+msgid "Dive Bars"
+msgstr "Bares de barrio"
 
-#~ msgid "Champagne Bars"
-#~ msgstr "Bares de Champagne"
+msgid "Gay Bars"
+msgstr "Bares gay"
 
-#~ msgid "Cocktail Bars"
-#~ msgstr "Cocktelerías"
+msgid "Hookah Bars"
+msgstr "Locales para fumar cachimba"
 
-#~ msgid "Dive Bars"
-#~ msgstr "Dive Bars"
+msgid "Hotel Bars"
+msgstr "Bares de hoteles"
 
-#~ msgid "Gay Bars"
-#~ msgstr "Bares gay"
+msgid "Karaoke Bars"
+msgstr "Bares de karaoke"
 
-#~ msgid "Hookah Bars"
-#~ msgstr "Barras de la cachimba"
+msgid "Lounges"
+msgstr "Salones"
 
-#~ msgid "Hotel Bars"
-#~ msgstr "Bares del Hotel"
+msgid "Night Markets"
+msgstr "Mercados nocturnos"
 
-#~ msgid "Karaoke Bars"
-#~ msgstr "Karaokes"
+msgid "Nightclubs"
+msgstr "Discotecas"
 
-#~ msgid "Lounges"
-#~ msgstr "Salones"
+msgid "Other Nightlife"
+msgstr "Otros vida nocturna"
 
-#~ msgid "Night Markets"
-#~ msgstr "Mercados nocturnos"
+msgid "Pubs"
+msgstr "Pubs"
 
-#~ msgid "Nightclubs"
-#~ msgstr "Discotecas"
+msgid "Sake Bars"
+msgstr "Bares Sake"
 
-#~ msgid "Other Nightlife"
-#~ msgstr "Vida Nocturna"
+msgid "Sports Bars"
+msgstr "Bares de deportes"
 
-#~ msgid "Pubs"
-#~ msgstr "Pubs"
+msgid "Whisky Bars"
+msgstr "Bares de whisky"
 
-#~ msgid "Sake Bars"
-#~ msgstr "Bares de sake"
+msgid "Wine Bars"
+msgstr "Bares de vinos"
 
-#~ msgid "Sports Bars"
-#~ msgstr "Bares deportivos"
+msgid "Outdoors & Recreation"
+msgstr "En espacios exteriores"
 
-#~ msgid "Whisky Bars"
-#~ msgstr "Whisky bares"
+msgid "Athletics & Sports"
+msgstr "Atletismo y Deportes"
 
-#~ msgid "Wine Bars"
-#~ msgstr "Bares de vinos"
+msgid "Badminton Courts"
+msgstr "Pistas de bádminton"
 
-#~ msgid "Outdoors & Recreation"
-#~ msgstr "En espacios exteriores"
+msgid "Baseball Fields"
+msgstr "Campos de béisbol"
 
-#~ msgid "Athletics & Sports"
-#~ msgstr "Atletismo y deportes"
+msgid "Basketball Courts"
+msgstr "Canchas de baloncesto"
 
-#~ msgid "Badminton Courts"
-#~ msgstr "Zonas de bádminton"
+msgid "Bowling Greens"
+msgstr "Bolos"
 
-#~ msgid "Baseball Fields"
-#~ msgstr "Campos de béisbol"
+msgid "Golf Courses"
+msgstr "Campos de golf"
 
-#~ msgid "Basketball Courts"
-#~ msgstr "Canchas de baloncesto"
+msgid "Hockey Fields"
+msgstr "Campos de hockey"
 
-#~ msgid "Bowling Greens"
-#~ msgstr "Bolos"
+msgid "Paintball Fields"
+msgstr "Campos de paintball"
 
-#~ msgid "Golf Courses"
-#~ msgstr "Campos de golf"
+msgid "Rugby Pitches"
+msgstr "Campos de rugby"
 
-#~ msgid "Hockey Fields"
-#~ msgstr "Campos de hockey"
+msgid "Skate Parks"
+msgstr "Parques de Skate"
 
-#~ msgid "Paintball Fields"
-#~ msgstr "Campos de paintball"
+msgid "Skating Rinks"
+msgstr "Pistas de patinaje"
 
-#~ msgid "Rugby Pitches"
-#~ msgstr "Campos de rugby"
+msgid "Soccer Fields"
+msgstr "Campos de fútbol"
 
-#~ msgid "Skate Parks"
-#~ msgstr "Parques de Skate"
+msgid "Sports Clubs"
+msgstr "Clubes deportivos"
 
-#~ msgid "Skating Rinks"
-#~ msgstr "Pistas de patinaje"
+msgid "Squash Courts"
+msgstr "Pistas de squash"
 
-#~ msgid "Soccer Fields"
-#~ msgstr "Campos de fútbol"
+msgid "Tennis Courts"
+msgstr "Pistas de tenis"
 
-#~ msgid "Sports Clubs"
-#~ msgstr "Clubes deportivos"
+msgid "Volleyball Courts"
+msgstr "Canchas de voleibol"
 
-#~ msgid "Squash Courts"
-#~ msgstr "Zonas de squas"
+msgid "Bath Houses"
+msgstr "Balnearios"
 
-#~ msgid "Tennis Courts"
-#~ msgstr "Pista de tenis"
+msgid "Bathing Areas"
+msgstr "Zonas de baño"
 
-#~ msgid "Volleyball Courts"
-#~ msgstr "Canchas de voleibol"
+msgid "Beaches"
+msgstr "Playas"
 
-#~ msgid "Bath Houses"
-#~ msgstr "Balnearios"
+msgid "Nudist Beaches"
+msgstr "Playas nudistas"
 
-#~ msgid "Bathing Areas"
-#~ msgstr "Zonas de baño"
+msgid "Surf Spots"
+msgstr "Zonas de surf"
 
-#~ msgid "Beaches"
-#~ msgstr "Playas"
+msgid "Botanical Gardens"
+msgstr "Jardines Botánicos"
 
-#~ msgid "Nudist Beaches"
-#~ msgstr "Playas nudistas"
+msgid "Bridges"
+msgstr "Puentes"
 
-#~ msgid "Surf Spots"
-#~ msgstr "Zonas de surf"
+msgid "Campgrounds"
+msgstr "Zonas de camping"
 
-#~ msgid "Botanical Gardens"
-#~ msgstr "Jardines botánicos"
+msgid "Castles"
+msgstr "Castillos"
 
-#~ msgid "Bridges"
-#~ msgstr "Puentes"
+msgid "Cemeteries"
+msgstr "Cementerios"
 
-#~ msgid "Campgrounds"
-#~ msgstr "zona de camping"
+msgid "Dive Spots"
+msgstr "Puntos de buceo"
 
-#~ msgid "Castles"
-#~ msgstr "Castillos"
+msgid "Dog Runs"
+msgstr "Carreras de perros"
 
-#~ msgid "Cemeteries"
-#~ msgstr "Cementerio"
+msgid "Farms"
+msgstr "Granjas"
 
-#~ msgid "Dive Spots"
-#~ msgstr "Puntos de buceo"
+msgid "Fields"
+msgstr "Campos"
 
-#~ msgid "Dog Runs"
-#~ msgstr "Carreras de perro"
+msgid "Fishing Spots"
+msgstr "Lugares de pesca"
 
-#~ msgid "Farms"
-#~ msgstr "Granjas"
+msgid "Forests"
+msgstr "Bosques"
 
-#~ msgid "Fields"
-#~ msgstr "Campos"
+msgid "Gardens"
+msgstr "Jardines"
 
-#~ msgid "Fishing Spots"
-#~ msgstr "Lugares de pesca"
+msgid "Gun Ranges"
+msgstr "Galería de tiro"
 
-#~ msgid "Forests"
-#~ msgstr "Bosques"
+msgid "Harbors / Marinas"
+msgstr "Puertos / Puertos"
 
-#~ msgid "Gardens"
-#~ msgstr "Jardines"
+msgid "Hot Springs"
+msgstr "Aguas termales"
 
-#~ msgid "Gun Ranges"
-#~ msgstr "Galería de tiro"
+msgid "Lakes"
+msgstr "Lagos"
 
-#~ msgid "Harbors / Marinas"
-#~ msgstr "Puerto deportivo"
+msgid "Lighthouses"
+msgstr "Faros"
 
-#~ msgid "Hot Springs"
-#~ msgstr "Aguas termales"
+msgid "Mountains"
+msgstr "Montañas"
 
-#~ msgid "Islands"
-#~ msgstr "Islas"
+msgid "Nature Preserves"
+msgstr "Reservas naturales"
 
-#~ msgid "Lakes"
-#~ msgstr "Lagos"
+msgid "Other Great Outdoors"
+msgstr "Otro grande al aire libre"
 
-#~ msgid "Lighthouses"
-#~ msgstr "Faros"
+msgid "Parks"
+msgstr "Parques"
 
-#~ msgid "Mountains"
-#~ msgstr "Montañas"
+msgid "Pedestrian Plazas"
+msgstr "Plazas peatonales"
 
-#~ msgid "National Parks"
-#~ msgstr "Parques nacionales"
+msgid "Playgrounds"
+msgstr "Parques infantiles"
 
-#~ msgid "Nature Preserves"
-#~ msgstr "Reserva natural"
+msgid "Plazas"
+msgstr "Plazas"
 
-#~ msgid "Other Great Outdoors"
-#~ msgstr "Otros grandes al aire libre"
+msgid "Pools"
+msgstr "Piscinas"
 
-#~ msgid "Palaces"
-#~ msgstr "Palacios"
+msgid "Rafting Spots"
+msgstr "Descenso de ríos"
 
-#~ msgid "Parks"
-#~ msgstr "Parques"
+msgid "Recreation Centers"
+msgstr "Centros de Ocio"
 
-#~ msgid "Pedestrian Plazas"
-#~ msgstr "Plazas peatonales"
+msgid "Rivers"
+msgstr "Ríos"
 
-#~ msgid "Playgrounds"
-#~ msgstr "Parques infantiles"
+msgid "Rock Climbing Spots"
+msgstr "Puntos de escalada de rocas"
 
-#~ msgid "Plazas"
-#~ msgstr "Plazas"
+msgid "Scenic Lookouts"
+msgstr "Miradores paisajísticos"
 
-#~ msgid "Pools"
-#~ msgstr "Piscinas"
+msgid "Sculpture Gardens"
+msgstr "Jardines de escultura"
 
-#~ msgid "Rafting Spots"
-#~ msgstr "Descenso de ríos"
+msgid "Ski Areas"
+msgstr "Estaciones de esquís"
 
-#~ msgid "Recreation Centers"
-#~ msgstr "Centros recreativos"
+msgid "Ski Chairlifts"
+msgstr "Telesillas de esquí"
 
-#~ msgid "Rivers"
-#~ msgstr "Ríos"
+msgid "Ski Lodges"
+msgstr "Alojamientos de esquí"
 
-#~ msgid "Rock Climbing Spots"
-#~ msgstr "Manchas de escalada de roca"
+msgid "Ski Trails"
+msgstr "Senderos de esquí"
 
-#~ msgid "Scenic Lookouts"
-#~ msgstr "Miradores escénicos"
+msgid "Stables"
+msgstr "Establos"
 
-#~ msgid "Sculpture Gardens"
-#~ msgstr "Jardines de escultura"
+msgid "States & Municipalities"
+msgstr "Estados y municipios"
 
-#~ msgid "Ski Areas"
-#~ msgstr "Zonas de esquí"
+msgid "Cities"
+msgstr "Ciudades"
 
-#~ msgid "Ski Chairlifts"
-#~ msgstr "Telesillas"
+msgid "Counties"
+msgstr "Condados"
 
-#~ msgid "Ski Lodges"
-#~ msgstr "Alojamientos de esquí"
+msgid "Countries"
+msgstr "Países"
 
-#~ msgid "Ski Trails"
-#~ msgstr "Pistas de esquí"
+msgid "Neighborhoods"
+msgstr "Barrios"
 
-#~ msgid "Stables"
-#~ msgstr "Establos"
+msgid "Towns"
+msgstr "Ciudades"
 
-#~ msgid "States & Municipalities"
-#~ msgstr "Estados y municipios"
+msgid "Villages"
+msgstr "Pueblos"
 
-#~ msgid "Cities"
-#~ msgstr "Ciudades"
+msgid "Summer Camps"
+msgstr "Campamentos de verano"
 
-#~ msgid "Counties"
-#~ msgstr "Condados"
+msgid "Trails"
+msgstr "Senderos"
 
-#~ msgid "Countries"
-#~ msgstr "Países"
+msgid "Trees"
+msgstr "Árboles"
 
-#~ msgid "Neighborhoods"
-#~ msgstr "Barrios"
+msgid "Vineyards"
+msgstr "Viñedos"
 
-#~ msgid "States"
-#~ msgstr "Estados"
+msgid "Volcanoes"
+msgstr "Volcanes"
 
-#~ msgid "Towns"
-#~ msgstr "Ciudades"
+msgid "Wells"
+msgstr "Fuentes"
 
-#~ msgid "Villages"
-#~ msgstr "Pueblos"
+msgid "Professional & Other Places"
+msgstr "Servicios Profesionales y Otros Lugares"
 
-#~ msgid "Summer Camps"
-#~ msgstr "Campamentos de verano"
+msgid "Animal Shelters"
+msgstr "Refugio de animales"
 
-#~ msgid "Trails"
-#~ msgstr "Senderos"
+msgid "Auditoriums"
+msgstr "Auditorios"
 
-#~ msgid "Trees"
-#~ msgstr "Árboles"
+msgid "Buildings"
+msgstr "Edificios"
 
-#~ msgid "Vineyards"
-#~ msgstr "Viñedos"
+msgid "Club Houses"
+msgstr "Casas del Club"
 
-#~ msgid "Volcanoes"
-#~ msgstr "Volcanes"
+msgid "Community Centers"
+msgstr "Centros Comunitarios"
 
-#~ msgid "Wells"
-#~ msgstr "Pozos"
+msgid "Convention Centers"
+msgstr "Centros de Convenciones"
 
-#~ msgid "Professional & Other Places"
-#~ msgstr "Profesiones y otros lugares"
+msgid "Meeting Rooms"
+msgstr "Salas de reuniones"
 
-#~ msgid "Animal Shelters"
-#~ msgstr "Refugio de animales"
+msgid "Cultural Centers"
+msgstr "Centros Culturales"
 
-#~ msgid "Auditoriums"
-#~ msgstr "Auditorios"
+msgid "Distribution Centers"
+msgstr "Centros de Distribución"
 
-#~ msgid "Buildings"
-#~ msgstr "Edificios"
+msgid "Event Spaces"
+msgstr "Salas de Eventos"
 
-#~ msgid "Club Houses"
-#~ msgstr "Casas Club"
+msgid "Factories"
+msgstr "Fábricas"
 
-#~ msgid "Community Centers"
-#~ msgstr "Centros comunitarios"
+msgid "Fairs"
+msgstr "Ferias"
 
-#~ msgid "Convention Centers"
-#~ msgstr "Centros de convenciones"
+msgid "Funeral Homes"
+msgstr "Funerarias"
 
-#~ msgid "Meeting Rooms"
-#~ msgstr "Salas de reuniones"
+msgid "Government Buildings"
+msgstr "Edificios estatales"
 
-#~ msgid "Cultural Centers"
-#~ msgstr "Centros culturales"
+msgid "Capitol Buildings"
+msgstr "Edificios del Capitolio"
 
-#~ msgid "Distribution Centers"
-#~ msgstr "Centros de distribución"
+msgid "City Halls"
+msgstr "Ayuntamientos"
 
-#~ msgid "Event Spaces"
-#~ msgstr "Eventos espaciales"
+msgid "Courthouses"
+msgstr "Juzgados"
 
-#~ msgid "Factories"
-#~ msgstr "Fábricas"
+msgid "Embassies / Consulates"
+msgstr "Embajadas / Consulados"
 
-#~ msgid "Fairs"
-#~ msgstr "Ferias"
+msgid "Fire Stations"
+msgstr "Estaciones de Bomberos"
 
-#~ msgid "Funeral Homes"
-#~ msgstr "Funerarias"
+msgid "Monuments / Landmarks"
+msgstr "Monumentos / Monumentos históricos"
 
-#~ msgid "Government Buildings"
-#~ msgstr "Edificios gubernamentales"
+msgid "Police Stations"
+msgstr "Comisarías"
 
-#~ msgid "Capitol Buildings"
-#~ msgstr "Edificios del Capitolio"
+msgid "Town Halls"
+msgstr "Ayuntamientos"
 
-#~ msgid "City Halls"
-#~ msgstr "Ayuntamientos"
+msgid "Libraries"
+msgstr "Bibliotecas"
 
-#~ msgid "Courthouses"
-#~ msgstr "Tribunales"
+msgid "Medical Centers"
+msgstr "Centros Médicos"
 
-#~ msgid "Embassies / Consulates"
-#~ msgstr "Embajadas / Consulados"
+msgid "Acupuncturists"
+msgstr "Acupunturistas"
 
-#~ msgid "Fire Stations"
-#~ msgstr "Estaciones de bomberos"
+msgid "Alternative Healers"
+msgstr "Curanderos alternativos"
 
-#~ msgid "Monuments / Landmarks"
-#~ msgstr "Monumentos / hitos"
+msgid "Chiropractors"
+msgstr "Quiroprácticos"
 
-#~ msgid "Police Stations"
-#~ msgstr "Comisarías de policía"
+msgid "Dentist's Offices"
+msgstr "Oficinas del dentista"
 
-#~ msgid "Town Halls"
-#~ msgstr "Ayuntamientos"
+msgid "Doctor's Offices"
+msgstr "Consultorios médicos"
 
-#~ msgid "Libraries"
-#~ msgstr "bibliotecas"
+msgid "Emergency Rooms"
+msgstr "Salas de Emergencia"
 
-#~ msgid "Medical Centers"
-#~ msgstr "Centros médicos"
+msgid "Eye Doctors"
+msgstr "Oculistas"
 
-#~ msgid "Acupuncturists"
-#~ msgstr "Acupunturistas"
+msgid "Hospitals"
+msgstr "Hospitales"
 
-#~ msgid "Alternative Healers"
-#~ msgstr "Curanderos alternativos"
+msgid "Laboratories"
+msgstr "Laboratorios"
 
-#~ msgid "Chiropractors"
-#~ msgstr "Quiroprácticos"
+msgid "Mental Health Offices"
+msgstr "Salud mental"
 
-#~ msgid "Dentist's Offices"
-#~ msgstr "Dentistas"
+msgid "Veterinarians"
+msgstr "Veterinarios"
 
-#~ msgid "Doctor's Offices"
-#~ msgstr "Consultorios"
+msgid "Military Bases"
+msgstr "Bases Militares"
 
-#~ msgid "Emergency Rooms"
-#~ msgstr "Salas de emergencia"
+msgid "Non-Profits"
+msgstr "Organización sin ánimo de lucro"
 
-#~ msgid "Eye Doctors"
-#~ msgstr "Oculistas"
+msgid "Offices"
+msgstr "Oficinas"
 
-#~ msgid "Hospitals"
-#~ msgstr "Hospitales"
+msgid "Advertising Agencies"
+msgstr "Agencias de Publicidad"
 
-#~ msgid "Laboratories"
-#~ msgstr "Laboratorios"
+msgid "Campaign Offices"
+msgstr "Oficinas de la campaña"
 
-#~ msgid "Mental Health Offices"
-#~ msgstr "Salud mental"
+msgid "Conference Rooms"
+msgstr "Salas de conferencias"
 
-#~ msgid "Veterinarians"
-#~ msgstr "Veterinario"
+msgid "Corporate Cafeterias"
+msgstr "Cafeterías corporativas"
 
-#~ msgid "Military Bases"
-#~ msgstr "Bases militares"
+msgid "Coworking Spaces"
+msgstr "Espacios coworking"
 
-#~ msgid "Non-Profits"
-#~ msgstr "Organización sin ánimo de lucro"
+msgid "Tech Startups"
+msgstr "Startups tecnológicas"
 
-#~ msgid "Offices"
-#~ msgstr "Oficinas"
+msgid "Parking"
+msgstr "Aparcamiento"
 
-#~ msgid "Advertising Agencies"
-#~ msgstr "Agencias de Publicidad"
+msgid "Post Offices"
+msgstr "Oficinas de Correos"
 
-#~ msgid "Campaign Offices"
-#~ msgstr "Oficinas"
+msgid "Prisons"
+msgstr "Prisiones"
 
-#~ msgid "Conference Rooms"
-#~ msgstr "Salas de conferencias"
+msgid "Radio Stations"
+msgstr "Estaciones de radio"
 
-#~ msgid "Corporate Cafeterias"
-#~ msgstr "Cafeterías corporativas"
+msgid "Recruiting Agencies"
+msgstr "Agencias de reclutamiento"
 
-#~ msgid "Coworking Spaces"
-#~ msgstr "Espacios coworking"
+msgid "Schools"
+msgstr "Escuelas"
 
-#~ msgid "Tech Startups"
-#~ msgstr "Startups tecnológicas"
+msgid "Circus Schools"
+msgstr "Escuelas de circo"
 
-#~ msgid "Parking"
-#~ msgstr "Parkings"
+msgid "Driving Schools"
+msgstr "Autoescuelas"
 
-#~ msgid "Post Offices"
-#~ msgstr "Oficinas de correos"
+msgid "Elementary Schools"
+msgstr "Escuelas Primarias"
 
-#~ msgid "Prisons"
-#~ msgstr "Prisiones"
+msgid "Flight Schools"
+msgstr "Escuelas de vuelo"
 
-#~ msgid "Radio Stations"
-#~ msgstr "Estaciones de radio"
+msgid "High Schools"
+msgstr "Escuela secundaria"
 
-#~ msgid "Recruiting Agencies"
-#~ msgstr "Agencias de reclutamiento"
+msgid "Language Schools"
+msgstr "Escuelas de idiomas"
 
-#~ msgid "Schools"
-#~ msgstr "Escuelas"
+msgid "Middle Schools"
+msgstr "Escuelas intermedias"
 
-#~ msgid "Circus Schools"
-#~ msgstr "Escuelas de circo"
+msgid "Music Schools"
+msgstr "Escuelas de música"
 
-#~ msgid "Driving Schools"
-#~ msgstr "Autoescuelas"
+msgid "Nursery Schools"
+msgstr "Escuelas de párvulos"
 
-#~ msgid "Elementary Schools"
-#~ msgstr "Escuelas primarias"
+msgid "Preschools"
+msgstr "Prescolar"
 
-#~ msgid "Flight Schools"
-#~ msgstr "Escuelas de vuelo"
+msgid "Private Schools"
+msgstr "Colegios privados"
 
-#~ msgid "High Schools"
-#~ msgstr "Escuela secundaria"
+msgid "Religious Schools"
+msgstr "Colegios religiosos"
 
-#~ msgid "Language Schools"
-#~ msgstr "Escuelas de idiomas"
+msgid "Swim Schools"
+msgstr "Escuelas de natación"
 
-#~ msgid "Middle Schools"
-#~ msgstr "Escuelas intermedias"
+msgid "Social Clubs"
+msgstr "Clubes sociales"
 
-#~ msgid "Music Schools"
-#~ msgstr "Escuelas de música"
+msgid "Spiritual Centers"
+msgstr "Centros espirituales"
 
-#~ msgid "Nursery Schools"
-#~ msgstr "Escuelas de párvulos"
+msgid "Buddhist Temples"
+msgstr "Templos budistas"
 
-#~ msgid "Preschools"
-#~ msgstr "Centros preescolares"
+msgid "Churches"
+msgstr "Iglesias"
 
-#~ msgid "Private Schools"
-#~ msgstr "Colegios privados"
+msgid "Hindu Temples"
+msgstr "Templos hindúes"
 
-#~ msgid "Religious Schools"
-#~ msgstr "Colegios religiosos"
+msgid "Monasteries"
+msgstr "Monasterios"
 
-#~ msgid "Swim Schools"
-#~ msgstr "Escuelas de natación"
+msgid "Mosques"
+msgstr "Mezquitas"
 
-#~ msgid "Social Clubs"
-#~ msgstr "Clubes sociales"
+msgid "Prayer Rooms"
+msgstr "Salas de oración"
 
-#~ msgid "Spiritual Centers"
-#~ msgstr "Centros espirituales"
+msgid "Shrines"
+msgstr "Santuarios"
 
-#~ msgid "Buddhist Temples"
-#~ msgstr "Templos budistas"
+msgid "Synagogues"
+msgstr "Sinagogas"
 
-#~ msgid "Churches"
-#~ msgstr "Iglesias"
+msgid "Temples"
+msgstr "Templos"
 
-#~ msgid "Hindu Temples"
-#~ msgstr "Templos hindúes"
+msgid "TV Stations"
+msgstr "Canal de TV"
 
-#~ msgid "Monasteries"
-#~ msgstr "Monasterios"
+msgid "Voting Booths"
+msgstr "Cabinas de votos"
 
-#~ msgid "Mosques"
-#~ msgstr "Mezquitas"
+msgid "Warehouses"
+msgstr "Almacenes"
 
-#~ msgid "Prayer Rooms"
-#~ msgstr "Salas de oración"
+msgid "Residences"
+msgstr "Residencias"
 
-#~ msgid "Shrines"
-#~ msgstr "Santuarios"
+msgid "Assisted Living"
+msgstr "Vivienda asistida"
 
-#~ msgid "Synagogues"
-#~ msgstr "Sinagogas"
+msgid "Homes (private)"
+msgstr "Casas (privado)"
 
-#~ msgid "Temples"
-#~ msgstr "Templos"
+msgid "Housing Developments"
+msgstr "Urbanizaciones"
 
-#~ msgid "TV Stations"
-#~ msgstr "Estaciones de televisión"
+msgid "Residential Buildings (Apartments / Condos)"
+msgstr "Edificios Residenciales (Apartamentos / Condos)"
 
-#~ msgid "Voting Booths"
-#~ msgstr "Cabinas de votos"
+msgid "Trailer Parks"
+msgstr "Aparcamiento de caravanas"
 
-#~ msgid "Warehouses"
-#~ msgstr "Almacenes"
+msgid "Shops & Services"
+msgstr "Tiendas y Servicios"
 
-#~ msgid "Residences"
-#~ msgstr "Residencias"
+msgid "Adult Boutiques"
+msgstr "Boutiques Adultos"
 
-#~ msgid "Assisted Living"
-#~ msgstr "Vivienda asistida"
+msgid "Antique Shops"
+msgstr "Anticuarios"
 
-#~ msgid "Homes (private)"
-#~ msgstr "Casas (privado)"
+msgid "Arts & Crafts Stores"
+msgstr "Artes & tiendas de artesanías"
 
-#~ msgid "Housing Developments"
-#~ msgstr "Desarrollos habitacionales"
+msgid "Astrologers"
+msgstr "Astrólogos"
 
-#~ msgid "Residential Buildings (Apartments / Condos)"
-#~ msgstr "Urbanización"
+msgid "Auto Garages"
+msgstr "Garajes"
 
-#~ msgid "Trailer Parks"
-#~ msgstr "Aparcamiento de caravanas"
+msgid "Automotive Shops"
+msgstr "Tiendas automotrices"
 
-#~ msgid "Shops & Services"
-#~ msgstr "Tiendas y servicios"
+msgid "Baby Stores"
+msgstr "Tiendas de bebé"
 
-#~ msgid "ATMs"
-#~ msgstr "Cajeros automÃ¡ticos"
+msgid "Banks"
+msgstr "Bancos"
 
-#~ msgid "Adult Boutiques"
-#~ msgstr "Tiendas para adultos"
+msgid "Betting Shops"
+msgstr "Tiendas de apuestas"
 
-#~ msgid "Antique Shops"
-#~ msgstr "Tiendas de antigüedades"
+msgid "Big Box Stores"
+msgstr "Grandes almacenes"
 
-#~ msgid "Arts & Crafts Stores"
-#~ msgstr "Artes & tiendas de artesanías"
+msgid "Bike Shops"
+msgstr "Tiendas de bicicletas"
 
-#~ msgid "Astrologers"
-#~ msgstr "Astrología"
+msgid "Board Shops"
+msgstr "Tiendas de tablas de deporte"
 
-#~ msgid "Auto Garages"
-#~ msgstr "Garajes"
+msgid "Bookstores"
+msgstr "Librerías"
 
-#~ msgid "Automotive Shops"
-#~ msgstr "Tiendas automotrices"
+msgid "Bridal Shops"
+msgstr "Tiendas nupciales"
 
-#~ msgid "Baby Stores"
-#~ msgstr "Tiendas de bebé"
+msgid "Business Services"
+msgstr "Servicios Comerciales"
 
-#~ msgid "Banks"
-#~ msgstr "Bancos"
+msgid "Camera Stores"
+msgstr "Tiendas de cámaras"
 
-#~ msgid "Betting Shops"
-#~ msgstr "Tiendas de apuestas"
+msgid "Candy Stores"
+msgstr "Dulcerías"
 
-#~ msgid "Big Box Stores"
-#~ msgstr "Grandes almacenes"
+msgid "Car Dealerships"
+msgstr "Concesionarios"
 
-#~ msgid "Bike Shops"
-#~ msgstr "Tiendas de bicicletas"
+msgid "Car Washes"
+msgstr "Lava coches"
 
-#~ msgid "Board Shops"
-#~ msgstr "Tiendas de tablas de deporte"
+msgid "Carpet Stores"
+msgstr "Tiendas de alfombras"
 
-#~ msgid "Bookstores"
-#~ msgstr "Librerías"
+msgid "Check Cashing Services"
+msgstr "Tienda de cambio de billetes"
 
-#~ msgid "Bridal Shops"
-#~ msgstr "Tiendas nupciales"
+msgid "Chocolate Shops"
+msgstr "Chocolaterías"
 
-#~ msgid "Business Services"
-#~ msgstr "Servicios Comerciales"
+msgid "Clothing Stores"
+msgstr "Tiendas de ropa"
 
-#~ msgid "Camera Stores"
-#~ msgstr "Tiendas de cámara"
+msgid "Accessories Stores"
+msgstr "Tiendas de accesorios"
 
-#~ msgid "Candy Stores"
-#~ msgstr "Dulcerías"
+msgid "Boutiques"
+msgstr "Boutiques"
 
-#~ msgid "Car Dealerships"
-#~ msgstr "Concesionarias de automóviles"
+msgid "Kids Stores"
+msgstr "Tiendas de niños"
 
-#~ msgid "Car Washes"
-#~ msgstr "Lava coches"
+msgid "Lingerie Stores"
+msgstr "Tiendas de lencería"
 
-#~ msgid "Carpet Stores"
-#~ msgstr "Tiendas de alfombras"
+msgid "Men's Stores"
+msgstr "Tiendas de hombres"
 
-#~ msgid "Check Cashing Services"
-#~ msgstr "Tienda de cambio de billetes"
+msgid "Shoe Stores"
+msgstr "Zapaterías"
 
-#~ msgid "Chocolate Shops"
-#~ msgstr "Chocolaterías"
+msgid "Women's Stores"
+msgstr "Tiendas de mujeres"
 
-#~ msgid "Christmas Markets"
-#~ msgstr "Mercadillos de Navidad"
+msgid "Comic Shops"
+msgstr "Tiendas de cómics"
 
-#~ msgid "Clothing Stores"
-#~ msgstr "Tiendas de ropa"
+msgid "Construction & Landscaping"
+msgstr "Construcción y Paisaje"
 
-#~ msgid "Accessories Stores"
-#~ msgstr "Tiendas de accesorios"
+msgid "Convenience Stores"
+msgstr "Tiendas de Conveniencia"
 
-#~ msgid "Boutiques"
-#~ msgstr "Boutiques"
+msgid "Cosmetics Shops"
+msgstr "Tienda de cosmeticos"
 
-#~ msgid "Kids Stores"
-#~ msgstr "Tiendas de niños"
+msgid "Costume Shops"
+msgstr "Tiendas de disfraces"
 
-#~ msgid "Lingerie Stores"
-#~ msgstr "Tiendas de lencería"
+msgid "Credit Unions"
+msgstr "Crédito"
 
-#~ msgid "Men's Stores"
-#~ msgstr "Tiendas de hombres"
+msgid "Daycares"
+msgstr "Guarderías"
 
-#~ msgid "Shoe Stores"
-#~ msgstr "Zapaterías"
+msgid "Department Stores"
+msgstr "Grandes Almacenes"
 
-#~ msgid "Women's Stores"
-#~ msgstr "Tiendas de mujeres"
+msgid "Design Studios"
+msgstr "Estudios de diseño"
 
-#~ msgid "Comic Shops"
-#~ msgstr "Tiendas de cómics"
+msgid "Discount Stores"
+msgstr "Empeños"
 
-#~ msgid "Construction & Landscaping"
-#~ msgstr "Construcción y paisajismo"
+msgid "Dive Shops"
+msgstr "Dive Shops"
 
-#~ msgid "Convenience Stores"
-#~ msgstr "Tiendas 24h"
+msgid "Drugstores / Pharmacies"
+msgstr "Droguerías / farmacias"
 
-#~ msgid "Cosmetics Shops"
-#~ msgstr "Tiendas de cosméticos"
+msgid "Dry Cleaners"
+msgstr "Tintorería"
 
-#~ msgid "Costume Shops"
-#~ msgstr "Tiendas de disfraces"
+msgid "EV Charging Stations"
+msgstr "Estaciones de carga de EV"
 
-#~ msgid "Credit Unions"
-#~ msgstr "Crédito"
+msgid "Electronics Stores"
+msgstr "Tiendas Electrónica"
 
-#~ msgid "Daycares"
-#~ msgstr "Guarderías"
+msgid "Event Services"
+msgstr "Servicios para Eventos"
 
-#~ msgid "Department Stores"
-#~ msgstr "Gran almacén"
+msgid "Fabric Shops"
+msgstr "Tiendas de telas"
 
-#~ msgid "Design Studios"
-#~ msgstr "Estudios de diseño"
+msgid "Financial or Legal Services"
+msgstr "Servicios financieros o legales"
 
-#~ msgid "Discount Stores"
-#~ msgstr "Tienda de descuento"
+msgid "Fireworks Stores"
+msgstr "Tiendas de fuegos artificiales"
 
-#~ msgid "Dive Shops"
-#~ msgstr "Tiendas de buceo"
+msgid "Fishing Stores"
+msgstr "Tiendas de pesca"
 
-#~ msgid "Drugstores / Pharmacies"
-#~ msgstr "Droguerías / farmacias"
+msgid "Flea Markets"
+msgstr "Mercadillo"
 
-#~ msgid "Dry Cleaners"
-#~ msgstr "Limpieza en seco"
+msgid "Flower Shops"
+msgstr "Floristerías"
 
-#~ msgid "EV Charging Stations"
-#~ msgstr "Estaciones de carga de EV"
+msgid "Food & Drink Shops"
+msgstr "Tiendas de alimentos y bebida"
 
-#~ msgid "Electronics Stores"
-#~ msgstr "Tiendas electrónicas"
+msgid "Beer Stores"
+msgstr "Tiendas de cerveza"
 
-#~ msgid "Event Services"
-#~ msgstr "Servicios de eventos"
+msgid "Butchers"
+msgstr "Carniceros"
 
-#~ msgid "Fabric Shops"
-#~ msgstr "Tiendas de telas"
+msgid "Cheese Shops"
+msgstr "Queserías"
 
-#~ msgid "Financial or Legal Services"
-#~ msgstr "Servicios financieros o legales"
+msgid "Farmers Markets"
+msgstr "Mercados de agricultores"
 
-#~ msgid "Fireworks Stores"
-#~ msgstr "Tiendas de fuegos artificiales"
+msgid "Fish Markets"
+msgstr "Mercados de pescado"
 
-#~ msgid "Fishing Stores"
-#~ msgstr "Tiendas de pesca"
+msgid "Food Courts"
+msgstr "Tribunales de comida"
 
-#~ msgid "Flea Markets"
-#~ msgstr "Mercadillo"
+msgid "Gourmet Shops"
+msgstr "Tiendas gourmet"
 
-#~ msgid "Flower Shops"
-#~ msgstr "Floristería"
+msgid "Grocery Stores"
+msgstr "Tienda de ultramarinos"
 
-#~ msgid "Food & Drink Shops"
-#~ msgstr "Tiendas de alimentos y bebida"
+msgid "Health Food Stores"
+msgstr "Tiendas de Alimentos Saludables"
 
-#~ msgid "Beer Stores"
-#~ msgstr "Tiendas de cerveza"
+msgid "Liquor Stores"
+msgstr "Licorerías"
 
-#~ msgid "Butchers"
-#~ msgstr "Carnicero"
+msgid "Organic Groceries"
+msgstr "Alimentos orgánicos"
 
-#~ msgid "Cheese Shops"
-#~ msgstr "Queserías"
+msgid "Street Food Gatherings"
+msgstr "Comida callejera"
 
-#~ msgid "Farmers Markets"
-#~ msgstr "Mercados de agricultores"
+msgid "Supermarkets"
+msgstr "Supermercados"
 
-#~ msgid "Fish Markets"
-#~ msgstr "Mercados de pescado"
+msgid "Wine Shops"
+msgstr "Tiendas de Vinos"
 
-#~ msgid "Food Courts"
-#~ msgstr "Patios de comida"
+msgid "Frame Stores"
+msgstr "Tienda de marcos para cuadros"
 
-#~ msgid "Gourmet Shops"
-#~ msgstr "Tiendas gourmet"
+msgid "Fruit & Vegetable Stores"
+msgstr "Tienda de fruta y verduras"
 
-#~ msgid "Grocery Stores"
-#~ msgstr "Tienda de ultramarinos"
+msgid "Furniture / Home Stores"
+msgstr "Tiendas de muebles"
 
-#~ msgid "Health Food Stores"
-#~ msgstr "alimentos naturales"
+msgid "Gaming Cafes"
+msgstr "Ciber"
 
-#~ msgid "Liquor Stores"
-#~ msgstr "Tiendas de licores"
+msgid "Garden Centers"
+msgstr "Centros de jardín"
 
-#~ msgid "Organic Groceries"
-#~ msgstr "Alimentos orgánicos"
+msgid "Gas Stations / Garages"
+msgstr "Gasolineras / Garajes"
 
-#~ msgid "Street Food Gatherings"
-#~ msgstr "Comida callejera"
+msgid "Gift Shops"
+msgstr "Tiendas de Regalos"
 
-#~ msgid "Supermarkets"
-#~ msgstr "Hipermercados"
+msgid "Gun Shops"
+msgstr "Armerías"
 
-#~ msgid "Wine Shops"
-#~ msgstr "Tiendas de vino"
+msgid "Gyms or Fitness Centers"
+msgstr "Gimnasios o centros de fitness"
 
-#~ msgid "Frame Stores"
-#~ msgstr "Tienda de marcos para cuadros"
+msgid "Boxing Gyms"
+msgstr "Gimnasios de boxeo"
 
-#~ msgid "Fruit & Vegetable Stores"
-#~ msgstr "Tienda de fruta y verduras"
+msgid "Climbing Gyms"
+msgstr "Gimnasios de escalada"
 
-#~ msgid "Furniture / Home Stores"
-#~ msgstr "Tiendas de muebles"
+msgid "Cycle Studios"
+msgstr "Estudios de ciclo"
 
-#~ msgid "Gaming Cafes"
-#~ msgstr "Ciber"
+msgid "Gym Pools"
+msgstr "Gimnasio piscinas"
 
-#~ msgid "Garden Centers"
-#~ msgstr "Centros de jardín"
+msgid "Gymnastics Gyms"
+msgstr "Gimnasia Gimnasios"
 
-#~ msgid "Gas Stations / Garages"
-#~ msgstr "Estación de servicio"
+msgid "Gyms"
+msgstr "Gimnasios"
 
-#~ msgid "Gift Shops"
-#~ msgstr "Tiendas de regalos"
+msgid "Martial Arts Dojos"
+msgstr "Artes marciales"
 
-#~ msgid "Gun Shops"
-#~ msgstr "Armerías"
+msgid "Tracks"
+msgstr "Pistas"
 
-#~ msgid "Gyms or Fitness Centers"
-#~ msgstr "Gimnasios o centros de Fitness"
+msgid "Yoga Studios"
+msgstr "Estudios de yoga"
 
-#~ msgid "Boxing Gyms"
-#~ msgstr "Gimnasios de boxeo"
+msgid "Hardware Stores"
+msgstr "Ferreterías"
 
-#~ msgid "Climbing Gyms"
-#~ msgstr "Gimnasios de escalada"
+msgid "Health & Beauty Services"
+msgstr "Salud, belleza Servicios"
 
-#~ msgid "Cycle Studios"
-#~ msgstr "Sala de fitness"
+msgid "Herbs & Spices Stores"
+msgstr "Hierbas y tiendas de especias"
 
-#~ msgid "Gym Pools"
-#~ msgstr "Gimnasio piscinas"
+msgid "Hobby Shops"
+msgstr "Tiendas de hobby"
 
-#~ msgid "Gymnastics Gyms"
-#~ msgstr "Gimnasia gimnasios"
+msgid "Home Services & Repairs"
+msgstr "Servicios Hogar y Reparaciones"
 
-#~ msgid "Gyms"
-#~ msgstr "Gimnasio"
+msgid "Hunting Supplies"
+msgstr "Suministros Caza"
 
-#~ msgid "Martial Arts Dojos"
-#~ msgstr "Artes marciales"
+msgid "IT Services"
+msgstr "Servicios de TI"
 
-#~ msgid "Tracks"
-#~ msgstr "Pistas"
+msgid "Internet Cafes"
+msgstr "Cibercafés"
 
-#~ msgid "Yoga Studios"
-#~ msgstr "Estudios de yoga"
+msgid "Jewelry Stores"
+msgstr "Joyerías"
 
-#~ msgid "Hardware Stores"
-#~ msgstr "Ferreterías"
+msgid "Knitting Stores"
+msgstr "Tiendas de tejer"
 
-#~ msgid "Health & Beauty Services"
-#~ msgstr "Salud y servicios de belleza"
+msgid "Laundromats"
+msgstr "Lavanderías"
 
-#~ msgid "Herbs & Spices Stores"
-#~ msgstr "Hierbas y tiendas de especias"
+msgid "Laundry Services"
+msgstr "Servicios de lavandería"
 
-#~ msgid "Hobby Shops"
-#~ msgstr "Tiendas de hobby"
+msgid "Lawyers"
+msgstr "Abogados"
 
-#~ msgid "Home Services & Repairs"
-#~ msgstr "Servicios en el hogar y reparaciones"
+msgid "Leather Goods Stores"
+msgstr "Tiendas de artículos de cuero"
 
-#~ msgid "Hunting Supplies"
-#~ msgstr "Cazería"
+msgid "Locksmiths"
+msgstr "Cerrajeros"
 
-#~ msgid "IT Services"
-#~ msgstr "Servicios TI"
+msgid "Lottery Retailers"
+msgstr "Vendedores de lotería"
 
-#~ msgid "Internet Cafes"
-#~ msgstr "Cibercafé"
+msgid "Luggage Stores"
+msgstr "Tienda de equipajes"
 
-#~ msgid "Jewelry Stores"
-#~ msgstr "Joyerías"
+msgid "Malls"
+msgstr "Centros comerciales"
 
-#~ msgid "Knitting Stores"
-#~ msgstr "Tiendas de tejer"
+msgid "Marijuana Dispensaries"
+msgstr "Dispensarios de marihuana"
 
-#~ msgid "Laundromats"
-#~ msgstr "Lavanderías"
+msgid "Markets"
+msgstr "Mercados"
 
-#~ msgid "Laundry Services"
-#~ msgstr "Servicios de lavandería"
+msgid "Massage Studios"
+msgstr "Masaje"
 
-#~ msgid "Lawyers"
-#~ msgstr "Abogados"
+msgid "Mattress Stores"
+msgstr "Tiendas de colchones"
 
-#~ msgid "Leather Goods Stores"
-#~ msgstr "Tiendas de artículos de cuero"
+msgid "Miscellaneous Shops"
+msgstr "Tiendas varias"
 
-#~ msgid "Locksmiths"
-#~ msgstr "Cerrajeros"
+msgid "Mobile Phone Shops"
+msgstr "Tiendas de telefonía móvil"
 
-#~ msgid "Lottery Retailers"
-#~ msgstr "Vendedores de lotería"
+msgid "Motorcycle Shops"
+msgstr "Tiendas de motos"
 
-#~ msgid "Luggage Stores"
-#~ msgstr "Tienda de equipajes"
+msgid "Music Stores"
+msgstr "Tiendas de música"
 
-#~ msgid "Malls"
-#~ msgstr "Centros comerciales"
+msgid "Optical Shops"
+msgstr "Ópticas"
 
-#~ msgid "Marijuana Dispensaries"
-#~ msgstr "Dispensarios de marihuana"
+msgid "Other Repair Shops"
+msgstr "Otras tiendas de reparación"
 
-#~ msgid "Markets"
-#~ msgstr "Mercados"
+msgid "Outdoor Supply Stores"
+msgstr "Tiendas de artículos para exteriores"
 
-#~ msgid "Massage Studios"
-#~ msgstr "Masaje"
+msgid "Outlet Stores"
+msgstr "Tiendas outlet"
 
-#~ msgid "Mattress Stores"
-#~ msgstr "Tiendas de colchones"
+msgid "Paper / Office Supplies Stores"
+msgstr "Papel / tiendas de suministros de oficina"
 
-#~ msgid "Miscellaneous Shops"
-#~ msgstr "Tiendas varias"
+msgid "Pawn Shops"
+msgstr "Casas de empeño"
 
-#~ msgid "Mobile Phone Shops"
-#~ msgstr "Tiendas de telefonía móvil"
+msgid "Perfume Shops"
+msgstr "Perfumerías"
 
-#~ msgid "Motorcycle Shops"
-#~ msgstr "Tiendas de motos"
+msgid "Pet Services"
+msgstr "Servicios de mascotas"
 
-#~ msgid "Music Stores"
-#~ msgstr "Tiendas de música"
+msgid "Pet Stores"
+msgstr "Tiendas de mascotas"
 
-#~ msgid "Newsstands"
-#~ msgstr "Quioscos"
+msgid "Photography Labs"
+msgstr "Laboratorios de Fotografía"
 
-#~ msgid "Optical Shops"
-#~ msgstr "Ópticas"
+msgid "Piercing Parlors"
+msgstr "Tienda de piercing"
 
-#~ msgid "Other Repair Shops"
-#~ msgstr "Otras tiendas de reparación"
+msgid "Print Shops"
+msgstr "Imprentas"
 
-#~ msgid "Outdoor Supply Stores"
-#~ msgstr "Tiendas de artículos para exteriores"
+msgid "Record Shops"
+msgstr "Tiendas de discos"
 
-#~ msgid "Outlet Stores"
-#~ msgstr "Tiendas outlet"
+msgid "Recording Studios"
+msgstr "Estudio de grabación"
 
-#~ msgid "Paper / Office Supplies Stores"
-#~ msgstr "Papel / tiendas de suministros de oficina"
+msgid "Recycling Facilities"
+msgstr "Instalaciones de reciclaje"
 
-#~ msgid "Pawn Shops"
-#~ msgstr "Casas de empeño"
+msgid "Salons / Barbershops"
+msgstr "Salones / barberías"
 
-#~ msgid "Perfume Shops"
-#~ msgstr "Perfumerías"
+msgid "Shoe Repair Shops"
+msgstr "Talleres de reparación de calzado"
 
-#~ msgid "Pet Services"
-#~ msgstr "Servicios de mascotas"
+msgid "Smoke Shops"
+msgstr "Tiendas de humo"
 
-#~ msgid "Pet Stores"
-#~ msgstr "Tiendas de mascotas"
+msgid "Smoothie Shops"
+msgstr "Smoothie Shops"
 
-#~ msgid "Photography Labs"
-#~ msgstr "Laboratorios de fotografía"
+msgid "Souvenir Shops"
+msgstr "Tiendas de souvenirs"
 
-#~ msgid "Piercing Parlors"
-#~ msgstr "Tienda de piercing"
+msgid "Spas"
+msgstr "Spas"
 
-#~ msgid "Print Shops"
-#~ msgstr "Imprentas"
+msgid "Sporting Goods Shops"
+msgstr "Tiendas de artículos deportivos"
 
-#~ msgid "Record Shops"
-#~ msgstr "Tiendas de discos"
+msgid "Stationery Stores"
+msgstr "Papelerías"
 
-#~ msgid "Recording Studios"
-#~ msgstr "Estudio de grabación"
+msgid "Storage Facilities"
+msgstr "Almacén"
 
-#~ msgid "Recycling Facilities"
-#~ msgstr "Instalaciones de reciclaje"
+msgid "Tailor Shops"
+msgstr "Sastrerías"
 
-#~ msgid "Salons / Barbershops"
-#~ msgstr "Salones / peluquero"
+msgid "Tanning Salons"
+msgstr "Salones de bronceado"
 
-#~ msgid "Shipping Stores"
-#~ msgstr "Tiendas de envío"
+msgid "Tattoo Parlors"
+msgstr "Tatuadores"
 
-#~ msgid "Shoe Repair Shops"
-#~ msgstr "Talleres de reparación de calzado"
+msgid "Thrift / Vintage Stores"
+msgstr "Segunda mano / tiendas Vintage"
 
-#~ msgid "Smoke Shops"
-#~ msgstr "Tiendas de humo"
+msgid "Toy / Game Stores"
+msgstr "Tiendas de juguetes"
 
-#~ msgid "Smoothie Shops"
-#~ msgstr "Smoothie Shops"
+msgid "Travel Agencies"
+msgstr "Agencia de viajes"
 
-#~ msgid "Souvenir Shops"
-#~ msgstr "Tiendas de souvenirs"
+msgid "Video Game Stores"
+msgstr "Tiendas de videojuego"
 
-#~ msgid "Spas"
-#~ msgstr "Spas"
+msgid "Video Stores"
+msgstr "Tienda de video"
 
-#~ msgid "Sporting Goods Shops"
-#~ msgstr "Tiendas de artículos deportivos"
+msgid "Warehouse Stores"
+msgstr "Almacenes"
 
-#~ msgid "Stationery Stores"
-#~ msgstr "Papelerías"
+msgid "Watch Repair Shops"
+msgstr "Reparación de relojes"
 
-#~ msgid "Storage Facilities"
-#~ msgstr "Almacén"
+msgid "Travel & Transport"
+msgstr "Viajes y transportes"
 
-#~ msgid "Tailor Shops"
-#~ msgstr "Sastrerías"
+msgid "Airports"
+msgstr "Aeropuertos"
 
-#~ msgid "Tanning Salons"
-#~ msgstr "Salones de bronceado"
+msgid "Airport Food Courts"
+msgstr "Comidas de aeropuerto"
 
-#~ msgid "Tattoo Parlors"
-#~ msgstr "Tatuadores"
+msgid "Airport Gates"
+msgstr "Puertas de embarque aeropuerto"
 
-#~ msgid "Thrift / Vintage Stores"
-#~ msgstr "Segunda mano / tiendas Vintage"
+msgid "Airport Lounges"
+msgstr "Salones de aeropuerto"
 
-#~ msgid "Toy / Game Stores"
-#~ msgstr "Tiendas de juguetes"
+msgid "Airport Terminals"
+msgstr "Terminales del aeropuerto"
 
-#~ msgid "Travel Agencies"
-#~ msgstr "Agencia de viajes"
+msgid "Planes"
+msgstr "Aviones"
 
-#~ msgid "Video Game Stores"
-#~ msgstr "Tiendas de videojuego"
+msgid "Bike Rentals / Bike Shares"
+msgstr "Alquiler de bicicletas / compartir bicicletas"
 
-#~ msgid "Video Stores"
-#~ msgstr "Tienda de video"
+msgid "Boats or Ferries"
+msgstr "Barcos o Ferries"
 
-#~ msgid "Warehouse Stores"
-#~ msgstr "Almacenes"
+msgid "Border Crossings"
+msgstr "Cruces fronterizos"
 
-#~ msgid "Watch Repair Shops"
-#~ msgstr "Reparación de relojes"
+msgid "Bus Stations"
+msgstr "Estación de autobús"
 
-#~ msgid "Travel & Transport"
-#~ msgstr "Viajes y transportes"
+msgid "Bus Lines"
+msgstr "Líneas de autobús"
 
-#~ msgid "Airports"
-#~ msgstr "Aeropuertos"
+msgid "Bus Stops"
+msgstr "Parada de autobús"
 
-#~ msgid "Airport Food Courts"
-#~ msgstr "Comidas de aeropuerto"
+msgid "Cable Cars"
+msgstr "Teleféricos"
 
-#~ msgid "Airport Gates"
-#~ msgstr "Puertas de embarque aeropuerto"
+msgid "Cruises"
+msgstr "Cruceros"
 
-#~ msgid "Airport Lounges"
-#~ msgstr "Salones de aeropuerto"
+msgid "Hotels"
+msgstr "Hoteles"
 
-#~ msgid "Airport Terminals"
-#~ msgstr "Terminales del aeropuerto"
+msgid "Bed & Breakfasts"
+msgstr "Desayunar y dormir"
 
-#~ msgid "Planes"
-#~ msgstr "Aviones"
+msgid "Boarding Houses"
+msgstr "Pensiones"
 
-#~ msgid "Bike Rentals / Bike Shares"
-#~ msgstr "Alquiler de bicicletas / compartir bicicletas"
+msgid "Hostels"
+msgstr "Albergue juvenil"
 
-#~ msgid "Boats or Ferries"
-#~ msgstr "Barcos o Ferries"
+msgid "Hotel Pools"
+msgstr "Piscinas del Hotel"
 
-#~ msgid "Border Crossings"
-#~ msgstr "Cruces fronterizos"
+msgid "Motels"
+msgstr "Moteles"
 
-#~ msgid "Bus Stations"
-#~ msgstr "Estación de autobús"
+msgid "Resorts"
+msgstr "Resorts"
 
-#~ msgid "Bus Lines"
-#~ msgstr "Líneas de autobús"
+msgid "Intersections"
+msgstr "Intersección"
 
-#~ msgid "Bus Stops"
-#~ msgstr "Parada de autobús"
+msgid "Piers"
+msgstr "Muelle"
 
-#~ msgid "Cable Cars"
-#~ msgstr "Teleféricos"
+msgid "RV Parks"
+msgstr "Autocaravana"
 
-#~ msgid "Cruises"
-#~ msgstr "Cruceros"
+msgid "Rental Car Locations"
+msgstr "Oficinas De Alquiler De Coches"
 
-#~ msgid "Hotels"
-#~ msgstr "Hoteles"
+msgid "Rest Areas"
+msgstr "Áreas de descanso"
 
-#~ msgid "Bed & Breakfasts"
-#~ msgstr "Desayunar y dormir"
+msgid "Roads"
+msgstr "Carreteras"
 
-#~ msgid "Boarding Houses"
-#~ msgstr "Pensiones"
+msgid "Streets"
+msgstr "Calles"
 
-#~ msgid "Hostels"
-#~ msgstr "Albergue juvenil"
+msgid "Subways"
+msgstr "Metro"
 
-#~ msgid "Hotel Pools"
-#~ msgstr "Piscinas del Hotel"
+msgid "Taxi Stands"
+msgstr "Paradas de taxis"
 
-#~ msgid "Motels"
-#~ msgstr "Moteles"
+msgid "Taxis"
+msgstr "Taxis"
 
-#~ msgid "Resorts"
-#~ msgstr "Resorts"
+msgid "Toll Booths"
+msgstr "Cabinas de peaje"
 
-#~ msgid "Intersections"
-#~ msgstr "Intersección"
+msgid "Toll Plazas"
+msgstr "Plazas de peaje"
 
-#~ msgid "Piers"
-#~ msgstr "Muelle"
+msgid "Tourist Information Centers"
+msgstr "Centros de información turística"
 
-#~ msgid "RV Parks"
-#~ msgstr "Autocaravana"
+msgid "Train Stations"
+msgstr "Estaciones de trenes"
 
-#~ msgid "Rental Car Locations"
-#~ msgstr "Oficinas De Alquiler De Coches"
+msgid "Platforms"
+msgstr "Plataformas"
 
-#~ msgid "Rest Areas"
-#~ msgstr "Áreas de descanso"
+msgid "Trams"
+msgstr "Tranvía"
 
-#~ msgid "Roads"
-#~ msgstr "Carreteras"
-
-#~ msgid "Streets"
-#~ msgstr "Calles"
-
-#~ msgid "Subways"
-#~ msgstr "Metro"
-
-#~ msgid "Taxi Stands"
-#~ msgstr "Paradas de taxis"
-
-#~ msgid "Taxis"
-#~ msgstr "Taxis"
-
-#~ msgid "Toll Booths"
-#~ msgstr "Cabinas de peaje"
-
-#~ msgid "Toll Plazas"
-#~ msgstr "Plazas de peaje"
-
-#~ msgid "Tourist Information Centers"
-#~ msgstr "Centros de información turística"
-
-#~ msgid "Train Stations"
-#~ msgstr "Estaciones de trenes"
-
-#~ msgid "Platforms"
-#~ msgstr "Plataformas"
-
-#~ msgid "Trains"
-#~ msgstr "Trenes"
-
-#~ msgid "Trams"
-#~ msgstr "Tranvía"
-
-#~ msgid "Transportation Services"
-#~ msgstr "Servicios de Transporte"
-
-#~ msgid "Tunnels"
-#~ msgstr "Túneles"
+msgid "Transportation Services"
+msgstr "Servicios de Transporte"

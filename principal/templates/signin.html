@@ -22,11 +22,11 @@
                 <div class="alert alert-danger alert-dismissible col-xs-12" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     {% if  form.visible_fields.0.errors %}
-                        <strong>Email</strong>
+                        <strong>{% trans "Email" %}</strong>
                         {{ form.visible_fields.0.errors }}
                     {% endif %}
                     {% if  form.visible_fields.1.errors %}
-                        <strong>Password</strong>
+                        <strong>{% trans "Password" %}</strong>
                         {{ form.visible_fields.1.errors }}
                     {% endif %}
                 </div>
@@ -63,7 +63,7 @@
             <div class="modal-content modal-bt">
                 <div class="modal-header text-center">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+                    <h4 class="modal-title" id="myModalLabel">{% trans "Sign Up" %}</h4>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
@@ -76,7 +76,7 @@
 		                                    <div class="input-group-addon">
 		                                        <span class="fa fa-user"></span>
 		                                    </div>
-		                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Name" required="required" />
+		                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="{% trans "Name" %}" required="required" />
 		                                </div>
 		                                <span class="help-block with-errors"></span>
 		                            </div>
@@ -86,18 +86,18 @@
 		                                    <div class="input-group-addon">
 		                                        <span class="fa fa-envelope"></span>
 		                                    </div>
-		                                    <input type="email" id="email" name="email" class="form-control" data-error="Invalid email address" placeholder="email address" required="required" />
+		                                    <input type="email" id="email" name="email" class="form-control" data-error="Invalid email address" placeholder="{% trans "email address" %}" required="required" />
 		                                </div>
 		                                <span class="help-block with-errors"></span>
 		                            </div>
 		
 		                            <div class="form-group">
-		                                <label><input type="checkbox" name="terms" required> I agree with the <a href="/privacy_terms" target="_blank">Terms and Conditions</a>.</label>
+		                                <label><input type="checkbox" name="terms" required> {% trans "I am agree with the "%}<a href="/privacy_terms" target="_blank"> {% trans "Terms and Conditions" %}</a></label>
 		                                <span class="help-block with-errors"></span>
 		                            </div>
 		
 		                            <div class="form-group">
-		                                <button type="submit" id="singUp-button" class="btn btn-lg btn-primary btn-block"><span id="spinner" class="fa fa-spinner fa-spin"></span> Sign up</button>
+		                                <button type="submit" id="singUp-button" class="btn btn-lg btn-primary btn-block"><span id="spinner" class="fa fa-spinner fa-spin"></span> {% trans "Sign up" %}</button>
 		                            </div>
 		                        </form>
 		                    </div>
@@ -192,7 +192,9 @@
 			success : function(json) {
 				$('#singUp-button').prop('disabled', false);
 				if (json.success == true) {
-					sweetAlert("Well done!", "", "success"); // log the returned json to the console    
+					sweetAlert("{% trans "Almost done..." %}", "" +
+                            "{% trans "We've just sent your a confirmation email with your password." %}",
+                            "success"); // log the returned json to the console
 				} else {
 					sweetAlert(json.error, "", "error");
 					//alert(json.error);

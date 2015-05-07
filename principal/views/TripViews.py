@@ -121,18 +121,17 @@ def public_trip_details(request, trip_id):
 def list_trip_administrator(request):
     try:
         trips = TripService.list_trip_administrator(request.user)
+        paginator = Paginator(trips, 5)
+        page = request.GET.get('page')
+        try:
+            trips = paginator.page(page)
+        except PageNotAnInteger:
+            trips = paginator.page(1)
+        except EmptyPage:
+            trips = paginator.page(paginator.num_pages)
+        return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True, 'title_list': _('Trips')}, context_instance=RequestContext(request))
     except AssertionError:
-        return render_to_response('error.html')
-    paginator = Paginator(trips, 2)
-    page = request.GET.get('page')
-    try:
-        trips = paginator.page(page)
-    except PageNotAnInteger:
-        trips = paginator.page(1)
-    except EmptyPage:
-        trips = paginator.page(paginator.num_pages)
-    return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True},
-                              context_instance=RequestContext(request))
+        return render_to_response('error.html', context_instance=RequestContext(request))
 
 
 @permission_required('principal.traveller')

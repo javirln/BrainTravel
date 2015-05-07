@@ -23,4 +23,4 @@ def assessment_list(request, trip_id):
 
         return render_to_response('assessment_list.html', {'assessments': assessments}, context_instance=RequestContext(request))
     except Exception:
-        return render_to_response('error.html')
+        return render_to_response('error.html', context_instance=RequestContext(request))
