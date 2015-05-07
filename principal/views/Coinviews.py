@@ -14,11 +14,18 @@ from BrainTravel import settings
 from principal.forms import FormPaypalOwn
 from principal.services import CoinService, UserService, PaymentsService, CoinHistoryService
 from django.views.decorators.csrf import csrf_exempt
+from principal.utils import BrainTravelUtils
 
 
 @csrf_exempt
 @login_required()
 def list_coin_traveller(request):
+    
+    #Si la peticion es post, viene de PayPal
+    if request.method == "POST":
+        BrainTravelUtils.save_info(request, _("Thanks for your bought!. It's possible that coins revenue take for a minutes. Please, be patient :)"))
+    
+    
     try:
         list_coin_history = CoinService.list_coin_history_traveller(request.user.id)
         paginator = Paginator(list_coin_history, 5)
@@ -29,11 +36,11 @@ def list_coin_traveller(request):
             list_coin_history = paginator.page(1)
         except EmptyPage:
             list_coin_history = paginator.page(paginator.num_pages)
-        return render_to_response('list_coin_history.html', {'list_coin_history': list_coin_history}, context_instance=RequestContext(request))
-
     except:
         return render_to_response('error.html', context_instance=RequestContext(request))
-
+        
+    
+    return render_to_response('list_coin_history.html', {'list_coin_history': list_coin_history}, context_instance=RequestContext(request))
 
 @permission_required('principal.traveller')
 def buy_coins(request):
@@ -72,7 +79,7 @@ def buy_coins(request):
             "item_name": _("100 Coins"),
             "notify_url": "http://54.69.54.93" + reverse('paypal-ipn'),
             "return_url": "http://54.69.54.93/coin/list/",
-            "cancel_return": "http://54.69.54.93/cpayment_cancel",
+            "cancel_return": "http://54.69.54.93/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data3,
         }
@@ -106,6 +113,7 @@ def receive_payment(sender, **kwargs):
             PaymentsService.save(payment)
 
             coin_history = CoinHistoryService.create(amount_coins=coins_amount, concept=ipn_obj.item_name, traveller=user, payment=payment)
+            
             CoinHistoryService.save(coin_history)
 
         except Exception as e:
