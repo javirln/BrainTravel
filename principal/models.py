@@ -66,9 +66,9 @@ class Venue(Scorable):
 
 
 class Feedback(models.Model):
-    description = models.CharField(max_length=255, null=True)
-    leadTime = models.IntegerField(validators=[MinValueValidator(1)])
-    duration = models.IntegerField(validators=[MinValueValidator(1)])
+    description = models.CharField(max_length=255)
+    leadTime = models.IntegerField(validators=[MinValueValidator(1)], null=True, blank=True)
+    duration = models.IntegerField(validators=[MinValueValidator(1)], null=True, blank=True)
 
     # ---------- Derivate ---------------#
     usefulCount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])

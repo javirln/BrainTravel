@@ -150,22 +150,23 @@
 	</aside>
      {% include "miscellaneous/footer.html" %}
 
-
-
-	<!-- Custom Theme JavaScript -->
+    <!-- Custom Theme JavaScript -->
 	<script>
         $(document).ready(function(){
             $.cookieBar({
-            	bottom: true,
-            	fixed: true,
+            	message: '{% trans "We use cookies to track usage and preferences." %}',
                 policyURL: 'cookies_policy',
-                policyText: 'Cookies policy',
+                policyText: '{% trans "Cookies policy" %}',
+                bottom: true,
+            	fixed: true,
+                acceptButton: true,
+                acceptText: '{% trans "I understand" %}',
                 policyButton : true,
-                declineButton: true
+                declineButton: true,
+                declineText: '{% trans "Disalbe Cookies" %}'
             });
         });
-        
-        
+
 		$("#js-rotating").Morphext({
 			animation : "fadeIn",
 			separator : ";",

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% block title %} {% trans "Plan a trip" %} {% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+	    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+		    <div class="text-center">
+		        <h1>{% trans "Plan a trip" %}</h1>
+		        <p>{% trans "Enter the data and we'll plan a trip for you" %}</p>
+		    </div>
+
+		    <div class="text-left">
+		         <fieldset>
+		             <legend>{% trans "Trip data" %}</legend>
+					 <h4>{% trans "Price" %}: <span id="tripPrice">-</span> {% trans "coins" %}</h4>
+					 <h4>{% trans "You have" %}: <span id="myCoins">{{traveller.coins}}</span> {% trans "coins" %}</h4>
+				 </fieldset>
+			 </div>
+
+	        <form id="form-create" class="form-horizontal" role="form" action="/planner/list_venues/" method="post"
+	              data-toggle="validator">
+	                {% csrf_token %}
+	                <div class="col-xs-12 col-sm-4">
+		                <div class="form-group">
+		                   <div class="col-xs-12">
+			                    <label for="id_city" class="control-label">{% trans "City" %}</label>
+			                    <input class="form-control" id="id_city" name="city" type="text"
+			                           value="{% if form.initial|length != 0 %}{{ form.initial.city }}{% else %}{{ form.data.city }}{% endif %}"
+			                           required/>
+			                    <div class="help-block with-errors"></div>
+		                   </div>
+		                </div>
+		            </div>
+
+		            <div class="col-xs-12 col-sm-4">
+	                    <div class="form-group">
+	                        <div class="col-xs-12">
+			                    <label for="id_country"
+			                           class="control-label">{% trans "Country" %}</label>
+			                    <input class="form-control" id="id_country" name="country" type="text"
+			                           value="{% if form.initial|length != 0 %}{{ form.initial.country }}{% else %}{{ form.data.country }}{% endif %}"
+			                           required/>
+			                    <div class="help-block with-errors"></div>
+		                    </div>
+		                </div>
+	                 </div>
+
+	                <div class="col-xs-12 col-sm-4">
+		                <div class="form-group">
+		                   <div class="col-xs-12">
+			                    <label for="id_days" class="control-label">{% trans "Days" %}</label>
+			                    <input class="form-control" id="id_days" name="days" type="number" min="1" max="7"
+			                           value="{% if form.initial|length != 0 %}{{ form.initial.days }}{% else %}{{ form.data.days }}{% endif %}"
+			                           required/>
+			                    <div class="help-block with-errors"></div>
+		                   </div>
+		                </div>
+		            </div>
+
+	            <div class="col-xs-12">
+	                <div class="form-group">
+	                    <div class="col-xs-12">
+	                       <hr>
+	                       <input id="create_plan" class="btn btn-primary btn-block" name="save"
+                                  value="{% trans "Obtaining Venues" %}" type="submit">
+                        </div>
+                    </div>
+                </div>
+
+	        </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

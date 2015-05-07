@@ -316,3 +316,10 @@ body {
     color: #FFF;
     line-height: 2.25;
 }
+.planned-trip-item{
+	height: 400px;
+}
+.img-lst-plan{
+	height: 180px;
+	width: auto;
+}

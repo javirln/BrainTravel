@@ -7,12 +7,12 @@ from django.contrib.auth.models import User
 from django.http.response import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
+from django.utils.translation import ugettext as _
 
 from principal.forms import LoginForm, TravellerRegistrationForm
 from principal.services import TravellerService
 from principal.utils import BrainTravelUtils
 from principal.views import EmailViews
-from django.utils.translation import ugettext as _
 
 
 def sign_in(request):
@@ -80,9 +80,12 @@ def confirm_account(request):
         password = request.GET['rand_password']
         user_logged = authenticate(username=user.username, password=password)
         login(request, user_logged)
-        return HttpResponseRedirect("/")
+        
+        BrainTravelUtils.save_success(request, _("Congratulations! Now, you are part of BrainTravel. Enjoy!"))
+        
+        return HttpResponseRedirect("/profile/" + str(user_logged.id))
     else:
-        return HttpResponse("Hash not math!! :(")
+        return render_to_response('500.html', context_instance=RequestContext(request))
 
 
 def cookies_policies(request):

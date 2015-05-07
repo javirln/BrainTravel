@@ -319,13 +319,17 @@ def send_feedback(request):
         user_id = request.user.id
         description = request.POST['text-description']
         venue_id = request.POST['venue-id']
-        lead_time = request.POST['lead-time-value']
-        duration_time = request.POST['duration-time-value']
+        
+        
+        lead_time = request.POST['lead-time-value'] if request.POST['lead-time-value'] else None 
+        duration_time = request.POST['duration-time-value'] if request.POST['duration-time-value'] else None
+        
+        
         url = request.path.split("/")
         TripService.send_feedback(user_id, venue_id, lead_time, duration_time, description)
         BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id)
-    except:
+    except Exception as e:
         msg_errors = ["Something went wrong..."]
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id, {'msg_errors': msg_errors})
 

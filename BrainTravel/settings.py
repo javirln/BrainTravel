@@ -120,5 +120,5 @@ EMAIL_HOST_USER = 'notificaciones.braintravel@gmail.com'
 EMAIL_HOST_PASSWORD = 'braintravelredmine'
 
 # PAYPAL CONFIGURATION
-PAYPAL_RECEIVER_EMAIL = 'notificaciones.braintravel-facilitator@gmail.com'
+PAYPAL_RECEIVER_EMAIL = 'braintravel.payments-facilitator@gmail.com'
 PAYPAL_TEST = True
