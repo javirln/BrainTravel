@@ -60,8 +60,8 @@
                                     {% endif %}
                                 </ul>
                                 {% if user.traveller.id == trip.traveller.id %}
-                                    <p><br><a href="/trip/edit/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="Click here to view edit"><i class="fa fa-pencil"></i> {% trans "Edit" %}</a></p>
-                                    <p><a href="/assessment/list/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="Click here to view details"><i class="fa fa-list"></i> {% trans "Assessments" %}</a></p>
+                                    <p><br><a href="/trip/edit/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="{% trans "Click here to edit" %}"><i class="fa fa-pencil"></i> {% trans "Edit" %}</a></p>
+                                    <p><a href="/assessment/list/{{trip.scorable_ptr_id}}" data-toggle="tooltip" data-placement="bottom" title="{% trans "Click here to view details" %}"><i class="fa fa-list"></i> {% trans "Assessments" %}</a></p>
                                 {% endif %}
                                 {% if perms.principal.traveller and trip.state == 'ap' and trip.traveller.id != user.id and assessment == None%}
                                     <div class="center-block">
