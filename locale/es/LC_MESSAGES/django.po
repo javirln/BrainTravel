@@ -235,7 +235,7 @@ msgstr ""
 #: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1453
 #: principal/forms.py:32
 msgid "Email address"
-msgstr ""
+msgstr "Email"
 
 #: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1479
 msgid "File path"
@@ -2938,11 +2938,11 @@ msgstr "El mensaje es muy largo"
 
 #: principal/forms.py:102
 msgid "City is required"
-msgstr ""
+msgstr "Se necesita una ciudad"
 
 #: principal/forms.py:104
 msgid "Country is required"
-msgstr ""
+msgstr "Se necesita un país"
 
 #: principal/forms.py:110 principal/forms.py:115
 msgid "Must be a date in the past"
@@ -3670,7 +3670,7 @@ msgstr "Resgistrarse"
 
 #: principal/templates/signin.html:15
 msgid "Login"
-msgstr "Login"
+msgstr "Entrar"
 
 #: principal/templates/signin.html:16
 msgid "Don't have an account yet?"
@@ -3690,7 +3690,7 @@ msgstr "Resgistrarse"
 
 #: principal/templates/signin.html:89
 msgid "email address"
-msgstr "email"
+msgstr "Email"
 
 #: principal/templates/signin.html:95
 msgid "I am agree with the "
