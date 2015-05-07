@@ -374,8 +374,3 @@ def stats(request):
                                              'most_liked_trips':result['most_liked_trips'],
                                              'most_useful_tips':result['most_useful_tips']},
                                   context_instance=RequestContext(request))
-
-
-@login_required()
-def precarga(request):
-    return render_to_response('precarga.html', context_instance=RequestContext(request))
