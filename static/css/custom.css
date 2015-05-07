@@ -300,8 +300,8 @@ body {
 }
 
 .plan-creation {
-    margin-top: 50px;
-    margin-bottom: 50px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 	min-width: 332px;
 	max-width: 600px;
 	border: 1px solid #F0F0F0;
@@ -311,15 +311,53 @@ body {
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 }
-.plan-creation-head{
+
+.plan-creation-head {
 	background-color: #337AB7;
-    color: #FFF;
-    line-height: 2.25;
+	color: #FFF;
+	line-height: 2.25;
 }
-.planned-trip-item{
+
+.planned-trip-item {
 	height: 400px;
 }
-.img-lst-plan{
+
+.img-lst-plan {
 	height: 180px;
 	width: auto;
+}
+
+.visited-venues {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border-color: #F0F0F0;
+	-moz-border-top-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	border-image: none;
+	border-width: 1px;
+	border-right-width-value: 1px;
+	border-bottom-width: 1px;
+	border-left-width-value: 1px;
+	border-left-width-ltr-source: physical;
+	border-left-width-rtl-source: physical;
+	border-right-width-ltr-source: physical;
+	border-right-width-rtl-source: physical;
+	border-style: none solid solid;
+	border-top-style: none;
+	border-right-style-value: solid;
+	border-bottom-style: solid;
+	border-left-style-value: solid;
+	border-left-style-ltr-source: physical;
+	border-left-style-rtl-source: physical;
+	border-right-style-ltr-source: physical;
+	border-right-style-rtl-source: physical;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	padding-top: 15px;
+	margin-right: 0px;
+	margin-left: 0px;
 }
