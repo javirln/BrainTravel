@@ -8,6 +8,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from paypal.standard.ipn.signals import valid_ipn_received, invalid_ipn_received
 from paypal.standard.models import ST_PP_COMPLETED
+from django.utils.translation import ugettext as _
 
 from BrainTravel import settings
 from principal.forms import FormPaypalOwn
@@ -42,7 +43,7 @@ def buy_coins(request):
         paypal_dict_1 = {
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "4.50",
-            "item_name": "40 Coins",
+            "item_name": _("40 Coins"),
             "notify_url": "http://54.69.54.93" + reverse('paypal-ipn'),
             "return_url": "http://54.69.54.93/coin/list/",
             "cancel_return": "http://54.69.54.93/payment_cancel",
@@ -55,7 +56,7 @@ def buy_coins(request):
         paypal_dict_2 = {
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "7.00",
-            "item_name": "60 Coins",
+            "item_name": _("60 Coins"),
             "notify_url": "http://54.69.54.93" + reverse('paypal-ipn'),
             "return_url": "http://54.69.54.93/coin/list/",
             "cancel_return": "http://54.69.54.93/coin/payment_cancel",
@@ -68,7 +69,7 @@ def buy_coins(request):
         paypal_dict_3 = {
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "10.00",
-            "item_name": "100 Coins",
+            "item_name": _("100 Coins"),
             "notify_url": "http://54.69.54.93" + reverse('paypal-ipn'),
             "return_url": "http://54.69.54.93/coin/list/",
             "cancel_return": "http://54.69.54.93/cpayment_cancel",

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-07 19:38+0200\n"
+"POT-Creation-Date: 2015-05-07 21:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3055,8 +3055,6 @@ msgid "Error"
 msgstr "Error"
 
 #: principal/templates/error.html:8
-#, fuzzy
-#| msgid "Sorry, an error has ocurred"
 msgid "We are sorry. An error has occurred."
 msgstr "Lo sentimos, ha ocurrido un error"
 
@@ -3171,20 +3169,20 @@ msgstr ""
 "estaría muycontenta de usar la aplicación.;Hay historias, lugares y paisajes "
 "que sólolos residentes del área conocen.; Es lo que siempre he querido..."
 
-#: principal/templates/index.html:162
-msgid "I understand"
-msgstr "Entiendo"
-
-#: principal/templates/index.html:163
+#: principal/templates/index.html:157
 msgid "We use cookies to track usage and preferences."
 msgstr "Usamos cookies para monitorizar el uso y las preferencias."
 
-#: principal/templates/index.html:165
+#: principal/templates/index.html:159
 #: principal/templates/miscellaneous/footer.html:13
 msgid "Cookies policy"
 msgstr "Política de cookies"
 
-#: principal/templates/index.html:168
+#: principal/templates/index.html:163
+msgid "I understand"
+msgstr "Entiendo"
+
+#: principal/templates/index.html:166
 msgid "Disalbe Cookies"
 msgstr "Desactivar Cookies"
 
@@ -3223,6 +3221,7 @@ msgstr "Concepto"
 #: principal/templates/public_trip_details.html:182
 #: principal/templates/search.html:60 principal/templates/trip_list.html:53
 #: principal/templates/trip_planned_list.html:46
+#: principal/templates/venue_details.html:59
 msgid "Page"
 msgstr "Página"
 
@@ -3231,6 +3230,7 @@ msgstr "Página"
 #: principal/templates/public_trip_details.html:182
 #: principal/templates/search.html:60 principal/templates/trip_list.html:53
 #: principal/templates/trip_planned_list.html:46
+#: principal/templates/venue_details.html:59
 msgid "of"
 msgstr "de"
 
@@ -3597,12 +3597,12 @@ msgid "Please, write a fancy description:"
 msgstr "Por favor, escribe una descripción agradable:"
 
 #: principal/templates/public_trip_details.html:231
-#: principal/templates/venue_details.html:76
+#: principal/templates/venue_details.html:106
 msgid "Close"
 msgstr "Cerrar"
 
 #: principal/templates/public_trip_details.html:232
-#: principal/templates/venue_details.html:77
+#: principal/templates/venue_details.html:107
 msgid "Send"
 msgstr "Enviar"
 
@@ -3817,11 +3817,11 @@ msgstr "Consejos mas útiles"
 msgid "Sorry, there aren't tips available for this venue."
 msgstr "Lo sentimos, pero no hay recomendaciones para este sitio."
 
-#: principal/templates/venue_details.html:56
+#: principal/templates/venue_details.html:76
 msgid "Give us some feedback!"
 msgstr "Dar feedback"
 
-#: principal/templates/venue_details.html:62
+#: principal/templates/venue_details.html:82
 msgid ""
 "By giving feedback you enhance our algorithm. The more feedback it gets, the "
 "more accurate it becomes. If you enter something in the description and "
@@ -3831,7 +3831,7 @@ msgstr ""
 "feedback consigue, mas preciso se vuelve. Te regalaremos algunas monedas "
 "también :)"
 
-#: principal/templates/venue_details.html:64
+#: principal/templates/venue_details.html:84
 msgid ""
 "<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on "
 "the queue...</small></h4>"
@@ -3839,7 +3839,7 @@ msgstr ""
 "<h4>Tiempo de espera: <small>Cuanto tiempo pasaste esperando para comprar "
 "los tickets en la cola... </small></h4>"
 
-#: principal/templates/venue_details.html:67
+#: principal/templates/venue_details.html:90
 msgid ""
 "<h4>Duration: <small>How much time you spent inside the venue, you were "
 "walking around...</small></h4>"
@@ -3847,7 +3847,7 @@ msgstr ""
 "<h4>Duración: <small>Cuanto tiempo pasaste dentro del sitio, que estuviste "
 "dando vueltas...</small></h4>"
 
-#: principal/templates/venue_details.html:71
+#: principal/templates/venue_details.html:97
 msgid "<h4>Description: <small>Something else you want to say?</small></h4>"
 msgstr "<h4>Descripción: <small>¿Hay algo más que quieras añadir?</small></h4>"
 
@@ -3855,13 +3855,25 @@ msgstr "<h4>Descripción: <small>¿Hay algo más que quieras añadir?</small></h
 msgid "An unexpected error has occurred"
 msgstr "Lo sentimos, ha ocurrido un error"
 
+#: principal/views/Coinviews.py:46
+msgid "40 Coins"
+msgstr "40 monedas"
+
+#: principal/views/Coinviews.py:59
+msgid "60 Coins"
+msgstr "60 monedas"
+
+#: principal/views/Coinviews.py:72
+msgid "100 Coins"
+msgstr "100 monedas"
+
 #: principal/views/TripViews.py:93
 msgid "Comment successfully"
 msgstr "Se ha guardado su comentario"
 
 #: principal/views/TripViews.py:102
 msgid "Your vote has been saved!"
-msgstr "‚Su voto se ha guardado!"
+msgstr "Su voto se ha guardado"
 
 #: principal/views/TripViews.py:165
 msgid "Trip successfully updated"
@@ -3878,6 +3890,10 @@ msgstr "Acción completada con éxito"
 #: principal/views/TripViews.py:224
 msgid "Your trip must be accepted by an administrator"
 msgstr "Su viaje debe de ser acceptado por un administrador"
+
+#: principal/views/UserViews.py:84
+msgid "Congratulations! Now, you are part of BrainTravel. Enjoy!"
+msgstr "¡Felcidades! Ahora eres parte de BrainTravel. !Disfruta¡"
 
 msgid "We think you're lost..."
 msgstr "Creemos que te has perdido..."
