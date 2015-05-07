@@ -26,7 +26,10 @@ def sign_in(request):
                 user = authenticate(username=username, password=password)
                 assert user.is_active
                 login(request, user)
-                return HttpResponseRedirect('/profile/'+str(user.id))
+                if user.has_perm('principal.traveller'):
+                    return HttpResponseRedirect('/profile/'+str(user.id))
+                else:
+                    return HttpResponseRedirect('/administrator/trip/list/')
         else:
             form = LoginForm()
         registerForm = TravellerRegistrationForm()
