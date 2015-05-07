@@ -105,9 +105,9 @@
                             <div class="form-group">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
                                 <button id="submit-comment" type="submit" class="btn btn-success">{% trans "Send" %}</button>
-                                <input name="venue-id" value="{{venue.id}}"/>
+                                <input type="hidden" name="venue-id" value="{{venue.id}}"/>
                             </div>
-                         </div>
+						</div>
                     </form>
                   </div>
                 </div>
@@ -124,10 +124,17 @@
     	e.preventDefault();
     	if($("#lead-time").val() == "" && $("#duration-error").val() == "" && $("#text-comment").val() == ""){
     		$("#myModal").modal("hide");
-    	}else{
-    		$(this).unbind('submit').submit();
-    	}
     });
+    
+    
+    $('#form-rate-id').validator().on('submit', function (e) {
+		if (e.isDefaultPrevented()) {}
+		else {
+			e.preventDefault();
+	    	register_traveller();
+	  	}
+	});
+    
     
     </script>
 {% endblock %}
