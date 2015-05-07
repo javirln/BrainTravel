@@ -1,7 +1,15 @@
 {% load i18n %}
+
 <li>
-    <a id="sign_ind_nav" href="/administrator/trip/list/">{% trans "Trip list" %}</a>
+    <a id="sign_ind_nav" href="/administrator/trip/list/">
+        <span class="fa fa-plane"></span>
+		<strong>{% trans "Trips" %}</strong>
+    </a>
 </li>
+
 <li>
-    <a id="sign_ind_nav" href="/logout">{% trans "Logout" %}</a>
+    <a id="sign_ind_nav" href="/logout">
+        <span class="fa fa-sign-out"></span>
+		<strong>{% trans "Logout" %}</strong>
+    </a>
 </li>
