@@ -4,16 +4,16 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-xs-12 col-sm-offset-3 col-sm-6">
             <div class="error-template well">
                 <h1>Oops!</h1>
-                <h2>404 Not Found</h2>
+                <h2>{% trans "Internal error" %}</h2>
                 <div class="error-details">
-                    {% trans "We think you're lost..." %}
+                    {% trans "We did something wrong..." %}
                 </div>
                 <div class="error-actions">
-                    <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>{% trans "Take Me Home" %}</a>
-                    <a href="mailto:notificaciones.braintravel@gmail.com" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span>{% trans "Contact Support" %}</a>
+                    <a href="/" class="btn btn-primary btn-lg"><i class="fa fa-home"></i> {% trans "Take Me Home" %}</a>
+                    <a href="mailto:notificaciones.braintravel@gmail.com" class="btn btn-default btn-lg"><i class="fa fa-envelope"></i> {% trans "Contact Support" %}</a>
                 </div>
             </div>
         </div>
