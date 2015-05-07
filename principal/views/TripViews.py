@@ -59,7 +59,7 @@ def public_trip_details(request, trip_id):
         comments = Comment.objects.filter(trip=trip_id).order_by('-date')
 
         # Paginacion para la lista de comentarios
-        paginator = Paginator(comments, 5)
+        paginator = Paginator(comments, 10)
         page = request.GET.get('page')
         try:
             comments = paginator.page(page)
@@ -121,7 +121,7 @@ def public_trip_details(request, trip_id):
 def list_trip_administrator(request):
     try:
         trips = TripService.list_trip_administrator(request.user)
-        paginator = Paginator(trips, 5)
+        paginator = Paginator(trips, 10)
         page = request.GET.get('page')
         try:
             trips = paginator.page(page)
@@ -138,7 +138,7 @@ def list_trip_administrator(request):
 def planned_trips(request):
     trips = TripService.find_planed_trips_by_traveller(request.user.id)
     if trips is not False:
-        paginator = Paginator(trips, 5)
+        paginator = Paginator(trips, 10)
         page = request.GET.get('page')
         try:
             trips = paginator.page(page)
@@ -175,7 +175,7 @@ def update_state(request, trip_id):
 def list_all_by_traveller(request):
     trips = TripService.list_my_trip(request.user.id)
     if trips is not False:
-        paginator = Paginator(trips, 5)
+        paginator = Paginator(trips, 10)
         page = request.GET.get('page')
         try:
             trips = paginator.page(page)
@@ -192,7 +192,7 @@ def list_all_by_traveller(request):
 def list_all_by_traveller_draft(request):
     trips = TripService.list_trip_draft(request.user.id)
     if trips is not False:
-        paginator = Paginator(trips, 5)
+        paginator = Paginator(trips, 10)
         page = request.GET.get('page')
         try:
             trips = paginator.page(page)

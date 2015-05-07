@@ -21,7 +21,7 @@ from django.views.decorators.csrf import csrf_exempt
 def list_coin_traveller(request):
     try:
         list_coin_history = CoinService.list_coin_history_traveller(request.user.id)
-        paginator = Paginator(list_coin_history, 5)
+        paginator = Paginator(list_coin_history, 10)
         page = request.GET.get('page')
         try:
             list_coin_history = paginator.page(page)

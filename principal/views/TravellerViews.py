@@ -81,7 +81,7 @@ def all_payments(request):
     if request.method == 'GET' or request.method == 'POST':
         try:
             list_payments = PaymentsService.all_payments(request.user.id)
-            paginator = Paginator(list_payments, 5)
+            paginator = Paginator(list_payments, 10)
             page = request.GET.get('page')
             try:
                 list_payments = paginator.page(page)

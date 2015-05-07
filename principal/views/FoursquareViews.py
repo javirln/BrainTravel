@@ -155,7 +155,7 @@ def retrieve_venue(request, id_venue):
             tips = Feedback.objects.filter(Q(venues=id_venue)).order_by("usefulCount")
             
             if tips is not False:
-                paginator = Paginator(tips, 5)
+                paginator = Paginator(tips, 10)
                 page = request.GET.get('page')
                 tips = paginator.page(page)
         except PageNotAnInteger:
