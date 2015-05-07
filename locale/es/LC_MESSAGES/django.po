@@ -3192,7 +3192,7 @@ msgstr "Salir"
 
 #: principal/templates/miscellaneous/anonymous-menu.html:5
 msgid "Sign In"
-msgstr "Resgístrate"
+msgstr "Inciar sesión"
 
 #: principal/templates/miscellaneous/footer.html:12
 msgid "Spanish"
