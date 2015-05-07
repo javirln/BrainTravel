@@ -3,20 +3,23 @@
 import traceback
 
 from django.contrib.auth.decorators import permission_required
+from django.core import paginator
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.template.context import RequestContext
-from django.db.models import Q
 
 from principal.forms import PlanForm
 from principal.models import Trip, Traveller, Feedback, Category
-from principal.services import TravellerService
 from principal.services import FoursquareServices
+from principal.services import TravellerService
 from principal.services.FoursquareServices import categories_initializer
 from principal.services.FoursquareServices import init_fs
 from principal.utils import BrainTravelUtils
 from principal.views import TripViews
 from principal.views.Coinviews import buy_coins
+
 
 client = init_fs()
 
@@ -149,9 +152,18 @@ def retrieve_venue(request, id_venue):
     if request.method == 'GET':
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
-            tips = Feedback.objects.filter(Q(venues=id_venue) & ~Q(description__exact='') & Q(description__isnull=False)).\
-                order_by("usefulCount")
-            return render_to_response('venue_details.html', {"venue": venue, "tips": tips},
-                                      context_instance=RequestContext(request))
+            tips = Feedback.objects.filter(Q(venues=id_venue)).order_by("usefulCount")
+            
+            if tips is not False:
+                paginator = Paginator(tips, 5)
+                page = request.GET.get('page')
+                tips = paginator.page(page)
+        except PageNotAnInteger:
+            tips = paginator.page(1)
+        except EmptyPage:
+                    tips = paginator.page(paginator.num_pages)
         except Exception as e:
-            return HttpResponse(e)
+            return render_to_response('error.html')
+        
+    return render_to_response('venue_details.html', {"venue": venue, "tips": tips},
+                      context_instance=RequestContext(request))

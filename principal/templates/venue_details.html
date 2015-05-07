@@ -48,6 +48,26 @@
             </div>
         </div>
         </div>
+        
+        <nav class="col-xs-12">
+              <ul class="pager">
+                <li {% if not tips.has_previous %} class="disabled" {% endif %}>
+                  <a {% if tips.has_previous %} href="?page={{ tips.previous_page_number }}" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+                </li>
+                
+                <li>
+                 <span>{% trans "Page" %} {{ tips.number }} {% trans "of" %} {{ tips.paginator.num_pages }}</span>
+                </li>
+                
+                <li {% if not tips.has_next %} class="disabled" {% endif %}>
+                    <a {% if tips.has_next %} href="?page={{ tips.next_page_number }}" {% endif %}><span aria-hidden="true" class="disabled" >&raquo;</span></a>  
+                </li>
+              </ul>
+            </nav>
+        
+        
+        
+        
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content modal-bt">
@@ -56,26 +76,36 @@
                     <h4 class="modal-title" id="myModalLabel">Give us some feedback!</h4>
                   </div>
                   <div class="modal-body">
-                    <form class="form" method="post" action="/venue_details/rate/" id="form-rate-id">
+                    <form data-toggle="validator" class="form" method="post" action="/venue_details/rate/" id="form-rate-id">
                         {% csrf_token %}
-                        <div class="form-group">
+                        
                             <p>{% trans "By giving feedback you enhance our algorithm. The more feedback it gets, the more accurate it becomes. If you enter something in the description and users like it, we give you some free coins (2 coins per 5 likes)" %}</p>
                             <hr>
                             {% trans "<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on the queue...</small></h4>" %}
-                            <input id="lead-time" type="number" name="lead-time-value" min="0" required/><span> min.</span>
+                            <div class="form-group">
+                            	<input id="lead-time" type="number" name="lead-time-value" min="0"/><span> min.</span>
+                            	<span class="help-block with-errors"></span>
+                            </div>
                             <br>
                             {% trans "<h4>Duration: <small>How much time you spent inside the venue, you were walking around...</small></h4>" %}
-                            <input id="duration-time" type="number" name="duration-time-value" min="0" required/><span> min.</span>
-                            <div id="duration-error" class="help-block" style="color: #A94442"></div>
+                            
+                            <div class="form-group">
+	                            <input id="duration-time" type="number" name="duration-time-value" min="0"/><span> min.</span>
+	                            <div id="duration-error" class="help-block" style="color: #A94442"></div>
+	                        </div>
                             <br>
                             {% trans "<h4>Description: <small>Something else you want to say?</small></h4>" %}
-                            <textarea id="text-comment" class="form-control input-block-level" name="text-description" rows="3" required maxlength="255" style="resize: none;"></textarea>
-                        </div>
+                            
+                            <div class="form-group">
+                            	<textarea id="text-comment" type="text" class="form-control" name="text-description" rows="3" maxlength="255" style="resize: none;" required></textarea>
+                            	<div class="help-block with-errors"></div>
+                            </div>
+                        
                         <div class="modal-footer">
                             <div class="form-group">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
                                 <button id="submit-comment" type="submit" class="btn btn-success">{% trans "Send" %}</button>
-                                <input type="hidden" name="venue-id" value="{{venue.id}}"/>
+                                <input name="venue-id" value="{{venue.id}}"/>
                             </div>
                          </div>
                     </form>
@@ -88,15 +118,16 @@
     $("#duration-time").change(function(){
         var lead_time = $("#lead-time").val();
         var duration_time = $("#duration-time").val();
-        if ( lead_time != " " && duration_time != " "){
-            if ( parseInt(duration_time) < parseInt(lead_time)){
-                $("#duration-error").text("Duration time must be greater than lead time");
-                $("#submit-comment").prop('disabled', true);
-            }else{
-                $("#duration-error").empty();
-                $("#submit-comment").prop('disabled', false);
-            }
-        }
     });
+    
+    $("#form-rate-id").submit(function(e){
+    	e.preventDefault();
+    	if($("#lead-time").val() == "" && $("#duration-error").val() == "" && $("#text-comment").val() == ""){
+    		$("#myModal").modal("hide");
+    	}else{
+    		$(this).unbind('submit').submit();
+    	}
+    });
+    
     </script>
 {% endblock %}
