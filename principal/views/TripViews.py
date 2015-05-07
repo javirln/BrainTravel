@@ -13,11 +13,10 @@ from django.utils.translation import ugettext as _
 
 from principal.forms import TripEditForm, CommentForm, AssessmentForm
 from principal.forms import TripUpdateStateForm
-from principal.models import Judges, Assessment, Day, Venue, VenueDay, Feedback, Traveller, Likes, CoinHistory
+from principal.models import Judges, Assessment, Day, Venue, VenueDay, Feedback, Traveller, CoinHistory
 from principal.models import Trip, Comment
 from principal.services import TripService, TravellerService, CommentService, \
     LikeService
-from principal.services.LikeService import can_vote
 from principal.services.TravellerService import save
 from principal.utils import BrainTravelUtils
 
@@ -252,17 +251,17 @@ def trip_edit(request, trip_id):
                 if 'save' in request.POST:
                     trip.state = "df"
                     TripService.save_secure(trip)
-                    BrainTravelUtils.save_success(request, "Action completed successfully")
+                    BrainTravelUtils.save_success(request, _("Action completed successfully"))
                     return HttpResponseRedirect("/trip/draft/")
                 elif 'publis' in request.POST:
                     trip.state = "pe"
                     TripService.save_secure(trip)
-                    BrainTravelUtils.save_success(request, "Your trip must be accepted by an administrator")
+                    BrainTravelUtils.save_success(request, _("Your trip must be accepted by an administrator"))
                     return HttpResponseRedirect("/trip/mylist/")
 
             if 'delete' in request.POST:
                 TripService.delete(request, trip)
-                BrainTravelUtils.save_success(request, "Trip deleted successfully")
+                BrainTravelUtils.save_success(request, _("Trip deleted successfully"))
                 return HttpResponseRedirect("/trip/mylist/")
 
         else:
@@ -327,10 +326,10 @@ def send_feedback(request):
         
         url = request.path.split("/")
         TripService.send_feedback(user_id, venue_id, lead_time, duration_time, description)
-        BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
+        BrainTravelUtils.save_success(request, _("Thanks for the feedback, you are awesome!"))
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id)
-    except Exception as e:
-        msg_errors = ["Something went wrong..."]
+    except Exception:
+        msg_errors = [_("Something went wrong...")]
         return HttpResponseRedirect("/" + url[1] + "/" + venue_id, {'msg_errors': msg_errors})
 
 @login_required()
@@ -357,10 +356,10 @@ def value_tip(request, id_venue, id_tip):
                 new_entry.save()
             
             TripService.value_tip(feedback_instance, current_traveller)
-            BrainTravelUtils.save_success(request, "Thanks for the feedback, you are awesome!")
+            BrainTravelUtils.save_success(request, _("Thanks for the feedback, you are awesome!"))
             return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
         else:
-            BrainTravelUtils.save_info(request, "You voted this tip already.")
+            BrainTravelUtils.save_info(request, _("You voted this tip already."))
             return HttpResponseRedirect("/" + url[1] + "/" + id_venue)
     except:
         msg_errors = ["Something went wrong..."]

@@ -1,10 +1,9 @@
 import hashlib
-import django
 
 from django.utils import translation
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http.response import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.http.response import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.utils.translation import ugettext as _

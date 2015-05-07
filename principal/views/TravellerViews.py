@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render_to_response, HttpResponseRedirect
 from django.template.context import RequestContext
-
-from principal.services import TravellerService, TripService, PaymentsService, CoinService
+from django.utils.translation import ugettext as _
+from principal.services import TravellerService, TripService, PaymentsService
 from principal.models import Traveller
 from principal.forms import TravellerEditProfileForm, TravellerEditPasswordForm
 from principal.utils import BrainTravelUtils
@@ -39,7 +39,7 @@ def profile_edit(request):
                 try:
                     traveller = TravellerService.construct_profile(request.user.id, form)
                     TravellerService.save(traveller)
-                    BrainTravelUtils.save_success(request, "Profile successfully updated")
+                    BrainTravelUtils.save_success(request, _("Profile successfully updated"))
                     return HttpResponseRedirect('/profile/'+str(traveller.id))
                 except:
                     return render_to_response('error.html')
@@ -63,7 +63,7 @@ def profile_edit_password(request):
                 try:
                     traveller = TravellerService.construct_password(request.user.id, form)
                     TravellerService.save(traveller)
-                    BrainTravelUtils.save_success(request, "Password successfully updated")
+                    BrainTravelUtils.save_success(request, _("Password successfully updated"))
                     return HttpResponseRedirect('/profile/'+str(traveller.id))
                 except:
                     return render_to_response('error.html')

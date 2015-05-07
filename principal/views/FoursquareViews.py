@@ -53,7 +53,7 @@ def foursquare_list_venues(request):
                 days = int(form.cleaned_data['days'])
                 coins_cost = CoinService.check_coins(days)
                 if CoinService.check_coins_available(traveller, coins_cost) is False:
-                    BrainTravelUtils.save_error(request, "Insufficient coins available")
+                    BrainTravelUtils.save_error(request, _("Insufficient coins available"))
                     return buy_coins(request)
                 city = form.cleaned_data['city']
 
