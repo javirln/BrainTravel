@@ -7,112 +7,103 @@
     <div class="container">
         <div class="row">
             <div class="well" style="margin-top: 69px;">
-            <div class="media">
-                <div class="row">
-                    <div class="col-md-2 col-sm-3 col-lg-2 col-xs-12 text-center">
-                        <img class="img-rounded" style="width: 150px;" src="{{venue.photo}}">
-                        <h4 class="media-heading" style="margin-top: 14px;">{{venue.name}}</h4>
-                        <a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">{% trans "Give feedback" %}</a>
-                    </div>
-                    <div class="col-md-10 col-sm-9 col-lg-10 col-xs-12">
-                        <div class="media-body">
-                            <h4>{% trans "Useful tips" %}</h4>
-                                {% for tip in tips %}
-                                <div class="row">
-	                                <div class="col-sm-1 hidden-xs">
-	                                    <img class="img-responsive img-circle user-photo" src="/{{ tip.traveller.photo }}">
-	                                </div><!-- /col-sm-1 -->
-	
-	                                <div class="col-sm-9">
-	                                    <div class="panel panel-default">
-	                                        <div class="panel-heading">
-	                                            <strong>{{ tip.traveller.first_name }} {{ tip.traveller.last_name }}</strong>
-	                                        </div>
-	                                        <div class="panel-body">
-	                                            {{ tip.description }}
-	                                        </div><!-- /panel-body -->
-                                            {% if user.id != tip.traveller.id %}
-                                            <div class="panel-footer">
-                                                <a  type="button" class="btn btn-primary btn-success btn-sm" href="/venue_details/value_tip/{{ tip.venues.id }}/{{ tip.id }}">This is useful</a>
-                                            </div>
-                                            {% endif %}
-	                                    </div><!-- /panel panel-default -->
-	                                </div><!-- /col-sm-5 -->
-	                            </div>
-	                            {% empty %}
-                                <h4>{% trans "Sorry, there aren't tips available for this venue." %}</h4>
-                            {% endfor %}
+                <div class="media">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3 col-lg-2 col-xs-12 text-center">
+                            <img class="img-rounded" style="width: 150px;" src="{{venue.photo}}">
+                            <h4 class="media-heading" style="margin-top: 14px;">{{venue.name}}</h4>
+                            <a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">{% trans "Give feedback" %}</a>
+                        </div>
+                        <div class="col-md-10 col-sm-9 col-lg-10 col-xs-12">
+                            <div class="media-body">
+                                <h4>{% trans "Useful trips" %}</h4>
+                                    {% for trip in trips %}
+                                    <div class="row">
+                                        <div class="col-sm-1 hidden-xs">
+                                            <img class="img-responsive img-circle user-photo" src="/{{ trip.traveller.photo }}">
+                                        </div><!-- /col-sm-1 -->
+
+                                        <div class="col-sm-9">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <strong>{{ trip.traveller.first_name }} {{ trip.traveller.last_name }}</strong>
+                                                </div>
+                                                <div class="panel-body">
+                                                    {{ trip.description }}
+                                                </div><!-- /panel-body -->
+                                                {% if user.id != trip.traveller.id %}
+                                                <div class="panel-footer">
+                                                    <a  type="button" class="btn btn-primary btn-success btn-sm" href="/venue_details/value_trip/{{ trip.venues.id }}/{{ trip.id }}">This is useful</a>
+                                                </div>
+                                                {% endif %}
+                                            </div><!-- /panel panel-default -->
+                                        </div><!-- /col-sm-5 -->
+                                    </div>
+                                    {% empty %}
+                                    <h4>{% trans "Sorry, there aren't trips available for this venue." %}</h4>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
         
         <nav class="col-xs-12">
-              <ul class="pager">
-                <li {% if not tips.has_previous %} class="disabled" {% endif %}>
-                  <a {% if tips.has_previous %} href="?page={{ tips.previous_page_number }}" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+            <ul class="pager">
+                <li {% if not trips.has_previous %} class="disabled" {% endif %}>
+                    <a {% if trips.has_previous %} href="?page={{ trips.previous_page_number }}" {% endif %}><span aria-hidden="true">&laquo;</span></a>
                 </li>
-                
                 <li>
-                 <span>{% trans "Page" %} {{ tips.number }} {% trans "of" %} {{ tips.paginator.num_pages }}</span>
+                    <span>{% trans "Page" %} {{ trips.number }} {% trans "of" %} {{ trips.paginator.num_pages }}</span>
                 </li>
-                
-                <li {% if not tips.has_next %} class="disabled" {% endif %}>
-                    <a {% if tips.has_next %} href="?page={{ tips.next_page_number }}" {% endif %}><span aria-hidden="true" class="disabled" >&raquo;</span></a>  
+                <li {% if not trips.has_next %} class="disabled" {% endif %}>
+                    <a {% if trips.has_next %} href="?page={{ trips.next_page_number }}" {% endif %}><span aria-hidden="true" class="disabled" >&raquo;</span></a>
                 </li>
-              </ul>
-            </nav>
-        
-        
-        
+            </ul>
+        </nav>
         
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+            <div class="modal-dialog">
                 <div class="modal-content modal-bt">
-                  <div class="modal-header text-center">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">{% trans "Give us some feedback!" %}</h4>
-                  </div>
-                  <div class="modal-body">
-                    <form data-toggle="validator" class="form" method="post" action="/venue_details/rate/" id="form-rate-id">
-                        {% csrf_token %}
-                        
+                    <div class="modal-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">{% trans "Give us some feedback!" %}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form data-toggle="validator" class="form" method="post" action="/venue_details/rate/" id="form-rate-id">
+                            {% csrf_token %}
                             <p>{% trans "By giving feedback you enhance our algorithm. The more feedback it gets, the more accurate it becomes. If you enter something in the description and users like it, we give you some free coins (2 coins per 5 likes)" %}</p>
                             <hr>
                             {% trans "<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on the queue...</small></h4>" %}
                             <div class="form-group">
-                            	<input id="lead-time" type="number" name="lead-time-value" min="0"/><span> min.</span>
-                            	<span class="help-block with-errors"></span>
+                                <input id="lead-time" type="number" name="lead-time-value" min="0"/><span> min.</span>
+                                <span class="help-block with-errors"></span>
                             </div>
                             <br>
                             {% trans "<h4>Duration: <small>How much time you spent inside the venue, you were walking around...</small></h4>" %}
-                            
                             <div class="form-group">
-	                            <input id="duration-time" type="number" name="duration-time-value" min="0"/><span> min.</span>
-	                            <div id="duration-error" class="help-block" style="color: #A94442"></div>
-	                        </div>
+                                <input id="duration-time" type="number" name="duration-time-value" min="0"/><span> min.</span>
+                                <div id="duration-error" class="help-block" style="color: #A94442"></div>
+                            </div>
                             <br>
                             {% trans "<h4>Description: <small>Something else you want to say?</small></h4>" %}
-                            
                             <div class="form-group">
-                            	<textarea id="text-comment" type="text" class="form-control" name="text-description" rows="3" maxlength="255" style="resize: none;" required></textarea>
-                            	<div class="help-block with-errors"></div>
+                                <textarea id="text-comment" type="text" class="form-control" name="text-description" rows="3" maxlength="255" style="resize: none;" required></textarea>
+                                <div class="help-block with-errors"></div>
                             </div>
-                        
-                        <div class="modal-footer">
-                            <div class="form-group">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
-                                <button id="submit-comment" type="submit" class="btn btn-success">{% trans "Send" %}</button>
-                                <input name="venue-id" value="{{venue.id}}"/>
+                            <div class="modal-footer">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
+                                    <button id="submit-comment" type="submit" class="btn btn-success">{% trans "Send" %}</button>
+                                    <input name="venue-id" value="{{venue.id}}"/>
+                                </div>
                             </div>
-                         </div>
-                    </form>
-                  </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
             </div>
+        </div>
     </div>
     <script>
     $("#duration-time").change(function(){
