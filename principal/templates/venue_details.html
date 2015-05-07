@@ -33,7 +33,7 @@
                                                 </div><!-- /panel-body -->
                                                 {% if user.id != trip.traveller.id %}
                                                 <div class="panel-footer">
-                                                    <a  type="button" class="btn btn-primary btn-success btn-sm" href="/venue_details/value_trip/{{ trip.venues.id }}/{{ trip.id }}">This is useful</a>
+                                                    <a  type="button" class="btn btn-primary btn-success btn-sm" href="/venue_details/value_trip/{{ trip.venues.id }}/{{ trip.id }}">{% trans "This is useful" %}</a>
                                                 </div>
                                                 {% endif %}
                                             </div><!-- /panel panel-default -->
