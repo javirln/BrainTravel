@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'wt25dtpbzg9ks8l891^2f+hui6uqux&2s*)9@jxj20i9%=q98s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['54.69.54.93']
 
 FILE_CHARSET = 'ISO-8859-1'
 
@@ -75,7 +75,7 @@ DATABASES = {
         'NAME': 'braintravel',
         'USER': 'braintravel',
         'PASSWORD': 'bR@1nTr@veL',
-        'HOST': '127.0.0.1',
+        'HOST': 'mysql.cvu77qxolqzd.us-west-2.rds.amazonaws.com',
         'PORT': '3306',
         'ATOMIC_REQUESTS': 'True'
     }
@@ -84,6 +84,13 @@ DATABASES = {
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "/principal/templates"),
     os.path.join(BASE_DIR, "/principal/emailTemplates"),
+)
+
+TEMPLATE_LOADERS = (
+    ('django.template.loaders.cached.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
 )
 
 # Internationalization
