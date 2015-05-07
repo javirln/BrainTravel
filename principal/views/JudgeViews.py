@@ -1,12 +1,14 @@
+# -*- coding: latin-1 -*-
+
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 from principal.models import Judges, Trip, Traveller, CoinHistory
 
 
-# author: Juane
 @login_required()
 def judge(request, trip_id, like):
     try:
@@ -89,5 +91,5 @@ def judge(request, trip_id, like):
                     trip.save()
         return HttpResponseRedirect('/public_trip_details/' + trip_id)
 
-    except Exception:
-        return render_to_response('error.html')
+    except:
+        return render_to_response('error.html', context_instance=RequestContext(request))
