@@ -2,11 +2,9 @@ import hashlib
 import django
 
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http.response import HttpResponse, JsonResponse, \
-    HttpResponseRedirect
-from django.shortcuts import redirect, render_to_response
+from django.http.response import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
 from principal.forms import LoginForm, TravellerRegistrationForm
