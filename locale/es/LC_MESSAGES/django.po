@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-07 15:56+0200\n"
+"POT-Creation-Date: 2015-05-07 16:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2924,7 +2924,7 @@ msgstr ""
 msgid "Already exists a user with that email!"
 msgstr "Ya existe un usuario con ese email!"
 
-#: principal/forms.py:44
+#: principal/forms.py:44 principal/templates/signin.html:29
 msgid "Password"
 msgstr "Contraseña"
 
@@ -3598,7 +3598,7 @@ msgid "Select the new venue"
 msgstr "Seleccionar un nuevo sitio"
 
 #: principal/templates/show_planning.html:109
-#: principal/templates/trip_edit.html:31
+#: principal/templates/signin.html:79 principal/templates/trip_edit.html:31
 msgid "Name"
 msgstr "Nombre"
 
@@ -3618,9 +3618,13 @@ msgstr "Login"
 msgid "Don't have an account yet?"
 msgstr "¿Todavía no tienes una cuenta?"
 
-#: principal/templates/signin.html:16
+#: principal/templates/signin.html:16 principal/templates/signin.html:100
 msgid "Sign up"
 msgstr "Resgistrarse"
+
+#: principal/templates/signin.html:25
+msgid "Email"
+msgstr "Correo"
 
 #: principal/templates/signin.html:66
 msgid "Sign Up"
