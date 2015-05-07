@@ -92,11 +92,12 @@
                                 <textarea id="text-comment" type="text" class="form-control" name="text-description" rows="3" maxlength="255" style="resize: none;" required></textarea>
                                 <div class="help-block with-errors"></div>
                             </div>
+                        
                             <div class="modal-footer">
                                 <div class="form-group">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
                                     <button id="submit-comment" type="submit" class="btn btn-success">{% trans "Send" %}</button>
-                                    <input name="venue-id" value="{{venue.id}}"/>
+                                    <input type="hidden" name="venue-id" value="{{venue.id}}"/>
                                 </div>
                             </div>
                         </form>
@@ -111,14 +112,14 @@
         var duration_time = $("#duration-time").val();
     });
     
-    $("#form-rate-id").submit(function(e){
-    	e.preventDefault();
-    	if($("#lead-time").val() == "" && $("#duration-error").val() == "" && $("#text-comment").val() == ""){
-    		$("#myModal").modal("hide");
-    	}else{
-    		$(this).unbind('submit').submit();
-    	}
-    });
+    $('#form-rate-id').validator().on('submit', function (e) {
+		if (e.isDefaultPrevented()) {}
+		else {
+			e.preventDefault();
+	    	$(this).unbind('submit').submit();
+	  	}
+	});
+    
     
     </script>
 {% endblock %}

@@ -1,16 +1,42 @@
 {% extends 'base.html' %}
-{% block title %} Statistics {% endblock %}
-{% load i18n %} {% block content %}{% load staticfiles %}
+{% load i18n %}
+{% block title %} {% trans "Visited venues" %} {% endblock %}
+ {% block content %}{% load staticfiles %}
+
 
 <div class="container">
-	<div class="col-xs-12 col-sm-6">
-		<h3>{% trans "Visited venues" %}</h3>
+    <h1>{% trans "Visited venues" %}</h1>
+	<div class="row visited-venues">		
 		{% for venue in visited_venues %}
-			<div class="col-sm-3 col-xs-6 venue-details">
+			<div class="col-sm-3 col-xs-6 venue-details text-center">
 	            <img src="{{venue.photo}}" class="img-responsive img-thumbnail img-venue" onerror="this.src='{% static "img/no-image.png" %}'">
 	            <h4><a href="/venue_details/{{ venue.id }}" data-toggle="tooltip" data-placement="bottom" title="{% trans "Click here to view details" %}">{{venue.name}}</a></h4>
 			</div>
+	    {% empty %}
+	       <p>{% trans "Oops! BrainTravel could not find anything..." %}</p>
 		{% endfor %}
 	</div>
+	
+        <nav class="col-xs-12">
+            <ul class="pager">
+                <li {% if not visited_venues.has_previous %} class="disabled" {% endif %}>
+                    <a {% if visited_venues.has_previous %} href="?page={{ visited_venues.previous_page_number }}" {% endif %}><span aria-hidden="true">&laquo;</span></a>
+                </li>
+                <li>
+                    <span>{% trans "Page" %} {{ visited_venues.number }} {% trans "of" %} {{ visited_venues.paginator.num_pages }}</span>
+                </li>
+                <li {% if not visited_venues.has_next %} class="disabled" {% endif %}>
+                    <a {% if visited_venues.has_next %} href="?page={{ visited_venues.next_page_number }}" {% endif %}><span aria-hidden="true" class="disabled" >&raquo;</span></a>
+                </li>
+            </ul>
+        </nav>
 </div>
+
+
+
+<script type="text/javascript">
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 {% endblock %}
