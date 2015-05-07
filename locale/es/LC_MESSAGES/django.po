@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-07 21:09+0200\n"
+"POT-Creation-Date: 2015-05-07 23:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,7 +235,7 @@ msgstr ""
 #: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1453
 #: principal/forms.py:32
 msgid "Email address"
-msgstr ""
+msgstr "Email"
 
 #: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1479
 msgid "File path"
@@ -2938,11 +2938,11 @@ msgstr "El mensaje es muy largo"
 
 #: principal/forms.py:102
 msgid "City is required"
-msgstr ""
+msgstr "Se necesita una ciudad"
 
 #: principal/forms.py:104
 msgid "Country is required"
-msgstr ""
+msgstr "Se necesita un país"
 
 #: principal/forms.py:110 principal/forms.py:115
 msgid "Must be a date in the past"
@@ -3670,7 +3670,7 @@ msgstr "Resgistrarse"
 
 #: principal/templates/signin.html:15
 msgid "Login"
-msgstr "Login"
+msgstr "Entrar"
 
 #: principal/templates/signin.html:16
 msgid "Don't have an account yet?"
@@ -3690,7 +3690,7 @@ msgstr "Resgistrarse"
 
 #: principal/templates/signin.html:89
 msgid "email address"
-msgstr "email"
+msgstr "Email"
 
 #: principal/templates/signin.html:95
 msgid "I am agree with the "
@@ -3855,17 +3855,27 @@ msgstr "<h4>Descripción: <small>¿Hay algo más que quieras añadir?</small></h
 msgid "An unexpected error has occurred"
 msgstr "Lo sentimos, ha ocurrido un error"
 
-#: principal/views/Coinviews.py:46
+#: principal/views/Coinviews.py:26
+msgid ""
+"Thanks for your bought!. It's possible that coins revenue take for a "
+"minutes. Please, be patient :)"
+msgstr ""
+
+#: principal/views/Coinviews.py:53
 msgid "40 Coins"
 msgstr "40 monedas"
 
-#: principal/views/Coinviews.py:59
+#: principal/views/Coinviews.py:66
 msgid "60 Coins"
 msgstr "60 monedas"
 
-#: principal/views/Coinviews.py:72
+#: principal/views/Coinviews.py:79
 msgid "100 Coins"
 msgstr "100 monedas"
+
+#: principal/views/EmailViews.py:15
+msgid "Welcome to BrainTravel"
+msgstr "Bienvenido a BrainTravel"
 
 #: principal/views/TripViews.py:93
 msgid "Comment successfully"
