@@ -158,10 +158,14 @@
             $.cookieBar({
             	bottom: true,
             	fixed: true,
+                acceptButton: true,
+                acceptText: '{% trans "I understand" %}'
+                message: '{% trans "We use cookies to track usage and preferences." %}',
                 policyURL: 'cookies_policy',
-                policyText: 'Cookies policy',
+                policyText: '{% trans "Cookies policy" %}',
                 policyButton : true,
-                declineButton: true
+                declineButton: true,
+                declineText: '{% trans "Disalbe Cookies" %}'
             });
         });
         

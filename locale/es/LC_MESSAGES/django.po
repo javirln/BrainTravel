@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-07 16:50+0200\n"
+"POT-Creation-Date: 2015-05-07 18:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2920,7 +2920,7 @@ msgstr ""
 msgid "Text nodes have no children"
 msgstr ""
 
-#: principal/forms.py:19 principal/forms.py:69
+#: principal/forms.py:19 principal/forms.py:70
 msgid "Already exists a user with that email!"
 msgstr "Ya existe un usuario con ese email!"
 
@@ -2928,65 +2928,91 @@ msgstr "Ya existe un usuario con ese email!"
 msgid "Password"
 msgstr "Contraseña"
 
-#: principal/forms.py:57
+#: principal/forms.py:58
 msgid "Wrong email or password"
 msgstr "Email o contraseña erroneos"
 
-#: principal/forms.py:99
+#: principal/forms.py:100
 msgid "Message length too long"
 msgstr "El mensaje es muy largo"
 
-#: principal/forms.py:101
+#: principal/forms.py:102
 msgid "City is required"
 msgstr ""
 
-#: principal/forms.py:103
+#: principal/forms.py:104
 msgid "Country is required"
 msgstr ""
 
-#: principal/forms.py:109 principal/forms.py:114
+#: principal/forms.py:110 principal/forms.py:115
 msgid "Must be a date in the past"
 msgstr "Debe de ser una fecha en el pasado"
 
-#: principal/forms.py:111 principal/forms.py:112
+#: principal/forms.py:112 principal/forms.py:113
 msgid "Incorrect logic date"
 msgstr "La fecha es incorrecta"
 
-#: principal/forms.py:193
+#: principal/forms.py:194
 msgid "Image file too large ( > 512kb )"
 msgstr "El tamaño de la imagen es muy grande ( > 512kb )"
 
-#: principal/forms.py:195
+#: principal/forms.py:196
 msgid "Not valid file type. Only PNG and JPG are supported"
 msgstr "No es un tipo de archivo valido. Solo se acepta PNG y JPG"
 
-#: principal/forms.py:250
+#: principal/forms.py:251
 msgid "Whoops, these don't match"
 msgstr "Whoops, esto no coincide"
 
-#: principal/forms.py:259
+#: principal/forms.py:260
 msgid "Wrong password"
 msgstr "Contraseña errónea"
 
-#: principal/forms.py:261
+#: principal/forms.py:262
 msgid "Password do not match"
 msgstr "La contraseña no coincide"
 
-#: principal/templates/404.html:12
-msgid "We did something wrong..."
-msgstr "Algo hicimos mal..."
+#: principal/templates/400.html:10
+msgid "400 Bad request"
+msgstr "400 Petición erronea"
 
+#: principal/templates/400.html:12
+msgid "Your browser and our server don't understand each other..."
+msgstr "Tu navegador y nuestro servidor no se entiende..."
+
+#: principal/templates/400.html:15 principal/templates/403.html:15
 #: principal/templates/404.html:15 principal/templates/500.html:15
 msgid "Take Me Home"
 msgstr "Llévame a casa"
 
+#: principal/templates/400.html:16 principal/templates/403.html:16
 #: principal/templates/404.html:16 principal/templates/500.html:16
 msgid "Contact Support"
 msgstr "Contacta con el soporte"
 
+#: principal/templates/403.html:10
+msgid "403 Forbidden"
+msgstr "403 Prohibido"
+
+#: principal/templates/403.html:12
+msgid "We know you're curious, but we cannot let you keep going..."
+msgstr "Sabemos que eres curioso, pero no te podemos permitir seguir adelante..."
+
+#: principal/templates/404.html:10
+msgid "404 Not found"
+msgstr "404 No encontrado"
+
+#: principal/templates/404.html:12
+msgid "The requested page does not exist"
+msgstr "La página pedida no existe"
+
+#: principal/templates/500.html:10
+msgid "Internal error"
+msgstr "Error interno"
+
 #: principal/templates/500.html:12
-msgid "We think you're lost..."
-msgstr "Creemos que te has perdido..."
+msgid "We did something wrong..."
+msgstr "Algo hicimos mal..."
 
 #: principal/templates/assessment_list.html:8
 #: principal/templates/search.html:9 principal/templates/trip_list.html:9
@@ -2999,7 +3025,7 @@ msgid "Accept"
 msgstr "Aceptar"
 
 #: principal/templates/buy_coins.html:3
-#: principal/templates/miscellaneous/traveller-menu.html:23
+#: principal/templates/miscellaneous/traveller-menu.html:22
 msgid "Buy coins"
 msgstr "Comprar monedas"
 
@@ -3025,6 +3051,16 @@ msgstr "monedas"
 #: principal/templates/error.html:3
 msgid "Error"
 msgstr "Error"
+
+#: principal/templates/error.html:8
+#, fuzzy
+#| msgid "Sorry, an error has ocurred"
+msgid "We are sorry. An error has occurred."
+msgstr "Lo sentimos, ha ocurrido un error"
+
+#: principal/templates/error.html:9
+msgid "Go to index"
+msgstr ""
 
 #: principal/templates/error_planning.html:3
 #: principal/templates/miscellaneous/menu.html:18
@@ -3133,6 +3169,23 @@ msgstr ""
 "estaría muycontenta de usar la aplicación.;Hay historias, lugares y paisajes "
 "que sólolos residentes del área conocen.; Es lo que siempre he querido..."
 
+#: principal/templates/index.html:162
+msgid "I understand"
+msgstr "Entiendo"
+
+#: principal/templates/index.html:163
+msgid "We use cookies to track usage and preferences."
+msgstr "Usamos cookies para monitorizar el uso y las preferencias."
+
+#: principal/templates/index.html:165
+#: principal/templates/miscellaneous/footer.html:13
+msgid "Cookies policy"
+msgstr "Política de cookies"
+
+#: principal/templates/index.html:168
+msgid "Disalbe Cookies"
+msgstr "Desactivar Cookies"
+
 #: principal/templates/list_coin_history.html:3
 #: principal/templates/list_coin_history.html:10
 msgid "Coin historial"
@@ -3179,14 +3232,14 @@ msgstr "Página"
 msgid "of"
 msgstr "de"
 
-#: principal/templates/miscellaneous/admin-menu.html:2
+#: principal/templates/miscellaneous/admin-menu.html:3
 #: principal/templates/trip_list.html:3
 #: principal/templates/trip_planned_list.html:3
 msgid "Trip list"
 msgstr "Lista de viajes"
 
-#: principal/templates/miscellaneous/admin-menu.html:5
-#: principal/templates/miscellaneous/traveller-menu.html:73
+#: principal/templates/miscellaneous/admin-menu.html:6
+#: principal/templates/miscellaneous/traveller-menu.html:72
 msgid "Logout"
 msgstr "Salir"
 
@@ -3203,10 +3256,6 @@ msgid "English"
 msgstr "Inglés"
 
 #: principal/templates/miscellaneous/footer.html:13
-msgid "Cookies policy"
-msgstr "Política de cookies"
-
-#: principal/templates/miscellaneous/footer.html:13
 msgid "About us"
 msgstr "Sobre nosotros"
 
@@ -3218,47 +3267,48 @@ msgstr "Términos de privacidad"
 msgid "Type to search"
 msgstr "Escribe para buscar"
 
-#: principal/templates/miscellaneous/traveller-menu.html:9
+#: principal/templates/miscellaneous/traveller-menu.html:8
 #: principal/templates/plan_creation.html:4
 #: principal/templates/plan_creation.html:11
 msgid "Plan a trip"
 msgstr "Planear un viaje"
 
-#: principal/templates/miscellaneous/traveller-menu.html:16
-msgid "View statistics"
-msgstr "Ver estadisticas"
+#: principal/templates/miscellaneous/traveller-menu.html:15
+#: principal/templates/stats.html:7
+msgid "Statistics"
+msgstr "Estadísticas"
 
-#: principal/templates/miscellaneous/traveller-menu.html:30
+#: principal/templates/miscellaneous/traveller-menu.html:29
 #: principal/templates/profile_details.html:56
 msgid "Trips"
 msgstr "Viajes"
 
-#: principal/templates/miscellaneous/traveller-menu.html:34
+#: principal/templates/miscellaneous/traveller-menu.html:33
 #: principal/templates/trip_edit.html:106
 msgid "Publish trip"
 msgstr "Publicar viaje"
 
-#: principal/templates/miscellaneous/traveller-menu.html:35
+#: principal/templates/miscellaneous/traveller-menu.html:34
 #: principal/templates/payment.html:3 principal/templates/venue_details.html:4
 #: principal/views/TripViews.py:187
 msgid "My trips"
 msgstr "Ver mis viajes"
 
-#: principal/templates/miscellaneous/traveller-menu.html:36
+#: principal/templates/miscellaneous/traveller-menu.html:35
 #: principal/views/TripViews.py:151
 msgid "My planned trips"
 msgstr "Mis viajes planeados"
 
-#: principal/templates/miscellaneous/traveller-menu.html:37
+#: principal/templates/miscellaneous/traveller-menu.html:36
 msgid "Drafts"
 msgstr "Borrador"
 
-#: principal/templates/miscellaneous/traveller-menu.html:38
+#: principal/templates/miscellaneous/traveller-menu.html:37
 #: principal/templates/my_visited_venues.html:7
 msgid "Visited venues"
 msgstr "Sitios visitados"
 
-#: principal/templates/miscellaneous/traveller-menu.html:62
+#: principal/templates/miscellaneous/traveller-menu.html:61
 msgid "View profile"
 msgstr "Ver perfil"
 
@@ -3650,10 +3700,6 @@ msgstr "Casi hemos terminado..."
 msgid "We've just sent your a confirmation email with your password."
 msgstr "Acabamos de enviarte un correo de confirmación con tu contraseña."
 
-#: principal/templates/stats.html:7
-msgid "Statistics"
-msgstr "Estadísticas"
-
 #: principal/templates/stats.html:8
 msgid "There are a few statistics that you might find interesting "
 msgstr "Hay muchas estadísticas que encontrarás interesantes"
@@ -3819,6 +3865,12 @@ msgstr "Acción completada con éxito"
 #: principal/views/TripViews.py:225
 msgid "Your trip must be accepted by an administrator"
 msgstr "Su viaje debe de ser acceptado por un administrador"
+
+msgid "We think you're lost..."
+msgstr "Creemos que te has perdido..."
+
+msgid "View statistics"
+msgstr "Ver estadisticas"
 
 msgid "Publish Trip"
 msgstr "Publicar viaje"
