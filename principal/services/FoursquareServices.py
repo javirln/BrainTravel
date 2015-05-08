@@ -353,6 +353,8 @@ def get_plan_food(list_constrains, fs_venues_food, num_days, origin):
     venues_ordered = get_venues_order(list_constrains, origin['venue']['location']['lat'],
                                       origin['venue']['location']['lng'],
                                       fs_venues_food)
+    
+    print venues_ordered
 
     selected_venues = []
     for idx, venue in enumerate(venues_ordered):
