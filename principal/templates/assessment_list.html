@@ -3,7 +3,7 @@
 {% block content %}
     {% load i18n %}
 <div class="container">
-    <h1>Assessment list</h1>
+    <h1>{% trans "Assessment list" %}</h1>
     {% if not assessments %}
         <p>{% trans "Oops! BrainTravel could not find anything..." %}</p>
     {% else %}

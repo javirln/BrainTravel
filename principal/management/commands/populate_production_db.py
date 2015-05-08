@@ -17,7 +17,7 @@ class Command(BaseCommand):
 
         print('Creating administrator...')
         admin_admin = Administrator(
-            username='administrator',
+            username='administrator.braintravel@gmail.com',
             email='notificaciones.braintravel@gmail.com')
         admin_admin.set_password('pwFvt6p6d7qdmmPTBmvM')
         admin_admin.is_staff = True
