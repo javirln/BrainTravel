@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-08 18:00+0200\n"
+"POT-Creation-Date: 2015-05-08 18:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3464,19 +3464,31 @@ msgstr "Restricciones elegidas"
 msgid "Delete "
 msgstr "Borrar"
 
-#: principal/templates/plan_creation.html:145
+#: principal/templates/plan_creation.html:144
 msgid "Create Plan"
 msgstr "Crear un plan"
 
-#: principal/templates/plan_creation.html:265
+#: principal/templates/plan_creation.html:273
 msgid "Are you sure you want to create the plan ?"
 msgstr "¿Estás seguro de que quieres crear el plan?"
 
 #: principal/templates/plan_creation.html:274
+msgid "You cannot get your coins back."
+msgstr "No puedes recuperar tus monedas"
+
+#: principal/templates/plan_creation.html:278
+msgid "Yes, create plan"
+msgstr "Sí, crea el plan"
+
+#: principal/templates/plan_creation.html:279
+msgid "No, I'll give it a think..."
+msgstr "No, me lo pensaré mejor..."
+
+#: principal/templates/plan_creation.html:293
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: principal/templates/plan_creation.html:275
+#: principal/templates/plan_creation.html:294
 msgid ""
 "We are working hard on your plan. It might take a while, please, be "
 "patient :)"
@@ -3623,6 +3635,10 @@ msgstr ""
 "viaje."
 
 #: principal/templates/public_trip_details.html:87
+msgid "Are you sure?"
+msgstr "¿Estás seguro?"
+
+#: principal/templates/public_trip_details.html:87
 msgid "Save"
 msgstr "Guardar"
 
@@ -3745,6 +3761,10 @@ msgstr "Correo"
 #: principal/templates/signin.html:66
 msgid "Sign Up"
 msgstr "Resgistrarse"
+
+#: principal/templates/signin.html:89
+msgid "Invalid email address"
+msgstr "Correo invalido"
 
 #: principal/templates/signin.html:89
 msgid "email address"
@@ -4004,15 +4024,6 @@ msgstr "Su voto se ha guardado"
 #: principal/views/UserViews.py:83
 msgid "Congratulations! Now, you are part of BrainTravel. Enjoy!"
 msgstr "¡Felcidades! Ahora eres parte de BrainTravel. !Disfruta¡"
-
-msgid "You cannot get your coins back."
-msgstr "No puedes recuperar tus monedas"
-
-msgid "Yes, create plan"
-msgstr "Sí, crea el plan"
-
-msgid "No, I'll give it a think..."
-msgstr "No, me lo pensaré mejor..."
 
 msgid "DEBUG"
 msgstr "DEPURACIÓN"
