@@ -11,7 +11,6 @@ from django.http import HttpResponse
 
 
 @login_required()
-@permission_required('principal.traveller')
 def profile_details(request, traveller_id):
     try:
         traveller = TravellerService.find_one(traveller_id)

@@ -291,11 +291,18 @@ def change_venue(request):
         
 
 @login_required()
-@permission_required('principal.traveller')
 def list_trip_approved_by_profile(request, profile_id):
     try:
         traveller = TravellerService.find_one(profile_id)
         trips = TripService.list_trip_approved(traveller.id)
+        paginator = Paginator(trips, 10)
+        page = request.GET.get('page')
+        try:
+            trips = paginator.page(page)
+        except PageNotAnInteger:
+            trips = paginator.page(1)
+        except EmptyPage:
+            trips = paginator.page(paginator.num_pages)
         return render_to_response('trip_list.html', {'trips': trips, 'create_trip': True}, context_instance=RequestContext(request))
     except:
         return render_to_response('error.html', context_instance=RequestContext(request))
