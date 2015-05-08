@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="timeline-centered">
-                {% if not perms.principal.administrator and not user.is_anonymous %}
+                {% if perms.principal.traveller and  trip.state == 'ap' %}
                     <article class="timeline-entry entry">
                         <div class="timeline-entry-inner">
                             <div class="timeline-icon">
