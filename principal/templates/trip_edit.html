@@ -111,7 +111,7 @@
 		                    <span></span>
 		                    {% if not create %}
 		                    <input class="btn btn-primary" name="delete" value="{% trans "Delete Trip"%}" type="submit"
-                                   onclick="return confirm({% trans 'Are you sure? This cannot be recovered.'%})">
+                                   onclick="return confirm('{% trans 'Are you sure? This cannot be recovered.'%}');">
 		                    {% endif %}
 		                    </div>
 		                </div>
