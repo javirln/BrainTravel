@@ -6,10 +6,16 @@
 <link rel="stylesheet" href="{% static "css/summernote.css" %}">
 <link rel="stylesheet" href="{% static "css/summernote-bs3.css" %}">
 <script type="text/javascript" src="{% static "js/summernote.js" %}"></script>
-<script type="text/javascript" src="{% static "js/summernote-es-ES.js" %}"></script>
+
+{% get_current_language as LANGUAGE_CODE %}
+
+{% if LANGUAGE_CODE == 'es' %}
+    <script type="text/javascript" src="{% static "js/summernote-es-ES.js" %}"></script>
+{% endif %}
+
 {% endblock %}
 {% block content %}
- 
+
 
     <div class="container">
         <div class="row">
