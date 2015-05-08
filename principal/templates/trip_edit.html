@@ -33,10 +33,10 @@
 	                {% csrf_token %}
 	
 	                <div class="col-xs-12">
-	                    <div class="form-group {% if form.visible_fields.5.errors %} has-error {% endif %}">
+	                    <div class="form-group">
 	                       <div class="col-xs-12">
 	                        <label for="id_name" class="control-label"> {% trans "Name" %}</label>
-	                        <input class="form-control" id="id_name" name="name" placeholder="{%  trans "Up to 150 letters, numbers and underscores"%}" type="text" maxlength="150" value="{{ trip.name }}" required/>
+	                        <input class="form-control" id="id_name" name="name" placeholder="{%  trans "Up to 150 letters, numbers and underscores"%}" type="text" maxlength="150" value="{% if form.initial|length != 0 %}{{ form.initial.name }}{% else %}{{ form.data.name }}{% endif %}" required/>
 	                        <div class="help-block with-errors">
 	                            {{ form.visible_fields.5.errors }}
 	                        </div>
