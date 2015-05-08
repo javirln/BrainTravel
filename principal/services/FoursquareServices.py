@@ -1,14 +1,10 @@
 # -*- coding: iso-8859-1 -*-
 from datetime import datetime
-from datetime import timedelta
 import json
-from lib2to3.pgen2.token import GREATER
 from math import radians, sin, cos, sqrt, asin
-import pprint
-import threading
 import traceback
 import urllib2
-
+from django.utils.translation import ugettext as _
 from django.db.models import Avg
 from django.db.models.query_utils import Q
 import foursquare
@@ -29,19 +25,6 @@ def init_fs():
     global client
     client = foursquare.Foursquare(client_id=_client_id, client_secret=_client_secret)
     categories_initializer()
-
-
-def calculate_distance(lat1, lon1, lat2, lon2):
-    R = 6372.8  # Earth radius in kilometers
-    dLat = radians(lat2 - lat1)
-    dLon = radians(lon2 - lon1)
-    lat1 = radians(lat1)
-    lat2 = radians(lat2)
-
-    a = sin(dLat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dLon / 2) ** 2
-    c = 2 * asin(sqrt(a))
-    # retorna en Km
-    return R * c
 
 
 def categories_initializer():
@@ -223,11 +206,25 @@ def create_history(trip):
     coin_history.save()
 
 
+def calculate_distance(lat1, lon1, list_venue):
+    list_distances = []
+    for venue in list_venue:
+        lat2 = venue['venue']['location']['lat']
+        lon2 = venue['venue']['location']['lng']
+        dLat = (lat2 - lat1) ** 2
+        dLon = (lon2 - lon1) ** 2
+
+        c = sqrt(dLat + dLon) * 1000
+        list_distances.append(c)
+    return list_distances
+
+
 # Autor: david
 def get_venues_order(list_constrains, lat_centre, lng_centre, list_venues):
     # obtengo la primera qe es la que tiene mayor puntuacion en FS
     destinations = ""
     map_const = {}
+    is_google = True
     for const in list_constrains:
         if len(const) != 0:
             split = const.split(":")
@@ -240,7 +237,7 @@ def get_venues_order(list_constrains, lat_centre, lng_centre, list_venues):
             elif split[1] == "Nada":
                 split[1] = constants.NUMBER_ANYTHING_OF
             else:
-                raise ValueError('Input value incorrect')
+                raise ValueError(_('Input value incorrect'))
             map_const[id_category_fs] = split[1]
 
     for venue in list_venues:
@@ -262,13 +259,22 @@ def get_venues_order(list_constrains, lat_centre, lng_centre, list_venues):
     data = json.load(response)
     list_durations = []
     count = 0
-    for element in data['rows'][0]['elements']:
+    elements = data['rows'][0]['elements']
+
+    if data['status'] == "OVER_QUERY_LIMIT":
+        elements = calculate_distance(lat_centre, lng_centre, list_venues)
+        is_google = False
+
+    for element in elements:
         # son metros
         # distance = element['distance']['value']
         # son segundos
         # duration = element['duration']['value']
         venue_actual = list_venues[count]
-        tiempo = element['duration']['value']
+        if is_google:
+            tiempo = element['duration']['value']
+        else:
+            tiempo = element
 
         tupla = ()
         # recorremos el mapa y vemos si coincide el id_FS de la vista con el del algoritmo

@@ -1,10 +1,10 @@
 # -*- coding: latin-1 -*-
-
 from django.contrib.auth.decorators import permission_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import redirect, render_to_response
 from django.template.context import RequestContext
+from django.utils.translation import ugettext as _
 
 from principal.forms import PlanForm
 from principal.models import Trip, Feedback, Category
@@ -91,7 +91,8 @@ def foursquare_list_venues(request):
                 selected_venues = FoursquareServices.filter_and_save(plan_venues[0])
                 selected_food = FoursquareServices.filter_and_save(plan_food, food=True)
                 
-                trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues, plan_venues[1], selected_food, all_venues, all_food)
+                trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues, plan_venues[1],
+                                                      selected_food, all_venues, all_food)
 
                 traveller.coins -= coins_cost
                 traveller.save()
