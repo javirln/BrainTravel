@@ -18,9 +18,10 @@
                             <img class="avatar img-circle img-thumbnail" src="/{{trip.traveller.photo}}" width="64" title="{{trip.traveller.first_name}}">
                             <p>
                                 <strong><a href="/profile/{{trip.traveller.id}}">{{trip.traveller}}</a></strong>
-                                {% if trip.traveller.reputation != None %}
-                                <br><i class="fa fa-star"></i> {{ trip.traveller.reputation }} / 10
-                                {% endif %}
+                                
+                                <br><i class="fa fa-star"></i>
+                                
+                                {% firstof trip.traveller.reputation '-'%} / 10
                             </p>
                         </div>
                     </div>

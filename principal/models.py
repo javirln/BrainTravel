@@ -137,7 +137,7 @@ class Traveller(User):
 
     # ----------- Derivates -------------------#
     reputation = models.FloatField(null=True, blank=True,
-                                   validators=[MinValueValidator(0), MaxValueValidator(10)], default=0)
+                                   validators=[MinValueValidator(0), MaxValueValidator(10)])
     coins = models.IntegerField(validators=[MinValueValidator(0)], default=0)
     recommendations = models.IntegerField(validators=[MinValueValidator(0)], default=0)
     

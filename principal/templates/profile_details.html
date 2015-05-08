@@ -31,9 +31,7 @@
                     <h4>{{traveller.email}}</h4>
                 </div>
                 <div class="col-xs-12 col-sm-4 text-center">
-                    {% if traveller.reputation != None %}
-                        <h2><span class="fa fa-star fa-lg"> {{ traveller.reputation }}/10</span></h2>
-                    {% endif %}
+                    <h2><span class="fa fa-star fa-lg"> {% firstof trip.traveller.reputation '-'%} / 10</span></h2>
                 </div>
             </div>
             <div class="row">
