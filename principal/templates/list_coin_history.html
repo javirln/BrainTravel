@@ -13,17 +13,20 @@
 		
 		    {% if not list_coin_history %}
 		        <h4>{% trans "We couldn't find anything..." %}</h4>
+		    
+		    {% else %}
+		    <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>{% trans "Amount" %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Concept" %}</th>
+                </tr>
+                </thead>
+                <tbody>
 		    {% endif %}
 		
-		    <table class="table table-striped">
-		        <thead>
-		        <tr>
-		            <th>{% trans "Amount" %}</th>
-		            <th>{% trans "Date" %}</th>
-		            <th>{% trans "Concept" %}</th>
-		        </tr>
-		        </thead>
-		        <tbody>
+	
 		        {% for coin_history in list_coin_history %}
 		            <tr>
 		                <td>{{ coin_history.amount|safe }}</td>
