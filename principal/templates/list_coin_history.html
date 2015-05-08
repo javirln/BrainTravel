@@ -31,7 +31,7 @@
 		            <tr>
 		                <td>{{ coin_history.amount|safe }}</td>
 		                <td>{{ coin_history.date|date:"d/m/Y"|safe }}</td>
-		                <td>{{ coin_history.concept|safe }}</td>
+		                <td>{% trans coin_history.concept %}</td>
 		            </tr>
 		        {% endfor %}
 		        </tbody>
