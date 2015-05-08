@@ -112,7 +112,8 @@ def receive_payment(sender, **kwargs):
             payment = PaymentsService.create(user.id, ipn_obj.mc_gross)
             PaymentsService.save(payment)
 
-            coin_history = CoinHistoryService.create(amount_coins=coins_amount, concept=ipn_obj.item_name, traveller=user, payment=payment)
+            coin_history = CoinHistoryService.create(amount_coins=coins_amount, concept=ipn_obj.item_name,
+                                                     traveller=user, payment=payment)
             
             CoinHistoryService.save(coin_history)
 
