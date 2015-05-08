@@ -232,7 +232,6 @@ msgstr ""
 msgid "Decimal number"
 msgstr ""
 
-#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1453
 #: principal/forms.py:32
 msgid "Email address"
 msgstr "Email"
@@ -3901,8 +3900,8 @@ msgid ""
 "users like it, we give you some free coins (2 coins per 5 likes)"
 msgstr ""
 "Dandonos feedback contribuyes a mejorar nuestro algoritmo. Cuanto mas "
-"feedback consigue, mas preciso se vuelve. Te regalaremos algunas monedas "
-"también :)"
+"feedback consigue, mas preciso se vuelve. Si introduces una descripción"
+"y les gusta a los usuarios, te regalaremos algunas monedas (2 monedas cada 5 me gustas)"
 
 #: principal/templates/venue_details.html:78
 msgid ""
