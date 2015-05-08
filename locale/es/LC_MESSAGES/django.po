@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-08 00:29+0200\n"
+"POT-Creation-Date: 2015-05-08 10:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2973,6 +2973,10 @@ msgstr "Contraseña errónea"
 msgid "Password do not match"
 msgstr "La contraseña no coincide"
 
+#: principal/services/FoursquareServices.py:240
+msgid "Input value incorrect"
+msgstr "El valor intrducido es erróneo"
+
 #: principal/templates/400.html:10
 msgid "400 Bad request"
 msgstr "400 Petición erronea"
@@ -3017,6 +3021,7 @@ msgid "We did something wrong..."
 msgstr "Algo hicimos mal..."
 
 #: principal/templates/assessment_list.html:8
+#: principal/templates/my_visited_venues.html:16
 #: principal/templates/search.html:9 principal/templates/trip_list.html:9
 #: principal/templates/trip_planned_list.html:36
 msgid "Oops! BrainTravel could not find anything..."
@@ -3025,6 +3030,7 @@ msgstr "Oops! BrainTravel no pudo encontrar nada..."
 #: principal/templates/assessment_list.html:36
 #: principal/templates/list_coin_history.html:46
 #: principal/templates/my_payments.html:52
+#: principal/templates/my_visited_venues.html:26
 #: principal/templates/public_trip_details.html:182
 #: principal/templates/search.html:60 principal/templates/trip_list.html:53
 #: principal/templates/trip_planned_list.html:46
@@ -3035,6 +3041,7 @@ msgstr "Página"
 #: principal/templates/assessment_list.html:36
 #: principal/templates/list_coin_history.html:46
 #: principal/templates/my_payments.html:52
+#: principal/templates/my_visited_venues.html:26
 #: principal/templates/public_trip_details.html:182
 #: principal/templates/search.html:60 principal/templates/trip_list.html:53
 #: principal/templates/trip_planned_list.html:46
@@ -3308,7 +3315,8 @@ msgid "Drafts"
 msgstr "Borrador"
 
 #: principal/templates/miscellaneous/traveller-menu.html:37
-#: principal/templates/my_visited_venues.html:7
+#: principal/templates/my_visited_venues.html:3
+#: principal/templates/my_visited_venues.html:8
 msgid "Visited venues"
 msgstr "Sitios visitados"
 
@@ -3339,12 +3347,10 @@ msgstr "Id"
 msgid "Pruchase coins"
 msgstr "Comprar monedas"
 
-#: principal/templates/my_visited_venues.html:11
+#: principal/templates/my_visited_venues.html:13
 #: principal/templates/public_trip_details.html:64
 #: principal/templates/show_planning.html:67
 #: principal/templates/show_planning.html:83
-#, fuzzy
-#| msgid "Click on the venue names to view its details."
 msgid "Click here to view details"
 msgstr "Haz click en el nombre del sitio para ver sus detalles."
 
@@ -3837,8 +3843,6 @@ msgid "This is useful"
 msgstr "Esto es útil"
 
 #: principal/templates/venue_details.html:43
-#, fuzzy
-#| msgid "Sorry, there aren't tips available for this venue."
 msgid "Sorry, there aren't trips available for this venue."
 msgstr "Lo sentimos, pero no hay recomendaciones para este sitio."
 
