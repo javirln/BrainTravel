@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="timeline-centered">
-                {% if perms.principal.traveller and  trip.state == 'ap' %}
+                {% if perms.principal.traveller and  trip.state == 'ap'%}
                     <article class="timeline-entry entry">
                         <div class="timeline-entry-inner">
                             <div class="timeline-icon">
@@ -135,7 +135,7 @@
                                 <div class="timeline-label">
                                      <div class="row">
                                         <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6">
-                                            <h2>{{comment.traveller}} {% trans "says:" %}</h2>
+                                            <h2><a href="/profile/{{comment.traveller.id}}">{{comment.traveller}} {% trans "says:" %}</a></h2>
                                         </div>
                                         <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6 text-right">
                                             <p>{{comment.date}}</p>
@@ -157,7 +157,7 @@
                                 <div class="timeline-label">
                                     <div class="row">
                                         <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6">
-                                            <h2>{{comment.traveller}} {% trans "says:" %}</h2>
+                                            <h2><a href="/profile/{{comment.traveller.id}}">{{comment.traveller}} {% trans "says:" %}</a></h2>
                                         </div>
                                         <div class="col-xs-6 col-ms-6 col-md-6 col-lg-6 text-right">
                                             <p>{{comment.date}}</p>
