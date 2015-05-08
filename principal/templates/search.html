@@ -25,7 +25,7 @@
                                 <p><i class="fa fa-globe fa-1x"></i> {{trip.city|safe}} ({{trip.country|safe}})</p>
                             </div>
                             <div class="text-justify col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <p>{{trip.publishedDescription|safe}}</p>
+                                <p>{{trip.publishedDescription|safe|truncatechars:350}}</p>
                             </div>
                             <div class="text-left-center col-xs-12 col-sm-12 col-md-5 col-lg-6">
                                 <p><i class="fa fa-calendar"></i> {{trip.startDate}} - {{trip.endDate}}</p>
