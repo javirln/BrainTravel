@@ -1,4 +1,5 @@
 # -*- coding: latin-1 -*-
+import traceback
 from django.contrib.auth.decorators import permission_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
@@ -62,7 +63,7 @@ def foursquare_list_venues(request):
                 if days <= 3:
                     limit = 20
                 elif 3 < days <= 7:
-                    limit = 40
+                    limit = 35
 
                 venues_sigths = FoursquareServices.search_by_section(city, "sights", limit=limit)
                 venues_outdoors = FoursquareServices.search_by_section(city, "outdoors", limit=limit)
@@ -84,6 +85,8 @@ def foursquare_list_venues(request):
                 
                 all_venues = FoursquareServices.save_data(all_venues)
                 all_food = FoursquareServices.save_data(all_food)
+
+                print("Venues guardadas")
 
                 # Llamada al nuevo algoritmo
                 plan_venues = FoursquareServices.get_plan(list_constrains, items_venues, days)
@@ -107,7 +110,7 @@ def foursquare_list_venues(request):
             return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller, 'list_cat': list_cat}, context_instance=RequestContext(request))
 
     except:
-        # print traceback.format_exc()
+        print traceback.format_exc()
         return render_to_response('error_planning.html', context_instance=RequestContext(request))
 
 
