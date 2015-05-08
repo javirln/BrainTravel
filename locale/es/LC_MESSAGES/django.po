@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-08 16:55+0200\n"
+"POT-Creation-Date: 2015-05-08 18:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,6 +232,7 @@ msgstr ""
 msgid "Decimal number"
 msgstr ""
 
+#: myvenv/lib/python2.7/site-packages/django/db/models/fields/__init__.py:1453
 #: principal/forms.py:32
 msgid "Email address"
 msgstr "Email"
@@ -3050,6 +3051,10 @@ msgstr "Error interno"
 msgid "We did something wrong..."
 msgstr "Algo hicimos mal..."
 
+#: principal/templates/assessment_list.html:6
+msgid "Assessment list"
+msgstr "Valoraciones"
+
 #: principal/templates/assessment_list.html:8
 #: principal/templates/my_visited_venues.html:16
 #: principal/templates/search.html:9 principal/templates/trip_list.html:9
@@ -3064,7 +3069,7 @@ msgstr "Oops! BrainTravel no pudo encontrar nada..."
 #: principal/templates/public_trip_details.html:182
 #: principal/templates/search.html:60 principal/templates/trip_list.html:53
 #: principal/templates/trip_planned_list.html:46
-#: principal/templates/venue_details.html:58
+#: principal/templates/venue_details.html:60
 msgid "Page"
 msgstr "Página"
 
@@ -3075,7 +3080,7 @@ msgstr "Página"
 #: principal/templates/public_trip_details.html:182
 #: principal/templates/search.html:60 principal/templates/trip_list.html:53
 #: principal/templates/trip_planned_list.html:46
-#: principal/templates/venue_details.html:58
+#: principal/templates/venue_details.html:60
 msgid "of"
 msgstr "de"
 
@@ -3463,27 +3468,15 @@ msgstr "Borrar"
 msgid "Create Plan"
 msgstr "Crear un plan"
 
-#: principal/templates/plan_creation.html:267
+#: principal/templates/plan_creation.html:265
 msgid "Are you sure you want to create the plan ?"
 msgstr "¿Estás seguro de que quieres crear el plan?"
 
-#: principal/templates/plan_creation.html:268
-msgid "You cannot get your coins back."
-msgstr "No puedes recuperar tus monedas"
-
-#: principal/templates/plan_creation.html:272
-msgid "Yes, create plan"
-msgstr "Sí, crea el plan"
-
-#: principal/templates/plan_creation.html:273
-msgid "No, I'll give it a think..."
-msgstr "No, me lo pensaré mejor..."
-
-#: principal/templates/plan_creation.html:286
+#: principal/templates/plan_creation.html:274
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: principal/templates/plan_creation.html:287
+#: principal/templates/plan_creation.html:275
 msgid ""
 "We are working hard on your plan. It might take a while, please, be "
 "patient :)"
@@ -3651,12 +3644,12 @@ msgid "Please, write a fancy description:"
 msgstr "Por favor, escribe una descripción agradable:"
 
 #: principal/templates/public_trip_details.html:231
-#: principal/templates/venue_details.html:98
+#: principal/templates/venue_details.html:100
 msgid "Close"
 msgstr "Cerrar"
 
 #: principal/templates/public_trip_details.html:232
-#: principal/templates/venue_details.html:99
+#: principal/templates/venue_details.html:101
 msgid "Send"
 msgstr "Enviar"
 
@@ -3869,41 +3862,38 @@ msgstr "¿Está seguro? Esta acción no puede ser deshecha."
 msgid "Trip list"
 msgstr "Lista de viajes"
 
-#: principal/templates/trip_list.html:29
-msgid "{{trip.get_state_display}}"
-msgstr ""
-
-#: principal/templates/venue_details.html:15
+#: principal/templates/venue_details.html:16
 msgid "Give feedback"
 msgstr "Dar feedback"
 
-#: principal/templates/venue_details.html:19
+#: principal/templates/venue_details.html:21
 msgid "Useful tips"
 msgstr "Consejos útiles"
 
-#: principal/templates/venue_details.html:36
+#: principal/templates/venue_details.html:38
 msgid "This is useful"
 msgstr "Esto es útil"
 
-#: principal/templates/venue_details.html:43
+#: principal/templates/venue_details.html:45
 msgid "Sorry, there aren't trips available for this venue."
 msgstr "Lo sentimos, pero no hay recomendaciones para este sitio."
 
-#: principal/templates/venue_details.html:71
+#: principal/templates/venue_details.html:73
 msgid "Give us some feedback!"
 msgstr "Dar feedback"
 
-#: principal/templates/venue_details.html:76
+#: principal/templates/venue_details.html:78
 msgid ""
 "By giving feedback you enhance our algorithm. The more feedback it gets, the "
 "more accurate it becomes. If you enter something in the description and "
 "users like it, we give you some free coins (2 coins per 5 likes)"
 msgstr ""
 "Dandonos feedback contribuyes a mejorar nuestro algoritmo. Cuanto mas "
-"feedback consigue, mas preciso se vuelve. Si introduces una descripción"
-"y les gusta a los usuarios, te regalaremos algunas monedas (2 monedas cada 5 me gustas)"
+"feedback consigue, mas preciso se vuelve. Si introduces una descripcióny les "
+"gusta a los usuarios, te regalaremos algunas monedas (2 monedas cada 5 me "
+"gustas)"
 
-#: principal/templates/venue_details.html:78
+#: principal/templates/venue_details.html:80
 msgid ""
 "<h4>Lead time: <small>How much time you spent waiting to buy the tickets, on "
 "the queue...</small></h4>"
@@ -3911,7 +3901,7 @@ msgstr ""
 "<h4>Tiempo de espera: <small>Cuanto tiempo pasaste esperando para comprar "
 "los tickets en la cola... </small></h4>"
 
-#: principal/templates/venue_details.html:84
+#: principal/templates/venue_details.html:86
 msgid ""
 "<h4>Duration: <small>How much time you spent inside the venue, you were "
 "walking around...</small></h4>"
@@ -3919,7 +3909,7 @@ msgstr ""
 "<h4>Duración: <small>Cuanto tiempo pasaste dentro del sitio, que estuviste "
 "dando vueltas...</small></h4>"
 
-#: principal/templates/venue_details.html:90
+#: principal/templates/venue_details.html:92
 msgid "<h4>Description: <small>Something else you want to say?</small></h4>"
 msgstr "<h4>Descripción: <small>¿Hay algo más que quieras añadir?</small></h4>"
 
@@ -3959,7 +3949,7 @@ msgstr "100 monedas"
 msgid "Welcome to BrainTravel"
 msgstr "Bienvenido a BrainTravel"
 
-#: principal/views/FoursquareViews.py:56
+#: principal/views/FoursquareViews.py:57
 msgid "Insufficient coins available"
 msgstr "No tienes monedas suficientes disponibles"
 
@@ -4014,6 +4004,15 @@ msgstr "Su voto se ha guardado"
 #: principal/views/UserViews.py:83
 msgid "Congratulations! Now, you are part of BrainTravel. Enjoy!"
 msgstr "¡Felcidades! Ahora eres parte de BrainTravel. !Disfruta¡"
+
+msgid "You cannot get your coins back."
+msgstr "No puedes recuperar tus monedas"
+
+msgid "Yes, create plan"
+msgstr "Sí, crea el plan"
+
+msgid "No, I'll give it a think..."
+msgstr "No, me lo pensaré mejor..."
 
 msgid "DEBUG"
 msgstr "DEPURACIÓN"
