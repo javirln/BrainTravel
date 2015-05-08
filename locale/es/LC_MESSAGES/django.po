@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-08 10:43+0200\n"
+"POT-Creation-Date: 2015-05-08 12:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2929,9 +2929,25 @@ msgstr "Ya existe un usuario con ese email!"
 msgid "Password"
 msgstr "Contraseña"
 
+#: principal/forms.py:55
+msgid "Your account is deactivated"
+msgstr "Tu cuenta está desactivada"
+
 #: principal/forms.py:58
 msgid "Wrong email or password"
 msgstr "Email o contraseña erroneos"
+
+#: principal/forms.py:77
+msgid "APPROVED"
+msgstr "APROBADO"
+
+#: principal/forms.py:78
+msgid "REJECTED"
+msgstr "RECHAZADO"
+
+#: principal/forms.py:79
+msgid "PENDING"
+msgstr "PENDIENTE"
 
 #: principal/forms.py:100
 msgid "Message length too long"
@@ -2952,6 +2968,21 @@ msgstr "Debe de ser una fecha en el pasado"
 #: principal/forms.py:112 principal/forms.py:113
 msgid "Incorrect logic date"
 msgstr "La fecha es incorrecta"
+
+#: principal/forms.py:132
+msgid "MALE"
+msgstr "Masculino"
+
+#: principal/forms.py:133
+msgid "FEMALE"
+msgstr "Femenino"
+
+#: principal/forms.py:189
+msgid ""
+"Please either submit a file or check the default image checkbox, not both"
+msgstr ""
+"Por favor cargue una imagen o seleccion la imagen por defecto, pero no las "
+"dos"
 
 #: principal/forms.py:194
 msgid "Image file too large ( > 512kb )"
@@ -3054,7 +3085,7 @@ msgid "Accept"
 msgstr "Aceptar"
 
 #: principal/templates/buy_coins.html:3
-#: principal/templates/miscellaneous/traveller-menu.html:22
+#: principal/templates/miscellaneous/traveller-menu.html:23
 msgid "Buy coins"
 msgstr "Comprar monedas"
 
@@ -3210,7 +3241,7 @@ msgid "I understand"
 msgstr "Entiendo"
 
 #: principal/templates/index.html:166
-msgid "Disalbe Cookies"
+msgid "Disable Cookies"
 msgstr "Desactivar Cookies"
 
 #: principal/templates/list_coin_history.html:3
@@ -3244,14 +3275,14 @@ msgid "Concept"
 msgstr "Concepto"
 
 #: principal/templates/miscellaneous/admin-menu.html:6
-#: principal/templates/miscellaneous/traveller-menu.html:29
+#: principal/templates/miscellaneous/traveller-menu.html:30
 #: principal/templates/profile_details.html:56
 #: principal/views/TripViews.py:126
 msgid "Trips"
 msgstr "Viajes"
 
 #: principal/templates/miscellaneous/admin-menu.html:13
-#: principal/templates/miscellaneous/traveller-menu.html:72
+#: principal/templates/miscellaneous/traveller-menu.html:73
 msgid "Logout"
 msgstr "Salir"
 
@@ -3283,44 +3314,44 @@ msgstr "BrainTravel funciona gracias a Foursquare"
 msgid "Type to search"
 msgstr "Escribe para buscar"
 
-#: principal/templates/miscellaneous/traveller-menu.html:8
+#: principal/templates/miscellaneous/traveller-menu.html:9
 #: principal/templates/plan_creation.html:4
 #: principal/templates/plan_creation.html:11
 msgid "Plan a trip"
 msgstr "Planear un viaje"
 
-#: principal/templates/miscellaneous/traveller-menu.html:15
+#: principal/templates/miscellaneous/traveller-menu.html:16
 #: principal/templates/stats.html:7
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: principal/templates/miscellaneous/traveller-menu.html:33
+#: principal/templates/miscellaneous/traveller-menu.html:34
 #: principal/templates/trip_edit.html:106
 msgid "Publish trip"
 msgstr "Publicar viaje"
 
-#: principal/templates/miscellaneous/traveller-menu.html:34
+#: principal/templates/miscellaneous/traveller-menu.html:35
 #: principal/templates/payment.html:3 principal/templates/venue_details.html:4
 #: principal/views/TripViews.py:180
 msgid "My trips"
 msgstr "Mis viajes"
 
-#: principal/templates/miscellaneous/traveller-menu.html:35
+#: principal/templates/miscellaneous/traveller-menu.html:36
 #: principal/views/TripViews.py:144
 msgid "My planned trips"
 msgstr "Mis viajes planeados"
 
-#: principal/templates/miscellaneous/traveller-menu.html:36
+#: principal/templates/miscellaneous/traveller-menu.html:37
 msgid "Drafts"
 msgstr "Borrador"
 
-#: principal/templates/miscellaneous/traveller-menu.html:37
+#: principal/templates/miscellaneous/traveller-menu.html:38
 #: principal/templates/my_visited_venues.html:3
 #: principal/templates/my_visited_venues.html:8
 msgid "Visited venues"
 msgstr "Sitios visitados"
 
-#: principal/templates/miscellaneous/traveller-menu.html:61
+#: principal/templates/miscellaneous/traveller-menu.html:62
 msgid "View profile"
 msgstr "Ver perfil"
 
@@ -3730,11 +3761,11 @@ msgstr "Estoy de acuerdo con los"
 msgid "Terms and Conditions"
 msgstr "Términos y condiciones"
 
-#: principal/templates/signin.html:195
+#: principal/templates/signin.html:196
 msgid "Almost done..."
 msgstr "Casi hemos terminado..."
 
-#: principal/templates/signin.html:196
+#: principal/templates/signin.html:197
 msgid "We've just sent your a confirmation email with your password."
 msgstr "Acabamos de enviarte un correo de confirmación con tu contraseña."
 

@@ -192,9 +192,17 @@
 			success : function(json) {
 				$('#singUp-button').prop('disabled', false);
 				if (json.success == true) {
-					sweetAlert("{% trans "Almost done..." %}", "" +
-                            "{% trans "We've just sent your a confirmation email with your password." %}",
-                            "success"); // log the returned json to the console
+                    swal({
+                        title: "{% trans "Almost done..." %}",
+                        text: "{% trans "We've just sent your a confirmation email with your password." %}",
+                        type: "success",
+                        confirmButtonText: "Ok",
+                        closeOnConfirm: false
+                    }, function(isConfirm){
+                        if (isConfirm) {
+                            window.location.replace("/");
+                        }
+                    });
 				} else {
 					sweetAlert(json.error, "", "error");
 					//alert(json.error);

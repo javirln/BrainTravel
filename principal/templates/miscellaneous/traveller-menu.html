@@ -2,23 +2,24 @@
 {#    <a id="sign_ind_nav" href="/auth_request">test FS</a>#}
 {#</li>#}
 {% load i18n %}
+{% load staticfiles %}
 <li>
     <a id="sign_ind_nav" href="/planner/list_venues/">
-        <span class="fa fa-file-text"></span>
+        <span id="plan_trip_nav" class="fa fa-file-text"></span>
         <strong>{% trans "Plan a trip" %}</strong>
     </a>
 </li>
 
 <li>
     <a id="sign_ind_nav" href="/statistics/">
-        <span class="fa fa-bar-chart"></span>
+        <span id="statistics_nav" class="fa fa-bar-chart"></span>
         <strong>{%trans "Statistics" %}</strong>
     </a>
 </li>
 
 <li>
     <a id="sign_ind_nav" href="/buy_coins">
-        <span class="fa fa-shopping-cart"></span>
+        <span id="coins_nav" class="fa fa-shopping-cart"></span>
         <strong>{% trans "Buy coins" %}</strong>
     </a>
 </li>

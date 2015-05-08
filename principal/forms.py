@@ -52,7 +52,7 @@ class LoginForm(forms.Form):
         user = authenticate(username=username, password=password)
         if user is not None:
             if not user.is_active:
-                self.add_error('username', "Your account is desactivated")
+                self.add_error('username', _("Your account is deactivated"))
         else:
             if username is not None and password is not None:
                 self.add_error('username', _("Wrong email or password"))
@@ -74,9 +74,9 @@ class TravellerRegistrationForm(forms.Form):
 # author: Juane
 class TripUpdateStateForm(forms.Form):
     State = (
-        ('ap', 'APPROVED'),
-        ('re', 'REJECTED'),
-        ('pe', 'PENDING')
+        ('ap', _('APPROVED')),
+        ('re', _('REJECTED')),
+        ('pe', _('PENDING'))
     )
     id = forms.IntegerField(widget=forms.HiddenInput)
     state = forms.ChoiceField(label='state', choices=State, widget=forms.Select(attrs={'class': 'form-control'}))
@@ -129,8 +129,8 @@ class PlanForm(forms.Form):
 # author: Juane
 class TravellerEditProfileForm(forms.Form):
     Genre = (
-        ('MA', 'MALE'),
-        ('FE', 'FEMALE')
+        ('MA', _('MALE')),
+        ('FE', _('FEMALE'))
     )
     id = forms.IntegerField(
         required=True,
@@ -186,7 +186,7 @@ class TravellerEditProfileForm(forms.Form):
 
     def clean(self):
         if self.cleaned_data.get('photo') and self.cleaned_data.get('photo_clear'):
-            self.add_error('photo', "Please either submit a file or check the default image checkbox, not both")
+            self.add_error('photo', _("Please either submit a file or check the default image checkbox, not both"))
         elif self.cleaned_data.get('photo'):
             content_types = ['image/png', 'image/jpg', 'image/jpeg']
             if self.cleaned_data.get('photo').content_type in content_types:
