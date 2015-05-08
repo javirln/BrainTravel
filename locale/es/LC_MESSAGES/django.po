@@ -3946,16 +3946,28 @@ msgstr ""
 "Por favor, se paciente :)"
 
 #: principal/views/Coinviews.py:53
-msgid "40 Coins"
+msgid "40 monedas"
+msgstr "40 coins"
+
+#: principal/views/Coinviews.py:53
+msgid "40 coins"
 msgstr "40 monedas"
 
 #: principal/views/Coinviews.py:66
-msgid "60 Coins"
+msgid "60 monedas"
+msgstr "60 coins"
+
+#: principal/views/Coinviews.py:66
+msgid "60 coins"
 msgstr "60 monedas"
 
 #: principal/views/Coinviews.py:79
-msgid "100 Coins"
+msgid "100 coins"
 msgstr "100 monedas"
+
+#: principal/views/Coinviews.py:79
+msgid "100 monedas"
+msgstr "100 coins"
 
 #: principal/views/EmailViews.py:15
 msgid "Welcome to BrainTravel"
