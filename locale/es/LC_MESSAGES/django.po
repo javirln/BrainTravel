@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-08 00:21+0200\n"
+"POT-Creation-Date: 2015-05-08 00:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3239,7 +3239,7 @@ msgstr "Concepto"
 #: principal/templates/miscellaneous/admin-menu.html:6
 #: principal/templates/miscellaneous/traveller-menu.html:29
 #: principal/templates/profile_details.html:56
-#: principal/views/TripViews.py:131
+#: principal/views/TripViews.py:126
 msgid "Trips"
 msgstr "Viajes"
 
@@ -3294,12 +3294,12 @@ msgstr "Publicar viaje"
 
 #: principal/templates/miscellaneous/traveller-menu.html:34
 #: principal/templates/payment.html:3 principal/templates/venue_details.html:4
-#: principal/views/TripViews.py:185
+#: principal/views/TripViews.py:180
 msgid "My trips"
-msgstr "Ver mis viajes"
+msgstr "Mis viajes"
 
 #: principal/templates/miscellaneous/traveller-menu.html:35
-#: principal/views/TripViews.py:149
+#: principal/views/TripViews.py:144
 msgid "My planned trips"
 msgstr "Mis viajes planeados"
 
@@ -3610,12 +3610,12 @@ msgid "Please, write a fancy description:"
 msgstr "Por favor, escribe una descripción agradable:"
 
 #: principal/templates/public_trip_details.html:231
-#: principal/templates/venue_details.html:97
+#: principal/templates/venue_details.html:98
 msgid "Close"
 msgstr "Cerrar"
 
 #: principal/templates/public_trip_details.html:232
-#: principal/templates/venue_details.html:98
+#: principal/templates/venue_details.html:99
 msgid "Send"
 msgstr "Enviar"
 
@@ -3829,10 +3829,8 @@ msgid "Give feedback"
 msgstr "Dar feedback"
 
 #: principal/templates/venue_details.html:19
-#, fuzzy
-#| msgid "Useful tips"
-msgid "Useful trips"
-msgstr "Consejos mas útiles"
+msgid "Useful tips"
+msgstr "Consejos útiles"
 
 #: principal/templates/venue_details.html:36
 msgid "This is useful"
@@ -3918,51 +3916,51 @@ msgstr "Bienvenido a BrainTravel"
 msgid "Insufficient coins available"
 msgstr "No tienes monedas suficientes disponibles"
 
-#: principal/views/TravellerViews.py:42
+#: principal/views/TravellerViews.py:40
 msgid "Profile successfully updated"
 msgstr "Perfil actualizado satisfactoriamente"
 
-#: principal/views/TravellerViews.py:66
+#: principal/views/TravellerViews.py:63
 msgid "Password successfully updated"
 msgstr "Contraseña actualizada satisfactoriamente"
 
-#: principal/views/TripViews.py:92
+#: principal/views/TripViews.py:88
 msgid "Comment successfully"
 msgstr "Se ha guardado su comentario"
 
-#: principal/views/TripViews.py:101
+#: principal/views/TripViews.py:97
 msgid "Your vote has been saved!"
 msgstr "Su voto se ha guardado"
 
-#: principal/views/TripViews.py:164
+#: principal/views/TripViews.py:159
 msgid "Trip successfully updated"
 msgstr "Viaje actualizado satisfactoriamente"
 
-#: principal/views/TripViews.py:203
+#: principal/views/TripViews.py:198
 msgid "My draft trips"
 msgstr "Mis viajes en borradores"
 
-#: principal/views/TripViews.py:218 principal/views/TripViews.py:254
+#: principal/views/TripViews.py:214 principal/views/TripViews.py:249
 msgid "Action completed successfully"
 msgstr "Acción completada con éxito"
 
-#: principal/views/TripViews.py:223 principal/views/TripViews.py:259
+#: principal/views/TripViews.py:219 principal/views/TripViews.py:254
 msgid "Your trip must be accepted by an administrator"
 msgstr "Su viaje debe de ser acceptado por un administrador"
 
-#: principal/views/TripViews.py:264
+#: principal/views/TripViews.py:259
 msgid "Trip deleted successfully"
 msgstr "Acción completada con éxito"
 
-#: principal/views/TripViews.py:329 principal/views/TripViews.py:359
+#: principal/views/TripViews.py:318 principal/views/TripViews.py:349
 msgid "Thanks for the feedback, you are awesome!"
 msgstr "Gracias por el feedback, ¡eres increíble!"
 
-#: principal/views/TripViews.py:332
+#: principal/views/TripViews.py:321
 msgid "Something went wrong..."
 msgstr "Algo ha ido mal..."
 
-#: principal/views/TripViews.py:362
+#: principal/views/TripViews.py:352
 msgid "You voted this tip already."
 msgstr "Su voto se ha guardado"
 
