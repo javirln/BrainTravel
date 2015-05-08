@@ -12,12 +12,14 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                {% if not perms.principal.administrator %}
                 <li>
                     <a data-toggle="collapse" href="#searchCollapse" id="search-toggle">
                         <span id="search_nav" class="fa fa-search"></span>
                         <strong>{% trans "Search"%}</strong>
                     </a>
                 </li>
+                {% endif %}
                 {% if user.is_anonymous %}
                     {% include "miscellaneous/anonymous-menu.html" %}
                 {% else %}

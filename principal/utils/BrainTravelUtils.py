@@ -4,7 +4,6 @@ import string
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 
-
 def id_generator(size=5, chars=string.ascii_uppercase + string.ascii_lowercase + string.digits):
     number = random.choice(string.digits)
     lower = random.choice(string.ascii_lowercase)

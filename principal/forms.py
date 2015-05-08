@@ -9,6 +9,7 @@ from django.utils.translation import ugettext as _
 from paypal.standard.forms import PayPalPaymentsForm
 from django import forms
 from django.db.models.fields import BLANK_CHOICE_DASH
+from django.utils.translation import ugettext_lazy as _lazy
 
 from validators import password_validator
 from principal.models import Traveller
@@ -74,9 +75,9 @@ class TravellerRegistrationForm(forms.Form):
 # author: Juane
 class TripUpdateStateForm(forms.Form):
     State = (
-        ('ap', _('APPROVED')),
-        ('re', _('REJECTED')),
-        ('pe', _('PENDING'))
+        ('ap', _lazy('APPROVED')),
+        ('re', _lazy('REJECTED')),
+        ('pe', _lazy('PENDING'))
     )
     id = forms.IntegerField(widget=forms.HiddenInput)
     state = forms.ChoiceField(label='state', choices=State, widget=forms.Select(attrs={'class': 'form-control'}))
@@ -129,8 +130,8 @@ class PlanForm(forms.Form):
 # author: Juane
 class TravellerEditProfileForm(forms.Form):
     Genre = (
-        ('MA', _('MALE')),
-        ('FE', _('FEMALE'))
+        ('MA', _lazy('MALE')),
+        ('FE', _lazy('FEMALE'))
     )
     id = forms.IntegerField(
         required=True,

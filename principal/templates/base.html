@@ -44,9 +44,9 @@
             <script type="text/javascript">
                 $(function () {
                     swal({
-                        title: '{{ message.tags }}',
+                        title: '{% trans message.tags %}',
                         text: '{{ message}}',
-                        type: '{{ message.tags }}',
+                        type: '{% trans message.tags %}',
                         confirmButtonText: '{{confirm_button}}'
                     });
                 });
