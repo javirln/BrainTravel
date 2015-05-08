@@ -32,7 +32,7 @@
     </div>
 </div>
 
-
+{% if not perms.principal.administrator %}
 <div class="collapse padding-control" id="searchCollapse">
 	<div class="well search-bt">
 		<form action="/search_trip/" method="post" role="search">
@@ -49,3 +49,4 @@
 		</form>
 	</div>
 </div>
+{% endif %}
