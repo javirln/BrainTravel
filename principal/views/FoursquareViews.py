@@ -9,7 +9,7 @@ from django.utils.translation import ugettext as _
 from principal.forms import PlanForm
 from principal.models import Trip, Feedback, Category
 from principal.services import FoursquareServices, TravellerService, CoinService,\
-    VenueService
+    VenueService, LikeService
 from principal.services.FoursquareServices import categories_initializer, init_fs
 from principal.utils import BrainTravelUtils
 from principal.views.Coinviews import buy_coins
@@ -106,9 +106,9 @@ def foursquare_list_venues(request):
             form = PlanForm()
             return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller, 'list_cat': list_cat}, context_instance=RequestContext(request))
 
-    except:
-        # print traceback.format_exc()
-        return render_to_response('error_planning.html', context_instance=RequestContext(request))
+    except Exception as e:
+        print str(e)
+        #return render_to_response('error_planning.html', context_instance=RequestContext(request))
 
 
 def retrieve_venue(request, id_venue):
@@ -116,6 +116,13 @@ def retrieve_venue(request, id_venue):
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
             trips = Feedback.objects.filter(Q(venues=id_venue)).order_by("usefulCount")
+            
+            tips_dict = {}
+            
+            for tip in trips:
+                tips_dict[tip] = LikeService.can_vote(request.user.id, tip.id)
+            
+            
             is_visited = VenueService.is_visited_by_user(request, venue.id) 
             paginator = Paginator(trips, 10)
             page = request.GET.get('page')
@@ -126,7 +133,27 @@ def retrieve_venue(request, id_venue):
             except EmptyPage:
                 trips = paginator.page(paginator.num_pages)
 
-            return render_to_response('venue_details.html', {"venue": venue, "trips": trips, "is_visited":is_visited}, context_instance=RequestContext(request))
+            return render_to_response('venue_details.html', {"venue": venue, "trips": trips, "is_visited":is_visited, "tips_dict":tips_dict}, context_instance=RequestContext(request))
 
-        except:
+        except Exception as e:
             return render_to_response('error.html', context_instance=RequestContext(request))
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
