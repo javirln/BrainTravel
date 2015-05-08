@@ -70,7 +70,7 @@
 			                        <div class="col-xs-12">
 			                            <label for="cantidad">{% trans "Select modifier" %}</label>
 			                            <select id="cantidad" style="display: none;" class="chosen-select" tabindex="-1">
-			                                <option value=""></option>
+			                                <option value="" selected disabled>{% trans "Please select an option" %}</option>
 			                                <option value="Mucho">{% trans "A lot of" %}</option>
 			                                <option value="Poco">{% trans "Some of" %}</option>
 			                                <option value="Nada">{% trans "Anything of" %}</option>
@@ -84,7 +84,7 @@
 			                      <div class="col-xs-12">
 			                            <label for="selec">{% trans "Select your custom constrains" %}</label>
 			                            <select id="selec" style="display: none;"  class="chosen-select">
-			                                <option></option>
+                                            <option value="" selected disabled>{% trans "Please select an option" %}</option>
 			                                {% for cat in list_cat %}
 			                                    <option value= {{ cat.id_foursquare }}>{% trans cat.name %}</option>
 			                                {% endfor %}
@@ -270,9 +270,7 @@ function copyValues() {
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "{% trans "Yes, create plan" %}",
-                cancelButtonText: "{% trans "No, I'll give it a think..." %}",
-                closeOnConfirm: false,
-                closeOnCancel: false
+                cancelButtonText: "{% trans "No, I'll give it a think..." %}"
             }, function(isConfirm){
                 if (isConfirm) {
                     whileLoading()
