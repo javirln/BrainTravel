@@ -141,8 +141,7 @@
 	                <div class="form-group">
 	                    <div class="col-xs-12">
 	                       <hr>
-	                       <input id="create_plan" class="btn btn-primary btn-block" name="save"
-                                  value="{% trans "Create Plan" %}" type="submit" onclick=send_form()>
+	                       <input id="create_plan" class="btn btn-primary btn-block" name="save" value="{% trans "Create Plan" %}" type="submit">
                         </div>
                     </div>
                 </div>
@@ -259,10 +258,46 @@ function copyValues() {
         }
     });
 
-    $("form").submit(function (event) {
+    $('#form-create').validator().on('submit', function (e) {
+        if (!e.isDefaultPrevented()) {
+        	/*not valid form*/
+        	e.preventDefault();
+        	confirmCreation();
+        }else {
+        	e.preventDefault();
+        }
+    });
+    
+    function confirmCreation(){
+    	 swal({
+	             title: "{% trans "Are you sure you want to create the plan ?" %}",
+	             text: "{% trans "You cannot get your coins back." %}",
+	             type: "warning",
+	             showCancelButton: true,
+	             confirmButtonColor: "#DD6B55",
+	             confirmButtonText: "{% trans "Yes, create plan" %}",
+	             cancelButtonText: "{% trans "No, I'll give it a think..." %}",
+	             closeOnConfirm: false,
+	             closeOnCancel: true
+             }, function(isConfirm){
+	             if (isConfirm) {
+	            	 $('#form-create').unbind("submit").submit();
+	                 whileLoading();
+	             } 
+	         });
+    	    }
+    
+    
+    /* $('#form-create').submit(function (event) {
+    	event.preventDefault();
+    	var form = $('#form-create');
+    	alert(form.checkValidity());
+    	
+    	alert(form.checkValidity);
+    	
+    	alert(!form.checkValidity || form.checkValidity());
+    	
         //funcion que se lanza al enviar el form
-        if (input_city.val() != '' || input_country.val() != '' || input_days.val() != '') {
-
             swal({
                 title: "{% trans "Are you sure you want to create the plan ?" %}",
                 text: "{% trans "You cannot get your coins back." %}",
@@ -272,17 +307,16 @@ function copyValues() {
                 confirmButtonText: "{% trans "Yes, create plan" %}",
                 cancelButtonText: "{% trans "No, I'll give it a think..." %}",
                 closeOnConfirm: false,
-                closeOnCancel: false
+                closeOnCancel: true
             }, function(isConfirm){
                 if (isConfirm) {
-                    whileLoading()
+                    whileLoading();
                 } else {
-                    event.preventDefault();
+                	$('#form-create').submit();
                 }
             });
-        }
     });
-
+ */
     function whileLoading() {
         swal({
             title: " {% trans "Loading..." %}",
