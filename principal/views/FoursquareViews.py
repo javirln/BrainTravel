@@ -8,7 +8,8 @@ from django.utils.translation import ugettext as _
 
 from principal.forms import PlanForm
 from principal.models import Trip, Feedback, Category
-from principal.services import FoursquareServices, TravellerService, CoinService
+from principal.services import FoursquareServices, TravellerService, CoinService,\
+    VenueService
 from principal.services.FoursquareServices import categories_initializer, init_fs
 from principal.utils import BrainTravelUtils
 from principal.views.Coinviews import buy_coins
@@ -115,7 +116,7 @@ def retrieve_venue(request, id_venue):
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
             trips = Feedback.objects.filter(Q(venues=id_venue)).order_by("usefulCount")
-
+            is_visited = VenueService.is_visited_by_user(request, venue.id) 
             paginator = Paginator(trips, 10)
             page = request.GET.get('page')
             try:
@@ -125,7 +126,7 @@ def retrieve_venue(request, id_venue):
             except EmptyPage:
                 trips = paginator.page(paginator.num_pages)
 
-            return render_to_response('venue_details.html', {"venue": venue, "trips": trips}, context_instance=RequestContext(request))
+            return render_to_response('venue_details.html', {"venue": venue, "trips": trips, "is_visited":is_visited}, context_instance=RequestContext(request))
 
         except:
             return render_to_response('error.html', context_instance=RequestContext(request))
