@@ -81,11 +81,11 @@
                                             <div class="help-block with-errors">
                                                 {{ form.visible_fields.0.errors }}
                                             </div>
-                                        </div>
+                                        </div>clear
                                         {% for hidden in form.hidden_fields %}
                                             {{ hidden }}
                                         {% endfor %}
-                                        <button type="submit" name="save" value="save" onclick="return confirm('Are you sure?')" class="btn btn-block btn-danger">{% trans "Save" %}</button>
+                                        <button type="submit" name="save" value="save" onclick="return confirm({% trans "Are you sure?" %})" class="btn btn-block btn-danger">{% trans "Save" %}</button>
                                     </form>
                                 </div>
                             {% endif %}
