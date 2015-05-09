@@ -116,7 +116,7 @@
                         	<input type="hidden" id="trip" name="trip" value="{{trip.id}}" />
                         	
                         	<div class="form-group">
-                        	   <select id="selectNewVenue" name="newVenue" style="display:none;" tabindex="-1" class="chosen-select" data-placeholder="{% trans "Choose a new venue..."%}">
+                        	   <select id="selectNewVenue" name="newVenue" tabindex="-1" class="chosen-select" data-placeholder="{% trans "Choose a new venue..."%}">
 	                                <option></option>
 	                                {% for v in trip.possible_venues.all %}
 	                                    {% if not v.is_food %}
@@ -156,7 +156,7 @@
                         	<input type="hidden" id="trip" name="trip" value="{{trip.id}}" />
 	                        
 	                        <div class="form-group">
-		                        <select id="selectNewFood" name="newVenue" style="display:none;" tabindex="-1" class="chosen-select" data-placeholder="{% trans "Choose a new venue..." %}">
+		                        <select id="selectNewFood" name="newVenue" tabindex="-1" class="chosen-select" data-placeholder="{% trans "Choose a new venue..." %}">
 		                        	<option></option>
 		                        	{% for v in trip.possible_venues.all %}
 		                        		{% if v.is_food %}
