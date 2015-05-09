@@ -31,7 +31,8 @@
 		            <tr>
 		                <td>{{ coin_history.amount|safe }}</td>
 		                <td>{{ coin_history.date|date:"d/m/Y"|safe }}</td>
-		                <td>{{ coin_history.trip.day_set.count }} {% if coin_history.trip.day_set.count > 1 %}{% trans "days in"%} {% else %} {% trans "day in"%} {% endif %}{{ coin_history.trip.city }}, {{ coin_history.trip.country }}</td>
+		                <!-- <td>{{ coin_history.trip.day_set.count }} {% if coin_history.trip.day_set.count > 1 %}{% trans "days in"%} {% else %} {% trans "day in"%} {% endif %}{{ coin_history.trip.city }}, {{ coin_history.trip.country }}</td> -->
+		                <td>{{coin_history.concept}}</td>
 		            </tr>
 		        {% endfor %}
 		        </tbody>
