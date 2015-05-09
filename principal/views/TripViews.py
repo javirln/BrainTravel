@@ -260,7 +260,7 @@ def trip_edit(request, trip_id):
                 return HttpResponseRedirect("/trip/mylist/")
 
         else:
-            data = {'city': trip.city, 'publishedDescription': trip.publishedDescription, 'country': trip.country, 'startDate': trip.startDate, 'endDate': trip.endDate}
+            data = {'city': trip.city, 'publishedDescription': trip.publishedDescription, 'country': trip.country, 'startDate': trip.startDate, 'endDate': trip.endDate, 'name': trip.name}
             form = TripEditForm(initial=data)
 
         return render_to_response('trip_edit.html', {"form": form, "trip": trip, "can_delete": True, "create": False}, context_instance=RequestContext(request))
