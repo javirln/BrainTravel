@@ -108,7 +108,7 @@ def foursquare_list_venues(request):
 
     except Exception as e:
         print str(e)
-        #return render_to_response('error_planning.html', context_instance=RequestContext(request))
+        return render_to_response('error_planning.html', context_instance=RequestContext(request))
 
 
 def retrieve_venue(request, id_venue):
