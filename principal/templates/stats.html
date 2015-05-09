@@ -85,7 +85,7 @@
 						  	</div>
 						  	<div class="media-body" style="vertical-align: middle;">
 						  		<h4 class="media-heading">{{forloop.counter}}. <a href="/public_trip_details/{{public_trip.id}}">{{public_trip.name}}</a></h4>
-							    <div>{% trans "Number of likes" %}: {{public_trip.num_likes}}</div>
+							    <div>{% trans "Number of likes" %}: {{public_trip.likes}}</div>
 							    <p> <b>{% trans "Description: " %}</b> {{public_trip.publishedDescription|safe|truncatechars:100}}</p>
 						  	</div>
 			    		</div>
