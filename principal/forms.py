@@ -27,6 +27,8 @@ class LoginForm(forms.Form):
         max_length=254,
         widget=forms.EmailInput(
             attrs={
+                'autofocus': 'autofocus',
+                'tabindex': '0',
                 'class': 'form-control',
                 'required': 'required',
                 'maxlength': '254',
@@ -39,6 +41,7 @@ class LoginForm(forms.Form):
         max_length=32,
         widget=forms.PasswordInput(
             attrs={
+                'tabindex': '0',
                 'class': 'form-control',
                 'required': 'required',
                 'maxlength': '32',

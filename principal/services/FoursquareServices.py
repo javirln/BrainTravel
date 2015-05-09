@@ -2,6 +2,7 @@
 from datetime import datetime
 import json
 from math import radians, sin, cos, sqrt, asin
+import pprint
 import traceback
 import urllib2
 from django.utils.translation import ugettext as _
@@ -120,6 +121,7 @@ def filter_and_save(items, food=False):
 
 def save_data(venues_selected):
     venues_selected_with_photos = []
+    print "Venues para guardar " + str(len(venues_selected))
     for v in venues_selected:
         if v.photo is not None and v.photo is not "":
             venues_selected_with_photos.append(v)
@@ -255,24 +257,36 @@ def get_venues_order(list_constrains, lat_centre, lng_centre, list_venues):
     url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str(lat_centre) + "," + str(lng_centre) \
           + "&destinations=" + destinations + "&language=es-ES&sensor=false"
 
+    print (url)
     response = urllib2.urlopen(url)
     data = json.load(response)
     list_durations = []
     count = 0
-    elements = data['rows'][0]['elements']
-
     if data['status'] == "OVER_QUERY_LIMIT":
         elements = calculate_distance(lat_centre, lng_centre, list_venues)
+        print("Elementos distancia mi metodo privado " + str(len(elements)))
         is_google = False
+    else:
+        elements = data['rows'][0]['elements']
+    print ("Usamos google? " + str(is_google))
 
     for element in elements:
+        if is_google:
+            if element['status'] != "OK":
+                print("El estado del elemento es: " + str(element['status']))
+                print "No se puede trazar un camino entre el origen y el destino. Pasamos de la mierda de destino este"
+                continue
         # son metros
         # distance = element['distance']['value']
         # son segundos
         # duration = element['duration']['value']
         venue_actual = list_venues[count]
         if is_google:
-            tiempo = element['duration']['value']
+            try:
+                tiempo = element['duration']['value']
+            except Exception as e:
+                pprint.pprint(element)
+                raise e
         else:
             tiempo = element
 
@@ -293,7 +307,7 @@ def get_venues_order(list_constrains, lat_centre, lng_centre, list_venues):
         list_durations.append(tupla)
         count += 1
     list_durations.sort(key=lambda x: x[1])
-
+    print "Venues ordenados con longitud: " + str(len(list_durations))
     return list_durations
 
 
@@ -350,17 +364,19 @@ def get_plan(list_constrains, fs_venues, num_days):
 
 
 def get_plan_food(list_constrains, fs_venues_food, num_days, origin):
+    print("get_plan_food longitud venues NO ordenados " + str(len(fs_venues_food)))
+    print("get_plan_food se necesitan estos sitios de comida " + str((num_days * 5) - 1))
     venues_ordered = get_venues_order(list_constrains, origin['venue']['location']['lat'],
                                       origin['venue']['location']['lng'],
                                       fs_venues_food)
-    
-    print venues_ordered
+
+    print("get_plan_food longitud venues ordenados " + str(len(venues_ordered)))
 
     selected_venues = []
     for idx, venue in enumerate(venues_ordered):
         selected_venues.append(venue[0])
 
-        if idx >= (num_days * 5):
+        if idx >= ((num_days * 5) -1):
             break
 
     return selected_venues
