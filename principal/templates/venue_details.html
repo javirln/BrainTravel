@@ -10,7 +10,7 @@
                 <div class="media">
                     <div class="row">
                         <div class="col-md-2 col-sm-3 col-lg-2 col-xs-12 text-center">
-                            <img class="img-rounded" style="width: 150px;" src="{{venue.photo}}">
+                            <img class="img-rounded" style="width: 150px;" src="{{venue.photo}}" onerror="this.src='{% static "img/no-image.png" %}'">
                             <h4 class="media-heading" style="margin-top: 14px;">{{venue.name}}</h4>
                             {% if is_visited %}
                             	<a style="margin-top: 10px;" type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">{% trans "Give feedback" %}</a>

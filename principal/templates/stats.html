@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %} Statistics {% endblock %}
 {% load i18n %} {% block content %}
-
+{% load staticfiles %}
 <div class="container">
     <div class="text-center">
         <h1>{% trans "Statistics" %}</h1>
@@ -38,7 +38,7 @@
 			    		<div class="media">
 			    			<div class="media-left">
 								<a href="/venue_details/{{venue.id}}">
-						      		<img class="media-object img-circle" src="{{venue.photo}}" style="width: 150px; height: 150px;" />
+						      		<img class="media-object img-circle" src="{{venue.photo}}" onerror="this.src='{% static "img/no-image.png" %}'" style="width: 150px; height: 150px;" />
 						    	</a>
 						  	</div>
 						  	<div class="media-body" style="vertical-align: middle;">
@@ -61,7 +61,7 @@
 			    		<div class="media">
 			    			<div class="media-left">
 								<a href="/venue_details/{{feedback.venues.id}}">
-						      		<img class="media-object img-circle" src="{{feedback.venues.photo}}" style="width: 150px; height: 150px;"  />
+						      		<img class="media-object img-circle" src="{{feedback.venues.photo}}" onerror="this.src='{% static "img/no-image.png" %}'" style="width: 150px; height: 150px;"  />
 						    	</a>
 						  	</div>
 						  	<div class="media-body" style="vertical-align: middle;">
