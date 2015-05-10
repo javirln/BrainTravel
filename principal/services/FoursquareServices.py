@@ -168,6 +168,8 @@ def create_trip(tripForm, coins_cost, request, selected_venues_with_photos, inde
         elif num_day == len(indexes_venues) + 1:
             day_venues = selected_venues_with_photos[indexes_venues[num_day - 2]:]
         else:
+            print(len(indexes_venues))
+            print(num_day)
             day_venues = selected_venues_with_photos[indexes_venues[num_day - 2]: indexes_venues[num_day - 1]]
 
         # enumerate devuelve el elemento sobre el que se esta iterando y el indice que ocupa
@@ -262,7 +264,7 @@ def get_venues_order(list_constrains, lat_centre, lng_centre, list_venues):
     data = json.load(response)
     list_durations = []
     count = 0
-    if data['status'] == "OVER_QUERY_LIMIT":
+    if constants.USE_GOOGLE_DISTANCE is False or data['status'] == "OVER_QUERY_LIMIT":
         elements = calculate_distance(lat_centre, lng_centre, list_venues)
         print("Elementos distancia mi metodo privado " + str(len(elements)))
         is_google = False
