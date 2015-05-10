@@ -58,6 +58,7 @@ def foursquare_list_venues(request):
                     BrainTravelUtils.save_error(request, _("Insufficient coins available"))
                     return buy_coins(request)
                 city = form.cleaned_data['city']
+                country = form.cleaned_data['country']
 
                 limit = 0
                 if days <= 3:
@@ -65,10 +66,10 @@ def foursquare_list_venues(request):
                 elif 3 < days <= 7:
                     limit = 35
 
-                venues_sigths = FoursquareServices.search_by_section(city, "sights", limit=limit)
-                venues_outdoors = FoursquareServices.search_by_section(city, "outdoors", limit=limit)
-                venues_arts = FoursquareServices.search_by_section(city, "arts", limit=limit)
-                venues_eat = FoursquareServices.search_by_section(city, "food")
+                venues_sigths = FoursquareServices.search_by_section(city + ", " + country, "sights", limit=limit)
+                venues_outdoors = FoursquareServices.search_by_section(city + ", " + country, "outdoors", limit=limit)
+                venues_arts = FoursquareServices.search_by_section(city + ", " + country, "arts", limit=limit)
+                venues_eat = FoursquareServices.search_by_section(city + ", " + country, "food")
 
                 # List of all items
                 items_venues = []
