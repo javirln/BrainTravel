@@ -54,7 +54,8 @@ urlpatterns = patterns('',
 
     #planner URLs
 
-    (r'^something/paypal/', include('paypal.standard.ipn.urls')),
+    url(r'^something/paypal/', include('paypal.standard.pdt.urls')),
+    url(r'^paypal/return/$', 'principal.views.Coinviews.payment_return'),
 
     #i18n
     url(r'i18n/change_language', 'principal.views.TranslateViews.change_language'),
