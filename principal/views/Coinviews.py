@@ -4,12 +4,12 @@ import ast
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.urlresolvers import reverse
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from paypal.standard.ipn.signals import valid_ipn_received, invalid_ipn_received
 from paypal.standard.models import ST_PP_COMPLETED
 from django.utils.translation import ugettext as _
-
+from paypal.standard.pdt.views import process_pdt
 from BrainTravel import settings
 from principal.forms import FormPaypalOwn
 from principal.services import CoinService, UserService, PaymentsService, CoinHistoryService
@@ -51,9 +51,9 @@ def buy_coins(request):
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "4.50",
             "item_name": _("40 Coins"),
-            "notify_url": "http://54.69.54.93" + reverse('paypal-ipn'),
-            "return_url": "http://54.69.54.93/coin/list/",
-            "cancel_return": "http://54.69.54.93/payment_cancel",
+            "notify_url": "http://dc5aa76b.ngrok.io" + reverse('paypal-pdt'),
+            "return_url": "http://dc5aa76b.ngrok.io/paypal/return/",
+            "cancel_return": "http://dc5aa76b.ngrok.io/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data1,
         }
@@ -64,9 +64,9 @@ def buy_coins(request):
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "7.00",
             "item_name": _("60 Coins"),
-            "notify_url": "http://54.69.54.93" + reverse('paypal-ipn'),
-            "return_url": "http://54.69.54.93/coin/list/",
-            "cancel_return": "http://54.69.54.93/coin/payment_cancel",
+            "notify_url": "http://dc5aa76b.ngrok.io" + reverse('paypal-pdt'),
+            "return_url": "http://dc5aa76b.ngrok.io/paypal/return/",
+            "cancel_return": "http://dc5aa76b.ngrok.io/coin/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data2,
         }
@@ -77,9 +77,9 @@ def buy_coins(request):
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "10.00",
             "item_name": _("100 Coins"),
-            "notify_url": "http://54.69.54.93" + reverse('paypal-ipn'),
-            "return_url": "http://54.69.54.93/coin/list/",
-            "cancel_return": "http://54.69.54.93/payment_cancel",
+            "notify_url": "http://dc5aa76b.ngrok.io" + reverse('paypal-pdt'),
+            "return_url": "http://dc5aa76b.ngrok.io/paypal/return/",
+            "cancel_return": "http://dc5aa76b.ngrok.io/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data3,
         }
@@ -91,42 +91,71 @@ def buy_coins(request):
         data = {"form1": form1, "form2": form2, "form3": form3}
         return render_to_response('buy_coins.html', data, context_instance=RequestContext(request))
 
-    except:
+    except Exception as e:
         return render_to_response('error.html', context_instance=RequestContext(request))
 
 
 #----------- SEÑALES DE VUELTA DE PAYPAL--------------------
-def receive_payment(sender, **kwargs):
-    ipn_obj = sender
-    if ipn_obj.payment_status == ST_PP_COMPLETED:
-        custom_data = ast.literal_eval(ipn_obj.custom)
 
-        #Dictionary where relations package_number and coins
-        dict_coins = {'1': '40', '2':'60', '3':'100'}
-
+def payment_return(request):
+    print ("pago desde " + get_client_ip(request))
+    payment = process_pdt(request)[0]
+    verification = process_pdt(request)[1]
+    
+    if(verification):
         try:
             coins_amount = dict_coins[custom_data['package_number']]
             user = UserService.add_coins(coins_amount, custom_data['user_id'])
             UserService.save(user)
-
+     
             payment = PaymentsService.create(user.id, ipn_obj.mc_gross)
             PaymentsService.save(payment)
-
-            coin_history = CoinHistoryService.create(amount_coins=coins_amount, concept=ipn_obj.item_name,
-                                                     traveller=user, payment=payment)
-            
+     
+            coin_history = CoinHistoryService.create(amount_coins=coins_amount, concept=ipn_obj.item_name, traveller=user, payment=payment)
+                 
             CoinHistoryService.save(coin_history)
-
+     
         except Exception as e:
-            print(e)
+            print(e)        
+    #payment.save()
+    
+
+    
+# def receive_payment(sender, **kwargs):
+#     ipn_obj = sender
+#     if ipn_obj.payment_status == ST_PP_COMPLETED:
+#         custom_data = ast.literal_eval(ipn_obj.custom)
+# 
+#         #Dictionary where relations package_number and coins
+#         dict_coins = {'1': '40', '2':'60', '3':'100'}
+# 
+#         try:
+#             coins_amount = dict_coins[custom_data['package_number']]
+#             user = UserService.add_coins(coins_amount, custom_data['user_id'])
+#             UserService.save(user)
+# 
+#             payment = PaymentsService.create(user.id, ipn_obj.mc_gross)
+#             PaymentsService.save(payment)
+# 
+#             coin_history = CoinHistoryService.create(amount_coins=coins_amount, concept=ipn_obj.item_name,
+#                                                      traveller=user, payment=payment)
+#             
+#             CoinHistoryService.save(coin_history)
+# 
+#         except Exception as e:
+#             print(e)
 
 
 def error(sender, **kwargs):
     print("Algo ha pasado")
-
-valid_ipn_received.connect(receive_payment)
-invalid_ipn_received.connect(error)
-
+    
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip    
 
 
 
