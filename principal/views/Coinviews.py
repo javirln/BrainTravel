@@ -15,16 +15,12 @@ from principal.forms import FormPaypalOwn
 from principal.services import CoinService, UserService, PaymentsService, CoinHistoryService
 from django.views.decorators.csrf import csrf_exempt
 from principal.utils import BrainTravelUtils
+from ast import literal_eval
 
 
 @csrf_exempt
 @login_required()
 def list_coin_traveller(request):
-    
-    #Si la peticion es post, viene de PayPal
-    if request.method == "POST":
-        BrainTravelUtils.save_info(request, _("Thanks for your bought!. It's possible that coins revenue take for a minutes. Please, be patient :)"))
-    
     
     try:
         list_coin_history = CoinService.list_coin_history_traveller(request.user.id)
@@ -51,9 +47,9 @@ def buy_coins(request):
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "4.50",
             "item_name": _("40 Coins"),
-            "notify_url": "http://dc5aa76b.ngrok.io" + reverse('paypal-pdt'),
-            "return_url": "http://dc5aa76b.ngrok.io/paypal/return/",
-            "cancel_return": "http://dc5aa76b.ngrok.io/payment_cancel",
+            "notify_url": "http://54.69.54.93" + reverse('paypal-pdt'),
+            "return_url": "http://54.69.54.93/paypal/return/",
+            "cancel_return": "http://54.69.54.93/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data1,
         }
@@ -64,9 +60,9 @@ def buy_coins(request):
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "7.00",
             "item_name": _("60 Coins"),
-            "notify_url": "http://dc5aa76b.ngrok.io" + reverse('paypal-pdt'),
-            "return_url": "http://dc5aa76b.ngrok.io/paypal/return/",
-            "cancel_return": "http://dc5aa76b.ngrok.io/coin/payment_cancel",
+            "notify_url": "http://54.69.54.93" + reverse('paypal-pdt'),
+            "return_url": "http://54.69.54.93/paypal/return/",
+            "cancel_return": "http://54.69.54.93/coin/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data2,
         }
@@ -77,9 +73,9 @@ def buy_coins(request):
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": "10.00",
             "item_name": _("100 Coins"),
-            "notify_url": "http://dc5aa76b.ngrok.io" + reverse('paypal-pdt'),
-            "return_url": "http://dc5aa76b.ngrok.io/paypal/return/",
-            "cancel_return": "http://dc5aa76b.ngrok.io/payment_cancel",
+            "notify_url": "http://54.69.54.93" + reverse('paypal-pdt'),
+            "return_url": "http://54.69.54.93/paypal/return/",
+            "cancel_return": "http://54.69.54.93/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data3,
         }
@@ -102,18 +98,29 @@ def payment_return(request):
     payment = process_pdt(request)[0]
     verification = process_pdt(request)[1]
     
-    if(verification):
+    if not verification:
         try:
+            
+            dict_coins = {'1': '40', '2':'60', '3':'100'}
+            
+            custom_data = literal_eval(payment.custom)
+            print custom_data
+            
             coins_amount = dict_coins[custom_data['package_number']]
-            user = UserService.add_coins(coins_amount, custom_data['user_id'])
+            user_id = custom_data['user_id']
+            money_amount = payment.mc_gross
+            concept = payment.item_name
+            
+            user = UserService.add_coins(coins_amount, user_id)
             UserService.save(user)
      
-            payment = PaymentsService.create(user.id, ipn_obj.mc_gross)
+            payment = PaymentsService.create(user.id, money_amount)
             PaymentsService.save(payment)
      
-            coin_history = CoinHistoryService.create(amount_coins=coins_amount, concept=ipn_obj.item_name, traveller=user, payment=payment)
-                 
+            coin_history = CoinHistoryService.create(amount_coins=coins_amount, concept=concept, traveller=user, payment=payment)
             CoinHistoryService.save(coin_history)
+            
+            return redirect('/coin/list/')
      
         except Exception as e:
             print(e)        
