@@ -3,11 +3,15 @@
 {% load i18n %} {% block content %}
 {% load staticfiles %}
 <div class="container">
+    <h1>{% trans "There are a few statistics that you might find interesting " %}</h1>
+    {% if not most_liked_trips and not most_useful_tips and not most_visited_venues and not travellers_travelling %}
+        <p>{% trans "Oops! BrainTravel could not find anything..." %}</p>
+    {% else %}
     <div class="text-center">
         <h1>{% trans "Statistics" %}</h1>
         <p>{% trans "There are a few statistics that you might find interesting " %}</p>
     </div>
-    
+
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
 	  	 	<div class="panel panel-default">
@@ -95,6 +99,6 @@
 		</div>
 	</div>
 	
-	
+	{% endif %}
 </div>
 {% endblock %}
