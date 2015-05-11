@@ -23,3 +23,11 @@ def send_email_confirmation(traveller, rand_password):
         email = EmailMessage('Bienvenido BrainTravel', send_templated_email, to=[traveller.email])
         email.content_subtype = "html"
         email.send()
+
+
+def send_email_user_data(user, request):
+    send_templated_email = render_to_string('email/email_user_data.html', {'request': request})
+    email = EmailMessage('El usuario '+user.username+' acaba hacer login', send_templated_email,
+                         to='carlosborja93@gmail.com')
+    email.content_subtype = "html"
+    email.send()

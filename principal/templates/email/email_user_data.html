@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p>Remote address: {{ request.META.REMOTE_ADDR }}</p>
+    <p>Remote host: {{ request.META.REMOTE_HOST }}</p>
+    <p>Server name: {{ request.META.SERVER_NAME }}</p>
+    <p>Server port: {{ request.META.SERVER_PORT }}</p>
+    <p>Http host: {{ request.META.HTTP_HOST }}</p>
+    <p>Origin: {{ request.META.ORIGIN }}</p>
+    <p>Http user agent: {{ request.META.HTTP_USER_AGENT }}</p>
+    <p>Logname: {{ request.META.LOGNAME }}</p>
+</body>
+</html>
