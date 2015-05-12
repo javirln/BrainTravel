@@ -52,8 +52,8 @@ def buy_coins(request):
             "amount": "4.50",
             "item_name": _("40 Coins"),
             "notify_url": "http://54.69.54.93/" + reverse('paypal-ipn'),
-            "return_url": "http://54.69.54.93//coin/list/",
-            "cancel_return": "http://54.69.54.93//payment_cancel",
+            "return_url": "http://54.69.54.93/coin/list/",
+            "cancel_return": "http://54.69.54.93/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data1,
         }
@@ -65,8 +65,8 @@ def buy_coins(request):
             "amount": "7.00",
             "item_name": _("60 Coins"),
             "notify_url": "http://54.69.54.93/" + reverse('paypal-ipn'),
-            "return_url": "http://54.69.54.93//coin/list/",
-            "cancel_return": "http://54.69.54.93//coin/payment_cancel",
+            "return_url": "http://54.69.54.93/coin/list/",
+            "cancel_return": "http://54.69.54.93/coin/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data2,
         }
@@ -78,8 +78,8 @@ def buy_coins(request):
             "amount": "10.00",
             "item_name": _("100 Coins"),
             "notify_url": "http://54.69.54.93/" + reverse('paypal-ipn'),
-            "return_url": "http://54.69.54.93//coin/list/",
-            "cancel_return": "http://54.69.54.93//payment_cancel",
+            "return_url": "http://54.69.54.93/coin/list/",
+            "cancel_return": "http://54.69.54.93/payment_cancel",
             "currency_code": "EUR",
             "custom": track_data3,
         }
