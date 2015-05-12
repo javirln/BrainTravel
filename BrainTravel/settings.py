@@ -40,11 +40,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'principal',
-    'paypal.standard.pdt',
+    'paypal.standard.ipn',
 
 )
 
-PAYPAL_IDENTITY_TOKEN = "GNkgEreFTTFHaMggPfcTun98GZBOIEZzvIRJy3P00hEnMWuIQ9uQPspAVX0"
+#PAYPAL_IDENTITY_TOKEN = "GNkgEreFTTFHaMggPfcTun98GZBOIEZzvIRJy3P00hEnMWuIQ9uQPspAVX0"
 
 MIDDLEWARE_CLASSES = (
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
