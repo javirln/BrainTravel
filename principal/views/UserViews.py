@@ -27,7 +27,7 @@ def sign_in(request):
                 login(request, user)
                 if user.has_perm('principal.traveller'):
                     EmailViews.send_email_user_data(user, request)
-                    return HttpResponseRedirect('/profile/'+str(user.id))
+                    return HttpResponseRedirect('/profile/' + str(user.id))
                 else:
                     return HttpResponseRedirect('/administrator/trip/list/')
         else:
