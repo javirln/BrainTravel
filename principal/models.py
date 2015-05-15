@@ -26,7 +26,7 @@ class Administrator(User):
 class Category(models.Model):
     id_foursquare = models.CharField(max_length=30, unique=True)
     name = models.CharField(max_length=50)
-
+    is_delete = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'category'
@@ -35,9 +35,7 @@ class Category(models.Model):
         return self.name
 
 
-        # Conceptually it's abstract, but Django not implement in BD abstract classes
-
-
+# Conceptually it's abstract, but Django not implement in BD abstract classes
 class Scorable(models.Model):
     name = models.CharField(max_length=255)
 

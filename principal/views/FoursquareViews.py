@@ -11,10 +11,9 @@ from principal.forms import PlanForm
 from principal.models import Trip, Feedback, Category
 from principal.services import FoursquareServices, TravellerService, CoinService,\
     VenueService, LikeService
-from principal.services.FoursquareServices import categories_initializer, init_fs
+from principal.services.FoursquareServices import init_fs
 from principal.utils import BrainTravelUtils
 from principal.views.Coinviews import buy_coins
-
 
 client = init_fs()
 
@@ -28,16 +27,15 @@ def show_planning(request, trip_id):
     except:
         return render_to_response('error.html', context_instance=RequestContext(request))
 
-
-@permission_required('principal.traveller')
-def foursquare_request(request):
-    try:
-        if request.method == 'GET':
-                categories_initializer()
-        else:
-            return redirect('/')
-    except:
-        return render_to_response('error.html', context_instance=RequestContext(request))
+# @permission_required('principal.traveller')
+# def foursquare_request(request):
+#     try:
+#         if request.method == 'GET':
+#                 categories_initializer()
+#         else:
+#             return redirect('/')
+#     except:
+#         return render_to_response('error.html', context_instance=RequestContext(request))
 
 
 @permission_required('principal.traveller')
@@ -45,8 +43,7 @@ def foursquare_list_venues(request):
     try:
         assert request.user.has_perm('principal.traveller')
         traveller = TravellerService.find_one(request.user.id)
-        list_cat = Category.objects.all()
-        # categories = Category.objects.raw('SELECT * FROM category')
+        categories = Category.objects.filter(Q(is_delete="0"))
         if request.POST:
             form = PlanForm(request.POST)
             list_constrains = request.POST.getlist('rests')
@@ -83,7 +80,7 @@ def foursquare_list_venues(request):
 
                 all_venues = FoursquareServices.filter_and_save(items_venues)
                 all_food = FoursquareServices.filter_and_save(items_food, food=True)
-                
+
                 all_venues = FoursquareServices.save_data(all_venues)
                 all_food = FoursquareServices.save_data(all_food)
 
@@ -95,7 +92,7 @@ def foursquare_list_venues(request):
                 # Filter and save
                 selected_venues = FoursquareServices.filter_and_save(plan_venues[0])
                 selected_food = FoursquareServices.filter_and_save(plan_food, food=True)
-                
+
                 trip = FoursquareServices.create_trip(form, coins_cost, request, selected_venues, plan_venues[1],
                                                       selected_food, all_venues, all_food)
 
@@ -105,10 +102,15 @@ def foursquare_list_venues(request):
 
                 return redirect("/show_planning/" + str(trip.id) + "/")
             # si no es valido el form devolvemos a editar
-            return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller, 'list_cat': list_cat}, context_instance=RequestContext(request))
+            return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller,
+                                                             'list_cat': categories},
+                                      context_instance=RequestContext(request))
         else:
             form = PlanForm()
-            return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller, 'list_cat': list_cat}, context_instance=RequestContext(request))
+
+            return render_to_response('plan_creation.html', {'form': form, 'traveller': traveller,
+                                                             'list_cat': categories},
+                                      context_instance=RequestContext(request))
 
     except:
         print traceback.format_exc()
@@ -120,14 +122,14 @@ def retrieve_venue(request, id_venue):
         try:
             venue = FoursquareServices.retrieve_venues(id_venue)
             trips = Feedback.objects.filter(Q(venues=id_venue)).order_by("usefulCount")
-            
+
             tips_dict = {}
-            
+
             for tip in trips:
                 tips_dict[tip] = LikeService.can_vote(request.user.id, tip.id)
-            
-            
-            is_visited = VenueService.is_visited_by_user(request, venue.id) 
+
+
+            is_visited = VenueService.is_visited_by_user(request, venue.id)
             paginator = Paginator(trips, 10)
             page = request.GET.get('page')
             try:
@@ -137,7 +139,9 @@ def retrieve_venue(request, id_venue):
             except EmptyPage:
                 trips = paginator.page(paginator.num_pages)
 
-            return render_to_response('venue_details.html', {"venue": venue, "trips": trips, "is_visited":is_visited, "tips_dict":tips_dict}, context_instance=RequestContext(request))
+            return render_to_response('venue_details.html', {"venue": venue, "trips": trips, "is_visited": is_visited,
+                                                             "tips_dict": tips_dict},
+                                      context_instance=RequestContext(request))
 
         except Exception as e:
             return render_to_response('error.html', context_instance=RequestContext(request))
