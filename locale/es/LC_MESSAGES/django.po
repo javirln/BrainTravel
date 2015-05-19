@@ -3272,7 +3272,7 @@ msgstr "Salir"
 
 #: principal/templates/miscellaneous/anonymous-menu.html:5
 msgid "Sign In"
-msgstr "Inciar sesión"
+msgstr "Iniciar sesión"
 
 #: principal/templates/miscellaneous/footer.html:12
 msgid "Spanish"
@@ -3732,7 +3732,7 @@ msgstr "¿Todavía no tienes una cuenta?"
 
 #: principal/templates/signin.html:16 principal/templates/signin.html:100
 msgid "Sign up"
-msgstr "Resgistrarse"
+msgstr "Registrarse"
 
 #: principal/templates/signin.html:25
 msgid "Email"
@@ -3740,7 +3740,7 @@ msgstr "Correo"
 
 #: principal/templates/signin.html:66
 msgid "Sign Up"
-msgstr "Resgistrarse"
+msgstr "Registrarse"
 
 #: principal/templates/signin.html:89
 msgid "Invalid email address"

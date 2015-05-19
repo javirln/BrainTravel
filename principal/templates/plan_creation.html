@@ -106,32 +106,35 @@
 
 			                <div class="col-xs-12">
 			                    <h4>{% trans "Selected constrains" %}</h4>
-			                    <div class="row row-filter" id="rest1_row">
-			                        <div class="col-xs-8">
-			                            <h4><span class="label label-primary" id="rest1_lb1"></span></h4>
-	                                </div>
-	                                <div class="col-xs-4">
-	                                   <input type="hidden" class="btn btn-link" id="delete1" name="Delete lb1" value="{% trans "Delete" %}" onclick=deleteHidden("1")>
-	                                </div>
-                                </div>
-                                
-                                <div class="row row-filter" id="rest2_row">
-                                    <div class="col-xs-8">
-                                        <h4><span class="label label-primary" id="rest1_lb2"></span></h4>
+                                <ol>
+
+                                    <div class="row row-filter" id="rest1_row">
+                                        <div class="col-xs-8">
+                                            <li><h4><span class="label" id="rest1_lb1"></span></h4></li>
+                                        </div>
+                                        <div class="col-xs-4 text-right">
+                                           <input type="hidden" class="btn btn-link" id="delete1" name="Delete lb1" value="{% trans "Delete" %}" onclick=deleteHidden("1")>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-4">
-                                        <input type="hidden" class="btn btn-link" id="delete2" name="Delete lb2" value="{% trans "Delete " %}" onclick=deleteHidden("2")>
+
+                                    <div class="row row-filter" id="rest2_row">
+                                        <div class="col-xs-8">
+                                            <li><h4><span class="label" id="rest1_lb2"></span></h4></li>
+                                        </div>
+                                        <div class="col-xs-4 text-right">
+                                            <input type="hidden" class="btn btn-link" id="delete2" name="Delete lb2" value="{% trans "Delete" %}" onclick=deleteHidden("2")>
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <div class="row row-filter" id="rest3_row">
-                                    <div class="col-xs-8">
-                                        <h4><span class="label label-primary" id="rest1_lb3"></span></h4>
+
+                                    <div class="row row-filter" id="rest3_row">
+                                        <div class="col-xs-8">
+                                            <li><h4><span class="label" id="rest1_lb3"></span></h4></li>
+                                        </div>
+                                        <div class="col-xs-4 text-right">
+                                            <input type="hidden" readonly class="btn btn-link" id="delete3" name="Delete lb3" value="{% trans "Delete" %}" onclick=deleteHidden("3")>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-4">
-                                        <input type="hidden" readonly class="btn btn-link" id="delete3" name="Delete lb3" value="{% trans "Delete" %}" onclick=deleteHidden("3")>
-                                    </div>
-                                </div>
+                                </ol>
 				            </div>
 			            </div>
 		            </div>
