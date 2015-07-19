@@ -77,7 +77,7 @@ DATABASES = {
         'NAME': 'braintravel',
         'USER': 'braintravel',
         'PASSWORD': 'bR@1nTr@veL',
-        'HOST': '127.0.0.1',
+        'HOST': 'mysql.cvu77qxolqzd.us-west-2.rds.amazonaws.com',
         'PORT': '3306',
         'ATOMIC_REQUESTS': 'True'
     }
