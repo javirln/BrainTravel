@@ -1,4 +1,4 @@
-Requests is written by:
+BrainTravel is written by:
 
 Developers
 ``````````
