@@ -9,8 +9,4 @@ It automatically creates a trip planning for you, offering a daily schedule with
 
 ## Authors
 
-- [Carlos Borja](https://github.com/carborgar)
-- [Jose J. Delgado](https://github.com/dcjosej)
-- [David Jimemez](https://github.com/davjimvar)
-- [Javier Rodríguez](https://github.com/Javirln)
-- Juan Elías
+Please check [AUTHORS](https://github.com/Javirln/BrainTravel/blob/master/AUTHORS.rst)
