@@ -6,3 +6,11 @@ It automatically creates a trip planning for you, offering a daily schedule with
 - You can share, comment and evaluate with other users your trips and others' ones.
 - Provides a panel with statistics about travels based on application's users.
 - By giving feedback you can get coins that can be used to get cheap plans and even free if you get enough. The automatic planner is feed by user's feedback, the most feedback the automatic planner gets, the best results provides.
+
+## Authors
+
+- [Carlos Borja](https://github.com/carborgar)
+- [Jose J. Delgado](https://github.com/dcjosej)
+- [David Jimemez](https://github.com/davjimvar)
+- [Javier Rodríguez](https://github.com/Javirln)
+- Juan Elías
